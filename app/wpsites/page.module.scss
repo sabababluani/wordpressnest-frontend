@@ -1,0 +1,46 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.contentWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 638px;
+  width: 100%;
+}
+
+.contentWrapperButtons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 338px;
+  width: 100%;
+}
+
+.wrapper h1 {
+  font-size: 24px;
+  color: #11141A;
+  font-weight: 600;
+}
+
+.buttons {
+  max-width: 153px;
+  width: 100%;
+}
+
+.requestbuttons {
+  max-width: 169px;
+  width: 100%;
+}

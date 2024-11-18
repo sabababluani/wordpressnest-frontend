@@ -1,0 +1,45 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.contentWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 638px;
+  width: 100%;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.buttonsAdjust {
+  gap: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonsAdjust p {
+  color: #707276;
+  font-weight: 500;
+}
+
+.select {
+  width: 100%;
+  max-width: 311px;
+}

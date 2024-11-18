@@ -1,0 +1,14 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group">
+<path id="Path" d="M21 17V19C21 20.1046 20.1046 21 19 21H15" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Path_2" d="M7.49995 18.6152L7.50005 21.0002" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Path_3" d="M9.5 21L5.5 21" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="Rectangle" x="3" y="12" width="9" height="6.5" rx="1.15" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Path_4" d="M3 9V5C3 3.89543 3.89543 3 5 3H6" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Path_5" d="M12 5.495L11.995 5.5L12 5.505L12.005 5.5L12 5.495" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Path_6" d="M14.5 5.495L14.495 5.5L14.5 5.505L14.505 5.5L14.5 5.495" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Path_7" d="M17 5.495L16.995 5.5L17 5.505L17.005 5.5L17 5.495" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Path_8" d="M9 9V5C9 3.89543 9.89543 3 11 3H19C20.1046 3 21 3.89543 21 5V12C21 13.1046 20.1046 14 19 14H15" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Path_9" d="M9 8H21" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>

@@ -1,0 +1,26 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 12px 48px 24px;
+}
+
+.bottomContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+.mainCaptionStyle {
+  color: #11141a;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px;
+}
+
+.topContainer {
+  max-width: 1584px;
+  width: 100%;
+}

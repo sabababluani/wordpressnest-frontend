@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  width: 100%;
+  padding: 16px 24px;
+  gap: 24px;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  border-bottom: 1px solid #dcdfe1;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  z-index: 10;
+}
+
+.infos {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  justify-content: flex-end;
+}

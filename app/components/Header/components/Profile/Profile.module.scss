@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.image {
+  border-radius: 50%;
+}
+
+.text {
+  color: #11141a;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+}
+.name {
+  text-wrap: nowrap;
+}

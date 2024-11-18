@@ -1,0 +1,34 @@
+.wrapper :global .ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #11141a !important;
+  font-weight: 600;
+}
+
+.wrapper :global .ant-tabs-ink-bar {
+  background-color: #000000;
+}
+
+.ant-tabs-tab .ant-tabs-tab-btn {
+  font-size: 16px !important;
+  color: #666;
+}
+
+.ant-tabs-tab-active .ant-tabs-tab-btn {
+  font-size: 16px !important;
+  color: #11141a !important;
+}
+
+.wrapper :global .ant-tabs-nav-wrap {
+  padding-left: 24px;
+}
+
+.wrapper :global .ant-tabs-tab:hover {
+  color: #666;
+}
+
+.wrapper :global .ant-tabs-tab .ant-tabs-tab-btn:active {
+  color: #666;
+}
+
+.wrapper :global .ant-tabs-tab-btn {
+  font-size: 16px;
+}

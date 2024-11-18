@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  width: 100%;
+  max-width: 311px;
+  padding: 8px 12px 8px 16px;
+  justify-content: space-between;
+  border-radius: 8px;
+  border: 1px solid #dcdfe1;
+  background-color: #fff;
+  align-items: center;
+}
+
+.padded {
+  padding-top: 11.5px;
+  padding-bottom: 11.5px;
+}
+
+.input {
+  color: #000;
+  border: none;
+  background-color: #fff;
+  outline: none;
+  width: 100%;
+}
+
+.input::-webkit-search-cancel-button {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.input::placeholder {
+  color: #b5b7bf;
+}

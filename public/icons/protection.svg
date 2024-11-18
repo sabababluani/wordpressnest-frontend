@@ -1,0 +1,13 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group">
+<g id="Group_2">
+<path id="Path" fill-rule="evenodd" clip-rule="evenodd" d="M14 12H10C8.895 12 8 11.105 8 10V8C8 6.895 8.895 6 10 6H14C15.105 6 16 6.895 16 8V10C16 11.105 15.105 12 14 12Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Path_2" fill-rule="evenodd" clip-rule="evenodd" d="M17 21H7C5.343 21 4 19.657 4 18V18C4 16.343 5.343 15 7 15H17C18.657 15 20 16.343 20 18V18C20 19.657 18.657 21 17 21Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Path_3" d="M7.5 17.9901C7.497 17.9901 7.495 17.9921 7.495 17.9951C7.495 17.9981 7.497 18.0001 7.5 18.0001C7.503 18.0001 7.505 17.9981 7.505 17.9951C7.505 17.9921 7.503 17.9901 7.5 17.9901" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Path_4" d="M10.5 17.9999C10.497 17.9999 10.495 18.0019 10.495 18.0049C10.495 18.0079 10.497 18.0099 10.5 18.0099C10.503 18.0099 10.505 18.0079 10.505 18.0049C10.505 18.0019 10.503 17.9999 10.5 17.9999" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Path_5" d="M13.4951 17.995C13.4921 17.995 13.4901 17.997 13.4901 18C13.4901 18.003 13.4921 18.005 13.4951 18.005C13.4981 18.005 13.5001 18.003 13.5001 18C13.5001 17.997 13.4981 17.995 13.4951 17.995" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Path_6" d="M16.4951 17.995C16.4921 17.995 16.4901 17.997 16.4901 18C16.4901 18.003 16.4921 18.005 16.4951 18.005C16.4981 18.005 16.5001 18.003 16.5001 18C16.5001 17.997 16.4981 17.995 16.4951 17.995" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Path_7" d="M14 6V3.875C14 2.839 13.105 2 12 2C10.895 2 10 2.839 10 3.875V6" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</svg>
