@@ -47,7 +47,7 @@ const tools = (): JSX.Element => {
         />
         <Tools
           iconPath={'protectionIcon.svg'}
-          description={'Add simple .htpasswd protection to your environment.'}
+          description={'Add simple. htpasswd protection to your environment.'}
           caption={'Password Protection'}
           toggleActive={true}
         />
