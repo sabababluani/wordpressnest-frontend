@@ -2,15 +2,9 @@ import Image from 'next/image';
 import styles from './DatabaseAccess.module.scss';
 import Button from "@/app/components/Button/Button";
 import {buttonbackgroundColorEnum} from "@/app/components/Button/enum/button.enum";
+import { DataBasePropsInterface } from './interfaces/data-base-access-props.interface';
 
-interface dataBasePropsInterface {
-  database: string;
-  databaseUsername: string;
-  databasePassword: string;
-  ip: string;
-}
-
-const DataBaseAccess = (props: dataBasePropsInterface): JSX.Element => {
+const DataBaseAccess = (props: DataBasePropsInterface): JSX.Element => {
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.topContainer}>

@@ -1,14 +1,9 @@
 import styles from './Site.module.scss';
-import Button from "@/app/components/Button/Button";
-import {buttonbackgroundColorEnum} from "@/app/components/Button/enum/button.enum";
+import Button from '@/app/components/Button/Button';
+import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
+import { SitePropsInterface } from './interfaces/site-props.interface';
 
-interface sitePropsInterface {
-  mainCaption: string;
-  description: string;
-  buttonInnerContent: string;
-}
-
-const Site = (props: sitePropsInterface): JSX.Element => {
+const Site = (props: SitePropsInterface): JSX.Element => {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.topContainer}>

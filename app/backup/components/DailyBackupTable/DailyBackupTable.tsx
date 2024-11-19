@@ -6,13 +6,10 @@ import Image from 'next/image';
 import React from 'react';
 import styles from './DailyBackupTable.module.scss';
 import DailyBackupSelect from '../DailyBackupSelect/DailyBackupSelect';
+import { DailyBackupPropsInterface } from './interfaces/daily-backup-table-props.interface';
+import { Dailydata } from './dummy-data/daily-backup-table';
 
-interface DataTypeDaily {
-  key: string;
-  dateTime: string;
-}
-
-const columns: TableProps<DataTypeDaily>['columns'] = [
+const columns: TableProps<DailyBackupPropsInterface>['columns'] = [
   {
     title: (
       <div className={styles.title}>
@@ -35,33 +32,10 @@ const columns: TableProps<DataTypeDaily>['columns'] = [
   },
 ];
 
-const Dailydata: DataTypeDaily[] = [
-  {
-    key: '1',
-    dateTime: 'Oct 16 , 2024 , 3 : 55 AM',
-  },
-  {
-    key: '2',
-    dateTime: 'Oct 16 , 2024 , 3 : 55 AM',
-  },
-  {
-    key: '3',
-    dateTime: 'Oct 16 , 2024 , 3 : 55 AM',
-  },
-  {
-    key: '4',
-    dateTime: 'Oct 16 , 2024 , 3 : 55 AM',
-  },
-  {
-    key: '5',
-    dateTime: 'Oct 16 , 2024 , 3 : 55 AM',
-  },
-];
-
 const DailyBackupTable: React.FC = () => {
   return (
     <div className={styles.tableWrapper}>
-      <Table<DataTypeDaily>
+      <Table<DailyBackupPropsInterface>
         columns={columns}
         dataSource={Dailydata}
         pagination={false}

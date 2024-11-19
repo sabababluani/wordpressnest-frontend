@@ -3,8 +3,8 @@ import { NextFont } from 'next/dist/compiled/@next/font';
 import { Inter, DM_Sans } from 'next/font/google';
 import React, { JSX } from 'react';
 import './globals.css';
-import Header from "@/app/components/Header/Header";
-import Navigation from "@/app/components/Navigation/Navigation";
+import Header from '@/app/components/Header/Header';
+import Navigation from '@/app/components/Navigation/Navigation';
 
 const inter: NextFont = Inter({ subsets: ['latin'] });
 const dmSans = DM_Sans({

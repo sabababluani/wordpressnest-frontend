@@ -3,19 +3,13 @@
 import type { TableColumnsType } from 'antd';
 import { Table } from 'antd';
 import React, { useState } from 'react';
-import styles from '@/app/domains/components/DomainsTable/DomainsTable.module.scss'
-import Button from "@/app/components/Button/Button";
-import {buttonbackgroundColorEnum} from "@/app/components/Button/enum/button.enum";
+import styles from '@/app/domains/components/DomainsTable/DomainsTable.module.scss';
+import Button from '@/app/components/Button/Button';
+import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
+import { PluginDataPropsInterface } from './interfaces/plugin-table.interfaces';
+import { pluginData } from './dummy-data/plugin-dummy-data';
 
-interface PluginData {
-  key: string;
-  name: string;
-  status: string;
-  installed: string;
-  latest: string;
-}
-
-const columns: TableColumnsType<PluginData> = [
+const columns: TableColumnsType<PluginDataPropsInterface> = [
   {
     title: 'Plugin',
     dataIndex: 'name',
@@ -77,32 +71,15 @@ const columns: TableColumnsType<PluginData> = [
   },
 ];
 
-const data: PluginData[] = [
-  {
-    key: '1',
-    name: 'Plugin One',
-    status: 'Active',
-    installed: '1.0.0',
-    latest: '1.1.0',
-  },
-  {
-    key: '2',
-    name: 'Plugin Two',
-    status: 'Inactive',
-    installed: '1.2.0',
-    latest: '1.3.0',
-  },
-];
-
 const PluginTable: React.FC = () => {
   const [selectionType] = useState<'checkbox'>('checkbox');
 
   return (
     <div className={styles.tableWrapper}>
-      <Table<PluginData>
+      <Table<PluginDataPropsInterface>
         rowSelection={{ type: selectionType }}
         columns={columns}
-        dataSource={data}
+        dataSource={pluginData}
         pagination={false}
         scroll={{ x: 'max-content' }}
       />

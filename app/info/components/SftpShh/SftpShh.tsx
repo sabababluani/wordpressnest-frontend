@@ -1,17 +1,6 @@
 import Image from 'next/image';
 import styles from './SftpShh.module.scss';
-
-interface SftpShhPropsInterface {
-  host: string;
-  passwordExpiration: string;
-  ssh: string;
-  port: string;
-  authenticationMethods: string;
-  ipAddress: string;
-  IpAllowed: string;
-  password: string;
-  ftp: string;
-}
+import { SftpShhPropsInterface } from './interfaces/sftpshh-props.interfaces';
 
 const SftpShh = (props: SftpShhPropsInterface): JSX.Element => {
   return (

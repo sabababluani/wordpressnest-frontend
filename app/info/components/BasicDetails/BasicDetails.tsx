@@ -1,13 +1,8 @@
 import Image from 'next/image';
 import styles from './BasicDetails.module.scss';
+import { StatisticPropsInterface } from './interfaces/statistic-props.interface';
 
-interface statisticPropsInterface {
-  locationDataCenter?: string;
-  siteName?: string;
-  Labels?: string;
-}
-
-const BasicDetails = (props: statisticPropsInterface): JSX.Element => {
+const BasicDetails = (props: StatisticPropsInterface): JSX.Element => {
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.topContainer}>

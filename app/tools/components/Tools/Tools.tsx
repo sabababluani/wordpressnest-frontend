@@ -5,18 +5,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import styles from './Tools.module.scss';
 import DropDown from "@/app/components/DropDown/DropDown";
-
-interface ToolsDataPropsInterface {
-  iconPath: string;
-  toggleActive?: boolean;
-  buttonActive?: boolean;
-  ActivatedButtonCaption?: string;
-  buttonIconPath?: string;
-  buttonIconActivate?: boolean;
-  dropDownActive?: boolean;
-  description: string;
-  caption: string;
-}
+import { ToolsDataPropsInterface } from './interfaces/tools-data-props.interface';
 
 const Tools = (props: ToolsDataPropsInterface): JSX.Element => {
   const onChange = (): void => {

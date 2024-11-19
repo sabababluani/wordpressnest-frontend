@@ -4,28 +4,9 @@ import {buttonbackgroundColorEnum} from "@/app/components/Button/enum/button.enu
 import Button from "@/app/components/Button/Button";
 import Search from "@/app/components/Search/Search";
 import IpTable from "@/app/ipdeny/components/IpTable/IpTable";
+import { ipDenyData } from './dummy-data/ipdeny-data';
 
 const ipdeny = (): JSX.Element => {
-  const data = [
-    // Sample data for IP addresses and dates (currently commented out)
-    // {
-    //   Ipaddresses: '127.0.0.\n128.0.0.1/32\n2001:0sxd/5420/46.4+6.5615n/00',
-    //   Date: '11.26.2024/13:14',
-    // },
-    // {
-    //   Ipaddresses: '127.0.0.\n128.0.0.1/32\n2001:0sxd/5420/46.4+6.5615n/00',
-    //   Date: '11.26.2024/14:15',
-    // },
-    // {
-    //   Ipaddresses: '127.0.0.\n128.0.0.1/32\n2001:0sxd/5420/46.4+6.5615n/00',
-    //   Date: '11.26.2024/15:16',
-    // },
-    // {
-    //   Ipaddresses: '127.0.0.\n128.0.0.1/32\n2001:0sxd/5420/46.4+6.5615n/00',
-    //   Date: '11.26.2024/16:17',
-    // },
-  ];
-
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
@@ -44,7 +25,7 @@ const ipdeny = (): JSX.Element => {
           />
         </div>
       </div>
-      {data.length === 0 ? (
+      {ipDenyData.length === 0 ? (
         <div className={styles.blankContent}>
           <Image src={'/blank.svg'} alt={'blankIps'} width={626} height={626} />
         </div>

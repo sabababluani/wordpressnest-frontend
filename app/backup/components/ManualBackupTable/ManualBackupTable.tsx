@@ -6,14 +6,10 @@ import Image from 'next/image';
 import React from 'react';
 import styles from './ManualBackupTable.module.scss';
 import DailyBackupSelect from '../DailyBackupSelect/DailyBackupSelect';
+import { ManualBackupTablePropsInterface } from './interfaces/manual-backup-table-props.interface';
+import { manualBackupTableDummy } from './dummy-data/manual-backup-table';
 
-interface DataType {
-  key: string;
-  dateTime: string;
-  status: string;
-}
-
-const columns: TableProps<DataType>['columns'] = [
+const columns: TableProps<ManualBackupTablePropsInterface>['columns'] = [
   {
     title: (
       <div className={styles.title}>
@@ -47,23 +43,14 @@ const columns: TableProps<DataType>['columns'] = [
   },
 ];
 
-const data: DataType[] = [
-  {
-    key: '1',
-    dateTime: 'Oct 16 , 2024 , 3 : 55 AM',
-    status: 'Restored',
-  },
-  {
-    key: '2',
-    dateTime: 'Oct 16 , 2024 , 3 : 55 AM',
-    status: 'Restored',
-  },
-];
-
 const ManualBackupTable: React.FC = () => {
   return (
     <div className={styles.tableWrapper}>
-      <Table<DataType> columns={columns} dataSource={data} pagination={false} />
+      <Table<ManualBackupTablePropsInterface>
+        columns={columns}
+        dataSource={manualBackupTableDummy}
+        pagination={false}
+      />
     </div>
   );
 };

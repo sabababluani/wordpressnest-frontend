@@ -1,7 +1,7 @@
 import styles from './page.module.scss';
-import Tools from "@/app/tools/components/Tools/Tools";
+import Tools from '@/app/tools/components/Tools/Tools';
 
-export default function tools(): JSX.Element {
+const tools = (): JSX.Element => {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.topContainer}>
@@ -110,4 +110,6 @@ export default function tools(): JSX.Element {
       </div>
     </div>
   );
-}
+};
+
+export default tools;

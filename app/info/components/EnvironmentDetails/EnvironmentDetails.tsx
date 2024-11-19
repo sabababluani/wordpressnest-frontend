@@ -1,14 +1,6 @@
 import Image from 'next/image';
 import styles from './EnvironmentDetails.module.scss';
-
-interface EnvironementDetailsPropsInterface {
-  path?: string;
-  environmentName?: string;
-  siteIpAddress?: string;
-  wordpressVersion?: string;
-  ipAddress?: string;
-  phpWorkers?: string;
-}
+import { EnvironementDetailsPropsInterface } from './interfaces/environment-details-props.interface';
 
 const EnvironementDetails = (
   props: EnvironementDetailsPropsInterface

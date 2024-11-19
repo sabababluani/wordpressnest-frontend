@@ -8,7 +8,6 @@ import EdgeCaching from './components/EdgeCaching/EdgeCaching';
 import ServerCaching from './components/ServerCaching/ServerCaching';
 import styles from './page.module.scss';
 
-
 const caching = (): JSX.Element => {
   return (
     <div className={styles.mainContainer}>
@@ -21,7 +20,7 @@ const caching = (): JSX.Element => {
       </div>
       <div>
         <TabsAnt
-          tabCount={3}
+          uniqueKey={'caching'}
           tabNames={['Edge Caching', 'CDN', 'Server Caching']}
           tabContent={[
             <div key={'edge'}>
