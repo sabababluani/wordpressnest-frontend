@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import styles from './EditModal.module.scss';
-import SitesSelect from "@/app/components/SitesSelect/SitesSelect";
-import Button from "@/app/components/Button/Button";
-import {buttonbackgroundColorEnum} from "@/app/components/Button/enum/button.enum";
+import SitesSelect from '@/app/components/SitesSelect/SitesSelect';
+import Button from '@/app/components/Button/Button';
+import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 
-const EditModal = (): JSX.Element => {
+const EditModal = (props: ModalProps): JSX.Element => {
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.header}>
@@ -15,6 +15,7 @@ const EditModal = (): JSX.Element => {
           width={24}
           height={24}
           className={styles.close}
+          onClick={props.onClose}
         />
       </div>
       <div className={styles.container}>
