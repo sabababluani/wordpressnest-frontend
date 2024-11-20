@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { Modal } from 'antd';
-import styles from './Redirects.module.scss';
+import styles from './page.module.scss';
 import Button from '../components/Button/Button';
 import RedirectsTable from './components/RedirectsTable/RedirectsTable';
 import { buttonbackgroundColorEnum } from '../components/Button/enum/button.enum';
