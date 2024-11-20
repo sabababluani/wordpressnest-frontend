@@ -4,7 +4,7 @@ import { Modal, Table } from 'antd';
 import type { TableColumnsType } from 'antd';
 import Image from 'next/image';
 import React, { useState } from 'react';
-import styles from '@/src/app/domains/component/DomainsTable/DomainsTable.module.scss';
+import styles from '@/app/domains/components/DomainsTable/DomainsTable.module.scss';
 import EditModal from '../EditModal/EditModal';
 
 interface UsersTablePropsInterface {

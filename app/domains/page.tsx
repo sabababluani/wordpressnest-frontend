@@ -1,12 +1,69 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
+import { Table } from 'antd';
+import type { TableColumnsType } from 'antd';
+import Image from 'next/image';
 import styles from './page.module.scss';
 import Search from '../components/Search/Search';
 import SitesSelect from '../components/SitesSelect/SitesSelect';
 import Button from '../components/Button/Button';
 import { buttonbackgroundColorEnum } from '../components/Button/enum/button.enum';
-import DomainsTable from './components/DomainsTable/DomainsTable';
+import { domainsDummy } from './components/DomainsTable/domainsdummy/domains-dummy-data';
+import { DomainsTablePropsInterface } from './components/interfaces/domains-table-props.interface';
 
-const domains = (): JSX.Element => {
+const Domains = (): JSX.Element => {
+  const [selectedRows, setSelectedRows] = useState<React.Key[]>([]);
+
+  const columns: TableColumnsType<DomainsTablePropsInterface> = [
+    {
+      title: 'Name',
+      dataIndex: 'plugin',
+      render: (text: string, record) => (
+        <div className={record.isPrimary ? styles.primaryLabel : ''}>
+          {text}
+          {record.isPrimary && <div className={styles.primaryTag}>Primary</div>}
+        </div>
+      ),
+    },
+    {
+      title: 'Status',
+      dataIndex: 'status',
+      render: (status: number) => (
+        <div
+          className={status === 1 ? styles.activeStatus : styles.inactiveStatus}
+        >
+          <span
+            className={status === 1 ? styles.greenDot : styles.redDot}
+          ></span>
+          <span className={styles.status}>
+            {status === 1 ? 'Active' : 'Disconnected'}
+          </span>
+        </div>
+      ),
+    },
+    {
+      title: 'Action',
+      dataIndex: 'address',
+      render: () => (
+        <div className={styles.dotsWrapper}>
+          <Image
+            src={'/icons/3dots.svg'}
+            alt={'3dots'}
+            width={14}
+            height={16}
+          />
+        </div>
+      ),
+    },
+  ];
+
+  const rowSelection = {
+    onChange: (selectedRowKeys: React.Key[]) => {
+      setSelectedRows(selectedRowKeys);
+    },
+  };
+
   return (
     <div className={styles.wrapper}>
       <h1>Domains</h1>
@@ -18,24 +75,47 @@ const domains = (): JSX.Element => {
           </div>
         </div>
         <div className={styles.buttonsAdjust}>
-          <p>2 Domain selected</p>
-          <div className={styles.buttons}>
-            <Button
-              backgroundColor={buttonbackgroundColorEnum.grey}
-              innerContent={'Custom SSL'}
-            />
-            <Button
-              backgroundColor={buttonbackgroundColorEnum.domainsRed}
-              innerContent={'Delete Domains'}
-            />
-          </div>
+          {selectedRows.length > 0 ? (
+            <>
+              <p>
+                {selectedRows.length}{' '}
+                {selectedRows.length === 1 ? 'Domain' : 'Domains'} selected
+              </p>
+              <div className={styles.buttons}>
+                <Button
+                  backgroundColor={buttonbackgroundColorEnum.grey}
+                  innerContent={'Custom SSL'}
+                />
+                <Button
+                  backgroundColor={buttonbackgroundColorEnum.domainsRed}
+                  innerContent={'Delete Domains'}
+                />
+              </div>
+            </>
+          ) : (
+            <>
+              <Button
+                backgroundColor={buttonbackgroundColorEnum.black}
+                innerContent={'Add Domains'}
+              />
+            </>
+          )}
         </div>
       </div>
-      <div>
-        <DomainsTable />
+      <div className={styles.tableWrapper}>
+        <Table<DomainsTablePropsInterface>
+          rowSelection={{
+            type: 'checkbox',
+            ...rowSelection,
+          }}
+          columns={columns}
+          dataSource={domainsDummy}
+          pagination={false}
+          rowClassName={(record) => (record.isPrimary ? styles.primaryRow : '')}
+        />
       </div>
     </div>
   );
 };
 
-export default domains;
+export default Domains;
