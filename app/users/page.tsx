@@ -1,4 +1,5 @@
-'use client'
+'use client';
+
 import styles from './page.module.scss';
 import UsersModal from './components/UsersModal/UsersModal';
 import { Modal } from 'antd';
@@ -7,7 +8,7 @@ import Button from '../components/Button/Button';
 import UsersTable from './components/UsersTable/UsersTable';
 import { buttonbackgroundColorEnum } from '../components/Button/enum/button.enum';
 
-const users = (props: ModalProps): JSX.Element => {
+const Users = (): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
@@ -21,6 +22,7 @@ const users = (props: ModalProps): JSX.Element => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
@@ -52,4 +54,4 @@ const users = (props: ModalProps): JSX.Element => {
   );
 };
 
-export default users;
+export default Users;
