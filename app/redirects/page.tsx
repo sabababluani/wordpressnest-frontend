@@ -1,11 +1,27 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
+import { Modal } from 'antd';
 import styles from './page.module.scss';
-import Button from "@/app/components/Button/Button";
-import {buttonbackgroundColorEnum} from "@/app/components/Button/enum/button.enum";
-import RedirectsTable from "@/app/redirects/components/RedirectsTable/RedirectsTable";
+import Button from '../components/Button/Button';
+import RedirectsTable from './components/RedirectsTable/RedirectsTable';
+import { buttonbackgroundColorEnum } from '../components/Button/enum/button.enum';
+import RedirectsModal from './components/RedirectsModal/RedirectsModal';
 
-const redirects = (): JSX.Element => {
+const Redirects = (): JSX.Element => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -20,12 +36,25 @@ const redirects = (): JSX.Element => {
           <Button
             backgroundColor={buttonbackgroundColorEnum.black}
             innerContent="Add Redirect"
+            onClick={showModal}
           />
         </div>
       </div>
       <RedirectsTable />
+      <div className={styles.modal}>
+        <Modal
+          title=""
+          open={isModalOpen}
+          onOk={handleOk}
+          onCancel={handleCancel}
+          footer={null}
+          closable={false}
+        >
+          <RedirectsModal onClose={handleCancel}/>
+        </Modal>
+      </div>
     </div>
   );
 };
 
-export default redirects;
+export default Redirects;
