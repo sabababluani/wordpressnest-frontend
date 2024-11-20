@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import styles from './UsersModal.module.scss';
-import Search from "@/app/components/Search/Search";
-import SitesSelect from "@/app/components/SitesSelect/SitesSelect";
-import Button from "@/app/components/Button/Button";
-import {buttonbackgroundColorEnum} from "@/app/components/Button/enum/button.enum";
+import Search from '@/app/components/Search/Search';
+import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
+import SitesSelect from '@/app/components/SitesSelect/SitesSelect';
+import Button from '@/app/components/Button/Button';
 
-const UsersModal = (): JSX.Element => {
+const UsersModal = (props: ModalProps): JSX.Element => {
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.header}>
@@ -16,6 +16,7 @@ const UsersModal = (): JSX.Element => {
           width={24}
           height={24}
           className={styles.close}
+          onClick={props.onClose}
         />
       </div>
       <div className={styles.container}>

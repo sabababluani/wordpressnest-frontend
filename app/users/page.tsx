@@ -1,9 +1,26 @@
+'use client'
 import styles from './page.module.scss';
-import Button from '@/app/components/Button/Button';
-import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
-import UsersTable from '@/app/users/components/UsersTable/UsersTable';
+import UsersModal from './components/UsersModal/UsersModal';
+import { Modal } from 'antd';
+import { useState } from 'react';
+import Button from '../components/Button/Button';
+import UsersTable from './components/UsersTable/UsersTable';
+import { buttonbackgroundColorEnum } from '../components/Button/enum/button.enum';
 
-const users = (): JSX.Element => {
+const users = (props: ModalProps): JSX.Element => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
@@ -13,10 +30,23 @@ const users = (): JSX.Element => {
           innerContentIconActive
           innerContent={'Invite Users'}
           innerContentIcon={'icons/adduser.svg'}
+          onClick={showModal}
         />
       </div>
       <div>
         <UsersTable />
+      </div>
+      <div className={styles.modal}>
+        <Modal
+          title=""
+          open={isModalOpen}
+          onOk={handleOk}
+          onCancel={handleCancel}
+          footer={null}
+          closable={false}
+        >
+          <UsersModal onClose={handleCancel} />
+        </Modal>
       </div>
     </div>
   );

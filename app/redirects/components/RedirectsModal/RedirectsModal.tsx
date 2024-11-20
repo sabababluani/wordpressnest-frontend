@@ -1,14 +1,13 @@
-'use client';
-import { Radio } from 'antd';
-import Image from 'next/image';
-import styles from './RedirectsModal.module.scss';
+"use client";
+import { Radio } from "antd";
+import Image from "next/image";
+import styles from "./RedirectsModal.module.scss";
 import SitesSelect from "@/app/components/SitesSelect/SitesSelect";
 import Search from "@/app/components/Search/Search";
 import Button from "@/app/components/Button/Button";
-import {buttonbackgroundColorEnum} from "@/app/components/Button/enum/button.enum";
+import { buttonbackgroundColorEnum } from "@/app/components/Button/enum/button.enum";
 
-
-const RedirectsModal = (): JSX.Element => {
+const RedirectsModal = (props: RedirectsModalProps): JSX.Element => {
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.header}>
@@ -19,6 +18,7 @@ const RedirectsModal = (): JSX.Element => {
           width={24}
           height={24}
           className={styles.close}
+          onClick={props.onClose}
         />
       </div>
       <div className={styles.container}>
@@ -69,6 +69,7 @@ const RedirectsModal = (): JSX.Element => {
           <Button
             innerContent="Cancel"
             backgroundColor={buttonbackgroundColorEnum.grey}
+            onClick={props.onClose}
           />
           <Button
             innerContent="Add Redirect Rule"
