@@ -4,12 +4,12 @@ import { Switch } from 'antd';
 import Image from 'next/image';
 import { useState } from 'react';
 import styles from './Tools.module.scss';
-import DropDown from "@/app/components/DropDown/DropDown";
+import DropDown from '@/app/components/DropDown/DropDown';
 import { ToolsDataPropsInterface } from './interfaces/tools-data-props.interface';
 
 const Tools = (props: ToolsDataPropsInterface): JSX.Element => {
   const onChange = (): void => {
-    setIsDisable((prev) => !prev);
+    setIsDisable((prevState) => !prevState);
   };
   const [isDisable, setIsDisable] = useState<boolean>(true);
 

@@ -1,5 +1,6 @@
 .mainContainer {
-  max-width: 508px;
+  flex: 1;
+  min-width: 508px;
   width: 100%;
   display: flex;
   flex-direction: column;
