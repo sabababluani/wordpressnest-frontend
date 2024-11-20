@@ -60,7 +60,16 @@
 }
 
 .bottomContainer {
-  padding: 24px 20px 24px 24px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding-left: 20px;
+  padding-top: 24px;
+}
+
+.toggleWrapper {
+  padding: 8px 12px 8px 0;
 }
 
 .toggleWrapper :global .ant-switch-checked {
