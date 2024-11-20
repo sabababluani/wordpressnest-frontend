@@ -1,11 +1,11 @@
-"use client";
-import { Radio } from "antd";
-import Image from "next/image";
-import styles from "./RedirectsModal.module.scss";
-import SitesSelect from "@/app/components/SitesSelect/SitesSelect";
-import Search from "@/app/components/Search/Search";
-import Button from "@/app/components/Button/Button";
-import { buttonbackgroundColorEnum } from "@/app/components/Button/enum/button.enum";
+'use client';
+import { Radio } from 'antd';
+import Image from 'next/image';
+import styles from './RedirectsModal.module.scss';
+import SitesSelect from '@/app/components/SitesSelect/SitesSelect';
+import Search from '@/app/components/Search/Search';
+import Button from '@/app/components/Button/Button';
+import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 
 const RedirectsModal = (props: RedirectsModalProps): JSX.Element => {
   return (
