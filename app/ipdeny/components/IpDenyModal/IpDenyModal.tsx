@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import styles from './IpDenyModal.module.scss';
-import Button from '@/src/shared/components/Button/Button';
-import { buttonbackgroundColorEnum } from '@/src/shared/components/Button/enum/button.enum';
+import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
+import Button from '@/app/components/Button/Button';
 
 const IpDenyModal = (): JSX.Element => {
   return (
