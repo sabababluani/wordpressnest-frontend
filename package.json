@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "antd": "^5.22.1",
+    "axios": "^1.7.7",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.53.2",
     "sass": "^1.81.0",
     "typescript-eslint": "^7.18.0"
   },
