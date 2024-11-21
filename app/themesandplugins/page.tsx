@@ -13,7 +13,7 @@ const themesandplugins = (): JSX.Element => {
         <div className={styles.container}>
           <Search placeholder={'Search By Plugin name '} isPadded />
           <div className={styles.reloadWrap}>
-            <span>Update 2 Days Ago</span>
+            <span>Updated 2 days ago</span>
             <Button
               backgroundColor={buttonbackgroundColorEnum.grey}
               innerContent={'Reload'}

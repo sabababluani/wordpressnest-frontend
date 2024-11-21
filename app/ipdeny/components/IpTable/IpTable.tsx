@@ -4,7 +4,8 @@ import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
 import Image from 'next/image';
 import React, { useState } from 'react';
-import styles from '../../page.module.scss';
+import styles from '../../../domains/components/DomainsTable/DomainsTable.module.scss';
+import { ipDenyData } from '../../dummy-data/ipdeny-data';
 
 interface IpTablePropsInterface {
   Ipaddresses: string;
@@ -37,29 +38,6 @@ const columns: TableColumnsType<IpTablePropsInterface> = [
   },
 ];
 
-const data: IpTablePropsInterface[] = [
-  {
-    Ipaddresses:
-      '127.0.0.\n' + '128.0.0.1/32\n' + '2001:0sxd/5420/46.4+6.5615n/00',
-    Date: '11.26.2024/13:14',
-  },
-  {
-    Ipaddresses:
-      '127.0.0.\n' + '128.0.0.1/32\n' + '2001:0sxd/5420/46.4+6.5615n/00',
-    Date: '11.26.2024/14:15',
-  },
-  {
-    Ipaddresses:
-      '127.0.0.\n' + '128.0.0.1/32\n' + '2001:0sxd/5420/46.4+6.5615n/00',
-    Date: '11.26.2024/15:16',
-  },
-  {
-    Ipaddresses:
-      '127.0.0.\n' + '128.0.0.1/32\n' + '2001:0sxd/5420/46.4+6.5615n/00',
-    Date: '11.26.2024/16:17',
-  },
-];
-
 const IpTable: React.FC = () => {
   const [selectionType] = useState<'checkbox'>('checkbox');
 
@@ -68,7 +46,7 @@ const IpTable: React.FC = () => {
       <Table<IpTablePropsInterface>
         rowSelection={{ type: selectionType }}
         columns={columns}
-        dataSource={data}
+        dataSource={ipDenyData}
         pagination={false}
         rowKey="Ipaddresses"
       />

@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import styles from './page.module.scss';
-import {buttonbackgroundColorEnum} from "@/app/components/Button/enum/button.enum";
-import Button from "@/app/components/Button/Button";
-import Search from "@/app/components/Search/Search";
-import IpTable from "@/app/ipdeny/components/IpTable/IpTable";
+import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
+import Button from '@/app/components/Button/Button';
+import Search from '@/app/components/Search/Search';
+import IpTable from '@/app/ipdeny/components/IpTable/IpTable';
 import { ipDenyData } from './dummy-data/ipdeny-data';
 
 const ipdeny = (): JSX.Element => {
