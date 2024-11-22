@@ -37,6 +37,7 @@ const UsersModal = (props: ModalProps): JSX.Element => {
           <Button
             innerContent="Cancel"
             backgroundColor={buttonbackgroundColorEnum.grey}
+            onClick={props.onClose}
           />
           <Button
             innerContent="Invite Users"

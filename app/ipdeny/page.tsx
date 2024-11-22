@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import styles from './page.module.scss';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
@@ -5,8 +7,25 @@ import Button from '@/app/components/Button/Button';
 import Search from '@/app/components/Search/Search';
 import IpTable from '@/app/ipdeny/components/IpTable/IpTable';
 import { ipDenyData } from './dummy-data/ipdeny-data';
+import { Modal } from 'antd';
+import { useState } from 'react';
+import IpDenyModal from './components/IpDenyModal/IpDenyModal';
 
-const ipdeny = (): JSX.Element => {
+const Ipdeny = (): JSX.Element => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
@@ -22,6 +41,7 @@ const ipdeny = (): JSX.Element => {
           <Button
             backgroundColor={buttonbackgroundColorEnum.black}
             innerContent={'Add IP Addresses'}
+            onClick={showModal}
           />
         </div>
       </div>
@@ -35,8 +55,18 @@ const ipdeny = (): JSX.Element => {
           <IpTable />
         </div>
       )}
+      <Modal
+        title=""
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        footer={null}
+        closable={false}
+      >
+        <IpDenyModal onClose={handleCancel} />
+      </Modal>
     </div>
   );
 };
 
-export default ipdeny;
+export default Ipdeny;

@@ -8,4 +8,12 @@
 .container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.container h1 {
+  color: #11141A;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
 }

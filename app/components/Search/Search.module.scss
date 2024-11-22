@@ -2,7 +2,7 @@
   display: flex;
   width: 100%;
   max-width: 311px;
-  padding: 8px 12px 8px 16px;
+  padding: 8px 12px 8px 8px;
   justify-content: space-between;
   border-radius: 8px;
   border: 1px solid #dcdfe1;
@@ -11,8 +11,8 @@
 }
 
 .padded {
-  padding-top: 11.5px;
-  padding-bottom: 11.5px;
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 
 .input {
