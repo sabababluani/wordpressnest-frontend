@@ -2,8 +2,9 @@ import Image from 'next/image';
 import styles from './IpDenyModal.module.scss';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import Button from '@/app/components/Button/Button';
+import { IpdenyPropsInterface } from './interfaces/ipdeny-props.interface';
 
-const IpDenyModal = (): JSX.Element => {
+const IpDenyModal = (props: IpdenyPropsInterface): JSX.Element => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
@@ -13,18 +14,19 @@ const IpDenyModal = (): JSX.Element => {
           alt={'close'}
           width={24}
           height={24}
+          onClick={props.onClose}
         />
       </div>
       <div className={styles.innerContainer}>
         <p>
           Add IP Addresses To Block Them From Accessing The Site. EnterMultiple
-          IP Addresses On Separate Lines .
+          IP Addresses On Separate Lines.
         </p>
         <div className={styles.exampleWrapper}>
           <span>Example</span>
           <div className={styles.exampleContainer}>
             <div className={styles.content}>
-              <span>127.0.0. 128.0.0.1/32 2001:0sxd/5420/46.4+6.5615n/00 </span>
+              <span>127.0.0. 128.0.0.1/32 2001:0sxd/5420/46.4+6.5615n/00</span>
             </div>
           </div>
         </div>
@@ -37,6 +39,7 @@ const IpDenyModal = (): JSX.Element => {
         <Button
           backgroundColor={buttonbackgroundColorEnum.grey}
           innerContent={'Cancel'}
+          onClick={props.onClose}
         />
         <Button
           backgroundColor={buttonbackgroundColorEnum.black}

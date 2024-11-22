@@ -15,6 +15,10 @@
   overflow: hidden;
 }
 
+.container img {
+  cursor: pointer;
+}
+
 .buttons {
   display: flex;
   align-items: center;
@@ -39,7 +43,7 @@
 }
 
 .content {
-  width: 192px;
+  width: 152px;
   padding: 12px 0 14px 16px;
 }
 
@@ -65,13 +69,20 @@
 
 .innerContainer p {
   color: #00000099;
-  font-size: 14px;
+  font-size: 12px;
+  font-weight: 400;
 }
 
 .textarea {
   display: flex;
   flex-direction: column;
   gap: 4px;
+}
+
+.textarea span {
+  color: #11141a;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .textarea textarea {
@@ -89,4 +100,10 @@
 
 .textarea textarea:focus {
   border: 1px solid #00000026;
+}
+
+.container p {
+  color: #11141a;
+  font-size: 16px;
+  font-weight: 600;
 }
