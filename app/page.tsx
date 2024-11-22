@@ -1,7 +1,5 @@
 import { ComponentType } from 'react';
 import styles from './page.module.css';
-import Button from './components/Button/Button';
-import { buttonbackgroundColorEnum } from './components/Button/enum/button.enum';
 import DashboardStat from '@/app/components/DashboardStat/DashboardStat';
 import WordpressStat from '@/app/components/WordpressStat/WordpressStat';
 
@@ -11,10 +9,6 @@ const Home: ComponentType = () => {
       <div className={styles.topContainer}>
         <div className={styles.captionAndButtonWrapper}>
           <span className={styles.dashboardCaptionStyle}>Dashboard</span>
-          <Button
-            backgroundColor={buttonbackgroundColorEnum.black}
-            innerContent="Request Migration"
-          />
         </div>
         <div className={styles.dashboardStatsWrapper}>
           <DashboardStat
