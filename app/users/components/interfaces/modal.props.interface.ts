@@ -1,3 +1,3 @@
-interface ModalProps {
+interface UsersModalPropsInterface {
   onClose: () => void;
 }

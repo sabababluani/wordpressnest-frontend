@@ -5,7 +5,7 @@ import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.e
 import SitesSelect from '@/app/components/SitesSelect/SitesSelect';
 import Button from '@/app/components/Button/Button';
 
-const UsersModal = (props: ModalProps): JSX.Element => {
+const UsersModal = (props: UsersModalPropsInterface): JSX.Element => {
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.header}>

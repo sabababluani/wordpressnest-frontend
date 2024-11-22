@@ -6,14 +6,8 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import styles from '@/app/domains/components/DomainsTable/DomainsTable.module.scss';
 import EditModal from '../EditModal/EditModal';
-
-interface UsersTablePropsInterface {
-  userPhoto: string;
-  name: string;
-  email: string;
-  role: string;
-  onClose?: boolean;
-}
+import { UsersTablePropsInterface } from './interfaces/users-table-props.interface';
+import { UsersData } from './users-dummy/users-dummy-data';
 
 const IpTable: React.FC = () => {
   const [selectionType] = useState<'checkbox'>('checkbox');
@@ -94,39 +88,12 @@ const IpTable: React.FC = () => {
     },
   ];
 
-  const data: UsersTablePropsInterface[] = [
-    {
-      userPhoto: '/man.png',
-      name: 'Michael Johnson',
-      email: 'michaeljohnson@gmail.com',
-      role: 'WP Site Admin',
-    },
-    {
-      userPhoto: '/woman.png',
-      name: 'Sarah Connor',
-      email: 'sarah.connor@gmail.com',
-      role: 'WP Site Admin',
-    },
-    {
-      userPhoto: '/blackgirl.png',
-      name: 'qalvardi',
-      email: 'qalvardi.connor@gmail.com',
-      role: 'WP Site Admin',
-    },
-    {
-      userPhoto: '/boy.png',
-      name: 'John Doe',
-      email: 'johndoe@gmail.com',
-      role: 'WP Site Admin',
-    },
-  ];
-
   return (
     <div className={styles.tableWrapper}>
       <Table<UsersTablePropsInterface>
         rowSelection={{ type: selectionType }}
         columns={columns}
-        dataSource={data}
+        dataSource={UsersData}
         pagination={false}
         rowKey="email"
       />
