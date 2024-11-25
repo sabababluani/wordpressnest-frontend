@@ -17,6 +17,7 @@
     "react-dom": "^18",
     "react-hook-form": "^7.53.2",
     "sass": "^1.81.0",
+    "swr": "^2.2.5",
     "typescript-eslint": "^7.18.0"
   },
   "devDependencies": {

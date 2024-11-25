@@ -1,14 +1,16 @@
 'use client';
+
 import Image from 'next/image';
 import React, { useState } from 'react';
 import styles from './Search.module.scss';
 import { SearchPropsInterface } from './intefaces/search-props.interfaces';
 
-const Search = (props: SearchPropsInterface): JSX.Element => {
-  const [, setValue] = useState<string>('');
+const Search: React.FC<SearchPropsInterface> = (props) => {
+  const [inputValue, setInputValue] = useState<string>('');
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setValue(e.target.value);
+    setInputValue(e.target.value);
+    props.onChange(e.target.value);
   };
 
   return (
@@ -19,10 +21,13 @@ const Search = (props: SearchPropsInterface): JSX.Element => {
         type="search"
         className={styles.input}
         placeholder={props.placeholder}
+        value={inputValue}
         onChange={onChange}
       />
       {!props.noIcon && (
-        <Image src="/icons/search.svg" width={24} height={24} alt="search" />
+        <div>
+          <Image src="/icons/search.svg" width={24} height={24} alt="search" />
+        </div>
       )}
     </div>
   );

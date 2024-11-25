@@ -3,4 +3,5 @@ export interface SearchPropsInterface {
   isPadded?: boolean;
   noIcon?: boolean;
   inModal?: boolean;
+  onChange: (value: string) => void;
 }
