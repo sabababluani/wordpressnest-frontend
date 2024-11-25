@@ -46,7 +46,7 @@ const DataBaseAccess = (props: DataBasePropsInterface): JSX.Element => {
           </span>
         </div>
         <div className={styles.ipWrapper}>
-          <span className={styles.ipCaptionStyle}>Database Username</span>
+          <span className={styles.ipCaptionStyle}>IP Allow list</span>
           <div className={styles.ipAndButtonWrapper}>
             <span className={styles.ipValueStyle}>{props.ip}</span>
             <button className={styles.pencilButtonStyle}>
