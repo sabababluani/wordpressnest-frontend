@@ -1,0 +1,73 @@
+.inputWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f8f9fa; /* Light background */
+    padding: 20px;
+}
+
+.formContainer {
+    background: #ffffff; /* White card-style form */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    padding: 30px;
+    width: 100%;
+    max-width: 400px; /* Limit max size */
+    box-sizing: border-box;
+}
+
+.inputField {
+    margin-bottom: 20px;
+    position: relative; /* For error message positioning */
+}
+
+.input {
+    width: 100%;
+    padding: 12px 15px; /* Space for readability */
+    font-size: 16px;
+    border: 1px solid #ddd; /* Subtle border */
+    border-radius: 5px;
+    box-sizing: border-box; /* Include padding in width */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth effects */
+}
+
+.input:focus {
+    border-color: #007bff; /* Highlight border */
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.5); /* Focus glow */
+    outline: none; /* Remove default outline */
+}
+
+.submitButton {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submitButton:hover {
+    background-color: #0056b3; /* Darker on hover */
+}
+
+.errorMessage {
+    color: #dc3545; /* Error red */
+    font-size: 14px;
+    margin-top: 5px; /* Space below the input */
+    position: absolute;
+    left: 0;
+    top: 100%; /* Below input field */
+    transform: translateY(5px);
+}
+
+@media (max-width: 768px) {
+    .formContainer {
+        padding: 20px;
+        width: 90%; /* Adjust for smaller screens */
+    }
+}
