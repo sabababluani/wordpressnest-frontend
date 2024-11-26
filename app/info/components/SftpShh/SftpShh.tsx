@@ -66,7 +66,7 @@ const SftpShh = (props: SftpShhPropsInterface): JSX.Element => {
         <div className={styles.userNameAndIpWrapper}>
           <div className={styles.userNameWrapper}>
             <span className={styles.usernameStyle}>Username</span>
-            <span className={styles.usernameValueStyle}>{props.ipAddress}</span>
+            <span className={styles.usernameValueStyle}>{props.userName}</span>
           </div>
           <div className={styles.IpAlllowWrapper}>
             <span className={styles.ipAllowCaptionStyle}>IP allow list</span>

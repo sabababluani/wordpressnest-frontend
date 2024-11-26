@@ -1,3 +1,6 @@
+'use client';
+
+import useSWR from 'swr';
 import BasicDetails from './components/BasicDetails/BasicDetails';
 import DataBaseAccess from './components/DatabaseAccess/DatabaseAccess';
 import EnvironementDetails from './components/EnvironmentDetails/EnvironmentDetails';
@@ -9,8 +12,49 @@ import {
   buttonbackgroundColorEnum,
   innerContentIconEnum,
 } from '@/app/components/Button/enum/button.enum';
+import {
+  DatabaseNamePropsInterface,
+  portPropsInterface,
+  SiteNamePropsInterface,
+  UserNamePropsIterface,
+  wordPressVersionPropsInterface,
+} from './interfaces/info-props.interface';
+import BaseApi from '../api/BaseApi';
 
-const info = (): JSX.Element => {
+const Info = (): JSX.Element => {
+  const fetcher = (url: string) => BaseApi.get(url).then((res) => res.data);
+  const { data: siteName, error: siteNameError } = useSWR<
+    SiteNamePropsInterface[]
+  >('/setup/sitetitle', fetcher);
+  const { data: wordpressVersion, error: wordpressVersionError } = useSWR<
+    wordPressVersionPropsInterface[]
+  >('/wp-cli/wpcore/check-update', fetcher);
+  const { data: port, error: portError } = useSWR<portPropsInterface[]>(
+    '/setup/wordpress/port',
+    fetcher
+  );
+  const { data: username, error: usernameError } = useSWR<
+    UserNamePropsIterface[]
+  >('/setup/wordpress/username', fetcher);
+  const { data: database, error: databaseError } = useSWR<
+    DatabaseNamePropsInterface[]
+  >('/wp-cli/db/size', fetcher);
+
+  if (!siteName) return <div>Loading...</div>;
+  if (siteNameError) return <div>Error loading data...</div>;
+
+  if (!wordpressVersion) return <div>Loading... </div>;
+  if (wordpressVersionError) return <div>Error loading data...</div>;
+
+  if (!port) return <div>Loading... </div>;
+  if (portError) return <div>Error loading data...</div>;
+
+  if (!username) return <div>Loading... </div>;
+  if (usernameError) return <div>Error loading data...</div>;
+
+  if (!database) return <div>Loading... </div>;
+  if (databaseError) return <div>Error loading data...</div>;
+
   return (
     <div className={styles.mainContainer}>
       <div className={styles.topContainer}>
@@ -30,10 +74,11 @@ const info = (): JSX.Element => {
           />
         </div>
       </div>
+
       <div className={styles.bottomContainer}>
         <BasicDetails
           locationDataCenter={'Hamburg (DE)'}
-          siteName={'Novatori'}
+          siteName={siteName[0].siteTitle}
           Labels={''}
         />
 
@@ -41,7 +86,7 @@ const info = (): JSX.Element => {
           path={'/www/novatori_787/public'}
           environmentName={'Live'}
           siteIpAddress={'189.659.543.55'}
-          wordpressVersion={'6.6.2'}
+          wordpressVersion={wordpressVersion[0].version}
           ipAddress={'66.98.456.70'}
           phpWorkers={'2'}
         />
@@ -50,17 +95,17 @@ const info = (): JSX.Element => {
           host={'66.854.861.865'}
           passwordExpiration={'None'}
           ssh={'SSH Novatori@66.854.861.865...'}
-          port={'86594'}
+          port={port[0].instancePort}
           authenticationMethods={'SSH key , password'}
-          ipAddress={'Novatori'}
+          userName={username[0].wpAdminUser}
           IpAllowed={'ALL IPs allowed'}
           password={'********'}
           ftp={'Novatori - sftp - config.zip'}
         />
 
         <DataBaseAccess
-          database={'Novatori'}
-          databaseUsername={'Novatori'}
+          database={database[0].Name}
+          databaseUsername={username[0].wpAdminUser}
           databasePassword={'**********'}
           ip={'ALL IPs allowed'}
         />
@@ -85,4 +130,4 @@ const info = (): JSX.Element => {
   );
 };
 
-export default info;
+export default Info;
