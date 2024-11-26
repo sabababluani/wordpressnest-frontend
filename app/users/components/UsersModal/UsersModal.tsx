@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import styles from './UsersModal.module.scss';
 import Search from '@/app/components/Search/Search';
@@ -27,6 +29,7 @@ const UsersModal = (props: UsersModalPropsInterface): JSX.Element => {
               isPadded
               noIcon
               placeholder="example:https://www.novatori.ge"
+              onChange={() => {}}
             />
             <SitesSelect />
           </div>

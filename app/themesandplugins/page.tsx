@@ -1,7 +1,4 @@
 import styles from './page.module.scss';
-import Search from '@/app/components/Search/Search';
-import Button from '@/app/components/Button/Button';
-import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import PluginTable from '@/app/themesandplugins/components/PluginTable/PluginTable';
 import ThemeTable from '@/app/themesandplugins/components/ThemeTable/ThemeTable';
 

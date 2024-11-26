@@ -25,9 +25,7 @@ const Search: React.FC<SearchPropsInterface> = (props) => {
         onChange={onChange}
       />
       {!props.noIcon && (
-        <div>
-          <Image src="/icons/search.svg" width={24} height={24} alt="search" />
-        </div>
+        <Image src="/icons/search.svg" width={24} height={24} alt="search" />
       )}
     </div>
   );

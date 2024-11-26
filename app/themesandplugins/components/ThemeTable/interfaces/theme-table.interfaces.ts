@@ -1,4 +1,4 @@
-export interface PluginData {
+export interface ThemesTablePropsInterface {
   name: string;
   status: string;
   update: string;
