@@ -69,7 +69,11 @@ const Domains = (): JSX.Element => {
       <h1>Domains</h1>
       <div className={styles.container}>
         <div className={styles.contentWrapper}>
-          <Search placeholder={'Search Sites'} isPadded={true} />
+          <Search
+            placeholder={'Search Sites'}
+            isPadded={true}
+            onChange={() => {}}
+          />
           <div className={styles.select}>
             <SitesSelect domains />
           </div>

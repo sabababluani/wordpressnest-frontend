@@ -1,7 +1,7 @@
-export interface PluginData {
-  key: string;
+export interface ThemesTablePropsInterface {
   name: string;
   status: string;
-  installed: string;
-  latest: string;
+  update: string;
+  version: string;
+  update_version: string;
 }

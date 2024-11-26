@@ -51,7 +51,7 @@ const Ipdeny = (): JSX.Element => {
         </div>
       ) : (
         <div className={styles.tableWrapper}>
-          <Search placeholder={'Search IP'} isPadded />
+          <Search placeholder={'Search IP'} isPadded onChange={() => {}} />
           <IpTable />
         </div>
       )}

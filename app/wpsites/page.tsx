@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import DashboardTable from './components/DashboardTable/DashboardTable';
 import styles from './page.module.scss';
@@ -11,7 +13,11 @@ const wpsites: React.FC = () => {
       <h1>WordPress Sites</h1>
       <div className={styles.container}>
         <div className={styles.contentWrapper}>
-          <Search placeholder={'Search Sites'} isPadded={true} />
+          <Search
+            placeholder={'Search Sites'}
+            isPadded={true}
+            onChange={() => {}}
+          />
         </div>
         <div className={styles.contentWrapperButtons}>
           <div className={styles.requestbuttons}>

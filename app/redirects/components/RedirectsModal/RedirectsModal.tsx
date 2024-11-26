@@ -1,4 +1,5 @@
 'use client';
+
 import { Radio } from 'antd';
 import Image from 'next/image';
 import styles from './RedirectsModal.module.scss';
@@ -43,6 +44,7 @@ const RedirectsModal = (props: RedirectsModalProps): JSX.Element => {
               isPadded
               noIcon
               placeholder="example:https://www.novatori.ge"
+              onChange={() => {}}
             />
           </div>
           <div className={styles.contentWrapper}>
@@ -51,6 +53,7 @@ const RedirectsModal = (props: RedirectsModalProps): JSX.Element => {
               isPadded
               noIcon
               placeholder="example:https://www.novatori.com"
+              onChange={() => {}}
             />
           </div>
         </div>
