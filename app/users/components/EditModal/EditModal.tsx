@@ -1,10 +1,24 @@
+import React, { useState } from 'react';
 import Image from 'next/image';
 import styles from './EditModal.module.scss';
-import SitesSelect from '@/app/components/SitesSelect/SitesSelect';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
+import useSWR from 'swr';
+import BaseApi from '@/app/api/BaseApi';
+import { UsersModalPropsInterface } from '../interfaces/modal.props.interface';
 
 const EditModal = (props: UsersModalPropsInterface): JSX.Element => {
+  const [selectedUser, setSelectedUser] = useState<string | null>(null);
+
+  const fetcher = (url: string) =>
+    BaseApi.get(url).then((response) => response.data);
+
+  const { data: users, error } = useSWR('wp-cli/wprole/list', fetcher);
+
+  const handleUserChange = (value: string) => {
+    setSelectedUser(value);
+  };
+
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.header}>
@@ -23,7 +37,7 @@ const EditModal = (props: UsersModalPropsInterface): JSX.Element => {
           <span>Novatori.ge</span>
           <div className={styles.user}>
             <Image
-              src="/man.png"
+              src="/boy.png"
               alt="man"
               width={36}
               height={36}
@@ -35,8 +49,28 @@ const EditModal = (props: UsersModalPropsInterface): JSX.Element => {
             </div>
           </div>
           <div className={styles.selectWrapper}>
-            <SitesSelect />
+            <select
+              className={`${styles.select} ${styles.domainsPagePadding}`}
+              defaultValue=""
+              onChange={(e) => handleUserChange(e.target.value)}
+            >
+              <option value="" disabled>
+                Select a User
+              </option>
+              {users &&
+                users.map((user: { name: string }, index: number) => (
+                  <option key={index} value={user.name}>
+                    {user.name}
+                  </option>
+                ))}
+              {error && <option disabled>Error loading users</option>}
+            </select>
           </div>
+          {selectedUser && (
+            <div className={styles.userInfo}>
+              <span className={styles.name}>Selected User: {selectedUser}</span>
+            </div>
+          )}
         </div>
       </div>
       <div className={styles.footer}>
@@ -44,6 +78,7 @@ const EditModal = (props: UsersModalPropsInterface): JSX.Element => {
           <Button
             innerContent="Cancel"
             backgroundColor={buttonbackgroundColorEnum.grey}
+            onClick={props.onClose}
           />
           <Button
             innerContent="Edit Users"

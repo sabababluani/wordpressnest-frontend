@@ -26,7 +26,7 @@ const ThemeTable: React.FC = () => {
   );
 
   const handleReload = () => {
-    mutate('http://10.10.50.227:3000/wp-cli/theme/list');
+    mutate('wp-cli/theme/list');
   };
 
   const onHandleUpdate = async (themeName: string) => {
@@ -45,11 +45,10 @@ const ThemeTable: React.FC = () => {
       await BaseApi.post('wp-cli/theme/activate', { theme: themeName });
 
       if (theme) {
-        const updatedThemes = theme.map(
-          (theme) =>
-            theme.name === themeName
-              ? { ...theme, status: 'active' }
-              : { ...theme, status: 'inactive' }
+        const updatedThemes = theme.map((theme) =>
+          theme.name === themeName
+            ? { ...theme, status: 'active' }
+            : { ...theme, status: 'inactive' }
         );
         mutate('wp-cli/theme/list', updatedThemes, true);
       }

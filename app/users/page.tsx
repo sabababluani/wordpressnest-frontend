@@ -47,7 +47,7 @@ const Users = (): JSX.Element => {
           footer={null}
           closable={false}
         >
-          <UsersModal onClose={handleCancel} />
+          {/* <UsersModal onClose={handleCancel} /> */}
         </Modal>
       </div>
     </div>
