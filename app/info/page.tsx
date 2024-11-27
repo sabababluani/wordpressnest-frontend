@@ -17,18 +17,29 @@ import {
   portPropsInterface,
   SiteNamePropsInterface,
   UserNamePropsIterface,
+  wordPressLastUpdateVersionPropsInterface,
   wordPressVersionPropsInterface,
 } from './interfaces/info-props.interface';
 import BaseApi from '../api/BaseApi';
+import { useState } from 'react';
 
 const Info = (): JSX.Element => {
+  const [updateWpVersionData, setUpdateVersionData] = useState<
+    wordPressLastUpdateVersionPropsInterface | undefined
+  >({
+    version: '',
+    locale: '',
+    update: '',
+    url: '',
+    message: '',
+  });
+
   const fetcher = (url: string) => BaseApi.get(url).then((res) => res.data);
   const { data: siteName, error: siteNameError } = useSWR<
     SiteNamePropsInterface[]
   >('/setup/sitetitle', fetcher);
-  const { data: wordpressVersion, error: wordpressVersionError } = useSWR<
-    wordPressVersionPropsInterface[]
-  >('/wp-cli/wpcore/check-update', fetcher);
+  const { data: wordpressVersion, error: wordpressVersionError } =
+    useSWR<wordPressVersionPropsInterface>('/wp-cli/core/version', fetcher);
   const { data: port, error: portError } = useSWR<portPropsInterface[]>(
     '/setup/wordpress/port',
     fetcher
@@ -39,6 +50,12 @@ const Info = (): JSX.Element => {
   const { data: database, error: databaseError } = useSWR<
     DatabaseNamePropsInterface[]
   >('/wp-cli/db/size', fetcher);
+
+  const onUpdateWpVersionClick = () => {
+    BaseApi.get('/wp-cli/wpcore/check-update').then((res) =>
+      setUpdateVersionData(res.data)
+    );
+  };
 
   if (!siteName) return <div>Loading...</div>;
   if (siteNameError) return <div>Error loading data...</div>;
@@ -86,9 +103,12 @@ const Info = (): JSX.Element => {
           path={'/www/novatori_787/public'}
           environmentName={'Live'}
           siteIpAddress={'189.659.543.55'}
-          wordpressVersion={wordpressVersion[0].version}
+          wordpressVersion={
+            updateWpVersionData?.version || wordpressVersion.version
+          }
           ipAddress={'66.98.456.70'}
           phpWorkers={'2'}
+          onClick={onUpdateWpVersionClick}
         />
 
         <SftpShh

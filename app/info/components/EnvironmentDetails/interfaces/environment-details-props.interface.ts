@@ -5,4 +5,5 @@ export interface EnvironementDetailsPropsInterface {
   wordpressVersion?: string;
   ipAddress?: string;
   phpWorkers?: string;
+  onClick: () => void;
 }

@@ -1,3 +1,4 @@
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import classNames from 'classnames';
 import styles from './InputFields.module.scss';
@@ -16,18 +17,32 @@ const InputFields = () => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<UseFormsPropsInterface>();
+  } = useForm<UseFormsPropsInterface>({
+    defaultValues: {
+      wpAdminUser: '',
+      wpAdminPassword: '',
+      wpAdminEmail: '',
+      siteTitle: '',
+    },
+  });
 
   const onSubmit = async (data: UseFormsPropsInterface) => {
-    const trimmedObject = Object.fromEntries(
-      Object.entries(data).map(([key, value]) => [key, value.trim()])
-    );
-    await BaseApi.post('setup/wordpress', trimmedObject);
-    reset();
+    try {
+      const trimmedObject = Object.fromEntries(
+        Object.entries(data).map(([key, value]) => [key, value.trim()])
+      );
+
+      await BaseApi.post('setup/wordpress', trimmedObject);
+
+      reset();
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
   };
 
   return (
     <div className={styles.inputWrapper}>
+      <h1>Create Site</h1>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.formContainer}>
         <div className={styles.inputField}>
           <input
@@ -71,6 +86,10 @@ const InputFields = () => {
             placeholder="Admin Email"
             {...register('wpAdminEmail', {
               required: 'Email is required',
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: 'Invalid email format',
+              },
             })}
             className={classNames(styles.input, {
               [styles.error]: errors.wpAdminEmail,
