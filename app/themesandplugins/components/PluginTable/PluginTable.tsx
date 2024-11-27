@@ -70,7 +70,7 @@ const PluginTable: React.FC = () => {
   };
 
   const handleReload = () => {
-    mutate('http://10.10.50.227:3000/wp-cli/plugin/list');
+    mutate('wp-cli/plugin/list');
   };
 
   const columns: TableColumnsType<PluginDataPropsInterface> = [

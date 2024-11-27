@@ -1,3 +1,3 @@
-interface UsersModalPropsInterface {
+export interface UsersModalPropsInterface {
   onClose: () => void;
 }

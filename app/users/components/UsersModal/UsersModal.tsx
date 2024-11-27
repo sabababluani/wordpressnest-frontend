@@ -6,6 +6,7 @@ import Search from '@/app/components/Search/Search';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import SitesSelect from '@/app/components/SitesSelect/SitesSelect';
 import Button from '@/app/components/Button/Button';
+import { UsersModalPropsInterface } from '../interfaces/modal.props.interface';
 
 const UsersModal = (props: UsersModalPropsInterface): JSX.Element => {
   return (
