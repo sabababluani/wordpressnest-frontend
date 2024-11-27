@@ -4,7 +4,14 @@ export interface SiteNamePropsInterface {
 
 export interface wordPressVersionPropsInterface {
     version: string;
-    update_type: string;
+}
+
+export interface wordPressLastUpdateVersionPropsInterface {
+    version: string;
+    locale: string;
+    update: string;
+    url: string
+    message: string
 }
 
 export interface portPropsInterface {
