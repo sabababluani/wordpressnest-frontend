@@ -10,9 +10,11 @@ import { UsersTablePropsInterface } from './interfaces/users-table-props.interfa
 import BaseApi from '@/app/api/BaseApi';
 import useSWR, { mutate } from 'swr';
 
-const IpTable: React.FC = () => {
+const UsersTable: React.FC = () => {
   const [selectionType] = useState<'checkbox'>('checkbox');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedUser, setSelectedUser] =
+    useState<UsersTablePropsInterface | null>(null);
 
   const fetcher = (url: string) =>
     BaseApi.get(url).then((response) => response.data);
@@ -21,24 +23,22 @@ const IpTable: React.FC = () => {
     fetcher
   );
 
-  const showModal = () => {
+  const showModal = (user: UsersTablePropsInterface) => {
+    setSelectedUser(user);
     setIsModalOpen(true);
   };
 
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
   const handleCancel = () => {
+    setSelectedUser(null);
     setIsModalOpen(false);
   };
 
   const onUserDelete = async (userId: number) => {
     try {
-      await BaseApi.post('wp-cli/wpuser/delete', { userId: userId });
+      await BaseApi.post('wp-cli/wpuser/delete', { userId });
       mutate('wp-cli/wpuser/list');
     } catch (error) {
-      console.error('Failed to delete user:', error);
+      console.log(error);
     }
   };
 
@@ -62,13 +62,14 @@ const IpTable: React.FC = () => {
     {
       title: 'Role',
       dataIndex: 'role',
-      render: (_, record) => <div>{record.roles}</div>,
+      render: (_, record) => (
+        <span>{record.roles[0].toUpperCase() + record.roles.slice(1)}</span>
+      ),
       width: 573,
     },
     {
       title: 'Actions',
       dataIndex: 'role',
-
       render: (_, record) => (
         <div className={styles.actionbuttons}>
           <Image
@@ -76,7 +77,7 @@ const IpTable: React.FC = () => {
             alt={'edit'}
             width={24}
             height={24}
-            onClick={showModal}
+            onClick={() => showModal(record)}
           />
           <Image
             src={'/icons/trash.svg'}
@@ -85,18 +86,6 @@ const IpTable: React.FC = () => {
             height={24}
             onClick={() => onUserDelete(record.ID)}
           />
-          <div className={styles.modal}>
-            <Modal
-              title=""
-              open={isModalOpen}
-              onOk={handleOk}
-              onCancel={handleCancel}
-              footer={null}
-              closable={false}
-            >
-              <EditModal onClose={handleCancel} />
-            </Modal>
-          </div>
         </div>
       ),
       width: 377,
@@ -110,10 +99,16 @@ const IpTable: React.FC = () => {
         columns={columns}
         dataSource={wpUsers}
         pagination={false}
+        loading={wpUsers === undefined}
         rowKey="ID"
       />
+      <Modal open={isModalOpen} footer={null} closable={false}>
+        {selectedUser && (
+          <EditModal user={selectedUser} onClose={handleCancel} />
+        )}
+      </Modal>
     </div>
   );
 };
 
-export default IpTable;
+export default UsersTable;

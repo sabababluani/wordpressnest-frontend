@@ -1,35 +1,66 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import styles from './EditModal.module.scss';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
-import useSWR from 'swr';
+import useSWR, { mutate } from 'swr';
 import BaseApi from '@/app/api/BaseApi';
 import { UsersModalPropsInterface } from '../interfaces/modal.props.interface';
+import { UsersTablePropsInterface } from '../UsersTable/interfaces/users-table-props.interface';
+import { Select } from 'antd';
 
-const EditModal = (props: UsersModalPropsInterface): JSX.Element => {
-  const [selectedUser, setSelectedUser] = useState<string | null>(null);
+const EditModal = ({
+  user,
+  onClose,
+}: UsersModalPropsInterface & {
+  user: UsersTablePropsInterface;
+}): JSX.Element => {
+  const [selectedRole, setSelectedRole] = useState<string>(user.roles);
 
   const fetcher = (url: string) =>
     BaseApi.get(url).then((response) => response.data);
+  const { data: roles } = useSWR('wp-cli/wprole/list', fetcher);
 
-  const { data: users, error } = useSWR('wp-cli/wprole/list', fetcher);
+  useEffect(() => {
+    setSelectedRole(user.roles);
+  }, [user.roles]);
 
-  const handleUserChange = (value: string) => {
-    setSelectedUser(value);
+  const selectOptions =
+    roles
+      ?.filter(
+        (role: { name: string }) =>
+          role.name.toLowerCase() !== user.roles.toLocaleLowerCase()
+      )
+      .map((role: { name: string }) => ({
+        label: role.name,
+        value: role.name,
+      })) || [];
+
+  const onHandleUpdate = async () => {
+    onClose();
+    try {
+      await BaseApi.post('wp-cli/wprole/update', {
+        userId: user.ID,
+        role: selectedRole.toLowerCase(),
+      });
+      mutate('wp-cli/wprole/list');
+      mutate('wp-cli/wpuser/list');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.header}>
-        <span className={styles.headline}>Edit Users</span>
+        <span className={styles.headline}>Edit User</span>
         <Image
           src="/icons/close-mini.svg"
           alt="close"
           width={24}
           height={24}
           className={styles.close}
-          onClick={props.onClose}
+          onClick={onClose}
         />
       </div>
       <div className={styles.container}>
@@ -44,33 +75,20 @@ const EditModal = (props: UsersModalPropsInterface): JSX.Element => {
               className={styles.picture}
             />
             <div className={styles.userInfo}>
-              <span className={styles.name}>Beka Jikurishvili</span>
-              <span className={styles.email}>Jikurishvilib@gmail.com</span>
+              <span className={styles.name}>
+                {user.first_name} {user.last_name}
+              </span>
+              <span className={styles.email}>{user.user_email}</span>
             </div>
           </div>
           <div className={styles.selectWrapper}>
-            <select
-              className={`${styles.select} ${styles.domainsPagePadding}`}
-              defaultValue=""
-              onChange={(e) => handleUserChange(e.target.value)}
-            >
-              <option value="" disabled>
-                Select a User
-              </option>
-              {users &&
-                users.map((user: { name: string }, index: number) => (
-                  <option key={index} value={user.name}>
-                    {user.name}
-                  </option>
-                ))}
-              {error && <option disabled>Error loading users</option>}
-            </select>
+            <Select
+              options={selectOptions}
+              style={{ width: '100%' }}
+              value={selectedRole[0].toUpperCase() + selectedRole.slice(1)}
+              onChange={(value) => setSelectedRole(value)}
+            />
           </div>
-          {selectedUser && (
-            <div className={styles.userInfo}>
-              <span className={styles.name}>Selected User: {selectedUser}</span>
-            </div>
-          )}
         </div>
       </div>
       <div className={styles.footer}>
@@ -78,11 +96,12 @@ const EditModal = (props: UsersModalPropsInterface): JSX.Element => {
           <Button
             innerContent="Cancel"
             backgroundColor={buttonbackgroundColorEnum.grey}
-            onClick={props.onClose}
+            onClick={onClose}
           />
           <Button
-            innerContent="Edit Users"
+            innerContent="Save Changes"
             backgroundColor={buttonbackgroundColorEnum.black}
+            onClick={onHandleUpdate}
           />
         </div>
       </div>
