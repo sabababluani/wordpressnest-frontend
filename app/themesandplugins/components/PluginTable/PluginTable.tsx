@@ -18,20 +18,14 @@ const PluginTable: React.FC = () => {
   const [searchValue, setSearchValue] = useState('');
 
   const { data: plugins } = useSWR<PluginDataPropsInterface[]>(
-    'wp-cli/plugin/list',
+    `wp-cli/plugin/list?search=${searchValue}`,
     fetcher
-  );
-
-  const filteredData = plugins?.filter((item) =>
-    item.name.toLowerCase().includes(searchValue.toLowerCase())
   );
 
   const onHandleUpdate = async (pluginName: string) => {
     try {
-      const response = await BaseApi.post('wp-cli/plugin/update', {
-        plugin: pluginName,
-      });
-      mutate('wp-cli/plugin/list');
+      await BaseApi.post('wp-cli/plugin/update', { plugin: pluginName });
+      mutate(`wp-cli/plugin/list?search=${searchValue}`);
     } catch (error) {
       console.log(error);
     }
@@ -40,13 +34,7 @@ const PluginTable: React.FC = () => {
   const onHandleActive = async (pluginName: string) => {
     try {
       await BaseApi.post('wp-cli/plugin/activate', { plugin: pluginName });
-
-      if (plugins) {
-        const updatedPlugins = plugins.map((plugin) =>
-          plugin.name === pluginName ? { ...plugin, status: 'active' } : plugin
-        );
-        mutate('wp-cli/plugin/list', updatedPlugins, true);
-      }
+      mutate(`wp-cli/plugin/list?search=${searchValue}`);
     } catch (error) {
       console.log(error);
     }
@@ -55,22 +43,14 @@ const PluginTable: React.FC = () => {
   const onHandleDeactivate = async (pluginName: string) => {
     try {
       await BaseApi.post('wp-cli/plugin/deactivate', { plugin: pluginName });
-
-      if (plugins) {
-        const updatedPlugins = plugins.map((plugin) =>
-          plugin.name === pluginName
-            ? { ...plugin, status: 'inactive' }
-            : plugin
-        );
-        mutate('wp-cli/plugin/list', updatedPlugins, true);
-      }
+      mutate(`wp-cli/plugin/list?search=${searchValue}`);
     } catch (error) {
       console.log(error);
     }
   };
 
   const handleReload = () => {
-    mutate('wp-cli/plugin/list');
+    mutate(`wp-cli/plugin/list?search=${searchValue}`);
   };
 
   const columns: TableColumnsType<PluginDataPropsInterface> = [
@@ -163,7 +143,7 @@ const PluginTable: React.FC = () => {
       <div className={styles.searchPadding}>
         <div className={styles.searchContainer}>
           <Search
-            placeholder={'Search By Plugin name'}
+            placeholder="Search By Plugin name"
             isPadded
             onChange={(value) => setSearchValue(value)}
           />
@@ -171,9 +151,9 @@ const PluginTable: React.FC = () => {
             <span>Updated 2 Days Ago</span>
             <Button
               backgroundColor={buttonbackgroundColorEnum.grey}
-              innerContent={'Reload'}
+              innerContent="Reload"
               innerContentIconActive
-              innerContentIcon={'icons/reload.svg'}
+              innerContentIcon="icons/reload.svg"
               onClick={handleReload}
             />
           </div>
@@ -182,11 +162,11 @@ const PluginTable: React.FC = () => {
       <Table<PluginDataPropsInterface>
         rowSelection={{ type: selectionType }}
         columns={columns}
-        dataSource={filteredData}
+        dataSource={plugins}
         pagination={false}
         scroll={{ x: 'max-content' }}
         rowKey={(record) => record.name}
-        loading={filteredData === undefined}
+        loading={plugins === undefined}
       />
     </div>
   );

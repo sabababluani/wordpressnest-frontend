@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import useSWR, { mutate } from 'swr';
-import { Table } from 'antd';
+import { Alert, Table } from 'antd';
 import type { TableColumnsType } from 'antd';
 import BaseApi from '@/app/api/BaseApi';
 import styles from '@/app/domains/components/DomainsTable/DomainsTable.module.scss';
@@ -16,27 +16,22 @@ const fetcher = (url: string) =>
 
 const ThemeTable: React.FC = () => {
   const [searchValue, setSearchValue] = useState('');
-  const { data: theme } = useSWR<ThemesTablePropsInterface[]>(
-    'wp-cli/theme/list',
+
+  const { data: themes } = useSWR<ThemesTablePropsInterface[]>(
+    `wp-cli/theme/list?search=${searchValue}`,
     fetcher
   );
 
-  const filteredData = theme?.filter((item) =>
-    item.name.toLowerCase().includes(searchValue.toLowerCase())
-  );
-
   const handleReload = () => {
-    mutate('wp-cli/theme/list');
+    mutate(`wp-cli/theme/list?search=${searchValue}`);
   };
 
   const onHandleUpdate = async (themeName: string) => {
     try {
-      const response = await BaseApi.post('wp-cli/theme/update', {
-        theme: themeName,
-      });
-      mutate('wp-cli/theme/list');
+      await BaseApi.post('wp-cli/theme/update', { theme: themeName });
+      mutate(`wp-cli/theme/list?search=${searchValue}`);
     } catch (error) {
-      console.log(error);
+      // Alert(error);
     }
   };
 
@@ -44,13 +39,13 @@ const ThemeTable: React.FC = () => {
     try {
       await BaseApi.post('wp-cli/theme/activate', { theme: themeName });
 
-      if (theme) {
-        const updatedThemes = theme.map((theme) =>
+      if (themes) {
+        const updatedThemes = themes.map((theme) =>
           theme.name === themeName
             ? { ...theme, status: 'active' }
             : { ...theme, status: 'inactive' }
         );
-        mutate('wp-cli/theme/list', updatedThemes, true);
+        mutate(`wp-cli/theme/list?search=${searchValue}`, updatedThemes, true);
       }
     } catch (error) {
       console.error(error);
@@ -150,7 +145,7 @@ const ThemeTable: React.FC = () => {
             onChange={(value) => setSearchValue(value)}
           />
           <div className={styles.reloadWrap}>
-            <span>Update 2 Days Ago</span>
+            <span>Updated 2 Days Ago</span>
             <Button
               backgroundColor={buttonbackgroundColorEnum.grey}
               innerContent={'Reload'}
@@ -163,11 +158,11 @@ const ThemeTable: React.FC = () => {
       </div>
       <Table<ThemesTablePropsInterface>
         columns={columns}
-        dataSource={filteredData}
+        dataSource={themes}
         rowSelection={{ type: 'checkbox' }}
         pagination={false}
         scroll={{ x: 'max-content' }}
-        loading={filteredData === undefined}
+        loading={themes === undefined}
       />
     </div>
   );
