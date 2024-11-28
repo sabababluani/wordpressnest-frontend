@@ -65,43 +65,22 @@ const columns: TableColumnsType<DashboardTablePropsInterface> = [
 const App: React.FC = () => {
   const [selectionType] = useState<'checkbox'>('checkbox');
 
-  const coreFetcher = (url: string) =>
+  const fetcher = (url: string) =>
     BaseApi.get(url).then((response) => {
       return response.data;
     });
 
-  const dataFetcher = (url: string) =>
-    BaseApi.get(url).then((response) => {
-      return response.data;
-    });
-
-  const phpFetcher = (url: string) =>
-    BaseApi.get(url).then((response) => {
-      return response.data;
-    });
-
-  const { data: wpData  } = useSWR<
-    DashboardTablePropsInterface[]
-  >('wp-cli/core/version', coreFetcher);
-
-  const { data: tableData  } = useSWR<
-    DashboardTablePropsInterface[]
-  >('/setup/wordpress', dataFetcher);
-
-  const { data: phpData } = useSWR<
-    DashboardTablePropsInterface[]
-  >('wp-cli/php/version', phpFetcher);
-
-  console.log(wpData, phpData);
-
-
+  const { data: tableData } = useSWR<DashboardTablePropsInterface[]>(
+    '/setup/wordpress',
+    fetcher
+  );
 
   return (
     <div className={styles.tableWrapper}>
       <Table<DashboardTablePropsInterface>
         rowSelection={{ type: selectionType }}
         columns={columns}
-        dataSource={wpData && phpData && tableData}
+        dataSource={tableData}
         pagination={false}
         scroll={{ x: 'max-content' }}
       />
