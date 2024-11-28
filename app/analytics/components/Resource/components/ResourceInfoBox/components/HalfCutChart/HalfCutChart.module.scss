@@ -1,0 +1,74 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.centerText {
+  position: absolute;
+  left: 37%;
+  top: 50%;
+}
+
+.centerText span {
+  position: absolute;
+  font-size: 20px;
+  font-weight: 600;
+  color: #000;
+}
+
+.redCircle {
+  width: 12px;
+  height: 12px;
+  background-color: #ff0003;
+  border-radius: 50%;
+}
+
+.whiteContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.whiteContainer p {
+  color: #000;
+  font-weight: 400;
+}
+
+.containerWrapper {
+  position: relative;
+  max-width: 128px;
+  width: 100%;
+}
+
+.containers {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.grayCircle {
+  width: 12px;
+  height: 12px;
+  background-color: #d9d9d9;
+  border-radius: 50%;
+}
+
+.blueContainer p {
+  color: #000;
+}
+
+.whiteContainer span {
+  font-weight: 600;
+}
+
+.blueContainer span {
+  font-weight: 600;
+}
+
+.blueContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}

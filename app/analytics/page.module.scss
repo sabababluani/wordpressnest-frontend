@@ -1,0 +1,20 @@
+.mainContainer {
+  width: 100%;
+}
+
+.topContainers {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px 12px 24px;
+  border-bottom: 1px solid #dcdfe1;
+}
+
+.mainCaptionStyle {
+  color: #11141a;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px;
+}

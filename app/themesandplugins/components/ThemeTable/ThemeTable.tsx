@@ -31,7 +31,7 @@ const ThemeTable: React.FC = () => {
       await BaseApi.post('wp-cli/theme/update', { theme: themeName });
       mutate(`wp-cli/theme/list?search=${searchValue}`);
     } catch (error) {
-      // Alert(error);
+      alert(error);
     }
   };
 

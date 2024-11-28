@@ -12,9 +12,11 @@
   "dependencies": {
     "antd": "^5.22.1",
     "axios": "^1.7.7",
+    "chart.js": "^4.4.6",
     "js-cookie": "^3.0.5",
     "next": "14.2.3",
     "react": "^18",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18",
     "react-hook-form": "^7.53.2",
     "sass": "^1.81.0",
