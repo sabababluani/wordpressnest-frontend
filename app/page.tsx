@@ -1,25 +1,19 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from './page.module.css';
 import DashboardStat from '@/app/components/DashboardStat/DashboardStat';
 import WordpressStat from '@/app/components/WordpressStat/WordpressStat';
 import { NavigationPropsInterface } from './components/Navigation/interfaces/navigation.props.interface';
 import BaseApi from './api/BaseApi';
+import useSWR from 'swr';
 
 const Home = () => {
-  const [sitesData, setSitesData] = useState<NavigationPropsInterface[]>([]);
-
-  useEffect(() => {
-    BaseApi.get('/setup/wordpress', {
-      withCredentials: true,
-    })
-      .then((response) => {
-        setSitesData(response.data);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);
+  const fetcher = (url: string) =>
+    BaseApi.get(url).then((response) => response.data);
+  const { data: sitesData } = useSWR<NavigationPropsInterface[]>(
+    '/setup/wordpress',
+    fetcher
+  );
   return (
     <div className={styles.dashboardWrappe}>
       <div className={styles.topContainer}>
@@ -27,7 +21,7 @@ const Home = () => {
           <span className={styles.dashboardCaptionStyle}>Dashboard</span>
         </div>
         <div className={styles.dashboardStatsWrapper}>
-          {sitesData.map((site, index) => (
+          {sitesData?.map((site, index) => (
             <DashboardStat
               key={index}
               point={'icons/pointGreen.svg'}
