@@ -13,13 +13,22 @@ interface HalfCutChartProps {
 
 const HalfCutChart: React.FC<HalfCutChartProps> = ({ used, full }) => {
   const remaining = full - used;
+  const percentage = (used / full) * 100;
+
+  const getColor = (percentage: number) => {
+    if (percentage <= 50) return ['#52C41A', '#F6FFED'];
+    if (percentage <= 75) return ['#FAAD14', '#FFFBE6'];
+    return ['#FF4D4F', '#FFEDED'];
+  };
+
+  const [usedColor, remainingColor] = getColor(percentage);
 
   const chartData = {
     labels: [],
     datasets: [
       {
         data: [used, remaining],
-        backgroundColor: ['#FF4D4F', '#FFEDED'],
+        backgroundColor: [usedColor, remainingColor],
         borderWidth: 0,
       },
     ],
@@ -46,7 +55,10 @@ const HalfCutChart: React.FC<HalfCutChartProps> = ({ used, full }) => {
     <div className={styles.wrapper}>
       <div className={styles.containers}>
         <div className={styles.whiteContainer}>
-          <div className={styles.redCircle}></div>
+          <div
+            className={styles.redCircle}
+            style={{ backgroundColor: usedColor }}
+          ></div>
           <p>
             Used <span>{used}</span>
           </p>
@@ -54,7 +66,7 @@ const HalfCutChart: React.FC<HalfCutChartProps> = ({ used, full }) => {
         <div className={styles.blueContainer}>
           <div className={styles.grayCircle}></div>
           <p>
-            Avaliable <span>{remaining}</span>
+            Available <span>{remaining}</span>
           </p>
         </div>
       </div>

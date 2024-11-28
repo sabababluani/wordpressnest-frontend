@@ -1,34 +1,37 @@
 import styles from './ResourceInfoBox.module.scss';
 import HalfCutChart from './components/HalfCutChart/HalfCutChart';
+import { ResourceInfoBoxPropsInterface } from './interfaces/resource-info-box-props.interface';
 
-interface ResourceInfoBoxProps {
-  title: string;
-  used: number;
-  full: number;
-}
+const ResourceInfoBox = (props: ResourceInfoBoxPropsInterface) => {
+  const getColor = (percentage: number) => {
+    if (percentage <= 50) return '#52C41A';
+    if (percentage <= 75) return '#FAAD14';
+    return '#FF4D4F';
+  };
 
-const ResourceInfoBox: React.FC<ResourceInfoBoxProps> = ({
-  title,
-  used,
-  full,
-}) => {
+  const percentage = (props.used / props.full) * 100;
+  const usedColor = getColor(percentage);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-        <span className={styles.visits}>{title}</span>
+        <span className={styles.visits}>{props.title}</span>
         <div className={styles.textContent}>
           <div className={styles.textContainer}>
-            <div className={styles.redCircle}></div>
+            <div
+              className={styles.redCircle}
+              style={{ backgroundColor: usedColor }}
+            ></div>
             <span>Used</span>
           </div>
           <div className={styles.textContainer}>
             <div className={styles.grayCircle}></div>
-            <span>Avaliable</span>
+            <span>Available</span>
           </div>
         </div>
       </div>
       <div className={styles.chartContainer}>
-        <HalfCutChart used={used} full={full} />
+        <HalfCutChart used={props.used} full={props.full} />
       </div>
     </div>
   );

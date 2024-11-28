@@ -1,0 +1,38 @@
+.tableWrapper :global .ant-table-thead .ant-table-cell {
+  background-color: white !important;
+}
+
+.tableWrapper :global .ant-table-thead .ant-table-cell {
+  border-bottom: none !important;
+}
+
+.tableWrapper :global .ant-table-tbody .ant-table-row .ant-table-cell {
+  border-bottom: none !important;
+}
+
+.tableWrapper :global .ant-table-thead .ant-table-cell::before {
+  display: none !important;
+}
+
+.heading {
+  color: #11141a;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.textContent {
+  color: #707276;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 80px;
+}

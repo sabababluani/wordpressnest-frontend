@@ -28,9 +28,7 @@ ChartJS.register(
   Filler
 );
 
-const CurlyBandwidth: React.FC<CurlyBandwidthPropsInterface> = (
-  props: CurlyBandwidthPropsInterface
-) => {
+const CurlyBandwidth = (props: CurlyBandwidthPropsInterface) => {
   const data = {
     labels: Array.from({ length: 20 }, (_, i) => (i + 1).toString()),
 
