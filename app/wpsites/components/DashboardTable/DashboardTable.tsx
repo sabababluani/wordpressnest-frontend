@@ -2,15 +2,15 @@
 
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './DashboardTable.module.scss';
-import { DashboardTableData } from './dummy/dashboard-table-dummy';
 import { DashboardTablePropsInterface } from './interfaces/dashboard-table-props.interface';
+import BaseApi from '@/app/api/BaseApi';
 
 const columns: TableColumnsType<DashboardTablePropsInterface> = [
   {
     title: 'Name ',
-    dataIndex: 'name',
+    dataIndex: 'siteTitle',
     className: 'no-left-border',
   },
   {
@@ -63,13 +63,22 @@ const columns: TableColumnsType<DashboardTablePropsInterface> = [
 
 const App: React.FC = () => {
   const [selectionType] = useState<'checkbox'>('checkbox');
+  const [data, setData] = useState<DashboardTablePropsInterface[]>([]);
 
+  useEffect(() => {
+    BaseApi.get('/setup/wordpress').then((response) => {
+      setData(response.data);
+    });
+  }, []);
+
+  console.log(data);
+  
   return (
     <div className={styles.tableWrapper}>
       <Table<DashboardTablePropsInterface>
         rowSelection={{ type: selectionType }}
         columns={columns}
-        dataSource={DashboardTableData}
+        dataSource={data}
         pagination={false}
         scroll={{ x: 'max-content' }}
       />

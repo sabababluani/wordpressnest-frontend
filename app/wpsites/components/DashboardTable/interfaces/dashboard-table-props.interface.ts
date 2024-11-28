@@ -2,7 +2,7 @@ import React from 'react';
 
 export interface DashboardTablePropsInterface {
   key: React.Key;
-  name: string;
+  siteTitle: string;
   status: string;
   visit: string;
   bandwidth: string;
