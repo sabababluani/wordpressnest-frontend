@@ -38,7 +38,8 @@ const EnvironementDetails = (
               <span className={styles.wordpressStyle}>
                 {props.wordpressVersion}
               </span>
-              <button className={styles.buttonWrapper}>
+              <span>{}</span>
+              <button className={styles.buttonWrapper} onClick={props.onClick}>
                 <Image
                   width={24}
                   height={24}
