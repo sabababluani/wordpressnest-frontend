@@ -2,10 +2,11 @@
 
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './DashboardTable.module.scss';
 import { DashboardTablePropsInterface } from './interfaces/dashboard-table-props.interface';
 import BaseApi from '@/app/api/BaseApi';
+import useSWR from 'swr';
 
 const columns: TableColumnsType<DashboardTablePropsInterface> = [
   {
@@ -53,32 +54,54 @@ const columns: TableColumnsType<DashboardTablePropsInterface> = [
   },
   {
     title: 'PHP',
-    dataIndex: 'php',
+    dataIndex: 'phpVersion',
   },
   {
     title: 'WP version',
-    dataIndex: 'Wpversion',
+    dataIndex: 'version',
   },
 ];
 
 const App: React.FC = () => {
   const [selectionType] = useState<'checkbox'>('checkbox');
-  const [data, setData] = useState<DashboardTablePropsInterface[]>([]);
 
-  useEffect(() => {
-    BaseApi.get('/setup/wordpress').then((response) => {
-      setData(response.data);
+  const coreFetcher = (url: string) =>
+    BaseApi.get(url).then((response) => {
+      return response.data;
     });
-  }, []);
 
-  console.log(data);
-  
+  const dataFetcher = (url: string) =>
+    BaseApi.get(url).then((response) => {
+      return response.data;
+    });
+
+  const phpFetcher = (url: string) =>
+    BaseApi.get(url).then((response) => {
+      return response.data;
+    });
+
+  const { data: wpData  } = useSWR<
+    DashboardTablePropsInterface[]
+  >('wp-cli/core/version', coreFetcher);
+
+  const { data: tableData  } = useSWR<
+    DashboardTablePropsInterface[]
+  >('/setup/wordpress', dataFetcher);
+
+  const { data: phpData } = useSWR<
+    DashboardTablePropsInterface[]
+  >('wp-cli/php/version', phpFetcher);
+
+  console.log(wpData, phpData);
+
+
+
   return (
     <div className={styles.tableWrapper}>
       <Table<DashboardTablePropsInterface>
         rowSelection={{ type: selectionType }}
         columns={columns}
-        dataSource={data}
+        dataSource={wpData && phpData && tableData}
         pagination={false}
         scroll={{ x: 'max-content' }}
       />
