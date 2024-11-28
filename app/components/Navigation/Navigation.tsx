@@ -1,22 +1,32 @@
 'use client';
-
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import styles from './Navigation.module.scss';
 import NavigationLine from './components/NavigationLine/NavigationLine';
-
-const sitesData = [
-  { name: 'Twitter', iconSrc: 'icons/twiter.svg' },
-  { name: 'Spotify', iconSrc: 'icons/spotify.svg' },
-  { name: 'RRRR', iconSrc: 'icons/r.svg' },
-  { name: 'Slack', iconSrc: 'icons/slack.svg' },
-];
+import axios from 'axios';
+import { NavigationPropsInterface } from './interfaces/navigation.props.interface';
+import BaseApi from '@/app/api/BaseApi';
 
 const Navigation = (): JSX.Element => {
+  const [sitesData, setSitesData] = useState<NavigationPropsInterface[]>([]);
   const pathname = usePathname();
   const [activeSite, setActiveSite] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchSitesData = async () => {
+      try {
+        const response = await BaseApi.get('/setup/wordpress');
+          setSitesData(response.data);
+      } catch (error) {
+        console.error('Error fetching sites data:', error);
+        setSitesData([]);
+      }
+    };
+
+    fetchSitesData();
+  }, []);
 
   useEffect(() => {
     const storedSite = sessionStorage.getItem('activeSite');
@@ -86,22 +96,22 @@ const Navigation = (): JSX.Element => {
         <span>Sites</span>
         <div className={styles.sitesWrapper}>
           {sitesData.map((site) => (
-            <div key={site.name}>
+            <div key={site.siteTitle}>
               <div
                 className={`${styles.sites} ${
-                  activeSite === site.name ? styles.sitesActive : ''
+                  activeSite === site.siteTitle ? styles.sitesActive : ''
                 }`}
-                onClick={() => onSiteClick(site.name)}
+                onClick={() => onSiteClick(site.siteTitle)}
               >
                 <Image
-                  src={site.iconSrc}
-                  alt={`${site.name} icon`}
+                  src="/public/icons/twitter.svg"
+                  alt={`${site.siteTitle} icon`}
                   width={24}
                   height={24}
                 />
-                <span>{site.name}.com</span>
+                <span>{site.siteTitle}.com</span>
               </div>
-              {activeSite === site.name && <NavigationLine />}
+              {activeSite === site.siteTitle && <NavigationLine />}
             </div>
           ))}
         </div>

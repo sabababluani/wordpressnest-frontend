@@ -1,9 +1,25 @@
-import { ComponentType } from 'react';
+'use client';
+import { useEffect, useState } from 'react';
 import styles from './page.module.css';
 import DashboardStat from '@/app/components/DashboardStat/DashboardStat';
 import WordpressStat from '@/app/components/WordpressStat/WordpressStat';
+import { NavigationPropsInterface } from './components/Navigation/interfaces/navigation.props.interface';
+import BaseApi from './api/BaseApi';
 
-const Home: ComponentType = () => {
+const Home = () => {
+  const [sitesData, setSitesData] = useState<NavigationPropsInterface[]>([]);
+
+  useEffect(() => {
+    BaseApi.get('/setup/wordpress', {
+      withCredentials: true,
+    })
+      .then((response) => {
+        setSitesData(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
   return (
     <div className={styles.dashboardWrappe}>
       <div className={styles.topContainer}>
@@ -11,46 +27,19 @@ const Home: ComponentType = () => {
           <span className={styles.dashboardCaptionStyle}>Dashboard</span>
         </div>
         <div className={styles.dashboardStatsWrapper}>
-          <DashboardStat
-            point={'icons/pointGreen.svg'}
-            active={'Active'}
-            visits={'36,213 visits'}
-            description={
-              'We use the primary domain to refer to this site, and it is usually the '
-            }
-            healthQuantity={87}
-            siteName={'Novatori.ge'}
-          />
-          <DashboardStat
-            point={'icons/pointGreen.svg'}
-            active={'Active'}
-            visits={'36,213 visits'}
-            description={
-              'We use the primary domain to refer to this site, and it is usually the '
-            }
-            healthQuantity={87}
-            siteName={'Novatori.ge'}
-          />
-          <DashboardStat
-            point={'icons/pointGreen.svg'}
-            active={'Active'}
-            visits={'36,213 visits'}
-            description={
-              'We use the primary domain to refer to this site, and it is usually the '
-            }
-            healthQuantity={87}
-            siteName={'Novatori.ge'}
-          />
-          <DashboardStat
-            point={'icons/pointGreen.svg'}
-            active={'Active'}
-            visits={'36,213 visits'}
-            description={
-              'We use the primary domain to refer to this site, and it is usually the '
-            }
-            healthQuantity={87}
-            siteName={'Novatori.ge'}
-          />
+          {sitesData.map((site, index) => (
+            <DashboardStat
+              key={index}
+              point={'icons/pointGreen.svg'}
+              active={'Active'}
+              visits={'36,213 visits'}
+              description={
+                'We use the primary domain to refer to this site, and it is usually the '
+              }
+              healthQuantity={87}
+              siteName={site.siteTitle}
+            />
+          ))}
         </div>
       </div>
       <div className={styles.bottomContner}>
