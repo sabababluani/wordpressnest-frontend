@@ -13,6 +13,7 @@ import {
   Legend,
   TooltipItem,
 } from 'chart.js';
+import { BarMbChartPropsInterface } from './interfaces/bar-mb-chart-props.interface';
 
 ChartJS.register(
   CategoryScale,
@@ -23,7 +24,7 @@ ChartJS.register(
   Legend
 );
 
-const BarMbChart = () => {
+const BarMbChart = (props: BarMbChartPropsInterface) => {
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -61,7 +62,6 @@ const BarMbChart = () => {
         },
         ticks: {
           display: false,
-          color: '#FFFFFF',
         },
         border: {
           display: false,
@@ -111,19 +111,19 @@ const BarMbChart = () => {
     <div className={styles.wrapper}>
       <div>
         <div className={styles.container}>
-          <span className={styles.heading}>Disk space</span>
-          <span className={styles.textContent}>
-            The disk space report usage compared to the account limit.
-          </span>
+          <span className={styles.heading}>{props.heading}</span>
+          <span className={styles.textContent}>{props.text}</span>
         </div>
         <div className={styles.mbwrapper}>
-          <span className={styles.mbContainers}>714 MB</span>
-          <div className={styles.usageContainer}>
-            <div className={styles.redCircle}></div>
-            <div>
-              <span>Usage</span>
+          <span className={styles.mbContainers}>{props.quantify}</span>
+          {props.usage && (
+            <div className={styles.usageContainer}>
+              <div className={styles.redCircle}></div>
+              <div>
+                <span>Usage</span>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
       <div className={styles.barContainer}>

@@ -12,7 +12,6 @@
 
 .container {
   width: 100%;
-  padding: 24px 12px 24px 0;
 }
 
 .visitsContainer {
@@ -24,6 +23,8 @@
 .visitsWrap {
   display: flex;
   flex-direction: column;
+  max-width: 600px;
+  width: 100%;
 }
 
 .visits {

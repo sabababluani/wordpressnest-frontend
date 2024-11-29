@@ -3,9 +3,25 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 24px;
-//   padding: 8px 0 24px 24px;
 }
 
 .wrapper {
-    padding-left: 24px;
+  padding-left: 24px;
+}
+
+.lastChild {
+  padding-top: 52px;
+  padding-bottom: 80px;
+}
+
+.curlyPadding {
+  padding-top: 52px;
+}
+
+.tablePadding {
+  padding-top: 80px;
+}
+
+.barWrapper {
+  padding-top: 36px;
 }

@@ -4,6 +4,10 @@ import { Select } from 'antd';
 import TabsAnt from '../components/Tabs/Tabs';
 import styles from './page.module.scss';
 import Resource from './components/Resource/Resource';
+import CdnUsage from './components/CdnUsage/CdnUsage';
+import Dispersion from './components/Dispersion/Dispersion';
+import Performance from './components/Performance/Performance';
+import Response from './components/Response/Responce';
 
 const caching = (): JSX.Element => {
   return (
@@ -22,7 +26,7 @@ const caching = (): JSX.Element => {
       </div>
       <div>
         <TabsAnt
-          uniqueKey={'caching'}
+          uniqueKey={'analytics'}
           tabNames={[
             'Resource',
             'CDN Usage',
@@ -32,7 +36,13 @@ const caching = (): JSX.Element => {
             'Cache',
             'Geo & IP',
           ]}
-          tabContent={[<Resource key={'resource'} />]}
+          tabContent={[
+            <Resource key={'resource'} />,
+            <CdnUsage key={'cdnUsage'} />,
+            <Dispersion key={'dispersion'} />,
+            <Performance key={'performance'} />,
+            <Response key={'response'} />,
+          ]}
         />
       </div>
     </div>

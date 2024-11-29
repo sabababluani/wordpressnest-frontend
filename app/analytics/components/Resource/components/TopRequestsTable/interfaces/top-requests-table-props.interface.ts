@@ -4,3 +4,8 @@ export interface TopRequestsTablePropsInterface {
   requests: number;
   bandwidth: string;
 }
+
+export interface TopRequestsTableContentPropsInterface {
+  heading: string;
+  textContent?: string;
+}
