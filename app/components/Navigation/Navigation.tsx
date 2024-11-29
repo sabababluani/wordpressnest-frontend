@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import styles from './Navigation.module.scss';
 import NavigationLine from './components/NavigationLine/NavigationLine';
-import axios from 'axios';
 import { NavigationPropsInterface } from './interfaces/navigation.props.interface';
 import BaseApi from '@/app/api/BaseApi';
 import useSWR from 'swr';
@@ -20,8 +19,6 @@ const Navigation = (): JSX.Element => {
     '/setup/wordpress',
     fetcher
   );
-
-  
 
   useEffect(() => {
     const storedSite = sessionStorage.getItem('activeSite');

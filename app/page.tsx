@@ -14,6 +14,7 @@ const Home = () => {
     '/setup/wordpress',
     fetcher
   );
+
   return (
     <div className={styles.dashboardWrappe}>
       <div className={styles.topContainer}>

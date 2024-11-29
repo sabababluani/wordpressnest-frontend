@@ -23,15 +23,9 @@ const caching = (): JSX.Element => {
           uniqueKey={'caching'}
           tabNames={['Edge Caching', 'CDN', 'Server Caching']}
           tabContent={[
-            <div key={'edge'}>
-              <EdgeCaching />
-            </div>,
-            <div key={'cdn'}>
-              <Cdn />
-            </div>,
-            <div key={'server'}>
-              <ServerCaching />
-            </div>,
+            <EdgeCaching key={'edge'} />,
+            <Cdn key={'cdn'} />,
+            <ServerCaching key={'server'} />,
           ]}
         />
       </div>

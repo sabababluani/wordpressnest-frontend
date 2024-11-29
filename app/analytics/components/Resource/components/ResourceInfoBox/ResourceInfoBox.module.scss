@@ -1,0 +1,53 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dcdfe1;
+  border-radius: 8px;
+  max-width: 378px;
+  width: 100%;
+  padding: 24px 24px 0 24px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.visits {
+  color: #11141a;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.textContent {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.redCircle {
+  width: 12px;
+  height: 12px;
+  background-color: #ff0003;
+  border-radius: 50%;
+}
+
+.grayCircle {
+  width: 12px;
+  height: 12px;
+  background-color: #d9d9d9;
+  border-radius: 50%;
+}
+
+.textContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chartContainer {
+  width: 100%;
+}

@@ -1,0 +1,111 @@
+.wrapper {
+  flex: 1;
+  border: 1px solid #dcdfe1;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+}
+
+.wrapperContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.container {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.container p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #707276;
+}
+
+.mapWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.doughnut {
+  max-width: 428px;
+  width: 100%;
+}
+
+.doughnut canvas {
+  width: 100% !important;
+}
+
+.total {
+  font-size: 32px;
+  font-weight: 500;
+  color: #000;
+}
+
+.statsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.statsContainer p {
+  font-size: 14px;
+}
+
+.stats {
+  font-size: 16px;
+  color: #000;
+}
+
+.cube {
+  width: 16px;
+  height: 16px;
+  background-color: #e9eaeb;
+  border-radius: 4px;
+}
+
+.cube2 {
+  width: 16px;
+  height: 16px;
+  background-color: #069a72;
+  border-radius: 4px;
+}
+
+.cube3 {
+  width: 16px;
+  height: 16px;
+  background-color: #000;
+  border-radius: 4px;
+}
+
+.cube4 {
+  width: 16px;
+  height: 16px;
+  background-color: #dbbe00;
+  border-radius: 4px;
+}
+
+.errorType {
+  color: #000;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.value {
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.heading h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #11141a;
+}

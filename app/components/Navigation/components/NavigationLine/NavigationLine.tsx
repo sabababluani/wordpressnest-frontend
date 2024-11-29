@@ -11,7 +11,12 @@ const NavigationLine = (): JSX.Element => {
   return (
     <div className={styles.sitesInfo}>
       <div className={styles.sitesInfoImage}>
-        <Image src={'icons/line.svg'} alt={'Navigation line'} width={16} height={462} />
+        <Image
+          src={'icons/line.svg'}
+          alt={'Navigation line'}
+          width={16}
+          height={462}
+        />
       </div>
       <div className={styles.infoWrapper}>
         <Link
@@ -161,9 +166,9 @@ const NavigationLine = (): JSX.Element => {
           <span>IP Deny</span>
         </Link>
         <Link
-          href={'/'}
+          href={'/analytics'}
           className={`${styles.infoButton} ${
-            pathname.includes('ss') ? styles.infoButtonClicked : ''
+            pathname.includes('analytics') ? styles.infoButtonClicked : ''
           }`}
         >
           <Image
