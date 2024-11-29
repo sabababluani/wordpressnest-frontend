@@ -20,6 +20,7 @@ const Home = () => {
         console.error('Error fetching data:', error);
       });
   }, []);
+
   return (
     <div className={styles.dashboardWrappe}>
       <div className={styles.topContainer}>

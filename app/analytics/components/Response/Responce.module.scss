@@ -7,3 +7,14 @@
 .wrapper {
   padding: 0 24px 0 24px;
 }
+
+.errorsContainer {
+  padding-top: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.table {
+  padding: 80px 0;
+}

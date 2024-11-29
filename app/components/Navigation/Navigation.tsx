@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import styles from './Navigation.module.scss';
 import NavigationLine from './components/NavigationLine/NavigationLine';
-import axios from 'axios';
 import { NavigationPropsInterface } from './interfaces/navigation.props.interface';
 import BaseApi from '@/app/api/BaseApi';
 
@@ -18,7 +17,7 @@ const Navigation = (): JSX.Element => {
     const fetchSitesData = async () => {
       try {
         const response = await BaseApi.get('/setup/wordpress');
-          setSitesData(response.data);
+        setSitesData(response.data);
       } catch (error) {
         console.error('Error fetching sites data:', error);
         setSitesData([]);
