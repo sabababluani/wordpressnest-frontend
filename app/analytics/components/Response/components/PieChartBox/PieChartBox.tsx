@@ -4,7 +4,7 @@ import styles from './PieChartBox.module.scss';
 import { Doughnut } from 'react-chartjs-2';
 import { TooltipItem } from 'chart.js';
 
-const Circle = () => {
+const PieChartBox = () => {
   const dataValues = [1300, 300, 400, 230];
   const errorTypes = ['200', '300', '400', '500'];
   const total = dataValues.reduce((sum, value) => sum + value, 0);
@@ -80,4 +80,4 @@ const Circle = () => {
   );
 };
 
-export default Circle;
+export default PieChartBox;

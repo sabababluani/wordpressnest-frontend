@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import styles from './ErrorsBarChart.module.scss';
+import styles from './CacheBarChart.module.scss';
 import { Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -13,6 +13,7 @@ import {
   Legend,
   TooltipItem,
 } from 'chart.js';
+import { CacheBarChartPropsInterface } from './interfaces/cache-bar-chart-props.interface';
 
 ChartJS.register(
   CategoryScale,
@@ -23,26 +24,12 @@ ChartJS.register(
   Legend
 );
 
-interface Dataset {
-  label: string;
-  data: number[];
-  backgroundColor: string;
-}
-
-interface ResolutionStackedBarChartProps {
-  datasets: Dataset[];
-  labels: string[][];
-  heading: string;
-}
-
-const CacheBarChart: React.FC<ResolutionStackedBarChartProps> = ({
-  datasets,
-  labels,
-  heading,
-}) => {
-  const totalValues = datasets.map((dataset) =>
+const CacheBarChart = (props: CacheBarChartPropsInterface) => {
+  const totalValues = props.datasets.map((dataset) =>
     dataset.data.reduce((a, b) => a + b, 0)
   );
+
+  const total = totalValues.reduce((acc, value) => acc + value, 0);
 
   const options = {
     responsive: true,
@@ -92,8 +79,8 @@ const CacheBarChart: React.FC<ResolutionStackedBarChartProps> = ({
   };
 
   const barChartData = {
-    labels,
-    datasets: datasets.map((dataset) => ({
+    labels: props.labels,
+    datasets: props.datasets.map((dataset) => ({
       ...dataset,
       barThickness: 32,
       borderRadius: 6,
@@ -102,17 +89,18 @@ const CacheBarChart: React.FC<ResolutionStackedBarChartProps> = ({
 
   return (
     <div className={styles.wrapper}>
-      <h2>{heading}</h2>
+      <h2>{props.heading}</h2>
       <div className={styles.container}>
-        {datasets.map((dataset, index) => (
+        <p>{total}</p>
+        {props.datasets.map((dataset, index) => (
           <div key={dataset.label} className={styles.dotsWrapper}>
             <div
               className={styles.cube}
               style={{ backgroundColor: dataset.backgroundColor }}
             ></div>
             <span>
-              <span className={styles.label}>{dataset.label}:</span>{' '}
-              <span className={styles.total}>{totalValues[index]}</span>
+              <span className={styles.label}>{totalValues[index]} </span>
+              <span className={styles.total}>{dataset.label}</span>
             </span>
           </div>
         ))}

@@ -8,6 +8,8 @@ import CdnUsage from './components/CdnUsage/CdnUsage';
 import Dispersion from './components/Dispersion/Dispersion';
 import Performance from './components/Performance/Performance';
 import Response from './components/Response/Responce';
+import Cache from './components/Cache/Cache';
+import GeoApi from './components/GeoApi/GeoApi';
 
 const caching = (): JSX.Element => {
   return (
@@ -42,6 +44,8 @@ const caching = (): JSX.Element => {
             <Dispersion key={'dispersion'} />,
             <Performance key={'performance'} />,
             <Response key={'response'} />,
+            <Cache key={'cache'} />,
+            <GeoApi key={'geoandapi'} />,
           ]}
         />
       </div>

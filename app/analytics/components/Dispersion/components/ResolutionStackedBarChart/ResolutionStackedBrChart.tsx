@@ -13,6 +13,7 @@ import {
   Legend,
   TooltipItem,
 } from 'chart.js';
+import { ResolutionStackedBarChartProps } from './interfaces/resolution-stacked-br-chart-props.interface';
 
 ChartJS.register(
   CategoryScale,
@@ -23,22 +24,8 @@ ChartJS.register(
   Legend
 );
 
-interface Dataset {
-  label: string;
-  data: number[];
-  backgroundColor: string;
-}
-
-interface ResolutionStackedBarChartProps {
-  datasets: Dataset[];
-  labels: string[][];
-}
-
-const ResolutionStackedBarChart: React.FC<ResolutionStackedBarChartProps> = ({
-  datasets,
-  labels,
-}) => {
-  const totalValues = datasets.map((dataset) =>
+const ResolutionStackedBarChart = (props: ResolutionStackedBarChartProps) => {
+  const totalValues = props.datasets.map((dataset) =>
     dataset.data.reduce((a, b) => a + b, 0)
   );
   const grandTotal = totalValues.reduce((a, b) => a + b, 0);
@@ -95,8 +82,8 @@ const ResolutionStackedBarChart: React.FC<ResolutionStackedBarChartProps> = ({
   };
 
   const barChartData = {
-    labels,
-    datasets: datasets.map((dataset) => ({
+    labels: props.labels,
+    datasets: props.datasets.map((dataset) => ({
       ...dataset,
       barThickness: 32,
       borderRadius: 6,
@@ -107,7 +94,7 @@ const ResolutionStackedBarChart: React.FC<ResolutionStackedBarChartProps> = ({
     <div className={styles.wrapper}>
       <h1>Desktop vs. Tablet vs. Mobile</h1>
       <div className={styles.container}>
-        {datasets.map((dataset, index) => (
+        {props.datasets.map((dataset, index) => (
           <div key={dataset.label} className={styles.dotsWrapper}>
             <div
               className={styles.blackCircle}
