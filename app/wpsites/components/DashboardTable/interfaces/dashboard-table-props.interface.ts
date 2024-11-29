@@ -7,6 +7,6 @@ export interface DashboardTablePropsInterface {
   visit: string;
   bandwidth: string;
   diskUsage: string;
-  php: string;
-  Wpversion: string;
+  phpVersion: string;
+  version: string;
 }

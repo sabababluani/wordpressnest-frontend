@@ -7,25 +7,18 @@ import styles from './Navigation.module.scss';
 import NavigationLine from './components/NavigationLine/NavigationLine';
 import { NavigationPropsInterface } from './interfaces/navigation.props.interface';
 import BaseApi from '@/app/api/BaseApi';
+import useSWR from 'swr';
 
 const Navigation = (): JSX.Element => {
-  const [sitesData, setSitesData] = useState<NavigationPropsInterface[]>([]);
   const pathname = usePathname();
   const [activeSite, setActiveSite] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchSitesData = async () => {
-      try {
-        const response = await BaseApi.get('/setup/wordpress');
-        setSitesData(response.data);
-      } catch (error) {
-        console.error('Error fetching sites data:', error);
-        setSitesData([]);
-      }
-    };
-
-    fetchSitesData();
-  }, []);
+  const fetcher = (url: string) =>
+    BaseApi.get(url).then((response) => response.data);
+  const { data: sitesData } = useSWR<NavigationPropsInterface[]>(
+    '/setup/wordpress',
+    fetcher
+  );
 
   useEffect(() => {
     const storedSite = sessionStorage.getItem('activeSite');
@@ -94,7 +87,7 @@ const Navigation = (): JSX.Element => {
       <div className={styles.sitesContainer}>
         <span>Sites</span>
         <div className={styles.sitesWrapper}>
-          {sitesData.map((site) => (
+          {sitesData?.map((site) => (
             <div key={site.siteTitle}>
               <div
                 className={`${styles.sites} ${
