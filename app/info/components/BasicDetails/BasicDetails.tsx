@@ -26,7 +26,7 @@ const BasicDetails = (props: StatisticPropsInterface): JSX.Element => {
                 <Image
                   width={24}
                   height={24}
-                  src={'icons/pencil.svg'}
+                  src={'/icons/pencil.svg'}
                   alt={'pencil icon'}
                 />
               </button>
@@ -40,7 +40,7 @@ const BasicDetails = (props: StatisticPropsInterface): JSX.Element => {
                 <Image
                   width={24}
                   height={24}
-                  src={'icons/pencil.svg'}
+                  src={'/icons/pencil.svg'}
                   alt={'pencil icon'}
                 />
               </button>

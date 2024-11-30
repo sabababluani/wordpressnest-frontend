@@ -1,11 +1,13 @@
 'use client';
 
+import { useState } from 'react';
 import useSWR from 'swr';
-import BasicDetails from './components/BasicDetails/BasicDetails';
-import DataBaseAccess from './components/DatabaseAccess/DatabaseAccess';
-import EnvironementDetails from './components/EnvironmentDetails/EnvironmentDetails';
-import SftpShh from './components/SftpShh/SftpShh';
-import Site from './components/Site/Site';
+import { useParams } from 'next/navigation'; // Import useParams
+import BasicDetails from '../components/BasicDetails/BasicDetails';
+import DataBaseAccess from '../components/DatabaseAccess/DatabaseAccess';
+import EnvironementDetails from '../components/EnvironmentDetails/EnvironmentDetails';
+import SftpShh from '../components/SftpShh/SftpShh';
+import Site from '../components/Site/Site';
 import styles from './page.module.scss';
 import Button from '@/app/components/Button/Button';
 import {
@@ -19,14 +21,18 @@ import {
   UserNamePropsIterface,
   wordPressLastUpdateVersionPropsInterface,
   wordPressVersionPropsInterface,
-} from './interfaces/info-props.interface';
-import BaseApi from '../api/BaseApi';
-import { useState } from 'react';
+} from '../interfaces/info-props.interface';
+import BaseApi from '../../api/BaseApi';
 
 const Info = (): JSX.Element => {
+  const { id } = useParams();
+
+  const idNumber = +id - 1;
+
   const [updateWpVersionData, setUpdateVersionData] = useState<
     wordPressLastUpdateVersionPropsInterface | undefined
   >({
+    id: 0,
     version: '',
     locale: '',
     update: '',
@@ -35,24 +41,25 @@ const Info = (): JSX.Element => {
   });
 
   const fetcher = (url: string) => BaseApi.get(url).then((res) => res.data);
+
   const { data: siteName, error: siteNameError } = useSWR<
     SiteNamePropsInterface[]
-  >('/setup/sitetitle', fetcher);
+  >(`/setup/sitetitle`, fetcher);
   const { data: wordpressVersion, error: wordpressVersionError } =
     useSWR<wordPressVersionPropsInterface>('/wp-cli/core/version', fetcher);
   const { data: port, error: portError } = useSWR<portPropsInterface[]>(
-    '/setup/wordpress/port',
+    `/setup/wordpress/port`,
     fetcher
   );
   const { data: username, error: usernameError } = useSWR<
     UserNamePropsIterface[]
-  >('/setup/wordpress/username', fetcher);
+  >(`/setup/wordpress/username`, fetcher);
   const { data: database, error: databaseError } = useSWR<
     DatabaseNamePropsInterface[]
-  >('/wp-cli/db/size', fetcher);
+  >(`/wp-cli/db/size/?setupId=${id}`, fetcher);
 
   const onUpdateWpVersionClick = () => {
-    BaseApi.get('/wp-cli/wpcore/check-update').then((res) =>
+    BaseApi.get(`/wp-cli/wpcore/check-update/?setupId=${id}`).then((res) =>
       setUpdateVersionData(res.data)
     );
   };
@@ -60,16 +67,16 @@ const Info = (): JSX.Element => {
   if (!siteName) return <div>Loading...</div>;
   if (siteNameError) return <div>Error loading data...</div>;
 
-  if (!wordpressVersion) return <div>Loading... </div>;
+  if (!wordpressVersion) return <div>Loading...</div>;
   if (wordpressVersionError) return <div>Error loading data...</div>;
 
-  if (!port) return <div>Loading... </div>;
+  if (!port) return <div>Loading...</div>;
   if (portError) return <div>Error loading data...</div>;
 
-  if (!username) return <div>Loading... </div>;
+  if (!username) return <div>Loading...</div>;
   if (usernameError) return <div>Error loading data...</div>;
 
-  if (!database) return <div>Loading... </div>;
+  if (!database) return <div>Loading...</div>;
   if (databaseError) return <div>Error loading data...</div>;
 
   return (
@@ -95,7 +102,7 @@ const Info = (): JSX.Element => {
       <div className={styles.bottomContainer}>
         <BasicDetails
           locationDataCenter={'Hamburg (DE)'}
-          siteName={siteName[0].siteTitle}
+          siteName={siteName[idNumber]?.siteTitle}
           Labels={''}
         />
 
@@ -115,17 +122,17 @@ const Info = (): JSX.Element => {
           host={'66.854.861.865'}
           passwordExpiration={'None'}
           ssh={'SSH Novatori@66.854.861.865...'}
-          port={port[0].instancePort}
+          port={port[idNumber]?.instancePort}
           authenticationMethods={'SSH key , password'}
-          userName={username[0].wpAdminUser}
+          userName={username[idNumber]?.wpAdminUser}
           IpAllowed={'ALL IPs allowed'}
           password={'********'}
           ftp={'Novatori - sftp - config.zip'}
         />
 
         <DataBaseAccess
-          database={database[0].Name}
-          databaseUsername={username[0].wpAdminUser}
+          database={database[idNumber]?.Name}
+          databaseUsername={username[idNumber].wpAdminUser}
           databasePassword={'**********'}
           ip={'ALL IPs allowed'}
         />

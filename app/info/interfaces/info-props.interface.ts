@@ -1,28 +1,32 @@
 export interface SiteNamePropsInterface {
-    siteTitle: string;
+  id: number;
+  siteTitle: string;
 }
 
 export interface wordPressVersionPropsInterface {
-    version: string;
+  id: number;
+  version: string;
 }
 
 export interface wordPressLastUpdateVersionPropsInterface {
-    version: string;
-    locale: string;
-    update: string;
-    url: string
-    message: string
+  id: number;
+  version: string;
+  locale: string;
+  update: string;
+  url: string;
+  message: string;
 }
 
 export interface portPropsInterface {
-    instancePort: number;
+  instancePort: number;
+  id: number;
 }
 
 export interface UserNamePropsIterface {
-    wpAdminUser: string;
+  id: number;
+  wpAdminUser: string;
 }
 
 export interface DatabaseNamePropsInterface {
-    Name: string;
-    Size: string;
+  Name: string;
 }

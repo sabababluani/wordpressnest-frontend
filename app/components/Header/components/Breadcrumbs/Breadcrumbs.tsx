@@ -26,11 +26,11 @@ const BreadCrumbs: React.FC = () => {
   ];
 
   return (
-      <div className={styles.breadcrumbContainer}>
-        <div className={styles.breadcrumb}>
-          <Breadcrumb separator="/" items={items} />
-        </div>
+    <div className={styles.breadcrumbContainer}>
+      <div className={styles.breadcrumb}>
+        <Breadcrumb separator="/" items={items} />
       </div>
+    </div>
   );
 };
 

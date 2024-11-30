@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Table, TableColumnsType } from 'antd';
+import { useParams } from 'next/navigation';
 import useSWR, { mutate } from 'swr';
 import BaseApi from '@/app/api/BaseApi';
 import styles from '@/app/domains/components/DomainsTable/DomainsTable.module.scss';
@@ -14,43 +15,54 @@ const fetcher = (url: string) =>
   BaseApi.get(url).then((response) => response.data);
 
 const PluginTable: React.FC = () => {
+  const { id } = useParams();
+
   const [selectionType] = useState<'checkbox'>('checkbox');
   const [searchValue, setSearchValue] = useState('');
 
   const { data: plugins } = useSWR<PluginDataPropsInterface[]>(
-    `wp-cli/plugin/list?search=${searchValue}`,
+    `wp-cli/plugin/list?setupId=${id}&search=${searchValue}`,
     fetcher
   );
 
   const onHandleUpdate = async (pluginName: string) => {
     try {
-      await BaseApi.post('wp-cli/plugin/update', { plugin: pluginName });
-      mutate(`wp-cli/plugin/list?search=${searchValue}`);
+      await BaseApi.post(`wp-cli/plugin/update?setupId=${id}`, {
+        id,
+        plugin: pluginName,
+      });
+      mutate(`wp-cli/plugin/list?setupId=${id}&search=${searchValue}`);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
   const onHandleActive = async (pluginName: string) => {
     try {
-      await BaseApi.post('wp-cli/plugin/activate', { plugin: pluginName });
-      mutate(`wp-cli/plugin/list?search=${searchValue}`);
+      await BaseApi.post(`wp-cli/plugin/activate?setupId=${id}`, {
+        id,
+        plugin: pluginName,
+      });
+      mutate(`wp-cli/plugin/list?setupId=${id}&search=${searchValue}`);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
   const onHandleDeactivate = async (pluginName: string) => {
     try {
-      await BaseApi.post('wp-cli/plugin/deactivate', { plugin: pluginName });
-      mutate(`wp-cli/plugin/list?search=${searchValue}`);
+      await BaseApi.post(`wp-cli/plugin/deactivate?setupId=${id}`, {
+        id,
+        plugin: pluginName,
+      });
+      mutate(`wp-cli/plugin/list?setupId=${id}&search=${searchValue}`);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
   const handleReload = () => {
-    mutate(`wp-cli/plugin/list?search=${searchValue}`);
+    mutate(`wp-cli/plugin/list?setupId=${id}&search=${searchValue}`);
   };
 
   const columns: TableColumnsType<PluginDataPropsInterface> = [
@@ -128,7 +140,7 @@ const PluginTable: React.FC = () => {
             <div className={styles.buttonsActive}>
               <Button
                 backgroundColor={buttonbackgroundColorEnum.grey}
-                innerContent="Active"
+                innerContent="Activate"
                 onClick={() => onHandleActive(record.name)}
               />
             </div>
@@ -143,7 +155,7 @@ const PluginTable: React.FC = () => {
       <div className={styles.searchPadding}>
         <div className={styles.searchContainer}>
           <Search
-            placeholder="Search By Plugin name"
+            placeholder="Search By Plugin Name"
             isPadded
             onChange={(value) => setSearchValue(value)}
           />
@@ -153,7 +165,7 @@ const PluginTable: React.FC = () => {
               backgroundColor={buttonbackgroundColorEnum.grey}
               innerContent="Reload"
               innerContentIconActive
-              innerContentIcon="icons/reload.svg"
+              innerContentIcon="/icons/reload.svg"
               onClick={handleReload}
             />
           </div>

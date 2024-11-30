@@ -43,7 +43,7 @@ const EnvironementDetails = (
                 <Image
                   width={24}
                   height={24}
-                  src={'icons/loadingButton.svg'}
+                  src={'/icons/loadingButton.svg'}
                   alt={'loading button'}
                 />
               </button>
