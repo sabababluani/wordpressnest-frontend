@@ -1,0 +1,70 @@
+.profilePicture img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+
+.photoInto {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.photoContent > span {
+  color: #11141a;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.photoContent span span {
+  color: #7f56d9;
+}
+
+.photoContent {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.photoInto p {
+  color: #707276;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.container {
+  display: flex;
+  gap: 32px;
+  border-top: 1px solid #edeeef;
+  padding: 24px;
+  margin-top: 20px;
+}
+
+.uploadContaine {
+  display: flex;
+  gap: 20px;
+}
+
+.wrap > span {
+  color: #707276;
+  font-size: 14px;
+  font-weight: 500;
+}
+.wrap {
+  padding: 0 24px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+}
+
+.content {
+  display: flex;
+  gap: 24px;
+}
