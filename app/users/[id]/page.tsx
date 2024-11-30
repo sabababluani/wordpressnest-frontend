@@ -1,12 +1,12 @@
 'use client';
 
 import styles from './page.module.scss';
-import UsersModal from './components/UsersModal/UsersModal';
+import UsersModal from '../components/UsersModal/UsersModal';
 import { Modal } from 'antd';
 import { useState } from 'react';
-import Button from '../components/Button/Button';
-import UsersTable from './components/UsersTable/UsersTable';
-import { buttonbackgroundColorEnum } from '../components/Button/enum/button.enum';
+import Button from '../../components/Button/Button';
+import UsersTable from '../components/UsersTable/UsersTable';
+import { buttonbackgroundColorEnum } from '../../components/Button/enum/button.enum';
 
 const Users = (): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -31,7 +31,7 @@ const Users = (): JSX.Element => {
           backgroundColor={buttonbackgroundColorEnum.black}
           innerContentIconActive
           innerContent={'Invite Users'}
-          innerContentIcon={'icons/adduser.svg'}
+          innerContentIcon={'/icons/adduser.svg'}
           onClick={showModal}
         />
       </div>
@@ -47,7 +47,7 @@ const Users = (): JSX.Element => {
           footer={null}
           closable={false}
         >
-          {/* <UsersModal onClose={handleCancel} /> */}
+          <UsersModal onClose={handleCancel} />
         </Modal>
       </div>
     </div>

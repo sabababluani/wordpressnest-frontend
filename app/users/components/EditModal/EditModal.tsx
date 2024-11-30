@@ -8,6 +8,7 @@ import BaseApi from '@/app/api/BaseApi';
 import { UsersModalPropsInterface } from '../interfaces/modal.props.interface';
 import { UsersTablePropsInterface } from '../UsersTable/interfaces/users-table-props.interface';
 import { Select } from 'antd';
+import { useParams } from 'next/navigation';
 
 const EditModal = ({
   user,
@@ -15,11 +16,16 @@ const EditModal = ({
 }: UsersModalPropsInterface & {
   user: UsersTablePropsInterface;
 }): JSX.Element => {
+  const { id } = useParams();
   const [selectedRole, setSelectedRole] = useState<string>(user.roles);
 
   const fetcher = (url: string) =>
     BaseApi.get(url).then((response) => response.data);
-  const { data: roles } = useSWR('wp-cli/wprole/list', fetcher);
+
+  const { data: roles } = useSWR(
+    id ? `wp-cli/wprole/list?setupId=${id}` : null,
+    fetcher
+  );
 
   useEffect(() => {
     setSelectedRole(user.roles);
@@ -37,16 +43,29 @@ const EditModal = ({
       })) || [];
 
   const onHandleUpdate = async () => {
-    onClose();
     try {
-      await BaseApi.post('wp-cli/wprole/update', {
+      await BaseApi.post(`wp-cli/wprole/update?setupId=${id}`, {
         userId: user.ID,
         role: selectedRole.toLowerCase(),
+        setupId: id,
       });
-      mutate('wp-cli/wprole/list');
-      mutate('wp-cli/wpuser/list');
+
+      mutate(
+        `wp-cli/wpuser/list?setupId=${id}`,
+        (currentData: any) => {
+          if (!currentData) return;
+          return currentData.map((currentUser: UsersTablePropsInterface) =>
+            currentUser.ID === user.ID
+              ? { ...currentUser, roles: selectedRole.toLowerCase() }
+              : currentUser
+          );
+        },
+        false
+      );
+
+      onClose();
     } catch (error) {
-      console.log(error);
+      console.error('Error updating role:', error);
     }
   };
 

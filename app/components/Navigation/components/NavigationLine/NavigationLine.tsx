@@ -5,14 +5,18 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './NavigationLine.module.scss';
 
-const NavigationLine = (): JSX.Element => {
+interface NavigationLineProps {
+  basePath: string;
+}
+
+const NavigationLine = ({ basePath }: NavigationLineProps): JSX.Element => {
   const pathname = usePathname();
 
   return (
     <div className={styles.sitesInfo}>
       <div className={styles.sitesInfoImage}>
         <Image
-          src={'icons/line.svg'}
+          src={'/icons/line.svg'}
           alt={'Navigation line'}
           width={16}
           height={462}
@@ -20,16 +24,18 @@ const NavigationLine = (): JSX.Element => {
       </div>
       <div className={styles.infoWrapper}>
         <Link
-          href={'/info'}
+          href={`/info${basePath}`}
           className={`${styles.infoButton} ${
-            pathname.includes('/info') ? styles.infoButtonClicked : ''
+            pathname.includes(`/info${basePath}`)
+              ? styles.infoButtonClicked
+              : ''
           }`}
         >
           <Image
             src={
-              pathname.includes('/info')
-                ? 'icons/info.svg'
-                : 'icons/infolight.svg'
+              pathname.includes(`/info${basePath}`)
+                ? '/icons/info.svg'
+                : '/icons/infolight.svg'
             }
             alt={'info'}
             width={20}
@@ -37,6 +43,7 @@ const NavigationLine = (): JSX.Element => {
           />
           <span>Info</span>
         </Link>
+
         <Link
           href={'/domains'}
           className={`${styles.infoButton} ${
@@ -46,8 +53,8 @@ const NavigationLine = (): JSX.Element => {
           <Image
             src={
               pathname.includes('domains')
-                ? 'icons/domainsbold.svg'
-                : 'icons/domains.svg'
+                ? '/icons/domainsbold.svg'
+                : '/icons/domains.svg'
             }
             alt={'domains'}
             width={20}
@@ -55,6 +62,7 @@ const NavigationLine = (): JSX.Element => {
           />
           <span>Domains</span>
         </Link>
+
         <Link
           href={'/backup'}
           className={`${styles.infoButton} ${
@@ -64,8 +72,8 @@ const NavigationLine = (): JSX.Element => {
           <Image
             src={
               pathname.includes('/backup')
-                ? 'icons/backupbold.svg'
-                : 'icons/backup.svg'
+                ? '/icons/backupbold.svg'
+                : '/icons/backup.svg'
             }
             alt={'backup'}
             width={20}
@@ -73,6 +81,7 @@ const NavigationLine = (): JSX.Element => {
           />
           <span>Backup</span>
         </Link>
+
         <Link
           href={'/tools'}
           className={`${styles.infoButton} ${
@@ -82,8 +91,8 @@ const NavigationLine = (): JSX.Element => {
           <Image
             src={
               pathname.includes('tools')
-                ? 'icons/toolsbold.svg'
-                : 'icons/tools.svg'
+                ? '/icons/toolsbold.svg'
+                : '/icons/tools.svg'
             }
             alt={'tools'}
             width={20}
@@ -91,6 +100,7 @@ const NavigationLine = (): JSX.Element => {
           />
           <span>Tools</span>
         </Link>
+
         <Link
           href={'/redirects'}
           className={`${styles.infoButton} ${
@@ -100,8 +110,8 @@ const NavigationLine = (): JSX.Element => {
           <Image
             src={
               pathname.includes('/redirects')
-                ? 'icons/redirectsbold.svg'
-                : 'icons/redirects.svg'
+                ? '/icons/redirectsbold.svg'
+                : '/icons/redirects.svg'
             }
             alt={'redirects'}
             width={20}
@@ -110,25 +120,26 @@ const NavigationLine = (): JSX.Element => {
           <span>Redirects</span>
         </Link>
         <Link
-          href={'/themesandplugins'}
+          href={`/themesandplugins${basePath}`}
           className={`${styles.infoButton} ${
-            pathname.includes('/themesandplugins')
+            pathname.includes(`/themesandplugins${basePath}`)
               ? styles.infoButtonClicked
               : ''
           }`}
         >
           <Image
             src={
-              pathname.includes('/themesandplugins')
-                ? 'icons/pluginsbold.svg'
-                : 'icons/plugins.svg'
+              pathname.includes(`/themesandplugins${basePath}`)
+                ? '/icons/pluginsbold.svg'
+                : '/icons/plugins.svg'
             }
-            alt={'plugins'}
+            alt={'themes and plugins'}
             width={20}
             height={20}
           />
-          <span>Themes and plugins</span>
+          <span>Themes and Plugins</span>
         </Link>
+
         <Link
           href={'/'}
           className={`${styles.infoButton} ${
@@ -138,8 +149,8 @@ const NavigationLine = (): JSX.Element => {
           <Image
             src={
               pathname.includes('ss')
-                ? 'icons/addonebold.svg'
-                : 'icons/addone.svg'
+                ? '/icons/addonebold.svg'
+                : '/icons/addone.svg'
             }
             alt={'add-ons'}
             width={20}
@@ -147,6 +158,7 @@ const NavigationLine = (): JSX.Element => {
           />
           <span>Add-ons</span>
         </Link>
+
         <Link
           href={'/ipdeny'}
           className={`${styles.infoButton} ${
@@ -156,8 +168,8 @@ const NavigationLine = (): JSX.Element => {
           <Image
             src={
               pathname.includes('/ipdeny')
-                ? 'icons/ipcirclebold.svg'
-                : 'icons/ipcircle.svg'
+                ? '/icons/ipcirclebold.svg'
+                : '/icons/ipcircle.svg'
             }
             alt={'IP Deny'}
             width={20}
@@ -165,6 +177,7 @@ const NavigationLine = (): JSX.Element => {
           />
           <span>IP Deny</span>
         </Link>
+
         <Link
           href={'/analytics'}
           className={`${styles.infoButton} ${
@@ -173,9 +186,9 @@ const NavigationLine = (): JSX.Element => {
         >
           <Image
             src={
-              pathname.includes('ss')
-                ? 'icons/analitycsbold.svg'
-                : 'icons/analitycs.svg'
+              pathname.includes('analytics')
+                ? '/icons/analitycsbold.svg'
+                : '/icons/analitycs.svg'
             }
             alt={'analytics'}
             width={20}
@@ -183,6 +196,7 @@ const NavigationLine = (): JSX.Element => {
           />
           <span>Analytics</span>
         </Link>
+
         <Link
           href={'/caching'}
           className={`${styles.infoButton} ${
@@ -192,8 +206,8 @@ const NavigationLine = (): JSX.Element => {
           <Image
             src={
               pathname.includes('/caching')
-                ? 'icons/broomcirclebold.svg'
-                : 'icons/broom-circle.svg'
+                ? '/icons/broomcirclebold.svg'
+                : '/icons/broom-circle.svg'
             }
             alt={'caching'}
             width={20}
@@ -201,24 +215,28 @@ const NavigationLine = (): JSX.Element => {
           />
           <span>Caching</span>
         </Link>
+
         <Link
-          href={'/users'}
+          href={`/users${basePath}`}
           className={`${styles.infoButton} ${
-            pathname.includes('/users') ? styles.infoButtonClicked : ''
+            pathname.includes(`/users${basePath}`)
+              ? styles.infoButtonClicked
+              : ''
           }`}
         >
           <Image
             src={
-              pathname.includes('/users')
-                ? 'icons/usersmanagmentbold.svg'
-                : 'icons/usersmanagment.svg'
+              pathname.includes(`/users${basePath}`)
+                ? '/icons/usersmanagmentbold.svg'
+                : '/icons/usersmanagment.svg'
             }
             alt={'users management'}
             width={20}
             height={20}
           />
-          <span>Users management</span>
+          <span>Users Management</span>
         </Link>
+
         <Link
           href={'/logs'}
           className={`${styles.infoButton} ${
@@ -227,7 +245,9 @@ const NavigationLine = (): JSX.Element => {
         >
           <Image
             src={
-              pathname.includes('ss') ? 'icons/logsbold.svg' : 'icons/logs.svg'
+              pathname.includes('ss')
+                ? '/icons/logsbold.svg'
+                : '/icons/logs.svg'
             }
             alt={'logs'}
             width={20}
