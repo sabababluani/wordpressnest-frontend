@@ -1,0 +1,50 @@
+.mainContainer {
+    margin: 0px 24px;
+}
+
+.topContainer {
+    padding: 16px 24px;
+    border: 1px solid #DCDFE1;
+    border-radius: 12px 12px 0px 0px;
+    background-color: #F0F3F5;
+}
+
+.bottomContainer {
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #DCDFE1;
+    border-left: 1px solid #DCDFE1;
+    border-right: 1px solid #DCDFE1;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.mainCaptionStyle {
+    color: #11141A;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+
+.toggleWrapper :global .ant-switch-checked {
+    background-color: black !important;
+    width: 44px;
+    height: 22px;
+}
+
+.toggleStyle :global {
+    background-color: grey !important;
+}
+
+.descriptionStyle {
+    max-width: 587px;
+    width: 100%;
+    color: #707276;
+    font-size: var(--Font-size-text-sm, 14px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: var(--Line-height-text-sm, 20px);
+}

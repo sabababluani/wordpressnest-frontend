@@ -1,0 +1,151 @@
+.mainContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 24px 0px 24px;
+}
+
+
+.topContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px 24px;
+    border: 1px solid #DCDFE1;
+    border-radius: 12px 12px 0px 0px;
+    background: #F0F3F5;
+}
+
+.notificationsCaptionStyle {
+    color: #11141A;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+
+.outsideNoteficationsStyle {
+    color: #707276;
+    font-size: var(--Font-size-text-sm, 14px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: var(--Line-height-text-sm, 20px);
+}
+
+.bottomContainer {
+    display: flex;
+    border-bottom: 1px solid #DCDFE1;
+    border-left: 1px solid #DCDFE1;
+    border-right: 1px solid #DCDFE1;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.leftContainerWrapper {
+    display: flex;
+    gap: 64px;
+}
+
+.wordPressOverageStyle {
+    color: #11141A;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.wordPressOverageDescriptionStyle {
+    color: #707276;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    max-width: 465px;
+    width: 100%;
+}
+
+.secondContainerWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 231px;
+    width: 100%;
+}
+
+.captionStyle {
+    color: #11141A;
+    font-size: var(--Font-size-text-sm, 14px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: var(--Line-height-text-sm, 20px);
+}
+
+
+.toggleWrapper :global .ant-switch-checked {
+    background-color: black !important;
+    width: 44px;
+    height: 22px;
+}
+
+.toggleStyle :global {
+    background-color: grey !important;
+}
+
+.firstContainerWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.bottomContainersFirstWrapper {
+    display: flex;
+    max-width: 786px;
+    width: 100%;
+    gap: 64px;
+    padding: 32px 20px;
+    border-right: 1px solid #F0F3F5;
+    margin: 20px 0px;
+}
+
+.captionAndToggleWrapper {
+    display: flex;
+    gap: 26px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rightContainersFirstWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 786px;
+    width: 100%;
+}
+
+.wordPressSiteDescriptionStyle {
+    color: #707276;
+    font-size: var(--Font-size-text-sm, 14px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    max-width: 465px;
+    width: 100%;
+}
+
+.wordPressSiteCaptionStyle {
+    color: #11141A;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.rightContainerWrapper {
+    display: flex;
+    max-width: 786px;
+    width: 100%;
+    justify-content: space-between;
+    padding: 32px 20px;
+    margin: 20px 0px;
+}
