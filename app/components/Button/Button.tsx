@@ -11,7 +11,9 @@ const Button = (props: ButtonDataInterface): JSX.Element => {
         className={`
           ${styles.buttonStyle} 
           ${
-            props.backgroundColor === buttonbackgroundColorEnum.black
+            props.backgroundColor === buttonbackgroundColorEnum.white
+              ? styles.backgroundWhiteColor
+              : props.backgroundColor === buttonbackgroundColorEnum.black
               ? styles.backgroundBlackColor
               : props.backgroundColor === buttonbackgroundColorEnum.red
               ? styles.backgroundRedColor

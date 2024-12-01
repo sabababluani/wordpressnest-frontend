@@ -3,6 +3,7 @@ import { buttonbackgroundColorEnum } from '../enum/button.enum';
 export interface ButtonDataInterface {
   innerContent?: string;
   backgroundColor:
+    | buttonbackgroundColorEnum.white
     | buttonbackgroundColorEnum.black
     | buttonbackgroundColorEnum.grey
     | buttonbackgroundColorEnum.red

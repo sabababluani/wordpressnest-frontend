@@ -1,5 +1,4 @@
 'use client';
-
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -15,6 +14,7 @@ const NavigationLine = ({ basePath }: NavigationLineProps): JSX.Element => {
   return (
     <div className={styles.sitesInfo}>
       <div className={styles.sitesInfoImage}>
+        {pathname === '/settings'}
         <Image
           src={'/icons/line.svg'}
           alt={'Navigation line'}

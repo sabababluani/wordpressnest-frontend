@@ -15,10 +15,20 @@ const Navigation = (): JSX.Element => {
 
   const fetcher = (url: string) =>
     BaseApi.get(url).then((response) => response.data);
+
   const { data: sitesData } = useSWR<NavigationPropsInterface[]>(
     '/setup/wordpress',
     fetcher
   );
+
+  const settingsData = [
+    {
+      siteTitle: 'My Account',
+    },
+    {
+      siteTitle: 'My Plan',
+    },
+  ];
 
   useEffect(() => {
     const storedSite = sessionStorage.getItem('activeSite');
@@ -46,7 +56,7 @@ const Navigation = (): JSX.Element => {
   return (
     <div className={styles.wrapper}>
       <h2>
-        <Link href={'/'}>Hosting</Link>
+        <Link href="/">Hosting</Link>
       </h2>
       <div className={styles.containerWrapper}>
         <Link
