@@ -17,8 +17,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  max-width: 728px;
-  width: 100%;
+  flex: 1;
 }
 
 .inputContainer span {
@@ -36,6 +35,12 @@
   border: 1px solid #dcdfe1;
   border-radius: 8px;
   padding-left: 14px;
+  font-size: 16px;
+  color: #11141a;
+}
+
+.inputContainer input:focus {
+  outline: none;
 }
 
 .select {
@@ -60,4 +65,77 @@
   gap: 12px;
   align-self: flex-end;
   padding-top: 4px;
+}
+
+.emailField input {
+  border: none;
+  width: 100%;
+  margin: 0 12px;
+  height: 100%;
+  font-size: 16px;
+  color: #11141a;
+}
+
+.emailContainer span {
+  color: #11141a;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.emailContainer span span {
+  color: #7f56d9;
+}
+
+.emailField input:focus {
+  outline: none;
+}
+
+.emailField {
+  display: flex;
+  align-items: center;
+  border: 1px solid #dcdfe1;
+  height: 44px;
+  border-radius: 8px;
+  padding-left: 14px;
+}
+
+.emailContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.passwordField {
+  display: flex;
+  align-items: center;
+  border: 1px solid #dcdfe1;
+  height: 44px;
+  border-radius: 8px;
+  padding-right: 14px;
+}
+
+.passwordContainer {
+  flex:1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.passwordField input {
+  border: none;
+  width: 100%;
+  margin: 0 12px;
+  height: 100%;
+}
+
+.passwordField input:focus {
+  outline: none;
+  font-size: 16px;
+}
+
+.passwordContainer span {
+  color: #11141a;
+  font-weight: 700;
+  font-size: 14px;
 }

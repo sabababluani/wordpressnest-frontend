@@ -43,7 +43,7 @@ const PersonalInfo = () => {
           <EmailVerification />
         </div>
         <div>
-            <FactorAuthentication />
+          <FactorAuthentication />
         </div>
       </div>
     </div>

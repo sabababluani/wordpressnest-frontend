@@ -2,6 +2,7 @@ import { Select } from 'antd';
 import styles from './PersonalInfoFields.module.scss';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
+import Image from 'next/image';
 
 const PersonalInfoFields = () => {
   return (
@@ -19,23 +20,46 @@ const PersonalInfoFields = () => {
         </div>
       </div>
       <div className={styles.container}>
-        <div className={styles.inputContainer}>
-          <span>Email address *</span>
-          <input type="text" />
+        <div className={styles.emailContainer}>
+          <span>
+            Email address <span>*</span>
+          </span>
+          <div className={styles.emailField}>
+            <Image src={'/icons/mail.svg'} alt="mail" width={20} height={20} />
+            <input type="email" placeholder="Novatorimagaria@gmail.com" />
+          </div>
         </div>
         <div className={styles.inputContainer}>
-          <span>Country *</span>
+          <span>
+            Country <span>*</span>
+          </span>
           <Select className={styles.select} />
         </div>
       </div>
       <div className={styles.container}>
-        <div className={styles.inputContainer}>
-          <span>Current Password *</span>
-          <input type="text" />
+        <div className={styles.passwordContainer}>
+          <span>Current Password</span>
+          <div className={styles.passwordField}>
+            <input type="password" />
+            <Image
+              src={'/icons/passwordedit.svg'}
+              alt="mail"
+              width={20}
+              height={20}
+            />
+          </div>
         </div>
-        <div className={styles.inputContainer}>
-          <span>New Password *</span>
-          <input type="text" />
+        <div className={styles.passwordContainer}>
+          <span>New Password</span>
+          <div className={styles.passwordField}>
+            <input type="password" />
+            <Image
+              src={'/icons/passwordedit.svg'}
+              alt="mail"
+              width={20}
+              height={20}
+            />
+          </div>
         </div>
       </div>
       <div className={styles.buttons}>
