@@ -14,6 +14,6 @@ export enum buttonbackgroundColorEnum {
 }
 
 export enum innerContentIconEnum {
-  wpIcon = 'icons/wpIcon.svg',
-  siteIcon = 'icons/siteIcon.svg',
+  wpIcon = '/icons/wpIcon.svg',
+  siteIcon = '/icons/siteIcon.svg',
 }

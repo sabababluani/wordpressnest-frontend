@@ -9,8 +9,13 @@ const GeoApi = () => {
         <GeoApiTable />
         <GeoApiTable />
       </div>
-      <div className={styles.clientContainer}> 
-        <ClientApiTable />
+      <div className={styles.containerWrapper}>
+        <div className={styles.clientContainer}>
+          <ClientApiTable />
+        </div>
+        <div className={styles.clientContainer}>
+          <ClientApiTable />
+        </div>
       </div>
     </div>
   );

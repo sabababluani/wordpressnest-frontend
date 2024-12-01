@@ -11,7 +11,7 @@ import useSWR from 'swr';
 
 const Navigation = (): JSX.Element => {
   const pathname = usePathname();
-  const [activeSite, setActiveSite] = useState<string | null>(null);
+  const [activeSite, setActiveSite] = useState<number | null>(null);
 
   const fetcher = (url: string) =>
     BaseApi.get(url).then((response) => response.data);
@@ -33,16 +33,18 @@ const Navigation = (): JSX.Element => {
   useEffect(() => {
     const storedSite = sessionStorage.getItem('activeSite');
     if (storedSite) {
-      setActiveSite(storedSite);
+      setActiveSite(Number(storedSite));
+    } else if (sitesData?.length) {
+      setActiveSite(sitesData[0].id);
     }
-  }, []);
+  }, [sitesData]);
 
-  const onSiteClick = (siteName: string): void => {
+  const onSiteClick = (siteId: number): void => {
     setActiveSite((prevActiveSite) => {
-      const newActiveSite = prevActiveSite === siteName ? null : siteName;
+      const newActiveSite = prevActiveSite === siteId ? null : siteId;
 
-      if (newActiveSite) {
-        sessionStorage.setItem('activeSite', newActiveSite);
+      if (newActiveSite !== null) {
+        sessionStorage.setItem('activeSite', newActiveSite.toString());
       } else {
         sessionStorage.removeItem('activeSite');
       }
@@ -56,91 +58,68 @@ const Navigation = (): JSX.Element => {
       <h2>
         <Link href="/">Hosting</Link>
       </h2>
-      {pathname === '/' ? (
-        <div className={styles.containerWrapper}>
-          <Link
-            href="/"
-            className={`${styles.container} ${
-              pathname === '/' ? styles.containerActive : ''
-            }`}
-          >
-            <Image
-              src={
-                pathname === '/'
-                  ? '/icons/Dashboardwhite.svg'
-                  : '/icons/Dashboard.svg'
-              }
-              alt="Dashboard icon"
-              width={24}
-              height={24}
-            />
-            <span>Dashboard</span>
-          </Link>
-          <Link
-            href="/wpsites"
-            className={`${styles.container} ${
-              pathname.includes('/wpsites') ? styles.containerActive : ''
-            }`}
-          >
-            <Image
-              src={
-                pathname.includes('/wpsites')
-                  ? '/icons/wordpress-circle-white.svg'
-                  : '/icons/wordpress-circle.svg'
-              }
-              alt="WordPress sites icon"
-              width={24}
-              height={24}
-            />
-            <span>WordPress sites</span>
-          </Link>
-        </div>
-      ) : (
-        <div className={styles.invisible}></div>
-      )}
-
+      <div className={styles.containerWrapper}>
+        <Link
+          href="/"
+          className={`${styles.container} ${
+            pathname === '/' ? styles.containerActive : ''
+          }`}
+        >
+          <Image
+            src={
+              pathname === '/'
+                ? '/icons/Dashboardwhite.svg'
+                : '/icons/Dashboard.svg'
+            }
+            alt="Dashboard icon"
+            width={24}
+            height={24}
+          />
+          <span>Dashboard</span>
+        </Link>
+        <Link
+          href="/wpsites"
+          className={`${styles.container} ${
+            pathname.includes('/wpsites') ? styles.containerActive : ''
+          }`}
+        >
+          <Image
+            src={
+              pathname.includes('/wpsites')
+                ? '/icons/wordpress-circle-white.svg'
+                : '/icons/wordpress-circle.svg'
+            }
+            alt="WordPress sites icon"
+            width={24}
+            height={24}
+          />
+          <span>WordPress sites</span>
+        </Link>
+      </div>
       <div className={styles.sitesContainer}>
         <span>Sites</span>
         <div className={styles.sitesWrapper}>
-          {pathname === '/'
-            ? sitesData?.map((site) => (
-                <div key={site.siteTitle}>
-                  <div
-                    className={`${styles.sites} ${
-                      activeSite === site.siteTitle ? styles.sitesActive : ''
-                    }`}
-                    onClick={() => onSiteClick(site.siteTitle)}
-                  >
-                    <Image
-                      src="/icons/twitter.svg"
-                      alt={`${site.siteTitle} icon`}
-                      width={24}
-                      height={24}
-                    />
-                    <span>{site.siteTitle}</span>
-                  </div>
-                  {activeSite === site.siteTitle && <NavigationLine />}
-                </div>
-              ))
-            : settingsData.map((site) => (
-                <div key={site.siteTitle}>
-                  <div
-                    className={`${styles.sites} ${
-                      activeSite === site.siteTitle ? styles.sitesActive : ''
-                    }`}
-                    onClick={() => onSiteClick(site.siteTitle)}
-                  >
-                    <Image
-                      src="/icons/twitter.svg"
-                      alt={`${site.siteTitle} icon`}
-                      width={24}
-                      height={24}
-                    />
-                    <span>{site.siteTitle}</span>
-                  </div>
-                  {activeSite === site.siteTitle && <NavigationLine />}
-                </div>
-              ))}
+          {sitesData?.map((site) => (
+            <div key={site.id}>
+              <div
+                className={`${styles.sites} ${
+                  activeSite === site.id ? styles.sitesActive : ''
+                }`}
+                onClick={() => onSiteClick(site.id)}
+              >
+                {/* <Image
+                  src="/icons/twitter.svg"
+                  alt={`${site.siteTitle} icon`}
+                  width={24}
+                  height={24}
+                /> */}
+                <span>{site.siteTitle}.com</span>
+              </div>
+              {activeSite === site.id && (
+                <NavigationLine basePath={`/${site.id}`} />
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </div>

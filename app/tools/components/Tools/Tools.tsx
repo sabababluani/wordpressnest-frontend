@@ -43,7 +43,7 @@ const Tools = (props: ToolsDataPropsInterface): JSX.Element => {
           </div>
         )}
         {props.buttonActive && (
-          <div className={styles.buttonContainer}  >
+          <div className={styles.buttonContainer}>
             <div className={styles.innerContentWrapper}>
               {props.buttonIconActivate && (
                 <Image

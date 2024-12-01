@@ -28,7 +28,7 @@ const SftpShh = (props: SftpShhPropsInterface): JSX.Element => {
                 <Image
                   width={24}
                   height={24}
-                  src={'icons/pencil.svg'}
+                  src={'/icons/pencil.svg'}
                   alt={'pencil icon'}
                 />
               </button>
@@ -56,7 +56,7 @@ const SftpShh = (props: SftpShhPropsInterface): JSX.Element => {
                 <Image
                   width={24}
                   height={24}
-                  src={'icons/pencil.svg'}
+                  src={'/icons/pencil.svg'}
                   alt={'pencil icon'}
                 />
               </button>
@@ -76,7 +76,7 @@ const SftpShh = (props: SftpShhPropsInterface): JSX.Element => {
                 <Image
                   width={24}
                   height={24}
-                  src={'icons/pencil.svg'}
+                  src={'/icons/pencil.svg'}
                   alt={'pencil icon'}
                 />
               </button>
@@ -101,7 +101,7 @@ const SftpShh = (props: SftpShhPropsInterface): JSX.Element => {
                   <Image
                     width={24}
                     height={24}
-                    src={'icons/downloadIcon.svg'}
+                    src={'/icons/downloadIcon.svg'}
                     alt={'download icon'}
                   />
                 </button>

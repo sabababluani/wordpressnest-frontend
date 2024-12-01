@@ -9,8 +9,10 @@ import EditModal from '../EditModal/EditModal';
 import { UsersTablePropsInterface } from './interfaces/users-table-props.interface';
 import BaseApi from '@/app/api/BaseApi';
 import useSWR, { mutate } from 'swr';
+import { useParams } from 'next/navigation';
 
 const UsersTable: React.FC = () => {
+  const { id } = useParams();
   const [selectionType] = useState<'checkbox'>('checkbox');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedUser, setSelectedUser] =
@@ -18,8 +20,9 @@ const UsersTable: React.FC = () => {
 
   const fetcher = (url: string) =>
     BaseApi.get(url).then((response) => response.data);
+
   const { data: wpUsers } = useSWR<UsersTablePropsInterface[]>(
-    'wp-cli/wpuser/list',
+    `wp-cli/wpuser/list?setupId=${id}`,
     fetcher
   );
 
@@ -35,8 +38,8 @@ const UsersTable: React.FC = () => {
 
   const onUserDelete = async (userId: number) => {
     try {
-      await BaseApi.post('wp-cli/wpuser/delete', { userId });
-      mutate('wp-cli/wpuser/list');
+      await BaseApi.post(`wp-cli/wpuser/delete?setupId=${id}`, { userId });
+      mutate(`wp-cli/wpuser/list?setupId=${id}`);
     } catch (error) {
       console.log(error);
     }

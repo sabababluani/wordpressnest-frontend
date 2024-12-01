@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import useSWR, { mutate } from 'swr';
-import { Alert, Table } from 'antd';
-import type { TableColumnsType } from 'antd';
+import { Table, TableColumnsType } from 'antd';
+import { useParams } from 'next/navigation';
 import BaseApi from '@/app/api/BaseApi';
 import styles from '@/app/domains/components/DomainsTable/DomainsTable.module.scss';
 import Button from '@/app/components/Button/Button';
@@ -15,21 +15,24 @@ const fetcher = (url: string) =>
   BaseApi.get(url).then((response) => response.data);
 
 const ThemeTable: React.FC = () => {
+  const { id } = useParams();
   const [searchValue, setSearchValue] = useState('');
 
   const { data: themes } = useSWR<ThemesTablePropsInterface[]>(
-    `wp-cli/theme/list?search=${searchValue}`,
+    `wp-cli/theme/list?setupId=${id}&search=${searchValue}`,
     fetcher
   );
 
   const handleReload = () => {
-    mutate(`wp-cli/theme/list?search=${searchValue}`);
+    mutate(`wp-cli/theme/list?setupId=${id}&search=${searchValue}`);
   };
 
   const onHandleUpdate = async (themeName: string) => {
     try {
-      await BaseApi.post('wp-cli/theme/update', { theme: themeName });
-      mutate(`wp-cli/theme/list?search=${searchValue}`);
+      await BaseApi.post(`wp-cli/theme/update?setupId=${id}`, {
+        theme: themeName,
+      });
+      mutate(`wp-cli/theme/list?setupId=${id}&search=${searchValue}`);
     } catch (error) {
       alert(error);
     }
@@ -37,7 +40,9 @@ const ThemeTable: React.FC = () => {
 
   const onHandleActive = async (themeName: string) => {
     try {
-      await BaseApi.post('wp-cli/theme/activate', { theme: themeName });
+      await BaseApi.post(`wp-cli/theme/activate?setupId=${id}`, {
+        theme: themeName,
+      });
 
       if (themes) {
         const updatedThemes = themes.map((theme) =>
@@ -45,7 +50,11 @@ const ThemeTable: React.FC = () => {
             ? { ...theme, status: 'active' }
             : { ...theme, status: 'inactive' }
         );
-        mutate(`wp-cli/theme/list?search=${searchValue}`, updatedThemes, true);
+        mutate(
+          `wp-cli/theme/list?setupId=${id}&search=${searchValue}`,
+          updatedThemes,
+          true
+        );
       }
     } catch (error) {
       console.error(error);
@@ -150,7 +159,7 @@ const ThemeTable: React.FC = () => {
               backgroundColor={buttonbackgroundColorEnum.grey}
               innerContent={'Reload'}
               innerContentIconActive
-              innerContentIcon={'icons/reload.svg'}
+              innerContentIcon={'/icons/reload.svg'}
               onClick={handleReload}
             />
           </div>
