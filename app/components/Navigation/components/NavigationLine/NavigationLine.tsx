@@ -16,11 +16,7 @@ const NavigationLine = ({ basePath }: NavigationLineProps): JSX.Element => {
       <div className={styles.sitesInfoImage}>
         {pathname === '/settings'}
         <Image
-          src={
-            pathname.includes('/invoices')
-              ? 'icons/miniline.svg'
-              : 'icons/line.svg'
-          }
+          src={'/icons/line.svg'}
           alt={'Navigation line'}
           width={16}
           height={462}
