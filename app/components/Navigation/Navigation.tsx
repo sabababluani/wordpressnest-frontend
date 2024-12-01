@@ -15,10 +15,20 @@ const Navigation = (): JSX.Element => {
 
   const fetcher = (url: string) =>
     BaseApi.get(url).then((response) => response.data);
+
   const { data: sitesData } = useSWR<NavigationPropsInterface[]>(
     '/setup/wordpress',
     fetcher
   );
+
+  const settingsData = [
+    {
+      siteTitle: 'My Account',
+    },
+    {
+      siteTitle: 'My Plan',
+    },
+  ];
 
   useEffect(() => {
     const storedSite = sessionStorage.getItem('activeSite');
@@ -44,68 +54,93 @@ const Navigation = (): JSX.Element => {
   return (
     <div className={styles.wrapper}>
       <h2>
-        <Link href={'/'}>Hosting</Link>
+        <Link href="/">Hosting</Link>
       </h2>
-      <div className={styles.containerWrapper}>
-        <Link
-          href="/"
-          className={`${styles.container} ${
-            pathname === '/' ? styles.containerActive : ''
-          }`}
-        >
-          <Image
-            src={
-              pathname === '/'
-                ? 'icons/Dashboardwhite.svg'
-                : 'icons/Dashboard.svg'
-            }
-            alt="Dashboard icon"
-            width={24}
-            height={24}
-          />
-          <span>Dashboard</span>
-        </Link>
-        <Link
-          href="/wpsites"
-          className={`${styles.container} ${
-            pathname.includes('/wpsites') ? styles.containerActive : ''
-          }`}
-        >
-          <Image
-            src={
-              pathname === '/wpsites'
-                ? 'icons/wordpress-circle-white.svg'
-                : 'icons/wordpress-circle.svg'
-            }
-            alt="WordPress sites icon"
-            width={24}
-            height={24}
-          />
-          <span>WordPress sites</span>
-        </Link>
-      </div>
+      {pathname === '/' ? (
+        <div className={styles.containerWrapper}>
+          <Link
+            href="/"
+            className={`${styles.container} ${
+              pathname === '/' ? styles.containerActive : ''
+            }`}
+          >
+            <Image
+              src={
+                pathname === '/'
+                  ? '/icons/Dashboardwhite.svg'
+                  : '/icons/Dashboard.svg'
+              }
+              alt="Dashboard icon"
+              width={24}
+              height={24}
+            />
+            <span>Dashboard</span>
+          </Link>
+          <Link
+            href="/wpsites"
+            className={`${styles.container} ${
+              pathname.includes('/wpsites') ? styles.containerActive : ''
+            }`}
+          >
+            <Image
+              src={
+                pathname.includes('/wpsites')
+                  ? '/icons/wordpress-circle-white.svg'
+                  : '/icons/wordpress-circle.svg'
+              }
+              alt="WordPress sites icon"
+              width={24}
+              height={24}
+            />
+            <span>WordPress sites</span>
+          </Link>
+        </div>
+      ) : (
+        <div className={styles.invisible}></div>
+      )}
+
       <div className={styles.sitesContainer}>
         <span>Sites</span>
         <div className={styles.sitesWrapper}>
-          {sitesData?.map((site) => (
-            <div key={site.siteTitle}>
-              <div
-                className={`${styles.sites} ${
-                  activeSite === site.siteTitle ? styles.sitesActive : ''
-                }`}
-                onClick={() => onSiteClick(site.siteTitle)}
-              >
-                <Image
-                  src="/public/icons/twitter.svg"
-                  alt={`${site.siteTitle} icon`}
-                  width={24}
-                  height={24}
-                />
-                <span>{site.siteTitle}.com</span>
-              </div>
-              {activeSite === site.siteTitle && <NavigationLine />}
-            </div>
-          ))}
+          {pathname === '/'
+            ? sitesData?.map((site) => (
+                <div key={site.siteTitle}>
+                  <div
+                    className={`${styles.sites} ${
+                      activeSite === site.siteTitle ? styles.sitesActive : ''
+                    }`}
+                    onClick={() => onSiteClick(site.siteTitle)}
+                  >
+                    <Image
+                      src="/icons/twitter.svg"
+                      alt={`${site.siteTitle} icon`}
+                      width={24}
+                      height={24}
+                    />
+                    <span>{site.siteTitle}</span>
+                  </div>
+                  {activeSite === site.siteTitle && <NavigationLine />}
+                </div>
+              ))
+            : settingsData.map((site) => (
+                <div key={site.siteTitle}>
+                  <div
+                    className={`${styles.sites} ${
+                      activeSite === site.siteTitle ? styles.sitesActive : ''
+                    }`}
+                    onClick={() => onSiteClick(site.siteTitle)}
+                  >
+                    <Image
+                      src="/icons/twitter.svg"
+                      alt={`${site.siteTitle} icon`}
+                      width={24}
+                      height={24}
+                    />
+                    <span>{site.siteTitle}</span>
+                  </div>
+                  {activeSite === site.siteTitle && <NavigationLine />}
+                </div>
+              ))}
         </div>
       </div>
     </div>
