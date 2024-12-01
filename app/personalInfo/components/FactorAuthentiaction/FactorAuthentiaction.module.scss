@@ -1,0 +1,33 @@
+.wrapper {
+  flex: 1;
+  border: 1px solid #dcdfe1;
+  border-radius: 12px;
+}
+
+.header {
+  padding: 16px 24px;
+  background-color: #f0f3f5;
+}
+
+.header p {
+  color: #11141a;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.container p {
+  color: #707276;
+  font-weight: 500;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
+}
+
+.button {
+  max-width: 99px;
+  width: 100%;
+}
