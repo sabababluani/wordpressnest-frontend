@@ -65,7 +65,7 @@ const PersonalInfoFields = () => {
       <div className={styles.buttons}>
         <div className={styles.grayButton}>
           <Button
-            backgroundColor={buttonbackgroundColorEnum.grey}
+            backgroundColor={buttonbackgroundColorEnum.white}
             innerContent="Cancel"
           />
         </div>

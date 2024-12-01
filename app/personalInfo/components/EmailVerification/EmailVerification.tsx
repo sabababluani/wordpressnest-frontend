@@ -20,7 +20,7 @@ const EmailVerification = () => {
         </p>
         <div className={styles.button}>
           <Button
-            backgroundColor={buttonbackgroundColorEnum.grey}
+            backgroundColor={buttonbackgroundColorEnum.white}
             innerContent="Send verification email"
           />
         </div>

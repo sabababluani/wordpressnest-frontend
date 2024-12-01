@@ -15,7 +15,7 @@ const FactorAuthentication = () => {
         </p>
         <div className={styles.button}>
           <Button
-            backgroundColor={buttonbackgroundColorEnum.grey}
+            backgroundColor={buttonbackgroundColorEnum.white}
             innerContent="Connect"
           />
         </div>
