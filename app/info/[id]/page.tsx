@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import useSWR from 'swr';
-import { useParams } from 'next/navigation'; // Import useParams
+import { useParams } from 'next/navigation';
 import BasicDetails from '../components/BasicDetails/BasicDetails';
 import DataBaseAccess from '../components/DatabaseAccess/DatabaseAccess';
 import EnvironementDetails from '../components/EnvironmentDetails/EnvironmentDetails';
@@ -26,8 +26,7 @@ import BaseApi from '../../api/BaseApi';
 
 const Info = (): JSX.Element => {
   const { id } = useParams();
-
-  const idNumber = +id - 1;
+  const indexNumber = +id - 1;
 
   const [updateWpVersionData, setUpdateVersionData] = useState<
     wordPressLastUpdateVersionPropsInterface | undefined
@@ -102,7 +101,7 @@ const Info = (): JSX.Element => {
       <div className={styles.bottomContainer}>
         <BasicDetails
           locationDataCenter={'Hamburg (DE)'}
-          siteName={siteName[idNumber]?.siteTitle}
+          siteName={siteName[indexNumber]?.siteTitle}
           Labels={''}
         />
 
@@ -122,17 +121,17 @@ const Info = (): JSX.Element => {
           host={'66.854.861.865'}
           passwordExpiration={'None'}
           ssh={'SSH Novatori@66.854.861.865...'}
-          port={port[idNumber]?.instancePort}
+          port={port[indexNumber]?.instancePort}
           authenticationMethods={'SSH key , password'}
-          userName={username[idNumber]?.wpAdminUser}
+          userName={username[indexNumber]?.wpAdminUser}
           IpAllowed={'ALL IPs allowed'}
           password={'********'}
           ftp={'Novatori - sftp - config.zip'}
         />
 
         <DataBaseAccess
-          database={database[idNumber]?.Name}
-          databaseUsername={username[idNumber].wpAdminUser}
+          database={database[indexNumber]?.Name}
+          databaseUsername={username[indexNumber].wpAdminUser}
           databasePassword={'**********'}
           ip={'ALL IPs allowed'}
         />
