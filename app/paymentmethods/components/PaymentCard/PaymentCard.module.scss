@@ -1,0 +1,83 @@
+.wrapper {
+  max-width: 528px;
+  width: 100%;
+  border: 1px solid #e9eaeb;
+  padding: 24px 24px 36px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  border-radius: 12px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #e9eaeb;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header span {
+  color: #707276;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.default {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.default span {
+  color: #11141a;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.card img {
+  align-self: start;
+}
+
+.visaEnding {
+  color: #414651;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.expiry {
+  font-size: 14px;
+  color: #707276;
+}
+
+.email {
+  font-size: 14px;
+  color: #707276;
+}
+
+.emailContainer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}

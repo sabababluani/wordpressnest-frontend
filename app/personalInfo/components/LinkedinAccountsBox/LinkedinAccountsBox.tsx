@@ -16,14 +16,14 @@ const LinkedinAccountsBox = () => {
         <div className={styles.githubContainer}>
           <Image src={'/github.svg'} alt="github" width={48} height={48} />
           <Button
-            backgroundColor={buttonbackgroundColorEnum.grey}
+            backgroundColor={buttonbackgroundColorEnum.white}
             innerContent="Connect"
           />
         </div>
         <div className={styles.gitLabContainer}>
           <Image src={'/gitlab.svg'} alt="github" width={48} height={48} />
           <Button
-            backgroundColor={buttonbackgroundColorEnum.grey}
+            backgroundColor={buttonbackgroundColorEnum.white}
             innerContent="Connect"
           />
         </div>
