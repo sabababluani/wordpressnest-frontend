@@ -186,18 +186,18 @@ const CompanySettingsLine = (): JSX.Element => {
         </Link>
 
         <Link
-          href={'/labels'}
+          href={'/sitelabels'}
           className={`${styles.infoButton} ${
-            pathname.includes('/labels') ? styles.infoButtonClicked : ''
+            pathname.includes('/sitelabels') ? styles.infoButtonClicked : ''
           }`}
         >
           <Image
             src={
-              pathname.includes('/labels')
+              pathname.includes('/sitelabels')
                 ? '/icons/labels.svg'
                 : '/icons/labels.svg'
             }
-            alt={'labels'}
+            alt={'sitelabels'}
             width={20}
             height={20}
           />
@@ -205,18 +205,18 @@ const CompanySettingsLine = (): JSX.Element => {
         </Link>
 
         <Link
-          href={'/activity'}
+          href={'/useractivity'}
           className={`${styles.infoButton} ${
-            pathname.includes('activity') ? styles.infoButtonClicked : ''
+            pathname.includes('/useractivity') ? styles.infoButtonClicked : ''
           }`}
         >
           <Image
             src={
-              pathname.includes('activity')
+              pathname.includes('/useractivity')
                 ? '/icons/activity.svg'
                 : '/icons/activity.svg'
             }
-            alt={'activity'}
+            alt={'useractivity'}
             width={20}
             height={20}
           />

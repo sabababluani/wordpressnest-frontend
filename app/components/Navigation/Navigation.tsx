@@ -1,8 +1,9 @@
 'use client';
+
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState, useEffect } from 'react';
 import styles from './Navigation.module.scss';
 import NavigationLine from './components/NavigationLine/NavigationLine';
 import { NavigationPropsInterface } from './interfaces/navigation.props.interface';
@@ -10,6 +11,7 @@ import BaseApi from '@/app/api/BaseApi';
 import useSWR from 'swr';
 import UsersSettingsLine from './components/UsersSettingsLine/UsersSettingsLine';
 import CompanySettingsLine from './components/CompanySettingsLine/CompanySettingsLine';
+import { allowedPaths } from './utils/pathnames';
 
 const Navigation = (): JSX.Element => {
   const pathname = usePathname();
@@ -31,7 +33,15 @@ const Navigation = (): JSX.Element => {
     if (storedSite) {
       setActiveSite(Number(storedSite));
     }
-  }, [sitesData]);
+
+    if (pathname.includes('/personalInfo')) {
+      setActiveStaticComponent(1);
+    }
+
+    if (pathname.includes('plans')) {
+      setActiveStaticComponent(2);
+    }
+  }, [pathname, sitesData]);
 
   const onSiteClick = (siteId: number): void => {
     setActiveSite((prevActiveSite) => {
@@ -52,6 +62,8 @@ const Navigation = (): JSX.Element => {
       prevActive === componentId ? null : componentId
     );
   };
+
+  const isAllowedPath = allowedPaths.includes(pathname);
 
   return (
     <div className={styles.wrapper}>
@@ -95,16 +107,7 @@ const Navigation = (): JSX.Element => {
           />
           <span>WordPress sites</span>
         </Link>
-        {(pathname === '/billing' ||
-          pathname === '/personalinfo' ||
-          pathname === '/plans' ||
-          pathname === '/invoices' ||
-          pathname === '/paymentmethods' ||
-          pathname === '/apikeys' ||
-          pathname === '/refferals' ||
-          pathname === '/notifications' ||
-          pathname === '/personalInfo' ||
-          pathname === '/access') && (
+        {isAllowedPath && (
           <>
             <div className={styles.sitesWrapper}>
               <div key={2}>
