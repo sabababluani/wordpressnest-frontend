@@ -1,0 +1,34 @@
+.container {
+  width: 100%;
+  max-width: 290px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 8px;
+  border: 1px solid #dcdfe1;
+  background: #11141a;
+}
+
+.headline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  color: #fff;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  text-transform: capitalize;
+}
+
+.funds {
+  color: #fff;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 18px;
+}
