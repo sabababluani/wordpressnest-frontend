@@ -1,0 +1,40 @@
+.container :global .ant-table {
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  max-width: 1575px;
+  margin: 0 auto;
+}
+
+.userCell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.container :global .ant-table-cell {
+  color: #11141a !important;
+  font-size: 16px !important;
+  font-style: normal !important;
+  font-weight: 500 !important;
+  line-height: 24px !important;
+}
+
+.container :global .ant-table-thead tr .ant-table-cell {
+  color: #707276 !important;
+  font-size: 16px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 24px !important;
+}
+
+.container :global .ant-table-row .ant-table-cell {
+  padding-left: 20px !important;
+}
