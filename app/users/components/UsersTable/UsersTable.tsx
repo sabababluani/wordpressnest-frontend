@@ -22,7 +22,7 @@ const UsersTable: React.FC = () => {
     BaseApi.get(url).then((response) => response.data);
 
   const { data: wpUsers } = useSWR<UsersTablePropsInterface[]>(
-    `wp-cli/wpuser/list?setupId=${id}`,
+    `wp-cli/wpuser/${id}`,
     fetcher
   );
 
@@ -38,8 +38,8 @@ const UsersTable: React.FC = () => {
 
   const onUserDelete = async (userId: number) => {
     try {
-      await BaseApi.post(`wp-cli/wpuser/delete?setupId=${id}`, { userId });
-      mutate(`wp-cli/wpuser/list?setupId=${id}`);
+      await BaseApi.delete(`wp-cli/wpuser/${id}?WpUserId=${userId}`);
+      mutate(`wp-cli/wpuser/${id}`);
     } catch (error) {
       console.log(error);
     }

@@ -21,48 +21,41 @@ const PluginTable: React.FC = () => {
   const [searchValue, setSearchValue] = useState('');
 
   const { data: plugins } = useSWR<PluginDataPropsInterface[]>(
-    `wp-cli/plugin/list?setupId=${id}&search=${searchValue}`,
+    `wp-cli/plugin/${id}/?search=${searchValue}`,
     fetcher
   );
 
   const onHandleUpdate = async (pluginName: string) => {
     try {
-      await BaseApi.post(`wp-cli/plugin/update?setupId=${id}`, {
-        id,
-        plugin: pluginName,
-      });
-      mutate(`wp-cli/plugin/list?setupId=${id}&search=${searchValue}`);
+      await BaseApi.put(`wp-cli/plugin/update/${id}?plugin=${pluginName}`);
+      mutate(`wp-cli/plugin/${id}?search=${searchValue}`);
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
 
   const onHandleActive = async (pluginName: string) => {
     try {
-      await BaseApi.post(`wp-cli/plugin/activate?setupId=${id}`, {
-        id,
-        plugin: pluginName,
-      });
-      mutate(`wp-cli/plugin/list?setupId=${id}&search=${searchValue}`);
+      await BaseApi.patch(`wp-cli/plugin/activate/${id}?plugin=${pluginName}`);
+      mutate(`wp-cli/plugin/${id}/?search=${searchValue}`);
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
 
   const onHandleDeactivate = async (pluginName: string) => {
     try {
-      await BaseApi.post(`wp-cli/plugin/deactivate?setupId=${id}`, {
-        id,
-        plugin: pluginName,
-      });
-      mutate(`wp-cli/plugin/list?setupId=${id}&search=${searchValue}`);
+      await BaseApi.patch(
+        `wp-cli/plugin/deactivate/${id}?plugin=${pluginName}`
+      );
+      mutate(`wp-cli/plugin/${id}/?search=${searchValue}`);
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
 
   const handleReload = () => {
-    mutate(`wp-cli/plugin/list?setupId=${id}&search=${searchValue}`);
+    mutate(`wp-cli/plugin/${id}/?search=${searchValue}`);
   };
 
   const columns: TableColumnsType<PluginDataPropsInterface> = [

@@ -19,20 +19,18 @@ const ThemeTable: React.FC = () => {
   const [searchValue, setSearchValue] = useState('');
 
   const { data: themes } = useSWR<ThemesTablePropsInterface[]>(
-    `wp-cli/theme/list?setupId=${id}&search=${searchValue}`,
+    `wp-cli/theme/${id}/?search=${searchValue}`,
     fetcher
   );
 
   const handleReload = () => {
-    mutate(`wp-cli/theme/list?setupId=${id}&search=${searchValue}`);
+    mutate(`wp-cli/theme/${id}/?search=${searchValue}`);
   };
 
   const onHandleUpdate = async (themeName: string) => {
     try {
-      await BaseApi.post(`wp-cli/theme/update?setupId=${id}`, {
-        theme: themeName,
-      });
-      mutate(`wp-cli/theme/list?setupId=${id}&search=${searchValue}`);
+      await BaseApi.put(`wp-cli/theme/update/${id}?theme=${themeName}`);
+      mutate(`wp-cli/theme/${id}/?search=${searchValue}`);
     } catch (error) {
       alert(error);
     }
@@ -40,24 +38,13 @@ const ThemeTable: React.FC = () => {
 
   const onHandleActive = async (themeName: string) => {
     try {
-      await BaseApi.post(`wp-cli/theme/activate?setupId=${id}`, {
+      await BaseApi.patch(`wp-cli/theme/activate/${id}`, {
         theme: themeName,
       });
 
-      if (themes) {
-        const updatedThemes = themes.map((theme) =>
-          theme.name === themeName
-            ? { ...theme, status: 'active' }
-            : { ...theme, status: 'inactive' }
-        );
-        mutate(
-          `wp-cli/theme/list?setupId=${id}&search=${searchValue}`,
-          updatedThemes,
-          true
-        );
-      }
+      mutate(`wp-cli/theme/${id}/?search=${searchValue}`);
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
 

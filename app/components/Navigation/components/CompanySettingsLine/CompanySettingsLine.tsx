@@ -55,7 +55,6 @@ const CompanySettingsLine = (): JSX.Element => {
           />
           <span>Invoices</span>
         </Link>
-
         <Link
           href={'/paymentmethods'}
           className={`${styles.infoButton} ${
@@ -93,42 +92,42 @@ const CompanySettingsLine = (): JSX.Element => {
           />
           <span>Billing details</span>
         </Link>
-
         <Link
-          href={'/referall'}
+          href={'/refferals'}
           className={`${styles.infoButton} ${
-            pathname.includes('/referall') ? styles.infoButtonClicked : ''
+            pathname.includes('/refferals') ? styles.infoButtonClicked : ''
           }`}
         >
           <Image
             src={
-              pathname.includes('/referall')
+              pathname.includes('/refferals')
                 ? '/icons/referall.svg'
                 : '/icons/referall.svg'
             }
-            alt={'referall'}
+            alt={'refferals'}
             width={20}
             height={20}
           />
           <span>Refferals</span>
         </Link>
         <Link
-          href={'/api'}
+          href={'/apikeys'}
           className={`${styles.infoButton} ${
-            pathname.includes('/api') ? styles.infoButtonClicked : ''
+            pathname.includes('/apikeys') ? styles.infoButtonClicked : ''
           }`}
         >
           <Image
             src={
-              pathname.includes('/api') ? '/icons/api.svg' : '/icons/api.svg'
+              pathname.includes('/apikeys')
+                ? '/icons/api.svg'
+                : '/icons/api.svg'
             }
-            alt={'api'}
+            alt={'apikeys'}
             width={20}
             height={20}
           />
           <span>API keys</span>
         </Link>
-
         <Link
           href={'/registry'}
           className={`${styles.infoButton} ${
