@@ -99,7 +99,12 @@ const Navigation = (): JSX.Element => {
           pathname === '/personalinfo' ||
           pathname === '/plans' ||
           pathname === '/invoices' ||
-          pathname === '/paymentmethods') && (
+          pathname === '/paymentmethods' ||
+          pathname === '/apikeys' ||
+          pathname === '/refferals' ||
+          pathname === '/notifications' ||
+          pathname === '/personalInfo' ||
+          pathname === '/access') && (
           <>
             <div className={styles.sitesWrapper}>
               <div key={2}>

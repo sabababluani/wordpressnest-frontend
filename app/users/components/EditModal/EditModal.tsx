@@ -10,32 +10,28 @@ import { UsersTablePropsInterface } from '../UsersTable/interfaces/users-table-p
 import { Select } from 'antd';
 import { useParams } from 'next/navigation';
 
-const EditModal = ({
-  user,
-  onClose,
-}: UsersModalPropsInterface & {
-  user: UsersTablePropsInterface;
-}): JSX.Element => {
+const EditModal = (
+  props: UsersModalPropsInterface & {
+    user: UsersTablePropsInterface;
+  }
+): JSX.Element => {
   const { id } = useParams();
-  const [selectedRole, setSelectedRole] = useState<string>(user.roles);
+  const [selectedRole, setSelectedRole] = useState<string>(props.user.roles);
 
   const fetcher = (url: string) =>
     BaseApi.get(url).then((response) => response.data);
 
-  const { data: roles } = useSWR(
-    id ? `wp-cli/wprole/list?setupId=${id}` : null,
-    fetcher
-  );
+  const { data: roles } = useSWR(id ? `wp-cli/wprole/${id}` : null, fetcher);
 
   useEffect(() => {
-    setSelectedRole(user.roles);
-  }, [user.roles]);
+    setSelectedRole(props.user.roles);
+  }, [props.user.roles]);
 
   const selectOptions =
     roles
       ?.filter(
         (role: { name: string }) =>
-          role.name.toLowerCase() !== user.roles.toLocaleLowerCase()
+          role.name.toLowerCase() !== props.user.roles.toLocaleLowerCase()
       )
       .map((role: { name: string }) => ({
         label: role.name,
@@ -44,28 +40,17 @@ const EditModal = ({
 
   const onHandleUpdate = async () => {
     try {
-      await BaseApi.post(`wp-cli/wprole/update?setupId=${id}`, {
-        userId: user.ID,
-        role: selectedRole.toLowerCase(),
-        setupId: id,
-      });
-
-      mutate(
-        `wp-cli/wpuser/list?setupId=${id}`,
-        (currentData: any) => {
-          if (!currentData) return;
-          return currentData.map((currentUser: UsersTablePropsInterface) =>
-            currentUser.ID === user.ID
-              ? { ...currentUser, roles: selectedRole.toLowerCase() }
-              : currentUser
-          );
-        },
-        false
+      await BaseApi.put(
+        `wp-cli/wprole/${id}/${
+          props.user.ID
+        }?role=${selectedRole.toLocaleLowerCase()}`
       );
 
-      onClose();
+      mutate(`wp-cli/wpuser/${id}`);
+
+      props.onClose();
     } catch (error) {
-      console.error('Error updating role:', error);
+      console.log(error);
     }
   };
 
@@ -79,7 +64,7 @@ const EditModal = ({
           width={24}
           height={24}
           className={styles.close}
-          onClick={onClose}
+          onClick={props.onClose}
         />
       </div>
       <div className={styles.container}>
@@ -95,9 +80,9 @@ const EditModal = ({
             />
             <div className={styles.userInfo}>
               <span className={styles.name}>
-                {user.first_name} {user.last_name}
+                {props.user.first_name} {props.user.last_name}
               </span>
-              <span className={styles.email}>{user.user_email}</span>
+              <span className={styles.email}>{props.user.user_email}</span>
             </div>
           </div>
           <div className={styles.selectWrapper}>
@@ -115,7 +100,7 @@ const EditModal = ({
           <Button
             innerContent="Cancel"
             backgroundColor={buttonbackgroundColorEnum.grey}
-            onClick={onClose}
+            onClick={props.onClose}
           />
           <Button
             innerContent="Save Changes"
