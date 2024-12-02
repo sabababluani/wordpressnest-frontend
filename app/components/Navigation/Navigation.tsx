@@ -8,10 +8,15 @@ import NavigationLine from './components/NavigationLine/NavigationLine';
 import { NavigationPropsInterface } from './interfaces/navigation.props.interface';
 import BaseApi from '@/app/api/BaseApi';
 import useSWR from 'swr';
+import UsersSettingsLine from './components/UsersSettingsLine/UsersSettingsLine';
+import CompanySettingsLine from './components/CompanySettingsLine/CompanySettingsLine';
 
 const Navigation = (): JSX.Element => {
   const pathname = usePathname();
   const [activeSite, setActiveSite] = useState<number | null>(null);
+  const [activeStaticComponent, setActiveStaticComponent] = useState<
+    number | null
+  >(null);
 
   const fetcher = (url: string) =>
     BaseApi.get(url).then((response) => response.data);
@@ -21,21 +26,10 @@ const Navigation = (): JSX.Element => {
     fetcher
   );
 
-  const settingsData = [
-    {
-      siteTitle: 'My Account',
-    },
-    {
-      siteTitle: 'My Plan',
-    },
-  ];
-
   useEffect(() => {
     const storedSite = sessionStorage.getItem('activeSite');
     if (storedSite) {
       setActiveSite(Number(storedSite));
-    } else if (sitesData?.length) {
-      setActiveSite(sitesData[0].id);
     }
   }, [sitesData]);
 
@@ -51,6 +45,12 @@ const Navigation = (): JSX.Element => {
 
       return newActiveSite;
     });
+  };
+
+  const onStaticComponentClick = (componentId: number): void => {
+    setActiveStaticComponent((prevActive) =>
+      prevActive === componentId ? null : componentId
+    );
   };
 
   return (
@@ -95,6 +95,60 @@ const Navigation = (): JSX.Element => {
           />
           <span>WordPress sites</span>
         </Link>
+        {(pathname === '/billing' ||
+          pathname === '/personalinfo' ||
+          pathname === '/plans' ||
+          pathname === '/invoices' ||
+          pathname === '/paymentmethods') && (
+          <>
+            <div className={styles.sitesWrapper}>
+              <div key={2}>
+                <div
+                  className={`${styles.container} ${
+                    activeStaticComponent === 1 ? styles.sitesActive : ''
+                  }`}
+                  onClick={() => onStaticComponentClick(1)}
+                >
+                  <Image
+                    src={
+                      activeStaticComponent === 1
+                        ? 'icons/userssettingsactive.svg'
+                        : '/icons/userssettings.svg'
+                    }
+                    alt={'user'}
+                    width={24}
+                    height={24}
+                  />
+                  <span>User Settings</span>
+                </div>
+                {activeStaticComponent === 1 && <UsersSettingsLine />}
+              </div>
+            </div>
+            <div className={styles.sitesWrapper}>
+              <div key={3}>
+                <div
+                  className={`${styles.container} ${
+                    activeStaticComponent === 2 ? styles.sitesActive : ''
+                  }`}
+                  onClick={() => onStaticComponentClick(2)}
+                >
+                  <Image
+                    src={
+                      activeStaticComponent === 2
+                        ? '/icons/activebag.svg'
+                        : '/icons/bag.svg'
+                    }
+                    alt={'user'}
+                    width={24}
+                    height={24}
+                  />
+                  <span>Company Settings</span>
+                </div>
+                {activeStaticComponent === 2 && <CompanySettingsLine />}
+              </div>
+            </div>
+          </>
+        )}
       </div>
       <div className={styles.sitesContainer}>
         <span>Sites</span>
@@ -107,12 +161,6 @@ const Navigation = (): JSX.Element => {
                 }`}
                 onClick={() => onSiteClick(site.id)}
               >
-                {/* <Image
-                  src="/icons/twitter.svg"
-                  alt={`${site.siteTitle} icon`}
-                  width={24}
-                  height={24}
-                /> */}
                 <span>{site.siteTitle}.com</span>
               </div>
               {activeSite === site.id && (

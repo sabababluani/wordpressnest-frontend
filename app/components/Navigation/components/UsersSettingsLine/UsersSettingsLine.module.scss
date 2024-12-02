@@ -1,0 +1,58 @@
+.sitesInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: tearDown 0.8s cubic-bezier(0.25, 0.8, 0.5, 1);
+  height: 140px;
+  margin-bottom: -24px;
+}
+
+.infoWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 24px 12px 24px 0;
+}
+
+.infoButton {
+  padding: 6px 0 8px 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 188px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid transparent;
+}
+
+.infoButtonClicked {
+  background-color: #e4e6e9;
+  border: 1px solid #dcdfe1;
+}
+
+.infoButtonClicked span {
+  color: #11141a !important;
+}
+
+.infoButton span {
+  font-weight: 500;
+  font-size: 14px;
+  color: #545a67;
+}
+
+@keyframes tearDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sitesInfoImage {
+  position: relative;
+  bottom: 6px;
+  left: 2px;
+}
