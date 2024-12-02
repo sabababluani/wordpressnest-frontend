@@ -15,21 +15,33 @@ const HostingPlan = () => {
         />
       </div>
       <div className={styles.container}>
-        <div className={styles.section}>
-          <span className={styles.title}>Name</span>
-          <span className={styles.info}>Single 35k Monthly</span>
+        <div className={styles.sectionWrapper}>
+          <div className={styles.section}>
+            <span className={styles.title}>Name</span>
+            <span className={styles.info}>Single 35k Monthly</span>
+          </div>
+          <div className={styles.border}></div>
         </div>
-        <div className={styles.section}>
-          <span className={styles.title}>Type</span>
-          <span className={styles.info}>Monthly</span>
+        <div className={styles.sectionWrapper}>
+          <div className={styles.section}>
+            <span className={styles.title}>Type</span>
+            <span className={styles.info}>Monthly</span>
+          </div>
+          <div className={styles.border}></div>
         </div>
-        <div className={styles.section}>
-          <span className={styles.title}>Price</span>
-          <span className={styles.info}>35USD</span>
+        <div className={styles.sectionWrapper}>
+          <div className={styles.section}>
+            <span className={styles.title}>Price</span>
+            <span className={styles.info}>35USD</span>
+          </div>
+          <div className={styles.border}></div>
         </div>
-        <div className={styles.section}>
-          <span className={styles.title}>Renewal date</span>
-          <span className={styles.info}>Nov 26, 2024</span>
+        <div className={styles.sectionWrapper}>
+          <div className={styles.section}>
+            <span className={styles.title}>Renewal date</span>
+            <span className={styles.info}>Nov 26, 2024</span>
+          </div>
+          <div className={styles.border}></div>
         </div>
       </div>
     </div>
