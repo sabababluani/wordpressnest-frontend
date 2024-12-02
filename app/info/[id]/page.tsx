@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import useSWR from 'swr';
-import { useParams } from 'next/navigation';
 import BasicDetails from '../components/BasicDetails/BasicDetails';
 import DataBaseAccess from '../components/DatabaseAccess/DatabaseAccess';
 import EnvironementDetails from '../components/EnvironmentDetails/EnvironmentDetails';
@@ -24,16 +23,14 @@ import {
 } from '../interfaces/info-props.interface';
 import BaseApi from '../../api/BaseApi';
 
-const Info = (): JSX.Element => {
-  const { id } = useParams();
-  const indexNumber = +id - 1;
+const Info = ({params}: {params: {id: number}}): JSX.Element => {
 
   const [updateWpVersionData, setUpdateVersionData] = useState<
     wordPressLastUpdateVersionPropsInterface | undefined
   >({
     id: 0,
     version: '',
-    locale: '',
+    locale: '', 
     update: '',
     url: '',
     message: '',
@@ -55,10 +52,10 @@ const Info = (): JSX.Element => {
   >(`/setup/wordpress/username`, fetcher);
   const { data: database, error: databaseError } = useSWR<
     DatabaseNamePropsInterface[]
-  >(`/wp-cli/db/size/?setupId=${id}`, fetcher);
+  >(`/wp-cli/db/name/${params.id}`, fetcher);
 
   const onUpdateWpVersionClick = () => {
-    BaseApi.get(`/wp-cli/wpcore/check-update/?setupId=${id}`).then((res) =>
+    BaseApi.get(`/wp-cli/wpcore/check-update/?setupId=${params.id}`).then((res) =>
       setUpdateVersionData(res.data)
     );
   };
@@ -101,7 +98,7 @@ const Info = (): JSX.Element => {
       <div className={styles.bottomContainer}>
         <BasicDetails
           locationDataCenter={'Hamburg (DE)'}
-          siteName={siteName[indexNumber]?.siteTitle}
+          siteName={siteName[params.id - 1]?.siteTitle}
           Labels={''}
         />
 
@@ -121,20 +118,20 @@ const Info = (): JSX.Element => {
           host={'66.854.861.865'}
           passwordExpiration={'None'}
           ssh={'SSH Novatori@66.854.861.865...'}
-          port={port[indexNumber]?.instancePort}
+          port={port[params.id - 1]?.instancePort}
           authenticationMethods={'SSH key , password'}
-          userName={username[indexNumber]?.wpAdminUser}
+          userName={username[params.id - 1]?.wpAdminUser}
           IpAllowed={'ALL IPs allowed'}
           password={'********'}
           ftp={'Novatori - sftp - config.zip'}
         />
 
         <DataBaseAccess
-          database={database[indexNumber]?.Name}
-          databaseUsername={username[indexNumber].wpAdminUser}
+          database={database[params.id - 1]?.Name}
+          databaseUsername={username[params.id - 1].wpAdminUser}
           databasePassword={'**********'}
           ip={'ALL IPs allowed'}
-        />
+        />                                                                                                                                                          
 
         <Site
           mainCaption={'Reset site'}

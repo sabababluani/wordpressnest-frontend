@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import BaseApi from './app/api/BaseApi';
 
 export default async function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
