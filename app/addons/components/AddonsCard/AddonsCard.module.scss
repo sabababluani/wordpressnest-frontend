@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid #dcdfe1;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  padding: 24px 24px 16px 14px;
+}
+
+.container {
+  width: 100%;
+  max-width: 780px;
+  display: flex;
+  flex-direction: column;
+}
+
+.headline {
+  color: #11141a;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.text {
+  color: rgba(17, 20, 26, 0.8);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+}
+
+.pricingWrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 24px 20px 24px;
+  border: 1px solid #dcdfe1;
+  border-radius: 0 0 8px 8px;
+}
