@@ -3,18 +3,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './NavigationLine.module.scss';
+import { NavigationLineProps } from './interfaces/navigation-line-props.interface';
 
-interface NavigationLineProps {
-  basePath: string;
-}
-
-const NavigationLine = ({ basePath }: NavigationLineProps): JSX.Element => {
+const NavigationLine = (props: NavigationLineProps): JSX.Element => {
   const pathname = usePathname();
 
   return (
     <div className={styles.sitesInfo}>
       <div className={styles.sitesInfoImage}>
-        {pathname === '/settings'}
         <Image
           src={'/icons/line.svg'}
           alt={'Navigation line'}
@@ -24,16 +20,16 @@ const NavigationLine = ({ basePath }: NavigationLineProps): JSX.Element => {
       </div>
       <div className={styles.infoWrapper}>
         <Link
-          href={`/info${basePath}`}
+          href={`/info${props.basePath}`}
           className={`${styles.infoButton} ${
-            pathname.includes(`/info${basePath}`)
+            pathname.includes(`/info${props.basePath}`)
               ? styles.infoButtonClicked
               : ''
           }`}
         >
           <Image
             src={
-              pathname.includes(`/info${basePath}`)
+              pathname.includes(`/info${props.basePath}`)
                 ? '/icons/info.svg'
                 : '/icons/infolight.svg'
             }
@@ -62,7 +58,6 @@ const NavigationLine = ({ basePath }: NavigationLineProps): JSX.Element => {
           />
           <span>Domains</span>
         </Link>
-
         <Link
           href={'/backup'}
           className={`${styles.infoButton} ${
@@ -81,7 +76,6 @@ const NavigationLine = ({ basePath }: NavigationLineProps): JSX.Element => {
           />
           <span>Backup</span>
         </Link>
-
         <Link
           href={'/tools'}
           className={`${styles.infoButton} ${
@@ -100,7 +94,6 @@ const NavigationLine = ({ basePath }: NavigationLineProps): JSX.Element => {
           />
           <span>Tools</span>
         </Link>
-
         <Link
           href={'/redirects'}
           className={`${styles.infoButton} ${
@@ -120,16 +113,16 @@ const NavigationLine = ({ basePath }: NavigationLineProps): JSX.Element => {
           <span>Redirects</span>
         </Link>
         <Link
-          href={`/themesandplugins${basePath}`}
+          href={`/themesandplugins${props.basePath}`}
           className={`${styles.infoButton} ${
-            pathname.includes(`/themesandplugins${basePath}`)
+            pathname.includes(`/themesandplugins${props.basePath}`)
               ? styles.infoButtonClicked
               : ''
           }`}
         >
           <Image
             src={
-              pathname.includes(`/themesandplugins${basePath}`)
+              pathname.includes(`/themesandplugins${props.basePath}`)
                 ? '/icons/pluginsbold.svg'
                 : '/icons/plugins.svg'
             }
@@ -139,16 +132,15 @@ const NavigationLine = ({ basePath }: NavigationLineProps): JSX.Element => {
           />
           <span>Themes and Plugins</span>
         </Link>
-
         <Link
-          href={'/'}
+          href={'/addons'}
           className={`${styles.infoButton} ${
-            pathname.includes('ss') ? styles.infoButtonClicked : ''
+            pathname.includes('/addons') ? styles.infoButtonClicked : ''
           }`}
         >
           <Image
             src={
-              pathname.includes('ss')
+              pathname.includes('addons')
                 ? '/icons/addonebold.svg'
                 : '/icons/addone.svg'
             }
@@ -158,7 +150,6 @@ const NavigationLine = ({ basePath }: NavigationLineProps): JSX.Element => {
           />
           <span>Add-ons</span>
         </Link>
-
         <Link
           href={'/ipdeny'}
           className={`${styles.infoButton} ${
@@ -177,7 +168,6 @@ const NavigationLine = ({ basePath }: NavigationLineProps): JSX.Element => {
           />
           <span>IP Deny</span>
         </Link>
-
         <Link
           href={'/analytics'}
           className={`${styles.infoButton} ${
@@ -196,7 +186,6 @@ const NavigationLine = ({ basePath }: NavigationLineProps): JSX.Element => {
           />
           <span>Analytics</span>
         </Link>
-
         <Link
           href={'/caching'}
           className={`${styles.infoButton} ${
@@ -215,18 +204,17 @@ const NavigationLine = ({ basePath }: NavigationLineProps): JSX.Element => {
           />
           <span>Caching</span>
         </Link>
-
         <Link
-          href={`/users${basePath}`}
+          href={`/users${props.basePath}`}
           className={`${styles.infoButton} ${
-            pathname.includes(`/users${basePath}`)
+            pathname.includes(`/users${props.basePath}`)
               ? styles.infoButtonClicked
               : ''
           }`}
         >
           <Image
             src={
-              pathname.includes(`/users${basePath}`)
+              pathname.includes(`/users${props.basePath}`)
                 ? '/icons/usersmanagmentbold.svg'
                 : '/icons/usersmanagment.svg'
             }
@@ -236,7 +224,6 @@ const NavigationLine = ({ basePath }: NavigationLineProps): JSX.Element => {
           />
           <span>Users Management</span>
         </Link>
-
         <Link
           href={'/logs'}
           className={`${styles.infoButton} ${
