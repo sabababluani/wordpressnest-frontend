@@ -10,7 +10,7 @@ const Search: React.FC<SearchPropsInterface> = (props) => {
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setInputValue(e.target.value);
-    props.onChange(e.target.value);
+    props.onChange!(e.target.value);
   };
 
   return (

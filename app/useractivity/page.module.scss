@@ -27,8 +27,8 @@
 
 .container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 24px;
   padding: 16px 24px 24px 24px;
 }
 
@@ -38,4 +38,15 @@
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
+}
+
+.searchWrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.select {
+  width: 100%;
+  max-width: 311px;
 }
