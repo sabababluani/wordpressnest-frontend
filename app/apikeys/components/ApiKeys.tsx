@@ -7,9 +7,7 @@ const ApiKeys = () => {
     <div className={styles.wrapper}>
       <div className={styles.header}>
         <div className={styles.head}>
-          <span className={styles.headline}>
-            WordPress Hosting plan and add-ons
-          </span>
+          <span className={styles.headline}>API keys</span>
           <span className={styles.text}>
             Earn credits by reffering your friend to hosting, earnings accrue
             when referrals start using and paying for hosting services. you can
