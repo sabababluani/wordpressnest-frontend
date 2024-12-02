@@ -1,0 +1,39 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 235px;
+  border-radius: 12px;
+  position: fixed;
+  top: 100px;
+  background-color: #ffffff;
+  z-index: 1000;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 24px;
+}
+
+.container p {
+  color: #11141a;
+  font-weight: 500;
+}
+
+.logOut {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 24px;
+  border-top: 1px solid #dcdfe1;
+  background-color: #f0f3f5;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  overflow: hidden;
+}
+
+.logOut p {
+  color: #11141a;
+  font-weight: 500;
+}

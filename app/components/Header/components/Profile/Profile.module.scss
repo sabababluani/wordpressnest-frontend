@@ -4,6 +4,10 @@
   gap: 8px;
 }
 
+.container img {
+  cursor: pointer;
+}
+
 .image {
   border-radius: 50%;
 }
@@ -18,3 +22,4 @@
 .name {
   text-wrap: nowrap;
 }
+
