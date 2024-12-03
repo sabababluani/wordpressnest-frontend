@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { ActivityTablePropsInterface } from './interface/activity-table-props.interface';
 import { ActivityTableDummy } from './activityTableDummy/activity-table-dummy';
 
-const columns: ColumnsType<TableData> = [
+const columns: ColumnsType<ActivityTablePropsInterface> = [
   {
     title: 'User',
     dataIndex: 'user',

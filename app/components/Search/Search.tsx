@@ -16,6 +16,7 @@ const Search: React.FC<SearchPropsInterface> = (props) => {
   return (
     <div
       className={`${styles.container} ${props.isPadded ? styles.padded : ''}`}
+      onClick={props.onClick}
     >
       <input
         type="search"
