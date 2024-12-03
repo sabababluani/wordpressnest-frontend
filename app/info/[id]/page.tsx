@@ -70,10 +70,10 @@ const Info = ({params}: {params: {id: number}}): JSX.Element => {
   if (portError) return <div>Error loading data...</div>;
 
   if (!username) return <div>Loading...</div>;
-  if (usernameError) return <div>Error loading data...</div>;
+  // if (usernameError) return <div>Error loading data...</div>;
 
   if (!database) return <div>Loading...</div>;
-  if (databaseError) return <div>Error loading data...</div>;
+  // if (databaseError) return <div>Error loading data...</div>;
 
   return (
     <div className={styles.mainContainer}>
