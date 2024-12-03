@@ -35,6 +35,13 @@ const data: TableData[] = [
     time: 302,
     status: 'success',
   },
+  {
+    key: '3',
+    user: 'Beqa Jikurishvili (me)',
+    action: 'cancel migration',
+    time: 302,
+    status: 'success',
+  },
 ];
 
 const columns: ColumnsType<TableData> = [
@@ -75,7 +82,12 @@ const columns: ColumnsType<TableData> = [
     key: 'status',
     render: (status) =>
       status === 'success' ? (
-        <Image src="/icons/success.svg" width={24} height={24} alt="success" />
+        <Image
+          src="/icons/succesfull.svg"
+          width={24}
+          height={24}
+          alt="success"
+        />
       ) : (
         <Image src="/icons/fail.svg" width={24} height={24} alt="fail" />
       ),
