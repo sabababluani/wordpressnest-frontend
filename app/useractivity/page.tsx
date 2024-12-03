@@ -1,9 +1,17 @@
+'use client';
+import { Select } from 'antd';
 import Search from '../components/Search/Search';
 import SitesSelect from '../components/SitesSelect/SitesSelect';
 import ActivityTable from './components/ActivityTable/ActivityTable';
 import styles from './page.module.scss';
+import { useState } from 'react';
 
 const Useractivity = () => {
+  const [, setSelectState] = useState<string>('');
+
+  const onSelectChange = (value: string) => {
+    setSelectState(value);
+  };
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
@@ -15,7 +23,16 @@ const Useractivity = () => {
             <Search placeholder="Search Sites" />
           </div>
           <div className={styles.select}>
-            <SitesSelect />
+            <Select
+              onChange={onSelectChange}
+              className={styles.selectStyle}
+              placeholder="All sites"
+              options={[
+                { value: '1', label: '1' },
+                { value: '2', label: '2' },
+                { value: '3', label: '3' },
+              ]}
+            />
           </div>
         </div>
         <ActivityTable />
