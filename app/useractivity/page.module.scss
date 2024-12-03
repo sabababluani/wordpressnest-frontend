@@ -47,6 +47,17 @@
 }
 
 .select {
-  width: 100%;
   max-width: 311px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.selectStyle {
+  width: 100%;
+  height: 44px;
+}
+
+.select :global .ant-select-single .ant-select-selector {
+  border-radius: 8px;
 }

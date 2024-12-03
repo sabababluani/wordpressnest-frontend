@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { ActivityTablePropsInterface } from './interface/activity-table-props.interface';
 import { ActivityTableDummy } from './activityTableDummy/activity-table-dummy';
 
-const columns: ColumnsType<ActivityTablePropsInterface> = [
+const columns: ColumnsType<TableData> = [
   {
     title: 'User',
     dataIndex: 'user',
@@ -45,7 +45,12 @@ const columns: ColumnsType<ActivityTablePropsInterface> = [
     key: 'status',
     render: (status) =>
       status === 'success' ? (
-        <Image src="/icons/success.svg" width={24} height={24} alt="success" />
+        <Image
+          src="/icons/succesfull.svg"
+          width={24}
+          height={24}
+          alt="success"
+        />
       ) : (
         <Image src="/icons/fail.svg" width={24} height={24} alt="fail" />
       ),

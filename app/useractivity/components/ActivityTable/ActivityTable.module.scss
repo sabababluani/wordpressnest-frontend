@@ -33,8 +33,47 @@
   font-style: normal !important;
   font-weight: 400 !important;
   line-height: 24px !important;
+  background-color: #fff !important;
 }
 
 .container :global .ant-table-row .ant-table-cell {
   padding-left: 20px !important;
+}
+
+.username {
+  color: #11141a;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.container :global .ant-table-cell::before {
+  border: none !important;
+}
+
+.container {
+  border-radius: 12px;
+  border: 1px solid #dcdfe1;
+  padding: 8px;
+}
+
+.container
+  :global
+  .ant-table-wrapper
+  .ant-table-tbody
+  > .ant-table-row:last-child
+  > .ant-table-cell {
+  border-bottom: none !important;
+}
+
+.container
+  :global
+  .ant-table-wrapper
+  .ant-table-thead
+  > tr
+  > th:not(:last-child):not(.ant-table-selection-column):not(
+    .ant-table-row-expand-icon-cell
+  ):not([colspan])::before {
+  display: none;
 }
