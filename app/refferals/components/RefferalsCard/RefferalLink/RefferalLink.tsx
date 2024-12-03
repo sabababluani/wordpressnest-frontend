@@ -1,7 +1,18 @@
-import Button from '@/app/components/Button/Button';
+'use client';
+
 import styles from './RefferalLink.module.scss';
 import Image from 'next/image';
+import { useState } from 'react';
+
 const RefferalLink = () => {
+  const [inputValue] = useState('https://hosting.ge/?Novatori=ganvitarebas');
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(inputValue).then(() => {
+      alert('Copied to clipboard!');
+    });
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
@@ -9,17 +20,22 @@ const RefferalLink = () => {
       </div>
       <div className={styles.container}>
         <div className={styles.linkWrapper}>
-          <span className={styles.title}>Refferal link</span>
+          <span className={styles.title}>Referral link</span>
           <div className={styles.link}>
-            <input type="text" className={styles.input} />
-            <div className={styles.copyButton}>
+            <input
+              type="text"
+              className={styles.input}
+              defaultValue={inputValue}
+              readOnly
+            />
+            <div className={styles.copyButton} onClick={handleCopy}>
               <Image src="/icons/copy.svg" width={20} height={20} alt="copy" />
               <span className={styles.copy}>Copy</span>
             </div>
           </div>
         </div>
         <span className={styles.text}>
-          By partipicating in the refferal program in any way or using referal
+          By participating in the referral program in any way or using referral
           credits, you agree to these terms
         </span>
       </div>

@@ -1,17 +1,19 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import styles from './Profile.module.scss';
-import { ProfilePropsInterface } from './interfaces/profile-props.inteface';
 import LogOut from '@/app/components/LogOut/LogOut';
+import { ProfilePropsInterface } from './interfaces/profile-props.inteface';
 
 const Profile = (props: ProfilePropsInterface): JSX.Element => {
   const [logOut, setLogOut] = useState(false);
   const logOutRef = useRef<HTMLDivElement | null>(null);
+  const toggleButtonRef = useRef<HTMLImageElement | null>(null);
 
   const handleClickOutside = (event: MouseEvent) => {
     if (
       logOutRef.current &&
-      !logOutRef.current.contains(event.target as Node)
+      !logOutRef.current.contains(event.target as Node) &&
+      toggleButtonRef.current !== event.target
     ) {
       setLogOut(false);
     }
@@ -20,18 +22,22 @@ const Profile = (props: ProfilePropsInterface): JSX.Element => {
   useEffect(() => {
     if (logOut) {
       document.addEventListener('mousedown', handleClickOutside);
-    } else {
-      document.removeEventListener('mousedown', handleClickOutside);
     }
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
   }, [logOut]);
+
+  const handleToggle = () => {
+    setLogOut((prevState) => !prevState);
+  };
 
   const handleLinkClick = () => {
     setLogOut(false);
   };
 
   return (
-    <>
+    <div className={styles.wrapper}>
       <div className={styles.container}>
         <Image
           src="/profilepicture.png"
@@ -46,11 +52,16 @@ const Profile = (props: ProfilePropsInterface): JSX.Element => {
           width={24}
           height={24}
           alt="dropdown"
-          onClick={() => setLogOut((prevState) => !prevState)}
+          onClick={handleToggle}
+          ref={toggleButtonRef}
         />
       </div>
-      {logOut && <LogOut onLinkClick={handleLinkClick} />}
-    </>
+      {logOut && (
+        <div ref={logOutRef} className={styles.logout}>
+          <LogOut onLinkClick={handleLinkClick} />
+        </div>
+      )}
+    </div>
   );
 };
 

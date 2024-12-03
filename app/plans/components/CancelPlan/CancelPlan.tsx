@@ -21,7 +21,9 @@ const Cancelplan = () => {
         <p className={styles.text}>
           At the time of cancellation, all wordpress sites and all dns records
           of this account will be permanetly deleted.
-          <span className={styles.boldText}>We cannot undo this action or retrieve the data later.</span>
+          <span className={styles.boldText}>
+            We cannot undo this action or retrieve the data later.
+          </span>
         </p>
       </div>
     </div>

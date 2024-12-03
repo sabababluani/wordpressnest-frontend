@@ -3,15 +3,11 @@
 import styles from './HalfCutChart.module.scss';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, Tooltip, Legend, ArcElement, Title } from 'chart.js';
+import { HalfCutChartPropsInterface } from './interface/half-cut-chart-props.interface';
 
 ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
-interface HalfCutChartProps {
-  used: number;
-  full: number;
-}
-
-const HalfCutChart: React.FC<HalfCutChartProps> = ({ used, full }) => {
+const HalfCutChart: React.FC<HalfCutChartPropsInterface> = ({ used, full }) => {
   const remaining = full - used;
   const percentage = (used / full) * 100;
 
@@ -72,9 +68,7 @@ const HalfCutChart: React.FC<HalfCutChartProps> = ({ used, full }) => {
       </div>
       <div className={styles.containerWrapper}>
         <Doughnut data={chartData} options={options} />
-        <div className={styles.centerText}>
-          <span>{used}</span>
-        </div>
+        <span className={styles.centerText}>{used}</span>
       </div>
     </div>
   );

@@ -4,45 +4,8 @@ import { Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import styles from './ActivityTable.module.scss';
 import Image from 'next/image';
-
-interface TableData {
-  key: string;
-  user: string;
-  action: string;
-  time: number;
-  status: string;
-}
-
-const data: TableData[] = [
-  {
-    key: '1',
-    user: 'Beqa Jikurishvili (me)',
-    action: 'Edge cache in the live environment of tamoskin',
-    time: 302,
-    status: 'fail',
-  },
-  {
-    key: '2',
-    user: 'Beqa Jikurishvili (me)',
-    action: 'create draft migration',
-    time: 302,
-    status: 'success',
-  },
-  {
-    key: '3',
-    user: 'Beqa Jikurishvili (me)',
-    action: 'cancel migration',
-    time: 302,
-    status: 'success',
-  },
-  {
-    key: '3',
-    user: 'Beqa Jikurishvili (me)',
-    action: 'cancel migration',
-    time: 302,
-    status: 'success',
-  },
-];
+import { ActivityTablePropsInterface } from './interface/activity-table-props.interface';
+import { ActivityTableDummy } from './activityTableDummy/activity-table-dummy';
 
 const columns: ColumnsType<TableData> = [
   {
@@ -97,7 +60,11 @@ const columns: ColumnsType<TableData> = [
 const ActivityTable: React.FC = () => {
   return (
     <div className={styles.container}>
-      <Table dataSource={data} columns={columns} pagination={false} />
+      <Table
+        dataSource={ActivityTableDummy}
+        columns={columns}
+        pagination={false}
+      />
     </div>
   );
 };

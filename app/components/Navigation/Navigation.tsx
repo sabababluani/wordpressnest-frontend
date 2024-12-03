@@ -38,7 +38,7 @@ const Navigation = (): JSX.Element => {
       setActiveStaticComponent(1);
     }
 
-    if (pathname.includes('plans')) {
+    if (pathname.includes('/plans')) {
       setActiveStaticComponent(2);
     }
   }, [pathname, sitesData]);

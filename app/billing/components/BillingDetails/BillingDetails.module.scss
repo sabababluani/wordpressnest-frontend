@@ -34,6 +34,10 @@
 
 .types :global .ant-radio-inner::after {
   background-color: #11141a !important;
+  width: 30px;
+  height: 30px;
+  margin-block-start: -15px;
+  margin-inline-start: -15px;
 }
 
 .types :global .ant-radio-checked .ant-radio-inner {

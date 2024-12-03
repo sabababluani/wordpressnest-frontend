@@ -1,4 +1,4 @@
-import {DataType} from "@/app/redirects/components/interfaces/redirects-props.interface";
+import { DataType } from '@/app/redirects/components/interfaces/redirects-props.interface';
 
 export const data: DataType[] = [
   {
