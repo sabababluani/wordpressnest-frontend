@@ -84,7 +84,7 @@ const data: UserRecord[] = [
         email: 'Novatorimagari122@gmail.com',
         role: 'Company owner',
         access: 'All service',
-        image: '/myman.png',
+        image: '/profpicture.png',
         button: true,
     },
     {
@@ -93,7 +93,7 @@ const data: UserRecord[] = [
         email: 'team@example.com',
         role: 'Manager',
         access: 'Limited service',
-        image: '/myman.png',
+        image: '/profpicture.png',
         icon: 'icons/tabletrash.svg',
         iconSecond: 'icons/userman.svg',
     },
