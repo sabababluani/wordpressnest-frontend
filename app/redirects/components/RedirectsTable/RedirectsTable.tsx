@@ -1,7 +1,7 @@
 import { Table } from 'antd';
 import styles from './RedirectsTable.module.scss';
-import {DataType} from "@/app/redirects/components/interfaces/redirects-props.interface";
-import {data} from "@/app/redirects/components/dummydata/dummydata";
+import { DataType } from '@/app/redirects/components/interfaces/redirects-props.interface';
+import { data } from '@/app/redirects/components/dummydata/dummydata';
 
 const RedirectsTable = (): JSX.Element => {
   const columns = [
@@ -26,7 +26,7 @@ const RedirectsTable = (): JSX.Element => {
     onChange: (selectedRowKeys: React.Key[], selectedRows: DataType[]) => void;
   } = {
     onChange: (_selectedRowKeys, _selectedRows) => {
-      console.log(_selectedRowKeys , _selectedRows)
+      console.log(_selectedRowKeys, _selectedRows);
     },
   };
   return (

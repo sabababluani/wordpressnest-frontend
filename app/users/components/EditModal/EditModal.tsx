@@ -22,7 +22,7 @@ const EditModal = (
     BaseApi.get(url).then((response) => response.data);
 
   const { data: roles } = useSWR(id ? `wp-cli/wprole/${id}` : null, fetcher);
-
+  
   useEffect(() => {
     setSelectedRole(props.user.roles);
   }, [props.user.roles]);

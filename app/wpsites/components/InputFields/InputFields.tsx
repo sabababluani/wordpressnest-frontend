@@ -3,13 +3,7 @@ import { useForm } from 'react-hook-form';
 import classNames from 'classnames';
 import styles from './InputFields.module.scss';
 import BaseApi from '@/app/api/BaseApi';
-
-interface UseFormsPropsInterface {
-  wpAdminUser: string;
-  wpAdminPassword: string;
-  wpAdminEmail: string;
-  siteTitle: string;
-}
+import { InputFieldsPropsInterface } from './interfaces/input-fields-props.interface';
 
 const InputFields = () => {
   const {
@@ -17,7 +11,7 @@ const InputFields = () => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<UseFormsPropsInterface>({
+  } = useForm<InputFieldsPropsInterface>({
     defaultValues: {
       wpAdminUser: '',
       wpAdminPassword: '',
@@ -26,7 +20,7 @@ const InputFields = () => {
     },
   });
 
-  const onSubmit = async (data: UseFormsPropsInterface) => {
+  const onSubmit = async (data: InputFieldsPropsInterface) => {
     try {
       const trimmedObject = Object.fromEntries(
         Object.entries(data).map(([key, value]) => [key, value.trim()])

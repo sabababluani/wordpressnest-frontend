@@ -2,8 +2,6 @@ import Button from '@/app/components/Button/Button';
 import styles from './PlanAnalytics.module.scss';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import Cancelplan from '../CancelPlan/CancelPlan';
-import Image from 'next/image';
-import CdnUsage from '@/app/analytics/components/CdnUsage/CdnUsage';
 import ResourceInfoBox from '@/app/analytics/components/Resource/components/ResourceInfoBox/ResourceInfoBox';
 
 const PlanAnalytics = () => {

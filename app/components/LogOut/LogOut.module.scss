@@ -3,10 +3,9 @@
   flex-direction: column;
   width: 235px;
   border-radius: 12px;
-  position: fixed;
-  top: 100px;
   background-color: #ffffff;
-  z-index: 1000;
+  z-index: 10;
+  border: 1px solid #dcdfe1;
 }
 
 .container {

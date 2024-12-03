@@ -50,7 +50,7 @@ const Redirects = (): JSX.Element => {
           footer={null}
           closable={false}
         >
-          <RedirectsModal onClose={handleCancel}/>
+          <RedirectsModal onClose={handleCancel} />
         </Modal>
       </div>
     </div>

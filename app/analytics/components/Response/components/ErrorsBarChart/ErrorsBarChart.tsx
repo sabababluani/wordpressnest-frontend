@@ -13,6 +13,7 @@ import {
   Legend,
   TooltipItem,
 } from 'chart.js';
+import { ErrorsBarChartPropsInterface } from './interfaces/errors-bar-chart-props.interface';
 
 ChartJS.register(
   CategoryScale,
@@ -23,24 +24,8 @@ ChartJS.register(
   Legend
 );
 
-interface Dataset {
-  label: string;
-  data: number[];
-  backgroundColor: string;
-}
-
-interface ResolutionStackedBarChartProps {
-  datasets: Dataset[];
-  labels: string[][];
-  heading: string;
-}
-
-const ErrorsBarChart: React.FC<ResolutionStackedBarChartProps> = ({
-  datasets,
-  labels,
-  heading,
-}) => {
-  const totalValues = datasets.map((dataset) =>
+const ErrorsBarChart = (props: ErrorsBarChartPropsInterface) => {
+  const totalValues = props.datasets.map((dataset) =>
     dataset.data.reduce((a, b) => a + b, 0)
   );
 
@@ -92,8 +77,8 @@ const ErrorsBarChart: React.FC<ResolutionStackedBarChartProps> = ({
   };
 
   const barChartData = {
-    labels,
-    datasets: datasets.map((dataset) => ({
+    labels: props.labels,
+    datasets: props.datasets.map((dataset) => ({
       ...dataset,
       barThickness: 32,
       borderRadius: 6,
@@ -102,9 +87,9 @@ const ErrorsBarChart: React.FC<ResolutionStackedBarChartProps> = ({
 
   return (
     <div className={styles.wrapper}>
-      <h2>{heading}</h2>
+      <h2>{props.heading}</h2>
       <div className={styles.container}>
-        {datasets.map((dataset, index) => (
+        {props.datasets.map((dataset, index) => (
           <div key={dataset.label} className={styles.dotsWrapper}>
             <div
               className={styles.cube}

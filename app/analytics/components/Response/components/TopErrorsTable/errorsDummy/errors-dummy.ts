@@ -1,7 +1,7 @@
 export const errorsData = [
   {
     path: '/favicon.cio',
-    requests: '1,521', // renamed 'request' to 'requests'
+    requests: '1,521',
   },
   {
     path: '/ka-ge/-product-cattgory/%!14142^^%$%%$@14215124125501$$$014024',
