@@ -1,5 +1,4 @@
 import InvoicesSection from './components/InvoicesSection/InvoicesSection';
-// import InvoicesTable from './components/InvoicesTable/InvoicesTable';
 import styles from './page.module.scss';
 
 const invoices = () => {
