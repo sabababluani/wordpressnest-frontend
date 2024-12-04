@@ -6,6 +6,7 @@ import WordpressStat from '@/app/components/WordpressStat/WordpressStat';
 import { NavigationPropsInterface } from '../components/Navigation/interfaces/navigation.props.interface';
 import BaseApi from '../api/BaseApi';
 import useSWR from 'swr';
+import NotificationModal from '../components/NotificationModal/NotificationModal';
 
 const Home = () => {
   const fetcher = (url: string) =>
@@ -75,6 +76,7 @@ const Home = () => {
           />
         </div>
       </div>
+      <NotificationModal />
     </div>
   );
 };

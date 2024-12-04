@@ -82,11 +82,6 @@
   flex-direction: column;
 }
 
-.paginationWrapper :global .ant-pagination {
-  display: flex !important;
-  align-items: flex-end !important;
-}
-
 .paginationWrapper :global .ant-pagination .ant-pagination-item-active {
   border: none !important;
 }
