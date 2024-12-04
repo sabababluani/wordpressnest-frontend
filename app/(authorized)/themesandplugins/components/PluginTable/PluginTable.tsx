@@ -14,7 +14,7 @@ import Search from '@/app/components/Search/Search';
 const fetcher = (url: string) =>
   BaseApi.get(url).then((response) => response.data);
 
-const PluginTable: React.FC = () => {
+const PluginTable = () => {
   const { id } = useParams();
 
   const [selectionType] = useState<'checkbox'>('checkbox');

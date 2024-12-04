@@ -1,5 +1,6 @@
 'use client';
-import { useState } from 'react';
+
+import { useState, useEffect, useRef } from 'react';
 import { Modal } from 'antd';
 import Search from '../Search/Search';
 import styles from './Header.module.scss';
@@ -32,14 +33,16 @@ const Header = (): JSX.Element => {
         <NotificationBell />
         <Profile name="Beka Jikurishvili" />
       </div>
-      <Modal
-        footer={null}
-        closable={false}
-        onCancel={handleModalClose}
-        visible={isModalVisible}  
-      >
-        <SearchBox />
-      </Modal>
+      {isModalVisible && (
+        <Modal
+          footer={null}
+          closable={false}
+          onCancel={handleModalClose}
+          open={isModalVisible}
+        >
+          <SearchBox isVisable={isModalVisible} />
+        </Modal>
+      )}
     </div>
   );
 };

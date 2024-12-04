@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import styles from './SearchBox.module.scss';
 import { SearchBoxDummy } from './dummy/search-dummy';
+import { SearchBoxPropsInterface } from './interfaces/search-box-props.interface';
 
-const SearchBox = () => {
+const SearchBox = (props: SearchBoxPropsInterface) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [results, setResults] = useState<string[]>([]);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value;
@@ -23,6 +25,12 @@ const SearchBox = () => {
 
   const showNoResults = searchQuery && results.length === 0;
 
+  useEffect(() => {
+    if (props.isVisable && inputRef?.current) {
+      inputRef?.current?.focus();
+    }
+  }, [props.isVisable]);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
@@ -32,6 +40,7 @@ const SearchBox = () => {
           placeholder="Search"
           value={searchQuery}
           onChange={handleSearchChange}
+          ref={inputRef}
         />
       </div>
       <div className={styles.container}>
