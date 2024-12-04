@@ -12,5 +12,5 @@ export const allowedPaths = [
   '/useractivity',
   '/sitelabels',
   '/registry',
-  '/usersSettings',
+  '/userssettings',
 ];
