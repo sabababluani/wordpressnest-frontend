@@ -5,12 +5,14 @@ import React, { useState } from 'react';
 import styles from './Search.module.scss';
 import { SearchPropsInterface } from './intefaces/search-props.interfaces';
 
-const Search: React.FC<SearchPropsInterface> = (props) => {
+const Search = (props: SearchPropsInterface) => {
   const [inputValue, setInputValue] = useState<string>('');
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setInputValue(e.target.value);
-    props.onChange!(e.target.value);
+    if (!props.clickable) {
+      setInputValue(e.target.value);
+      props.onChange?.(e.target.value);
+    }
   };
 
   return (
@@ -24,6 +26,7 @@ const Search: React.FC<SearchPropsInterface> = (props) => {
         placeholder={props.placeholder}
         value={inputValue}
         onChange={onChange}
+        readOnly={props.clickable}
       />
       {!props.noIcon && (
         <Image src="/icons/search.svg" width={24} height={24} alt="search" />

@@ -167,18 +167,18 @@ const CompanySettingsLine = (): JSX.Element => {
         </Link>
 
         <Link
-          href={'/usersSettings'}
+          href={'/userssettings'}
           className={`${styles.infoButton} ${
-            pathname.includes('/usersSettings') ? styles.infoButtonClicked : ''
+            pathname.includes('/userssettings') ? styles.infoButtonClicked : ''
           }`}
         >
           <Image
             src={
-              pathname.includes('/usersSettings')
+              pathname.includes('/userssettings')
                 ? '/icons/users.svg'
                 : '/icons/users.svg'
             }
-            alt={'usersSettings'}
+            alt={'userssettings'}
             width={20}
             height={20}
           />

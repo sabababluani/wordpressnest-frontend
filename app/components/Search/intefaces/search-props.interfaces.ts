@@ -4,5 +4,6 @@ export interface SearchPropsInterface {
   noIcon?: boolean;
   inModal?: boolean;
   onChange?: (value: string) => void;
-  onClick?:() => void;
+  onClick?: () => void;
+  clickable?: boolean;
 }

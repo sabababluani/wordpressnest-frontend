@@ -27,6 +27,7 @@ const Header = (): JSX.Element => {
           placeholder="Search"
           onChange={() => {}}
           onClick={handleSearchClick}
+          clickable
         />
         <NotificationBell />
         <Profile name="Beka Jikurishvili" />
@@ -35,7 +36,7 @@ const Header = (): JSX.Element => {
         footer={null}
         closable={false}
         onCancel={handleModalClose}
-        visible={isModalVisible}
+        visible={isModalVisible}  
       >
         <SearchBox />
       </Modal>
