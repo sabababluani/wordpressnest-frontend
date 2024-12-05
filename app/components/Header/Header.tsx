@@ -8,6 +8,7 @@ import BreadCrumbs from './components/Breadcrumbs/Breadcrumbs';
 import NotificationBell from './components/NotificationBell/NotificationBell';
 import Profile from './components/Profile/Profile';
 import SearchBox from '../SearchBox/SearchBox';
+import NotificationModal from '../NotificationModal/NotificationModal';
 
 const Header = (): JSX.Element => {
   const [isModalVisible, setIsModalVisible] = useState(false);

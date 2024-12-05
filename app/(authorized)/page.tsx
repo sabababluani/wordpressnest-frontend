@@ -76,7 +76,6 @@ const Home = () => {
           />
         </div>
       </div>
-      <NotificationModal />
     </div>
   );
 };

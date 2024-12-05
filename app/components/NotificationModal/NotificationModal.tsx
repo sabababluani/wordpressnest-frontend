@@ -1,8 +1,37 @@
 import { Pagination } from 'antd';
 import styles from './NotificationModal.module.scss';
 import Image from 'next/image';
+import { useState } from 'react';
 
-const NotificationModal = () => {
+interface Notification {
+  id: number;
+  message: string;
+  timeAgo: string;
+  date: string;
+}
+
+interface NotificationModalProps {
+  onClose: () => void;
+  notifications: Notification[];
+}
+
+const NotificationModal = ({
+  onClose,
+  notifications,
+}: NotificationModalProps) => {
+  const [current, setCurrent] = useState(1);
+  const pageSize = 4;
+
+  const handlePageChange = (page: number) => {
+    setCurrent(page);
+  };
+
+  const startIndex = (current - 1) * pageSize;
+  const paginatedNotifications = notifications.slice(
+    startIndex,
+    startIndex + pageSize
+  );
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
@@ -16,48 +45,37 @@ const NotificationModal = () => {
           width={24}
           height={24}
           className={styles.close}
-          //   onClick={props.onClose}
+          onClick={onClose}
         />
       </div>
       <div className={styles.container}>
-        <span>No results found.</span>
-        <div className={styles.notification}>
-          <div className={styles.notificationContainer}>
-            <span className={styles.notificationText}>
-              Tips to make the most of hosting for your site
-            </span>
-            <span className={styles.timeAgo}>2 hour ago</span>
+        {paginatedNotifications.length === 0 ? (
+          <div className={styles.empty}>
+            <span>No results found.</span>
           </div>
-          <div>
-            <span className={styles.date}>Sep 17</span>
-          </div>
-        </div>
-        <div className={styles.notification}>
-          <div className={styles.notificationContainer}>
-            <span className={styles.notificationText}>
-              Tips to make the most of hosting for your site
-            </span>
-            <span className={styles.timeAgo}>2 hour ago</span>
-          </div>
-          <div>
-            <span className={styles.date}>Sep 17</span>
-          </div>
-        </div>
-        <div className={styles.notification}>
-          <div className={styles.notificationContainer}>
-            <span className={styles.notificationText}>
-              Tips to make the most of hosting for your site
-            </span>
-            <span className={styles.timeAgo}>2 hour ago</span>
-          </div>
-          <div>
-            <span className={styles.date}>Sep 17</span>
-          </div>
-        </div>
+        ) : (
+          paginatedNotifications.map((notification) => (
+            <div key={notification.id} className={styles.notification}>
+              <div className={styles.notificationContainer}>
+                <span className={styles.notificationText}>
+                  {notification.message}
+                </span>
+                <span className={styles.timeAgo}>{notification.timeAgo}</span>
+              </div>
+              <div>
+                <span className={styles.date}>{notification.date}</span>
+              </div>
+            </div>
+          ))
+        )}
       </div>
       <div className={styles.footer}>
         <div className={styles.paginationWrapper}>
           <Pagination
+            current={current}
+            pageSize={pageSize}
+            total={notifications.length}
+            onChange={handlePageChange}
             itemRender={(page, type) => {
               if (type === 'prev') {
                 return (
