@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Table } from 'antd';
+import { Modal, Table } from 'antd';
 import type { TableColumnsType } from 'antd';
 import Image from 'next/image';
 import styles from './page.module.scss';
@@ -11,9 +11,23 @@ import Button from '../../components/Button/Button';
 import { buttonbackgroundColorEnum } from '../../components/Button/enum/button.enum';
 import { domainsDummy } from './components/DomainsTable/domainsdummy/domains-dummy-data';
 import { DomainsTablePropsInterface } from './components/interfaces/domains-table-props.interface';
+import AddDomainModal from './components/AddDomainModal/AddDomainModal';
 
 const Domains = (): JSX.Element => {
   const [selectedRows, setSelectedRows] = useState<React.Key[]>([]);
+  const [isAddDomainModal, setIsAddDomainModal] = useState(false);
+
+  const showModal = () => {
+    setIsAddDomainModal(true);
+  };
+
+  const handleOk = () => {
+    setIsAddDomainModal(false);
+  };
+
+  const handleCancel = () => {
+    setIsAddDomainModal(false);
+  };
 
   const columns: TableColumnsType<DomainsTablePropsInterface> = [
     {
@@ -101,6 +115,7 @@ const Domains = (): JSX.Element => {
               <Button
                 backgroundColor={buttonbackgroundColorEnum.black}
                 innerContent={'Add Domains'}
+                onClick={showModal}
               />
             </>
           )}
@@ -118,6 +133,17 @@ const Domains = (): JSX.Element => {
           rowClassName={(record) => (record.isPrimary ? styles.primaryRow : '')}
         />
       </div>
+      <Modal
+        open={isAddDomainModal}
+        onCancel={handleCancel}
+        footer={null}
+        closable={false}
+        className={styles.modal}
+        width="auto"
+        centered
+      >
+        <AddDomainModal onClose={handleCancel} />
+      </Modal>
     </div>
   );
 };

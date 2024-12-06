@@ -1,0 +1,76 @@
+.verificationWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.middleVerification {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 96px;
+}
+
+.verificationValue {
+  border-left: 1px solid #dcdfe1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-left: 20px;
+  height: 96px;
+  flex: 1;
+}
+
+.record {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.verificationText {
+  color: #11141a;
+  font-size: 14px;
+}
+
+.txt {
+  font-weight: 600;
+  line-height: 24px;
+  color: #11141a;
+}
+
+.host {
+  color: #707276;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.hostingVerification {
+  color: #11141a;
+  font-weight: 500;
+  line-height: 32px;
+}
+
+.verificationValue span {
+  color: #707276;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.verificationValue p {
+  color: #11141a;
+  font-weight: 500;
+  line-height: 32px;
+}
+
+.verificationValue span {
+  color: #707276;
+  font-size: 14px;
+}
+
+.verificationButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  padding: 16px 24px 16px 0;
+}

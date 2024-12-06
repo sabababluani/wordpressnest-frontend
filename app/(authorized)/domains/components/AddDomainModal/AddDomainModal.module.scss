@@ -1,0 +1,204 @@
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f0f3f5;
+  border-radius: 12px 12px 0 0;
+  padding: 16px 24px;
+}
+
+.header img {
+  cursor: pointer;
+}
+
+.wrapper {
+  max-width: 800px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 12px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #11141a;
+}
+
+.grayCircle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #dcdfe1;
+}
+
+.line {
+  max-width: 358px;
+  width: 100%;
+  border-radius: 12px;
+  height: 5px;
+  background-color: #11141a;
+}
+
+.lineCircle {
+  max-width: 358px;
+  width: 100%;
+  border-radius: 12px;
+  height: 5px;
+  background-color: #dcdfe1;
+}
+
+.steper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  max-width: 374px;
+  width: 100%;
+}
+.steper {
+  cursor: pointer;
+
+  &.activeStep {
+    color: black;
+  }
+
+  &.inactiveStep {
+    color: gray;
+  }
+
+  .circle {
+    &.activeCircle {
+      background-color: black;
+    }
+
+    &.inactiveCircle {
+      background-color: gray;
+    }
+  }
+
+  .line {
+    &.activeLine {
+      background-color: black;
+    }
+
+    &.inactiveLine {
+      background-color: gray;
+    }
+  }
+}
+
+.steper span {
+  color: #11141a;
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+}
+
+.content span {
+  color: #11141a;
+  font-size: 14px;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 12px 24px;
+}
+
+.contentWrapper p {
+  color: #11141a;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.domainInputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.domainInputContainer input {
+  height: 48px;
+  border: 1px solid #dcdfe1;
+  border-radius: 12px;
+  padding-left: 16px;
+  outline: none;
+}
+
+.advanced {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.advanced span {
+  color: #11141a;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.check :global(.ant-checkbox-wrapper .ant-checkbox .ant-checkbox-inner) {
+  border: none !important;
+  width: 24px;
+  height: 24px;
+  background-color: #f0f3f5 !important;
+}
+
+.check
+  :global(.ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner) {
+  background-color: black !important;
+  border: none !important;
+}
+
+.check :global(.ant-checkbox-wrapper .ant-checkbox .ant-checkbox-inner::after) {
+  width: 7.1px !important;
+  height: 12px !important;
+}
+
+.check {
+  display: flex;
+  gap: 12px;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.textContent span {
+  color: #11141a;
+  font-weight: 500;
+}
+
+.textContent p {
+  color: #545a67;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.checkbox {
+  align-self: flex-start;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: end;
+  padding: 16px 0 24px 0;
+}

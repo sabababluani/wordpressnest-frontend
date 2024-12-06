@@ -4,8 +4,6 @@
   background-color: #fff;
   border-radius: 12px;
   border: 1px solid #dcdfe1;
-  position: absolute;
-  top: 50%;
 }
 
 .header {
@@ -28,13 +26,6 @@
   outline: none;
 }
 
-// .container > span {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   padding-top: 32px;
-// }
-
 .reloadContainer {
   display: flex;
   justify-content: center;
@@ -49,20 +40,6 @@
 .result span {
   color: #707276;
 }
-
-// .suggestions span {
-//   color: #707276;
-//   font-size: 16px;
-// }
-
-// .suggestions {
-//   display: flex;
-//   align-items: center;
-//   gap: 16px;
-//   height: 60px;
-//   width: 100%;
-//   padding: 16px 24px;
-// }
 
 .container {
   max-height: 340px;

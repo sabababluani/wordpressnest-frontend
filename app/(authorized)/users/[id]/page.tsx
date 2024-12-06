@@ -158,7 +158,13 @@ const Users = (): JSX.Element => {
             loading={wpUsers === undefined}
             rowKey="ID"
           />
-          <Modal open={isEditModalOpen} footer={null} closable={false}>
+          <Modal
+            open={isEditModalOpen}
+            footer={null}
+            closable={false}
+            width="auto"
+            centered
+          >
             {selectedUser && (
               <EditModal user={selectedUser} onClose={handleCancelEdit} />
             )}
@@ -167,12 +173,13 @@ const Users = (): JSX.Element => {
       </div>
       <div className={styles.modal}>
         <Modal
-          title=""
           open={isModalOpen}
           onOk={handleOk}
           onCancel={handleCancel}
           footer={null}
           closable={false}
+          width="auto"
+          centered
         >
           <UsersModal onClose={handleCancel} />
         </Modal>

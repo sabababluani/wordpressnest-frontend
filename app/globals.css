@@ -48,3 +48,7 @@ a {
 .ant-modal-content {
   padding: 0 !important;
 }
+
+/* .ant-modal {
+  width: unset !important;
+} */
