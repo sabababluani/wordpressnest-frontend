@@ -3,4 +3,5 @@ export interface AddonsCardPropsInterface {
   text: string;
   price: string;
   add: string;
+  onClick?: (e: React.MouseEvent) => void;
 }
