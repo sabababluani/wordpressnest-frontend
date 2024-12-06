@@ -6,7 +6,7 @@ import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.e
 import useSWR, { mutate } from 'swr';
 import BaseApi from '@/app/api/BaseApi';
 import { UsersModalPropsInterface } from '../interfaces/modal.props.interface';
-import { UsersTablePropsInterface } from '../UsersTable/interfaces/users-table-props.interface';
+import { UsersTablePropsInterface } from '../interfaces/users-table-props.interface';
 import { Select } from 'antd';
 import { useParams } from 'next/navigation';
 
