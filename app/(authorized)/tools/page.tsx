@@ -1,11 +1,19 @@
+'use client';
+
+import { useState } from 'react';
 import styles from './page.module.scss';
 import Tools from '@/app/(authorized)/tools/components/Tools/Tools';
 
-const tools = (): JSX.Element => {
+const ToolsPage = (): JSX.Element => {
+  const [, setIsActive] = useState<boolean>(false);
+
   return (
     <div className={styles.mainContainer}>
       <div className={styles.topContainer}>
         <span className={styles.mainCaptionStyle}>Tools</span>
+        <button onClick={() => setIsActive((prev) => !prev)}>
+          activate module
+        </button>
       </div>
       <div className={styles.bottomContainer}>
         <Tools
@@ -47,7 +55,7 @@ const tools = (): JSX.Element => {
         />
         <Tools
           iconPath={'protectionIcon.svg'}
-          description={'Add simple. htpasswd protection to your environment.'}
+          description={'Add simple .htpasswd protection to your environment.'}
           caption={'Password Protection'}
           toggleActive={true}
         />
@@ -112,4 +120,4 @@ const tools = (): JSX.Element => {
   );
 };
 
-export default tools;
+export default ToolsPage;
