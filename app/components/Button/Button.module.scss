@@ -73,6 +73,11 @@
   border: 1px solid #dcdfe1;
 }
 
+.disabledButton {
+  cursor: not-allowed;
+  color: rgba(198, 198, 198, 0.529);
+}
+
 @media screen and (min-width: 100px) and (max-width: 600px) {
   .buttonStyle {
     width: 100px;
