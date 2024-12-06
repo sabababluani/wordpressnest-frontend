@@ -16,6 +16,7 @@ const AddonsCard = (props: AddonsCardPropsInterface) => {
           backgroundColor={buttonbackgroundColorEnum.black}
         />
         <Button
+          onClick={props.onClick}
           innerContent={props.add}
           backgroundColor={buttonbackgroundColorEnum.white}
         />
