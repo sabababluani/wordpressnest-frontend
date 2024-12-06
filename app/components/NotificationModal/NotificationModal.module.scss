@@ -46,11 +46,14 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 100%;
+  height: 320px;
 }
 
 .empty {
   padding: 16px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer {
@@ -132,4 +135,7 @@
 
 .paginationWrapper :global .ant-pagination .ant-pagination-prev {
   margin-right: 0px !important;
+}
+.paginationWrapper :global .ant-pagination .ant-pagination-disabled {
+  cursor: pointer;
 }

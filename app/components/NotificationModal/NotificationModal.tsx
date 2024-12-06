@@ -48,13 +48,13 @@ const NotificationModal = ({
           onClick={onClose}
         />
       </div>
-      <div className={styles.container}>
-        {paginatedNotifications.length === 0 ? (
-          <div className={styles.empty}>
-            <span>No results found.</span>
-          </div>
-        ) : (
-          paginatedNotifications.map((notification) => (
+      {paginatedNotifications.length === 0 ? (
+        <div className={styles.empty}>
+          <span>No results found.</span>
+        </div>
+      ) : (
+        paginatedNotifications.map((notification, index) => (
+          <div className={styles.container} key={index}>
             <div key={notification.id} className={styles.notification}>
               <div className={styles.notificationContainer}>
                 <span className={styles.notificationText}>
@@ -66,9 +66,9 @@ const NotificationModal = ({
                 <span className={styles.date}>{notification.date}</span>
               </div>
             </div>
-          ))
-        )}
-      </div>
+          </div>
+        ))
+      )}
       <div className={styles.footer}>
         <div className={styles.paginationWrapper}>
           <Pagination
