@@ -9,3 +9,15 @@
   border-radius: 8px;
   cursor: pointer;
 }
+
+.notification {
+  position: fixed;
+  top: 105px;
+  right: 25px;
+  max-width: 520px;
+  width: 100%;
+}
+
+.disabled {
+  pointer-events: none;
+}

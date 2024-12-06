@@ -227,12 +227,12 @@ const NavigationLine = (props: NavigationLineProps): JSX.Element => {
         <Link
           href={'/logs'}
           className={`${styles.infoButton} ${
-            pathname.includes('ss') ? styles.infoButtonClicked : ''
+            pathname.includes('/logs') ? styles.infoButtonClicked : ''
           }`}
         >
           <Image
             src={
-              pathname.includes('ss')
+              pathname.includes('/logs')
                 ? '/icons/logsbold.svg'
                 : '/icons/logs.svg'
             }
