@@ -11,13 +11,9 @@ const ToolsPage = (): JSX.Element => {
 
   return (
     <>
-      {isActive && <DiskSpaceModule moduleDisable={() => setIsActive(false)} />}
       <div className={styles.mainContainer}>
         <div className={styles.topContainer}>
           <span className={styles.mainCaptionStyle}>Tools</span>
-          <button onClick={() => setIsActive(prev => !prev)} style={{width: '200px', height: '40px', backgroundColor: 'black', color: 'white', border: '0px', borderRadius: '5PX'}} >
-            asdadsa
-          </button>
         </div>
         <div className={styles.bottomContainer}>
           <Tools
