@@ -23,14 +23,13 @@ import {
 } from '../interfaces/info-props.interface';
 import BaseApi from '../../../api/BaseApi';
 
-const Info = ({params}: {params: {id: number}}): JSX.Element => {
-
+const Info = ({ params }: { params: { id: number } }): JSX.Element => {
   const [updateWpVersionData, setUpdateVersionData] = useState<
     wordPressLastUpdateVersionPropsInterface | undefined
   >({
     id: 0,
     version: '',
-    locale: '', 
+    locale: '',
     update: '',
     url: '',
     message: '',
@@ -55,8 +54,8 @@ const Info = ({params}: {params: {id: number}}): JSX.Element => {
   >(`/wp-cli/db/name/${params.id}`, fetcher);
 
   const onUpdateWpVersionClick = () => {
-    BaseApi.get(`/wp-cli/wpcore/check-update/?setupId=${params.id}`).then((res) =>
-      setUpdateVersionData(res.data)
+    BaseApi.get(`/wp-cli/wpcore/check-update/?setupId=${params.id}`).then(
+      (res) => setUpdateVersionData(res.data)
     );
   };
 
@@ -70,10 +69,10 @@ const Info = ({params}: {params: {id: number}}): JSX.Element => {
   if (portError) return <div>Error loading data...</div>;
 
   if (!username) return <div>Loading...</div>;
-  // if (usernameError) return <div>Error loading data...</div>;
+  if (usernameError) return <div>Error loading data...</div>;
 
   if (!database) return <div>Loading...</div>;
-  // if (databaseError) return <div>Error loading data...</div>;
+  if (databaseError) return <div>Error loading data...</div>;
 
   return (
     <div className={styles.mainContainer}>
@@ -131,7 +130,7 @@ const Info = ({params}: {params: {id: number}}): JSX.Element => {
           databaseUsername={username[params.id - 1].wpAdminUser}
           databasePassword={'**********'}
           ip={'ALL IPs allowed'}
-        />                                                                                                                                                          
+        />
 
         <Site
           mainCaption={'Reset site'}
@@ -139,6 +138,7 @@ const Info = ({params}: {params: {id: number}}): JSX.Element => {
             'Resetting a site removes all files, databases, and staging environments associated with the site, then installs WordPress again. Be careful when resetting Live sites'
           }
           buttonInnerContent={'Reset Site'}
+          onDeleteClick={() => {}}
         />
 
         <Site
@@ -147,6 +147,7 @@ const Info = ({params}: {params: {id: number}}): JSX.Element => {
           description={
             'Deleting a site removes all files, databases, and staging environments associated with the site. Be careful when deleting Live sites.'
           }
+          onDeleteClick={() => {}}
         />
       </div>
     </div>

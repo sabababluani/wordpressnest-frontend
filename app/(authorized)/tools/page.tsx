@@ -1,11 +1,9 @@
 'use client';
 
-import { useState } from 'react';
 import styles from './page.module.scss';
 import Tools from '@/app/(authorized)/tools/components/Tools/Tools';
 
 const ToolsPage = (): JSX.Element => {
-
   return (
     <>
       <div className={styles.mainContainer}>
