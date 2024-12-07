@@ -14,9 +14,7 @@ const RequestMigration = () => {
     const [activeCheckbox, setActiveCheckbox] = useState<number | null>(1);
     const [, setDate] = useState<string>('');
     const [time, setTime] = useState<string>('');
-    const [timezone, setTimezone] = useState<string>('');
-
-
+    const [, setTimezone] = useState<string>('');
 
     return (
         <div className={styles.mainWrapper}>

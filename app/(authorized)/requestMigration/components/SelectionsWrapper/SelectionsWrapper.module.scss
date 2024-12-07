@@ -123,6 +123,6 @@
     background-color: black;
 }
 
-.checkboxWrapper :global(.ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner):hover {
-    background-color: black;
+.checkboxWrapper :global(.ant-checkbox-checked:not(.ant-checkbox-disabled) .ant-checkbox-inner) {
+    background-color: #11141A !important;
 }
