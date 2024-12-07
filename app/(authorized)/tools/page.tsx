@@ -3,11 +3,8 @@
 import { useState } from 'react';
 import styles from './page.module.scss';
 import Tools from '@/app/(authorized)/tools/components/Tools/Tools';
-import DiskSpaceModule from '@/app/components/DiskSpaceModule/DiskSpaceModule';
 
 const ToolsPage = (): JSX.Element => {
-
-  const [isActive, setIsActive] = useState<boolean>(false);
 
   return (
     <>

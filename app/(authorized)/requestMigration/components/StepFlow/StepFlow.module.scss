@@ -1,0 +1,55 @@
+.mainContainer {
+    max-width: 1572px;
+    width: 100%;
+    display: flex;
+    gap: 4px;
+}
+
+.stepWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 311px;
+    width: 100%;
+    align-items: center;
+}
+
+.stepIconWrapper {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    max-width: 311px;
+    width: 100%;
+}
+
+.circleStyle {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.activeStyle {
+    background-color: black;
+}
+
+.inActiveStyle {
+    background-color: #DCDFE1;
+}
+
+.lineStyle {
+    max-width: 299px;
+    width: 100%;
+    height: 2px;
+}
+
+.captionStyle {
+    text-align: center;
+}
+
+.ActiveFontColor {
+    color: black;
+}
+
+.inActiveFontColor {
+    color: #DCDFE1;
+}

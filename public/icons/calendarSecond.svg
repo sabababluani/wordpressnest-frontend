@@ -1,0 +1,21 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Interface, Essential/calendar-schedule-time-1" clip-path="url(#clip0_1446_20901)">
+<g id="Group">
+<path id="Path" d="M19.998 7.98438V15.9877" stroke="#545A67" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Path_2" d="M44.0058 7.98438V15.9877" stroke="#545A67" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Path_3" d="M19.998 7.98438V15.9877" stroke="#545A67" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Path_4" d="M44.0058 7.98438V15.9877" stroke="#545A67" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Path_5" d="M26.6666 56.0105H15.9955C11.5754 56.0105 7.99219 52.4273 7.99219 48.0072V19.9955C7.99219 15.5754 11.5754 11.9922 15.9955 11.9922H48.0089C52.429 11.9922 56.0122 15.5754 56.0122 19.9955V26.665" stroke="#545A67" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle id="Oval" cx="44.005" cy="44.005" r="12.005" fill="#545A67" stroke="#545A67" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="Path_6">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M43.2031 38.7188V44.8093H48.2586" fill="#545A67"/>
+<path d="M43.2031 38.7188V44.8093H48.2586" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_1446_20901">
+<rect width="64" height="64" fill="white"/>
+</clipPath>
+</defs>
+</svg>
