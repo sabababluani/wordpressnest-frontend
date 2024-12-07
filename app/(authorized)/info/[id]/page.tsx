@@ -22,7 +22,6 @@ import {
   wordPressVersionPropsInterface,
 } from '../interfaces/info-props.interface';
 import BaseApi from '../../../api/BaseApi';
-import DeleteSiteModal from '../components/DeleteSiteModal/DeleteSiteModal';
 
 const Info = ({ params }: { params: { id: number } }): JSX.Element => {
   const [updateWpVersionData, setUpdateVersionData] = useState<
@@ -60,20 +59,20 @@ const Info = ({ params }: { params: { id: number } }): JSX.Element => {
     );
   };
 
-  // // if (!siteName) return <div>Loading...</div>;
-  // if (siteNameError) return <div>Error loading data...</div>;
+  if (!siteName) return <div>Loading...</div>;
+  if (siteNameError) return <div>Error loading data...</div>;
 
-  // // if (!wordpressVersion) return <div>Loading...</div>;
-  // if (wordpressVersionError) return <div>Error loading data...</div>;
+  if (!wordpressVersion) return <div>Loading...</div>;
+  if (wordpressVersionError) return <div>Error loading data...</div>;
 
-  // // if (!port) return <div>Loading...</div>;
-  // if (portError) return <div>Error loading data...</div>;
+  if (!port) return <div>Loading...</div>;
+  if (portError) return <div>Error loading data...</div>;
 
-  // // if (!username) return <div>Loading...</div>;
-  // if (usernameError) return <div>Error loading data...</div>;
+  if (!username) return <div>Loading...</div>;
+  if (usernameError) return <div>Error loading data...</div>;
 
-  // // if (!database) return <div>Loading...</div>;
-  // if (databaseError) return <div>Error loading data...</div>;
+  if (!database) return <div>Loading...</div>;
+  if (databaseError) return <div>Error loading data...</div>;
 
   return (
     <div className={styles.mainContainer}>
@@ -94,7 +93,7 @@ const Info = ({ params }: { params: { id: number } }): JSX.Element => {
           />
         </div>
       </div>
-      {/* 
+
       <div className={styles.bottomContainer}>
         <BasicDetails
           locationDataCenter={'Hamburg (DE)'}
@@ -150,8 +149,7 @@ const Info = ({ params }: { params: { id: number } }): JSX.Element => {
           }
           onDeleteClick={() => {}}
         />
-      </div> */}
-      <DeleteSiteModal />
+      </div>
     </div>
   );
 };

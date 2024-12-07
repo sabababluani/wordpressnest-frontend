@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Steps from '../Steps/Steps';
-import styles from './DiskSpaceModule.module.scss';
+import styles from './DiskSpaceModal.module.scss';
 import Image from 'next/image';
 import Button from '../Button/Button';
 import { buttonbackgroundColorEnum } from '../Button/enum/button.enum';
@@ -10,7 +10,7 @@ import WhatWillHappenContainer from './components/WhatWillHappenContainer/WhatWi
 import PriceDetailsContainer from './components/PriceDetailsContainer/PriceDetailsContainer';
 import { diskModulePropsInterface } from './interface/diskspace-module-interface';
 
-const DiskSpaceModule = (props: diskModulePropsInterface): JSX.Element => {
+const DiskSpaceModal = (props: diskModulePropsInterface): JSX.Element => {
   const [, setIsModuleVisible] = useState<boolean>(true);
   const [beforeContinueActive, setBeforeContinueActive] =
     useState<boolean>(false);
@@ -43,9 +43,7 @@ const DiskSpaceModule = (props: diskModulePropsInterface): JSX.Element => {
     >
       <div className={styles.topContainer}>
         <div className={styles.captionWrapper}>
-          <span className={styles.mainCaption}>
-            Add additional disk space
-          </span>
+          <span className={styles.mainCaption}>Add additional disk space</span>
           <div className={styles.exitIconWrapper} onClick={handleCloseModule}>
             <Image
               className={styles.exitIconStyle}
@@ -91,14 +89,10 @@ const DiskSpaceModule = (props: diskModulePropsInterface): JSX.Element => {
                         alt={'minus icon'}
                       />
                     </button>
-                    <div className={styles.coefficientstyle}>
-                      {coefficient}
-                    </div>
+                    <div className={styles.coefficientstyle}>{coefficient}</div>
                     <button
                       className={styles.plusStyle}
-                      onClick={() =>
-                        setCoefficient((prev: number) => prev + 1)
-                      }
+                      onClick={() => setCoefficient((prev: number) => prev + 1)}
                     >
                       <Image
                         width={8}
@@ -141,4 +135,4 @@ const DiskSpaceModule = (props: diskModulePropsInterface): JSX.Element => {
   );
 };
 
-export default DiskSpaceModule;
+export default DiskSpaceModal;

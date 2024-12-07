@@ -62,7 +62,7 @@ const DeleteSiteModal = () => {
           />
           <Button
             backgroundColor={buttonbackgroundColorEnum.black}
-            innerContent="Reset WordPress site"
+            innerContent="Delete WordPress site"
           />
         </div>
       </div>
