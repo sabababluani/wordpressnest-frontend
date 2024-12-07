@@ -1,128 +1,133 @@
 .mainContainer {
-    width: 100%;
-    display: flex;
-    gap: 24px;
+  width: 100%;
+  display: flex;
+  gap: 24px;
 }
 
 .checkboxSelectionContainer {
-    display: flex;
-    flex-direction: column;
-    max-width: 508px;
-    width: 100%;
-    height: 300px;
-    padding: 24px;
-    border-radius: 12px;
-    border: 1px solid #DCDFE1;
-    gap: 10px;
-    transition: 0.2s;
-    cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  max-width: 508px;
+  width: 100%;
+  height: 300px;
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid #dcdfe1;
+  gap: 10px;
+  transition: 0.2s;
+  cursor: pointer;
 }
 
 .checkboxMainCaption {
-    color: #11141A;
-    text-align: center;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 24px;
+  color: #11141a;
+  text-align: center;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
 }
 
 .checkboxDescription {
-    color: #707276;
-    text-align: center;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 16px;
+  color: #707276;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
 }
 
 .innerContentsWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .captionsWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .forCheckboxWrapper {
-    width: 100%;
-    display: flex;
-    justify-content: start;
+  width: 100%;
+  display: flex;
+  justify-content: start;
 }
 
 .belowInnerContentsWrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
 }
 
 .checkboxDescriptionFirst {
-    max-width: 243px;
-    width: 100%;
-    text-align: center;
+  max-width: 243px;
+  width: 100%;
+  text-align: center;
 }
 
 .checkboxDescriptionSecond {
-    max-width: 380px;
-    width: 100%;
-    text-align: center;
+  max-width: 380px;
+  width: 100%;
+  text-align: center;
 }
 
 .checkboxDescriptionThird {
-    max-width: 380px;
-    width: 100%;
-    text-align: center;
+  max-width: 380px;
+  width: 100%;
+  text-align: center;
 }
 
 .buttonStyle {
-    background-color: black;
-    color: white;
-    border-radius: 8px;
-    border: 0px;
-    width: 60px;
-    height: 32px;
-    cursor: pointer;
+  background-color: black;
+  color: white;
+  border-radius: 8px;
+  border: 0px;
+  width: 60px;
+  height: 32px;
+  cursor: pointer;
 }
 
 .checkboxWrapper {
-    width: fit-content;
+  width: fit-content;
 }
 
 .afterClickStyleFirst {
-    border: 1px solid black;
+  border: 1px solid black;
 }
 
 .afterClickStyleSecond {
-    border: 1px solid black;
+  border: 1px solid black;
 }
 
 .afterClickStyleThird {
-    border: 1px solid black;
+  border: 1px solid black;
 }
 
 .belowInnerContentsLastWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
 }
 
-.checkboxWrapper :global(.ant-checkbox-wrapper .ant-checkbox .ant-checkbox-inner) {
-    border: 1px solid black;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
+.checkboxWrapper
+  :global(.ant-checkbox-wrapper .ant-checkbox .ant-checkbox-inner) {
+  border: 1px solid black;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
 }
 
-.checkboxWrapper :global(.ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner) {
-    background-color: black;
+.checkboxWrapper
+  :global(.ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner) {
+  background-color: black;
 }
 
-.checkboxWrapper :global(.ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner):hover {
-    background-color: black;
+.checkboxWrapper
+  :global(
+    .ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner
+  ):hover {
+  background-color: black;
 }
