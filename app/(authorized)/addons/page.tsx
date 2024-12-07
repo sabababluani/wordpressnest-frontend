@@ -3,29 +3,26 @@
 import { useState } from 'react';
 import AddonsCard from './components/AddonsCard/AddonsCard';
 import styles from './page.module.scss';
-import DiskSpaceModule from '@/app/components/DiskSpaceModule/DiskSpaceModule';
 import { Modal } from 'antd';
+import DiskSpaceModal from '@/app/components/DiskSpaceModal/DiskSpaceModal';
 
 const Addons = () => {
-
   const [isActive, setIsActive] = useState<boolean>(false);
-
-
-
 
   return (
     <>
-      {
-        isActive && <Modal width={'auto'} centered
-          title=""
+      {isActive && (
+        <Modal
+          width={'auto'}
+          centered
           open={isActive}
           onCancel={() => setIsActive(false)}
           footer={null}
           closable={false}
         >
-          <DiskSpaceModule moduleDisable={() => setIsActive(false)} />
+          <DiskSpaceModal moduleDisable={() => setIsActive(false)} />
         </Modal>
-      }
+      )}
       <div className={styles.wrapper}>
         <div className={styles.header}>
           <span className={styles.headline}>Add-ons</span>

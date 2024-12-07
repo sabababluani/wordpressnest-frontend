@@ -11,6 +11,7 @@ const Site = (props: SitePropsInterface): JSX.Element => {
         <Button
           backgroundColor={buttonbackgroundColorEnum.red}
           innerContent={props.buttonInnerContent}
+          onClick={props.onDeleteClick}
         />
       </div>
       <div className={styles.bottomContainer}>
