@@ -41,7 +41,7 @@ const RequestMigrationSecondStep = (): JSX.Element => {
                             Choose
                         </button>
                     </div>
-                    <span className={styles.descriptionStyle} >Moving your site from your previous hosting provider to your Hosting account.</span>
+                    <span className={styles.descriptionStyle} >We can migrate your site using several different backup sources and formats.</span>
                 </div>
             </div>
         </div>
