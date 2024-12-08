@@ -3,7 +3,7 @@ import BaseApi from '../api/BaseApi';
 import { CrudServiceProps } from '../interfaces/crud-service-props.interface';
 
 /**
- * Hook to GET data using SWR and Axios
+ * Get Requets
  * @param endpoint API endpoint
  * @param queryParams Optional query parameters
  */

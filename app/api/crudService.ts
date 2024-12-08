@@ -1,7 +1,7 @@
 import BaseApi from './BaseApi';
 
 /**
- * POST data using BaseApi
+ * Post Request
  * @param endpoint API endpoint
  * @param payload Data to be sent
  */
@@ -20,7 +20,7 @@ export const createData = async <T>(
 };
 
 /**
- * PUT data using BaseApi
+ * Update Request
  * @param endpoint API endpoint
  * @param id ID of the item to update
  * @param payload Data to be updated
@@ -41,7 +41,7 @@ export const updateData = async <T>(
 };
 
 /**
- * PATCH data using BaseApi
+ * Patch Request
  * @param endpoint API endpoint
  * @param id ID of the item to update
  * @param payload Data to be partially updated
@@ -62,7 +62,7 @@ export const patchData = async <T>(
 };
 
 /**
- * DELETE data using BaseApi
+ * Delete Request
  * @param endpoint API endpoint
  * @param id ID of the item to delete
  */
