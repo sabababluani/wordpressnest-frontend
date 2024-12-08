@@ -1,0 +1,90 @@
+.mainContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.containerWrapper {
+  padding: 16px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.containerWrapperActive {
+  border: 2px solid #000;
+
+}
+
+.containerWrapperInActive {
+  border: 2px solid #DCDFE1;
+}
+
+.captionAndDescriptionWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 12px;
+}
+
+.captionStyle {
+  color: #11141A;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.descriptionStyle {
+  color: #707276;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.captionAndButtonWrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.buttonStyle {
+  width: 76px;
+  height: 40px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #DCDFE1;
+  color: #11141A;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.checkboxWrapper {
+  width: fit-content;
+}
+
+.checkboxWrapper :global(.ant-checkbox-wrapper .ant-checkbox .ant-checkbox-inner) {
+  border: 1px solid black;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+}
+
+.checkboxWrapper :global(.ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner) {
+  background-color: black;
+}
+
+.checkboxWrapper :global(.ant-checkbox-checked:not(.ant-checkbox-disabled) .ant-checkbox-inner) {
+  background-color: #11141a !important;
+}

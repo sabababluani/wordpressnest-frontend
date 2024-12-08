@@ -1,15 +1,10 @@
 import { DatePicker, Select } from 'antd';
 import styles from './SecondChecksContainer.module.scss';
 import { ChangeEvent } from 'react';
+import { SecondCheckPropsInterface } from '../../interface/second-check-interface';
 
-interface asd {
-  date: (value: string) => void;
-  time: (value: string) => void;
-  timezone: (value: string) => void;
-  timeValue?: string | undefined;
-}
 
-const SecondChecksContainer = (props: asd) => {
+const SecondChecksContainer = (props: SecondCheckPropsInterface) => {
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.dateTimesWrapper}>
