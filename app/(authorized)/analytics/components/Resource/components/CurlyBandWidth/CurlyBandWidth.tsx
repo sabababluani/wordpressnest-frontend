@@ -25,7 +25,7 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  Filler
+  Filler,
 );
 
 const CurlyBandwidth = (props: CurlyBandwidthPropsInterface) => {
@@ -48,7 +48,7 @@ const CurlyBandwidth = (props: CurlyBandwidthPropsInterface) => {
             0,
             chartArea.top,
             0,
-            chartArea.bottom
+            chartArea.bottom,
           );
           gradient.addColorStop(0, 'rgba(0,0,0,0.4)');
           gradient.addColorStop(1, 'rgba(0,0,0,0.007)');

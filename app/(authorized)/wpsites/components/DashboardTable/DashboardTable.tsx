@@ -23,8 +23,8 @@ const columns: TableColumnsType<DashboardTablePropsInterface> = [
           status === 'Active'
             ? styles.activeStatus
             : status === 'Inactive'
-            ? styles.inactiveStatus
-            : ''
+              ? styles.inactiveStatus
+              : ''
         }
       >
         <span
@@ -32,8 +32,8 @@ const columns: TableColumnsType<DashboardTablePropsInterface> = [
             status === 'Active'
               ? styles.greenDot
               : status === 'Inactive'
-              ? styles.redDot
-              : ''
+                ? styles.redDot
+                : ''
           }
         ></span>
         <span className={styles.status}>{status}</span>
@@ -72,7 +72,7 @@ const App: React.FC = () => {
 
   const { data: tableData } = useSWR<DashboardTablePropsInterface[]>(
     '/setup/wordpress',
-    fetcher
+    fetcher,
   );
 
   return (

@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './SearchBox.module.scss';
 import { SearchBoxDummy } from './dummy/search-dummy';
 import { SearchBoxPropsInterface } from './interfaces/search-box-props.interface';
@@ -17,7 +17,7 @@ const SearchBox = (props: SearchBoxPropsInterface) => {
       setResults([]);
     } else {
       const filteredResults = SearchBoxDummy.filter((item) =>
-        item.toLowerCase().includes(query.toLowerCase())
+        item.toLowerCase().includes(query.toLowerCase()),
       );
       setResults(filteredResults);
     }

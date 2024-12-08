@@ -6,9 +6,9 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import BaseApi from '../api/BaseApi';
+import { setCookie } from '../helpers/setCookie';
 import { LoginPropsInterface } from './login-props.interface/login-props.interface';
 import styles from './page.module.scss';
-import { setCookie } from '../helpers/setCookie';
 
 const Login = () => {
   const [rememberMe, setRememberMe] = useState(false);

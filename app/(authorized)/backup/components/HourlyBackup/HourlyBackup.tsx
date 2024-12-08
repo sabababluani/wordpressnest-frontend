@@ -1,17 +1,26 @@
 'use client';
 
-import { Checkbox } from 'antd';
 import styles from './HourlyBackup.module.scss';
-import Image from 'next/image';
 import { useState } from 'react';
-import Button from '@/app/components/Button/Button';
-import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
+import HourlyBox from './components/HourlyBox/HourlyBox';
+import { HourlyBoxContent } from './utils/hourly-box-content';
+import SixHoursModal from './components/SixHoursModal/SixHoursModal';
+import { Modal } from 'antd';
 
 const HourlyBackup = () => {
   const [activeCheckbox, setActiveCheckbox] = useState<number>(0);
+  const [isModalVisable, setIsModalVisable] = useState<boolean>(false);
 
-  const handleCheckboxClick = (index: number): void => {
+  const handleCheckboxClick = (index: number) => {
     setActiveCheckbox(index);
+    if (index === 1) {
+      setIsModalVisable(true);
+    }
+  };
+
+  const handleCloseModal = () => {
+    setIsModalVisable(false);
+    setActiveCheckbox(0);
   };
 
   return (
@@ -20,47 +29,29 @@ const HourlyBackup = () => {
         <h1>Daily Backup</h1>
         <span>You can set backups every 6-hours or every hour.</span>
       </div>
-      <div>
-        <div
-          className={`${styles.container} ${
-            activeCheckbox === 1 && styles.activeContainer
-          }`}
-        >
-          {
-            <div className={styles.checkbox}>
-              <Checkbox
-                checked={activeCheckbox === 1 ? true : false}
-              ></Checkbox>
-            </div>
-          }
-          <div className={styles.containerContent}>
-            <span className={styles.sixhour}>6-hours backups</span>
-            <div className={styles.containerWrapper}>
-              <span className={styles.freeDuring}>
-                Free during the first month
-              </span>
-              <div className={styles.price}>
-                <div className={styles.usdPrice}>
-                  <span>49 USD / site / month</span>
-                </div>
-                <span className={styles.firstMonth}>after first month</span>
-              </div>
-              <span className={styles.text}>
-                Backups will be created every 6-hours and available for 24
-                hours, providing four additional restore points over the last
-                day. Ideal for websites that change frequently.
-              </span>
-            </div>
-            <div className={styles.button}>
-              <Button
-                backgroundColor={buttonbackgroundColorEnum.black}
-                innerContent="Choose"
-                onClick={() => handleCheckboxClick(1)}
-              />
-            </div>
-          </div>
-        </div>
+      <div className={styles.containers}>
+        {HourlyBoxContent.map((content) => (
+          <HourlyBox
+            key={content.id}
+            id={content.id}
+            hours={content.hours}
+            price={content.price}
+            description={content.description}
+            isActive={activeCheckbox === content.id}
+            onClick={() => handleCheckboxClick(content.id)}
+          />
+        ))}
       </div>
+      <Modal
+        width={'auto'}
+        centered
+        open={isModalVisable}
+        onCancel={handleCloseModal}
+        footer={null}
+        closable={false}
+      >
+        <SixHoursModal onCancle={handleCloseModal} />
+      </Modal>
     </div>
   );
 };

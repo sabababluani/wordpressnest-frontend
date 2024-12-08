@@ -44,7 +44,7 @@ const Info = ({ params }: { params: { id: number } }): JSX.Element => {
     useSWR<wordPressVersionPropsInterface>('/wp-cli/core/version', fetcher);
   const { data: port, error: portError } = useSWR<portPropsInterface[]>(
     `/setup/wordpress/port`,
-    fetcher
+    fetcher,
   );
   const { data: username, error: usernameError } = useSWR<
     UserNamePropsIterface[]
@@ -55,7 +55,7 @@ const Info = ({ params }: { params: { id: number } }): JSX.Element => {
 
   const onUpdateWpVersionClick = () => {
     BaseApi.get(`/wp-cli/wpcore/check-update/?setupId=${params.id}`).then(
-      (res) => setUpdateVersionData(res.data)
+      (res) => setUpdateVersionData(res.data),
     );
   };
 

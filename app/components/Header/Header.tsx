@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { Modal } from 'antd';
 import Search from '../Search/Search';
 import styles from './Header.module.scss';

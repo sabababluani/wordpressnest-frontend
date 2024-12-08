@@ -21,10 +21,6 @@ const Domains = (): JSX.Element => {
     setIsAddDomainModal(true);
   };
 
-  const handleOk = () => {
-    setIsAddDomainModal(false);
-  };
-
   const handleCancel = () => {
     setIsAddDomainModal(false);
   };

@@ -12,7 +12,7 @@ const WhatWillHappenContainer = () => {
           will include the cost for the next billing period.
         </span>
         <span className={styles.justCaption}>
-          The subscription for this add-on will auto-renew and the payment
+          The subscription for this add-on will auto-renew and the payment
           method will be charged until canceled via MyHosting.
         </span>
       </div>

@@ -32,8 +32,8 @@ const columns: TableColumnsType<InvoicesTablePropsInterface> = [
           status === 'Paid'
             ? styles.paidStatus
             : status === 'Unpaid'
-            ? styles.unpaidStatus
-            : ''
+              ? styles.unpaidStatus
+              : ''
         }
       >
         {status === 'Paid' ? (
@@ -46,8 +46,8 @@ const columns: TableColumnsType<InvoicesTablePropsInterface> = [
             status === 'Paid'
               ? styles.paidStatusText
               : status === 'Unpaid'
-              ? styles.unpaidStatusText
-              : ''
+                ? styles.unpaidStatusText
+                : ''
           }
         >
           {status}
@@ -62,7 +62,8 @@ const columns: TableColumnsType<InvoicesTablePropsInterface> = [
   {
     title: 'PDF',
     dataIndex: 'pdf',
-    render: (_: any, record: InvoicesTablePropsInterface) => (
+    // record: InvoicesTablePropsInterface dasamatebelia
+    render: (_: unknown) => (
       <div className={styles.pdf}>
         <Image
           src="/icons/document.svg"
@@ -70,7 +71,6 @@ const columns: TableColumnsType<InvoicesTablePropsInterface> = [
           width={20}
           height={20}
           style={{ cursor: 'pointer' }}
-          onClick={() => console.log(`View PDF for ${record.invoiceNumber}`)}
         />
         <Image
           src="/icons/download.svg"
@@ -78,9 +78,6 @@ const columns: TableColumnsType<InvoicesTablePropsInterface> = [
           width={20}
           height={20}
           style={{ cursor: 'pointer' }}
-          onClick={() =>
-            console.log(`Download PDF for ${record.invoiceNumber}`)
-          }
         />
       </div>
     ),

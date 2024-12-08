@@ -1,4 +1,4 @@
-import { ActivityTablePropsInterface } from "../interface/activity-table-props.interface";
+import { ActivityTablePropsInterface } from '../interface/activity-table-props.interface';
 
 export const ActivityTableDummy: ActivityTablePropsInterface[] = [
   {

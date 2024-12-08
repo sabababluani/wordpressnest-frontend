@@ -1,6 +1,6 @@
 'use client';
 
-import { Radio } from 'antd';
+import { Radio, RadioChangeEvent } from 'antd';
 import styles from './BillingDetails.module.scss';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -18,7 +18,8 @@ const BillingDetails = () => {
   } = useForm<BillingDetailsPropsInterface>();
   const [selectedOption, setSelectedOption] = useState<string>('Company');
 
-  const handleRadioChange = (e: any) => setSelectedOption(e.target.value);
+  const handleRadioChange = (e: RadioChangeEvent) =>
+    setSelectedOption(e.target.value);
 
   const onSubmit = async (data: BillingDetailsPropsInterface) => {
     await BaseApi.post('arvicijer', data);

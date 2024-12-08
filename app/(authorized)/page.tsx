@@ -6,14 +6,13 @@ import WordpressStat from '@/app/components/WordpressStat/WordpressStat';
 import { NavigationPropsInterface } from '../components/Navigation/interfaces/navigation.props.interface';
 import BaseApi from '../api/BaseApi';
 import useSWR from 'swr';
-import NotificationModal from '../components/NotificationModal/NotificationModal';
 
 const Home = () => {
   const fetcher = (url: string) =>
     BaseApi.get(url).then((response) => response.data);
   const { data: sitesData } = useSWR<NavigationPropsInterface[]>(
     '/setup/wordpress',
-    fetcher
+    fetcher,
   );
 
   return (

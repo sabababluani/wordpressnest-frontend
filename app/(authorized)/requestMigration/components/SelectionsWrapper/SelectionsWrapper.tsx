@@ -8,7 +8,7 @@ import { SelectionsWrapperProps } from '../../interface/selection-wrapper-interf
 
 const SelectionsWrapper = (props: SelectionsWrapperProps): JSX.Element => {
   const [activeCheckbox, setActiveCheckbox] = useState<number | null>(
-    props.initialActiveCheckbox || null
+    props.initialActiveCheckbox || null,
   );
 
   const handleCheckboxClick = (index: number): void | null => {

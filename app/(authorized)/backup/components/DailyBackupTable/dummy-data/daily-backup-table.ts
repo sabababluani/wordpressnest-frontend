@@ -1,4 +1,4 @@
-import { DailyBackupPropsInterface } from "../interfaces/daily-backup-table-props.interface";
+import { DailyBackupPropsInterface } from '../interfaces/daily-backup-table-props.interface';
 
 export const Dailydata: DailyBackupPropsInterface[] = [
   {

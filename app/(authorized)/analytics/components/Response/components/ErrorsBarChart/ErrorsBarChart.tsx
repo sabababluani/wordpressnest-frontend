@@ -21,12 +21,12 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
 const ErrorsBarChart = (props: ErrorsBarChartPropsInterface) => {
   const totalValues = props.datasets.map((dataset) =>
-    dataset.data.reduce((a, b) => a + b, 0)
+    dataset.data.reduce((a, b) => a + b, 0),
   );
 
   const options = {

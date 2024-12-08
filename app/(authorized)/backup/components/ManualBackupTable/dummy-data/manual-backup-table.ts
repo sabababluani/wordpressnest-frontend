@@ -1,4 +1,4 @@
-import { ManualBackupTablePropsInterface } from "../interfaces/manual-backup-table-props.interface";
+import { ManualBackupTablePropsInterface } from '../interfaces/manual-backup-table-props.interface';
 
 export const manualBackupTableDummy: ManualBackupTablePropsInterface[] = [
   {

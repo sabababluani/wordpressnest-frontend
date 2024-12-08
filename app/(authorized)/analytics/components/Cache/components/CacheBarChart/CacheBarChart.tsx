@@ -21,12 +21,12 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
 const CacheBarChart = (props: CacheBarChartPropsInterface) => {
   const totalValues = props.datasets.map((dataset) =>
-    dataset.data.reduce((a, b) => a + b, 0)
+    dataset.data.reduce((a, b) => a + b, 0),
   );
 
   const total = totalValues.reduce((acc, value) => acc + value, 0);
