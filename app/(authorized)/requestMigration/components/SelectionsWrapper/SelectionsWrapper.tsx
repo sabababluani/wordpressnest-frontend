@@ -19,6 +19,7 @@ const SelectionsWrapper = (props: SelectionsWrapperProps): JSX.Element => {
     props.onCheckboxChange(index);
   };
 
+  
   return (
     <div className={styles.mainContainer}>
       <div

@@ -1,10 +1,8 @@
+import { StepFlowPropsInterface } from '../../interface/step-flow-interface.ts';
 import styles from './StepFlow.module.scss';
 
-interface www {
-  stepNum: number;
-}
 
-const StepFlow = (props: www) => {
+const StepFlow = (props: StepFlowPropsInterface) => {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.stepWrapper}>

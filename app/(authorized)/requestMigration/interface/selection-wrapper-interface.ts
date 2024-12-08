@@ -1,4 +1,4 @@
 export interface SelectionsWrapperProps {
-  initialActiveCheckbox: number;
+  initialActiveCheckbox: number | null;
   onCheckboxChange: (activeIndex: number) => void;
 }
