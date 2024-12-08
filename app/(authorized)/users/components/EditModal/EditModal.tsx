@@ -13,7 +13,7 @@ import { useParams } from 'next/navigation';
 const EditModal = (
   props: UsersModalPropsInterface & {
     user: UsersTablePropsInterface;
-  }
+  },
 ): JSX.Element => {
   const { id } = useParams();
   const [selectedRole, setSelectedRole] = useState<string>(props.user.roles);
@@ -22,7 +22,7 @@ const EditModal = (
     BaseApi.get(url).then((response) => response.data);
 
   const { data: roles } = useSWR(id ? `wp-cli/wprole/${id}` : null, fetcher);
-  
+
   useEffect(() => {
     setSelectedRole(props.user.roles);
   }, [props.user.roles]);
@@ -31,7 +31,7 @@ const EditModal = (
     roles
       ?.filter(
         (role: { name: string }) =>
-          role.name.toLowerCase() !== props.user.roles.toLocaleLowerCase()
+          role.name.toLowerCase() !== props.user.roles.toLocaleLowerCase(),
       )
       .map((role: { name: string }) => ({
         label: role.name,
@@ -43,7 +43,7 @@ const EditModal = (
       await BaseApi.put(
         `wp-cli/wprole/${id}/${
           props.user.ID
-        }?role=${selectedRole.toLocaleLowerCase()}`
+        }?role=${selectedRole.toLocaleLowerCase()}`,
       );
 
       mutate(`wp-cli/wpuser/${id}`);

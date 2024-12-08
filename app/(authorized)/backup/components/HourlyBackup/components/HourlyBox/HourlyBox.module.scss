@@ -1,0 +1,96 @@
+.container {
+  position: relative;
+  max-width: 774px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dcdfe1;
+  border-radius: 12px;
+  padding: 40px 0;
+}
+
+.activeContainer {
+  border: 1px solid #000 !important;
+}
+
+.checkbox {
+  position: absolute;
+  left: 24px;
+  top: 24px;
+}
+
+.checkbox :global(.ant-checkbox-wrapper .ant-checkbox .ant-checkbox-inner) {
+  border: none !important;
+  width: 20px;
+  height: 20px;
+  background-color: #f0f3f5 !important;
+  border-radius: 50%;
+}
+
+.checkbox
+  :global(.ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner) {
+  background-color: black !important;
+  border: none !important;
+}
+
+.containerContent {
+  max-width: 646px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.sixhour {
+  color: #11141a;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.containerWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.freeDuring {
+  color: #11141a;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.usdPrice {
+  border: 2px solid #dcdfe1;
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+
+.firstMonth {
+  color: #707276;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.text {
+  color: #707276;
+  font-weight: 400;
+  font-size: 12px;
+  text-align: center;
+}
+
+.button {
+  padding-top: 12px;
+}

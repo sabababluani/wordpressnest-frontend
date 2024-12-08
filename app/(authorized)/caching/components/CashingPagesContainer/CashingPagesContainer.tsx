@@ -6,7 +6,7 @@ import DropDown from '@/app/components/DropDown/DropDown';
 import { CashingPagesPropsInterface } from './interfaces/cashing-pages-props.interfaces';
 
 const CashingPagesContainer = (
-  props: CashingPagesPropsInterface
+  props: CashingPagesPropsInterface,
 ): JSX.Element => {
   return (
     <div className={styles.mainContainer}>

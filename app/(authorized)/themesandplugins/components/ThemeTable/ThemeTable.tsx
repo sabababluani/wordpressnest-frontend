@@ -20,7 +20,7 @@ const ThemeTable: React.FC = () => {
 
   const { data: themes } = useSWR<ThemesTablePropsInterface[]>(
     `wp-cli/theme/${id}/?search=${searchValue}`,
-    fetcher
+    fetcher,
   );
 
   const handleReload = () => {
@@ -65,8 +65,8 @@ const ThemeTable: React.FC = () => {
             status === 'active'
               ? styles.activeStatus
               : status === 'inactive'
-              ? styles.inactiveStatus
-              : ''
+                ? styles.inactiveStatus
+                : ''
           }
         >
           <span
@@ -74,8 +74,8 @@ const ThemeTable: React.FC = () => {
               status === 'active'
                 ? styles.greenDot
                 : status === 'inactive'
-                ? styles.redDot
-                : ''
+                  ? styles.redDot
+                  : ''
             }
           ></span>
           <span className={styles.status}>
@@ -93,13 +93,13 @@ const ThemeTable: React.FC = () => {
       title: 'Latest',
       dataIndex: 'update_version',
       width: '15%',
-      render: (_: any, record: ThemesTablePropsInterface) =>
+      render: (_: unknown, record: ThemesTablePropsInterface) =>
         record.update === 'none' ? 'Up-To-Date' : record.update_version,
     },
     {
       title: '',
       dataIndex: '',
-      render: (_: any, record: ThemesTablePropsInterface) => (
+      render: (_: unknown, record: ThemesTablePropsInterface) => (
         <div className={styles.buttons}>
           {record.update !== 'none' ? (
             <div className={styles.buttonsUpdate}>

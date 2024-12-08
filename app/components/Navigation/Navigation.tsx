@@ -25,7 +25,7 @@ const Navigation = (): JSX.Element => {
 
   const { data: sitesData } = useSWR<NavigationPropsInterface[]>(
     '/setup/wordpress',
-    fetcher
+    fetcher,
   );
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const Navigation = (): JSX.Element => {
 
   const onStaticComponentClick = (componentId: number): void => {
     setActiveStaticComponent((prevActive) =>
-      prevActive === componentId ? null : componentId
+      prevActive === componentId ? null : componentId,
     );
   };
 

@@ -13,7 +13,7 @@ const Logs = () => {
   const logsPerPage = 9;
   const paginatedLogs = dummyLogs.slice(
     (currentPage - 1) * logsPerPage,
-    currentPage * logsPerPage
+    currentPage * logsPerPage,
   );
 
   const handlePageChange = (page: number) => {

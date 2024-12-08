@@ -14,14 +14,15 @@ const Button = (props: ButtonDataInterface): JSX.Element => {
             props.backgroundColor === buttonbackgroundColorEnum.white
               ? styles.backgroundWhiteColor
               : props.backgroundColor === buttonbackgroundColorEnum.black
-              ? styles.backgroundBlackColor
-              : props.backgroundColor === buttonbackgroundColorEnum.red
-              ? styles.backgroundRedColor
-              : props.backgroundColor === buttonbackgroundColorEnum.grey
-              ? styles.backgroundGreyColor
-              : props.backgroundColor === buttonbackgroundColorEnum.greyBold
-              ? styles.backgroundGreyBoldColor
-              : styles.backgroundDomainsRed
+                ? styles.backgroundBlackColor
+                : props.backgroundColor === buttonbackgroundColorEnum.red
+                  ? styles.backgroundRedColor
+                  : props.backgroundColor === buttonbackgroundColorEnum.grey
+                    ? styles.backgroundGreyColor
+                    : props.backgroundColor ===
+                        buttonbackgroundColorEnum.greyBold
+                      ? styles.backgroundGreyBoldColor
+                      : styles.backgroundDomainsRed
           } ${props.disableButton && styles.disabledButton}`}
       >
         {props.innerContentIconActive && (

@@ -1,6 +1,4 @@
-import Button from '@/app/components/Button/Button';
 import styles from './InvoicesSection.module.scss';
-import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import InvoicesTable from '../InvoicesTable/InvoicesTable';
 
 const InvoicesSection = () => {

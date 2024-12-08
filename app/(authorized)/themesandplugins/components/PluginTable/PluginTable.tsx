@@ -22,7 +22,7 @@ const PluginTable = () => {
 
   const { data: plugins } = useSWR<PluginDataPropsInterface[]>(
     `wp-cli/plugin/${id}/?search=${searchValue}`,
-    fetcher
+    fetcher,
   );
 
   const onHandleUpdate = async (pluginName: string) => {
@@ -46,7 +46,7 @@ const PluginTable = () => {
   const onHandleDeactivate = async (pluginName: string) => {
     try {
       await BaseApi.patch(
-        `wp-cli/plugin/deactivate/${id}?plugin=${pluginName}`
+        `wp-cli/plugin/deactivate/${id}?plugin=${pluginName}`,
       );
       mutate(`wp-cli/plugin/${id}/?search=${searchValue}`);
     } catch (error) {
@@ -74,8 +74,8 @@ const PluginTable = () => {
             status === 'active'
               ? styles.activeStatus
               : status === 'inactive'
-              ? styles.inactiveStatus
-              : ''
+                ? styles.inactiveStatus
+                : ''
           }
         >
           <span
@@ -83,8 +83,8 @@ const PluginTable = () => {
               status === 'active'
                 ? styles.greenDot
                 : status === 'inactive'
-                ? styles.redDot
-                : ''
+                  ? styles.redDot
+                  : ''
             }
           ></span>
           <span className={styles.status}>

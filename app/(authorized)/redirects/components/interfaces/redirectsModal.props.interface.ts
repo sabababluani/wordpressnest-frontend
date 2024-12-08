@@ -1,3 +1,0 @@
-interface RedirectsModalProps {
-  onClose: () => void;
-}

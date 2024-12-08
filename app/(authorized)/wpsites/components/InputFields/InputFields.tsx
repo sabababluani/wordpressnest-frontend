@@ -23,14 +23,14 @@ const InputFields = () => {
   const onSubmit = async (data: InputFieldsPropsInterface) => {
     try {
       const trimmedObject = Object.fromEntries(
-        Object.entries(data).map(([key, value]) => [key, value.trim()])
+        Object.entries(data).map(([key, value]) => [key, value.trim()]),
       );
 
       await BaseApi.post('setup/wordpress', trimmedObject);
 
       reset();
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.log('Error submitting form:', error);
     }
   };
 

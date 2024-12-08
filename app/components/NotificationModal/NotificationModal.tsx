@@ -1,24 +1,13 @@
 import { Pagination } from 'antd';
-import styles from './NotificationModal.module.scss';
 import Image from 'next/image';
 import { useState } from 'react';
-
-interface Notification {
-  id: number;
-  message: string;
-  timeAgo: string;
-  date: string;
-}
-
-interface NotificationModalProps {
-  onClose: () => void;
-  notifications: Notification[];
-}
+import styles from './NotificationModal.module.scss';
+import { NotificationModalPropsInterface } from './interfaces/notification-modal-props.interface';
 
 const NotificationModal = ({
   onClose,
   notifications,
-}: NotificationModalProps) => {
+}: NotificationModalPropsInterface) => {
   const [current, setCurrent] = useState(1);
   const pageSize = 4;
 
@@ -29,7 +18,7 @@ const NotificationModal = ({
   const startIndex = (current - 1) * pageSize;
   const paginatedNotifications = notifications.slice(
     startIndex,
-    startIndex + pageSize
+    startIndex + pageSize,
   );
 
   return (

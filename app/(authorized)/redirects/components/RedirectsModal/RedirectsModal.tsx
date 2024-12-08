@@ -7,8 +7,9 @@ import SitesSelect from '@/app/components/SitesSelect/SitesSelect';
 import Search from '@/app/components/Search/Search';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
+import { RedirectsModalPropsInterface } from '../interfaces/redirects-modal-props.interface';
 
-const RedirectsModal = (props: RedirectsModalProps): JSX.Element => {
+const RedirectsModal = (props: RedirectsModalPropsInterface): JSX.Element => {
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.header}>

@@ -12,7 +12,7 @@ const columns: TableColumnsType<UserRecordPropsInterface> = [
     title: 'Name',
     dataIndex: 'name',
     key: 'name',
-    render: (_: any, record: UserRecordPropsInterface) => (
+    render: (_: unknown, record: UserRecordPropsInterface) => (
       <div className={styles.checkboxAndUserWrapper}>
         <Checkbox className={styles.checkboxStyle} />
         <Image
@@ -45,15 +45,10 @@ const columns: TableColumnsType<UserRecordPropsInterface> = [
   {
     title: '',
     key: 'empty',
-    render: (_: any, record: UserRecordPropsInterface) => (
+    render: (_: unknown, record: UserRecordPropsInterface) => (
       <div className={styles.buttonAndIconsWrapper}>
         {record.button && (
-          <button
-            className={styles.buttonStyle}
-            onClick={() => handleButtonClick(record)}
-          >
-            Transfer ownership
-          </button>
+          <button className={styles.buttonStyle}>Transfer ownership</button>
         )}
         {record.icon && (
           <div className={styles.iconsWrapper}>
@@ -63,7 +58,6 @@ const columns: TableColumnsType<UserRecordPropsInterface> = [
               width={24}
               height={24}
               className={styles.imageIconStyle}
-              onClick={() => handleIconClick(record)}
             />
             <Image
               src={String(record.iconSecond)}
@@ -71,7 +65,6 @@ const columns: TableColumnsType<UserRecordPropsInterface> = [
               width={24}
               height={24}
               className={styles.imageIconStyle}
-              onClick={() => handleIconClick(record)}
             />
           </div>
         )}
@@ -79,14 +72,6 @@ const columns: TableColumnsType<UserRecordPropsInterface> = [
     ),
   },
 ];
-
-const handleButtonClick = (record: UserRecordPropsInterface) => {
-  console.log('////');
-};
-
-const handleIconClick = (record: UserRecordPropsInterface) => {
-  console.log('////');
-};
 
 const UsersSettings = (): JSX.Element => {
   return (

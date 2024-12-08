@@ -9,7 +9,7 @@ const PieChartBox = () => {
   const errorTypes = ['200', '300', '400', '500'];
   const total = dataValues.reduce((sum, value) => sum + value, 0);
   const percentages = dataValues.map(
-    (value) => ((value / total) * 100).toFixed(2) + '%'
+    (value) => ((value / total) * 100).toFixed(2) + '%',
   );
 
   const data = {

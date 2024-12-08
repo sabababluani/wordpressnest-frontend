@@ -21,17 +21,17 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
 const ResolutionStackedBarChart = (props: ResolutionStackedBarChartProps) => {
   const totalValues = props.datasets.map((dataset) =>
-    dataset.data.reduce((a, b) => a + b, 0)
+    dataset.data.reduce((a, b) => a + b, 0),
   );
   const grandTotal = totalValues.reduce((a, b) => a + b, 0);
 
   const percentages = totalValues.map((total) =>
-    ((total / grandTotal) * 100).toFixed(1)
+    ((total / grandTotal) * 100).toFixed(1),
   );
 
   const options = {

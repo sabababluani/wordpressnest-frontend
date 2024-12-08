@@ -3,7 +3,7 @@ import styles from './EnvironmentDetails.module.scss';
 import { EnvironementDetailsPropsInterface } from './interfaces/environment-details-props.interface';
 
 const EnvironementDetails = (
-  props: EnvironementDetailsPropsInterface
+  props: EnvironementDetailsPropsInterface,
 ): JSX.Element => {
   return (
     <div className={styles.mainWrapper}>

@@ -29,7 +29,7 @@ const Users = (): JSX.Element => {
 
   const { data: wpUsers } = useSWR<UsersTablePropsInterface[]>(
     `wp-cli/wpuser/${id}`,
-    fetcher
+    fetcher,
   );
 
   const showModalEdit = (user: UsersTablePropsInterface) => {

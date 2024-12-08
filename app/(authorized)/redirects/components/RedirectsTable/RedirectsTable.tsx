@@ -25,10 +25,9 @@ const RedirectsTable = (): JSX.Element => {
   const rowSelection: {
     onChange: (selectedRowKeys: React.Key[], selectedRows: DataType[]) => void;
   } = {
-    onChange: (_selectedRowKeys, _selectedRows) => {
-      console.log(_selectedRowKeys, _selectedRows);
-    },
+    onChange: (_selectedRowKeys, _selectedRows) => {},
   };
+
   return (
     <div className={styles.tableWrapper}>
       <Table<DataType>

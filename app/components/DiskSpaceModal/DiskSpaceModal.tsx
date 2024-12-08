@@ -78,7 +78,7 @@ const DiskSpaceModal = (props: diskModulePropsInterface): JSX.Element => {
                       className={styles.minusStyle}
                       onClick={() =>
                         setCoefficient((prev: number) =>
-                          prev - 1 < 1 ? 1 : prev - 1
+                          prev - 1 < 1 ? 1 : prev - 1,
                         )
                       }
                     >

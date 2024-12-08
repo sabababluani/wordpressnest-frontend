@@ -5,7 +5,7 @@ import styles from './Newsletter.module.scss';
 
 const Newsletter = (): JSX.Element => {
   const [placeholder, setPlaceholder] = useState<string>(
-    ' Novatorimagaria@gmail.com'
+    ' Novatorimagaria@gmail.com',
   );
   const [inputValue, setInputValue] = useState<string>('');
 
@@ -18,7 +18,7 @@ const Newsletter = (): JSX.Element => {
         <span className={styles.descriptionStyle}>
           Drive more traffic and revenue to your business and keep up with the
           latest web development languages, frameworks, and trends with
-          Hosting’s biweekly newsletter
+          Hosting`s biweekly newsletter
         </span>
         <div className={styles.wrapper}>
           <span className={styles.subUpdatesCaptionStyle}>

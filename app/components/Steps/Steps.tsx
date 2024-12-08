@@ -1,5 +1,5 @@
-import { stepsPropsInterface } from './interface/steps-interface';
 import styles from './Steps.module.scss';
+import { stepsPropsInterface } from './interface/steps-interface';
 
 const Steps = (props: stepsPropsInterface) => {
   return (

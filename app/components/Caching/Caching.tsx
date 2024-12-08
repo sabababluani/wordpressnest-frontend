@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import styles from './CachingComponent.module.css';
+import styles from './Caching.module.scss';
 
 const CachingComponent = (): JSX.Element => {
   const pathName = usePathname();

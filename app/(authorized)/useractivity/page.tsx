@@ -1,7 +1,7 @@
 'use client';
+
 import { Select } from 'antd';
 import Search from '../../components/Search/Search';
-import SitesSelect from '../../components/SitesSelect/SitesSelect';
 import ActivityTable from './components/ActivityTable/ActivityTable';
 import styles from './page.module.scss';
 import { useState } from 'react';
@@ -12,6 +12,7 @@ const Useractivity = () => {
   const onSelectChange = (value: string) => {
     setSelectState(value);
   };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
