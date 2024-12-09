@@ -1,7 +1,10 @@
+import Button from '@/app/components/Button/Button';
 import styles from './DailyBackupModal.module.scss';
 import Image from 'next/image';
+import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
+import { DailyBackupModalPropsInterface } from './interfaces/daily-backup-modal-props.interface';
 
-const DailyBackupModal = () => {
+const DailyBackupModal = (props: DailyBackupModalPropsInterface) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
@@ -12,55 +15,101 @@ const DailyBackupModal = () => {
           width={24}
           height={24}
           className={styles.close}
+          onClick={props.onClose}
         />
       </div>
-      <div>
-        <div>
-          <div>
-            <span>Jigaro</span>
-            <span>Environment</span>
-          </div>
-          <div>
-            <div className={styles.circle}></div>
-            <span className={styles.live}>Live</span>
-          </div>
-        </div>
-        <Image
-          src="/icons/close-mini.svg"
-          alt="close"
-          width={24}
-          height={24}
-          className={styles.close}
-        />
-        <div>
-          <div>
-            <span>Daily backup</span>
-            <span>{'Dec 7, 2024, 12:46 AM "Daily Auto Backup"'}</span>
-          </div>
-          <div>
-            <div className={styles.circle}></div>
-            <span className={styles.live}>Live</span>
-          </div>
-        </div>
-      </div>
-      <div>
-        <span>
-          The selected backup will replace all your files, databases and
-          environment settings (e.g. domains, redirects, SSL certificates) to
-          your jigaro Live environment.
-        </span>
-        <div>
-          <span>What will remain the same:</span>
-          <div>
-            <div>
-              <div></div>
-              <span>Database password</span>
-            </div>
-            <div>
-              <div></div>
-              <span>.htpasswd protection</span>
+      <div className={styles.container}>
+        <div className={styles.boxesWrapper}>
+          <div className={styles.box}>
+            <div className={styles.boxInner}>
+              <div className={styles.boxContent}>
+                <span className={styles.backupName}>Jigaro</span>
+                <span className={styles.environment}>Environment</span>
+              </div>
+              <div className={styles.liveContainer}>
+                <div className={styles.circle}></div>
+                <span className={styles.live}>Live</span>
+              </div>
             </div>
           </div>
+          <Image
+            src="/icons/leftArrowbackup.svg"
+            alt="close"
+            width={36}
+            height={36}
+            className={styles.close}
+          />
+          <div className={styles.box}>
+            <div className={styles.boxInner}>
+              <div className={styles.boxContentDaily}>
+                <span className={styles.backupName}>Daily backup</span>
+                <span className={styles.environment}>
+                  {'Dec 7, 2024, 12:46 AM "Daily Auto Backup"'}
+                </span>
+              </div>
+              <div className={styles.liveContainer}>
+                <div className={styles.circle}></div>
+                <span className={styles.live}>Live</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={styles.content}>
+          <p>
+            The selected backup will{' '}
+            <span className={styles.bold}>replace</span> all your files,
+            databases and environment settings (e.g. domains, redirects, SSL
+            certificates) to your{' '}
+            <span className={styles.bold}>jigaro Live environment.</span>
+          </p>
+        </div>
+        <div>
+          <div className={styles.list}>
+            <span className={styles.listHeading}>
+              What will remain the same:
+            </span>
+            <div>
+              <div className={styles.listWrapper}>
+                <div className={styles.dot}></div>
+                <span className={styles.listName}>Database password</span>
+              </div>
+              <div className={styles.listWrapper}>
+                <div className={styles.dot}></div>
+                <span>.htpasswd protection</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div className={styles.list}>
+            <span className={styles.listHeading}>What will change:</span>
+            <div>
+              <div className={styles.listWrapper}>
+                <div className={styles.dot}></div>
+                <span className={styles.listName}>Container ip address</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div className={styles.inputContainer}>
+            <p>
+              Enter the text <span className={styles.bold}>jigaro</span> here to
+              reset your site:
+            </p>
+            <input type="text" />
+          </div>
+        </div>
+        <div className={styles.buttons}>
+          <Button
+            backgroundColor={buttonbackgroundColorEnum.grey}
+            innerContent="Cancel"
+            onClick={props.onClose}
+          />
+          <Button
+            backgroundColor={buttonbackgroundColorEnum.black}
+            innerContent="Restore Backup"
+          />
         </div>
       </div>
     </div>

@@ -27,11 +27,13 @@
   gap: 12px;
   background-color: #f0f3f5;
   border: 2px solid #dcdfe1;
-  padding: 16px 24px;
+  padding: 16px;
   border-radius: 12px;
   position: absolute;
   z-index: 10;
+  max-width: 139px;
   width: 100%;
+  cursor: pointer;
 }
 
 .circle {
