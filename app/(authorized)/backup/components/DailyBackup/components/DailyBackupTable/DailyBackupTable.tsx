@@ -5,9 +5,9 @@ import { Table } from 'antd';
 import type { TableProps } from 'antd';
 import Image from 'next/image';
 import styles from './DailyBackupTable.module.scss';
-import DailyBackupSelect from '../DailyBackupSelect/DailyBackupSelect';
 import { DailyBackupPropsInterface } from './interfaces/daily-backup-table-props.interface';
 import { Dailydata } from './dummy-data/daily-backup-table';
+import DailyBackupSelect from '../DailyBackupSelect/DailyBackupSelect';
 
 const columns: TableProps<DailyBackupPropsInterface>['columns'] = [
   {

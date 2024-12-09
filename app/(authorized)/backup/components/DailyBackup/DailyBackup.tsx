@@ -1,10 +1,7 @@
 'use client';
 
-import { Modal } from 'antd';
-import DailyBackupModal from '../DailyBackupModal/DailyBackupModal';
-import DailyBackupTable from '../DailyBackupTable/DailyBackupTable';
 import styles from './DailyBackup.module.scss';
-import { useState } from 'react';
+import DailyBackupTable from './components/DailyBackupTable/DailyBackupTable';
 
 const DailyBackup = (): JSX.Element => {
   return (

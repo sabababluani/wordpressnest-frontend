@@ -1,0 +1,205 @@
+.tableWrapper {
+  padding-top: 8px;
+}
+
+.tableWrapper :global .ant-table th {
+  background: #fff !important;
+}
+
+.tableWrapper :global .ant-table-cell::before {
+  content: none !important;
+}
+
+.tableWrapper :global .ant-table-cell {
+  padding-left: 4px !important;
+  color: #11141a !important;
+  font-weight: 500 !important;
+}
+
+.tableWrapper :global .ant-table-thead .ant-table-cell {
+  color: #11141a99 !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  padding-left: 20px !important;
+  text-align: start !important;
+}
+
+.tableWrapper :global .ant-table-selection-column {
+  padding-left: 24px !important;
+}
+
+.tableWrapper {
+  background-color: #fff;
+}
+
+.tableWrapper :global .ant-table-container {
+  border: 1px solid #dcdfe1;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.tableWrapper :global .ant-checkbox-inner {
+  background-color: #f0f3f5;
+  border: none !important;
+  width: 24px;
+  height: 24px;
+}
+
+.tableWrapper :global .ant-checkbox-checked .ant-checkbox-inner {
+  background-color: black;
+  border: none !important;
+}
+
+.tableWrapper :global .ant-checkbox-inner::after {
+  width: 7.1px !important;
+  height: 12px !important;
+}
+
+.tableWrapper
+  :global
+  .ant-table-row
+  .ant-checkbox-wrapper:active:hover
+  .ant-checkbox-inner {
+  background-color: black !important;
+  border: none !important;
+}
+
+.tableWrapper
+  :global
+  .ant-table-thead:hover
+  .ant-table-cell
+  .ant-checkbox-wrapper
+  .ant-checkbox-checked
+  .ant-checkbox-inner {
+  background-color: black !important;
+  border: none !important;
+}
+
+.tableWrapper
+  :global
+  .ant-table-row:hover
+  .ant-table-cell
+  .ant-checkbox-wrapper
+  .ant-checkbox-checked
+  .ant-checkbox-inner {
+  background-color: black !important;
+  border: none !important;
+}
+
+.tableWrapper :global .ant-table-row .ant-table-cell {
+  padding-left: 24px !important;
+  padding-right: 64px;
+}
+
+.tableWrapper
+  :global
+  .ant-table-selection
+  .ant-checkbox-wrapper
+  .ant-checkbox
+  .ant-checkbox-inner::after {
+  background-color: transparent;
+}
+
+.tableWrapper
+  :global
+  .ant-table-thead
+  tr
+  .ant-table-cell
+  .ant-table-selection
+  .ant-checkbox-wrapper
+  .ant-checkbox-indeterminate
+  .ant-checkbox-inner {
+  background-color: #f0f3f5 !important;
+}
+
+.tableWrapper
+  :global
+  .ant-table-wrapper
+  .ant-table-tbody
+  .ant-table-row.ant-table-row-selected
+  > .ant-table-cell {
+  background-color: #f0f3f5 !important;
+}
+
+.tableWrapper :global .ant-checkbox-indeterminate::after {
+  background-color: transparent;
+}
+
+.tableWrapper :global .ant-checkbox-wrapper .ant-checkbox-indeterminate {
+  background-color: #f0f3f5 !important;
+}
+
+.tableWrapper
+  :global(.ant-select .ant-select-selector .ant-select-selection-item) {
+  font-size: 16px !important;
+}
+
+.tableWrapper {
+  width: 100%;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tableWrapper :global(.ant-table-thead th:last-child) {
+  text-align: right;
+  padding-right: 148px !important;
+}
+
+.tableWrapper :global(.ant-table-tbody td:last-child) {
+  text-align: right;
+}
+
+.tableWrapper :global {
+  text-align: right;
+}
+
+.activeStatus {
+  color: #2be437;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.greenDot,
+.redDot {
+  display: inline-block;
+  align-self: center;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.greenDot {
+  background-color: #2be437;
+}
+
+.status {
+  position: relative;
+  bottom: 1px;
+}
+
+.dotsWrapper {
+  border-radius: 4px;
+  border: 1px solid #dcdfe1;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tableWrapper :global(.ant-select-selection-item) {
+  font-size: 16px;
+  padding-left: 6px !important;
+}
