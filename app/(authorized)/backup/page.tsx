@@ -3,6 +3,7 @@ import Tabs from '@/app/components/Tabs/Tabs';
 import DailyBackup from '@/app/(authorized)/backup/components/DailyBackup/DailyBackup';
 import ManualBackup from '@/app/(authorized)/backup/components/ManualBackup/ManualBackup';
 import HourlyBackup from './components/HourlyBackup/HourlyBackup';
+import ExternalBackup from './components/ExternalBackup/ExternalBackup';
 
 const backup = (): JSX.Element => {
   return (
@@ -26,6 +27,10 @@ const backup = (): JSX.Element => {
           </div>,
           <div key={'manual'}>
             <ManualBackup />
+          </div>,
+          <div></div>,
+          <div key={'external'}>
+            <ExternalBackup />
           </div>,
         ]}
       />
