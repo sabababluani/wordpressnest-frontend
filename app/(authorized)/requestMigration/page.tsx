@@ -11,7 +11,7 @@ import RequestMigrationSecondStep from './components/RequestMigrationSecondStep/
 
 const RequestMigration = () => {
   const [stepFlow, setStepFlow] = useState<number>(1);
-  const [activeCheckbox, setActiveCheckbox] = useState<number | null>(1);
+  const [activeCheckbox, setActiveCheckbox] = useState<number | null>(0);
   const [, setDate] = useState<string>('');
   const [time, setTime] = useState<string>('');
   const [, setTimezone] = useState<string>('');
@@ -38,7 +38,7 @@ const RequestMigration = () => {
               }
               initialActiveCheckbox={activeCheckbox}
             />
-            <>
+             <>
               <div className={styles.mainMiddleContainer}>
                 {activeCheckbox === 1 && (
                   <>

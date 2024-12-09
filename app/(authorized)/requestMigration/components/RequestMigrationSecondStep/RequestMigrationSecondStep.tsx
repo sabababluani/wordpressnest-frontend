@@ -2,10 +2,11 @@
 import { Checkbox } from "antd";
 import styles from "./RequestMigrationSecondStep.module.scss";
 import { useState } from "react";
+import { useGetData } from "@/app/hooks/useGetData";
 
 const RequestMigrationSecondStep = (): JSX.Element => {
 
-    const [activeCheckboxIndex, setActiveCheckboxIndex] = useState<number | null>(1);
+    const [activeCheckboxIndex, setActiveCheckboxIndex] = useState<number | null>(0);
 
 
     const checkboxDetector = (index: number): void => {
