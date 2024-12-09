@@ -12,7 +12,7 @@ export const useGetData = <T>({
   queryParams = {},
 }: CrudServiceProps<T>) => {
   const queryString = new URLSearchParams(
-    queryParams as Record<string, string>,
+    queryParams as Record<string, string>
   ).toString();
   const url = queryString ? `${endpoint}?${queryString}` : endpoint;
 

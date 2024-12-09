@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './ManualBackup.module.scss';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import Button from '@/app/components/Button/Button';
-import ManualBackupTable from '../ManualBackupTable/ManualBackupTable';
+import ManualBackupTable from './components/ManualBackupTable/ManualBackupTable';
 
 const ManualBackup = (): JSX.Element => {
   return (

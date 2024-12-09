@@ -5,9 +5,9 @@ import type { TableProps } from 'antd';
 import Image from 'next/image';
 import React from 'react';
 import styles from './ManualBackupTable.module.scss';
-import DailyBackupSelect from '../DailyBackupSelect/DailyBackupSelect';
 import { ManualBackupTablePropsInterface } from './interfaces/manual-backup-table-props.interface';
 import { manualBackupTableDummy } from './dummy-data/manual-backup-table';
+import DailyBackupSelect from '../../../DailyBackup/components/DailyBackupSelect/DailyBackupSelect';
 
 const columns: TableProps<ManualBackupTablePropsInterface>['columns'] = [
   {
@@ -24,6 +24,7 @@ const columns: TableProps<ManualBackupTablePropsInterface>['columns'] = [
     ),
     dataIndex: 'dateTime',
     key: 'dateTime',
+    width: '50%',
   },
   {
     title: 'Status',
@@ -35,11 +36,13 @@ const columns: TableProps<ManualBackupTablePropsInterface>['columns'] = [
         <span className={styles.status}>{status}</span>
       </div>
     ),
+    width: '25%',
   },
   {
     title: 'Restore',
     key: 'restore',
     render: () => <DailyBackupSelect />,
+    width: '25%',
   },
 ];
 
