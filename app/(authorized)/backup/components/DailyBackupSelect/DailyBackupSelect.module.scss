@@ -1,36 +1,49 @@
-.wrapper :global .ant-select-selector {
-  text-align: left !important;
-  padding-top: 8px;
-  padding-bottom: 8px;
+.wrapper {
+  position: relative;
 }
 
-.wrapper :global .ant-select-selection-item {
-  color: #11141a !important;
-  font-weight: 500 !important;
+.container {
+  border: 1px solid #dcdfe1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  max-width: 139px;
+  width: 100%;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
 }
 
-.wrapper :global .ant-select {
-  max-width: 139px !important;
-  width: 100% !important;
+.container span {
+  color: #11141a;
+  font-weight: 500;
+  line-height: 24px;
 }
 
-.wrapper :global .ant-select .ant-select-selector {
-  padding-left: 16px !important;
+.liveContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #f0f3f5;
+  border: 2px solid #dcdfe1;
+  padding: 16px;
+  border-radius: 12px;
+  position: absolute;
+  z-index: 10;
+  max-width: 139px;
+  width: 100%;
+  cursor: pointer;
 }
 
-.wrapper :global(.ant-select .ant-select-arrow svg) {
+.circle {
+  background-color: #000000;
+  border-radius: 50%;
   width: 12px;
-  height: 9px;
+  height: 12px;
 }
 
-.wrapper :global .ant-select {
-  height: 40px;
-}
-
-.wrapper :global .ant-select:focus {
-  border: unset !important;
-}
-
-.wrapper :global .ant-select .ant-select-selector:focus {
-  border: unset !important;
+.live {
+  color: #11141a;
+  font-weight: 600;
 }

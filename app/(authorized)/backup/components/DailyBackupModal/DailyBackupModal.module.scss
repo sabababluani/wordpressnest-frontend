@@ -1,0 +1,160 @@
+.wrapper {
+  max-width: 840px;
+  width: 100%;
+  border-radius: 12px;
+  background-color: #fff;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 24px;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f0f3f5;
+  border-radius: 12px 12px 0 0;
+  padding: 16px 24px;
+}
+
+.header img {
+  cursor: pointer;
+}
+
+.headline {
+  color: #11141a;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.circle {
+  background-color: #000000;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+}
+
+.live {
+  color: #11141a;
+  font-weight: 600;
+}
+
+.box {
+  border: 1px solid #dcdfe1;
+  border-radius: 12px;
+  max-width: 354px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 115px;
+  padding-left: 24px;
+}
+
+.boxContentDaily {
+  display: flex;
+  flex-direction: column;
+  max-width: 162px;
+  width: 100%;
+}
+
+.boxContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.backupName {
+  color: #11141a;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.environment {
+  color: #707276;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.liveContainer {
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 12px;
+}
+
+.boxesWrapper {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.boxInner {
+  display: flex;
+  gap: 8px;
+}
+
+.content > p {
+  color: #545a67 !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+
+.bold {
+  color: #11141a;
+}
+
+.listHeading {
+  color: #11141a;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.dot {
+  background-color: #545a67;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+.listWrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.listName {
+  color: #545a67;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputContainer input {
+  border-radius: 12px;
+  border: 1px solid #dcdfe1;
+  padding: 0 12px;
+  height: 41px;
+}
+
+.inputContainer p {
+  color: #545a67 !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 16px 0 24px 0;
+}

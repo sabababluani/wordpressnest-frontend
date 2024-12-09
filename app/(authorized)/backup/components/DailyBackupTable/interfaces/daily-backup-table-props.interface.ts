@@ -1,4 +1,4 @@
 export interface DailyBackupPropsInterface {
-  key: string;
+  id: number;
   dateTime: string;
 }
