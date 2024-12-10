@@ -35,7 +35,7 @@ const RequestMigrationSecondStep = (): JSX.Element => {
           </span>
         </div>
       </div>
-      <div 
+      <div
         className={`${styles.containerWrapper} ${activeCheckboxIndex == 2 ? styles.containerWrapperActive : styles.containerWrapperInActive}`}
         onClick={() => checkboxDetector(2)}
       >

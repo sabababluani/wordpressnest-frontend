@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky"
+    "prepare": "husky install"
   },
   "dependencies": {
     "antd": "^5.22.1",
@@ -36,7 +36,17 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "husky": "^9.1.7",
+    "lint-staged": "^14.0.1",
     "typescript": "^5.7.2",
     "webpack": "^5.97.0"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,tsx,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "**/*.{scss,css,md,json}": [
+      "prettier --write"
+    ]
   }
 }
