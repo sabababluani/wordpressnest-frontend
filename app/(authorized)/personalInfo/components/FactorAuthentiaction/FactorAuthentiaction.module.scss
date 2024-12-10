@@ -1,7 +1,9 @@
+@import '../../../../styles/text-colors.scss';
+@import '../../../../styles/colors.scss';
+
 .wrapper {
   flex: 1;
-  border: 1px solid #dcdfe1;
-  border-radius: 12px;
+  border: 1px solid $borderColor;  border-radius: 12px;
 }
 
 .header {
@@ -12,7 +14,7 @@
 }
 
 .header p {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 20px;
   font-weight: 700;
 }

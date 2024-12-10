@@ -1,3 +1,6 @@
+@import '../../../styles/text-colors.scss';
+@import '../../../styles/colors.scss';
+
 .mainContainer {
   display: flex;
   flex-direction: column;
@@ -17,7 +20,7 @@
 }
 
 .captionStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 24px;
   font-style: normal;
   font-weight: 600;

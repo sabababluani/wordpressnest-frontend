@@ -1,3 +1,5 @@
+
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -24,7 +26,7 @@ a {
 
 .container {
   border-radius: 12px;
-  border: 1px solid #dcdfe1;
+  border: 1px solid #DCDFE1;  
   height: 100%;
   overflow-y: scroll;
   background-color: #ffffff;

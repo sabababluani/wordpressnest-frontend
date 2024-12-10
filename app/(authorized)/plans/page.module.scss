@@ -1,3 +1,6 @@
+@import '../../styles/text-colors.scss';
+@import '../../styles/colors.scss';
+
 .container {
   width: 100%;
   padding: 24px 24px 87px 24px;
@@ -7,7 +10,7 @@
 }
 
 .headline {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;

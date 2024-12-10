@@ -1,3 +1,6 @@
+@import '../../styles/text-colors.scss';
+@import '../../styles/colors.scss';
+
 .wrapper {
   width: 100%;
   display: flex;
@@ -23,12 +26,12 @@
 
 .heading h1 {
   font-size: 24px;
-  color: #11141a;
+  color: $primaryTextColor;
   font-weight: 600;
 }
 
 .heading p {
-  color: #00000099;
+  color: $primaryColor;
   font-size: 14px;
 }
 

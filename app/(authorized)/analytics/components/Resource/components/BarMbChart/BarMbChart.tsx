@@ -50,7 +50,7 @@ const BarMbChart = (props: BarMbChartPropsInterface) => {
           color: 'rgba(255,255,255, 0.15)',
         },
         ticks: {
-          color: '#000',
+          color: '$primaryColor',
         },
         border: {
           display: false,
@@ -100,7 +100,7 @@ const BarMbChart = (props: BarMbChartPropsInterface) => {
           920, 300, 150, 980, 220, 222, 920, 300, 150, 980, 220, 222, 300, 150,
           980, 220, 222, 920, 300, 150,
         ],
-        backgroundColor: '#000',
+        backgroundColor: '$primaryColor',
         barThickness: 32,
         borderRadius: 6,
       },

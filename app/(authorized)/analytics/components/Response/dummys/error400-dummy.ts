@@ -53,6 +53,6 @@ export const Error400 = [
       10, 60, 71, 64, 78, 13, 61, 70, 66, 81, 60, 69, 67, 80, 14, 61, 72, 67,
       79, 12,
     ],
-    backgroundColor: '#11141A',
+    backgroundColor: '$primaryTextColor',
   },
 ];

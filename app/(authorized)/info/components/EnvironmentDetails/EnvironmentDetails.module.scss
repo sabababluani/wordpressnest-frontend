@@ -1,3 +1,6 @@
+@import '../../../../styles/text-colors.scss';
+@import '../../../../styles/colors.scss';
+
 .mainWrapper {
   max-height: 1572px;
   width: 100%;
@@ -28,7 +31,7 @@
 }
 
 .captionStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
@@ -39,8 +42,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  border-right: 1px solid #dcdfe1;
-  max-width: 381px;
+  border-right: 1px solid $borderColor;  max-width: 381px;
   width: 100%;
 }
 
@@ -51,7 +53,7 @@
 }
 
 .pathCaptionStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -73,7 +75,7 @@
 }
 
 .environmentNameStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -92,8 +94,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  border-right: 1px solid #dcdfe1;
-  max-width: 381px;
+  border-right: 1px solid $borderColor;  max-width: 381px;
   width: 100%;
 }
 
@@ -116,7 +117,7 @@
 }
 
 .siteIpStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -124,7 +125,7 @@
 }
 
 .wordpressCaptionStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -152,13 +153,12 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  border-right: 1px solid #dcdfe1;
-  max-width: 381px;
+  border-right: 1px solid $borderColor;  max-width: 381px;
   width: 100%;
 }
 
 .ipAddressCaptionStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -188,7 +188,7 @@
 }
 
 .phpCaptionStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;

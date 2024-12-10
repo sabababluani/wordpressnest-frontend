@@ -1,10 +1,12 @@
+@import '../../../../../../styles/text-colors.scss';
+@import '../../../../../../styles/colors.scss';
+
 .wrapper {
   position: relative;
 }
 
 .container {
-  border: 1px solid #dcdfe1;
-  display: flex;
+  border: 1px solid $borderColor;  display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
@@ -16,7 +18,7 @@
 }
 
 .container span {
-  color: #11141a;
+  color: $primaryTextColor;
   font-weight: 500;
   line-height: 24px;
 }
@@ -26,8 +28,7 @@
   align-items: center;
   gap: 12px;
   background-color: #f0f3f5;
-  border: 2px solid #dcdfe1;
-  padding: 16px;
+  border: 2px solid $borderColor;  padding: 16px;
   border-radius: 12px;
   position: absolute;
   z-index: 10;
@@ -37,13 +38,13 @@
 }
 
 .circle {
-  background-color: #000000;
+  background-color: $primaryColor;
   border-radius: 50%;
   width: 12px;
   height: 12px;
 }
 
 .live {
-  color: #11141a;
+  color: $primaryTextColor;
   font-weight: 600;
 }

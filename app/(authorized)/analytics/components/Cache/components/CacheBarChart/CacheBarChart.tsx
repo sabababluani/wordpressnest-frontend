@@ -57,7 +57,7 @@ const CacheBarChart = (props: CacheBarChartPropsInterface) => {
           display: false,
         },
         ticks: {
-          color: '#000',
+          color: '$primaryColor',
         },
         border: {
           display: false,

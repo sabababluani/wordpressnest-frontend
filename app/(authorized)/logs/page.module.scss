@@ -1,3 +1,6 @@
+@import '../../styles/text-colors.scss';
+@import '../../styles/colors.scss';
+
 .wrapper {
   width: 100%;
   padding: 16px 12px 52px 24px;
@@ -21,7 +24,7 @@
 }
 
 .headline {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 24px;
   font-style: normal;
   font-weight: 600;
@@ -29,7 +32,7 @@
 }
 
 .text {
-  color: rgba(0, 0, 0, 0.6);
+  color: $secondaryTextColor;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -41,7 +44,7 @@
 }
 
 .selectWrapper :global .ant-select-selection-item {
-  color: #11141a !important;
+  color: $primaryTextColor !important;
   font-size: 16px !important;
   font-style: normal !important;
   font-weight: 500 !important;
@@ -56,7 +59,7 @@
 
 .info {
   width: 100%;
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -66,7 +69,7 @@
 }
 
 .headline {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 24px;
   font-style: normal;
   font-weight: 600;
@@ -94,7 +97,7 @@
   color: #b5b7bf !important;
 }
 .paginationWrapper :global .ant-pagination .ant-pagination-item-active a {
-  color: #11141a !important;
+  color: $primaryTextColor !important;
 }
 
 .arrow {

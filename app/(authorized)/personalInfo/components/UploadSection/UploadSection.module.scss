@@ -1,8 +1,10 @@
+@import '../../../../styles/text-colors.scss';
+@import '../../../../styles/colors.scss';
+
 .wrapper {
   width: 428px;
   border-radius: 12px;
-  border: 1px solid #dcdfe1;
-  display: flex;
+  border: 1px solid $borderColor;  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -11,8 +13,7 @@
 }
 
 .container {
-  border: 1px solid #dcdfe1;
-  border-radius: 8px;
+  border: 1px solid $borderColor;  border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,7 +39,7 @@
 }
 
 .click {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 14px;
   line-height: 20px;
   font-weight: 500;

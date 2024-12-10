@@ -1,3 +1,6 @@
+@import '../../../../styles/text-colors.scss';
+@import '../../../../styles/colors.scss';
+
 .mainContainer {
     max-width: 1572px;
     width: 100%;
@@ -33,8 +36,7 @@
 }
 
 .inActiveStyle {
-    background-color: #DCDFE1;
-}
+    background-color: $borderColor;}
 
 .lineStyle {
     max-width: 299px;
@@ -51,5 +53,4 @@
 }
 
 .inActiveFontColor {
-    color: #DCDFE1;
-}
+    color: $borderColor;}

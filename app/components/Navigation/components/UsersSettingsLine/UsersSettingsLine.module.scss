@@ -1,3 +1,6 @@
+@import '../../../../styles/text-colors.scss';
+@import '../../../../styles/colors.scss';
+
 .sitesInfo {
   display: flex;
   align-items: center;
@@ -27,11 +30,10 @@
 
 .infoButtonClicked {
   background-color: #e4e6e9;
-  border: 1px solid #dcdfe1;
-}
+  border: 1px solid $borderColor;}
 
 .infoButtonClicked span {
-  color: #11141a !important;
+  color: $primaryTextColor !important;
 }
 
 .infoButton span {

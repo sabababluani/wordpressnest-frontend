@@ -1,15 +1,16 @@
+@import '../../styles/text-colors.scss';
+@import '../../styles/colors.scss';
+
 .mainWrapper {
   width: 100%;
   display: flex;
   gap: 12px;
-  border-top: 1px solid #dcdfe1;
-  border-bottom: 1px solid #dcdfe1;
-  padding: 8px 24px 0 24px;
+  border-top: 1px solid $borderColor;  border-bottom: 1px solid $borderColor;  padding: 8px 24px 0 24px;
   align-items: center;
 }
 
 .actived {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;

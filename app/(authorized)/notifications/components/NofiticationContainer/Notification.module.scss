@@ -1,11 +1,13 @@
+@import '../../../../styles/text-colors.scss';
+@import '../../../../styles/colors.scss';
+
 .mainContainer {
   margin: 0px 24px;
 }
 
 .topContainer {
   padding: 16px 24px;
-  border: 1px solid #dcdfe1;
-  border-radius: 12px 12px 0px 0px;
+  border: 1px solid $borderColor;  border-radius: 12px 12px 0px 0px;
   background-color: #f0f3f5;
 }
 
@@ -13,15 +15,12 @@
   padding: 20px 24px;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #dcdfe1;
-  border-left: 1px solid #dcdfe1;
-  border-right: 1px solid #dcdfe1;
-  border-bottom-left-radius: 12px;
+  border-bottom: 1px solid $borderColor;  border-left: 1px solid $borderColor;  border-right: 1px solid $borderColor;  border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
 }
 
 .mainCaptionStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;

@@ -7,7 +7,7 @@ const datasets = [
       600, 700, 800, 750, 720, 600, 700, 800, 750, 720, 700, 800, 750, 720, 700,
       800, 750, 720, 700, 800,
     ],
-    backgroundColor: '#000000',
+    backgroundColor: '$primaryColor',
   },
   {
     label: 'Mobile',

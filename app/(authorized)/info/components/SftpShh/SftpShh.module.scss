@@ -1,3 +1,6 @@
+@import '../../../../styles/text-colors.scss';
+@import '../../../../styles/colors.scss';
+
 .mainWrapper {
   max-height: 1572px;
   width: 100%;
@@ -28,7 +31,7 @@
 }
 
 .mainCaptionStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
@@ -41,8 +44,7 @@
   gap: 16px;
   max-width: 357px;
   width: 100%;
-  border-right: 1px solid #dcdfe1;
-}
+  border-right: 1px solid $borderColor;}
 
 .hostWrapper {
   display: flex;
@@ -51,7 +53,7 @@
 }
 
 .hostStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -79,7 +81,7 @@
 }
 
 .passwordExpirationStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -113,7 +115,7 @@
 }
 
 .sshStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -134,8 +136,7 @@
   gap: 16px;
   max-width: 333px;
   width: 100%;
-  border-right: 1px solid #dcdfe1;
-}
+  border-right: 1px solid $borderColor;}
 
 .portWrapper {
   display: flex;
@@ -152,7 +153,7 @@
 }
 
 .portStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -166,7 +167,7 @@
 }
 
 .authenticationMethodsCaptionStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -205,13 +206,12 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
   line-height: 24px;
-  border-right: 1px solid #dcdfe1;
-}
+  border-right: 1px solid $borderColor;}
 
 .userNameWrapper {
   display: flex;
@@ -220,7 +220,7 @@
 }
 
 .usernameStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -242,7 +242,7 @@
 }
 
 .ipAllowCaptionStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -296,7 +296,7 @@
 }
 
 .passwordCaptionStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -304,7 +304,7 @@
 }
 
 .ftpCaptionStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;

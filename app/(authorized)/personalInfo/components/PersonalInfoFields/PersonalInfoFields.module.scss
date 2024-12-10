@@ -1,3 +1,6 @@
+@import '../../../../styles/text-colors.scss';
+@import '../../../../styles/colors.scss';
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -21,7 +24,7 @@
 }
 
 .inputContainer span {
-  color: #11141a;
+  color: $primaryTextColor;
   font-weight: 700;
   font-size: 14px;
 }
@@ -32,11 +35,10 @@
 
 .inputContainer input {
   height: 40px;
-  border: 1px solid #dcdfe1;
-  border-radius: 8px;
+  border: 1px solid $borderColor;  border-radius: 8px;
   padding-left: 14px;
   font-size: 16px;
-  color: #11141a;
+  color: $primaryTextColor;
 }
 
 .inputContainer input:focus {
@@ -73,11 +75,11 @@
   margin: 0 12px;
   height: 100%;
   font-size: 16px;
-  color: #11141a;
+  color: $primaryTextColor;
 }
 
 .emailContainer span {
-  color: #11141a;
+  color: $primaryTextColor;
   font-weight: 700;
   font-size: 14px;
 }
@@ -93,8 +95,7 @@
 .emailField {
   display: flex;
   align-items: center;
-  border: 1px solid #dcdfe1;
-  height: 44px;
+  border: 1px solid $borderColor;  height: 44px;
   border-radius: 8px;
   padding-left: 14px;
 }
@@ -109,8 +110,7 @@
 .passwordField {
   display: flex;
   align-items: center;
-  border: 1px solid #dcdfe1;
-  height: 44px;
+  border: 1px solid $borderColor;  height: 44px;
   border-radius: 8px;
   padding-right: 14px;
 }
@@ -135,7 +135,7 @@
 }
 
 .passwordContainer span {
-  color: #11141a;
+  color: $primaryTextColor;
   font-weight: 700;
   font-size: 14px;
 }

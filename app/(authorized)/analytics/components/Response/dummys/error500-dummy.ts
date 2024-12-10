@@ -37,7 +37,7 @@ export const Error500 = [
       31, 22, 14, 18, 23, 30, 21, 10, 6, 18, 19, 10, 16, 20, 24, 8, 15, 21, 22,
       12,
     ],
-    backgroundColor: '#11141A',
+    backgroundColor: '$primaryTextColor',
   },
   {
     label: '523',

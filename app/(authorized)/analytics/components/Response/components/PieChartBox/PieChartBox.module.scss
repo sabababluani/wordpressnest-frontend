@@ -1,7 +1,9 @@
+@import '../../../../../../styles/text-colors.scss';
+@import '../../../../../../styles/colors.scss';
+
 .wrapper {
   flex: 1;
-  border: 1px solid #dcdfe1;
-  border-radius: 12px;
+  border: 1px solid $borderColor;  border-radius: 12px;
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -45,7 +47,7 @@
 .total {
   font-size: 32px;
   font-weight: 500;
-  color: #000;
+  color: $primaryColor;
 }
 
 .statsContainer {
@@ -61,7 +63,7 @@
 
 .stats {
   font-size: 16px;
-  color: #000;
+  color: $primaryColor;
 }
 
 .cube {
@@ -81,7 +83,7 @@
 .cube3 {
   width: 16px;
   height: 16px;
-  background-color: #000;
+  background-color: $primaryColor;
   border-radius: 4px;
 }
 
@@ -93,13 +95,13 @@
 }
 
 .errorType {
-  color: #000;
+  color: $primaryColor;
   font-size: 16px;
   font-weight: 400;
 }
 
 .value {
-  color: #000;
+  color: $primaryColor;
   font-size: 14px;
   font-weight: 600;
 }
@@ -107,5 +109,5 @@
 .heading h2 {
   font-size: 24px;
   font-weight: 600;
-  color: #11141a;
+  color: $primaryTextColor;
 }
