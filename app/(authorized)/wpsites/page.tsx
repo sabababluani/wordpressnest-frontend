@@ -1,5 +1,4 @@
 'use client';
-
 import React, { useState } from 'react';
 import DashboardTable from './components/DashboardTable/DashboardTable';
 import styles from './page.module.scss';
@@ -7,10 +6,19 @@ import Search from '@/app/components/Search/Search';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { Modal } from 'antd';
-import InputFields from './components/InputFields/InputFields';
+import AddSiteModal from './components/AddSiteModal/AddSiteModal';
 
 const Wpsites: React.FC = () => {
-  const [isModuleOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [click, setClick] = useState<number>(1);
+
+  const handleContinue = () => {
+    setClick((prev) => (prev === 4 ? 1 : prev + 1));
+  };
+
+  const handleBack = () => {
+    setClick((prev) => (prev === 1 ? 1 : prev - 1));
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -18,7 +26,7 @@ const Wpsites: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.contentWrapper}>
           <Search
-            placeholder={'Search Sites'}
+            placeholder="Search Sites"
             isPadded={true}
             onChange={() => {}}
           />
@@ -27,13 +35,13 @@ const Wpsites: React.FC = () => {
           <div className={styles.requestbuttons}>
             <Button
               backgroundColor={buttonbackgroundColorEnum.grey}
-              innerContent={'Request Migration'}
+              innerContent="Request Migration"
             />
           </div>
           <div className={styles.buttons}>
             <Button
               backgroundColor={buttonbackgroundColorEnum.black}
-              innerContent={'Create New Site'}
+              innerContent="Create New Site"
               onClick={() => setIsModalOpen(true)}
             />
           </div>
@@ -44,12 +52,20 @@ const Wpsites: React.FC = () => {
       </div>
       <Modal
         title=""
-        open={isModuleOpen}
+        open={isModalOpen}
         onCancel={() => setIsModalOpen(false)}
         footer={null}
         closable={false}
+        className={styles.modal}
+        width={click > 1 ? 840 : 1213}
+        centered
       >
-        <InputFields />
+        <AddSiteModal
+          click={click}
+          onContinue={handleContinue}
+          onBack={handleBack}
+          onClose={() => setIsModalOpen(false)}
+        />
       </Modal>
     </div>
   );
