@@ -4,12 +4,15 @@
 }
 
 .banner {
-  height: 100%;
-  background-color: black;
+  width: 100%;
+  max-width: 900px;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .banner img {
   height: 100%;
+  width: 100%;
 }
 
 .content {
@@ -91,6 +94,16 @@
   justify-content: center;
 }
 
+.blackcircle {
+  width: 48px;
+  height: 48px;
+  border-radius: 52px;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .navigate {
   width: 117px;
   display: flex;
@@ -104,12 +117,21 @@
   font-weight: 400 !important;
 }
 
-.navigate span {
+.navigationSpan {
   text-overflow: ellipsis;
   text-wrap: nowrap;
   color: #545a67;
   font-size: 14px;
   font-weight: 600;
+  line-height: 20px;
+}
+
+.boldNavigationSpan {
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+  color:#11141A;
+  font-size: 14px;
+  font-weight: 400;
   line-height: 20px;
 }
 

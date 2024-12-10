@@ -5,8 +5,18 @@ import Link from 'next/link';
 import MainHeader from './components/RegisterHeader/RegisterHeader';
 import styles from './page.module.scss';
 import RegisterForm from './components/RegisterForm/RegisterForm';
+import { useState } from 'react';
 
 const Register = () => {
+  const [steper, setSteper] = useState(2);
+
+  const onNextStep = () => {
+    setSteper((prevStep) => prevStep + 1);
+    console.log(steper);
+  };
+
+  console.log(steper);
+
   return (
     <div className={styles.wrapper}>
       <MainHeader />
@@ -41,15 +51,29 @@ const Register = () => {
             </div>
             <div className={styles.navigation}>
               <div className={styles.navigate}>
-                <div className={styles.graycircle}>
+                <div
+                  className={`${steper > 1 ? styles.blackcircle : styles.graycircle}`}
+                >
                   <Image
-                    src={'/icons/loginlogut.svg'}
+                    src={
+                      steper > 1
+                        ? '/icons/loginlogutwhite.svg'
+                        : '/icons/loginlogut.svg'
+                    }
                     alt="logilogut"
                     width={24}
                     height={24}
                   />
                 </div>
-                <span>Sign Up</span>
+                <span
+                  className={
+                    steper > 1
+                      ? styles.boldNavigationSpan
+                      : styles.navigationSpan
+                  }
+                >
+                  Sign Up
+                </span>
               </div>
               <Image
                 src={'/icons/dashedline.svg'}
@@ -58,15 +82,17 @@ const Register = () => {
                 height={2}
               />
               <div className={`${styles.navigate} ${styles.lightNavigate}`}>
-                <div className={styles.lightcircle}>
+                <div
+                  className={`${steper > 2 ? styles.blackcircle : styles.graycircle}`}
+                >
                   <Image
-                    src={'/icons/note.svg'}
+                    src={steper > 2 ? '/icons/note.svg' : '/icons/notebold.svg'}
                     alt="note"
                     width={24}
                     height={24}
                   />
                 </div>
-                <span>Choose Plan</span>
+                <span className={styles.navigationSpan}>Choose Plan</span>
               </div>
               <Image
                 src={'/icons/dashedline.svg'}
@@ -83,7 +109,9 @@ const Register = () => {
                     height={24}
                   />
                 </div>
-                <span>Billing information </span>
+                <span className={styles.navigationSpan}>
+                  Billing information{' '}
+                </span>
               </div>
               <Image
                 src={'/icons/dashedline.svg'}
@@ -100,10 +128,10 @@ const Register = () => {
                     height={24}
                   />
                 </div>
-                <span>Success</span>
+                <span className={styles.navigationSpan}>Success</span>
               </div>
             </div>
-            <RegisterForm />
+            {steper === 1 && <RegisterForm onNextStep={onNextStep} />}
             <div className={styles.loginContainer}>
               <Link href={'/login'} className={styles.login}>
                 Log in to your account

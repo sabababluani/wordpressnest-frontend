@@ -16,7 +16,6 @@ const RequestMigration = () => {
   const [time, setTime] = useState<string>('');
   const [, setTimezone] = useState<string>('');
 
-
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.unChangableWrapper}>
@@ -25,53 +24,52 @@ const RequestMigration = () => {
           <StepFlow stepNum={stepFlow} />
         </div>
       </div>
-      {
-        stepFlow == 2 ?
+      {stepFlow == 2 ? (
+        <>
+          <RequestMigrationSecondStep />
+        </>
+      ) : (
+        <>
+          <SelectionsWrapper
+            onCheckboxChange={(activeIndex: number | null) =>
+              setActiveCheckbox(activeIndex)
+            }
+            initialActiveCheckbox={activeCheckbox}
+          />
           <>
-            <RequestMigrationSecondStep />
+            <div className={styles.mainMiddleContainer}>
+              {activeCheckbox === 1 && (
+                <>
+                  <FirstCheckContainer />
+                </>
+              )}
+              {activeCheckbox === 2 && (
+                <>
+                  <SecondChecksContainer
+                    timeValue={time}
+                    date={(value: string): void => setDate(value)}
+                    time={(value: string): void => setTime(value)}
+                    timezone={(value: string): void => setTimezone(value)}
+                  />
+                </>
+              )}
+              {activeCheckbox === 3 && (
+                <>
+                  <div className={styles.thirdCheckboxBottomContainer}>
+                    <span className={styles.thirdChecksMainCaptionStyle}>
+                      We offer unlimited free migrations from all hosting
+                      providers including: A2 Hosting, Bluehost, Cloudways,
+                      DreamHost, Flywheel, GoDaddy, HostGator, Pagely, Pantheon,
+                      SiteGround, tsoHost, WP Engine, or WPX Hosting.
+                    </span>
+                  </div>
+                </>
+              )}
+            </div>
+            <MainBottomContaiener />
           </>
-          :
-          <>
-            <SelectionsWrapper
-              onCheckboxChange={(activeIndex: number | null) =>
-                setActiveCheckbox(activeIndex)
-              }
-              initialActiveCheckbox={activeCheckbox}
-            />
-            <>
-              <div className={styles.mainMiddleContainer}>
-                {activeCheckbox === 1 && (
-                  <>
-                    <FirstCheckContainer />
-                  </>
-                )}
-                {activeCheckbox === 2 && (
-                  <>
-                    <SecondChecksContainer
-                      timeValue={time}
-                      date={(value: string): void => setDate(value)}
-                      time={(value: string): void => setTime(value)}
-                      timezone={(value: string): void => setTimezone(value)}
-                    />
-                  </>
-                )}
-                {activeCheckbox === 3 && (
-                  <>
-                    <div className={styles.thirdCheckboxBottomContainer}>
-                      <span className={styles.thirdChecksMainCaptionStyle}>
-                        We offer unlimited free migrations from all hosting providers
-                        including: A2 Hosting, Bluehost, Cloudways, DreamHost, Flywheel,
-                        GoDaddy, HostGator, Pagely, Pantheon, SiteGround, tsoHost, WP
-                        Engine, or WPX Hosting.
-                      </span>
-                    </div>
-                  </>
-                )}
-              </div>
-              <MainBottomContaiener />
-            </>
-          </>
-      }
+        </>
+      )}
       <div className={styles.buttonsWrapper}>
         <div className={styles.buttonsInnerWrapper}>
           {stepFlow == 1 ? null : (
