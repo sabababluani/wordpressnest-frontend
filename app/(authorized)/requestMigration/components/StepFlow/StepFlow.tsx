@@ -1,7 +1,6 @@
 import { StepFlowPropsInterface } from '../../interface/step-flow-interface.ts';
 import styles from './StepFlow.module.scss';
 
-
 const StepFlow = (props: StepFlowPropsInterface) => {
   return (
     <div className={styles.mainContainer}>

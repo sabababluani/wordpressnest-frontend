@@ -3,7 +3,6 @@ import styles from './SecondChecksContainer.module.scss';
 import { ChangeEvent } from 'react';
 import { SecondCheckPropsInterface } from '../../interface/second-check-interface';
 
-
 const SecondChecksContainer = (props: SecondCheckPropsInterface) => {
   return (
     <div className={styles.mainWrapper}>
