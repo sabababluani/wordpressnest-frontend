@@ -3,46 +3,146 @@
   flex-direction: column;
 }
 
-.header {
-  width: 100%;
-  background-color: #fff;
-  display: flex;
-  justify-content: space-around;
+.banner {
+  height: 100%;
+  background-color: black;
 }
 
-.menuContainer {
+.banner img {
+  height: 100%;
+}
+
+.content {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  max-width: 720px;
-  width: 100%;
-}
-
-.menu {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.menu a {
-  text-decoration: none;
-  color: #545a67;
-  font-weight: 500;
-  line-height: 24px;
-}
-
-.buttons {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  background-color: #f6f6f6;
 }
 
 .container {
-  display: flex;
+  flex: 1;
 }
 
 .buttonInner {
   color: #11141a;
   font-weight: 600;
   line-height: 24px;
+}
+
+.passport {
+  border: 1px solid #dcdfe1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 0;
+  max-width: 234;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.topContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.passportWrapper {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+}
+
+.hostingWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 12px;
+  max-width: 540px;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #dcdfe1;
+  padding: 24px;
+  background-color: #fff;
+  justify-self: center;
+  margin-top: 60px;
+}
+
+.heading {
+  align-self: center;
+}
+
+.heading p {
+  color: #11141a;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 36px;
+}
+
+.heading h2 {
+  text-align: center;
+}
+
+.graycircle {
+  width: 48px;
+  height: 48px;
+  border-radius: 52px;
+  background: #dcdfe1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navigate {
+  width: 117px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.lightNavigate span {
+  color: #abb0ba !important;
+  font-weight: 400 !important;
+}
+
+.navigate span {
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+  color: #545a67;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+}
+
+.lightcircle {
+  background-color: #f5f5f5;
+  width: 48px;
+  height: 48px;
+  border-radius: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputWrapperContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login {
+  color: #11141a;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.loginContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
