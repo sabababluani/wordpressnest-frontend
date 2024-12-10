@@ -1,3 +1,6 @@
+@import '../../../../styles/text-colors.scss';
+@import '../../../../styles/colors.scss';
+
 .mainContainer {
   width: 100%;
   display: flex;
@@ -6,7 +9,7 @@
 }
 
 .mainCaptionStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
@@ -15,8 +18,7 @@
 
 .topCOntianer {
   padding: 16px 24px;
-  border: 1px solid #dcdfe1;
-  border-radius: 12px 12px 0px 0px;
+  border: 1px solid $borderColor;  border-radius: 12px 12px 0px 0px;
   background: #f0f3f5;
 }
 
@@ -54,7 +56,7 @@
 }
 
 .subUpdatesCatpionStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: var(--Font-size-text-sm, 14px);
   font-style: normal;
   font-weight: 500;
@@ -65,8 +67,7 @@
   max-width: 259px;
   width: 100%;
   border-radius: var(--radius-md, 8px);
-  border: 1px solid #dcdfe1;
-  background: #fff;
+  border: 1px solid $borderColor;  background: #fff;
   overflow: hidden;
   height: 44px;
   display: flex;
@@ -115,6 +116,6 @@
   align-items: center;
   gap: 4px;
   border-radius: 8px;
-  background: #000;
+  background: $primaryColor;
   cursor: pointer;
 }

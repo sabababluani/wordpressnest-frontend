@@ -1,3 +1,6 @@
+@import '../../styles/text-colors.scss';
+@import '../../styles/colors.scss';
+
 .container {
   display: flex;
   width: 100%;
@@ -5,8 +8,7 @@
   padding: 8px 12px 8px 8px;
   justify-content: space-between;
   border-radius: 8px;
-  border: 1px solid #dcdfe1;
-  background-color: #fff;
+  border: 1px solid $borderColor;  background-color: #fff;
   align-items: center;
 }
 
@@ -20,7 +22,7 @@
 }
 
 .input {
-  color: #000;
+  color: $primaryColor;
   border: none;
   background-color: #fff;
   outline: none;

@@ -1,3 +1,6 @@
+@import '../../styles/text-colors.scss';
+@import '../../styles/colors.scss';
+
 .container {
   display: flex;
   width: 100%;
@@ -6,8 +9,7 @@
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
-  border-bottom: 1px solid #dcdfe1;
-  position: sticky;
+  border-bottom: 1px solid $borderColor;  position: sticky;
   top: 0;
   left: 0;
   background-color: #fff;

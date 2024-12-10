@@ -20,7 +20,11 @@ const ManualBackup = (): JSX.Element => {
           <div className={styles.progressContainer}>
             <p>2 to 5</p>
             <div className={styles.progress}>
-              <Progress percent={30} showInfo={false} strokeColor={'#000'} />
+              <Progress
+                percent={30}
+                showInfo={false}
+                strokeColor={'$primaryColor'}
+              />
             </div>
           </div>
           <div className={styles.buttons}>

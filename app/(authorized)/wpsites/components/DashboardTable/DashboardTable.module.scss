@@ -1,3 +1,6 @@
+@import '../../../../styles/text-colors.scss';
+@import '../../../../styles/colors.scss';
+
 .tableWrapper :global .ant-table th {
   background: #fff !important;
 }
@@ -8,12 +11,12 @@
 
 .tableWrapper :global .ant-table-cell {
   padding-left: 4px !important;
-  color: #11141a !important;
+  color: $primaryTextColor !important;
   font-weight: 500 !important;
 }
 
 .tableWrapper :global .ant-table-thead .ant-table-cell {
-  color: #11141a99 !important;
+  color: $primaryTextColor !important;
   font-weight: 400 !important;
 }
 
@@ -26,8 +29,7 @@
 }
 
 .tableWrapper :global .ant-table-container {
-  border: 1px solid #dcdfe1;
-  border-radius: 12px;
+  border: 1px solid $borderColor;  border-radius: 12px;
   overflow: hidden;
 }
 
@@ -158,8 +160,7 @@
 
 .dotsWrapper {
   border-radius: 4px;
-  border: 1px solid #dcdfe1;
-  width: 24px;
+  border: 1px solid $borderColor;  width: 24px;
   height: 24px;
   display: flex;
   justify-content: center;

@@ -1,10 +1,12 @@
+@import '../../styles/text-colors.scss';
+@import '../../styles/colors.scss';
+
 .wrapper {
   max-width: 774px;
   width: 100%;
   background-color: #fff;
   border-radius: 12px;
-  border: 1px solid #dcdfe1;
-}
+  border: 1px solid $borderColor;}
 
 .header {
   width: 100%;
@@ -12,8 +14,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  border-bottom: 1px solid #dcdfe1;
-  height: 52px;
+  border-bottom: 1px solid $borderColor;  height: 52px;
 }
 
 .header input {
@@ -31,8 +32,7 @@
   justify-content: center;
   align-items: center;
   gap: 16px;
-  border: 1px solid #dcdfe1;
-  width: 36px;
+  border: 1px solid $borderColor;  width: 36px;
   height: 36px;
   border-radius: 8px;
 }

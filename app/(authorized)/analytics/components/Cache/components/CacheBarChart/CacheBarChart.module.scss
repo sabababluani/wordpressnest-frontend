@@ -1,3 +1,6 @@
+@import '../../../../../../styles/text-colors.scss';
+@import '../../../../../../styles/colors.scss';
+
 .cube {
   width: 24px;
   height: 24px;
@@ -11,7 +14,7 @@
 }
 .container p {
   font-size: 24px;
-  color: #11141a;
+  color: $primaryTextColor;
   font-weight: 600;
 }
 
@@ -65,7 +68,7 @@
 .wrapper h1 {
   font-size: 24px;
   font-weight: 600;
-  color: #11141a;
+  color: $primaryTextColor;
 }
 
 .total {

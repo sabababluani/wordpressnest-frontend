@@ -1,3 +1,6 @@
+@import '../../../../../../styles/text-colors.scss';
+@import '../../../../../../styles/colors.scss';
+
 .container {
   display: flex;
   flex-direction: column;
@@ -19,7 +22,7 @@
 
 .headline {
   width: 100%;
-  color: #11141a;
+  color: $primaryTextColor;
   text-align: center;
   font-size: 20px;
   font-style: normal;
@@ -29,7 +32,7 @@
 
 .text {
   width: 100%;
-  color: #11141a;
+  color: $primaryTextColor;
   text-align: center;
   font-size: 16px;
   font-style: normal;
@@ -39,7 +42,7 @@
 
 .subtext {
   width: 100%;
-  color: #11141a;
+  color: $primaryTextColor;
   text-align: center;
   font-size: 14px;
   font-style: normal;
@@ -48,5 +51,5 @@
 }
 
 .customIcon {
-  color: #000;
+  color: $primaryColor;
 }

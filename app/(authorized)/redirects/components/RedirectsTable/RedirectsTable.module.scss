@@ -1,3 +1,6 @@
+@import '../../../../styles/text-colors.scss';
+@import '../../../../styles/colors.scss';
+
 .tableWrapper :global .ant-checkbox-inner {
   background-color: #f0f3f5;
   border: none !important;
@@ -83,12 +86,12 @@
 
 .tableWrapper :global .ant-table-cell {
   padding-left: 4px !important;
-  color: #11141a !important;
+  color: $primaryTextColor !important;
   font-weight: 500 !important;
 }
 
 .tableWrapper :global .ant-table-thead .ant-table-cell {
-  color: #11141a99 !important;
+  color: $primaryTextColor !important;
   font-weight: 400 !important;
 }
 
@@ -101,8 +104,7 @@
 }
 
 .tableWrapper :global .ant-table-container {
-  border: 1px solid #dcdfe1;
-  border-radius: 12px;
+  border: 1px solid $borderColor;  border-radius: 12px;
   overflow: hidden;
 }
 

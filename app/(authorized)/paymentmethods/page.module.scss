@@ -1,3 +1,6 @@
+@import '../../styles/text-colors.scss';
+@import '../../styles/colors.scss';
+
 .header {
   padding: 16px 24px;
   background-color: #f0f3f5;
@@ -9,7 +12,7 @@
 }
 
 .header p {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 20px;
   font-weight: 700;
 }
@@ -23,7 +26,6 @@
 }
 
 .wrapper {
-  border: 1px solid #dcdfe1;
-  margin: 24px;
+  border: 1px solid $borderColor;  margin: 24px;
   border-radius: 12px;
 }

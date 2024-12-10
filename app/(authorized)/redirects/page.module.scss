@@ -1,3 +1,6 @@
+@import '../../styles/text-colors.scss';
+@import '../../styles/colors.scss';
+
 .container {
   width: 100%;
   display: flex;
@@ -21,7 +24,7 @@
 }
 
 .text {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 24px;
   font-style: normal;
   font-weight: 600;

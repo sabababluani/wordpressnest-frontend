@@ -1,3 +1,6 @@
+@import '../../../../styles/text-colors.scss';
+@import '../../../../styles/colors.scss';
+
 .mainContainer {
   width: 100%;
   display: flex;
@@ -13,14 +16,13 @@
   height: 300px;
   padding: 24px;
   border-radius: 12px;
-  border: 1px solid #dcdfe1;
-  gap: 10px;
+  border: 1px solid $borderColor;  gap: 10px;
   transition: 0.2s;
   cursor: pointer;
 }
 
 .checkboxMainCaption {
-  color: #11141a;
+  color: $primaryTextColor;
   text-align: center;
   font-size: 20px;
   font-style: normal;
@@ -130,5 +132,5 @@
   :global(
     .ant-checkbox-checked:not(.ant-checkbox-disabled) .ant-checkbox-inner
   ) {
-  background-color: #11141a !important;
+  background-color: $primaryTextColor !important;
 }

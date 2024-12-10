@@ -1,3 +1,6 @@
+@import '../../../../../../styles/text-colors.scss';
+@import '../../../../../../styles/colors.scss';
+
 .blackCircle {
   width: 12px;
   height: 12px;
@@ -41,7 +44,7 @@
 .wrapper h1 {
   font-size: 24px;
   font-weight: 600;
-  color: #11141a;
+  color: $primaryTextColor;
 }
 
 .cube {
@@ -62,5 +65,5 @@
 .wrapper h2 {
   font-weight: 600F;
   font-size: 24px;
-  color: #11141a;
+  color: $primaryTextColor;
 }

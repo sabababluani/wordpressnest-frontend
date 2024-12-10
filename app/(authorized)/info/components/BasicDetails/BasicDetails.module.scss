@@ -1,3 +1,6 @@
+@import '../../../../styles/text-colors.scss';
+@import '../../../../styles/colors.scss';
+
 .mainWrapper {
   max-height: 1572px;
   width: 100%;
@@ -22,7 +25,7 @@
 }
 
 .captionStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
@@ -43,13 +46,12 @@
   flex-direction: column;
   justify-content: center;
   gap: 16px;
-  border-right: 1px solid #dcdfe1;
-  max-width: 508;
+  border-right: 1px solid $borderColor;  max-width: 508;
   width: 100%;
 }
 
 .locationDataCaptionsStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -71,11 +73,10 @@
   gap: 16px;
   max-width: 508px;
   width: 100%;
-  border-right: 1px solid #dcdfe1;
-}
+  border-right: 1px solid $borderColor;}
 
 .siteNameCaptionStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -125,7 +126,7 @@
 }
 
 .labelsCaptionStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;

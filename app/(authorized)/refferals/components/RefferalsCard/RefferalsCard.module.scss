@@ -1,3 +1,6 @@
+@import '../../../../styles/text-colors.scss';
+@import '../../../../styles/colors.scss';
+
 .container {
   width: 100%;
   max-width: 290px;
@@ -6,8 +9,7 @@
   flex-direction: column;
   gap: 8px;
   border-radius: 8px;
-  border: 1px solid #dcdfe1;
-  background: #11141a;
+  border: 1px solid $borderColor;  background: $primaryTextColor;
 }
 
 .headline {

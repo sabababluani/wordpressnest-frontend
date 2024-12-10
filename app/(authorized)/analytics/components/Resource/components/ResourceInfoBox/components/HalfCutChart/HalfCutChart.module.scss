@@ -1,3 +1,6 @@
+@import '../../../../../../../../styles/text-colors.scss';
+@import '../../../../../../../../styles/colors.scss';
+
 .wrapper {
   display: flex;
   align-items: center;
@@ -12,7 +15,7 @@
   transform: translate(-50%, -50%);
   font-size: 20px;
   font-weight: 600;
-  color: #000;
+  color: $primaryColor;
 }
 
 .redCircle {
@@ -29,7 +32,7 @@
 }
 
 .whiteContainer p {
-  color: #000;
+  color: $primaryColor;
   font-weight: 400;
 }
 
@@ -53,7 +56,7 @@
 }
 
 .blueContainer p {
-  color: #000;
+  color: $primaryColor;
 }
 
 .whiteContainer span {

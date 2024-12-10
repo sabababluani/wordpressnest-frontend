@@ -17,7 +17,7 @@ const PieChartBox = () => {
     datasets: [
       {
         data: dataValues,
-        backgroundColor: ['#000', '#069A72', '#DBBE00', '#E9EAEB'],
+        backgroundColor: ['$primaryColor', '#069A72', '#DBBE00', '#E9EAEB'],
         borderWidth: 0,
       },
     ],

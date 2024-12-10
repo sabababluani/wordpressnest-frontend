@@ -1,3 +1,6 @@
+@import '../../../../../../styles/text-colors.scss';
+@import '../../../../../../styles/colors.scss';
+
 .container {
   position: relative;
   max-width: 774px;
@@ -5,13 +8,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #dcdfe1;
-  border-radius: 12px;
+  border: 1px solid $borderColor;  border-radius: 12px;
   padding: 40px 0;
 }
 
 .activeContainer {
-  border: 1px solid #000 !important;
+  border: 1px solid $primaryColor !important;
 }
 
 .checkbox {
@@ -45,7 +47,7 @@
 }
 
 .sixhour {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 20px;
   font-weight: 500;
   line-height: 24px;
@@ -59,7 +61,7 @@
 }
 
 .freeDuring {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 20px;
   line-height: 24px;
   font-weight: 600;
@@ -72,8 +74,7 @@
 }
 
 .usdPrice {
-  border: 2px solid #dcdfe1;
-  border-radius: 12px;
+  border: 2px solid $borderColor;  border-radius: 12px;
   padding: 8px 12px;
 }
 

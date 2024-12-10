@@ -1,3 +1,6 @@
+@import '../../../../../../styles/text-colors.scss';
+@import '../../../../../../styles/colors.scss';
+
 .wrapper {
   max-width: 840px;
   background-color: #fff;
@@ -19,13 +22,13 @@
 }
 
 .headline {
-  color: #11141a;
+  color: $primaryTextColor;
   font-weight: 600;
   line-height: 24px;
 }
 
 .heading {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 20px;
   font-weight: 600;
   line-height: 24px;
@@ -52,8 +55,7 @@
 }
 
 .priceBox {
-  border: 1px solid #dcdfe1;
-  padding: 16px 24px;
+  border: 1px solid $borderColor;  padding: 16px 24px;
   border-radius: 12px;
 }
 
@@ -62,8 +64,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 0px 0 24px 0;
-  border-bottom: 1px solid #dcdfe1;
-}
+  border-bottom: 1px solid $borderColor;}
 
 .backups {
   color: #545a67;
@@ -72,7 +73,7 @@
 }
 
 .price {
-  color: #11141a;
+  color: $primaryTextColor;
   font-weight: 600;
   line-height: 24px;
 }
@@ -97,11 +98,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #dcdfe1;
-}
+  background-color: $borderColor;}
 
 .paymentCardName {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 14px;
   font-weight: 500;
 }

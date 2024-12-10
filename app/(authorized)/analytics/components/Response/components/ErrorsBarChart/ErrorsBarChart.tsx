@@ -55,7 +55,7 @@ const ErrorsBarChart = (props: ErrorsBarChartPropsInterface) => {
           display: false,
         },
         ticks: {
-          color: '#000',
+          color: '$primaryColor',
         },
         border: {
           display: false,

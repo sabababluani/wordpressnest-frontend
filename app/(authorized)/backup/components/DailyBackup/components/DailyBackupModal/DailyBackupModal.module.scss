@@ -1,3 +1,6 @@
+@import '../../../../../../styles/text-colors.scss';
+@import '../../../../../../styles/colors.scss';
+
 .wrapper {
   max-width: 840px;
   width: 100%;
@@ -27,26 +30,25 @@
 }
 
 .headline {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 16px;
   font-weight: 600;
 }
 
 .circle {
-  background-color: #000000;
+  background-color: $primaryColor;
   border-radius: 50%;
   width: 12px;
   height: 12px;
 }
 
 .live {
-  color: #11141a;
+  color: $primaryTextColor;
   font-weight: 600;
 }
 
 .box {
-  border: 1px solid #dcdfe1;
-  border-radius: 12px;
+  border: 1px solid $borderColor;  border-radius: 12px;
   max-width: 354px;
   width: 100%;
   display: flex;
@@ -68,7 +70,7 @@
 }
 
 .backupName {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 20px;
   font-weight: 500;
   line-height: 24px;
@@ -105,11 +107,11 @@
 }
 
 .bold {
-  color: #11141a;
+  color: $primaryTextColor;
 }
 
 .listHeading {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 12px;
   font-weight: 600;
 }
@@ -141,8 +143,7 @@
 
 .inputContainer input {
   border-radius: 12px;
-  border: 1px solid #dcdfe1;
-  padding: 0 12px;
+  border: 1px solid $borderColor;  padding: 0 12px;
   height: 41px;
 }
 

@@ -1,9 +1,11 @@
+@import '../../../../styles/text-colors.scss';
+@import '../../../../styles/colors.scss';
+
 .header {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  border: 1px solid #dcdfe1;
-  border-bottom: none;
+  border: 1px solid $borderColor;  border-bottom: none;
   border-radius: 8px 8px 0 0;
   padding: 24px 24px 16px 14px;
 }
@@ -16,7 +18,7 @@
 }
 
 .headline {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
@@ -37,6 +39,5 @@
   align-items: center;
   justify-content: space-between;
   padding: 24px 24px 20px 24px;
-  border: 1px solid #dcdfe1;
-  border-radius: 0 0 8px 8px;
+  border: 1px solid $borderColor;  border-radius: 0 0 8px 8px;
 }

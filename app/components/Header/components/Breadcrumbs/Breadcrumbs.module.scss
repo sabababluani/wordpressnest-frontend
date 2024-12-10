@@ -1,3 +1,6 @@
+@import '../../../../styles/text-colors.scss';
+@import '../../../../styles/colors.scss';
+
 .breadcrumbContainer {
   display: flex;
   align-items: center;
@@ -46,9 +49,8 @@
 }
 
 .breadcrumb :global .ant-breadcrumb ol li:last-child .ant-breadcrumb-link a {
-  color: #11141a !important;
-  border: 1px solid #dcdfe1;
-  background-color: #f0f3f5;
+  color: $primaryTextColor !important;
+  border: 1px solid $borderColor;  background-color: #f0f3f5;
 }
 
 .breadcrumb

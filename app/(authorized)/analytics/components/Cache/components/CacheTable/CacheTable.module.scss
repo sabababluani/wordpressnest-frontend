@@ -1,15 +1,18 @@
+@import '../../../../../../styles/text-colors.scss';
+@import '../../../../../../styles/colors.scss';
+
 .tableWrapper :global .ant-table-thead .ant-table-cell {
   background-color: white !important;
 }
 
 .tableWrapper :global .ant-table-thead .ant-table-cell {
   border-bottom: none !important;
-  color: #11141a !important;
+  color: $primaryTextColor !important;
   font-weight: 600 !important;
 }
 
 .tableWrapper :global .ant-table-tbody .ant-table-row .ant-table-cell {
-  color: #11141a !important;
+  color: $primaryTextColor !important;
   font-weight: 600 !important;
 }
 
@@ -26,14 +29,13 @@
 }
 
 .heading {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 24px;
   font-weight: 600;
 }
 
 .wrapper {
-  border: 1px solid #dcdfe1;
-  border-radius: 12px;
+  border: 1px solid $borderColor;  border-radius: 12px;
   flex: 1;
   padding: 24px 0 24px 24px;
 }

@@ -60,7 +60,7 @@ const ResolutionStackedBarChart = (props: ResolutionStackedBarChartProps) => {
           display: false,
         },
         ticks: {
-          color: '#000',
+          color: '$primaryColor',
         },
         border: {
           display: false,

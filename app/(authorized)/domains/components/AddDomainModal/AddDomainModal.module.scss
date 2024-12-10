@@ -1,3 +1,6 @@
+@import '../../../../styles/text-colors.scss';
+@import '../../../../styles/colors.scss';
+
 .header {
   width: 100%;
   display: flex;
@@ -9,7 +12,7 @@
 }
 
 .headline {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
@@ -38,22 +41,21 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: #11141a;
+  background-color: $primaryTextColor;
 }
 
 .grayCircle {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: #dcdfe1;
-}
+  background-color: $borderColor;}
 
 .line {
   max-width: 358px;
   width: 100%;
   border-radius: 12px;
   height: 5px;
-  background-color: #11141a;
+  background-color: $primaryTextColor;
 }
 
 .lineCircle {
@@ -61,8 +63,7 @@
   width: 100%;
   border-radius: 12px;
   height: 5px;
-  background-color: #dcdfe1;
-}
+  background-color: $borderColor;}
 
 .steper {
   display: flex;
@@ -105,7 +106,7 @@
 }
 
 .steper span {
-  color: #11141a;
+  color: $primaryTextColor;
 }
 
 .progress {
@@ -116,7 +117,7 @@
 }
 
 .content span {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 14px;
 }
 
@@ -128,7 +129,7 @@
 }
 
 .contentWrapper p {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 14px;
   font-weight: 400;
 }
@@ -141,8 +142,7 @@
 
 .domainInputContainer input {
   height: 48px;
-  border: 1px solid #dcdfe1;
-  border-radius: 12px;
+  border: 1px solid $borderColor;  border-radius: 12px;
   padding-left: 16px;
   outline: none;
 }
@@ -155,7 +155,7 @@
 }
 
 .advanced span {
-  color: #11141a;
+  color: $primaryTextColor;
   font-weight: 600;
   font-size: 14px;
 }
@@ -190,7 +190,7 @@
 }
 
 .textContent span {
-  color: #11141a;
+  color: $primaryTextColor;
   font-weight: 500;
 }
 
