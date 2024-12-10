@@ -15,7 +15,7 @@ const RequestMigrationSecondStep = (): JSX.Element => {
   };
 
   const onButtonClick = (): void => {
-            console.log('////');
+    console.log('////');
   };
 
   return (

@@ -42,11 +42,11 @@
   },
   "lint-staged": {
     "**/*.{js,ts,tsx,jsx}": [
-      "eslint --fix",
-      "prettier --write"
+      "eslint --max-warnings=0 --fix",
+      "prettier --check"
     ],
     "**/*.{scss,css,md,json}": [
-      "prettier --write"
+      "prettier --check"
     ]
   }
 }
