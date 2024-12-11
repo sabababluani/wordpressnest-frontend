@@ -1,3 +1,6 @@
+@import '../../../../styles/text-colors.scss';
+@import '../../../../styles/colors.scss';
+
 .wrapper {
   width: 100%;
   background-color: #f0f3f5;
@@ -8,6 +11,6 @@
   font-size: 20px;
   font-weight: 700;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   padding: 16px 24px;
 }

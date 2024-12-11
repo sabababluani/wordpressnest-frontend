@@ -5,7 +5,7 @@ const Steps = (props: stepsPropsInterface) => {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.firstWrapper}>
-        <span className={styles.captionStyle}>Settings</span>
+        <span className={styles.captionStyle}>{props.firstHeadline}</span>
         <div className={styles.circleAndLineStyle}>
           <div className={styles.circleStyle}></div>
           <div className={styles.lineStyle}></div>
@@ -17,7 +17,7 @@ const Steps = (props: stepsPropsInterface) => {
             props.confirmation ? styles.black : styles.greyColor
           }`}
         >
-          Confirmation
+          {props.secondHeadline}
         </span>
         <div className={styles.circleAndLineStyle}>
           <div

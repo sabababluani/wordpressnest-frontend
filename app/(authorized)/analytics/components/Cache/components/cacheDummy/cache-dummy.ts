@@ -5,7 +5,7 @@ export const CacheBarChartData = [
       57, 72, 85, 78, 69, 61, 73, 77, 74, 68, 71, 82, 76, 70, 68, 79, 75, 71,
       72, 80,
     ],
-    backgroundColor: '#000000',
+    backgroundColor: '$primaryColor',
   },
   {
     label: 'MISS',

@@ -1,3 +1,6 @@
+@import '../../../../styles/text-colors.scss';
+@import '../../../../styles/colors.scss';
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -11,5 +14,5 @@
 .wrapper h1 {
   font-size: 24px;
   font-weight: 600;
-  color: #11141a;
+  color: $primaryTextColor;
 }

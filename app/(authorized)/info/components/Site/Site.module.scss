@@ -1,3 +1,6 @@
+@import '../../../../styles/text-colors.scss';
+@import '../../../../styles/colors.scss';
+
 .mainWrapper {
   max-height: 1572px;
   width: 100%;
@@ -31,7 +34,7 @@
 }
 
 .mainCaptionStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;

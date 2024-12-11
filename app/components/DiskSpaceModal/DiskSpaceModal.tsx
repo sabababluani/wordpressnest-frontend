@@ -57,13 +57,21 @@ const DiskSpaceModal = (props: diskModulePropsInterface): JSX.Element => {
       </div>
       {beforeContinueActive ? (
         <div className={styles.middleContainerBeforeContinue}>
-          <Steps confirmation={beforeContinueActive} />
+          <Steps
+            confirmation={beforeContinueActive}
+            firstHeadline={'Settings'}
+            secondHeadline={'Confirmation'}
+          />
           <WhatWillHappenContainer />
           <PriceDetailsContainer coefficient={coefficient} />
         </div>
       ) : (
         <div className={styles.middleContainer}>
-          <Steps confirmation={false} />
+          <Steps
+            confirmation={false}
+            firstHeadline={'Settings'}
+            secondHeadline={'Confirmation'}
+          />
           <span className={styles.middleCaptionStyle}>
             Your WordPress Hosting plan includes 10 GB of disk space, shared
             across all sites. The quantity you choose here extends that limit.

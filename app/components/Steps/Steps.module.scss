@@ -1,3 +1,6 @@
+@import '../../styles/text-colors.scss';
+@import '../../styles/colors.scss';
+
 .circleStyle {
   width: 12px;
   height: 12px;
@@ -12,12 +15,14 @@
 }
 
 .captionStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   text-align: center;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
+  display: flex;
+  justify-content: center;
 }
 
 .secondCaptionStyle {
@@ -26,6 +31,8 @@
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
+  display: flex;
+  justify-content: center;
 }
 
 .lineStyle {
@@ -41,15 +48,13 @@
   width: 100%;
   height: 4px;
   border-radius: 16px;
-  background-color: #dcdfe1;
-}
+  background-color: $borderColor;}
 
 .circleStyleTillConfirmation {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: #dcdfe1;
-}
+  background-color: $borderColor;}
 
 .mainContainer {
   display: flex;
@@ -71,7 +76,7 @@
 }
 
 .colorBlack {
-  color: #11141a;
+  color: $primaryTextColor;
 }
 
 .greyColor {

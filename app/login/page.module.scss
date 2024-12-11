@@ -1,3 +1,6 @@
+@import '../styles/text-colors.scss';
+@import '../styles/colors.scss';
+
 .fullscreenContainer {
   width: 100%;
   display: flex;
@@ -60,7 +63,7 @@
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.2);
   border: none;
-  color: #000;
+  color: $primaryColor;
 }
 
 .erroredInput {
@@ -71,7 +74,7 @@
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid red;
-  color: #000;
+  color: $primaryColor;
 }
 
 .loginAccess {

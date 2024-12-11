@@ -1,8 +1,10 @@
+@import '../../../../styles/text-colors.scss';
+@import '../../../../styles/colors.scss';
+
 .mainContainer {
   display: flex;
   flex-direction: column;
-  border: 1px solid #dcdfe1;
-  border-radius: 12px;
+  border: 1px solid $borderColor;  border-radius: 12px;
   margin: 24px 20px 0px 24px;
   overflow: hidden;
 }
@@ -19,8 +21,7 @@
   padding: 16px 24px;
   display: flex;
   align-items: center;
-  border-top: 1px solid #dcdfe1;
-}
+  border-top: 1px solid $borderColor;}
 
 .selectStyle {
   max-width: 202px;
@@ -35,7 +36,7 @@
   align-items: center;
   gap: 10px;
   border-radius: 8px;
-  background-color: #000;
+  background-color: $primaryColor;
   border: none;
   color: white;
   font-size: 16px;

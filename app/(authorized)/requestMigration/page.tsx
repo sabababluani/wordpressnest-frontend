@@ -1,20 +1,45 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SelectionsWrapper from './components/SelectionsWrapper/SelectionsWrapper';
 import StepFlow from './components/StepFlow/StepFlow';
 import styles from './page.module.scss';
 import FirstCheckContainer from './components/FirstChecksContainer/FirstChecksContainer';
-import MainBottomContaiener from './components/MainBottomContainer/MainBottomContainer';
+import MainBottomContainer from './components/MainBottomContainer/MainBottomContainer';
 import SecondChecksContainer from './components/SecondChecksContainer/SecondChecksContainer';
-import RequestMigrationSecondStep from './components/RequestMigrationSecondStep/RequestMigrationSecondStep';
+import ThirdChecksContainer from './components/ThirdChecksContainer/ThirdChecksContainer';
+import StepFlowSecond from './components/StepFlowSecond/StepFlowSecond';
+import ThirdStepsContainerBasedCheckboxFirst from './components/ThirdStepsContainerBasedCheckboxFirst/ThirdStepsContainerBasedCheckboxFirst';
 
 const RequestMigration = () => {
   const [stepFlow, setStepFlow] = useState<number>(1);
   const [activeCheckbox, setActiveCheckbox] = useState<number | null>(1);
-  const [, setDate] = useState<string>('');
   const [time, setTime] = useState<string>('');
+  const [, setDate] = useState<string>('');
   const [, setTimezone] = useState<string>('');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.sessionStorage) {
+      const savedStepFlow = sessionStorage.getItem('stepFlow');
+      if (savedStepFlow) {
+        setStepFlow(Number(savedStepFlow));
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.sessionStorage) {
+      sessionStorage.setItem('stepFlow', stepFlow.toString());
+    }
+  }, [stepFlow]);
+
+  const onNextButtonClick = (): void => {
+    setStepFlow((prev) => (prev + 1 > 5 ? prev : prev + 1));
+  };
+
+  const onBackButtonClick = (): void => {
+    setStepFlow((prev) => (prev === 1 ? prev : prev - 1));
+  };
 
   return (
     <div className={styles.mainWrapper}>
@@ -24,71 +49,53 @@ const RequestMigration = () => {
           <StepFlow stepNum={stepFlow} />
         </div>
       </div>
-      {stepFlow == 2 ? (
-        <>
-          <RequestMigrationSecondStep />
-        </>
-      ) : (
+      {stepFlow === 1 && (
         <>
           <SelectionsWrapper
-            onCheckboxChange={(activeIndex: number | null) =>
-              setActiveCheckbox(activeIndex)
-            }
+            onCheckboxChange={setActiveCheckbox}
             initialActiveCheckbox={activeCheckbox}
           />
-          <>
-            <div className={styles.mainMiddleContainer}>
-              {activeCheckbox === 1 && (
-                <>
-                  <FirstCheckContainer />
-                </>
-              )}
-              {activeCheckbox === 2 && (
-                <>
-                  <SecondChecksContainer
-                    timeValue={time}
-                    date={(value: string): void => setDate(value)}
-                    time={(value: string): void => setTime(value)}
-                    timezone={(value: string): void => setTimezone(value)}
-                  />
-                </>
-              )}
-              {activeCheckbox === 3 && (
-                <>
-                  <div className={styles.thirdCheckboxBottomContainer}>
-                    <span className={styles.thirdChecksMainCaptionStyle}>
-                      We offer unlimited free migrations from all hosting
-                      providers including: A2 Hosting, Bluehost, Cloudways,
-                      DreamHost, Flywheel, GoDaddy, HostGator, Pagely, Pantheon,
-                      SiteGround, tsoHost, WP Engine, or WPX Hosting.
-                    </span>
-                  </div>
-                </>
-              )}
-            </div>
-            <MainBottomContaiener />
-          </>
+          <div className={styles.mainMiddleContainer}>
+            <FirstCheckContainer activeCheckbox={activeCheckbox === 1} />
+            <SecondChecksContainer
+              timeValue={time}
+              date={setDate}
+              time={setTime}
+              timezone={setTimezone}
+              activecheckbox={activeCheckbox === 2}
+            />
+            <ThirdChecksContainer checkboxActive={activeCheckbox === 3} />
+          </div>
+          <MainBottomContainer />
         </>
       )}
+      {stepFlow === 2 && (
+        <StepFlowSecond
+          activedCheckboxNum={(index) =>
+            sessionStorage.setItem(
+              'SecondStepsSpecificCheckbox',
+              index ? index.toString() : JSON.stringify(undefined),
+            )
+          }
+        />
+      )}
+      {stepFlow == 3 &&
+        Number(sessionStorage.getItem('SecondStepsSpecificCheckbox')) == 1 && (
+          <ThirdStepsContainerBasedCheckboxFirst />
+        )}
       <div className={styles.buttonsWrapper}>
         <div className={styles.buttonsInnerWrapper}>
-          {stepFlow == 1 ? null : (
-            <>
-              <button
-                className={styles.backButtonStyle}
-                onClick={() =>
-                  setStepFlow((prev: number) => (prev == 1 ? prev : prev - 1))
-                }
-              >
-                Back
-              </button>
-            </>
+          {stepFlow > 1 && (
+            <button
+              className={styles.backButtonStyle}
+              onClick={onBackButtonClick}
+            >
+              Back
+            </button>
           )}
           <button
             className={styles.NextButtonStyle}
-            onClick={() => {
-              setStepFlow((prev: number) => (prev + 1 > 5 ? prev : prev + 1));
-            }}
+            onClick={onNextButtonClick}
           >
             Next
           </button>

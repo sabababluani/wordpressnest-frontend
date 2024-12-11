@@ -1,3 +1,6 @@
+@import '../../styles/text-colors.scss';
+@import '../../styles/colors.scss';
+
 .mainContainer {
   display: flex;
   flex-direction: column;
@@ -19,8 +22,7 @@
   align-items: center;
   gap: 10px;
   border-radius: 8px;
-  border: 1px solid #dcdfe1;
-  background-color: white;
+  border: 1px solid $borderColor;  background-color: white;
   color: #545a67;
   font-size: 12px;
   cursor: pointer;
@@ -30,8 +32,7 @@
   margin: 0px 24px;
   overflow: hidden;
   border-radius: 8px;
-  border: 1px solid #dcdfe1;
-}
+  border: 1px solid $borderColor;}
 
 .checkboxStyle {
   width: 20px;

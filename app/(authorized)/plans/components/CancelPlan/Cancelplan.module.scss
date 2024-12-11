@@ -1,9 +1,11 @@
+@import '../../../../styles/text-colors.scss';
+@import '../../../../styles/colors.scss';
+
 .wrapper {
   width: 100%;
   display: flex;
   flex-direction: column;
-  border: 1px solid #dcdfe1;
-  border-radius: 12px;
+  border: 1px solid $borderColor;  border-radius: 12px;
 }
 
 .header {
@@ -13,11 +15,10 @@
   align-items: center;
   justify-content: space-between;
   border-radius: 12px 12px 0 0;
-  border-bottom: 1px solid #dcdfe1;
-}
+  border-bottom: 1px solid $borderColor;}
 
 .headline {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
@@ -34,7 +35,7 @@
 }
 
 .title {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -54,8 +55,7 @@
   flex-direction: column;
   gap: 8px;
   padding: 0px 110px 0px 24px;
-  border-right: 1px solid #dcdfe1;
-}
+  border-right: 1px solid $borderColor;}
 
 .text {
   color: #707276;
@@ -66,7 +66,7 @@
 }
 
 .boldText {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;

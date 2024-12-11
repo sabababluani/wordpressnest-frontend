@@ -1,7 +1,9 @@
+@import '../../../../styles/text-colors.scss';
+@import '../../../../styles/colors.scss';
+
 .wrapper {
   flex: 1;
-  border: 1px solid #dcdfe1;
-  border-radius: 12px;
+  border: 1px solid $borderColor;  border-radius: 12px;
 }
 
 .header {
@@ -12,7 +14,7 @@
 }
 
 .header p {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 20px;
   font-weight: 700;
 }
@@ -32,8 +34,7 @@
 .githubContainer {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #dcdfe1;
-  padding: 0 24px 24px 24px;
+  border-bottom: 1px solid $borderColor;  padding: 0 24px 24px 24px;
 }
 
 .gitLabContainer {

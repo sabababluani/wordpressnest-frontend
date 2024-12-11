@@ -1,10 +1,13 @@
+@import '../../styles/text-colors.scss';
+@import '../../styles/colors.scss';
+
 .wrapper :global .ant-tabs-tab-active .ant-tabs-tab-btn {
-  color: #11141a !important;
+  color: $primaryTextColor !important;
   font-weight: 600;
 }
 
 .wrapper :global .ant-tabs-ink-bar {
-  background-color: #000000;
+  background-color: $primaryColor;
 }
 
 .ant-tabs-tab .ant-tabs-tab-btn {
@@ -14,7 +17,7 @@
 
 .ant-tabs-tab-active .ant-tabs-tab-btn {
   font-size: 16px !important;
-  color: #11141a !important;
+  color: $primaryTextColor !important;
 }
 
 .wrapper :global .ant-tabs-nav-wrap {

@@ -55,10 +55,10 @@ const CurlyBandwidth = (props: CurlyBandwidthPropsInterface) => {
           return gradient;
         },
         borderWidth: 4,
-        borderColor: '#000000',
+        borderColor: '$primaryColor',
         tension: 0.6,
         pointRadius: 4,
-        pointBackgroundColor: '#000000',
+        pointBackgroundColor: '$primaryColor',
         pointBorderColor: '#FFFFFF',
         pointBorderWidth: 2,
       } as ChartDataset<'line', number[]>,
@@ -80,7 +80,7 @@ const CurlyBandwidth = (props: CurlyBandwidthPropsInterface) => {
           drawTicks: false,
         },
         ticks: {
-          color: '#11141A',
+          color: '$primaryTextColor',
           padding: 12,
         },
         border: {

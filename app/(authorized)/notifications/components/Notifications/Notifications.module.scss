@@ -1,3 +1,6 @@
+@import '../../../../styles/text-colors.scss';
+@import '../../../../styles/colors.scss';
+
 .mainContainer {
   width: 100%;
   display: flex;
@@ -10,13 +13,12 @@
   flex-direction: column;
   gap: 12px;
   padding: 16px 24px;
-  border: 1px solid #dcdfe1;
-  border-radius: 12px 12px 0px 0px;
+  border: 1px solid $borderColor;  border-radius: 12px 12px 0px 0px;
   background: #f0f3f5;
 }
 
 .notificationsCaptionStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
@@ -33,10 +35,7 @@
 
 .bottomContainer {
   display: flex;
-  border-bottom: 1px solid #dcdfe1;
-  border-left: 1px solid #dcdfe1;
-  border-right: 1px solid #dcdfe1;
-  border-bottom-left-radius: 12px;
+  border-bottom: 1px solid $borderColor;  border-left: 1px solid $borderColor;  border-right: 1px solid $borderColor;  border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
 }
 
@@ -46,7 +45,7 @@
 }
 
 .wordPressOverageStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
@@ -72,7 +71,7 @@
 }
 
 .captionStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: var(--Font-size-text-sm, 14px);
   font-style: normal;
   font-weight: 500;
@@ -131,7 +130,7 @@
 }
 
 .wordPressSiteCaptionStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;

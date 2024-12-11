@@ -1,3 +1,6 @@
+@import '../../styles/text-colors.scss';
+@import '../../styles/colors.scss';
+
 .profilePicture img {
   width: 64px;
   height: 64px;
@@ -11,7 +14,7 @@
 }
 
 .photoContent > span {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 14px;
   font-weight: 700;
 }

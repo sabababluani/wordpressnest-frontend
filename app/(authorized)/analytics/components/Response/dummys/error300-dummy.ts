@@ -5,7 +5,7 @@ export const Error300 = [
       52, 68, 85, 73, 65, 58, 74, 80, 71, 66, 70, 84, 79, 75, 67, 72, 77, 65,
       73, 69,
     ],
-    backgroundColor: '#11141A',
+    backgroundColor: '$primaryTextColor',
   },
   {
     label: '302',
