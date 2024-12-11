@@ -1,0 +1,77 @@
+@import '../../../../../app/styles/colors.scss';
+@import '../../../../../app/styles/text-colors.scss';
+
+.containerWrapper {
+    border: 1px solid $borderColor;
+    border-radius: 12px;
+    width: 100%;
+    height: 136px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px 24px;
+    cursor: pointer;
+}
+
+.active {
+  border: 1px solid $primaryColor;
+}
+
+.SecondStepFlowsFirstCheckbox {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.mainCaptionStyle {
+    color: $primaryColor;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.descriptionsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.descriptionStyle {
+    color: $secondaryTextColor;
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+}
+
+.checkboxWrapper {
+  width: fit-content;
+}
+
+.checkboxWrapper
+  :global(.ant-checkbox-wrapper .ant-checkbox .ant-checkbox-inner) {
+  border: 1px solid $primaryColor;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+}
+
+.checkboxWrapper
+  :global(.ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner) {
+  background-color: $primaryColor;
+}
+
+.checkboxWrapper
+  :global(
+    .ant-checkbox-checked:not(.ant-checkbox-disabled) .ant-checkbox-inner
+  ) {
+  background-color: $primaryTextColor !important;
+}
+
+.innerContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
