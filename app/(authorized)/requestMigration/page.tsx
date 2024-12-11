@@ -21,7 +21,7 @@ const RequestMigration = () => {
   const [, setTimezone] = useState<string>('');
 
   useEffect(() => {
-    const savedStepFlow = sessionStorage.getItem('stepFlow');
+    const savedStepFlow: string | null = sessionStorage.getItem('stepFlow');
     if (savedStepFlow) {
       setStepFlow(Number(savedStepFlow));
     }
@@ -32,17 +32,12 @@ const RequestMigration = () => {
   }, [stepFlow]);
 
   const onNextButtonClick = (): void => {
-    setStepFlow((prev) => (prev + 1 > 5 ? prev : prev + 1));
+    setStepFlow((prev: number) => (prev + 1 > 5 ? prev : prev + 1));
   };
 
   const onBackButtonClick = (): void => {
-    setStepFlow((prev) => (prev === 1 ? prev : prev - 1));
+    setStepFlow((prev: number) => (prev === 1 ? prev : prev - 1));
   };
-
-  console.log(
-    Number(sessionStorage.getItem('SecondStepsSpecificCheckbox')),
-    'secondSteps'
-  );
 
   return (
     <div className={styles.mainWrapper}>

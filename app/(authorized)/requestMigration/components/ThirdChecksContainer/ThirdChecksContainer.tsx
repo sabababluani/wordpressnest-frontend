@@ -1,12 +1,9 @@
 
+import { ThirdChecksContainerPropsInterface } from '../../interface/ThirdChecksContainerPropsInterface';
 import styles from './ThirdChecksContainer.module.scss';
 
-interface asd {
-    checkboxActive: boolean;
-}
 
-
-const ThirdChecksContainer = (props: asd) => {
+const ThirdChecksContainer = (props: ThirdChecksContainerPropsInterface) => {
     return (
         <>
             {

@@ -9,11 +9,10 @@ import { SecondStepFlowCheckboxPropsInterface } from "../../interface/SecondStep
 const SecondStepFlowsCheckbox = (props: SecondStepFlowCheckboxPropsInterface) => {
     return (
         <div
-            className={`${styles.containerWrapper} ${
-                props.activeCheckbox === props.firstCheckboxCoefficient || props.activeCheckbox === props.secondCheckboxCoefficient
-                    ? styles.active
-                    : ""
-            }`}
+            className={`${styles.containerWrapper} ${props.activeCheckbox === props.firstCheckboxCoefficient || props.activeCheckbox === props.secondCheckboxCoefficient
+                ? styles.active
+                : ""
+                }`}
             onClick={() => props.onClick(props.firstCheckboxCoefficient || props.secondCheckboxCoefficient)}
         >
             <div className={styles.innerContainer}>
@@ -27,7 +26,12 @@ const SecondStepFlowsCheckbox = (props: SecondStepFlowCheckboxPropsInterface) =>
                     <span className={styles.descriptionStyle}>{props.description}</span>
                 </div>
             </div>
-            {props.buttonActive && <Button backgroundColor={buttonbackgroundColorEnum.white} innerContent="Choose" />}
+            {
+                props.buttonActive && <Button
+                    buttonActive={props.activeCheckbox === props.firstCheckboxCoefficient || props.activeCheckbox === props.secondCheckboxCoefficient}
+                    backgroundColor={buttonbackgroundColorEnum.white}
+                    innerContent="Choose" />
+            }
         </div>
     );
 };
