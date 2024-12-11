@@ -72,3 +72,51 @@
   font-size: 16px;
   cursor: pointer;
 }
+
+.optionContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.optionContainer span {
+  color: #11141a;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.input {
+  padding: 11px 14px;
+  border-radius: 8px;
+  outline: none;
+  border: 1px solid #dcdfe1;
+
+  &:hover,
+  &:focus,
+  &:active,
+  & {
+    border: 1px solid #dcdfe1;
+    box-shadow: none;
+  }
+}
+
+.select {
+  border-radius: 8px;
+  outline: none;
+  border: 1px solid #dcdfe1;
+  &:hover {
+    border: 1px solid #dcdfe1 !important;
+  }
+}
+
+.select :global(.ant-select-selector) {
+  border: 1px solid #dcdfe1 !important;
+  box-shadow: none !important;
+}
+
+.select :global(.ant-select-focused .ant-select-selector) {
+  border: 1px solid #dcdfe1 !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}

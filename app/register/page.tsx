@@ -12,14 +12,12 @@ import '../globals.css';
 import RegisterSuccess from './components/RegisterSuccess/RegisterSuccess';
 
 const Register = () => {
-  const [steper, setSteper] = useState(4);
+  const [steper, setSteper] = useState(1);
 
   const onNextStep = () => {
     setSteper((prevStep) => prevStep + 1);
     console.log(steper);
   };
-
-  console.log(steper);
 
   return (
     <div className={styles.wrapper}>
@@ -180,7 +178,7 @@ const Register = () => {
             {steper === 2 && <RegiserPlans onNextStep={onNextStep} />}
             {steper === 3 && <RegisterBilling onNextStep={onNextStep} />}
             {steper === 4 && <RegisterSuccess />}
-            {steper < 3 && (
+            {steper < 4 && (
               <div className={styles.loginContainer}>
                 <Link href={'/login'} className={styles.login}>
                   Log in to your account
