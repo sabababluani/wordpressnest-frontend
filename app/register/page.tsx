@@ -6,9 +6,13 @@ import MainHeader from './components/RegisterHeader/RegisterHeader';
 import styles from './page.module.scss';
 import RegisterForm from './components/RegisterForm/RegisterForm';
 import { useState } from 'react';
+import RegiserPlans from './components/RegiserPlans/RegiserPlans';
+import RegisterBilling from './components/RegisterBilling/RegisterBilling';
+import '../globals.css';
+import RegisterSuccess from './components/RegisterSuccess/RegisterSuccess';
 
 const Register = () => {
-  const [steper, setSteper] = useState(2);
+  const [steper, setSteper] = useState(4);
 
   const onNextStep = () => {
     setSteper((prevStep) => prevStep + 1);
@@ -81,18 +85,31 @@ const Register = () => {
                 width={53}
                 height={2}
               />
-              <div className={`${styles.navigate} ${styles.lightNavigate}`}>
+              <div className={styles.navigate}>
                 <div
-                  className={`${steper > 2 ? styles.blackcircle : styles.graycircle}`}
+                  className={`${steper === 1 && styles.lightcircle} ${steper === 2 && styles.graycircle}  ${steper === 3 && styles.blackcircle} ${steper === 4 && styles.blackcircle}`}
                 >
                   <Image
-                    src={steper > 2 ? '/icons/note.svg' : '/icons/notebold.svg'}
+                    src={
+                      steper === 2
+                        ? '/icons/notebold.svg'
+                        : steper === 1
+                          ? '/icons/note.svg'
+                          : steper === 3
+                            ? '/icons/notewhite.svg'
+                            : '/icons/notewhite.svg'
+                    }
                     alt="note"
                     width={24}
                     height={24}
                   />
                 </div>
-                <span className={styles.navigationSpan}>Choose Plan</span>
+                <span
+                  className={`${steper === 1 && styles.navigationSpan}
+                      ${steper === 2 && styles.navigationBoldSpan}  ${steper === 3 && styles.boldNavigationSpan}  ${steper === 4 && styles.boldNavigationSpan}`}
+                >
+                  Choose Plan
+                </span>
               </div>
               <Image
                 src={'/icons/dashedline.svg'}
@@ -100,17 +117,30 @@ const Register = () => {
                 width={53}
                 height={2}
               />
-              <div className={`${styles.navigate} ${styles.lightNavigate}`}>
-                <div className={styles.lightcircle}>
+              <div className={`${styles.navigate}`}>
+                <div
+                  className={`${steper === 1 && styles.lightcircle} ${steper === 2 && styles.lightcircle} ${steper === 3 && styles.graycircle} ${steper === 4 && styles.blackcircle}`}
+                >
                   <Image
-                    src={'/icons/bill.svg'}
+                    src={
+                      steper === 2
+                        ? '/icons/bill.svg'
+                        : steper === 1
+                          ? '/icons/bill.svg'
+                          : steper === 3
+                            ? '/icons/billingbold.svg'
+                            : '/icons/billingwhite.svg'
+                    }
                     alt="bill"
                     width={24}
                     height={24}
                   />
                 </div>
-                <span className={styles.navigationSpan}>
-                  Billing information{' '}
+                <span
+                  className={`${steper === 1 && styles.navigationSpan}
+                      ${steper === 2 && styles.navigationSpan}  ${steper === 3 && styles.navigationBoldSpan}  ${steper === 4 && styles.boldNavigationSpan}`}
+                >
+                  Billing information
                 </span>
               </div>
               <Image
@@ -120,27 +150,47 @@ const Register = () => {
                 height={2}
               />
               <div className={`${styles.navigate} ${styles.lightNavigate}`}>
-                <div className={styles.lightcircle}>
+                <div
+                  className={`${steper === 1 && styles.lightcircle} ${steper === 2 && styles.lightcircle} ${steper === 3 && styles.lightcircle} ${steper === 4 && styles.blackcircle}`}
+                >
                   <Image
-                    src={'/icons/succescopy.svg'}
+                    src={
+                      steper === 1
+                        ? '/icons/succescopy.svg'
+                        : steper === 2
+                          ? '/icons/succescopy.svg'
+                          : steper === 3
+                            ? '/icons/succescopy.svg'
+                            : '/icons/copysuccesswhite.svg'
+                    }
                     alt="success"
                     width={24}
                     height={24}
                   />
                 </div>
-                <span className={styles.navigationSpan}>Success</span>
+                <span
+                  className={`${steper === 1 && styles.navigationSpan}
+                      ${steper === 2 && styles.navigationSpan}  ${steper === 3 && styles.navigationBoldSpan}  ${steper === 4 && styles.boldNavigationSpan}`}
+                >
+                  Success
+                </span>
               </div>
             </div>
             {steper === 1 && <RegisterForm onNextStep={onNextStep} />}
-            <div className={styles.loginContainer}>
-              <Link href={'/login'} className={styles.login}>
-                Log in to your account
-              </Link>
-            </div>
+            {steper === 2 && <RegiserPlans onNextStep={onNextStep} />}
+            {steper === 3 && <RegisterBilling onNextStep={onNextStep} />}
+            {steper === 4 && <RegisterSuccess />}
+            {steper < 3 && (
+              <div className={styles.loginContainer}>
+                <Link href={'/login'} className={styles.login}>
+                  Log in to your account
+                </Link>
+              </div>
+            )}
           </div>
         </div>
         <div className={styles.banner}>
-          <Image src={'/image.png'} alt="image" width={940} height={12} />
+          <Image src={'/image.png'} alt="image" width={940} height={1200} />
         </div>
       </div>
     </div>

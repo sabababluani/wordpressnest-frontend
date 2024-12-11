@@ -1,0 +1,74 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.upperContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.countryContainer {
+  display: flex;
+  gap: 24px;
+}
+
+.country {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 8px;
+}
+
+.country span {
+  color: #707276;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.inputContainer span {
+  color: #707276;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.select {
+  height: 44px;
+}
+
+.input {
+  height: 48px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.container h3 {
+  color: #11141a;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  margin: unset;
+}
+
+.submit {
+  background-color: #000;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  line-height: 24px;
+  font-size: 16px;
+  cursor: pointer;
+}

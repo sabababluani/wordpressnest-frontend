@@ -186,12 +186,16 @@ const RegisterForm = (props: RegisterFormActionPropsInterface) => {
 
       <div className={styles.checkboxWrapper}>
         <div className={styles.checkboxContainer}>
-          <Checkbox />
+          <div className={styles.checkbox}>
+            <Checkbox />
+          </div>
           <span>Subscribe to Hosting Updates and Promotions</span>
         </div>
 
         <div className={styles.checkboxContainer}>
-          <Checkbox />
+          <div className={styles.checkbox}>
+            <Checkbox />
+          </div>
           <span>I agree to Hosting Terms of Service and Privacy Policy</span>
         </div>
       </div>
