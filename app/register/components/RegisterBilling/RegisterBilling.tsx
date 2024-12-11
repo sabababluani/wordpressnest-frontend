@@ -42,11 +42,17 @@ const RegisterBilling = (props: RegisterFormActionPropsInterface) => {
                 className={styles.select}
                 options={countryOptions}
                 defaultValue={countryOptions[0]}
+                popupClassName={styles.customDropdown}
               ></Select>
             </div>
             <div className={styles.country}>
               <span>City</span>
-              <Select className={styles.select}></Select>
+              <Select
+                className={styles.select}
+                popupClassName={styles.customDropdown}
+                options={[{ value: 'tbilisi', label: 'Tbilisi' }]}
+                defaultValue={[{ value: 'tbilisi', label: 'Tbilisi' }]}
+              />
             </div>
           </div>
           <div className={styles.inputContainer}>

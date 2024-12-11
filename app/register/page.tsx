@@ -10,9 +10,28 @@ import RegiserPlans from './components/RegiserPlans/RegiserPlans';
 import RegisterBilling from './components/RegisterBilling/RegisterBilling';
 import '../globals.css';
 import RegisterSuccess from './components/RegisterSuccess/RegisterSuccess';
+import { Select } from 'antd';
+
+const countryOptions = [
+  {
+    value: 'as',
+    label: (
+      <div className={styles.optionContainer}>
+        <Image
+          src="/icons/languageicon.svg"
+          alt="US Flag"
+          width={24}
+          height={24}
+          className={styles.flag}
+        />
+        <span>English</span>
+      </div>
+    ),
+  },
+];
 
 const Register = () => {
-  const [steper, setSteper] = useState(1);
+  const [steper, setSteper] = useState(3);
 
   const onNextStep = () => {
     setSteper((prevStep) => prevStep + 1);
@@ -179,11 +198,19 @@ const Register = () => {
             {steper === 3 && <RegisterBilling onNextStep={onNextStep} />}
             {steper === 4 && <RegisterSuccess />}
             {steper < 4 && (
-              <div className={styles.loginContainer}>
-                <Link href={'/login'} className={styles.login}>
-                  Log in to your account
-                </Link>
-              </div>
+              <>
+                <div className={styles.loginContainer}>
+                  <Link href={'/login'} className={styles.login}>
+                    Log in to your account
+                  </Link>
+                </div>
+                <Select
+                  options={countryOptions}
+                  className={styles.select}
+                  defaultValue={countryOptions[0]}
+                  popupClassName={styles.customDropdown}
+                />
+              </>
             )}
           </div>
         </div>

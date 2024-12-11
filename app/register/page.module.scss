@@ -173,3 +173,42 @@
   font-weight: 600;
   line-height: 20px;
 }
+
+.select {
+  height: 48px;
+  border-radius: 8px;
+  outline: none;
+  border: 1px solid #dcdfe1;
+
+  &:hover {
+    border: 1px solid #dcdfe1 !important;
+  }
+
+  :global(.ant-select-selector) {
+    border: 1px solid #dcdfe1 !important;
+    box-shadow: none !important;
+  }
+
+  :global(.ant-select-focused .ant-select-selector) {
+    border: 1px solid #dcdfe1 !important;
+    box-shadow: none !important;
+    border-color: transparent !important;
+  }
+}
+
+.optionContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.customDropdown :global .ant-select-item-option {
+  background-color: #f0f0f0 !important;
+}
+
+.optionContainer span {
+  color: #545a67;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
