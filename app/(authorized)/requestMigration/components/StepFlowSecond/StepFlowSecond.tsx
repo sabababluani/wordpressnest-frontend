@@ -5,7 +5,7 @@ import { ActivedCheckboxNum } from '../../interface/ActivedCheckboxNum-interface
 
 const StepFlowSecond = (props: ActivedCheckboxNum) => {
   const [activeCheckbox, setActiveCheckbox] = useState<number | undefined>(
-    Number(sessionStorage.getItem('SecondStepsSpecificCheckbox')) || 1
+    Number(sessionStorage.getItem('SecondStepsSpecificCheckbox')) || 1,
   );
 
   useEffect(() => {
@@ -13,9 +13,11 @@ const StepFlowSecond = (props: ActivedCheckboxNum) => {
   }, [activeCheckbox]);
 
   const handleCheckboxClick = (index: number | undefined) => {
-    setActiveCheckbox(index? index: undefined);
-    sessionStorage.setItem('SecondStepsSpecificCheckbox', index ? index.toString(): JSON.stringify(undefined));
-     
+    setActiveCheckbox(index ? index : undefined);
+    sessionStorage.setItem(
+      'SecondStepsSpecificCheckbox',
+      index ? index.toString() : JSON.stringify(undefined),
+    );
   };
 
   return (

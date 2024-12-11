@@ -11,7 +11,7 @@
   top: 0;
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
   gap: 24px;
   padding: 40px 20px;
   overflow-y: scroll;
@@ -40,7 +40,7 @@
   width: 248px;
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   padding: 12px 0 12px 12px;
   border-radius: 8px;
 }
@@ -75,7 +75,7 @@
 
 .sites {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   gap: 10px;
   padding: 12px 0 12px 12px;

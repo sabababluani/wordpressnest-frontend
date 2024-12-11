@@ -12,23 +12,25 @@ import StepFlowSecond from './components/StepFlowSecond/StepFlowSecond';
 import ThirdStepsContainerBasedCheckboxFirst from './components/ThirdStepsContainerBasedCheckboxFirst/ThirdStepsContainerBasedCheckboxFirst';
 
 const RequestMigration = () => {
-  const [stepFlow, setStepFlow] = useState<number>(
-    Number(sessionStorage.getItem('stepFlow')) || 1
-  );
+  const [stepFlow, setStepFlow] = useState<number>(1);
   const [activeCheckbox, setActiveCheckbox] = useState<number | null>(1);
   const [time, setTime] = useState<string>('');
   const [, setDate] = useState<string>('');
   const [, setTimezone] = useState<string>('');
 
   useEffect(() => {
-    const savedStepFlow = sessionStorage.getItem('stepFlow');
-    if (savedStepFlow) {
-      setStepFlow(Number(savedStepFlow));
+    if (typeof window !== 'undefined' && window.sessionStorage) {
+      const savedStepFlow = sessionStorage.getItem('stepFlow');
+      if (savedStepFlow) {
+        setStepFlow(Number(savedStepFlow));
+      }
     }
   }, []);
 
   useEffect(() => {
-    sessionStorage.setItem('stepFlow', stepFlow.toString());
+    if (typeof window !== 'undefined' && window.sessionStorage) {
+      sessionStorage.setItem('stepFlow', stepFlow.toString());
+    }
   }, [stepFlow]);
 
   const onNextButtonClick = (): void => {
@@ -38,11 +40,6 @@ const RequestMigration = () => {
   const onBackButtonClick = (): void => {
     setStepFlow((prev) => (prev === 1 ? prev : prev - 1));
   };
-
-  console.log(
-    Number(sessionStorage.getItem('SecondStepsSpecificCheckbox')),
-    'secondSteps'
-  );
 
   return (
     <div className={styles.mainWrapper}>
@@ -77,7 +74,7 @@ const RequestMigration = () => {
           activedCheckboxNum={(index) =>
             sessionStorage.setItem(
               'SecondStepsSpecificCheckbox',
-              index ? index.toString() : JSON.stringify(undefined)
+              index ? index.toString() : JSON.stringify(undefined),
             )
           }
         />

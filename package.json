@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky"
+    "prepare": "husky install"
   },
   "dependencies": {
     "antd": "^5.22.1",
@@ -18,7 +18,7 @@
     "react": "^18",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18",
-    "react-hook-form": "^7.53.2",
+    "react-hook-form": "^7.54.0",
     "sass": "^1.81.0",
     "swr": "^2.2.5",
     "typescript-eslint": "^7.18.0"
@@ -36,7 +36,17 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "husky": "^9.1.7",
+    "lint-staged": "^14.0.1",
     "typescript": "^5.7.2",
     "webpack": "^5.97.0"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,tsx,jsx}": [
+      "eslint --max-warnings=0 --fix",
+      "prettier --check"
+    ],
+    "**/*.{scss,css,md,json}": [
+      "prettier --check"
+    ]
   }
 }

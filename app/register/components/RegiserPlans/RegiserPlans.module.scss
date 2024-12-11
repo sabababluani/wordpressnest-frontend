@@ -1,0 +1,99 @@
+.wrapper {
+  max-width: 492px;
+  width: 100%;
+  background-color: #f8fafc;
+  border-radius: 12px;
+  padding: 12px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.changePlanContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.changePlanContainer button {
+  background-color: transparent;
+  border: 1px solid #dcdfe1;
+  padding: 4px 8px;
+  border-radius: 8px;
+  color: #11141a;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.changePlanContainer span {
+  color: #11141a;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.priceContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.priceContainer p {
+  color: #11141a;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 40px;
+  text-align: end;
+}
+
+.priceContainer p span {
+  color: #707276;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  text-decoration-line: line-through;
+  padding-right: 4px;
+}
+
+.priceContainer > span {
+  color: #11141a;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.chekboxContainer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.chekboxWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.submit {
+  background-color: #000;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  line-height: 24px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.wholeWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
