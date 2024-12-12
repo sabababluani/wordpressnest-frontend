@@ -31,7 +31,7 @@ const countryOptions = [
 ];
 
 const Register = () => {
-  const [steper, setSteper] = useState(3);
+  const [steper, setSteper] = useState(1);
 
   const onNextStep = () => {
     setSteper((prevStep) => prevStep + 1);

@@ -1,3 +1,5 @@
+'use client';
+
 import WpSiteLabels from './components/WpSiteLabels';
 import styles from './page.module.scss';
 
