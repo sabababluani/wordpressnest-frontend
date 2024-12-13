@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
 import SelectionsWrapper from './components/SelectionsWrapper/SelectionsWrapper';
 import StepFlow from './components/StepFlow/StepFlow';
 import styles from './page.module.scss';
@@ -12,24 +13,29 @@ import StepFlowSecond from './components/StepFlowSecond/StepFlowSecond';
 import ThirdStepsContainerBasedCheckboxFirst from './components/ThirdStepsContainerBasedCheckboxFirst/ThirdStepsContainerBasedCheckboxFirst';
 
 const RequestMigration = () => {
-  const [stepFlow, setStepFlow] = useState<number>(
-    Number(sessionStorage.getItem('stepFlow')) || 1
-  );
+  const [stepFlow, setStepFlow] = useState<number>(1);
   const [activeCheckbox, setActiveCheckbox] = useState<number | null>(1);
   const [time, setTime] = useState<string>('');
   const [, setDate] = useState<string>('');
   const [, setTimezone] = useState<string>('');
+  const [isClient, setIsClient] = useState<boolean>(false);
 
   useEffect(() => {
-    const savedStepFlow: string | null = sessionStorage.getItem('stepFlow');
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    const savedStepFlow = Cookies.get('stepFlow');
     if (savedStepFlow) {
       setStepFlow(Number(savedStepFlow));
     }
   }, []);
 
   useEffect(() => {
-    sessionStorage.setItem('stepFlow', stepFlow.toString());
-  }, [stepFlow]);
+    if (isClient) {
+      Cookies.set('stepFlow', stepFlow.toString(), { expires: 1 });
+    }
+  }, [stepFlow, isClient]);
 
   const onNextButtonClick = (): void => {
     setStepFlow((prev: number) => (prev + 1 > 5 ? prev : prev + 1));
@@ -38,6 +44,10 @@ const RequestMigration = () => {
   const onBackButtonClick = (): void => {
     setStepFlow((prev: number) => (prev === 1 ? prev : prev - 1));
   };
+
+  if (!isClient) {
+    return null; 
+  }
 
   return (
     <div className={styles.mainWrapper}>
@@ -70,15 +80,16 @@ const RequestMigration = () => {
       {stepFlow === 2 && (
         <StepFlowSecond
           activedCheckboxNum={(index) =>
-            sessionStorage.setItem(
+            Cookies.set(
               'SecondStepsSpecificCheckbox',
-              index ? index.toString() : JSON.stringify(undefined)
+              index ? index.toString() : JSON.stringify(undefined),
+              { expires: 1 }
             )
           }
         />
       )}
       {stepFlow == 3 &&
-        Number(sessionStorage.getItem('SecondStepsSpecificCheckbox')) == 1 && (
+        Number(Cookies.get('SecondStepsSpecificCheckbox')) == 1 && (
           <ThirdStepsContainerBasedCheckboxFirst />
         )}
       <div className={styles.buttonsWrapper}>

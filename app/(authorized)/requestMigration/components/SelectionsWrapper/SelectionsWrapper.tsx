@@ -1,5 +1,6 @@
 'use client';
 
+import Cookies from 'js-cookie';
 import { useState } from 'react';
 import Image from 'next/image';
 import { Checkbox } from 'antd';
@@ -8,7 +9,7 @@ import { SelectionsWrapperProps } from '../../interface/selection-wrapper-interf
 
 const SelectionsWrapper = (props: SelectionsWrapperProps): JSX.Element => {
   const [activeCheckbox, setActiveCheckbox] = useState<number | null>(
-    Number(sessionStorage.getItem('firstStepsSpecificCheckboxIndex')) || props.initialActiveCheckbox,
+    Number(Cookies.get('firstStepsSpecificCheckboxIndex')) || props.initialActiveCheckbox,
   );
 
   const handleCheckboxClick = (index: number): void | null => {
@@ -17,7 +18,7 @@ const SelectionsWrapper = (props: SelectionsWrapperProps): JSX.Element => {
     }
     setActiveCheckbox(index);
     props.onCheckboxChange(index);
-    sessionStorage.setItem('firstStepsSpecificCheckboxIndex', index.toString());
+    Cookies.set('firstStepsSpecificCheckboxIndex', index.toString());
   };
 
   return (

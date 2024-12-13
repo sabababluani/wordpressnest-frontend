@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import SecondStepFlowsCheckbox from '../SecondStepFlowFirstContainer/SecondStepFlowFirstContainer';
 import styles from './StepFlowSecond.module.scss';
-import { ActivedCheckboxNum } from '../../interface/ActivedCheckboxNum-interface';
+import Cookies from 'js-cookie';
+import { ActivedCheckboxNum } from '../../interface/activedCheckboxNum-interface';
 
 const StepFlowSecond = (props: ActivedCheckboxNum) => {
   const [activeCheckbox, setActiveCheckbox] = useState<number | undefined>(
-    Number(sessionStorage.getItem('SecondStepsSpecificCheckbox')) || 1
+    Number(Cookies.get('SecondStepsSpecificCheckbox')) || 1
   );
 
   useEffect(() => {
@@ -14,7 +15,7 @@ const StepFlowSecond = (props: ActivedCheckboxNum) => {
 
   const handleCheckboxClick = (index: number | undefined) => {
     setActiveCheckbox(index? index: undefined);
-    sessionStorage.setItem('SecondStepsSpecificCheckbox', index ? index.toString(): JSON.stringify(undefined));
+    Cookies.set('SecondStepsSpecificCheckbox', index ? index.toString(): JSON.stringify(undefined));
      
   };
 

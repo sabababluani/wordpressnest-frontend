@@ -4,7 +4,7 @@ import { Checkbox } from "antd";
 import styles from "./SecondStepFlowsFirstCheckbox.module.scss";
 import Button from "@/app/components/Button/Button";
 import { buttonbackgroundColorEnum } from "@/app/components/Button/enum/button.enum";
-import { SecondStepFlowCheckboxPropsInterface } from "../../interface/SecondStepFlowCheckbox-interface";
+import { SecondStepFlowCheckboxPropsInterface } from "../../interface/secondStepFlowCheckbox-interface";
 
 const SecondStepFlowsCheckbox = (props: SecondStepFlowCheckboxPropsInterface) => {
     return (

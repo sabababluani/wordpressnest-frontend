@@ -1,5 +1,5 @@
 
-import { ThirdChecksContainerPropsInterface } from '../../interface/ThirdChecksContainerPropsInterface';
+import { ThirdChecksContainerPropsInterface } from '../../interface/thirdChecksContainerPropsInterface';
 import styles from './ThirdChecksContainer.module.scss';
 
 
