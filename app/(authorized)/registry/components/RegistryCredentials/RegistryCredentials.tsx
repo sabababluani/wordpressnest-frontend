@@ -1,19 +1,56 @@
 'use client';
 
-import Button from '@/app/components/Button/Button';
-import styles from './RegistryCredentials.module.scss';
-import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
-import RegistryCredentialsCreateModal from '../RegistryCredentialsCreateModal/RegistryCredentialsCreateModal';
-import { Modal } from 'antd';
 import { useState } from 'react';
+import { Table, Modal } from 'antd';
+import Button from '@/app/components/Button/Button';
 import RegistryCredentialsDeleteModal from '../RegistryCredentialsDeleteModal/RegistryCredentialsDeleteModal';
+import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
+import styles from './RegistryCredentials.module.scss';
+import RegistryCredentialsCreateModal from '../RegistryCredentialsCreateModal/RegistryCredentialsCreateModal';
+import { RegistryTableDummy } from './dummy/registry-credentials-table-dummy';
 
 const RegistryCredentials = () => {
   const [isActive, setIsActive] = useState(false);
+  const [isCreateActive, setIsCreateActive] = useState(false);
+
+  const onCreateClick = () => {
+    setIsCreateActive(true);
+  };
 
   const onClick = () => {
     setIsActive(true);
   };
+
+  const columns = [
+    {
+      title: 'Name',
+      dataIndex: 'name',
+      key: 'name',
+    },
+    {
+      title: 'Registry',
+      dataIndex: 'registry',
+      key: 'registry',
+    },
+    {
+      title: 'Created',
+      dataIndex: 'created',
+      key: 'created',
+    },
+    {
+      title: 'Actions',
+      key: 'actions',
+      render: () => (
+        <div className={styles.button}>
+          <Button
+            innerContent="Delete"
+            backgroundColor={buttonbackgroundColorEnum.grey}
+            onClick={() => setIsActive(true)}
+          />
+        </div>
+      ),
+    },
+  ];
 
   return (
     <div className={styles.wrapper}>
@@ -23,29 +60,28 @@ const RegistryCredentials = () => {
             Container registry credentials
           </span>
           <span className={styles.text}>
-            Earn credits by reffering your friend to hosting, earnings accrue
-            when referrals start using and paying for hosting services. you can
+            Earn credits by referring your friend to hosting. Earnings accrue
+            when referrals start using and paying for hosting services. You can
             view total credits below or when you have credits available, they
-            are also shown on the payment methods page, as an account balance
+            are also shown on the payment methods page, as an account balance.
           </span>
         </div>
         <Button
-          innerContent="Created credentials"
+          innerContent="Create credentials"
           backgroundColor={buttonbackgroundColorEnum.black}
-          onClick={onClick}
+          onClick={onCreateClick}
         />
       </div>
       <div className={styles.container}>
-        <div className={styles.table}>
-          <span className={styles.title}>Name</span>
-          <span className={styles.title}>Registry</span>
-          <span className={styles.title}>Created</span>
-          <span className={styles.title}>Actions</span>
-        </div>
-        <div className={styles.apikey}>
-          <span className={styles.apikeytext}>
-            Container registry credentials will appear here
-          </span>
+        <div className={styles.tableWrapper}>
+          <Table
+            columns={columns}
+            dataSource={RegistryTableDummy}
+            pagination={false}
+            locale={{
+              emptyText: 'Container registry credentials will appear here',
+            }}
+          />
         </div>
       </div>
       <Modal
@@ -56,6 +92,17 @@ const RegistryCredentials = () => {
         width={800}
       >
         <RegistryCredentialsDeleteModal onClose={() => setIsActive(false)} />
+      </Modal>
+      <Modal
+        open={isCreateActive}
+        onCancel={() => setIsCreateActive(false)}
+        footer={null}
+        closable={false}
+        width={800}
+      >
+        <RegistryCredentialsCreateModal
+          onClose={() => setIsCreateActive(false)}
+        />
       </Modal>
     </div>
   );
