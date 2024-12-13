@@ -6,6 +6,7 @@ import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.e
 import RegistryCredentialsCreateModal from '../RegistryCredentialsCreateModal/RegistryCredentialsCreateModal';
 import { Modal } from 'antd';
 import { useState } from 'react';
+import RegistryCredentialsDeleteModal from '../RegistryCredentialsDeleteModal/RegistryCredentialsDeleteModal';
 
 const RegistryCredentials = () => {
   const [isActive, setIsActive] = useState(false);
@@ -54,7 +55,7 @@ const RegistryCredentials = () => {
         closable={false}
         width={800}
       >
-        <RegistryCredentialsCreateModal />
+        <RegistryCredentialsDeleteModal onClose={() => setIsActive(false)} />
       </Modal>
     </div>
   );
