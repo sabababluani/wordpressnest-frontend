@@ -1,8 +1,20 @@
+'use client';
+
 import Button from '@/app/components/Button/Button';
 import styles from './RegistryCredentials.module.scss';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
+import RegistryCredentialsCreateModal from '../RegistryCredentialsCreateModal/RegistryCredentialsCreateModal';
+import { Modal } from 'antd';
+import { useState } from 'react';
+import RegistryCredentialsDeleteModal from '../RegistryCredentialsDeleteModal/RegistryCredentialsDeleteModal';
 
 const RegistryCredentials = () => {
+  const [isActive, setIsActive] = useState(false);
+
+  const onClick = () => {
+    setIsActive(true);
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
@@ -20,6 +32,7 @@ const RegistryCredentials = () => {
         <Button
           innerContent="Created credentials"
           backgroundColor={buttonbackgroundColorEnum.black}
+          onClick={onClick}
         />
       </div>
       <div className={styles.container}>
@@ -35,6 +48,15 @@ const RegistryCredentials = () => {
           </span>
         </div>
       </div>
+      <Modal
+        open={isActive}
+        onCancel={() => setIsActive(false)}
+        footer={null}
+        closable={false}
+        width={800}
+      >
+        <RegistryCredentialsDeleteModal onClose={() => setIsActive(false)} />
+      </Modal>
     </div>
   );
 };

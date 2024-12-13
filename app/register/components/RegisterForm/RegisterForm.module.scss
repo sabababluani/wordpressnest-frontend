@@ -1,0 +1,123 @@
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inputWrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.inputContainer input {
+  padding: 12px 14px;
+  border-radius: 8px;
+  outline: none;
+  border: 1px solid #dcdfe1;
+}
+
+.inputContainer span {
+  color: #707276;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.checkboxChecked {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkboxChecked span {
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.checkboxWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkboxContainer span {
+  color: #545a67;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.checkboxUnChecked {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkboxUnChecked span {
+  color: #545a67;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.checkbox :global(.ant-checkbox-wrapper .ant-checkbox .ant-checkbox-inner) {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #dcdfe1 !important;
+}
+
+.checkbox
+  :global(.ant-checkbox-wrapper .ant-checkbox .ant-checkbox-inner:hover) {
+  border: 1px solid #dcdfe1 !important;
+  background-color: transparent !important;
+}
+
+.checkbox
+  :global(.ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner) {
+  background-color: black !important;
+  border: none !important;
+}
+
+.passwordInput {
+  padding: 11px 14px;
+  border-radius: 8px;
+  outline: none;
+  border: 1px solid #dcdfe1;
+
+  &:hover,
+  &:focus,
+  &:active,
+  & {
+    border: 1px solid #dcdfe1;
+  }
+}
+
+.antInput :global(.ant-input-affix-wrapper-focused) {
+  border: 1px solid #dcdfe1 !important;
+  box-shadow: none !important;
+}
+
+.submit {
+  background-color: #000;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  line-height: 24px;
+  font-size: 16px;
+  cursor: pointer;
+}

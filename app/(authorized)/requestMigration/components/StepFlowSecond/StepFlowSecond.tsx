@@ -16,7 +16,6 @@ const StepFlowSecond = (props: ActivedCheckboxNum) => {
   const handleCheckboxClick = (index: number | undefined) => {
     setActiveCheckbox(index? index: undefined);
     Cookies.set('SecondStepsSpecificCheckbox', index ? index.toString(): JSON.stringify(undefined));
-     
   };
 
   return (

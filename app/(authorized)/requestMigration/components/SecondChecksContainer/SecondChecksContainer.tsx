@@ -6,8 +6,7 @@ import { SecondCheckPropsInterface } from '../../interface/second-check-interfac
 const SecondChecksContainer = (props: SecondCheckPropsInterface) => {
   return (
     <>
-      {
-        props.activecheckbox &&
+      {props.activecheckbox && (
         <div className={styles.mainWrapper}>
           <div className={styles.dateTimesWrapper}>
             <div className={styles.dateWrapper}>
@@ -30,11 +29,21 @@ const SecondChecksContainer = (props: SecondCheckPropsInterface) => {
                   onChange={props.time}
                   value={'10:00 AM - 11:00 AM'}
                 >
-                  <Select.Option value="10:11">10:00 AM - 11:00 AM</Select.Option>
-                  <Select.Option value="10:11">10:00 AM - 11:00 AM</Select.Option>
-                  <Select.Option value="10:11">10:00 AM - 11:00 AM</Select.Option>
-                  <Select.Option value="10:11">10:00 AM - 11:00 AM</Select.Option>
-                  <Select.Option value="10:11">10:00 AM - 11:00 AM</Select.Option>
+                  <Select.Option value="10:11">
+                    10:00 AM - 11:00 AM
+                  </Select.Option>
+                  <Select.Option value="10:11">
+                    10:00 AM - 11:00 AM
+                  </Select.Option>
+                  <Select.Option value="10:11">
+                    10:00 AM - 11:00 AM
+                  </Select.Option>
+                  <Select.Option value="10:11">
+                    10:00 AM - 11:00 AM
+                  </Select.Option>
+                  <Select.Option value="10:11">
+                    10:00 AM - 11:00 AM
+                  </Select.Option>
                 </Select>
               </div>
             </div>
@@ -58,13 +67,13 @@ const SecondChecksContainer = (props: SecondCheckPropsInterface) => {
             </div>
           </div>
           <span className={styles.descriptionStyle}>
-            We offer unlimited free migrations from all hosting providers including:
-            A2 Hosting, Bluehost, Cloudways, DreamHost, Flywheel, GoDaddy,
-            HostGator, Pagely, Pantheon, SiteGround, tsoHost, WP Engine, or WPX
-            Hosting.
+            We offer unlimited free migrations from all hosting providers
+            including: A2 Hosting, Bluehost, Cloudways, DreamHost, Flywheel,
+            GoDaddy, HostGator, Pagely, Pantheon, SiteGround, tsoHost, WP
+            Engine, or WPX Hosting.
           </span>
         </div>
-      }
+      )}
     </>
   );
 };
