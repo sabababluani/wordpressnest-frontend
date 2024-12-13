@@ -14,4 +14,5 @@ export interface ButtonDataInterface {
   innerContentIcon?: string;
   disableButton?: boolean;
   onClick?: (e: React.MouseEvent) => void;
+  buttonActive?: boolean;
 }

@@ -23,7 +23,7 @@ const Button = (props: ButtonDataInterface): JSX.Element => {
                         buttonbackgroundColorEnum.greyBold
                       ? styles.backgroundGreyBoldColor
                       : styles.backgroundDomainsRed
-          } ${props.disableButton && styles.disabledButton}`}
+          } ${props.disableButton && styles.disabledButton} ${props.buttonActive && styles.active} ${styles.innerContentBlackColor}`}
       >
         {props.innerContentIconActive && (
           <Image
