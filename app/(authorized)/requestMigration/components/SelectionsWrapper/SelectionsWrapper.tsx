@@ -9,7 +9,8 @@ import { SelectionsWrapperProps } from '../../interface/selection-wrapper-interf
 
 const SelectionsWrapper = (props: SelectionsWrapperProps): JSX.Element => {
   const [activeCheckbox, setActiveCheckbox] = useState<number | null>(
-    Number(Cookies.get('firstStepsSpecificCheckboxIndex')) || props.initialActiveCheckbox,
+    Number(Cookies.get('firstStepsSpecificCheckboxIndex')) ||
+      props.initialActiveCheckbox,
   );
 
   const handleCheckboxClick = (index: number): void | null => {
@@ -24,8 +25,9 @@ const SelectionsWrapper = (props: SelectionsWrapperProps): JSX.Element => {
   return (
     <div className={styles.mainContainer}>
       <div
-        className={`${styles.checkboxSelectionContainer} ${activeCheckbox === 1 && styles.afterClickStyleFirst
-          }`}
+        className={`${styles.checkboxSelectionContainer} ${
+          activeCheckbox === 1 && styles.afterClickStyleFirst
+        }`}
         onClick={() => handleCheckboxClick(1)}
       >
         <div className={styles.checkboxWrapper}>
@@ -51,8 +53,9 @@ const SelectionsWrapper = (props: SelectionsWrapperProps): JSX.Element => {
       </div>
 
       <div
-        className={`${styles.checkboxSelectionContainer} ${activeCheckbox === 2 && styles.afterClickStyleSecond
-          }`}
+        className={`${styles.checkboxSelectionContainer} ${
+          activeCheckbox === 2 && styles.afterClickStyleSecond
+        }`}
         onClick={() => handleCheckboxClick(2)}
       >
         <div className={styles.checkboxWrapper}>
@@ -77,8 +80,9 @@ const SelectionsWrapper = (props: SelectionsWrapperProps): JSX.Element => {
       </div>
 
       <div
-        className={`${styles.checkboxSelectionContainer} ${activeCheckbox === 3 && styles.afterClickStyleThird
-          }`}
+        className={`${styles.checkboxSelectionContainer} ${
+          activeCheckbox === 3 && styles.afterClickStyleThird
+        }`}
         onClick={() => handleCheckboxClick(3)}
       >
         <div className={styles.checkboxWrapper}>

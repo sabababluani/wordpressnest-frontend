@@ -1,3 +1,5 @@
+'use client';
+
 import ApiKeys from './components/ApiKeys';
 import styles from './page.module.scss';
 

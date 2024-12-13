@@ -17,9 +17,9 @@ const RegistryCredentials = () => {
     setIsCreateActive(true);
   };
 
-  const onClick = () => {
-    setIsActive(true);
-  };
+  // const onClick = () => {
+  //   setIsActive(true);
+  // };
 
   const columns = [
     {
