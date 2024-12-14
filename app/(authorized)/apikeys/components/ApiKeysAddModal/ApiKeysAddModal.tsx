@@ -9,7 +9,7 @@ const ApiKeysAddModal = () => {
   const [steper, setSteper] = useState(1);
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       <div className={styles.header}>
         <span className={styles.headline}>Create credential</span>
         <Image
@@ -23,7 +23,7 @@ const ApiKeysAddModal = () => {
       <div className={styles.wholeWrapper}>
         <div className={styles.container}>
           <div className={styles.steper}>
-            <span>Add Domains</span>
+            <span>Generate API key</span>
             <div className={styles.progress}>
               <div className={styles.circle}></div>
               <div className={styles.line}></div>
@@ -52,7 +52,16 @@ const ApiKeysAddModal = () => {
                 placeholder="Please selec an option"
               />
             </div>
-            <DatePicker needConfirm />
+            <div className={styles.addContainer}>
+              <div className={styles.spansContainer}>
+                <span>Expiry date</span>
+                <DatePicker className={styles.datePicker} />
+              </div>
+              <div className={styles.spansContainer}>
+                <span>Expiry time</span>
+                <Select className={styles.dateSelect} />
+              </div>
+            </div>
             <div className={styles.spansWrapper}>
               <div className={styles.spansContainer}>
                 <span className={styles.labels}>API key name</span>
@@ -66,12 +75,14 @@ const ApiKeysAddModal = () => {
         )}
         {steper === 2 && (
           <div className={styles.apiWrapper}>
-            <span className={styles.apiKey}>Api key</span>
-            <span>
-              Copy the API key and store it. This is the only time it is
-              displayed.
-            </span>
-            <div>
+            <div className={styles.apiContainer}>
+              <span className={styles.apiKey}>Api key</span>
+              <span className={styles.copy}>
+                Copy the API key and store it. This is the only time it is
+                displayed.
+              </span>
+            </div>
+            <div className={styles.copyContainer}>
               <span>
                 c93a55c40fa7fdb6dc474a2f993216168226bf16e4d5596a6fdd9ceffa4a128b
               </span>

@@ -124,6 +124,7 @@
 }
 
 .spansContainer {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -161,6 +162,14 @@
   border-radius: 12px;
 }
 
+.addContainer input {
+  outline: none;
+  border: 1px solid $borderColor;
+  height: 44px;
+  border-radius: 12px;
+  flex: 1;
+}
+
 .unique {
   color: #707276;
   font-size: 14px;
@@ -187,4 +196,56 @@
 .apiWrapper {
   display: flex;
   flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.apiContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.addContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.datePicker {
+  height: 48px;
+  border-radius: 12px;
+}
+
+.dateSelect {
+  height: 48px;
+  border-radius: 12px;
+}
+
+.apiKey {
+  color: $primaryTextColor;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.copy {
+  font-size: 14px;
+  color: #707276;
+  line-height: 20px;
+}
+
+.copyContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.copyContainer span {
+  color: #000;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.copyContainer img {
+  cursor: pointer;
 }
