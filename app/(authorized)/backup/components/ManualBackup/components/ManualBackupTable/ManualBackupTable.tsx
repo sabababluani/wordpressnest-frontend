@@ -1,13 +1,12 @@
 'use client';
 
 import { Table } from 'antd';
-import type { TableProps } from 'antd';
+import { Select, TableProps } from 'antd';
 import Image from 'next/image';
 import React from 'react';
 import styles from './ManualBackupTable.module.scss';
 import { ManualBackupTablePropsInterface } from './interfaces/manual-backup-table-props.interface';
 import { manualBackupTableDummy } from './dummy-data/manual-backup-table';
-import DailyBackupSelect from '../../../DailyBackup/components/DailyBackupSelect/DailyBackupSelect';
 
 const columns: TableProps<ManualBackupTablePropsInterface>['columns'] = [
   {
@@ -41,12 +40,18 @@ const columns: TableProps<ManualBackupTablePropsInterface>['columns'] = [
   {
     title: 'Restore',
     key: 'restore',
-    render: () => <DailyBackupSelect />,
+    render: () => (
+      <Select
+        className={styles.select}
+        defaultValue={'Restore To'}
+        options={[{ value: 'live', label: 'Live' }]}
+      />
+    ),
     width: '25%',
   },
 ];
 
-const ManualBackupTable: React.FC = () => {
+const ManualBackupTable = () => {
   return (
     <div className={styles.tableWrapper}>
       <Table<ManualBackupTablePropsInterface>
