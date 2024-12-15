@@ -5,7 +5,8 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  border: 1px solid $borderColor;  border-radius: 12px;
+  border: 1px solid $borderColor;
+  border-radius: 12px;
 }
 
 .header {
@@ -16,7 +17,8 @@
   align-items: center;
   justify-content: space-between;
   border-radius: 12px 12px 0 0;
-  border-bottom: 1px solid $borderColor;}
+  border-bottom: 1px solid $borderColor;
+}
 
 .headline {
   color: $primaryTextColor;
@@ -51,34 +53,79 @@
   max-width: 662px;
 }
 
-.table {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 24px 24px 24px;
-  border-bottom: 1px solid #edeeef;
-}
-
-.title {
-  color: #414651;
+.tableWrapper :global(.ant-select-selection-item) {
   font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 24px;
+  padding-left: 6px !important;
 }
 
-.apikeytext {
-  color: #707276;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 24px;
+.tableWrapper {
+  padding-top: 8px;
 }
 
-.apikey {
+.tableWrapper :global .ant-table th {
+  background: #fff !important;
+}
+
+.tableWrapper :global .ant-table-cell::before {
+  content: none !important;
+}
+
+.tableWrapper :global .ant-table-cell {
+  padding-left: 4px !important;
+  color: $primaryTextColor !important;
+  font-weight: 500 !important;
+}
+
+.tableWrapper :global .ant-table-thead .ant-table-cell {
+  color: $primaryTextColor !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  padding-left: 20px !important;
+}
+
+.tableWrapper :global .ant-table-selection-column {
+  padding-left: 24px !important;
+}
+
+.tableWrapper {
+  background-color: #fff;
+}
+
+.tableWrapper :global .ant-table-container {
+  border: 1px solid $borderColor;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.tableWrapper :global .ant-table-row .ant-table-cell {
+  padding-left: 24px !important;
+}
+
+.tableWrapper
+  :global
+  .ant-table-wrapper
+  .ant-table-tbody
+  .ant-table-row.ant-table-row-selected
+  > .ant-table-cell {
+  background-color: #f0f3f5 !important;
+}
+
+.tableWrapper :global .ant-table-container {
+  border: none !important;
+}
+
+.tableWrapper :global .ant-table-tbody > tr > .ant-table-cell {
+  border: none !important;
+}
+
+.tableWrapper {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 20px;
+}
+
+.container {
+  padding: 20px 0;
+}
+
+.button {
+  width: 80px;
 }

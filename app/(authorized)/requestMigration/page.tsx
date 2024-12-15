@@ -46,9 +46,9 @@ const RequestMigration = () => {
   };
 
   if (!isClient) {
-    return null; 
+    return null;
   }
-        
+
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.unChangableWrapper}>
@@ -83,7 +83,7 @@ const RequestMigration = () => {
             Cookies.set(
               'SecondStepsSpecificCheckbox',
               index ? index.toString() : JSON.stringify(undefined),
-              { expires: 1 }
+              { expires: 1 },
             )
           }
         />

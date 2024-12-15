@@ -48,7 +48,8 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: $borderColor;}
+  background-color: $borderColor;
+}
 
 .line {
   max-width: 358px;
@@ -63,7 +64,8 @@
   width: 100%;
   border-radius: 12px;
   height: 5px;
-  background-color: $borderColor;}
+  background-color: $borderColor;
+}
 
 .steper {
   display: flex;
@@ -73,6 +75,7 @@
   max-width: 374px;
   width: 100%;
 }
+
 .steper {
   cursor: pointer;
 
@@ -207,6 +210,6 @@
 .buttons {
   display: flex;
   gap: 16px;
-  justify-content: end;
+  justify-content: flex-end;
   padding: 16px 0 24px 0;
 }
