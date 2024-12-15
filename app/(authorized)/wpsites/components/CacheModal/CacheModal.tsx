@@ -1,17 +1,15 @@
-'use client';
 
-import Button from "@/app/components/Button/Button";
-import styles from "./ChangeCdnModule.module.scss";
-import Image from "next/image";
-import { buttonbackgroundColorEnum } from "@/app/components/Button/enum/button.enum";
 import { Radio } from "antd";
+import styles from "./CacheModal.module.scss";
+import Image from "next/image";
+import Button from "@/app/components/Button/Button";
+import { buttonbackgroundColorEnum } from "@/app/components/Button/enum/button.enum";
 
-const ChangeCdnModule = () => {
-
+const CacheModal = () => {
     return (
         <div className={styles.mainWrapper} >
             <div className={styles.topContainer}>
-                <span className={styles.mainCaptionStyle}>Change CDN</span>
+                <span className={styles.mainCaptionStyle}>Change edge caching</span>
                 <div className={styles.exitButtonWrapper}>
                     <Image
                         width={9}
@@ -42,7 +40,7 @@ const ChangeCdnModule = () => {
                     />
                     <Button
                         backgroundColor={buttonbackgroundColorEnum.black}
-                        innerContent="Change CDN"
+                        innerContent="Change edge caching"
                     />
                 </div>
             </div>
@@ -50,4 +48,4 @@ const ChangeCdnModule = () => {
     )
 }
 
-export default ChangeCdnModule;
+export default CacheModal;
