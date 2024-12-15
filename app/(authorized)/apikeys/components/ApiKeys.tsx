@@ -1,36 +1,45 @@
-import React from 'react';
-import { Table } from 'antd';
+import React, { useState } from 'react';
+import { Modal, Table } from 'antd';
 import Button from '@/app/components/Button/Button';
 import styles from './ApiKeys.module.scss';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import ApiKeysAddModal from './ApiKeysAddModal/ApiKeysAddModal';
-
-const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
-  },
-  {
-    title: 'Expiry Date',
-    dataIndex: 'expiryDate',
-    key: 'expiryDate',
-  },
-  {
-    title: 'Actions',
-    key: 'actions',
-    render: () => (
-      <Button
-        backgroundColor={buttonbackgroundColorEnum.grey}
-        innerContent="Revoke"
-      />
-    ),
-  },
-];
-
-const data = [{}];
+import { apiDummyData } from '../apiDummy/api-keys-dummy';
+import ApiKeysRevokeModal from './ApiKeysRevokeModal/ApiKeysRevokeModal';
 
 const ApiKeys = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isRevokeModalOpen, setIsRevokeModalOpen] = useState(false);
+
+  const columns = [
+    {
+      title: 'Name',
+      dataIndex: 'name',
+      key: 'name',
+      width: '45%',
+    },
+    {
+      title: 'Expiry Date',
+      dataIndex: 'expiryDate',
+      key: 'expiryDate',
+      width: '40%',
+    },
+    {
+      title: 'Actions',
+      key: 'actions',
+      render: () => (
+        <div className={styles.button}>
+          <Button
+            backgroundColor={buttonbackgroundColorEnum.grey}
+            innerContent="Revoke"
+            onClick={() => setIsRevokeModalOpen(true)}
+          />
+        </div>
+      ),
+      width: '15%',
+    },
+  ];
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
@@ -46,20 +55,38 @@ const ApiKeys = () => {
         <Button
           innerContent="Create API Key"
           backgroundColor={buttonbackgroundColorEnum.black}
+          onClick={() => setIsModalOpen(true)}
         />
       </div>
       <div className={styles.container}>
         <div className={styles.tableWrapper}>
           <Table
             columns={columns}
-            dataSource={data}
+            dataSource={apiDummyData}
             pagination={false}
             locale={{ emptyText: 'API keys will appear here' }}
             className={styles.table}
           />
         </div>
       </div>
-      <ApiKeysAddModal />
+      <Modal
+        width={840}
+        open={isModalOpen}
+        onCancel={() => setIsModalOpen(false)}
+        closable={false}
+        footer={null}
+      >
+        <ApiKeysAddModal onClose={() => setIsModalOpen(false)} />
+      </Modal>
+      <Modal
+        width={840}
+        open={isRevokeModalOpen}
+        onCancel={() => setIsRevokeModalOpen(false)}
+        closable={false}
+        footer={null}
+      >
+        <ApiKeysRevokeModal onClose={() => setIsRevokeModalOpen(false)} />
+      </Modal>
     </div>
   );
 };

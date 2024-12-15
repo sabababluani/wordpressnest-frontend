@@ -4,9 +4,21 @@ import Image from 'next/image';
 import { DatePicker, Select } from 'antd';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
+import { apiKeyOptions } from './utils/api-keys-select-options';
+import { ApiKeyPropsInterface } from '../../interfaces/api-keys-props.interface';
 
-const ApiKeysAddModal = () => {
+const ApiKeysAddModal = (props: ApiKeyPropsInterface) => {
   const [steper, setSteper] = useState(1);
+  const [isOptionSelected, setIsOptionSelected] = useState(false);
+
+  const handleSelectChange = (value: string) => {
+    setIsOptionSelected(!!value);
+  };
+
+  const onCancelClick = () => {
+    if (steper === 1) props.onClose();
+    else setSteper(1);
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -18,6 +30,7 @@ const ApiKeysAddModal = () => {
           width={24}
           height={24}
           className={styles.close}
+          onClick={() => props.onClose()}
         />
       </div>
       <div className={styles.wholeWrapper}>
@@ -41,6 +54,7 @@ const ApiKeysAddModal = () => {
             </div>
           </div>
         </div>
+
         {steper === 1 && (
           <div className={styles.steperOneWrapper}>
             <div className={styles.spansWrapper}>
@@ -49,19 +63,25 @@ const ApiKeysAddModal = () => {
               </div>
               <Select
                 className={styles.select}
-                placeholder="Please selec an option"
+                placeholder="Please select an option"
+                onChange={handleSelectChange}
+                options={apiKeyOptions}
               />
             </div>
-            <div className={styles.addContainer}>
-              <div className={styles.spansContainer}>
-                <span>Expiry date</span>
-                <DatePicker className={styles.datePicker} />
+
+            {isOptionSelected && (
+              <div className={styles.addContainer}>
+                <div className={styles.spansContainer}>
+                  <span>Expiry date</span>
+                  <DatePicker className={styles.datePicker} />
+                </div>
+                <div className={styles.spansContainer}>
+                  <span>Expiry time</span>
+                  <Select className={styles.dateSelect} />
+                </div>
               </div>
-              <div className={styles.spansContainer}>
-                <span>Expiry time</span>
-                <Select className={styles.dateSelect} />
-              </div>
-            </div>
+            )}
+
             <div className={styles.spansWrapper}>
               <div className={styles.spansContainer}>
                 <span className={styles.labels}>API key name</span>
@@ -73,10 +93,11 @@ const ApiKeysAddModal = () => {
             </div>
           </div>
         )}
+
         {steper === 2 && (
           <div className={styles.apiWrapper}>
             <div className={styles.apiContainer}>
-              <span className={styles.apiKey}>Api key</span>
+              <span className={styles.apiKey}>API key</span>
               <span className={styles.copy}>
                 Copy the API key and store it. This is the only time it is
                 displayed.
@@ -95,11 +116,12 @@ const ApiKeysAddModal = () => {
             </div>
           </div>
         )}
+
         <div className={styles.buttons}>
           <Button
             backgroundColor={buttonbackgroundColorEnum.grey}
             innerContent="Cancel"
-            onClick={() => setSteper(steper - 1)}
+            onClick={onCancelClick}
           />
           <Button
             backgroundColor={buttonbackgroundColorEnum.black}

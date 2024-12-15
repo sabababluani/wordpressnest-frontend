@@ -20,10 +20,12 @@
   border-bottom: 1px solid $borderColor;
 }
 
+.header img {
+  cursor: pointer;
+}
+
 .headline {
   color: $primaryTextColor;
-  font-size: 20px;
-  font-style: normal;
   font-weight: 600;
   line-height: 24px;
 }
@@ -44,7 +46,7 @@
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  max-width: 374px;
+  max-width: 400px;
   width: 100%;
 }
 
@@ -81,7 +83,6 @@
 }
 
 .line {
-  max-width: 358px;
   width: 100%;
   border-radius: 12px;
   height: 5px;
@@ -110,7 +111,6 @@
 }
 
 .lineCircle {
-  max-width: 358px;
   width: 100%;
   border-radius: 12px;
   height: 5px;
@@ -160,6 +160,7 @@
   border: 1px solid $borderColor;
   height: 44px;
   border-radius: 12px;
+  padding: 0 12px;
 }
 
 .addContainer input {
@@ -179,24 +180,27 @@
 .buttons {
   display: flex;
   gap: 16px;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .steperOneWrapper {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 20px 0;
 }
 
 .wholeWrapper {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .apiWrapper {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 24px;
+  padding-bottom: 24px;
   width: 100%;
 }
 
@@ -238,6 +242,7 @@
 .copyContainer {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .copyContainer span {

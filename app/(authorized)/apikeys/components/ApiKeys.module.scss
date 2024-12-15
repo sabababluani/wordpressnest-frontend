@@ -53,14 +53,6 @@
   max-width: 662px;
 }
 
-.tableWrapper :global(.ant-table-thead th:last-child) {
-  text-align: right;
-  padding-right: 90px !important;
-}
-
-.tableWrapper :global(.ant-table-tbody td:last-child) {
-  text-align: right;
-}
 .tableWrapper :global(.ant-select-selection-item) {
   font-size: 16px;
   padding-left: 6px !important;
@@ -107,7 +99,6 @@
 
 .tableWrapper :global .ant-table-row .ant-table-cell {
   padding-left: 24px !important;
-  padding-right: 64px;
 }
 
 .tableWrapper
@@ -133,4 +124,8 @@
 
 .container {
   padding: 20px 0;
+}
+
+.button {
+  width: 80px;
 }
