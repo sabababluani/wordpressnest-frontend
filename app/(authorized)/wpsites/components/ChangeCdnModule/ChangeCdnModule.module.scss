@@ -1,0 +1,79 @@
+@import '../../../../styles/colors.scss';
+@import '../../../../styles/text-colors.scss';
+
+
+.mainWrapper {
+    max-width: 840px;
+    width: 100%;
+}
+
+.topContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background-color: rgb(237, 237, 237);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+
+.bottomContainer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 16px 24px 24px;
+    background-color: white;
+}
+
+.buttonsWrapper {
+    display: flex;
+    gap: 16px;
+}
+
+.middleContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    background-color: white;
+    padding: 12px 24px;
+}
+
+.middleContainersCaption {
+    color: $primaryColor;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.radioWrapperAndCaption {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.radioWrapper {
+    display: flex;
+    gap: 12px;
+}
+
+.radiosLabelStyle {
+    color: $primaryColor;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.exitButtonWrapper {
+    width: 24px;
+    height: 24px;
+    border: 1px solid $borderColor;
+    background-color: white;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
