@@ -1,10 +1,10 @@
-import CacheModal from "../wpsites/components/CacheModal/CacheModal";
+import PhpModal from "../wpsites/components/PhpModal/PhpModal";
 
 
 export default function () {
     return (
         <>
-            <CacheModal />
+            <PhpModal />
         </>
     )
 }
