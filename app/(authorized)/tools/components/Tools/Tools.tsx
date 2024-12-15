@@ -8,10 +8,10 @@ import DropDown from '@/app/components/DropDown/DropDown';
 import { ToolsDataPropsInterface } from './interfaces/tools-data-props.interface';
 
 const Tools = (props: ToolsDataPropsInterface): JSX.Element => {
-  const onChange = (): void => {
-    setIsDisable((prevState) => !prevState);
-  };
-  const [isDisable, setIsDisable] = useState<boolean>(true);
+
+  const [isActive, setIsDisable] = useState<boolean>(false);
+
+  const onChange = (): void => setIsDisable((prevState) => !prevState);
 
   return (
     <div className={styles.mainWrapper}>
@@ -33,11 +33,11 @@ const Tools = (props: ToolsDataPropsInterface): JSX.Element => {
         {props.toggleActive && (
           <div className={styles.toggleWrapper}>
             <span className={styles.toggleCaptionStyle}>
-              {isDisable ? 'Disable' : 'Enable'}
+              {isActive ? 'Enable' : 'Disable'}
             </span>
             <Switch
               className={styles.toggleStyle}
-              defaultChecked
+              checked={isActive}
               onChange={onChange}
             />
           </div>
