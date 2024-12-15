@@ -1,0 +1,99 @@
+@import '../../../../styles/colors.scss';
+@import '../../../../styles/text-colors.scss';
+
+.bottomContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px 24px 24px;
+  background-color: white;
+}
+
+.topContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background-color: rgb(237, 237, 237);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.buttonsWrapper {
+  display: flex;
+  gap: 16px;
+}
+
+.checkboxWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+  margin-bottom: 4px;
+}
+
+.checkboxWrapperStyle {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.cacheClearStyle {
+  color: #11141a;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.middleContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 24px;
+  background-color: white;
+}
+
+.exitButtonWrapper {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 7.5px;
+  border: 1px solid $borderColor;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.mainCaptionStyle {
+  color: #11141a;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.checkboxWrapper
+  :global(.ant-checkbox-wrapper .ant-checkbox .ant-checkbox-inner) {
+  border: 1px solid $primaryColor;
+  width: 18px;
+  height: 18px;
+}
+
+.checkboxWrapper
+  :global(.ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner) {
+  background-color: $primaryColor;
+}
+
+.checkboxWrapper
+  :global(
+    .ant-checkbox-checked:not(.ant-checkbox-disabled) .ant-checkbox-inner
+  ) {
+  background-color: $primaryTextColor !important;
+}
+
+.mainWrapper {
+  max-width: 840px;
+  width: 100%;
+}

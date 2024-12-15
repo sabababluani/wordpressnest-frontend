@@ -7,6 +7,7 @@ import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { Modal } from 'antd';
 import AddSiteModal from './components/AddSiteModal/AddSiteModal';
+import ClearCacheModal from './components/ClearCacheModal/ClearCacheModal';
 
 const Wpsites: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -32,12 +33,7 @@ const Wpsites: React.FC = () => {
           />
         </div>
         <div className={styles.contentWrapperButtons}>
-          <div className={styles.requestbuttons}>
-            <Button
-              backgroundColor={buttonbackgroundColorEnum.grey}
-              innerContent="Request Migration"
-            />
-          </div>
+          <ClearCacheModal />
           <div className={styles.buttons}>
             <Button
               backgroundColor={buttonbackgroundColorEnum.black}
