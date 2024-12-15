@@ -36,7 +36,11 @@ const UpdateModal = () => {
                         <div className={styles.checkboxWrapper}>
                             <Checkbox
                                 checked={isCheckboxActive}
-                                onClick={() => setIsCheckboxActive((prev: boolean) => !prev)}
+                                onClick={() => {
+                                    setIsCheckboxActive((prev: boolean) => !prev)
+                                    setIsActiveSecondCheckbox((prev: boolean) => !prev);
+                                    setIsActiveThirdCheckbox((prev: boolean) => !prev)
+                                }}
                             />
                         </div>
                         <div className={styles.pluginCaptionStyle} >Plugin</div>
@@ -75,7 +79,7 @@ const UpdateModal = () => {
                     />
                     <Button
                         backgroundColor={buttonbackgroundColorEnum.black}
-                        innerContent="Clear cache"
+                        innerContent="Update plugins"
                     />
                 </div>
             </div>
