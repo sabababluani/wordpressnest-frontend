@@ -1,13 +1,14 @@
 'use client';
 
-import React from 'react';
-import { Table } from 'antd';
+import React, { useState } from 'react';
+import { Modal, Table } from 'antd';
 import type { TableProps } from 'antd';
 import Image from 'next/image';
 import styles from './DailyBackupTable.module.scss';
 import { DailyBackupPropsInterface } from './interfaces/daily-backup-table-props.interface';
 import { Dailydata } from './dummy-data/daily-backup-table';
 import DailyBackupSelect from '../DailyBackupSelect/DailyBackupSelect';
+import DailyBackupModal from '../DailyBackupModal/DailyBackupModal';
 
 const columns: TableProps<DailyBackupPropsInterface>['columns'] = [
   {
@@ -34,6 +35,8 @@ const columns: TableProps<DailyBackupPropsInterface>['columns'] = [
 ];
 
 const DailyBackupTable = () => {
+  const [isModalVisable, setIsModalVisable] = useState(false);
+
   return (
     <div className={styles.tableWrapper}>
       <Table<DailyBackupPropsInterface>
@@ -42,6 +45,15 @@ const DailyBackupTable = () => {
         pagination={false}
         rowKey={(record) => record.id}
       />
+      <Modal
+        width={840}
+        open={isModalVisable}
+        onCancel={() => setIsModalVisable(false)}
+        footer={null}
+        closable={false}
+      >
+        <DailyBackupModal onClose={() => setIsModalVisable(false)} />
+      </Modal>
     </div>
   );
 };

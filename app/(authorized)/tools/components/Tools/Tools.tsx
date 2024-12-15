@@ -8,7 +8,6 @@ import DropDown from '@/app/components/DropDown/DropDown';
 import { ToolsDataPropsInterface } from './interfaces/tools-data-props.interface';
 
 const Tools = (props: ToolsDataPropsInterface): JSX.Element => {
-
   const [isActive, setIsDisable] = useState<boolean>(false);
 
   const onChange = (): void => setIsDisable((prevState) => !prevState);

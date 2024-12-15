@@ -33,14 +33,18 @@
   gap: 24px;
 }
 
-.buttons {
-  max-width: 133px;
-  width: 100%;
-}
-
 .progress {
   max-width: 136px;
   width: 100%;
+}
+
+.progress
+  :global
+  .ant-progress
+  .ant-progress-outer
+  .ant-progress-inner
+  .ant-progress-bg {
+  background-color: $primaryColor;
 }
 
 .progressContainer {
