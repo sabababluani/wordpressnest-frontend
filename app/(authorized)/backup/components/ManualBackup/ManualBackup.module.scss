@@ -38,6 +38,15 @@
   width: 100%;
 }
 
+.progress
+  :global
+  .ant-progress
+  .ant-progress-outer
+  .ant-progress-inner
+  .ant-progress-bg {
+  background-color: $primaryColor;
+}
+
 .progressContainer {
   display: flex;
   align-items: center;
