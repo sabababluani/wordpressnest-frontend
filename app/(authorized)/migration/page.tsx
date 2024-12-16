@@ -1,6 +1,6 @@
 'use client';
 
-import { ChangeEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import SelectionsWrapper from './components/SelectionsWrapper/SelectionsWrapper';
 import StepFlow from './components/StepFlow/StepFlow';
@@ -11,6 +11,7 @@ import SecondChecksContainer from './components/SecondChecksContainer/SecondChec
 import ThirdChecksContainer from './components/ThirdChecksContainer/ThirdChecksContainer';
 import StepFlowSecond from './components/StepFlowSecond/StepFlowSecond';
 import ThirdStepsContainerBasedCheckboxFirst from './components/ThirdStepsContainerBasedCheckboxFirst/ThirdStepsContainerBasedCheckboxFirst';
+import StepFlowFourth from './components/StepFlowFourth/StepFlowFourth';
 
 const RequestMigration = () => {
   const [stepFlow, setStepFlow] = useState<number>(1);
@@ -23,7 +24,7 @@ const RequestMigration = () => {
   useEffect(() => {
     setIsClient(true);
   }, []);
- 
+
   useEffect(() => {
     const savedStepFlow: string | undefined = Cookies.get('stepFlow');
     const savedCheckbox: string | undefined = Cookies.get('activeCheckbox');
@@ -63,7 +64,7 @@ const RequestMigration = () => {
       <div className={styles.unChangableWrapper}>
         <div className={styles.mainCaptionAndStepsWrapper}>
           <span className={styles.mainCaptionStyle}>Request a Migration</span>
-          <StepFlow stepNum={stepFlow}/>
+          <StepFlow stepNum={stepFlow} />
         </div>
       </div>
       {
@@ -106,6 +107,12 @@ const RequestMigration = () => {
         Number(Cookies.get('SecondStepsSpecificCheckbox')) === 1 && (
           <ThirdStepsContainerBasedCheckboxFirst />
         )
+      }
+      {
+        stepFlow == 4 &&
+        <>
+          <StepFlowFourth />
+        </>
       }
       <div className={styles.buttonsWrapper}>
         <div className={styles.buttonsInnerWrapper}>
