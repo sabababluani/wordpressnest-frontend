@@ -1,5 +1,4 @@
 'use client';
-
 import React, { useState } from 'react';
 import Button from '@/app/components/Button/Button';
 import styles from './DownloadBackup.module.scss';
@@ -11,6 +10,18 @@ import { DownloadBackupPropsInterface } from './interfaces/download-backup-props
 const domainsDummy: DownloadBackupPropsInterface[] = [];
 
 const DownloadBackup = () => {
+  const [showBelowContainer, setShowBelowContainer] = useState(false);
+  const [showTable, setShowTable] = useState(false);
+
+  const handleButtonClick = () => {
+    setShowBelowContainer(true);
+    setShowTable(false);
+    setTimeout(() => {
+      setShowBelowContainer(false);
+      setShowTable(true);
+    }, 5000);
+  };
+
   const columns: TableColumnsType<DownloadBackupPropsInterface> = [
     {
       title: 'Created',
@@ -35,7 +46,7 @@ const DownloadBackup = () => {
   ];
 
   return (
-    <>
+    <div className={styles.wholeWrapper}>
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <div className={styles.download}>
@@ -49,33 +60,40 @@ const DownloadBackup = () => {
           <Button
             backgroundColor={buttonbackgroundColorEnum.black}
             innerContent="Create Backup now"
+            onClick={handleButtonClick}
           />
         </div>
-        <div className={styles.belowContainer}>
-          <Image
-            src="/icons/loading.svg"
-            alt="Loading..."
-            width={48}
-            height={48}
-            className={styles.spinningIcon}
+
+        {showBelowContainer && (
+          <div className={styles.belowContainer}>
+            <Image
+              src="/icons/loading.svg"
+              alt="Loading..."
+              width={48}
+              height={48}
+              className={styles.spinningIcon}
+            />
+            <p>We are creating the backup</p>
+            <span>
+              This may take several minutes depending on the size of your site.
+              We will send you an email as soon as the backup is ready for you
+              to download.
+            </span>
+          </div>
+        )}
+      </div>
+
+      {showTable && (
+        <div className={styles.tableWrapper}>
+          <Table<DownloadBackupPropsInterface>
+            columns={columns}
+            dataSource={domainsDummy}
+            pagination={false}
+            locale={{ emptyText: 'Downloadable backups will appear here.' }}
           />
-          <p>We are creating the backup</p>
-          <span>
-            This may take several minutes depending on the size of your site. We
-            will send you an email as soon as the backup is ready for you to
-            download.
-          </span>
         </div>
-      </div>
-      <div className={styles.tableWrapper}>
-        <Table<DownloadBackupPropsInterface>
-          columns={columns}
-          dataSource={domainsDummy}
-          pagination={false}
-          locale={{ emptyText: 'Downloadable backups will appear here.' }}
-        />
-      </div>
-    </>
+      )}
+    </div>
   );
 };
 
