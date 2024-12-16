@@ -14,7 +14,7 @@ import ThirdStepsContainerBasedCheckboxFirst from './components/ThirdStepsContai
 
 const RequestMigration = () => {
   const [stepFlow, setStepFlow] = useState<number>(1);
-  const [activeCheckbox, setActiveCheckbox] = useState<number | null>(1);
+  const [activeCheckbox, setActiveCheckbox] = useState<number | null>(null);
   const [time, setTime] = useState<string>('');
   const [, setDate] = useState<string>('');
   const [, setTimezone] = useState<string>('');
@@ -25,17 +25,26 @@ const RequestMigration = () => {
   }, []);
 
   useEffect(() => {
-    const savedStepFlow = Cookies.get('stepFlow');
+    const savedStepFlow: string | undefined = Cookies.get('stepFlow');
+    const savedCheckbox: string | undefined = Cookies.get('activeCheckbox');
+
     if (savedStepFlow) {
       setStepFlow(Number(savedStepFlow));
+    }
+
+    if (savedCheckbox) {
+      setActiveCheckbox(Number(savedCheckbox));
     }
   }, []);
 
   useEffect(() => {
     if (isClient) {
       Cookies.set('stepFlow', stepFlow.toString(), { expires: 1 });
+      if (activeCheckbox !== null) {
+        Cookies.set('activeCheckbox', activeCheckbox.toString(), { expires: 1 });
+      }
     }
-  }, [stepFlow, isClient]);
+  }, [stepFlow, activeCheckbox, isClient]);
 
   const onNextButtonClick = (): void => {
     setStepFlow((prev: number) => (prev + 1 > 5 ? prev : prev + 1));
@@ -93,8 +102,8 @@ const RequestMigration = () => {
         )
       }
       {
-        stepFlow == 3 &&
-        Number(Cookies.get('SecondStepsSpecificCheckbox')) == 1 && (
+        stepFlow === 3 &&
+        Number(Cookies.get('SecondStepsSpecificCheckbox')) === 1 && (
           <ThirdStepsContainerBasedCheckboxFirst />
         )
       }
