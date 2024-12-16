@@ -1,6 +1,10 @@
 @import '../../../../styles/text-colors.scss';
 @import '../../../../styles/colors.scss';
 
+.wrapper {
+  cursor: pointer;
+}
+
 .container {
   display: flex;
   align-items: center;

@@ -12,16 +12,15 @@ const ClearCacheModal = () => {
 
   return (
     <div className={styles.mainWrapper}>
-      <div className={styles.topContainer}>
-        <span className={styles.mainCaptionStyle}>Clear cache</span>
-        <div className={styles.exitButtonWrapper}>
-          <Image
-            width={9}
-            height={9}
-            src={'icons/cross.svg'}
-            alt={'exit button'}
-          />
-        </div>
+      <div className={styles.header}>
+        <span className={styles.headline}>Additional disk space</span>
+        <Image
+          src="/icons/close-mini.svg"
+          width={24}
+          height={24}
+          alt="close"
+          className={styles.close}
+        />
       </div>
       <div className={styles.middleContainer}>
         <span>

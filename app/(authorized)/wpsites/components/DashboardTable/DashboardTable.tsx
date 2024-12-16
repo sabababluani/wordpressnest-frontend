@@ -62,7 +62,7 @@ const columns: TableColumnsType<DashboardTablePropsInterface> = [
   },
 ];
 
-const App: React.FC = () => {
+const DashboardTable = () => {
   const [selectionType] = useState<'checkbox'>('checkbox');
 
   const fetcher = (url: string) =>
@@ -88,4 +88,4 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+export default DashboardTable;

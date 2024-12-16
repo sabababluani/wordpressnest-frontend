@@ -1,4 +1,5 @@
 'use client';
+
 import React, { useState } from 'react';
 import DashboardTable from './components/DashboardTable/DashboardTable';
 import styles from './page.module.scss';
@@ -13,15 +14,19 @@ import LabelModal from './components/LabelModal/LabelModal';
 import ChangeCdnModal from './components/ChangeCdnModal/ChangeCdnModal';
 import PhpModal from './components/PhpModal/PhpModal';
 import { ActionOptions } from './utils/action-options';
+import UpdateThemesModal from './components/UpdateThemesModal/UpdateThemesModal';
+import CacheModal from './components/CacheModal/CacheModal';
 
 const Wpsites = () => {
   const [isAddSiteModalOpen, setIsAddSiteModalOpen] = useState<boolean>(false);
-  const [isCacheModalOpen, setIsCacheModalOpen] = useState<boolean>(false);
+  const [isClearCacheModalOpen, setClearIsCacheModalOpen] =
+    useState<boolean>(false);
   const [isUpdatePluginOpen, setIsUpdatePluginOpen] = useState<boolean>(false);
   const [isLabelOpen, setIsLabelOpen] = useState<boolean>(false);
   const [isCdnOpen, setIsCdnOpen] = useState<boolean>(false);
   const [isPhpOpen, setIsPhpOpen] = useState<boolean>(false);
   const [isThemeOpen, setIsThemeOpen] = useState<boolean>(false);
+  const [isCacheModalOpen, setIsCacheModalOpen] = useState<boolean>(false);
 
   const [click, setClick] = useState<number>(1);
 
@@ -46,6 +51,8 @@ const Wpsites = () => {
       setIsPhpOpen(true);
     } else if (value === 'themes') {
       setIsThemeOpen(true);
+    } else if (value === 'edge') {
+      setIsCacheModalOpen(true);
     }
   };
 
@@ -97,8 +104,8 @@ const Wpsites = () => {
       </Modal>
 
       <Modal
-        open={isCacheModalOpen}
-        onCancel={() => setIsCacheModalOpen(false)}
+        open={isClearCacheModalOpen}
+        onCancel={() => setClearIsCacheModalOpen(false)}
         footer={null}
         closable={false}
         width={840}
@@ -163,7 +170,17 @@ const Wpsites = () => {
         closable={false}
         width={840}
       >
-        <PhpModal />
+        <UpdateThemesModal />
+      </Modal>
+
+      <Modal
+        open={isCacheModalOpen}
+        onCancel={() => setIsCacheModalOpen(false)}
+        footer={null}
+        closable={false}
+        width={840}
+      >
+        <CacheModal />
       </Modal>
     </div>
   );
