@@ -5,6 +5,7 @@ import ManualBackup from '@/app/(authorized)/backup/components/ManualBackup/Manu
 import HourlyBackup from './components/HourlyBackup/HourlyBackup';
 import ExternalBackup from './components/ExternalBackup/ExternalBackup';
 import SystemGeneratedBackup from './components/SystemGeneratedBackup/SystemGeneratedBackup';
+import DownloadBackup from './components/DownloadBackup/DownloadBackup';
 
 const backup = (): JSX.Element => {
   return (
@@ -34,6 +35,9 @@ const backup = (): JSX.Element => {
           </div>,
           <div key={'external'}>
             <ExternalBackup />
+          </div>,
+          <div key={'download'}>
+            <DownloadBackup />
           </div>,
         ]}
       />
