@@ -5,7 +5,7 @@ import styles from './PhpModal.module.scss';
 import Image from 'next/image';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { Radio, Select } from 'antd';
-import { KeyboardEvent, useState } from 'react';
+import { useState } from 'react';
 
 const PhpModal = () => {
   const [selectValue, setValue] = useState<string>('PHP 8.2');
@@ -18,11 +18,11 @@ const PhpModal = () => {
     console.log('Modal closed');
   };
 
-  const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === 'Enter') {
-      closeModal();
-    }
-  };
+  // const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+  //   if (e.key === 'Enter') {
+  //     closeModal();
+  //   }
+  // };
 
   return (
     <div className={styles.mainWrapper}>

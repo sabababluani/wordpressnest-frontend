@@ -1,74 +1,151 @@
 @import '../styles/text-colors.scss';
 @import '../styles/colors.scss';
 
-.fullscreenContainer {
+.mainWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.banner {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 88px;
-}
-
-.errorDiv {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding-top: 6px;
-}
-
-.errors {
-  color: red;
+  max-width: 940px;
+  overflow: hidden;
 }
 
 .container {
-  display: flex;
-  justify-content: center;
   width: 100%;
-  max-width: 540px;
-  margin-top: 88px;
-}
-
-.loginHeader {
-  display: flex;
-  flex-direction: column;
-  gap: 42px;
-  align-items: center;
-}
-
-.loginInfo {
+  max-width: 635px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 100%;
-  max-width: 400px;
+  padding: 60px 0 0 24px;
 }
 
-.loginInputs {
+.headline {
+  color: $primaryTextColor;
+  text-align: center;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 32px;
+}
+
+.loginText {
+  color: $primaryTextColor;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 36px;
+}
+
+.welcomeText {
+  color: #707276;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.header {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.headerTop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.chooseWrapper {
+  display: flex;
+  align-items: center;
   gap: 16px;
+  width: 100%;
 }
 
-.inputContainer {
+.choose {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 8px;
+  padding: 12px 0;
+  border: 1px solid $borderColor;
+  cursor: pointer;
+  width: 100%;
+  max-width: 286px;
+  justify-content: center;
+}
+
+.chooseText {
+  color: $primaryTextColor;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.divider {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+
+.dividerLineRotated {
+  display: flex;
+  align-items: center;
+  width: 151px;
+  transform: rotate(180deg);
+}
+
+.dividerLine {
+  display: flex;
+  align-items: center;
+  width: 151px;
+}
+
+.dividerText {
+  color: $primaryTextColor;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.infoWrapper {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 24px;
   width: 100%;
+  max-width: 587px;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .input {
-  width: 100%;
-  height: 48px;
-  padding: 15px 20px;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  color: $primaryColor;
+  border: 1px solid $borderColor;
+  width: 100%;
+  padding: 12px 14px;
+}
+
+.inputLabel {
+  color: #545a67;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
 }
 
 .erroredInput {
   width: 100%;
-  max-width: 400px;
   height: 48px;
   padding: 15px 20px;
   border-radius: 8px;
@@ -77,99 +154,116 @@
   color: $primaryColor;
 }
 
-.loginAccess {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+.errorText {
+  color: red;
 }
 
-.remembermeContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.errors {
+  color: red;
 }
 
-.rememberme {
+.rememberWrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkboxWrapper {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.link {
-  color: #d4d4d4;
-  font-family: Inter;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 16px;
+.checkbox {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1px solid $borderColor;
 }
 
-.errorText {
-  color: red;
+.forgot {
+  color: $primaryTextColor;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
 }
 
 .submit {
-  width: 100%;
-  max-width: 400px;
-  padding: 10px 0;
   border-radius: 8px;
-  background-color: #13828a;
+  background: $primaryColor;
+  padding: 12px 14px;
   color: #fff;
-  font-family: Inter;
-  font-size: 24px;
+  font-size: 16px;
+  font-style: normal;
   font-weight: 600;
-  line-height: 29px;
+  line-height: 24px;
   border: none;
   cursor: pointer;
 }
 
-.submition {
-  padding: 10px 0;
-  border-radius: 8px;
-  border-radius: 8px;
-  background-color: #8a9793;
-  color: #fff;
-  font-family: Inter;
-  font-size: 24px;
-  font-weight: 600;
-  line-height: 29px;
-  border: none;
-  cursor: pointer;
+.donthaveacc {
+  color: #545a67;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 4px;
 }
 
-.mainContainer {
+.registration {
   display: flex;
+  align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100vh;
+  gap: 4px;
 }
 
-.characterBg {
-  width: 100%;
-  max-width: 900px;
-  height: 100vh;
-  overflow: hidden;
+.signup {
+  color: $primaryTextColor;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
 }
 
-.rero {
+.select {
+  height: 48px;
+  border-radius: 8px;
+  outline: none;
+  border: 1px solid #dcdfe1;
   width: 100%;
-  height: 100vh;
-  object-fit: cover;
+  max-width: 587px;
+
+
+  &:hover {
+    border: 1px solid #dcdfe1 !important;
+  }
+
+  :global(.ant-select-selector) {
+    border: 1px solid #dcdfe1 !important;
+    box-shadow: none !important;
+  }
+
+  :global(.ant-select-focused .ant-select-selector) {
+    border: 1px solid #dcdfe1 !important;
+    box-shadow: none !important;
+    border-color: transparent !important;
+  }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-  .characterBg {
-    display: none;
-  }
-  .loginInfo {
-    padding: 0px 16px;
-  }
+.optionContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
-@media screen and (max-width: 767px) {
-  .characterBg {
-    display: none;
-  }
-  .loginInfo {
-    padding: 0px 16px;
-  }
+
+.customDropdown :global .ant-select-item-option {
+  background-color: #f0f0f0 !important;
+}
+
+.optionContainer span {
+  color: #545a67;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
 }
