@@ -1,6 +1,6 @@
 'use client';
 
-import { Checkbox, Switch } from 'antd';
+import { Checkbox, Select, Switch } from 'antd';
 import styles from './StepFlowFourth.module.scss';
 import { useState, ChangeEvent } from 'react';
 
@@ -10,7 +10,7 @@ const StepFlowFourth = () => {
   const [wpUsername, setWpUsername] = useState<string>('');
   const [wpPassword, setWpPassword] = useState<string>('');
   const [wpAdminUrl, setWpAdminUrl] = useState<string>('');
-
+  const [, setSelectValue] = useState<string>('');
   const [isBedrock, setIsBedrock] = useState<boolean>(false);
   const [isEcommerce, setIsEcommerce] = useState<boolean>(false);
   const [isMultisite, setIsMultisite] = useState<boolean>(false);
@@ -26,11 +26,13 @@ const StepFlowFourth = () => {
   ) => {
     setState(e.target.value);
   };
-
-  const onToggleBedrockChange = () => setIsBedrock((prev) => !prev);
-  const onToggleEcommerceChange = () => setIsEcommerce((prev) => !prev);
-  const onToggleMultisiteChange = () => setIsMultisite((prev) => !prev);
-  const onToggleHttpsChange = () => setIsHttps((prev) => !prev);
+  const setSelectedValue = (value: string) => setSelectValue(value);
+  const onToggleBedrockChange = () => setIsBedrock((prev: boolean) => !prev);
+  const onToggleEcommerceChange = () =>
+    setIsEcommerce((prev: boolean) => !prev);
+  const onToggleMultisiteChange = () =>
+    setIsMultisite((prev: boolean) => !prev);
+  const onToggleHttpsChange = () => setIsHttps((prev: boolean) => !prev);
 
   return (
     <div className={styles.mainWrapper}>
@@ -111,43 +113,111 @@ const StepFlowFourth = () => {
       </div>
       <div className={styles.thirdContainer}>
         <div>
-          <span>Bedrock, Trellis</span>
-          <div className={styles.toggleWrapper}>
-            <Switch
-              className={styles.toggleStyle}
-              checked={isBedrock}
-              onChange={onToggleBedrockChange}
-            />
+          <div className={styles.wrapper}>
+            <span>Bedrock, Trellis</span>
+            <div className={styles.toggleWrapper}>
+              <Switch
+                className={styles.toggleStyle}
+                checked={isBedrock}
+                onChange={onToggleBedrockChange}
+              />
+            </div>
           </div>
+          {isBedrock && (
+            <>
+              <div className={styles.rootPathWrapper}>
+                <span>Root path</span>
+                <input
+                  type="text"
+                  placeholder="/public/current/web"
+                  className={styles.isBedRockInputStyle}
+                />
+              </div>
+            </>
+          )}
         </div>
         <div>
-          <span>Is it an ecommerce, community, or membership site?</span>
-          <div className={styles.toggleWrapper}>
-            <Switch
-              className={styles.toggleStyle}
-              checked={isEcommerce}
-              onChange={onToggleEcommerceChange}
-            />
+          <div className={styles.wrapper}>
+            <span>Is it an ecommerce, community, or membership site?</span>
+            <div className={styles.toggleWrapper}>
+              <Switch
+                className={styles.toggleStyle}
+                checked={isEcommerce}
+                onChange={onToggleEcommerceChange}
+              />
+            </div>
           </div>
+          {isEcommerce && (
+            <>
+              <div className={styles.isEcommerceWrapper}>
+                <span>
+                  We recommend using maintenance mode for dynamic websites to
+                  ensure no orders or content are left behind on your previous
+                  host. In maintenance mode, a static page is displayed on your
+                  current host, preventing user activity on the site. Once
+                  Kinsta sets it up, we do not remove the maintenance mode page.
+                  It will continue to be served from your current host until you
+                  update the domain's DNS and your site loads from its new
+                  location at Kinsta (which will not be in maintenance mode).
+                  Without maintenance mode, orders placed after the start of
+                  migration and before the site's DNS is updated may be left
+                  behind at your previous host. <br /> <br />
+                  Also if your site has recurring subscriptions, this may need
+                  special attention. For example, WooCommerce has further info
+                  about this in their documentation. If your site has a special
+                  requirement related to recurring payments, please let us know
+                  in the next step of this form as a special instruction.
+                </span>
+                <div className={styles.checkboxAndCaptionWrapper}>
+                  <div className={styles.checkboxWrapper}>
+                    <Checkbox
+                      checked={isActiveCheckbox}
+                      onClick={onCheckboxValueChange}
+                    />
+                  </div>
+                  <span className={styles.maintenanceStyle}>
+                    Use maintenance mode
+                  </span>
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+        <div className={styles.installWrapper}>
+          <div className={styles.wrapper}>
+            <span>Is it a multisite installation?</span>
+            <div className={styles.toggleWrapper}>
+              <Switch
+                className={styles.toggleStyle}
+                checked={isMultisite}
+                onChange={onToggleMultisiteChange}
+              />
+            </div>
+          </div>
+          {isMultisite && (
+            <>
+              <div className={styles.multisiteWrapper}>
+                <span>Multisitate type</span>
+                <Select
+                  options={[{ value: 'dreamhost', label: 'DreamHost' }]}
+                  className={styles.specificSelect}
+                  placeholder={'Subdirectory'}
+                  onChange={(value: string) => setSelectedValue(value)}
+                />
+              </div>
+            </>
+          )}
         </div>
         <div>
-          <span>Is it a multisite installation?</span>
-          <div className={styles.toggleWrapper}>
-            <Switch
-              className={styles.toggleStyle}
-              checked={isMultisite}
-              onChange={onToggleMultisiteChange}
-            />
-          </div>
-        </div>
-        <div>
-          <span>Does your site use HTTPS?</span>
-          <div className={styles.toggleWrapper}>
-            <Switch
-              className={styles.toggleStyle}
-              checked={isHttps}
-              onChange={onToggleHttpsChange}
-            />
+          <div className={styles.wrapper}>
+            <span>Does your site use HTTPS?</span>
+            <div className={styles.toggleWrapper}>
+              <Switch
+                className={styles.toggleStyle}
+                checked={isHttps}
+                onChange={onToggleHttpsChange}
+              />
+            </div>
           </div>
         </div>
       </div>
