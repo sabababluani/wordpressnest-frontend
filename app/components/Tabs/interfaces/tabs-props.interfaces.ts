@@ -5,4 +5,6 @@ export interface TabsPropsInterface {
   tabNames?: string[];
   tabContent?: React.ReactNode[];
   uniqueKey: string;
+  withoutBorder?: boolean;
+  withoutPadding?: boolean;
 }

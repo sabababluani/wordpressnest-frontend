@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import SelectionsWrapper from './components/SelectionsWrapper/SelectionsWrapper';
 import StepFlow from './components/StepFlow/StepFlow';
@@ -57,41 +57,47 @@ const RequestMigration = () => {
           <StepFlow stepNum={stepFlow} />
         </div>
       </div>
-      {stepFlow === 1 && (
-        <>
-          <SelectionsWrapper
-            onCheckboxChange={setActiveCheckbox}
-            initialActiveCheckbox={activeCheckbox}
-          />
-          <div className={styles.mainMiddleContainer}>
-            <FirstCheckContainer activeCheckbox={activeCheckbox === 1} />
-            <SecondChecksContainer
-              timeValue={time}
-              date={setDate}
-              time={setTime}
-              timezone={setTimezone}
-              activecheckbox={activeCheckbox === 2}
+      {
+        stepFlow === 1 && (
+          <>
+            <SelectionsWrapper
+              onCheckboxChange={setActiveCheckbox}
+              initialActiveCheckbox={activeCheckbox}
             />
-            <ThirdChecksContainer checkboxActive={activeCheckbox === 3} />
-          </div>
-          <MainBottomContainer />
-        </>
-      )}
-      {stepFlow === 2 && (
-        <StepFlowSecond
-          activedCheckboxNum={(index) =>
-            Cookies.set(
-              'SecondStepsSpecificCheckbox',
-              index ? index.toString() : JSON.stringify(undefined),
-              { expires: 1 },
-            )
-          }
-        />
-      )}
-      {stepFlow == 3 &&
+            <div className={styles.mainMiddleContainer}>
+              <FirstCheckContainer activeCheckbox={activeCheckbox === 1} />
+              <SecondChecksContainer
+                timeValue={time}
+                date={setDate}
+                time={setTime}
+                timezone={setTimezone}
+                activecheckbox={activeCheckbox === 2}
+              />
+              <ThirdChecksContainer checkboxActive={activeCheckbox === 3} />
+            </div>
+            <MainBottomContainer />
+          </>
+        )
+      }
+      {
+        stepFlow === 2 && (
+          <StepFlowSecond
+            activedCheckboxNum={(index) =>
+              Cookies.set(
+                'SecondStepsSpecificCheckbox',
+                index ? index.toString() : JSON.stringify(undefined),
+                { expires: 1 },
+              )
+            }
+          />
+        )
+      }
+      {
+        stepFlow == 3 &&
         Number(Cookies.get('SecondStepsSpecificCheckbox')) == 1 && (
           <ThirdStepsContainerBasedCheckboxFirst />
-        )}
+        )
+      }
       <div className={styles.buttonsWrapper}>
         <div className={styles.buttonsInnerWrapper}>
           {stepFlow > 1 && (
