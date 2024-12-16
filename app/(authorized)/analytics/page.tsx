@@ -4,6 +4,8 @@ import { Select } from 'antd';
 import TabsAnt from '../../components/Tabs/Tabs';
 import styles from './page.module.scss';
 import FTP from '../migration/components/FTP/FTP';
+import SFTP from '../migration/components/SFTP/SFTP';
+import SSH from '../migration/components/SSH/SSH';
 
 const caching = (): JSX.Element => {
   return (
@@ -25,13 +27,12 @@ const caching = (): JSX.Element => {
           uniqueKey={'analytics'}
           tabNames={[
             'Resource',
-            'CDN Usage',
-            'SSH',
+            'SFTP'
           ]}
           tabContent={[
             <FTP key={'resource'} />,
-            // <CdnUsage key={'sftp'} />,
-            // <Dispersion key={'ssh'} />,
+            <SFTP key={'sftp'} />,
+            <SSH />
           ]}
         />
       </div>
