@@ -16,6 +16,16 @@
   border-top-right-radius: 8px;
 }
 
+.topContainer img {
+  cursor: pointer;
+}
+
+.mainCaptionStyle {
+  color: $primaryTextColor;
+  font-weight: 600;
+  line-height: 24px;
+}
+
 .bottomContainer {
   width: 100%;
   display: flex;
@@ -64,14 +74,35 @@
   line-height: 24px;
 }
 
-.exitButtonWrapper {
-  width: 24px;
-  height: 24px;
-  border: 1px solid $borderColor;
-  background-color: white;
-  border-radius: 4px;
+.radioWrapper :global .ant-radio-wrapper .ant-radio-checked .ant-radio-inner {
+  border-color: $primaryColor !important;
+  background-color: #fff;
+}
+
+.radioSpan {
+  border-color: $primaryColor !important;
+  font-weight: 600 !important;
+}
+
+.radioWrapper :global .ant-radio-wrapper:hover .ant-radio-inner {
+  border-color: $primaryColor !important;
+}
+
+.radioWrapper :global .ant-radio-inner::after {
+  background-color: $primaryColor !important;
+  border-color: $primaryColor !important;
+  width: 20px;
+  height: 20px;
+  margin-block-start: -10px;
+  margin-inline: -10px;
+}
+
+.radioWrapper :global .ant-radio-checked::after {
+  background-color: $primaryColor !important;
+}
+
+.radioWrapper {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+  flex-direction: column;
+  gap: 4px;
 }
