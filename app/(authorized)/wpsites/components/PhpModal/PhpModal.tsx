@@ -18,11 +18,11 @@ const PhpModal = () => {
     console.log('Modal closed');
   };
 
-  const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === 'Enter') {
-      closeModal();
-    }
-  };
+  // const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+  //   if (e.key === 'Enter') {
+  //     closeModal();
+  //   }
+  // };
 
   return (
     <div className={styles.mainWrapper}>
