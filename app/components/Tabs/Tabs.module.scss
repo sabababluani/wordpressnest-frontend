@@ -24,6 +24,10 @@
   padding-left: 24px;
 }
 
+.wrapper :global .ant-tabs-nav-wrap {
+  padding: 0px;
+}
+
 .wrapper :global .ant-tabs-tab:hover {
   color: #666;
 }
@@ -34,4 +38,8 @@
 
 .wrapper :global .ant-tabs-tab-btn {
   font-size: 16px;
+}
+
+.withoutBorder :global .ant-tabs .ant-tabs-nav::before {
+  display: none !important;
 }

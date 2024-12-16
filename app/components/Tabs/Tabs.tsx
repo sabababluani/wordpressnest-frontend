@@ -9,6 +9,9 @@ const TabsAnt: React.FC<TabsPropsInterface> = ({
   tabNames = [],
   tabContent = [],
   uniqueKey,
+  withoutBorder,
+  withoutPadding
+  
 }) => {
   const [activeTabKey, setActiveTabKey] = useState('0');
 
@@ -31,7 +34,7 @@ const TabsAnt: React.FC<TabsPropsInterface> = ({
   }));
 
   return (
-    <div className={styles.wrapper}>
+    <div className={`${styles.wrapper} ${withoutBorder  && styles.withoutBorder} ${withoutPadding && styles.withoutPadding}`}>
       <Tabs activeKey={activeTabKey} onChange={onTabChange} items={tabsItems} />
     </div>
   );
