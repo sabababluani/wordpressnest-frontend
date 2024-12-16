@@ -23,7 +23,7 @@ const RequestMigration = () => {
   useEffect(() => {
     setIsClient(true);
   }, []);
-
+ 
   useEffect(() => {
     const savedStepFlow: string | undefined = Cookies.get('stepFlow');
     const savedCheckbox: string | undefined = Cookies.get('activeCheckbox');
@@ -63,7 +63,7 @@ const RequestMigration = () => {
       <div className={styles.unChangableWrapper}>
         <div className={styles.mainCaptionAndStepsWrapper}>
           <span className={styles.mainCaptionStyle}>Request a Migration</span>
-          <StepFlow stepNum={stepFlow} />
+          <StepFlow stepNum={stepFlow}/>
         </div>
       </div>
       {
