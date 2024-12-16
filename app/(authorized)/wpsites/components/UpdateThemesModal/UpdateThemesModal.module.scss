@@ -1,14 +1,27 @@
 @import '../../../../styles/colors.scss';
 @import '../../../../styles/text-colors.scss';
 
-.topContainer {
+.header {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background-color: #f0f3f5;
   padding: 16px 24px;
-  background-color: rgb(237, 237, 237);
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 12px 12px 0 0;
+  border-bottom: 1px solid $borderColor;
+}
+
+.header img {
+  cursor: pointer;
+}
+
+.headline {
+  color: $primaryTextColor;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
 }
 
 .mainCaptionStyle {
@@ -18,6 +31,17 @@
   font-weight: 600;
   line-height: 24px;
   display: block;
+}
+
+.middleHeader {
+  padding: 24px 24px 0 24px;
+}
+
+.middleContainersMainCaption {
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 24px;
 }
 
 .exitButtonWrapper {
@@ -66,143 +90,128 @@
   width: 100%;
 }
 
-.checkboxAndStatisticWrapper {
-  display: flex;
-  flex-direction: column;
+.tableWrapper :global .ant-table th {
+  background: #fff !important;
 }
 
-.firstStatisticWrapper {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 0px;
-  border-bottom: 1px solid $borderColor;
-  padding: 0px 24px;
+.tableWrapper :global .ant-table-cell::before {
+  content: none !important;
 }
 
-.secondStatisticWrapper {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 24px;
-  border-bottom: 1px solid $borderColor;
+.tableWrapper :global .ant-table-cell {
+  padding-left: 4px !important;
+  color: $primaryTextColor !important;
+  font-weight: 500 !important;
 }
 
-.thirdStatisticWrapper {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 24px;
-  border-bottom: 1px solid $borderColor;
+.tableWrapper :global .ant-table-thead .ant-table-cell {
+  color: $primaryTextColor !important;
+  font-weight: 400 !important;
 }
 
-.checkboxWrapper
-  :global(.ant-checkbox-wrapper .ant-checkbox .ant-checkbox-inner) {
-  border: 1px solid $primaryColor;
-  width: 18px;
-  height: 18px;
+.tableWrapper :global .ant-table-selection-column {
+  padding-left: 24px !important;
 }
 
-.checkboxWrapper
-  :global(.ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner) {
-  background-color: $primaryColor;
+.tableWrapper {
+  background-color: #fff;
 }
 
-.checkboxWrapper
-  :global(
-    .ant-checkbox-checked:not(.ant-checkbox-disabled) .ant-checkbox-inner
-  ) {
-  background-color: $primaryTextColor !important;
+.tableWrapper :global .ant-table-container {
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-.pluginCaptionStyle {
-  max-width: 260px;
+.tableWrapper :global .ant-checkbox-inner {
+  background-color: #f0f3f5;
+  border: none !important;
+  width: 24px;
+  height: 24px;
+}
+
+.tableWrapper :global .ant-checkbox-checked .ant-checkbox-inner {
+  background-color: black;
+  border: none !important;
+}
+
+.tableWrapper :global .ant-checkbox-inner::after {
+  width: 7.1px !important;
+  height: 12px !important;
+}
+
+.tableWrapper
+  :global
+  .ant-table-row
+  .ant-checkbox-wrapper:active:hover
+  .ant-checkbox-inner {
+  background-color: black !important;
+  border: none !important;
+}
+
+.tableWrapper
+  :global
+  .ant-table-thead:hover
+  .ant-table-cell
+  .ant-checkbox-wrapper
+  .ant-checkbox-checked
+  .ant-checkbox-inner {
+  background-color: black !important;
+  border: none !important;
+}
+
+.tableWrapper
+  :global
+  .ant-table-row:hover
+  .ant-table-cell
+  .ant-checkbox-wrapper
+  .ant-checkbox-checked
+  .ant-checkbox-inner {
+  background-color: black !important;
+  border: none !important;
+}
+
+.tableWrapper
+  :global
+  .ant-table-selection
+  .ant-checkbox-wrapper
+  .ant-checkbox
+  .ant-checkbox-inner::after {
+  background-color: transparent;
+}
+
+.tableWrapper
+  :global
+  .ant-table-thead
+  tr
+  .ant-table-cell
+  .ant-table-selection
+  .ant-checkbox-wrapper
+  .ant-checkbox-indeterminate
+  .ant-checkbox-inner {
+  background-color: #f0f3f5 !important;
+}
+
+.tableWrapper
+  :global
+  .ant-table-wrapper
+  .ant-table-tbody
+  .ant-table-row.ant-table-row-selected
+  > .ant-table-cell {
+  background-color: #f0f3f5 !important;
+}
+
+.tableWrapper :global .ant-checkbox-indeterminate::after {
+  background-color: transparent;
+}
+
+.tableWrapper :global .ant-checkbox-wrapper .ant-checkbox-indeterminate {
+  background-color: #f0f3f5 !important;
+}
+
+.tableWrapper .ant-table-tbody .ant-table-row .ant-table-cell {
+  color: $primaryTextColor !important;
+}
+
+.tableWrapper {
   width: 100%;
-  height: 44px;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  color: #6c6e72;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 24px;
-}
-
-.updatingStyle {
-  max-width: 282px;
-  width: 100%;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  color: #6c6e72;
-}
-
-.latestStyle {
-  padding: 10px 46px 10px 10px;
-  max-width: 176px;
-  width: 100%;
-  height: 44px;
-  color: #6c6e72;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 24px;
-  display: flex;
-  justify-content: end;
-}
-
-.akismetStyle {
-  display: flex;
-  align-items: center;
-  width: fit-content;
-  height: 44px;
-  padding: 10px;
-  color: #11141a;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 24px;
-}
-
-.environmentStyle {
-  max-width: 282px;
-  width: 100%;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: $primaryColor;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 24px;
-  text-decoration-line: underline;
-}
-
-.yoastSeoStyle {
-  max-width: 260px;
-  width: 100%;
-  color: #11141a;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 24px;
-  display: flex;
-  justify-content: start;
-  padding: 10px;
-}
-
-.middleContainersMainCaption {
-  max-width: 641px;
-  width: 100%;
-  color: $primaryColor;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 24px;
-  padding: 16px 24px 0px;
 }

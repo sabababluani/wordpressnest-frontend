@@ -17,13 +17,13 @@ const LabelModal = () => {
 
   return (
     <div className={styles.mainWrapper}>
-      <div className={styles.topContainer}>
-        <span className={styles.mainCaptionStyle}>Label 2 sites</span>
+      <div className={styles.header}>
+        <span className={styles.headline}>Label 2 sites</span>
         <Image
           src="/icons/close-mini.svg"
-          alt="close"
           width={24}
           height={24}
+          alt="close"
           className={styles.close}
         />
       </div>

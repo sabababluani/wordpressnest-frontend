@@ -26,23 +26,15 @@ const PhpModal = () => {
 
   return (
     <div className={styles.mainWrapper}>
-      <div className={styles.topContainer}>
-        <span className={styles.mainCaptionStyle}>Change PHP Setting</span>
-        <div
-          className={styles.exitButtonWrapper}
-          role="button"
-          tabIndex={0}
-          onClick={closeModal}
-          onKeyDown={handleKeyDown}
-          aria-label="Close modal"
-        >
-          <Image
-            width={9}
-            height={9}
-            src={'/icons/cross.svg'}
-            alt={'Close modal'}
-          />
-        </div>
+      <div className={styles.header}>
+        <span className={styles.headline}>Change PHP setting</span>
+        <Image
+          src="/icons/close-mini.svg"
+          width={24}
+          height={24}
+          alt="close"
+          className={styles.close}
+        />
       </div>
       <div className={styles.middleContainer}>
         <div className={styles.firstContainerWrapper}>
