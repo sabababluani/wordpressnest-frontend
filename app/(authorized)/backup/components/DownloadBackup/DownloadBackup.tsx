@@ -1,12 +1,39 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '@/app/components/Button/Button';
 import styles from './DownloadBackup.module.scss';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import Image from 'next/image';
+import { Table, TableColumnsType } from 'antd';
+import { DownloadBackupPropsInterface } from './interfaces/download-backup-props.interface';
+
+const domainsDummy: DownloadBackupPropsInterface[] = [];
 
 const DownloadBackup = () => {
+  const columns: TableColumnsType<DownloadBackupPropsInterface> = [
+    {
+      title: 'Created',
+      dataIndex: 'created',
+      key: 'created',
+    },
+    {
+      title: 'Expiry',
+      dataIndex: 'expiry',
+      key: 'expiry',
+    },
+    {
+      title: 'Link',
+      dataIndex: 'link',
+      key: 'link',
+    },
+    {
+      title: 'Download',
+      dataIndex: 'download',
+      key: 'download',
+    },
+  ];
+
   return (
     <>
       <div className={styles.wrapper}>
@@ -40,7 +67,14 @@ const DownloadBackup = () => {
           </span>
         </div>
       </div>
-      <div className={styles.tableWrapper}></div>
+      <div className={styles.tableWrapper}>
+        <Table<DownloadBackupPropsInterface>
+          columns={columns}
+          dataSource={domainsDummy}
+          pagination={false}
+          locale={{ emptyText: 'Downloadable backups will appear here.' }}
+        />
+      </div>
     </>
   );
 };
