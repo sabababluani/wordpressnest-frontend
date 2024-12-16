@@ -1,119 +1,156 @@
 @import '../../../../styles/colors.scss';
 @import '../../../../styles/text-colors.scss';
 
-
-.mainWrapper {
-    max-width: 840px;
-    width: 100%;
+.mainCaptionStyle {
+  color: $primaryTextColor;
+  font-weight: 600;
+  line-height: 24px;
 }
 
 .topContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 24px;
-    background-color: rgb(237, 237, 237);
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background-color: rgb(237, 237, 237);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .bottomContainer {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    padding: 16px 24px 24px;
-    background-color: white;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px 24px 24px;
+  background-color: white;
 }
 
 .buttonsWrapper {
-    display: flex;
-    gap: 16px;
+  display: flex;
+  gap: 16px;
 }
 
 .middleContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-    padding: 0px 24px;
-    background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 0px 24px;
+  background-color: white;
 }
 
-
 .middleContainersCaption {
-    display: block;
-    margin-top: 12px;
-    color: $primaryColor;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 24px;
-    height: 48px;
-    padding: 4px 0px;
+  display: block;
+  margin-top: 12px;
+  color: $primaryColor;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  height: 48px;
+  padding: 4px 0px;
 }
 
 .firstCintainerWrapper {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .innerWrapper {
-    margin: 16px 0px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+  margin: 16px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .forCaptionWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-
 .innerContentsCaption {
-    color: $primaryColor;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 18px;
+  color: $primaryColor;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
 }
 
 .innerContentsDescriptionStyle {
-    color: $primaryColor;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 16px;
+  color: $primaryColor;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
 }
 
 .secondContainerWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .radioLabelStyle {
-    color: $primaryColor;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 24px;
+  color: $primaryColor;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
 }
 
 .radioAndCaptionWrapper {
-    display: flex;
-    gap: 12px;
-    align-items: center;
+  display: flex;
+  gap: 12px;
+  align-items: center;
 }
 
 .exitButtonWrapper {
-    width: 24px;
-    height: 24px;
-    border-radius: 4px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid $borderColor;
-    background-color: white;
-    cursor: pointer;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $borderColor;
+  background-color: white;
+  cursor: pointer;
+}
+
+.radioWrapperAndCaption {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.radioWrapper :global .ant-radio-wrapper .ant-radio-checked .ant-radio-inner {
+  border-color: $primaryColor !important;
+  background-color: #fff;
+}
+
+.radioSpan {
+  border-color: $primaryColor !important;
+  font-weight: 600 !important;
+}
+
+.radioWrapper :global .ant-radio-wrapper:hover .ant-radio-inner {
+  border-color: $primaryColor !important;
+}
+
+.radioWrapper :global .ant-radio-inner::after {
+  background-color: $primaryColor !important;
+  border-color: $primaryColor !important;
+  width: 20px;
+  height: 20px;
+  margin-block-start: -10px;
+  margin-inline: -10px;
+}
+
+.radioWrapper :global .ant-radio-checked::after {
+  background-color: $primaryColor !important;
+}
+
+.radioWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }

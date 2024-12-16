@@ -1,36 +1,39 @@
-import { Radio } from 'antd';
-import styles from './CacheModal.module.scss';
-import Image from 'next/image';
-import Button from '@/app/components/Button/Button';
-import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
+'use client';
 
-const CacheModal = () => {
+import Button from '@/app/components/Button/Button';
+import styles from './ChangeCdnModal.module.scss';
+import Image from 'next/image';
+import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
+import { Radio } from 'antd';
+
+const ChangeCdnModal = () => {
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.topContainer}>
-        <span className={styles.mainCaptionStyle}>Change edge caching</span>
-        <div className={styles.exitButtonWrapper}>
-          <Image
-            width={9}
-            height={9}
-            src={'icons/cross.svg'}
-            alt={'exit button'}
-          />
-        </div>
+        <span className={styles.mainCaptionStyle}>Change CDN</span>
+        <Image
+          src="/icons/close-mini.svg"
+          alt="close"
+          width={24}
+          height={24}
+          className={styles.close}
+        />
       </div>
       <div className={styles.middleContainer}>
         <span className={styles.middleContainersCaption}>
           How do you want to set edge caching for jigaro Live?
         </span>
         <div className={styles.radioWrapperAndCaption}>
-          <div className={styles.radioWrapper}>
-            <Radio />
-            <span className={styles.radiosLabelStyle}>Enable</span>
-          </div>
-          <div className={styles.radioWrapper}>
-            <Radio />
-            <span className={styles.radiosLabelStyle}>Disable</span>
-          </div>
+          <Radio.Group defaultValue="enable">
+            <div className={styles.radioWrapper}>
+              <Radio value="enable">
+                <span className={styles.radioSpan}>Enable</span>
+              </Radio>
+              <Radio value="disable">
+                <span className={styles.radioSpan}>Disable</span>
+              </Radio>
+            </div>
+          </Radio.Group>
         </div>
       </div>
       <div className={styles.bottomContainer}>
@@ -41,7 +44,7 @@ const CacheModal = () => {
           />
           <Button
             backgroundColor={buttonbackgroundColorEnum.black}
-            innerContent="Change edge caching"
+            innerContent="Change CDN"
           />
         </div>
       </div>
@@ -49,4 +52,4 @@ const CacheModal = () => {
   );
 };
 
-export default CacheModal;
+export default ChangeCdnModal;

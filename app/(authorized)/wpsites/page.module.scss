@@ -28,7 +28,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  max-width: 338px;
+  max-width: 350px;
   width: 100%;
 }
 
@@ -46,4 +46,10 @@
 .requestbuttons {
   max-width: 169px;
   width: 100%;
+}
+
+.select {
+  max-width: 216px;
+  width: 100%;
+  height: 48px;
 }

@@ -2,117 +2,107 @@
 @import '../../../../styles/text-colors.scss';
 
 .mainWrapper {
-    max-width: 840px;
-    width: 100%;
+  max-width: 840px;
+  width: 100%;
 }
 
 .topContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 24px;
-    background-color: rgb(237, 237, 237);
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background-color: rgb(237, 237, 237);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
-
 .bottomContainer {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    padding: 16px 24px 24px;
-    background-color: white;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px 24px 24px;
+  background-color: white;
 }
 
 .middleContainer {
-    display: flex;
-    flex-direction: column;
-    padding: 16px 24px 24px;
-    background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 24px 24px;
+  background-color: white;
 }
 
 .checkboxAndCaptionWrapper {
-    display: flex;
-    gap: 12px;
-    align-items: center;
+  display: flex;
+  gap: 12px;
+  align-items: center;
 }
 
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 16px;
 }
 
-.checkboxWrapper :global(.ant-checkbox-wrapper .ant-checkbox .ant-checkbox-inner) {
-    border: 1px solid $primaryColor;
-    width: 18px;
-    height: 18px;
+.checkboxWrapper
+  :global(.ant-checkbox-wrapper .ant-checkbox .ant-checkbox-inner) {
+  border: 1px solid $primaryColor;
+  width: 18px;
+  height: 18px;
 }
 
-.checkboxWrapper :global(.ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner) {
-    background-color: $primaryColor;
+.checkboxWrapper
+  :global(.ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner) {
+  background-color: $primaryColor;
 }
 
-.checkboxWrapper :global(.ant-checkbox-checked:not(.ant-checkbox-disabled) .ant-checkbox-inner) {
-    background-color: $primaryTextColor !important;
-}
-
-.exitButtonWrapper {
-    width: 24px;
-    height: 24px;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    padding: 7.5px;
-    border: 1px solid $borderColor;
-    border-radius: 4px;
-    background-color: white;
-    cursor: pointer;
+.checkboxWrapper
+  :global(
+    .ant-checkbox-checked:not(.ant-checkbox-disabled) .ant-checkbox-inner
+  ) {
+  background-color: $primaryTextColor !important;
 }
 
 .buttonsWrapper {
-    display: flex;
-    gap: 16px;
+  display: flex;
+  gap: 16px;
 }
 
 .buttonWrapper {
-    max-width: 157px;
-    width: 100%;
-    padding: 8px 16px;
-    gap: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid $borderColor;
-    border-radius: 8px;
-    background-color: white;
-    cursor: pointer;
-
+  max-width: 157px;
+  width: 100%;
+  padding: 8px 16px;
+  gap: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $borderColor;
+  border-radius: 8px;
+  background-color: white;
+  cursor: pointer;
 }
 
 .buttonsInnerContentStyle {
-    color: #000;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px;
+  color: #000;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
 }
 
 .manageStyle {
-    margin-top: 24px;
-    color: #6C6E72;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px;
+  margin-top: 24px;
+  color: #6c6e72;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
 }
 
 .mainCaptionStyle {
-    color: #11141A;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 24px;
+  color: #11141a;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
 }
