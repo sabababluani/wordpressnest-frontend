@@ -59,7 +59,7 @@ const PhpModal = () => {
             </div>
             <Select
               value={selectValue}
-              style={{ width: 218 }}
+              className={styles.select}
               onChange={handleChange}
               options={[
                 { value: 'PHP 8.2', label: 'PHP 8.2' },
