@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import Other from '../Other/Other';
 import AmazonAwsFields from './components/AmazonAwsFields/AmazonAwsFields';
+import GoogleCloudFields from './components/GoogleCloudFields/GoogleCloudFields';
 
 const ThirdStepsContainerBasedCheckboxFirst = () => {
   const [selectedValue, setSelectedValue] = useState<string | undefined>(
@@ -27,7 +28,8 @@ const ThirdStepsContainerBasedCheckboxFirst = () => {
           selectedValue === 'amazonaws' ||
           selectedValue === 'bluehost' ||
           selectedValue === 'cloudways' ||
-          selectedValue === 'dreamhost' ? (
+          selectedValue === 'dreamhost' ||
+          selectedValue === 'googlecloud' ? (
             <span className={styles.mainCaptionStyle}>Current host</span>
           ) : (
             <span className={styles.mainCaptionStyle}>
@@ -50,6 +52,7 @@ const ThirdStepsContainerBasedCheckboxFirst = () => {
             { value: 'bluehost', label: 'Bluehost' },
             { value: 'cloudways', label: 'Cloudways' },
             { value: 'dreamhost', label: 'DreamHost' },
+            { value: 'googlecloud', label: 'Google Cloud' },
           ]}
           className={styles.specificSelect}
           placeholder={'Select a hosting provider'}
@@ -58,6 +61,7 @@ const ThirdStepsContainerBasedCheckboxFirst = () => {
       </div>
       {selectedValue === 'other' && <Other />}
       {selectedValue === 'amazonaws' && <AmazonAwsFields />}
+      {selectedValue === 'googlecloud' && <GoogleCloudFields />}
     </div>
   );
 };
