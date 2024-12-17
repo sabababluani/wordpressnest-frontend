@@ -48,11 +48,9 @@
 }
 
 .inputLabel {
-  color: #11141a;
-  text-align: center;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 20px;
+  color: $primaryTextColor !important;
+  font-weight: 500 !important;
+  line-height: 20px !important;
 }
 
 .portInputStyle {

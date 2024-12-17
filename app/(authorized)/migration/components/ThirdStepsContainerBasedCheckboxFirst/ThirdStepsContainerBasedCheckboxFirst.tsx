@@ -9,6 +9,7 @@ import AmazonAwsFields from './components/AmazonAwsFields/AmazonAwsFields';
 import GoogleCloudFields from './components/GoogleCloudFields/GoogleCloudFields';
 import FlywheelFields from './components/FlywheelFields/FlywheelFields';
 import A2Hosting from './components/A2Hosting/A2Hosting';
+import LiquidWeb from './components/LiquidWeb/LiquidWeb';
 
 const ThirdStepsContainerBasedCheckboxFirst = () => {
   const [selectedValue, setSelectedValue] = useState<string | undefined>(
@@ -56,6 +57,7 @@ const ThirdStepsContainerBasedCheckboxFirst = () => {
             { value: 'dreamhost', label: 'DreamHost' },
             { value: 'googlecloud', label: 'Google Cloud' },
             { value: 'flywheel', label: 'Flywheel' },
+            { value: 'liquidweb', label: 'Liquid Web' },
           ]}
           className={styles.specificSelect}
           placeholder={'Select a hosting provider'}
@@ -67,6 +69,7 @@ const ThirdStepsContainerBasedCheckboxFirst = () => {
       {selectedValue === 'googlecloud' && <GoogleCloudFields />}
       {selectedValue === 'flywheel' && <FlywheelFields />}
       {selectedValue === 'a2hosting' && <A2Hosting />}
+      {selectedValue === 'liquidweb' && <LiquidWeb />}
     </div>
   );
 };
