@@ -1,25 +1,52 @@
+'use client';
+
+import { useState } from 'react';
 import styles from './FactorAuthentiaction.module.scss';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
+import { Modal } from 'antd';
+import TwoFAModal from './components/TwoFAModal/TwoFAModal';
 
 const FactorAuthentication = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
-        <p>Two-factor authentiaction</p>
+        <p>Two-factor authentication</p>
       </div>
       <div className={styles.container}>
         <p>
-          Use as authenticator app (e.g Google Authenticator) on your phone to
-          generate verification codes
+          Use an authenticator app (e.g., Google Authenticator) on your phone to
+          generate verification codes.
         </p>
         <div className={styles.button}>
           <Button
             backgroundColor={buttonbackgroundColorEnum.white}
             innerContent="Connect"
+            onClick={showModal}
           />
         </div>
       </div>
+
+      <Modal
+        open={isModalVisible}
+        onCancel={handleCancel}
+        footer={null}
+        centered
+        closable={false}
+        width={840}
+      >
+        <TwoFAModal />
+      </Modal>
     </div>
   );
 };

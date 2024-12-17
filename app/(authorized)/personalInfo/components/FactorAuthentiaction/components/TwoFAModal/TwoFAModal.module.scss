@@ -1,0 +1,104 @@
+@import '../../../../../../styles/text-colors.scss';
+@import '../../../../../../styles/colors.scss';
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  padding: 0 24px 24px 0;
+  background-color: #fff;
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $borderColor;
+  border-radius: 12px;
+  background-color: #fff;
+  max-width: 1213px;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  background-color: #f0f3f5;
+  padding: 16px 24px;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 12px 12px 0 0;
+  border-bottom: 1px solid $borderColor;
+}
+
+.headline {
+  color: $primaryTextColor;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.container {
+  padding: 16px 24px 24px 24px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.topLine {
+  color: #545a67;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.QRbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.QRtext {
+  color: #707276;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputText {
+  color: #545a67;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid $borderColor;
+  color: #545a67;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+}
