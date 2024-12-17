@@ -2,71 +2,69 @@
 @import '../../../../styles/text-colors.scss';
 
 .boldContent {
-    color: $primaryColor;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 24px;
+  color: $primaryColor;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
 }
 
 .mainCaptionStyle {
-    color: $secondaryTextColor;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 24px;
+  color: $secondaryTextColor;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
 }
 
 .mainWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 24px;
 }
 
 .inputAndCaptionWrapper {
-    width: 100%;
-    display: flex;
-    gap: 24px;
-
+  width: 100%;
+  display: flex;
+  gap: 24px;
 }
 
 .usernameWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: flex-start;
-    max-width: 750px;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  max-width: 750px;
+  width: 100%;
 }
 
 .passwordWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: flex-start;
-    max-width: 750px;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  max-width: 750px;
+  width: 100%;
 }
 
 .usernameInputStyle {
-    max-width: 750px;
-    width: 100%;
-    height: 44px;
-    border-radius: 12px;
-    border: 1px solid $borderColor;
-    padding-left: 10px;
+  max-width: 750px;
+  width: 100%;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid $borderColor;
+  padding-left: 10px;
 }
 
 .passwordInputStyle {
-    max-width: 750px;
-    width: 100%;
-    height: 44px;
-    border-radius: 12px;
-    border: 1px solid $borderColor;
-    padding-left: 10px;
+  max-width: 750px;
+  width: 100%;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid $borderColor;
+  padding-left: 10px;
 }
 
 .inputLabel {
-    font-size: 14px;
+  font-size: 14px;
 }

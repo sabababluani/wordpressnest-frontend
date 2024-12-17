@@ -31,7 +31,7 @@ const Search = (props: SearchPropsInterface) => {
         onChange={onChange}
         readOnly={props.clickable}
       />
-      {!props.noIcon && (
+      {props.control && (
         <div className={styles.command}>
           <span>
             <span className={styles.symbol}>⌘</span>K

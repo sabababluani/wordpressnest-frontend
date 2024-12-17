@@ -5,6 +5,7 @@ import styles from './ThirdStepsContainerBasedCheckboxFirst.module.scss';
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import Other from '../Other/Other';
+import AmazonAwsFields from './components/AmazonAwsFields/AmazonAwsFields';
 
 const ThirdStepsContainerBasedCheckboxFirst = () => {
   const [selectedValue, setSelectedValue] = useState<string | undefined>(
@@ -55,11 +56,8 @@ const ThirdStepsContainerBasedCheckboxFirst = () => {
           onChange={(value: string) => setSelectedValue(value)}
         />
       </div>
-      {selectedValue == 'other' && (
-        <>
-          <Other />
-        </>
-      )}
+      {selectedValue === 'other' && <Other />}
+      {selectedValue === 'amazonaws' && <AmazonAwsFields />}
     </div>
   );
 };

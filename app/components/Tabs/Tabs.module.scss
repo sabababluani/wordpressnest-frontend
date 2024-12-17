@@ -28,6 +28,10 @@
   padding: 0px;
 }
 
+.wrapper :global .ant-tabs .ant-tabs-nav .ant-tabs-nav-wrap {
+  margin-left: 24px !important;
+}
+
 .wrapper :global .ant-tabs-tab:hover {
   color: #666;
 }
@@ -42,4 +46,9 @@
 
 .withoutBorder :global .ant-tabs .ant-tabs-nav::before {
   display: none !important;
+  margin-left: unset !important;
+}
+
+.withoutBorder :global .ant-tabs .ant-tabs-nav .ant-tabs-nav-wrap {
+  margin-left: unset !important;
 }

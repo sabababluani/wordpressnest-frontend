@@ -43,6 +43,7 @@ const Header = (): JSX.Element => {
           onChange={() => {}}
           onClick={handleSearchClick}
           clickable
+          control
         />
         <NotificationBell />
         <Profile name="Beka Jikurishvili" />

@@ -6,4 +6,5 @@ export interface SearchPropsInterface {
   onChange?: (value: string) => void;
   onClick?: () => void;
   clickable?: boolean;
+  control?: boolean;
 }
