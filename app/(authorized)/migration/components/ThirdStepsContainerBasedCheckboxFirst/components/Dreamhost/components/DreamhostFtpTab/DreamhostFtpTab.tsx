@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import styles from "./AnotherFTP.module.scss";
+import styles from "./DreamhostFtpTab.module.scss";
 
-const HostingFtp = () => {
+const DreamhostFtpTab = () => {
 
     const [serverAddress, setServerAddress] = useState<string>("");
     const [port, setPort] = useState<string>("");
@@ -84,4 +84,4 @@ const HostingFtp = () => {
     );
 };
 
-export default HostingFtp;
+export default DreamhostFtpTab;

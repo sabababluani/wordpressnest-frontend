@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import TabsAnt from '@/app/components/Tabs/Tabs';
-import styles from './A2Hosting.module.scss';
-import HostingFtp from '../AnotherFTP/AnotherFTP';
+import styles from "./Bluehost.module.scss";
+import AnotherFTP from '../AnotherFTP/AnotherFTP';
+import BluehostFtpTab from './components/BluehostFtpTab/BluehostFtpTab';
 
-const A2Hosting = () => {
+const Bluehost = () => {
 
     const [a2Username, setA2Username] = useState<string>('');
     const [a2Password, setA2Password] = useState<string>('');
@@ -19,15 +20,11 @@ const A2Hosting = () => {
     return (
         <div className={styles.mainWrapper}>
             <span className={styles.mainCaptions}>
-                We will need to access your
-                <span className={styles.boldOneStyle}>A2 Hosting account</span> to
-                export your site data for moving it over to your Hosting account. If you
-                have 2-factor authentication enabled, please disable it now for the time
-                of the migration.
+                We will need to access your <u>Bluehost account</u> to export your site data for moving it over to your Kinsta account. If you have 2-factor authentication enabled, please disable it now for the time of the migration.
             </span>
             <div className={styles.hostingAndpasswordWrapper}>
                 <div className={styles.serverWrapper}>
-                    <span className={styles.inputLabel}>A2 Hosting username</span>
+                    <span className={styles.inputLabel}>Bluehost username</span>
                     <input
                         type="text"
                         value={a2Username}
@@ -36,7 +33,7 @@ const A2Hosting = () => {
                     />
                 </div>
                 <div className={styles.portWrapper}>
-                    <span className={styles.inputLabel}>A2 Hosting password</span>
+                    <span className={styles.inputLabel}>Bluehost password</span>
                     <input
                         type="password"
                         value={a2Password}
@@ -51,11 +48,11 @@ const A2Hosting = () => {
                     uniqueKey={'anotherFtp'}
                     withoutBorder
                     tabNames={['FTP']}
-                    tabContent={[<HostingFtp key={'hostingftp'} />]}
+                    tabContent={[<BluehostFtpTab key={'bluehostanotherftp'} />]}
                 />
             </div>
         </div>
     );
 };
 
-export default A2Hosting;
+export default Bluehost;
