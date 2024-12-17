@@ -3,9 +3,13 @@
 import { Select } from 'antd';
 import TabsAnt from '../../components/Tabs/Tabs';
 import styles from './page.module.scss';
-import FTP from '../migration/components/FTP/FTP';
-import SFTP from '../migration/components/SFTP/SFTP';
-import SSH from '../migration/components/SSH/SSH';
+import Resource from './components/Resource/Resource';
+import CdnUsage from './components/CdnUsage/CdnUsage';
+import Dispersion from './components/Dispersion/Dispersion';
+import Performance from './components/Performance/Performance';
+import Response from './components/Response/Responce';
+import Cache from './components/Cache/Cache';
+import GeoApi from './components/GeoApi/GeoApi';
 
 const caching = (): JSX.Element => {
   return (
@@ -22,14 +26,26 @@ const caching = (): JSX.Element => {
           ]}
         />
       </div>
-      <div>
+      <div className={styles.tabs}>
         <TabsAnt
           uniqueKey={'analytics'}
-          tabNames={['Resource', 'SFTP']}
+          tabNames={[
+            'Resource',
+            'CDN Usage',
+            'Dispersion',
+            'Performance',
+            'Response',
+            'Cache',
+            'Geo & IP',
+          ]}
           tabContent={[
-            <FTP key={'resource'} />,
-            <SFTP key={'sftp'} />,
-            <SSH key={'ssh'} />,
+            <Resource key={'resource'} />,
+            <CdnUsage key={'cdn'} />,
+            <Dispersion key={'dispersion'} />,
+            <Performance key={'performance'} />,
+            <Response key={'response'} />,
+            <Cache key={'cache'} />,
+            <GeoApi key={'geoapi'} />,
           ]}
         />
       </div>

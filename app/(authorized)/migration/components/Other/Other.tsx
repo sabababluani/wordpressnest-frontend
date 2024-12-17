@@ -26,7 +26,7 @@ const Other = () => {
       </div>
       <div className={styles.tabs}>
         <TabsAnt
-          withoutBorder={true}
+          withoutBorder
           uniqueKey={'analytics'}
           tabNames={['FTP', 'SFTP', 'SSH']}
           tabContent={[
