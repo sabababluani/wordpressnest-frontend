@@ -4,7 +4,7 @@ export interface TabsPropsInterface {
   // tabCount: number;
   tabNames?: string[];
   tabContent?: React.ReactNode[];
-  uniqueKey: string;
+  uniqueKey?: string;
   withoutBorder?: boolean;
   withoutPadding?: boolean;
 }
