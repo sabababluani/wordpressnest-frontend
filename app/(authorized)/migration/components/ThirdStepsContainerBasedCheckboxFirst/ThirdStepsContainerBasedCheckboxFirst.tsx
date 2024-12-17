@@ -8,6 +8,7 @@ import Other from '../Other/Other';
 import AmazonAwsFields from './components/AmazonAwsFields/AmazonAwsFields';
 import GoogleCloudFields from './components/GoogleCloudFields/GoogleCloudFields';
 import FlywheelFields from './components/FlywheelFields/FlywheelFields';
+import A2Hosting from './components/A2Hosting/A2Hosting';
 
 const ThirdStepsContainerBasedCheckboxFirst = () => {
   const [selectedValue, setSelectedValue] = useState<string | undefined>(
@@ -65,6 +66,7 @@ const ThirdStepsContainerBasedCheckboxFirst = () => {
       {selectedValue === 'amazonaws' && <AmazonAwsFields />}
       {selectedValue === 'googlecloud' && <GoogleCloudFields />}
       {selectedValue === 'flywheel' && <FlywheelFields />}
+      {selectedValue === 'a2hosting' && <A2Hosting />}
     </div>
   );
 };
