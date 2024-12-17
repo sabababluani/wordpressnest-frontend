@@ -9,6 +9,8 @@ import AmazonAwsFields from './components/AmazonAwsFields/AmazonAwsFields';
 import GoogleCloudFields from './components/GoogleCloudFields/GoogleCloudFields';
 import FlywheelFields from './components/FlywheelFields/FlywheelFields';
 import A2Hosting from './components/A2Hosting/A2Hosting';
+import Bluehost from './components/Bluehost/Bluehost';
+import Dreamhost from './components/Dreamhost/Dreamhost';
 
 const ThirdStepsContainerBasedCheckboxFirst = () => {
   const [selectedValue, setSelectedValue] = useState<string | undefined>(
@@ -26,12 +28,12 @@ const ThirdStepsContainerBasedCheckboxFirst = () => {
       <div className={styles.descriptionWrapper}>
         <span className={styles.mainCaptionStyle}>
           {selectedValue === 'other' ||
-          selectedValue === 'a2hosting' ||
-          selectedValue === 'amazonaws' ||
-          selectedValue === 'bluehost' ||
-          selectedValue === 'cloudways' ||
-          selectedValue === 'dreamhost' ||
-          selectedValue === 'googlecloud' ? (
+            selectedValue === 'a2hosting' ||
+            selectedValue === 'amazonaws' ||
+            selectedValue === 'bluehost' ||
+            selectedValue === 'cloudways' ||
+            selectedValue === 'dreamhost' ||
+            selectedValue === 'googlecloud' ? (
             <span className={styles.mainCaptionStyle}>Current host</span>
           ) : (
             <span className={styles.mainCaptionStyle}>
@@ -67,6 +69,8 @@ const ThirdStepsContainerBasedCheckboxFirst = () => {
       {selectedValue === 'googlecloud' && <GoogleCloudFields />}
       {selectedValue === 'flywheel' && <FlywheelFields />}
       {selectedValue === 'a2hosting' && <A2Hosting />}
+      {selectedValue === 'bluehost' && <Bluehost />}
+      {selectedValue === 'dreamhost' && <Dreamhost />}
     </div>
   );
 };
