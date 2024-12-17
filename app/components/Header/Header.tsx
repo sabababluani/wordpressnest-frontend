@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Modal } from 'antd';
 import Search from '../Search/Search';
 import styles from './Header.module.scss';
@@ -19,6 +19,20 @@ const Header = (): JSX.Element => {
   const handleModalClose = () => {
     setIsModalVisible(false);
   };
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const isMacCommand = e.metaKey && e.key === 'k';
+      const isWindowsCtrl = e.ctrlKey && e.key === 'k';
+      if (isMacCommand || isWindowsCtrl) {
+        e.preventDefault();
+        setIsModalVisible(true);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   return (
     <div className={styles.container}>

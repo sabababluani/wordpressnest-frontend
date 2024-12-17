@@ -42,7 +42,9 @@ const RequestMigration = () => {
     if (isClient) {
       Cookies.set('stepFlow', stepFlow.toString(), { expires: 1 });
       if (activeCheckbox !== null) {
-        Cookies.set('activeCheckbox', activeCheckbox.toString(), { expires: 1 });
+        Cookies.set('activeCheckbox', activeCheckbox.toString(), {
+          expires: 1,
+        });
       }
     }
   }, [stepFlow, activeCheckbox, isClient]);
@@ -67,53 +69,46 @@ const RequestMigration = () => {
           <StepFlow stepNum={stepFlow} />
         </div>
       </div>
-      {
-        stepFlow === 1 && (
-          <>
-            <SelectionsWrapper
-              onCheckboxChange={setActiveCheckbox}
-              initialActiveCheckbox={activeCheckbox}
-            />
-            <div className={styles.mainMiddleContainer}>
-              <FirstCheckContainer activeCheckbox={activeCheckbox === 1} />
-              <SecondChecksContainer
-                timeValue={time}
-                date={setDate}
-                time={setTime}
-                timezone={setTimezone}
-                activecheckbox={activeCheckbox === 2}
-              />
-              <ThirdChecksContainer checkboxActive={activeCheckbox === 3} />
-            </div>
-            <MainBottomContainer />
-          </>
-        )
-      }
-      {
-        stepFlow === 2 && (
-          <StepFlowSecond
-            activedCheckboxNum={(index) =>
-              Cookies.set(
-                'SecondStepsSpecificCheckbox',
-                index ? index.toString() : JSON.stringify(undefined),
-                { expires: 1 },
-              )
-            }
+      {stepFlow === 1 && (
+        <>
+          <SelectionsWrapper
+            onCheckboxChange={setActiveCheckbox}
+            initialActiveCheckbox={activeCheckbox}
           />
-        )
-      }
-      {
-        stepFlow === 3 &&
+          <div className={styles.mainMiddleContainer}>
+            <FirstCheckContainer activeCheckbox={activeCheckbox === 1} />
+            <SecondChecksContainer
+              timeValue={time}
+              date={setDate}
+              time={setTime}
+              timezone={setTimezone}
+              activecheckbox={activeCheckbox === 2}
+            />
+            <ThirdChecksContainer checkboxActive={activeCheckbox === 3} />
+          </div>
+          <MainBottomContainer />
+        </>
+      )}
+      {stepFlow === 2 && (
+        <StepFlowSecond
+          activedCheckboxNum={(index) =>
+            Cookies.set(
+              'SecondStepsSpecificCheckbox',
+              index ? index.toString() : JSON.stringify(undefined),
+              { expires: 1 },
+            )
+          }
+        />
+      )}
+      {stepFlow === 3 &&
         Number(Cookies.get('SecondStepsSpecificCheckbox')) === 1 && (
           <ThirdStepsContainerBasedCheckboxFirst />
-        )
-      }
-      {
-        stepFlow == 4 &&
+        )}
+      {stepFlow == 4 && (
         <>
           <StepFlowFourth />
         </>
-      }
+      )}
       <div className={styles.buttonsWrapper}>
         <div className={styles.buttonsInnerWrapper}>
           {stepFlow > 1 && (

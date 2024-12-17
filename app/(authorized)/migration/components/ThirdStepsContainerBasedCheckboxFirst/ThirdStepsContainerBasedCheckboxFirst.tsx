@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { Select } from 'antd';
 import styles from './ThirdStepsContainerBasedCheckboxFirst.module.scss';
@@ -7,8 +7,9 @@ import Cookies from 'js-cookie';
 import Other from '../Other/Other';
 
 const ThirdStepsContainerBasedCheckboxFirst = () => {
-
-  const [selectedValue, setSelectedValue] = useState<string | undefined>(Cookies.get('migrateSelection')?.toString());
+  const [selectedValue, setSelectedValue] = useState<string | undefined>(
+    Cookies.get('migrateSelection')?.toString(),
+  );
 
   useEffect(() => {
     if (selectedValue) {
@@ -20,17 +21,18 @@ const ThirdStepsContainerBasedCheckboxFirst = () => {
     <div className={styles.mainContainer}>
       <div className={styles.descriptionWrapper}>
         <span className={styles.mainCaptionStyle}>
-          {
-            selectedValue === 'other' ||
-              selectedValue === 'a2hosting' ||
-              selectedValue === 'amazonaws' ||
-              selectedValue === 'bluehost' ||
-              selectedValue === 'cloudways' ||
-              selectedValue === 'dreamhost' ?
-              <span className={styles.mainCaptionStyle}>Current host</span>
-              :
-              <span className={styles.mainCaptionStyle}>Migrate from another host</span>
-          }
+          {selectedValue === 'other' ||
+          selectedValue === 'a2hosting' ||
+          selectedValue === 'amazonaws' ||
+          selectedValue === 'bluehost' ||
+          selectedValue === 'cloudways' ||
+          selectedValue === 'dreamhost' ? (
+            <span className={styles.mainCaptionStyle}>Current host</span>
+          ) : (
+            <span className={styles.mainCaptionStyle}>
+              Migrate from another host
+            </span>
+          )}
         </span>
         <span className={styles.descriptionStyle}>
           Moving your site from your previous hosting provider to your Hosting
@@ -53,12 +55,11 @@ const ThirdStepsContainerBasedCheckboxFirst = () => {
           onChange={(value: string) => setSelectedValue(value)}
         />
       </div>
-      {
-        selectedValue == 'other' &&
+      {selectedValue == 'other' && (
         <>
           <Other />
         </>
-      }
+      )}
     </div>
   );
 };
