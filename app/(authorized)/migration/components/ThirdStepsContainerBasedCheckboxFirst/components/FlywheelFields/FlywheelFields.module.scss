@@ -1,0 +1,38 @@
+@import '../../../../../../styles/colors.scss';
+@import '../../../../../../styles/text-colors.scss';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 12px;
+}
+
+.wrapper span {
+  color: #707276;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.anchore {
+  text-decoration: underline;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.emailHeading {
+  color: $primaryTextColor !important;
+  font-weight: 500 !important;
+  line-height: 20px !important;
+}
+
+.email {
+  color: $primaryTextColor !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+}

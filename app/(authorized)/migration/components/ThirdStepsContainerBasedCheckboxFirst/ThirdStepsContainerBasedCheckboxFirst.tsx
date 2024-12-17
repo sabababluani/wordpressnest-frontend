@@ -7,6 +7,7 @@ import Cookies from 'js-cookie';
 import Other from '../Other/Other';
 import AmazonAwsFields from './components/AmazonAwsFields/AmazonAwsFields';
 import GoogleCloudFields from './components/GoogleCloudFields/GoogleCloudFields';
+import FlywheelFields from './components/FlywheelFields/FlywheelFields';
 
 const ThirdStepsContainerBasedCheckboxFirst = () => {
   const [selectedValue, setSelectedValue] = useState<string | undefined>(
@@ -53,6 +54,7 @@ const ThirdStepsContainerBasedCheckboxFirst = () => {
             { value: 'cloudways', label: 'Cloudways' },
             { value: 'dreamhost', label: 'DreamHost' },
             { value: 'googlecloud', label: 'Google Cloud' },
+            { value: 'flywheel', label: 'Flywheel' },
           ]}
           className={styles.specificSelect}
           placeholder={'Select a hosting provider'}
@@ -62,6 +64,7 @@ const ThirdStepsContainerBasedCheckboxFirst = () => {
       {selectedValue === 'other' && <Other />}
       {selectedValue === 'amazonaws' && <AmazonAwsFields />}
       {selectedValue === 'googlecloud' && <GoogleCloudFields />}
+      {selectedValue === 'flywheel' && <FlywheelFields />}
     </div>
   );
 };
