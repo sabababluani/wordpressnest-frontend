@@ -14,7 +14,7 @@ const AmazonAwsFields = () => {
       <div className={styles.tabs}>
         <TabsAnt
           withoutBorder
-          uniqueKey={'analytics'}
+          uniqueKey={'amazonAws'}
           tabNames={['Your public SSH key', 'Add Kinsta public SSH key to AWS']}
           tabContent={[
             <UsersAmazonSsh key={'usersamazonssh'} />,
