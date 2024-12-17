@@ -37,11 +37,11 @@ const TwoFAModal = () => {
         </div>
         <div className={styles.footer}>
           <Button
-            innerContent="Back"
+            innerContent="Cancel"
             backgroundColor={buttonbackgroundColorEnum.white}
           />
           <Button
-            innerContent="Continue"
+            innerContent="Verify"
             backgroundColor={buttonbackgroundColorEnum.black}
           />
         </div>
