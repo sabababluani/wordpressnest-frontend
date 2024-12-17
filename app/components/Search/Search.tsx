@@ -20,6 +20,9 @@ const Search = (props: SearchPropsInterface) => {
       className={`${styles.container} ${props.isPadded ? styles.padded : ''}`}
       onClick={props.onClick}
     >
+      {!props.noIcon && (
+        <Image src="/icons/search.svg" width={24} height={24} alt="search" />
+      )}
       <input
         type="search"
         className={styles.input}
@@ -29,7 +32,11 @@ const Search = (props: SearchPropsInterface) => {
         readOnly={props.clickable}
       />
       {!props.noIcon && (
-        <Image src="/icons/search.svg" width={24} height={24} alt="search" />
+        <div className={styles.command}>
+          <span>
+            <span className={styles.symbol}>⌘</span>K
+          </span>
+        </div>
       )}
     </div>
   );

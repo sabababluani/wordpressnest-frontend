@@ -25,14 +25,11 @@ const caching = (): JSX.Element => {
       <div>
         <TabsAnt
           uniqueKey={'analytics'}
-          tabNames={[
-            'Resource',
-            'SFTP'
-          ]}
+          tabNames={['Resource', 'SFTP']}
           tabContent={[
             <FTP key={'resource'} />,
             <SFTP key={'sftp'} />,
-            <SSH />
+            <SSH key={'ssh'} />,
           ]}
         />
       </div>

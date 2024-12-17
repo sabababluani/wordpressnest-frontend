@@ -157,14 +157,14 @@ const StepFlowFourth = () => {
                   current host, preventing user activity on the site. Once
                   Kinsta sets it up, we do not remove the maintenance mode page.
                   It will continue to be served from your current host until you
-                  update the domain's DNS and your site loads from its new
+                  update the domain&apos;s DNS and your site loads from its new
                   location at Kinsta (which will not be in maintenance mode).
                   Without maintenance mode, orders placed after the start of
-                  migration and before the site's DNS is updated may be left
-                  behind at your previous host. <br /> <br />
+                  migration and before the site&apos;s DNS is updated may be
+                  left behind at your previous host. <br /> <br />
                   Also if your site has recurring subscriptions, this may need
-                  special attention. For example, WooCommerce has further info
-                  about this in their documentation. If your site has a special
+                  special attention. For example, WooCommerce has further info
+                  about this in their documentation. If your site has a special
                   requirement related to recurring payments, please let us know
                   in the next step of this form as a special instruction.
                 </span>
