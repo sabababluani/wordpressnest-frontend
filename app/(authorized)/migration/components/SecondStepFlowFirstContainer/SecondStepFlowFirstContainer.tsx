@@ -39,6 +39,13 @@ const SecondStepFlowsCheckbox = (
       </div>
       {props.buttonActive && (
         <Button
+          onClick={(e: React.MouseEvent) => {
+            alert('void space yet');
+          }}
+          buttonActive={
+            props.activeCheckbox === props.firstCheckboxCoefficient ||
+            props.activeCheckbox === props.secondCheckboxCoefficient
+          }
           backgroundColor={buttonbackgroundColorEnum.white}
           innerContent="Choose"
         />

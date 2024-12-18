@@ -50,7 +50,7 @@ const RequestMigration = () => {
   }, [stepFlow, activeCheckbox, isClient]);
 
   const onNextButtonClick = (): void => {
-    setStepFlow((prev: number) => (prev + 1 > 5 ? prev : prev + 1));
+    setStepFlow((prev: number) => (prev + 1 > 6 ? prev : prev + 1));
   };
 
   const onBackButtonClick = (): void => {
