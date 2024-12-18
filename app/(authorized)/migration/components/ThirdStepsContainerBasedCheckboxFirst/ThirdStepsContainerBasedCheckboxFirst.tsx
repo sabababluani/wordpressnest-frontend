@@ -8,9 +8,11 @@ import Other from '../Other/Other';
 import AmazonAwsFields from './components/AmazonAwsFields/AmazonAwsFields';
 import GoogleCloudFields from './components/GoogleCloudFields/GoogleCloudFields';
 import FlywheelFields from './components/FlywheelFields/FlywheelFields';
-import A2Hosting from './components/A2Hosting/A2Hosting';
-import Bluehost from './components/Bluehost/Bluehost';
+import LiquidWeb from './components/LiquidWeb/LiquidWeb';
 import Dreamhost from './components/Dreamhost/Dreamhost';
+import Bluehost from './components/Bluehost/Bluehost';
+import A2Hosting from './components/A2Hosting/A2Hosting';
+import Vultr from './components/Vultr/Vultr';
 
 const ThirdStepsContainerBasedCheckboxFirst = () => {
   const [selectedValue, setSelectedValue] = useState<string | undefined>(
@@ -28,12 +30,12 @@ const ThirdStepsContainerBasedCheckboxFirst = () => {
       <div className={styles.descriptionWrapper}>
         <span className={styles.mainCaptionStyle}>
           {selectedValue === 'other' ||
-            selectedValue === 'a2hosting' ||
-            selectedValue === 'amazonaws' ||
-            selectedValue === 'bluehost' ||
-            selectedValue === 'cloudways' ||
-            selectedValue === 'dreamhost' ||
-            selectedValue === 'googlecloud' ? (
+          selectedValue === 'a2hosting' ||
+          selectedValue === 'amazonaws' ||
+          selectedValue === 'bluehost' ||
+          selectedValue === 'cloudways' ||
+          selectedValue === 'dreamhost' ||
+          selectedValue === 'googlecloud' ? (
             <span className={styles.mainCaptionStyle}>Current host</span>
           ) : (
             <span className={styles.mainCaptionStyle}>
@@ -58,6 +60,8 @@ const ThirdStepsContainerBasedCheckboxFirst = () => {
             { value: 'dreamhost', label: 'DreamHost' },
             { value: 'googlecloud', label: 'Google Cloud' },
             { value: 'flywheel', label: 'Flywheel' },
+            { value: 'liquidweb', label: 'Liquid Web' },
+            { value: 'vultr', label: 'Vultr' },
           ]}
           className={styles.specificSelect}
           placeholder={'Select a hosting provider'}
@@ -71,6 +75,8 @@ const ThirdStepsContainerBasedCheckboxFirst = () => {
       {selectedValue === 'a2hosting' && <A2Hosting />}
       {selectedValue === 'bluehost' && <Bluehost />}
       {selectedValue === 'dreamhost' && <Dreamhost />}
+      {selectedValue === 'liquidweb' && <LiquidWeb />}
+      {selectedValue === 'vultr' && <Vultr />}
     </div>
   );
 };
