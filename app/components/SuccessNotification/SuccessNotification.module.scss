@@ -1,0 +1,63 @@
+@import '../../styles/colors.scss';
+@import '../../styles/text-colors.scss';
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.wrapper {
+  position: fixed;
+  right: 36px;
+  top: 24px;
+  background-color: #e4e6e9;
+  padding: 24px 48px;
+  display: flex;
+  gap: 20px;
+  border-radius: 12px;
+  z-index: 10;
+  animation: slideInFromRight 0.3s ease-out forwards;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.done {
+  color: #11141a;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.notification {
+  color: $primaryTextColor;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.checkbox :global(.ant-checkbox-wrapper .ant-checkbox .ant-checkbox-inner) {
+  width: 20px;
+  height: 20px;
+  border: 1px solid $borderColor !important;
+  border-radius: 50%;
+}
+
+.checkbox
+  :global(.ant-checkbox-wrapper .ant-checkbox .ant-checkbox-inner:hover) {
+  border: 1px solid $borderColor !important;
+  background-color: transparent !important;
+}
+
+.checkbox
+  :global(.ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner) {
+  background-color: black !important;
+  border: none !important;
+}
