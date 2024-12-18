@@ -1,0 +1,102 @@
+@import '../../../../../../../styles/colors.scss';
+@import '../../../../../../../styles/text-colors.scss';
+
+.mainWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.captionWrapper {
+  border-radius: 12px;
+  border: 0px;
+  background-color: #f0f3f5;
+  padding: 16px 24px;
+}
+
+.mainCaptionStyle {
+  color: #545a67;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.checkboxWrapper {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.checkboxWrapper {
+  width: fit-content;
+}
+
+.checkboxWrapper
+  :global(.ant-checkbox-wrapper .ant-checkbox .ant-checkbox-inner) {
+  border: 1px solid $primaryColor;
+  width: 18px;
+  height: 18px;
+}
+
+.checkboxWrapper
+  :global(.ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner) {
+  background-color: $primaryColor;
+}
+
+.checkboxWrapper
+  :global(
+    .ant-checkbox-checked:not(.ant-checkbox-disabled) .ant-checkbox-inner
+  ) {
+  background-color: $primaryTextColor !important;
+}
+
+.checkboxLabelStyle {
+  color: $secondaryTextColor;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.inputAndCaptionWrapper {
+  width: 100%;
+  display: flex;
+  gap: 24px;
+}
+
+.usernameWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  max-width: 750px;
+  width: 100%;
+}
+
+.passwordWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  max-width: 750px;
+  width: 100%;
+}
+
+.usernameInputStyle {
+  max-width: 750px;
+  width: 100%;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid $borderColor;
+  padding-left: 10px;
+}
+
+.passwordInputStyle {
+  max-width: 750px;
+  width: 100%;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid $borderColor;
+  padding-left: 10px;
+}
