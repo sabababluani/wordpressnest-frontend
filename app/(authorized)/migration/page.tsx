@@ -91,7 +91,7 @@ const RequestMigration = () => {
       )}
       {stepFlow === 2 && (
         <StepFlowSecond
-          activedCheckboxNum={(index) =>
+          activedCheckboxNum={(index: number | undefined) =>
             Cookies.set(
               'SecondStepsSpecificCheckbox',
               index ? index.toString() : JSON.stringify(undefined),
