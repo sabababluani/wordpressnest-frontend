@@ -6,7 +6,7 @@ const AddUsWithThisEmailAddress = () => {
       <div className={styles.wrapper}>
         <span className={styles.captionStyle}>
           To export your site data and transfer it to your Kinsta account, we
-          need full access to your Cloudways account
+          need full access to your Cloudways account
         </span>
         <div className={styles.EmailCaptionAndInputWrapper}>
           <div className={styles.firstWrapper}>
