@@ -1,5 +1,6 @@
 import TabsAnt from '@/app/components/Tabs/Tabs';
 import styles from './LiquidWeb.module.scss';
+import LiquidFtp from './components/LiquidFtp/LiquidFtp';
 
 const LiquidWeb = () => {
   return (
@@ -24,8 +25,8 @@ const LiquidWeb = () => {
       <TabsAnt
         withoutBorder
         uniqueKey={'liquidweb'}
-        tabNames={['Google Cloud account', 'Your public SSH key']}
-        tabContent={[]}
+        tabNames={['FTP']}
+        tabContent={[<LiquidFtp key={'liquidftp'} />]}
       />
     </div>
   );
