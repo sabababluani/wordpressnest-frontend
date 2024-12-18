@@ -1,1 +1,5 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Run the build script before committing
 npm run build
