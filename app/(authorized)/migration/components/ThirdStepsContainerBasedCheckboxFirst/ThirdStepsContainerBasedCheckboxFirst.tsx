@@ -2,22 +2,14 @@
 
 import { Select } from 'antd';
 import styles from './ThirdStepsContainerBasedCheckboxFirst.module.scss';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Cookies from 'js-cookie';
-import Other from '../Other/Other';
-import AmazonAwsFields from './components/AmazonAwsFields/AmazonAwsFields';
-import GoogleCloudFields from './components/GoogleCloudFields/GoogleCloudFields';
-import FlywheelFields from './components/FlywheelFields/FlywheelFields';
-import LiquidWeb from './components/LiquidWeb/LiquidWeb';
-import Dreamhost from './components/Dreamhost/Dreamhost';
-import Bluehost from './components/Bluehost/Bluehost';
-import A2Hosting from './components/A2Hosting/A2Hosting';
-import Vultr from './components/Vultr/Vultr';
-import CloudWays from './components/CloudWays/CloudWays';
+import { HostingOption } from './interfaces/hostingOptions-interface';
+import { HOSTING_OPTIONS } from './dummy_data/hosting-options';
 
 const ThirdStepsContainerBasedCheckboxFirst = () => {
   const [selectedValue, setSelectedValue] = useState<string | undefined>(
-    Cookies.get('migrateSelection')?.toString(),
+    Cookies.get('migrateSelection'),
   );
 
   useEffect(() => {
@@ -26,62 +18,35 @@ const ThirdStepsContainerBasedCheckboxFirst = () => {
     }
   }, [selectedValue]);
 
+  const SelectedComponent = useMemo((): React.ComponentType | null => {
+    const selectedOption = HOSTING_OPTIONS.find((option: HostingOption) => option.value === selectedValue);
+    return selectedOption?.component || null;
+  }, [selectedValue]);
+
+  const isMigrating = useMemo(() => {
+    return selectedValue && HOSTING_OPTIONS.some((option: HostingOption) => option.value === selectedValue);
+  }, [selectedValue]);
+
   return (
     <div className={styles.mainContainer}>
       <div className={styles.descriptionWrapper}>
         <span className={styles.mainCaptionStyle}>
-          {selectedValue === 'other' ||
-          selectedValue === 'a2hosting' ||
-          selectedValue === 'amazonaws' ||
-          selectedValue === 'bluehost' ||
-          selectedValue === 'cloudways' ||
-          selectedValue === 'dreamhost' ||
-          selectedValue === 'googlecloud' ||
-          selectedValue == 'vultr' ||
-          selectedValue == 'liquidweb' ||
-          selectedValue == 'flywheel' ? (
-            <span className={styles.mainCaptionStyle}>Current host</span>
-          ) : (
-            <span className={styles.mainCaptionStyle}>
-              Migrate from another host
-            </span>
-          )}
+          {isMigrating ? 'Current host' : 'Migrate from another host'}
         </span>
         <span className={styles.descriptionStyle}>
-          Moving your site from your previous hosting provider to your Hosting
-          account.
+          Moving your site from your previous hosting provider to your Hosting account.
         </span>
       </div>
       <div className={styles.select}>
         <Select
           value={selectedValue}
-          options={[
-            { value: 'other', label: 'Other' },
-            { value: 'a2hosting', label: 'A2 Hosting' },
-            { value: 'amazonaws', label: 'Amazon AWS' },
-            { value: 'bluehost', label: 'Bluehost' },
-            { value: 'cloudways', label: 'Cloudways' },
-            { value: 'dreamhost', label: 'DreamHost' },
-            { value: 'googlecloud', label: 'Google Cloud' },
-            { value: 'flywheel', label: 'Flywheel' },
-            { value: 'liquidweb', label: 'Liquid Web' },
-            { value: 'vultr', label: 'Vultr' },
-          ]}
+          options={HOSTING_OPTIONS.map(({ value, label }: HostingOption) => ({ value, label }))}
           className={styles.specificSelect}
-          placeholder={'Select a hosting provider'}
+          placeholder="Select a hosting provider"
           onChange={(value: string) => setSelectedValue(value)}
         />
       </div>
-      {selectedValue === 'other' && <Other />}
-      {selectedValue === 'amazonaws' && <AmazonAwsFields />}
-      {selectedValue === 'googlecloud' && <GoogleCloudFields />}
-      {selectedValue === 'flywheel' && <FlywheelFields />}
-      {selectedValue === 'a2hosting' && <A2Hosting />}
-      {selectedValue === 'bluehost' && <Bluehost />}
-      {selectedValue === 'dreamhost' && <Dreamhost />}
-      {selectedValue === 'liquidweb' && <LiquidWeb />}
-      {selectedValue === 'vultr' && <Vultr />}
-      {selectedValue == 'cloudways' && <CloudWays />}
+      {SelectedComponent && <SelectedComponent />}
     </div>
   );
 };
