@@ -12,6 +12,7 @@ import LiquidWeb from './components/LiquidWeb/LiquidWeb';
 import Dreamhost from './components/Dreamhost/Dreamhost';
 import Bluehost from './components/Bluehost/Bluehost';
 import A2Hosting from './components/A2Hosting/A2Hosting';
+import Vultr from './components/Vultr/Vultr';
 
 const ThirdStepsContainerBasedCheckboxFirst = () => {
   const [selectedValue, setSelectedValue] = useState<string | undefined>(
@@ -60,6 +61,7 @@ const ThirdStepsContainerBasedCheckboxFirst = () => {
             { value: 'googlecloud', label: 'Google Cloud' },
             { value: 'flywheel', label: 'Flywheel' },
             { value: 'liquidweb', label: 'Liquid Web' },
+            { value: 'vultr', label: 'Vultr' },
           ]}
           className={styles.specificSelect}
           placeholder={'Select a hosting provider'}
@@ -74,6 +76,7 @@ const ThirdStepsContainerBasedCheckboxFirst = () => {
       {selectedValue === 'bluehost' && <Bluehost />}
       {selectedValue === 'dreamhost' && <Dreamhost />}
       {selectedValue === 'liquidweb' && <LiquidWeb />}
+      {selectedValue === 'vultr' && <Vultr />}
     </div>
   );
 };

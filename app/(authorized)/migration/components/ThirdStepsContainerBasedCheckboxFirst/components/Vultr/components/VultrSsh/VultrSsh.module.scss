@@ -1,0 +1,134 @@
+@import '../../../../../../../../styles/colors.scss';
+@import '../../../../../../../../styles/text-colors.scss';
+
+.mainWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  gap: 24px;
+}
+
+.inputAndCaptionWrapper {
+  width: 100%;
+  display: flex;
+  gap: 24px;
+}
+
+.serverWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  max-width: 750px;
+  width: 100%;
+}
+
+.portWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  max-width: 750px;
+  width: 100%;
+}
+
+.serverInputStyle {
+  max-width: 750px;
+  width: 100%;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid $borderColor;
+  padding-left: 10px;
+  outline: none;
+}
+
+.inputLabel {
+  color: $primaryTextColor !important;
+  font-weight: 500 !important;
+  line-height: 20px !important;
+}
+
+.portInputStyle {
+  max-width: 750px;
+  width: 100%;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid $borderColor;
+  padding-left: 10px;
+  outline: none;
+}
+
+.inputAndCaptionWrapper {
+  width: 100%;
+  display: flex;
+  gap: 24px;
+}
+
+.ftpUsernameWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.ftpPasswordWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  max-width: 750px;
+  width: 100%;
+}
+
+.ftpUsernameInputStyle {
+  max-width: 750px;
+  width: 100%;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid $borderColor;
+  padding-left: 10px;
+}
+
+.ftpPassowordInputStyle {
+  width: 100%;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid $borderColor;
+  padding-left: 10px;
+  outline: none;
+}
+
+.externalWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.lastSelectLabel {
+  color: $primaryColor;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  line-height: 20px;
+}
+
+.wordPressInputStyle {
+  width: 100%;
+  height: 44px;
+  padding-left: 10px;
+  border-radius: 12px;
+  border: 1px solid $borderColor;
+}
+
+.lastWordPressWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+}
