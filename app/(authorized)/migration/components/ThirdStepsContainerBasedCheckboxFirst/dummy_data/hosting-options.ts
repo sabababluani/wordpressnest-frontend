@@ -7,6 +7,7 @@ import Bluehost from '../components/Dreamhost/Dreamhost';
 import FlywheelFields from '../components/FlywheelFields/FlywheelFields';
 import GoogleCloudFields from '../components/GoogleCloudFields/GoogleCloudFields';
 import LiquidWeb from '../components/LiquidWeb/LiquidWeb';
+import Tso from '../components/Tso/Tso';
 import Vultr from '../components/Vultr/Vultr';
 import { HostingOption } from '../interfaces/hostingOptions-interface';
 
@@ -21,4 +22,5 @@ export const HOSTING_OPTIONS: HostingOption[] = [
   { value: 'flywheel', label: 'Flywheel', component: FlywheelFields },
   { value: 'liquidweb', label: 'Liquid Web', component: LiquidWeb },
   { value: 'vultr', label: 'Vultr', component: Vultr },
+  { value: 'tsp', label: 'Tso', component: Tso },
 ];
