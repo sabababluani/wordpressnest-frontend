@@ -23,7 +23,7 @@ const ThirdStepsContainerBasedCheckboxFirst = () => {
     return selectedOption?.component || null;
   }, [selectedValue]);
 
-  const isMigrating = useMemo(() => {
+  const isMigrating = useMemo((): string | boolean | undefined => {
     return selectedValue && HOSTING_OPTIONS.some((option: HostingOption) => option.value === selectedValue);
   }, [selectedValue]);
 
