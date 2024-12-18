@@ -1,6 +1,4 @@
-import Button from '@/app/components/Button/Button';
 import styles from './RegisterHeader.module.scss';
-import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import Link from 'next/link';
 
 const MainHeader = () => {
