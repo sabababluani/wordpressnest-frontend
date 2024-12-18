@@ -1,6 +1,4 @@
-import Button from '@/app/components/Button/Button';
 import styles from './RegisterHeader.module.scss';
-import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import Link from 'next/link';
 
 const MainHeader = () => {
@@ -17,14 +15,8 @@ const MainHeader = () => {
         </div>
       </div>
       <div className={styles.buttons}>
-        <Button
-          backgroundColor={buttonbackgroundColorEnum.white}
-          innerContent="Log in"
-        />
-        <Button
-          backgroundColor={buttonbackgroundColorEnum.black}
-          innerContent="Sign up"
-        />
+        <button className={styles.loginButton}>Log in</button>
+        <button className={styles.signupButton}>Sign up</button>
       </div>
     </div>
   );
