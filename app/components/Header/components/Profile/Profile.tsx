@@ -7,13 +7,12 @@ import { ProfilePropsInterface } from './interfaces/profile-props.inteface';
 const Profile = (props: ProfilePropsInterface): JSX.Element => {
   const [logOut, setLogOut] = useState(false);
   const logOutRef = useRef<HTMLDivElement | null>(null);
-  const toggleButtonRef = useRef<HTMLImageElement | null>(null);
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
 
   const handleClickOutside = (event: MouseEvent) => {
     if (
-      logOutRef.current &&
-      !logOutRef.current.contains(event.target as Node) &&
-      toggleButtonRef.current !== event.target
+      wrapperRef.current &&
+      !wrapperRef.current.contains(event.target as Node)
     ) {
       setLogOut(false);
     }
@@ -37,7 +36,7 @@ const Profile = (props: ProfilePropsInterface): JSX.Element => {
   };
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} ref={wrapperRef} onClick={handleToggle}>
       <div className={styles.container}>
         <Image
           src="/profilepicture.png"
@@ -52,8 +51,6 @@ const Profile = (props: ProfilePropsInterface): JSX.Element => {
           width={24}
           height={24}
           alt="dropdown"
-          onClick={handleToggle}
-          ref={toggleButtonRef}
         />
       </div>
       {logOut && (
