@@ -1,6 +1,6 @@
 'use client';
 
-import { Checkbox, Select, Switch } from 'antd';
+import { Checkbox, Radio, Select, Switch } from 'antd';
 import styles from './StepFlowFourth.module.scss';
 import { useState, ChangeEvent } from 'react';
 
@@ -15,6 +15,7 @@ const StepFlowFourth = () => {
   const [isEcommerce, setIsEcommerce] = useState<boolean>(false);
   const [isMultisite, setIsMultisite] = useState<boolean>(false);
   const [isHttps, setIsHttps] = useState<boolean>(false);
+  const [sslOption, setSslOption] = useState<string>('generate');
 
   const onCheckboxValueChange = () => {
     setIsActiveCheckbox((prev: boolean) => !prev);
@@ -33,6 +34,10 @@ const StepFlowFourth = () => {
   const onToggleMultisiteChange = () =>
     setIsMultisite((prev: boolean) => !prev);
   const onToggleHttpsChange = () => setIsHttps((prev: boolean) => !prev);
+
+  const handleSslOptionChange = (e: any) => {
+    setSslOption(e.target.value);
+  };
 
   return (
     <div className={styles.mainWrapper}>
@@ -219,6 +224,48 @@ const StepFlowFourth = () => {
               />
             </div>
           </div>
+          {isHttps && (
+            <>
+              <div className={styles.forCheckboxAndCaptionWrapper}>
+                <span>
+                  Should we generate a new certificate, or do you want to use
+                  your existing or premium certificate?
+                </span>
+                <div className={styles.checkboxWrapper}>
+                  <div className={styles.lastCheckboxFirstWrapper}>
+                    <div className={styles.types}>
+                      <Radio
+                        value="generate"
+                        checked={sslOption === 'generate'}
+                        onChange={handleSslOptionChange}
+                      />
+                      <div>
+                        <span className={styles.generateCaptionStyle}>
+                          Generate new free certificate
+                        </span>
+                        <span className={styles.sslCaptionStyle}>
+                          SSL certificates are provided by Cloudflare and renew
+                          automatically if you use Kinsta.
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className={styles.lastCheckboxSecondWrapper}>
+                    <div className={styles.types}>
+                      <Radio
+                        value="existing"
+                        checked={sslOption === 'existing'}
+                        onChange={handleSslOptionChange}
+                      />
+                      <div>
+                        <span>Use existing certificate</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>

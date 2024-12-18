@@ -7,7 +7,7 @@ import Cookies from 'js-cookie';
 import { HostingOption } from './interfaces/hostingOptions-interface';
 import { HOSTING_OPTIONS } from './dummy_data/hosting-options';
 
-const ThirdStepsContainerBasedCheckboxFirst = () => {
+const ThirdStepsContainerBasedCheckboxFirst = (): JSX.Element => {
   const [selectedValue, setSelectedValue] = useState<string | undefined>(
     Cookies.get('migrateSelection'),
   );

@@ -11,10 +11,11 @@
     justify-content: space-between;
     padding: 16px 24px 24px;
     cursor: pointer;
-}
+    transition: all 0.2s ease-in-out;
 
-.active {
-  border: 1px solid $primaryColor;
+    &.active {
+        border: 1px solid $primaryColor;
+    }
 }
 
 .SecondStepFlowsFirstCheckbox {
@@ -29,6 +30,7 @@
     font-style: normal;
     font-weight: 600;
     line-height: 24px;
+    transition: color 0.2s ease-in-out;
 }
 
 .descriptionsWrapper {
@@ -44,30 +46,31 @@
     font-style: normal;
     font-weight: 400;
     line-height: 16px;
+    transition: color 0.2s ease-in-out;
 }
 
 .checkboxWrapper {
   width: fit-content;
-}
 
-.checkboxWrapper
   :global(.ant-checkbox-wrapper .ant-checkbox .ant-checkbox-inner) {
-  border: 1px solid $primaryColor;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-}
+    border: 1px solid $primaryColor;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    transition: all 0.2s ease-in-out; 
+  }
 
-.checkboxWrapper
   :global(.ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner) {
-  background-color: $primaryColor;
-}
+    background-color: $primaryColor;
+    transition: all 0.2s ease-in-out; 
+  }
 
-.checkboxWrapper
   :global(
     .ant-checkbox-checked:not(.ant-checkbox-disabled) .ant-checkbox-inner
   ) {
-  background-color: $primaryTextColor !important;
+    background-color: $primaryTextColor !important;
+    transition: all 0.2s ease-in-out; 
+  }
 }
 
 .innerContainer {

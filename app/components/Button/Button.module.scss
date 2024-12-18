@@ -93,6 +93,7 @@
 
 .active {
   border: 1px solid black;
+  color: $primaryColor;
 }
 
 .innerContentBlackColor {
@@ -100,4 +101,5 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 24px;
+  color: $primaryColor;
 }

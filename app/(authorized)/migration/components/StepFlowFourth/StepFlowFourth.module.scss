@@ -291,3 +291,74 @@
   width: 100%;
   border-radius: 12px;
 }
+
+.forCheckboxAndCaptionWrapper {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.forCheckboxAndCaptionWrapper:nth-child(1) {
+  color: $primaryColor;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.checkboxWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.radioWrapper {
+  display: flex;
+  gap: 8px;
+  align-items: start;
+}
+
+.radioWrapper > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: start;
+}
+
+.radioWrapper .generateCaptionStyle {
+  color: $primaryColor;
+}
+
+.sslCaptionStyle {
+  color: $secondaryTextColor;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.types :global .ant-radio-checked .ant-radio-inner {
+  background-color: $primaryColor !important;
+  border-color: $secondaryTextColor !important;
+}
+
+.types :global .ant-radio-wrapper .ant-radio .ant-radio-inner:hover {
+  border: 1px solid $primaryColor;
+}
+
+.types :global .ant-radio-wrapper .ant-radio .ant-radio-input:hover {
+  border: 1px solid $primaryColor;
+  background-color: white;
+}
+
+.types {
+  display: flex;
+  align-items: start;
+}
+
+.types > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
