@@ -12,6 +12,7 @@ import ThirdChecksContainer from './components/ThirdChecksContainer/ThirdChecksC
 import StepFlowSecond from './components/StepFlowSecond/StepFlowSecond';
 import ThirdStepsContainerBasedCheckboxFirst from './components/ThirdStepsContainerBasedCheckboxFirst/ThirdStepsContainerBasedCheckboxFirst';
 import StepFlowFourth from './components/StepFlowFourth/StepFlowFourth';
+import StepFlowFifth from './components/StepFlowFifth/StepFlowFifth';
 
 const RequestMigration = () => {
   const [stepFlow, setStepFlow] = useState<number>(1);
@@ -29,7 +30,7 @@ const RequestMigration = () => {
     const savedStepFlow: string | undefined = Cookies.get('stepFlow');
     const savedCheckbox: string | undefined = Cookies.get('activeCheckbox');
 
-    if (savedStepFlow) {
+    if (savedStepFlow) {    
       setStepFlow(Number(savedStepFlow));
     }
 
@@ -107,6 +108,11 @@ const RequestMigration = () => {
       {stepFlow == 4 && (
         <>
           <StepFlowFourth />
+        </>
+      )}
+      {stepFlow == 5 && (
+        <>
+          <StepFlowFifth />
         </>
       )}
       <div className={styles.buttonsWrapper}>
