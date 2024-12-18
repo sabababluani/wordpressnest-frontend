@@ -13,6 +13,7 @@ import Dreamhost from './components/Dreamhost/Dreamhost';
 import Bluehost from './components/Bluehost/Bluehost';
 import A2Hosting from './components/A2Hosting/A2Hosting';
 import Vultr from './components/Vultr/Vultr';
+import CloudWays from './components/CloudWays/CloudWays';
 
 const ThirdStepsContainerBasedCheckboxFirst = () => {
   const [selectedValue, setSelectedValue] = useState<string | undefined>(
@@ -35,7 +36,10 @@ const ThirdStepsContainerBasedCheckboxFirst = () => {
           selectedValue === 'bluehost' ||
           selectedValue === 'cloudways' ||
           selectedValue === 'dreamhost' ||
-          selectedValue === 'googlecloud' ? (
+          selectedValue === 'googlecloud' ||
+          selectedValue == 'vultr' ||
+          selectedValue == 'liquidweb' ||
+          selectedValue == 'flywheel' ? (
             <span className={styles.mainCaptionStyle}>Current host</span>
           ) : (
             <span className={styles.mainCaptionStyle}>
@@ -77,6 +81,7 @@ const ThirdStepsContainerBasedCheckboxFirst = () => {
       {selectedValue === 'dreamhost' && <Dreamhost />}
       {selectedValue === 'liquidweb' && <LiquidWeb />}
       {selectedValue === 'vultr' && <Vultr />}
+      {selectedValue == 'cloudways' && <CloudWays />}
     </div>
   );
 };
