@@ -43,10 +43,10 @@
   "lint-staged": {
     "**/*.{js,ts,tsx,jsx}": [
       "eslint --max-warnings=0 --fix",
-      "prettier --check"
+      "prettier --write"
     ],
     "**/*.{scss,css,md,json}": [
-      "prettier --check"
+      "prettier --write"
     ]
   }
 }

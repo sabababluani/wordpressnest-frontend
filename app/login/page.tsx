@@ -8,7 +8,6 @@ import { LoginPropsInterface } from './login-props.interface/login-props.interfa
 import styles from './page.module.scss';
 import Image from 'next/image';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
 import Link from 'next/link';
 import { Checkbox, Select } from 'antd';
 
