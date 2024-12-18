@@ -3,6 +3,7 @@ import styles from './FirstChecksContainer.module.scss';
 import { FirstChecksContainerPropsInterface } from './interfaces/first-checks-container-props.interfaces';
 
 const FirstCheckContainer = (props: FirstChecksContainerPropsInterface) => {
+
   return (
     <>
       {props.activeCheckbox && (
