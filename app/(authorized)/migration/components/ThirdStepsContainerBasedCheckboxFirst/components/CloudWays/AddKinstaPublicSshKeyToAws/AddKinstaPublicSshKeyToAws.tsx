@@ -19,7 +19,7 @@ const AddKinstaPublicSshKeyToAws = () => {
     <div className={styles.mainWrapper}>
       <div className={styles.captionWrapper}>
         <span className={styles.mainCaptionStyle}>
-          Due to additional Cloudways security checks, we recommend adding
+          Due to additional Cloudways security checks, we recommend adding
           Kinsta as a Team member on Cloudways. When providing your username and
           password to login, this will require additional security checks, and
           the migration process can take considerably longer.

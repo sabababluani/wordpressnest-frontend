@@ -15,8 +15,8 @@ const CloudWays = () => {
             'Add Kinsta public SSH key to AWS',
           ]}
           tabContent={[
-            <AddUsWithThisEmailAddress />,
-            <AddKinstaPublicSshKeyToAws />,
+            <AddUsWithThisEmailAddress key="adduswiththisemailaddress" />,
+            <AddKinstaPublicSshKeyToAws key="addkinstapublicsshkeytoaws" />,
           ]}
         />
       </div>

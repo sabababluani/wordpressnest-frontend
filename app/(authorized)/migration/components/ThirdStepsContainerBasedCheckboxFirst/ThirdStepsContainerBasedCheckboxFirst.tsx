@@ -19,12 +19,19 @@ const ThirdStepsContainerBasedCheckboxFirst = () => {
   }, [selectedValue]);
 
   const SelectedComponent = useMemo((): React.ComponentType | null => {
-    const selectedOption = HOSTING_OPTIONS.find((option: HostingOption) => option.value === selectedValue);
+    const selectedOption = HOSTING_OPTIONS.find(
+      (option: HostingOption) => option.value === selectedValue,
+    );
     return selectedOption?.component || null;
   }, [selectedValue]);
 
   const isMigrating = useMemo(() => {
-    return selectedValue && HOSTING_OPTIONS.some((option: HostingOption) => option.value === selectedValue);
+    return (
+      selectedValue &&
+      HOSTING_OPTIONS.some(
+        (option: HostingOption) => option.value === selectedValue,
+      )
+    );
   }, [selectedValue]);
 
   return (
@@ -34,13 +41,17 @@ const ThirdStepsContainerBasedCheckboxFirst = () => {
           {isMigrating ? 'Current host' : 'Migrate from another host'}
         </span>
         <span className={styles.descriptionStyle}>
-          Moving your site from your previous hosting provider to your Hosting account.
+          Moving your site from your previous hosting provider to your Hosting
+          account.
         </span>
       </div>
       <div className={styles.select}>
         <Select
           value={selectedValue}
-          options={HOSTING_OPTIONS.map(({ value, label }: HostingOption) => ({ value, label }))}
+          options={HOSTING_OPTIONS.map(({ value, label }: HostingOption) => ({
+            value,
+            label,
+          }))}
           className={styles.specificSelect}
           placeholder="Select a hosting provider"
           onChange={(value: string) => setSelectedValue(value)}
