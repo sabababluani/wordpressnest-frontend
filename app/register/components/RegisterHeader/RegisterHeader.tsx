@@ -17,14 +17,8 @@ const MainHeader = () => {
         </div>
       </div>
       <div className={styles.buttons}>
-        <Button
-          backgroundColor={buttonbackgroundColorEnum.white}
-          innerContent="Log in"
-        />
-        <Button
-          backgroundColor={buttonbackgroundColorEnum.black}
-          innerContent="Sign up"
-        />
+        <button className={styles.loginButton}>Log in</button>
+        <button className={styles.signupButton}>Sign up</button>
       </div>
     </div>
   );
