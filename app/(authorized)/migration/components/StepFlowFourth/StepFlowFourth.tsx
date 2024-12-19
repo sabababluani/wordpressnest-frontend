@@ -15,7 +15,7 @@ const StepFlowFourth = () => {
   const [isEcommerce, setIsEcommerce] = useState<boolean>(false);
   const [isMultisite, setIsMultisite] = useState<boolean>(false);
   const [isHttps, setIsHttps] = useState<boolean>(false);
-  const [sslOption, setSslOption] = useState<string>('generate');
+  const [sslOption] = useState<string>('generate');
 
   const onCheckboxValueChange = () => {
     setIsActiveCheckbox((prev: boolean) => !prev);
@@ -35,9 +35,9 @@ const StepFlowFourth = () => {
     setIsMultisite((prev: boolean) => !prev);
   const onToggleHttpsChange = () => setIsHttps((prev: boolean) => !prev);
 
-  const handleSslOptionChange = (e: any) => {
-    setSslOption(e.target.value);
-  };
+  // const handleSslOptionChange = (e: any) => {
+  //   setSslOption(e.target.value);
+  // };
 
   return (
     <div className={styles.mainWrapper}>
@@ -237,7 +237,7 @@ const StepFlowFourth = () => {
                       <Radio
                         value="generate"
                         checked={sslOption === 'generate'}
-                        onChange={handleSslOptionChange}
+                        // onChange={handleSslOptionChange}
                       />
                       <div>
                         <span className={styles.generateCaptionStyle}>
@@ -255,7 +255,7 @@ const StepFlowFourth = () => {
                       <Radio
                         value="existing"
                         checked={sslOption === 'existing'}
-                        onChange={handleSslOptionChange}
+                        // onChange={handleSslOptionChange}
                       />
                       <div>
                         <span>Use existing certificate</span>
