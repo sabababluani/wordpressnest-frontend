@@ -1,7 +1,8 @@
+import { InputLabelContainerPropsInterface } from '../../interfaces/Input-label-container-props-interface';
 import InputSequenceLabel from '../InputSequenceLabel/InputSequenceLabel';
 import styles from './InputLabelContainer.module.scss';
 
-const InputLabelContainer = (props: InputLabelContainer) => {
+const InputLabelContainer = (props: InputLabelContainerPropsInterface) => {
   return (
     <div
       className={`${styles.mainWrapper} ${props.withSequence && styles.enhancedGap}`}

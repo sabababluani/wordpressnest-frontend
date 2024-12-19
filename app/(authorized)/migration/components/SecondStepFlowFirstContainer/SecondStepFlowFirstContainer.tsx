@@ -39,7 +39,7 @@ const SecondStepFlowsCheckbox = (
       </div>
       {props.buttonActive && (
         <Button
-          onClick={(e: React.MouseEvent) => {
+          onClick={() => {
             alert('void space yet');
           }}
           buttonActive={

@@ -9,7 +9,7 @@ const CloudWays = () => {
       <div className={styles.tabs}>
         <TabsAnt
           withoutBorder
-          uniqueKey={'ftpsftpssh'}
+          uniqueKey={'cloudways'}
           tabNames={[
             'Add us with this email address',
             'Add Kinsta public SSH key to AWS',

@@ -7,6 +7,9 @@ import Bluehost from '../components/Dreamhost/Dreamhost';
 import FlywheelFields from '../components/FlywheelFields/FlywheelFields';
 import GoogleCloudFields from '../components/GoogleCloudFields/GoogleCloudFields';
 import LiquidWeb from '../components/LiquidWeb/LiquidWeb';
+import Pagali from '../components/Pagali/Pagali';
+import Pantheon from '../components/Pantheon/Pantheon';
+import SiteGround from '../components/SiteGround/SiteGround';
 import Tso from '../components/Tso/Tso';
 import Vultr from '../components/Vultr/Vultr';
 import { HostingOption } from '../interfaces/hostingOptions-interface';
@@ -23,4 +26,7 @@ export const HOSTING_OPTIONS: HostingOption[] = [
   { value: 'liquidweb', label: 'Liquid Web', component: LiquidWeb },
   { value: 'vultr', label: 'Vultr', component: Vultr },
   { value: 'tsp', label: 'Tso', component: Tso },
+  { value: 'pagali', label: 'Pagali', component: Pagali },
+  { value: 'pantheon', label: 'Pantheon', component: Pantheon },
+  { value: 'siteground', label: ' SiteGround', component: SiteGround },
 ];

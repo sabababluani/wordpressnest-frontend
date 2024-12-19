@@ -1,4 +1,4 @@
-interface InputLabelContainer {
+export interface InputLabelContainerPropsInterface {
   mainCaption: string;
   mainSecondCaption?: string;
   lastMainCaptionActive?: boolean;
