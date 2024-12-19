@@ -1,9 +1,16 @@
-export interface NavigationPropsInterface {
+export interface SiteInterface {
   id: number;
   siteTitle: string;
-  data: string;
+  podName: string;
+  nameSpace: string;
+  phpVersion: string;
+  port: number;
 }
 
-// export interface SiteIconPropsInterface {
-//   data: string;
-// }
+export interface UserInterface {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  setup: SiteInterface[];
+}

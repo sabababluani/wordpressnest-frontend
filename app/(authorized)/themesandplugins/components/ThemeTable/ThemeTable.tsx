@@ -1,36 +1,37 @@
 'use client';
 
 import React, { useState } from 'react';
-import useSWR, { mutate } from 'swr';
 import { Table, TableColumnsType } from 'antd';
 import { useParams } from 'next/navigation';
-import BaseApi from '@/app/api/BaseApi';
 import styles from '@/app/(authorized)/domains/components/DomainsTable/DomainsTable.module.scss';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import Search from '@/app/components/Search/Search';
 import { ThemesTablePropsInterface } from './interfaces/theme-table.interfaces';
-
-const fetcher = (url: string) =>
-  BaseApi.get(url).then((response) => response.data);
+import { useGetData } from '@/app/hooks/useGetData';
+import { patchData, updateData } from '@/app/api/crudService';
 
 const ThemeTable: React.FC = () => {
   const { id } = useParams();
   const [searchValue, setSearchValue] = useState('');
 
-  const { data: themes } = useSWR<ThemesTablePropsInterface[]>(
-    `wp-cli/theme/${id}/?search=${searchValue}`,
-    fetcher,
-  );
+  const {
+    data: themes,
+    mutate,
+    isLoading,
+  } = useGetData<ThemesTablePropsInterface[]>({
+    endpoint: `wp-cli/theme/${id}`,
+    queryParams: { search: searchValue },
+  });
 
   const handleReload = () => {
-    mutate(`wp-cli/theme/${id}/?search=${searchValue}`);
+    mutate();
   };
 
   const onHandleUpdate = async (themeName: string) => {
     try {
-      await BaseApi.put(`wp-cli/theme/update/${id}?theme=${themeName}`);
-      mutate(`wp-cli/theme/${id}/?search=${searchValue}`);
+      await updateData(`wp-cli/theme/${id}`, themeName, { theme: themeName });
+      mutate();
     } catch (error) {
       alert(error);
     }
@@ -38,11 +39,8 @@ const ThemeTable: React.FC = () => {
 
   const onHandleActive = async (themeName: string) => {
     try {
-      await BaseApi.patch(`wp-cli/theme/activate/${id}`, {
-        theme: themeName,
-      });
-
-      mutate(`wp-cli/theme/${id}/?search=${searchValue}`);
+      await patchData(`wp-cli/theme`, +id, { theme: themeName });
+      mutate();
     } catch (error) {
       console.log(error);
     }
@@ -158,7 +156,7 @@ const ThemeTable: React.FC = () => {
         rowSelection={{ type: 'checkbox' }}
         pagination={false}
         scroll={{ x: 'max-content' }}
-        loading={themes === undefined}
+        loading={isLoading}
       />
     </div>
   );

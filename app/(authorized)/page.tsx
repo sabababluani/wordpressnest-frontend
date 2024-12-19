@@ -3,14 +3,14 @@
 import styles from './page.module.scss';
 import DashboardStat from '@/app/components/DashboardStat/DashboardStat';
 import WordpressStat from '@/app/components/WordpressStat/WordpressStat';
-import { NavigationPropsInterface } from '../components/Navigation/interfaces/navigation.props.interface';
+import { SiteInterface } from '../components/Navigation/interfaces/navigation.props.interface';
 import BaseApi from '../api/BaseApi';
 import useSWR from 'swr';
 
 const Home = () => {
   const fetcher = (url: string) =>
     BaseApi.get(url).then((response) => response.data);
-  const { data: sitesData } = useSWR<NavigationPropsInterface[]>(
+  const { data: sitesData } = useSWR<SiteInterface[]>(
     '/setup/wordpress',
     fetcher,
   );
