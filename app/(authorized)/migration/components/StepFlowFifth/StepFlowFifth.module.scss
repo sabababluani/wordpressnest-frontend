@@ -7,6 +7,10 @@
     flex-direction: column;
     gap: 10px;
     align-items: flex-start;
+    margin-top: 24px;
+    border: 2px solid $borderColor;
+    border-radius: 12px;
+    padding: 16px 24px 64px;
 }
 
 .enhancedHeight {
