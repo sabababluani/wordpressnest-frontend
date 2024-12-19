@@ -3,6 +3,8 @@
 
 .wrapper {
   cursor: pointer;
+  padding: 2px;
+  border-radius: 8px;
 }
 
 .container {
@@ -26,9 +28,11 @@
   font-weight: 600;
   line-height: 18px;
 }
+
 .name {
   text-wrap: nowrap;
 }
+
 .logout {
   position: fixed;
   right: 24px;
