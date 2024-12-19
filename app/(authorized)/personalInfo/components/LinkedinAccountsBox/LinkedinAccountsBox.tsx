@@ -14,17 +14,28 @@ const LinkedinAccountsBox = () => {
           We use this to left you sign in and populate your profile information
         </p>
         <div className={styles.githubContainer}>
-          <Image src={'/github.svg'} alt="github" width={48} height={48} />
+          <div className={styles.authWrapper}>
+            <Image src={'/github.svg'} alt="github" width={48} height={48} />
+            <span>GitHub</span>
+          </div>
           <Button
             backgroundColor={buttonbackgroundColorEnum.white}
             innerContent="Connect"
           />
         </div>
         <div className={styles.gitLabContainer}>
-          <Image src={'/gitlab.svg'} alt="github" width={48} height={48} />
+          <div className={styles.authWrapper}>
+            <Image
+              src={'/icons/google.svg'}
+              alt="google"
+              width={48}
+              height={48}
+            />
+            <span>Google</span>
+          </div>
           <Button
             backgroundColor={buttonbackgroundColorEnum.white}
-            innerContent="Connect"
+            innerContent="Revoke"
           />
         </div>
       </div>

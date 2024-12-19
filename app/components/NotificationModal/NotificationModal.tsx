@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import styles from './NotificationModal.module.scss';
 import { NotificationModalPropsInterface } from './interfaces/notification-modal-props.interface';
+import Link from 'next/link';
 
 const NotificationModal = ({
   onClose,
@@ -94,12 +95,15 @@ const NotificationModal = ({
             }}
           />
         </div>
-        <Image
-          src={'/icons/notificationSettings.svg'}
-          alt="settings"
-          width={24}
-          height={24}
-        />
+        <Link href={'/notifications'}>
+          <Image
+            src={'/icons/notificationSettings.svg'}
+            alt="settings"
+            width={24}
+            height={24}
+            onClick={onClose}
+          />
+        </Link>
       </div>
     </div>
   );

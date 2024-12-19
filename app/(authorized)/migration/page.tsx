@@ -17,7 +17,7 @@ import StepFlowSix from './components/StepFlowSix/StepFlowSix';
 
 const RequestMigration = (): JSX.Element | null => {
   const [stepFlow, setStepFlow] = useState<number>(1);
-  const [activeCheckbox, setActiveCheckbox] = useState<number | null>(null);
+  const [activeCheckbox, setActiveCheckbox] = useState<number>(1);
   const [time, setTime] = useState<string>('');
   const [, setDate] = useState<string>('');
   const [, setTimezone] = useState<string>('');

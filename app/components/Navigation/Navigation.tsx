@@ -34,7 +34,10 @@ const Navigation = (): JSX.Element => {
       setActiveSite(Number(storedSite));
     }
 
-    if (pathname.includes('/personalInfo')) {
+    if (
+      pathname.includes('/personalInfo') ||
+      pathname.includes('/notifications')
+    ) {
       setActiveStaticComponent(1);
     }
 
