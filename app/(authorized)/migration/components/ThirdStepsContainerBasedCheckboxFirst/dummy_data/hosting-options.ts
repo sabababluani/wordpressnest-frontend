@@ -9,6 +9,7 @@ import GoogleCloudFields from '../components/GoogleCloudFields/GoogleCloudFields
 import LiquidWeb from '../components/LiquidWeb/LiquidWeb';
 import Pagali from '../components/Pagali/Pagali';
 import Pantheon from '../components/Pantheon/Pantheon';
+import Savvii from '../components/Savvii/Savvii';
 import SiteGround from '../components/SiteGround/SiteGround';
 import Tso from '../components/Tso/Tso';
 import Vultr from '../components/Vultr/Vultr';
@@ -29,4 +30,5 @@ export const HOSTING_OPTIONS: HostingOption[] = [
   { value: 'pagali', label: 'Pagali', component: Pagali },
   { value: 'pantheon', label: 'Pantheon', component: Pantheon },
   { value: 'siteground', label: ' SiteGround', component: SiteGround },
+  { value: 'savvii', label: ' Savvii', component: Savvii },
 ];
