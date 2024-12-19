@@ -1,0 +1,68 @@
+@import '../../../../../../styles/colors.scss';
+@import '../../../../../../styles/text-colors.scss';
+
+.mainWrapper {
+  width: 100%;
+  border: 1px solid $borderColor;
+  border-radius: 12px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.enhancedGap {
+  gap: 13px;
+}
+
+.mainCaptionStyle {
+  color: $primaryColor;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.secondMainCaption {
+  color: $secondaryTextColor;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.lastMainCaptionStyle {
+  color: $primaryColor;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.sequenceWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lastSequence {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.topCaptionStyle {
+  color: $secondaryTextColor;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.bottomCaptionStyle {
+  color: $primaryColor;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+}
