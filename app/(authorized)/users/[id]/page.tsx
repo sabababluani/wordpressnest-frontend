@@ -40,7 +40,7 @@ const Users = (): JSX.Element => {
 
   const onUserDelete = async (userId: number) => {
     try {
-      await deleteData(`wp-cli/wpuser/${id}`, userId);
+      await deleteData(`wp-cli/wpuser`, userId, { userId: userId });
       mutate();
     } catch (error) {
       console.log(error);
@@ -101,10 +101,6 @@ const Users = (): JSX.Element => {
     setIsModalOpen(true);
   };
 
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
   const handleCancel = () => {
     setIsModalOpen(false);
   };
@@ -156,10 +152,10 @@ const Users = (): JSX.Element => {
           />
           <Modal
             open={isEditModalOpen}
+            onCancel={() => setIsEditModalOpen(false)}
             footer={null}
             closable={false}
-            width="auto"
-            centered
+            width={666}
           >
             {selectedUser && (
               <EditModal user={selectedUser} onClose={handleCancelEdit} />
@@ -170,12 +166,10 @@ const Users = (): JSX.Element => {
       <div className={styles.modal}>
         <Modal
           open={isModalOpen}
-          onOk={handleOk}
-          onCancel={handleCancel}
+          onCancel={() => setIsModalOpen(false)}
           footer={null}
           closable={false}
-          width="auto"
-          centered
+          width={666}
         >
           <UsersModal onClose={handleCancel} />
         </Modal>

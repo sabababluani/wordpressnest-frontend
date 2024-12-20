@@ -65,13 +65,15 @@ export const patchData = async <T>(
  * Delete Request
  * @param endpoint API endpoint
  * @param id ID of the item to delete
+ * @param payload Optional data to be sent in the body of the request
  */
-export const deleteData = async (
+export const deleteData = async <T>(
   endpoint: string,
   id: string | number,
+  payload?: T,
 ): Promise<void> => {
   try {
-    await BaseApi.delete(`${endpoint}/${id}`);
+    await BaseApi.delete(`${endpoint}/${id}`, { data: payload });
   } catch (error: unknown) {
     const errorMessage =
       error instanceof Error ? error.message : 'Failed to delete data';

@@ -7,11 +7,10 @@ import { usePathname } from 'next/navigation';
 import styles from './Navigation.module.scss';
 import NavigationLine from './components/NavigationLine/NavigationLine';
 import { UserInterface } from './interfaces/navigation.props.interface';
-import BaseApi from '@/app/api/BaseApi';
-import useSWR from 'swr';
 import UsersSettingsLine from './components/UsersSettingsLine/UsersSettingsLine';
 import CompanySettingsLine from './components/CompanySettingsLine/CompanySettingsLine';
 import { allowedPaths } from './utils/pathnames';
+import { useGetData } from '@/app/hooks/useGetData';
 
 const Navigation = (): JSX.Element => {
   const pathname = usePathname();
@@ -20,10 +19,9 @@ const Navigation = (): JSX.Element => {
     number | null
   >(null);
 
-  const fetcher = (url: string) =>
-    BaseApi.get(url).then((response) => response.data);
-
-  const { data: sitesData } = useSWR<UserInterface>('user/me', fetcher);
+  const { data: sitesData } = useGetData<UserInterface>({
+    endpoint: 'user/me',
+  });
 
   useEffect(() => {
     const storedSite = sessionStorage.getItem('activeSite');

@@ -3,12 +3,13 @@ import Image from 'next/image';
 import styles from './EditModal.module.scss';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
-import useSWR, { mutate } from 'swr';
-import BaseApi from '@/app/api/BaseApi';
+import { useParams } from 'next/navigation';
+import { Select } from 'antd';
 import { UsersModalPropsInterface } from '../interfaces/modal.props.interface';
 import { UsersTablePropsInterface } from '../interfaces/users-table-props.interface';
-import { Select } from 'antd';
-import { useParams } from 'next/navigation';
+import { patchData } from '@/app/api/crudService';
+import { useGetData } from '@/app/hooks/useGetData';
+import { mutate } from 'swr';
 
 const EditModal = (
   props: UsersModalPropsInterface & {
@@ -18,10 +19,9 @@ const EditModal = (
   const { id } = useParams();
   const [selectedRole, setSelectedRole] = useState<string>(props.user.roles);
 
-  const fetcher = (url: string) =>
-    BaseApi.get(url).then((response) => response.data);
-
-  const { data: roles } = useSWR(id ? `wp-cli/wprole/${id}` : null, fetcher);
+  const { data: roles } = useGetData<{ name: string }[]>({
+    endpoint: `wp-cli/wprole/${id}`,
+  });
 
   useEffect(() => {
     setSelectedRole(props.user.roles);
@@ -31,7 +31,7 @@ const EditModal = (
     roles
       ?.filter(
         (role: { name: string }) =>
-          role.name.toLowerCase() !== props.user.roles.toLocaleLowerCase(),
+          role.name.toLowerCase() !== props.user.roles.toLowerCase(),
       )
       .map((role: { name: string }) => ({
         label: role.name,
@@ -40,17 +40,16 @@ const EditModal = (
 
   const onHandleUpdate = async () => {
     try {
-      await BaseApi.put(
-        `wp-cli/wprole/${id}/${
-          props.user.ID
-        }?role=${selectedRole.toLocaleLowerCase()}`,
-      );
+      await patchData('wp-cli/wprole', +id, {
+        userId: props.user.ID,
+        role: selectedRole.toLowerCase(),
+      });
 
       mutate(`wp-cli/wpuser/${id}`);
 
       props.onClose();
     } catch (error) {
-      console.log(error);
+      console.error('Error updating role:', error);
     }
   };
 

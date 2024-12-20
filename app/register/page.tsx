@@ -61,12 +61,12 @@ const Register = () => {
                 </div>
                 <div className={styles.passport}>
                   <Image
-                    src={'/icons/gitlab.svg'}
+                    src={'/icons/google.svg'}
                     alt="github"
                     width={24}
                     height={24}
                   />
-                  <span className={styles.buttonInner}>GitHub</span>
+                  <span className={styles.buttonInner}>Google</span>
                 </div>
               </div>
             </div>

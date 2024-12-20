@@ -27,3 +27,35 @@
   gap: 32px;
   justify-content: center;
 }
+
+.userContainer {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.userInfoWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.userEmail {
+  color: #707276;
+  line-height: 24px;
+}
+
+.userName {
+  color: $primaryTextColor;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.actionbuttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.actionbuttons img {
+  cursor: pointer;
+}
