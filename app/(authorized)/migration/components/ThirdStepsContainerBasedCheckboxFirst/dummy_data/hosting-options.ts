@@ -6,6 +6,7 @@ import Dreamhost from '../components/Dreamhost/Dreamhost';
 import Bluehost from '../components/Dreamhost/Dreamhost';
 import FlywheelFields from '../components/FlywheelFields/FlywheelFields';
 import GoogleCloudFields from '../components/GoogleCloudFields/GoogleCloudFields';
+import Ionos from '../components/Ionos/Ionos';
 import LiquidWeb from '../components/LiquidWeb/LiquidWeb';
 import Pagali from '../components/Pagali/Pagali';
 import Pantheon from '../components/Pantheon/Pantheon';
@@ -31,4 +32,5 @@ export const HOSTING_OPTIONS: HostingOption[] = [
   { value: 'pantheon', label: 'Pantheon', component: Pantheon },
   { value: 'siteground', label: ' SiteGround', component: SiteGround },
   { value: 'savvii', label: ' Savvii', component: Savvii },
+  { value: 'Ionos', label: 'Ionos', component: Ionos}
 ];
