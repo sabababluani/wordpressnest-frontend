@@ -15,7 +15,7 @@ const Caching = (): JSX.Element => {
         <span className={styles.mainCaptionStyle}>Caching</span>
         <Button
           backgroundColor={buttonbackgroundColorEnum.grey}
-          innerContent="Disable"
+          innerContent="Change cache expiration"
         />
       </div>
       <div>

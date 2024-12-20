@@ -46,7 +46,7 @@ const Header = (): JSX.Element => {
           control
         />
         <NotificationBell />
-        <Profile name="Beka Jikurishvili" />
+        <Profile name="Jigaro Jigaroshvili" />
       </div>
       {isModalVisible && (
         <Modal
