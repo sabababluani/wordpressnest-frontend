@@ -1,0 +1,48 @@
+@import '../../../../../../styles/colors.scss';
+@import '../../../../../../styles/text-colors.scss';
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.mainCaptionStyle {
+    display: block;
+    color: $secondaryTextColor;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    margin-top: 14px;
+}
+
+.wrapper {
+    max-width: 750px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.inputStyle {
+    display: flex;
+    gap: 24px;
+}
+
+.inputsLabelStyle {
+    color: $primaryColor;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.inputContainer {
+    max-width: 750px;
+    width: 100%;
+    height: 44px;
+    padding: 12px 14px;
+    border: 1px solid $borderColor;
+    border-radius: 12px;
+}
