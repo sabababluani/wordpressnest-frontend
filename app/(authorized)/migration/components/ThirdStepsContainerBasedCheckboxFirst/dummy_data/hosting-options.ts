@@ -32,5 +32,5 @@ export const HOSTING_OPTIONS: HostingOption[] = [
   { value: 'pantheon', label: 'Pantheon', component: Pantheon },
   { value: 'siteground', label: ' SiteGround', component: SiteGround },
   { value: 'savvii', label: ' Savvii', component: Savvii },
-  { value: 'Ionos', label: 'Ionos', component: Ionos}
+  { value: 'Ionos', label: 'Ionos', component: Ionos },
 ];

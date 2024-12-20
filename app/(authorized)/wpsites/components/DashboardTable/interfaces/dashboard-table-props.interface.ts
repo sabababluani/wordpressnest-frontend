@@ -1,12 +1,13 @@
 import React from 'react';
+import { SetupTablePropsInterface } from './setup-table-props.interface';
 
 export interface DashboardTablePropsInterface {
   key: React.Key;
-  siteTitle: string;
   status: string;
   visit: string;
   bandwidth: string;
   diskUsage: string;
-  phpVersion: string;
-  version: string;
+  wpVersion: string;
+  setup?: SetupTablePropsInterface[];
+  id: number;
 }
