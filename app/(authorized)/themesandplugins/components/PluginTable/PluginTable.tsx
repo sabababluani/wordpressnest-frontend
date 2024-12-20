@@ -3,32 +3,35 @@
 import React, { useState } from 'react';
 import { Table, TableColumnsType } from 'antd';
 import { useParams } from 'next/navigation';
-import useSWR, { mutate } from 'swr';
-import BaseApi from '@/app/api/BaseApi';
+import { updateData, patchData } from '@/app/api/crudService';
 import styles from '@/app/(authorized)/domains/components/DomainsTable/DomainsTable.module.scss';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { PluginDataPropsInterface } from './interfaces/plugin-table.interfaces';
 import Search from '@/app/components/Search/Search';
-
-const fetcher = (url: string) =>
-  BaseApi.get(url).then((response) => response.data);
+import { useGetData } from '@/app/hooks/useGetData';
 
 const PluginTable = () => {
   const { id } = useParams();
-
+  const numberId = +id;
   const [selectionType] = useState<'checkbox'>('checkbox');
   const [searchValue, setSearchValue] = useState('');
 
-  const { data: plugins } = useSWR<PluginDataPropsInterface[]>(
-    `wp-cli/plugin/${id}/?search=${searchValue}`,
-    fetcher,
-  );
+  const {
+    data: plugins,
+    isLoading,
+    mutate,
+  } = useGetData<PluginDataPropsInterface[]>({
+    endpoint: `wp-cli/plugin/${id}`,
+    queryParams: { search: searchValue },
+  });
 
   const onHandleUpdate = async (pluginName: string) => {
     try {
-      await BaseApi.put(`wp-cli/plugin/update/${id}?plugin=${pluginName}`);
-      mutate(`wp-cli/plugin/${id}?search=${searchValue}`);
+      await updateData(`wp-cli/plugin/enable`, numberId, {
+        plugin: pluginName,
+      });
+      mutate();
     } catch (error) {
       console.log(error);
     }
@@ -36,8 +39,10 @@ const PluginTable = () => {
 
   const onHandleActive = async (pluginName: string) => {
     try {
-      await BaseApi.patch(`wp-cli/plugin/activate/${id}?plugin=${pluginName}`);
-      mutate(`wp-cli/plugin/${id}/?search=${searchValue}`);
+      await patchData(`wp-cli/plugin/enable`, numberId, {
+        plugin: pluginName,
+      });
+      mutate();
     } catch (error) {
       console.log(error);
     }
@@ -45,17 +50,17 @@ const PluginTable = () => {
 
   const onHandleDeactivate = async (pluginName: string) => {
     try {
-      await BaseApi.patch(
-        `wp-cli/plugin/deactivate/${id}?plugin=${pluginName}`,
-      );
-      mutate(`wp-cli/plugin/${id}/?search=${searchValue}`);
+      await patchData(`wp-cli/plugin/disable`, numberId, {
+        plugin: pluginName,
+      });
+      mutate();
     } catch (error) {
       console.log(error);
     }
   };
 
   const handleReload = () => {
-    mutate(`wp-cli/plugin/${id}/?search=${searchValue}`);
+    mutate();
   };
 
   const columns: TableColumnsType<PluginDataPropsInterface> = [
@@ -171,7 +176,7 @@ const PluginTable = () => {
         pagination={false}
         scroll={{ x: 'max-content' }}
         rowKey={(record) => record.name}
-        loading={plugins === undefined}
+        loading={isLoading}
       />
     </div>
   );

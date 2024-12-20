@@ -6,12 +6,11 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './Navigation.module.scss';
 import NavigationLine from './components/NavigationLine/NavigationLine';
-import { NavigationPropsInterface } from './interfaces/navigation.props.interface';
-import BaseApi from '@/app/api/BaseApi';
-import useSWR from 'swr';
+import { UserInterface } from './interfaces/navigation.props.interface';
 import UsersSettingsLine from './components/UsersSettingsLine/UsersSettingsLine';
 import CompanySettingsLine from './components/CompanySettingsLine/CompanySettingsLine';
 import { allowedPaths } from './utils/pathnames';
+import { useGetData } from '@/app/hooks/useGetData';
 
 const Navigation = (): JSX.Element => {
   const pathname = usePathname();
@@ -20,13 +19,9 @@ const Navigation = (): JSX.Element => {
     number | null
   >(null);
 
-  const fetcher = (url: string) =>
-    BaseApi.get(url).then((response) => response.data);
-
-  const { data: sitesData } = useSWR<NavigationPropsInterface[]>(
-    '/setup/wordpress',
-    fetcher,
-  );
+  const { data: sitesData } = useGetData<UserInterface>({
+    endpoint: 'user/me',
+  });
 
   useEffect(() => {
     const storedSite = sessionStorage.getItem('activeSite');
@@ -76,9 +71,7 @@ const Navigation = (): JSX.Element => {
       <div className={styles.containerWrapper}>
         <Link
           href="/"
-          className={`${styles.container} ${
-            pathname === '/' ? styles.containerActive : ''
-          }`}
+          className={`${styles.container} ${pathname === '/' ? styles.containerActive : ''}`}
         >
           <Image
             src={
@@ -94,9 +87,7 @@ const Navigation = (): JSX.Element => {
         </Link>
         <Link
           href="/wpsites"
-          className={`${styles.container} ${
-            pathname.includes('/wpsites') ? styles.containerActive : ''
-          }`}
+          className={`${styles.container} ${pathname.includes('/wpsites') ? styles.containerActive : ''}`}
         >
           <Image
             src={
@@ -115,9 +106,7 @@ const Navigation = (): JSX.Element => {
             <div className={styles.sitesWrapper}>
               <div key={2}>
                 <div
-                  className={`${styles.container} ${
-                    activeStaticComponent === 1 ? styles.sitesActive : ''
-                  }`}
+                  className={`${styles.container} ${activeStaticComponent === 1 ? styles.sitesActive : ''}`}
                   onClick={() => onStaticComponentClick(1)}
                 >
                   <Image
@@ -138,9 +127,7 @@ const Navigation = (): JSX.Element => {
             <div className={styles.sitesWrapper}>
               <div key={3}>
                 <div
-                  className={`${styles.container} ${
-                    activeStaticComponent === 2 ? styles.sitesActive : ''
-                  }`}
+                  className={`${styles.container} ${activeStaticComponent === 2 ? styles.sitesActive : ''}`}
                   onClick={() => onStaticComponentClick(2)}
                 >
                   <Image
@@ -164,12 +151,10 @@ const Navigation = (): JSX.Element => {
       <div className={styles.sitesContainer}>
         <span>Sites</span>
         <div className={styles.sitesWrapper}>
-          {sitesData?.map((site) => (
+          {sitesData?.setup.map((site) => (
             <div key={site.id}>
               <div
-                className={`${styles.sites} ${
-                  activeSite === site.id ? styles.sitesActive : ''
-                }`}
+                className={`${styles.sites} ${activeSite === site.id ? styles.sitesActive : ''}`}
                 onClick={() => onSiteClick(site.id)}
               >
                 <span>{site.siteTitle}.com</span>
