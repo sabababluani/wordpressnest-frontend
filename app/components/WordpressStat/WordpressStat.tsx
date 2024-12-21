@@ -3,7 +3,7 @@ import Link from 'next/link';
 import styles from './WordpressStat.module.scss';
 import { WordpressStatPropsInterface } from './interfaces/wordpress-stat-props.interface';
 
-const WordpressStat = (props: WordpressStatPropsInterface): JSX.Element => {
+const WordpressStat:(props: WordpressStatPropsInterface) => JSX.Element = (props: WordpressStatPropsInterface): JSX.Element => {
   return (
     <div className={styles.containerWrapper}>
       <div className={styles.topContainer}>
@@ -23,7 +23,6 @@ const WordpressStat = (props: WordpressStatPropsInterface): JSX.Element => {
       <div className={styles.bottomContainer}>
         <div className={styles.progressBarWrapper}>
           <Image src={'/chart.png'} alt={'chart'} width={170} height={100} />
-          {/* charts left */}
         </div>
         <div className={styles.dateAndDiskWrapper}>
           {props.thisMonthActive && (

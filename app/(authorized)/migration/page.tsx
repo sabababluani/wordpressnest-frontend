@@ -15,14 +15,14 @@ import StepFlowFourth from './components/StepFlowFourth/StepFlowFourth';
 import StepFlowFifth from './components/StepFlowFifth/StepFlowFifth';
 import StepFlowSix from './components/StepFlowSix/StepFlowSix';
 
-const RequestMigration = (): JSX.Element | null => {
-  const [stepFlow, setStepFlow] = useState<number>(() => {
-    const savedStepFlow = Cookies.get('stepFlow');
+const RequestMigration: () => JSX.Element | null = (): JSX.Element | null => {
+  const [stepFlow, setStepFlow] = useState<number>((): number => {
+    const savedStepFlow: string | undefined = Cookies.get('stepFlow');
     return savedStepFlow ? Number(savedStepFlow) : 1;
   });
 
-  const [activeCheckbox, setActiveCheckbox] = useState<number>(() => {
-    const savedCheckbox = Cookies.get('activeCheckbox');
+  const [activeCheckbox, setActiveCheckbox] = useState<number>((): number => {
+    const savedCheckbox: string | undefined = Cookies.get('activeCheckbox');
     return savedCheckbox ? Number(savedCheckbox) : 1;
   });
 
@@ -31,26 +31,26 @@ const RequestMigration = (): JSX.Element | null => {
   const [, setDate] = useState<string>('');
   const [, setTimezone] = useState<string>('');
 
-  useEffect(() => {
+  useEffect((): void => {
     setIsClient(true);
   }, []);
 
-  useEffect(() => {
+  useEffect((): void => {
     if (isClient) {
       Cookies.set('stepFlow', stepFlow.toString(), { expires: 1 });
       Cookies.set('activeCheckbox', activeCheckbox.toString(), { expires: 1 });
     }
   }, [stepFlow, activeCheckbox, isClient]);
 
-  const onNextButtonClick = (): void => {
-    setStepFlow((prev: number) => Math.min(prev + 1, 7));
+  const onNextButtonClick: () => void = (): void => {
+    setStepFlow((prev: number): number => Math.min(prev + 1, 7));
   };
 
-  const onBackButtonClick = (): void => { 
-    setStepFlow((prev: number) => Math.max(prev - 1, 1));
+  const onBackButtonClick: () => void = (): void => {
+    setStepFlow((prev: number): number => Math.max(prev - 1, 1));
   };
 
-  const renderStepFlowContent = () => {
+  const renderStepFlowContent: () => false | JSX.Element | null = (): false | JSX.Element | null => {
     switch (stepFlow) {
       case 1:
         return (
@@ -76,7 +76,9 @@ const RequestMigration = (): JSX.Element | null => {
       case 2:
         return (
           <StepFlowSecond
-            activedCheckboxNum={(index: number | undefined) =>
+            activedCheckboxNum={(
+              index: number | undefined,
+            ): string | undefined =>
               Cookies.set(
                 'SecondStepsSpecificCheckbox',
                 index ? index.toString() : JSON.stringify(undefined),

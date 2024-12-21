@@ -6,10 +6,11 @@ import WordpressStat from '@/app/components/WordpressStat/WordpressStat';
 import { SiteInterface } from '../components/Navigation/interfaces/navigation.props.interface';
 import BaseApi from '../api/BaseApi';
 import useSWR from 'swr';
+import { AxiosResponse } from "axios";
 
-const Home = () => {
-  const fetcher = (url: string) =>
-    BaseApi.get(url).then((response) => response.data);
+const Home: () => JSX.Element = (): JSX.Element => {
+  const fetcher: (url: string) => Promise<any> = (url: string) =>
+    BaseApi.get(url).then((response: AxiosResponse<any, any>) => response.data);
   const { data: sitesData } = useSWR<SiteInterface[]>(
     '/setup/wordpress',
     fetcher,
