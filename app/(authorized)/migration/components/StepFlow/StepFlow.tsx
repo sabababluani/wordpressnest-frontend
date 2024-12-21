@@ -4,78 +4,44 @@ import styles from './StepFlow.module.scss';
 const StepFlow = (props: StepFlowPropsInterface) => {
   return (
     <div className={styles.mainContainer}>
-      <div className={styles.stepWrapper}>
-        <span className={styles.captionStyle}>Introduction</span>
-        <div className={styles.stepIconWrapper}>
-          <div className={`${styles.circleStyle} ${styles.activeStyle}`}></div>
-          <div className={`${styles.lineStyle} ${styles.activeStyle}`}></div>
-        </div>
-      </div>
-      <div className={styles.stepWrapper}>
-        <span className={styles.captionStyle}>Set migration source</span>
-        <div
-          className={`${styles.stepIconWrapper} ${props.stepNum > 1 ? styles.ActiveFontColor : styles.inActiveFontColor}`}
-        >
-          <div
-            className={`${styles.circleStyle} ${props.stepNum > 1 ? styles.activeStyle : styles.inActiveStyle}`}
-          ></div>
-          <div
-            className={`${styles.lineStyle} ${props.stepNum > 1 ? styles.activeStyle : styles.inActiveStyle}`}
-          ></div>
-        </div>
-      </div>
-      <div className={styles.stepWrapper}>
-        <span className={styles.captionStyle}>Source details</span>
-        <div
-          className={`${styles.stepIconWrapper} ${props.stepNum > 2 ? styles.ActiveFontColor : styles.inActiveFontColor}`}
-        >
-          <div
-            className={`${styles.circleStyle} ${props.stepNum > 2 ? styles.activeStyle : styles.inActiveStyle}`}
-          ></div>
-          <div
-            className={`${styles.lineStyle} ${props.stepNum > 2 ? styles.activeStyle : styles.inActiveStyle}`}
-          ></div>
-        </div>
-      </div>
-      <div className={styles.stepWrapper}>
-        <span className={styles.captionStyle}>Site details</span>
-        <div
-          className={`${styles.stepIconWrapper} ${props.stepNum > 3 ? styles.ActiveFontColor : styles.inActiveFontColor}`}
-        >
-          <div
-            className={`${styles.circleStyle} ${props.stepNum > 3 ? styles.activeStyle : styles.inActiveStyle}`}
-          ></div>
-          <div
-            className={`${styles.lineStyle} ${props.stepNum > 3 ? styles.activeStyle : styles.inActiveStyle}`}
-          ></div>
-        </div>
-      </div>
-      <div className={styles.stepWrapper}>
-        <span className={styles.captionStyle}>Our settings</span>
-        <div
-          className={`${styles.stepIconWrapper} ${props.stepNum > 4 ? styles.ActiveFontColor : styles.inActiveFontColor}`}
-        >
-          <div
-            className={`${styles.circleStyle} ${props.stepNum > 4 ? styles.activeStyle : styles.inActiveStyle}`}
-          ></div>
-          <div
-            className={`${styles.lineStyle} ${props.stepNum > 4 ? styles.activeStyle : styles.inActiveStyle}`}
-          ></div>
-        </div>
-      </div>
-      <div className={styles.stepWrapper}>
-        <span className={styles.captionStyle}>Review & submit</span>
-        <div
-          className={`${styles.stepIconWrapper} ${props.stepNum > 5 ? styles.ActiveFontColor : styles.inActiveFontColor}`}
-        >
-          <div
-            className={`${styles.circleStyle} ${props.stepNum > 5 ? styles.activeStyle : styles.inActiveStyle}`}
-          ></div>
-          <div
-            className={`${styles.lineStyle} ${props.stepNum > 5 ? styles.activeStyle : styles.inActiveStyle}`}
-          ></div>
-        </div>
-      </div>
+      {[
+        "Introduction",
+        "Set migration source",
+        "Source details",
+        "Site details",
+        "Our settings",
+        "Review & submit",
+      ].map((caption: string, index: number) => {
+        const isActive = props.stepNum === index + 1;
+        const isPastStep = props.stepNum > index + 1;
+        const stepClass = isActive
+          ? styles.activeStep
+          : isPastStep
+          ? styles.completedStep
+          : styles.inactiveStep;
+
+        return (
+          <div key={index} className={`${styles.stepWrapper} ${stepClass}`}>
+            <span className={styles.captionStyle}>{caption}</span>
+            <div
+              className={`${styles.stepIconWrapper} ${
+                isActive ? styles.ActiveFontColor : styles.inActiveFontColor
+              }`}
+            >
+              <div
+                className={`${styles.circleStyle} ${
+                  isPastStep ? styles.activeStyle : styles.inActiveStyle
+                }`}
+              ></div>
+              <div
+                className={`${styles.lineStyle} ${
+                  isPastStep ? styles.activeStyle : styles.inActiveStyle
+                }`}
+              ></div>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };

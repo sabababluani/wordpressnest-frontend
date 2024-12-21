@@ -16,47 +16,90 @@ import StepFlowFifth from './components/StepFlowFifth/StepFlowFifth';
 import StepFlowSix from './components/StepFlowSix/StepFlowSix';
 
 const RequestMigration = (): JSX.Element | null => {
-  const [stepFlow, setStepFlow] = useState<number>(1);
-  const [activeCheckbox, setActiveCheckbox] = useState<number>(1);
+  const [stepFlow, setStepFlow] = useState<number>(() => {
+    const savedStepFlow = Cookies.get('stepFlow');
+    return savedStepFlow ? Number(savedStepFlow) : 1;
+  });
+
+  const [activeCheckbox, setActiveCheckbox] = useState<number>(() => {
+    const savedCheckbox = Cookies.get('activeCheckbox');
+    return savedCheckbox ? Number(savedCheckbox) : 1;
+  });
+
+  const [isClient, setIsClient] = useState<boolean>(false);
   const [time, setTime] = useState<string>('');
   const [, setDate] = useState<string>('');
   const [, setTimezone] = useState<string>('');
-  const [isClient, setIsClient] = useState<boolean>(false);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
   useEffect(() => {
-    const savedStepFlow: string | undefined = Cookies.get('stepFlow');
-    const savedCheckbox: string | undefined = Cookies.get('activeCheckbox');
-
-    if (savedStepFlow) {
-      setStepFlow(Number(savedStepFlow));
-    }
-
-    if (savedCheckbox) {
-      setActiveCheckbox(Number(savedCheckbox));
-    }
-  }, []);
-
-  useEffect(() => {
     if (isClient) {
       Cookies.set('stepFlow', stepFlow.toString(), { expires: 1 });
-      if (activeCheckbox !== null) {
-        Cookies.set('activeCheckbox', activeCheckbox.toString(), {
-          expires: 1,
-        });
-      }
+      Cookies.set('activeCheckbox', activeCheckbox.toString(), { expires: 1 });
     }
   }, [stepFlow, activeCheckbox, isClient]);
 
   const onNextButtonClick = (): void => {
-    setStepFlow((prev: number) => (prev + 1 > 6 ? prev : prev + 1));
+    setStepFlow((prev) => Math.min(prev + 1, 6));
   };
 
   const onBackButtonClick = (): void => {
-    setStepFlow((prev: number) => (prev === 1 ? prev : prev - 1));
+    setStepFlow((prev) => Math.max(prev - 1, 1));
+  };
+
+  const renderStepFlowContent = () => {
+    switch (stepFlow) {
+      case 1:
+        return (
+          <>
+            <SelectionsWrapper
+              onCheckboxChange={setActiveCheckbox}
+              initialActiveCheckbox={activeCheckbox}
+            />
+            <div className={styles.mainMiddleContainer}>
+              <FirstCheckContainer activeCheckbox={activeCheckbox === 1} />
+              <SecondChecksContainer
+                timeValue={time}
+                date={setDate}
+                time={setTime}
+                timezone={setTimezone}
+                activecheckbox={activeCheckbox === 2}
+              />
+              <ThirdChecksContainer checkboxActive={activeCheckbox === 3} />
+            </div>
+            <MainBottomContainer />
+          </>
+        );
+      case 2:
+        return (
+          <StepFlowSecond
+            activedCheckboxNum={(index: number | undefined) =>
+              Cookies.set(
+                'SecondStepsSpecificCheckbox',
+                index ? index.toString() : JSON.stringify(undefined),
+                { expires: 1 },
+              )
+            }
+          />
+        );
+      case 3:
+        return (
+          Number(Cookies.get('SecondStepsSpecificCheckbox')) === 1 && (
+            <ThirdStepsContainerBasedCheckboxFirst />
+          )
+        );
+      case 4:
+        return <StepFlowFourth />;
+      case 5:
+        return <StepFlowFifth />;
+      case 6:
+        return <StepFlowSix />;
+      default:
+        return null;
+    }
   };
 
   if (!isClient) {
@@ -71,56 +114,7 @@ const RequestMigration = (): JSX.Element | null => {
           <StepFlow stepNum={stepFlow} />
         </div>
       </div>
-      {stepFlow === 1 && (
-        <>
-          <SelectionsWrapper
-            onCheckboxChange={setActiveCheckbox}
-            initialActiveCheckbox={activeCheckbox}
-          />
-          <div className={styles.mainMiddleContainer}>
-            <FirstCheckContainer activeCheckbox={activeCheckbox === 1} />
-            <SecondChecksContainer
-              timeValue={time}
-              date={setDate}
-              time={setTime}
-              timezone={setTimezone}
-              activecheckbox={activeCheckbox === 2}
-            />
-            <ThirdChecksContainer checkboxActive={activeCheckbox === 3} />
-          </div>
-          <MainBottomContainer />
-        </>
-      )}
-      {stepFlow === 2 && (
-        <StepFlowSecond
-          activedCheckboxNum={(index: number | undefined) =>
-            Cookies.set(
-              'SecondStepsSpecificCheckbox',
-              index ? index.toString() : JSON.stringify(undefined),
-              { expires: 1 },
-            )
-          }
-        />
-      )}
-      {stepFlow === 3 &&
-        Number(Cookies.get('SecondStepsSpecificCheckbox')) === 1 && (
-          <ThirdStepsContainerBasedCheckboxFirst />
-        )}
-      {stepFlow == 4 && (
-        <>
-          <StepFlowFourth />
-        </>
-      )}
-      {stepFlow == 5 && (
-        <>
-          <StepFlowFifth />
-        </>
-      )}
-      {stepFlow == 6 && (
-        <>
-          <StepFlowSix />
-        </>
-      )}
+      {renderStepFlowContent()}
       <div className={styles.buttonsWrapper}>
         <div className={styles.buttonsInnerWrapper}>
           {stepFlow > 1 && (
