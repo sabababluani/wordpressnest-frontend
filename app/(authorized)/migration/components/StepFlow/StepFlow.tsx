@@ -1,7 +1,15 @@
 import { StepFlowPropsInterface } from '../../interface/step-flow-interface.ts';
+import { useEffect, useState } from 'react';
 import styles from './StepFlow.module.scss';
 
 const StepFlow = (props: StepFlowPropsInterface) => {
+  const [currentStep, setCurrentStep] = useState<number>(props.stepNum);
+
+  // Update state when stepNum changes
+  useEffect(() => {
+    setCurrentStep(props.stepNum);
+  }, [props.stepNum]);
+
   return (
     <div className={styles.mainContainer}>
       {[
@@ -12,8 +20,8 @@ const StepFlow = (props: StepFlowPropsInterface) => {
         "Our settings",
         "Review & submit",
       ].map((caption: string, index: number) => {
-        const isActive = props.stepNum === index + 1;
-        const isPastStep = props.stepNum > index + 1;
+        const isActive = currentStep === index + 1;
+        const isPastStep = currentStep > index + 1;
         const stepClass = isActive
           ? styles.activeStep
           : isPastStep
