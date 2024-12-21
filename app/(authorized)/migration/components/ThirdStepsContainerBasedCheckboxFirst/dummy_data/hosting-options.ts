@@ -2,6 +2,7 @@ import Other from '../../Other/Other';
 import A2Hosting from '../components/A2Hosting/A2Hosting';
 import AmazonAwsFields from '../components/AmazonAwsFields/AmazonAwsFields';
 import CloudWays from '../components/CloudWays/CloudWays';
+import DigitalOcean from '../components/DigitalOcean/DigitalOcean';
 import Dreamhost from '../components/Dreamhost/Dreamhost';
 import Bluehost from '../components/Dreamhost/Dreamhost';
 import FlywheelFields from '../components/FlywheelFields/FlywheelFields';
@@ -33,4 +34,6 @@ export const HOSTING_OPTIONS: HostingOption[] = [
   { value: 'siteground', label: ' SiteGround', component: SiteGround },
   { value: 'savvii', label: ' Savvii', component: Savvii },
   { value: 'Ionos', label: 'Ionos', component: Ionos },
+  {value: 'digitalocean' , label: 'DigitalOcean', component: DigitalOcean}
+  // {value: 'hostgator', label: 'HostGator', component: HostGator}
 ];
