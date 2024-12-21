@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import useSWR from 'swr';
 import BasicDetails from '../components/BasicDetails/BasicDetails';
 import DataBaseAccess from '../components/DatabaseAccess/DatabaseAccess';
 import EnvironementDetails from '../components/EnvironmentDetails/EnvironmentDetails';
@@ -14,14 +13,9 @@ import {
   innerContentIconEnum,
 } from '@/app/components/Button/enum/button.enum';
 import {
-  DatabaseNamePropsInterface,
-  portPropsInterface,
-  SiteNamePropsInterface,
-  UserNamePropsIterface,
   wordPressLastUpdateVersionPropsInterface,
-  wordPressVersionPropsInterface,
 } from '../interfaces/info-props.interface';
-import BaseApi from '../../../api/BaseApi';
+import { useGetData } from '@/app/hooks/useGetData';
 
 const Info = ({ params }: { params: { id: number } }): JSX.Element => {
   const [updateWpVersionData, setUpdateVersionData] = useState<
@@ -35,44 +29,9 @@ const Info = ({ params }: { params: { id: number } }): JSX.Element => {
     message: '',
   });
 
-  const fetcher = (url: string) => BaseApi.get(url).then((res) => res.data);
+  const {data} = useGetData({endpoint: 'user/me'});
 
-  const { data: siteName, error: siteNameError } = useSWR<
-    SiteNamePropsInterface[]
-  >(`/setup/sitetitle`, fetcher);
-  const { data: wordpressVersion, error: wordpressVersionError } =
-    useSWR<wordPressVersionPropsInterface>('/wp-cli/core/version', fetcher);
-  const { data: port, error: portError } = useSWR<portPropsInterface[]>(
-    `/setup/wordpress/port`,
-    fetcher,
-  );
-  const { data: username, error: usernameError } = useSWR<
-    UserNamePropsIterface[]
-  >(`/setup/wordpress/username`, fetcher);
-  const { data: database, error: databaseError } = useSWR<
-    DatabaseNamePropsInterface[]
-  >(`/wp-cli/db/name/${params.id}`, fetcher);
 
-  const onUpdateWpVersionClick = () => {
-    BaseApi.get(`/wp-cli/wpcore/check-update/?setupId=${params.id}`).then(
-      (res) => setUpdateVersionData(res.data),
-    );
-  };
-
-  if (!siteName) return <div>Loading...</div>;
-  if (siteNameError) return <div>Error loading data...</div>;
-
-  if (!wordpressVersion) return <div>Loading...</div>;
-  if (wordpressVersionError) return <div>Error loading data...</div>;
-
-  if (!port) return <div>Loading...</div>;
-  if (portError) return <div>Error loading data...</div>;
-
-  if (!username) return <div>Loading...</div>;
-  if (usernameError) return <div>Error loading data...</div>;
-
-  if (!database) return <div>Loading...</div>;
-  if (databaseError) return <div>Error loading data...</div>;
 
   return (
     <div className={styles.mainContainer}>
@@ -97,7 +56,7 @@ const Info = ({ params }: { params: { id: number } }): JSX.Element => {
       <div className={styles.bottomContainer}>
         <BasicDetails
           locationDataCenter={'Hamburg (DE)'}
-          siteName={siteName[params.id - 1]?.siteTitle}
+          // siteName={siteName[params.id - 1]?.siteTitle}
           Labels={''}
         />
 
@@ -105,31 +64,35 @@ const Info = ({ params }: { params: { id: number } }): JSX.Element => {
           path={'/www/novatori_787/public'}
           environmentName={'Live'}
           siteIpAddress={'189.659.543.55'}
-          wordpressVersion={
-            updateWpVersionData?.version || wordpressVersion.version
-          }
+          // wordpressVersion={
+          // updateWpVersionData?.version || wordpressVersion.version
+          // }
           ipAddress={'66.98.456.70'}
           phpWorkers={'2'}
-          onClick={onUpdateWpVersionClick}
+          onClick={() => console.log('zz')}
         />
 
         <SftpShh
           host={'66.854.861.865'}
           passwordExpiration={'None'}
           ssh={'SSH Novatori@66.854.861.865...'}
-          port={port[params.id - 1]?.instancePort}
+          port={0}
+          userName={''}
+          // port={port[params.id - 1]?.instancePort}
           authenticationMethods={'SSH key , password'}
-          userName={username[params.id - 1]?.wpAdminUser}
+          // userName={username[params.id - 1]?.wpAdminUser}
           IpAllowed={'ALL IPs allowed'}
           password={'********'}
           ftp={'Novatori - sftp - config.zip'}
         />
 
         <DataBaseAccess
-          database={database[params.id - 1]?.Name}
-          databaseUsername={username[params.id - 1].wpAdminUser}
+          // database={database[params.id - 1]?.Name}
+          // databaseUsername={username[params.id - 1].wpAdminUser}
           databasePassword={'**********'}
           ip={'ALL IPs allowed'}
+          database={''}
+          databaseUsername={''}
         />
 
         <Site
@@ -138,7 +101,7 @@ const Info = ({ params }: { params: { id: number } }): JSX.Element => {
             'Resetting a site removes all files, databases, and staging environments associated with the site, then installs WordPress again. Be careful when resetting Live sites'
           }
           buttonInnerContent={'Reset Site'}
-          onDeleteClick={() => {}}
+          onDeleteClick={() => { }}
         />
 
         <Site
@@ -147,7 +110,7 @@ const Info = ({ params }: { params: { id: number } }): JSX.Element => {
           description={
             'Deleting a site removes all files, databases, and staging environments associated with the site. Be careful when deleting Live sites.'
           }
-          onDeleteClick={() => {}}
+          onDeleteClick={() => { }}
         />
       </div>
     </div>
