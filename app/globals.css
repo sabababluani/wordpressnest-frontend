@@ -45,6 +45,17 @@ a {
   justify-content: center;
 }
 
-.ant-modal-content {
+.ant-modal-content,
+.ant-select-dropdown,
+.ant-select-selector {
   padding: 0 !important;
+}
+
+.ant-select-item {
+  background-color: unset !important;
+  padding: 12px 16px;
+}
+
+.ant-select-selection-wrap {
+  padding: 12px;
 }

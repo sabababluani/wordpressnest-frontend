@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { Modal } from 'antd';
 import DailyBackupModal from '../DailyBackupModal/DailyBackupModal';
 
-const DailyBackupSelect: React.FC = () => {
+const DailyBackupSelect = () => {
   const [isSelectOpen, setIsSelectOpen] = useState<boolean>(false);
   const [isModalVisable, setIsModalVisable] = useState<boolean>(false);
   const wrapperRef = useRef<HTMLDivElement | null>(null);
@@ -46,8 +46,7 @@ const DailyBackupSelect: React.FC = () => {
         </div>
       )}
       <Modal
-        width={'auto'}
-        centered
+        width={840}
         open={isModalVisable}
         onCancel={handleCloseModal}
         footer={null}

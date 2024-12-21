@@ -43,8 +43,7 @@ const HourlyBackup = () => {
         ))}
       </div>
       <Modal
-        width={'auto'}
-        centered
+        width={840}
         open={isModalVisable}
         onCancel={handleCloseModal}
         footer={null}

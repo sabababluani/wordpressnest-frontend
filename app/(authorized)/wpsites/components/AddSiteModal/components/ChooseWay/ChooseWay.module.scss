@@ -5,7 +5,8 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  border: 1px solid $borderColor;  border-radius: 12px;
+  border: 1px solid $borderColor;
+  border-radius: 12px;
   max-width: 1213px;
 }
 
@@ -17,7 +18,8 @@
   align-items: center;
   justify-content: space-between;
   border-radius: 12px 12px 0 0;
-  border-bottom: 1px solid $borderColor;}
+  border-bottom: 1px solid $borderColor;
+}
 
 .headline {
   color: $primaryTextColor;
@@ -29,7 +31,7 @@
 
 .container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
+  grid-template-columns: repeat(3, 1fr);
   align-items: flex-start;
   width: 100%;
   padding: 32px 24px 50px 24px;

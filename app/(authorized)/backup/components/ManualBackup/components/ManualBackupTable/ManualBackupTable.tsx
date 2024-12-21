@@ -55,7 +55,6 @@ const ManualBackupTable = () => {
             if (value === 'live') {
               setIsModalVisible(true);
             }
-            setSelectedRestoreOption(value);
           }}
         />
       ),
