@@ -17,7 +17,9 @@ const AddSiteModal: React.FC<AddSiteModalPropsInterface> = ({
   return (
     <div className={click > 1 ? `${styles.stepsModal}` : `${styles.wrapper}`}>
       <div className={styles.header}>
-        <span className={styles.headline}>Additional disk space</span>
+        <span className={styles.headline}>
+          {click === 1 ? 'Add site' : 'Add new WordPress site'}
+        </span>
         <Image
           src="/icons/close-mini.svg"
           width={24}

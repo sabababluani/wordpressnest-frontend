@@ -13,7 +13,7 @@ const Addons = () => {
     <>
       {isActive && (
         <Modal
-          width={'auto'}
+          width={800}
           centered
           open={isActive}
           onCancel={() => setIsActive(false)}

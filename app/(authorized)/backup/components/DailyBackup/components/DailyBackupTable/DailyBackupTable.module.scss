@@ -35,7 +35,8 @@
 }
 
 .tableWrapper :global .ant-table-container {
-  border: 1px solid $borderColor;  border-radius: 12px;
+  border: 1px solid $borderColor;
+  border-radius: 12px;
   overflow: hidden;
 }
 
@@ -89,7 +90,7 @@
 
 .tableWrapper :global .ant-table-row .ant-table-cell {
   padding-left: 24px !important;
-  padding-right: 64px;
+  // padding-right: 64px;
 }
 
 .tableWrapper
@@ -140,15 +141,45 @@
   gap: 8px;
 }
 
-.tableWrapper :global(.ant-table-thead th:last-child) {
-  text-align: right;
-  padding-right: 155px !important;
-}
-
-.tableWrapper :global(.ant-table-tbody td:last-child) {
-  text-align: right;
-}
 .tableWrapper :global(.ant-select-selection-item) {
   font-size: 16px;
   padding-left: 6px !important;
+}
+
+.dot {
+  background-color: $primaryColor;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 24px;
+  background-color: #f0f3f5;
+}
+
+.option span {
+  color: $primaryTextColor;
+  font-weight: 600;
+}
+
+.select {
+  height: 44px;
+  border-radius: 12px;
+  outline: none;
+  justify-self: start;
+}
+
+.select :global(.ant-select-selector) {
+  border: 1px solid #dcdfe1 !important;
+  box-shadow: none !important;
+  border-radius: 12px !important;
+}
+
+.select :global(.ant-select-focused .ant-select-selector) {
+  box-shadow: none !important;
+  border-color: transparent !important;
 }

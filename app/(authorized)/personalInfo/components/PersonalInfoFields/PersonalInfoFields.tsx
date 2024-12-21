@@ -4,6 +4,24 @@ import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import Image from 'next/image';
 
+const countryOptions = [
+  {
+    value: 'as',
+    label: (
+      <div className={styles.optionContainer}>
+        <Image
+          src="/Au.png"
+          alt="US Flag"
+          width={14}
+          height={14}
+          className={styles.flag}
+        />
+        <span>Australia</span>
+      </div>
+    ),
+  },
+];
+
 const PersonalInfoFields = () => {
   return (
     <div className={styles.wrapper}>
@@ -33,7 +51,11 @@ const PersonalInfoFields = () => {
           <span>
             Country <span>*</span>
           </span>
-          <Select className={styles.select} />
+          <Select
+            className={styles.select}
+            options={countryOptions}
+            defaultValue={countryOptions[0]}
+          />
         </div>
       </div>
       <div className={styles.container}>
