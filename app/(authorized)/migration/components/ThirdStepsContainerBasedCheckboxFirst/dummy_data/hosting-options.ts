@@ -7,6 +7,7 @@ import Dreamhost from '../components/Dreamhost/Dreamhost';
 import Bluehost from '../components/Dreamhost/Dreamhost';
 import FlywheelFields from '../components/FlywheelFields/FlywheelFields';
 import GoogleCloudFields from '../components/GoogleCloudFields/GoogleCloudFields';
+import HostGator from '../components/HostGator/HostGator';
 import Ionos from '../components/Ionos/Ionos';
 import LiquidWeb from '../components/LiquidWeb/LiquidWeb';
 import Pagali from '../components/Pagali/Pagali';
@@ -34,6 +35,6 @@ export const HOSTING_OPTIONS: HostingOption[] = [
   { value: 'siteground', label: ' SiteGround', component: SiteGround },
   { value: 'savvii', label: ' Savvii', component: Savvii },
   { value: 'Ionos', label: 'Ionos', component: Ionos },
-  {value: 'digitalocean' , label: 'DigitalOcean', component: DigitalOcean}
-  // {value: 'hostgator', label: 'HostGator', component: HostGator}
+  {value: 'digitalocean' , label: 'DigitalOcean', component: DigitalOcean},
+  {value: 'hostgator', label: 'HostGator', component: HostGator}
 ];

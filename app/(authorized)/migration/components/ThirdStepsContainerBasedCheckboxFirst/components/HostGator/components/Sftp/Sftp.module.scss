@@ -1,0 +1,18 @@
+@import '../../../../../../../../styles/colors.scss';
+@import '../../../../../../../../styles/text-colors.scss';
+
+.mainWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.mainWrapper > .span {
+  color: $secondaryTextColor;
+  text-align: center;
+  font-family: 'DM Sans';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
