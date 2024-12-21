@@ -43,11 +43,11 @@ const RequestMigration = (): JSX.Element | null => {
   }, [stepFlow, activeCheckbox, isClient]);
 
   const onNextButtonClick = (): void => {
-    setStepFlow((prev) => Math.min(prev + 1, 6));
+    setStepFlow((prev: number) => Math.min(prev + 1, 7));
   };
 
-  const onBackButtonClick = (): void => {
-    setStepFlow((prev) => Math.max(prev - 1, 1));
+  const onBackButtonClick = (): void => { 
+    setStepFlow((prev: number) => Math.max(prev - 1, 1));
   };
 
   const renderStepFlowContent = () => {
