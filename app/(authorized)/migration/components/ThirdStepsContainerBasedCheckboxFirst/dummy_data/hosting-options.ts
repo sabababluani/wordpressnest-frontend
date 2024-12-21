@@ -16,9 +16,11 @@ import Savvii from '../components/Savvii/Savvii';
 import SiteGround from '../components/SiteGround/SiteGround';
 import Tso from '../components/Tso/Tso';
 import Vultr from '../components/Vultr/Vultr';
+import WpEngine from '../components/WpEngine/WpEngine';
 import { HostingOption } from '../interfaces/hostingOptions-interface';
 
 export const HOSTING_OPTIONS: HostingOption[] = [
+
   { value: 'other', label: 'Other', component: Other },
   { value: 'a2hosting', label: 'A2 Hosting', component: A2Hosting },
   { value: 'amazonaws', label: 'Amazon AWS', component: AmazonAwsFields },
@@ -35,6 +37,8 @@ export const HOSTING_OPTIONS: HostingOption[] = [
   { value: 'siteground', label: ' SiteGround', component: SiteGround },
   { value: 'savvii', label: ' Savvii', component: Savvii },
   { value: 'Ionos', label: 'Ionos', component: Ionos },
-  {value: 'digitalocean' , label: 'DigitalOcean', component: DigitalOcean},
-  {value: 'hostgator', label: 'HostGator', component: HostGator}
+  { value: 'digitalocean', label: 'DigitalOcean', component: DigitalOcean },
+  { value: 'hostgator', label: 'HostGator', component: HostGator },
+  { value: 'wpengine', label: 'WpEngine', component: WpEngine }
+
 ];
