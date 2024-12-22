@@ -24,14 +24,14 @@
 
 .backgroundGreyBoldColor {
   background-color: #f0f3f5;
-  padding: 12px;
+  padding: 12px 16px;
   border-radius: 8px;
   border: 1px solid $borderColor;
 }
 
 .backgroundGreyColor {
   background-color: #ffffff;
-  padding: 11.5px;
+  padding: 11.5px 16px;
   border-radius: 8px;
   border: 1px solid $borderColor;
   color: $primaryTextColor;
@@ -39,7 +39,7 @@
 
 .backgroundBlackColor {
   background-color: $primaryColor;
-  padding: 12px;
+  padding: 12px 16px;
   border: none;
   border-radius: 8px;
   color: #fff;
@@ -78,7 +78,9 @@
 
 .disabledButton {
   cursor: not-allowed;
-  color: rgba(198, 198, 198, 0.529);
+  background: #f4f5f6;
+  color: #707276;
+  border: 1px solid $borderColor;
 }
 
 @media screen and (min-width: 100px) and (max-width: 600px) {

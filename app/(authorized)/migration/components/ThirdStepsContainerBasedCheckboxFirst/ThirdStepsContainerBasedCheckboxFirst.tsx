@@ -18,12 +18,13 @@ const ThirdStepsContainerBasedCheckboxFirst = (): JSX.Element => {
     }
   }, [selectedValue]);
 
-  const SelectedComponent: React.ComponentType | null = useMemo((): React.ComponentType | null => {
-    const selectedOption: HostingOption | undefined = HOSTING_OPTIONS.find(
-      (option: HostingOption) => option.value === selectedValue,
-    );
-    return selectedOption?.component || null;
-  }, [selectedValue]);
+  const SelectedComponent: React.ComponentType | null =
+    useMemo((): React.ComponentType | null => {
+      const selectedOption: HostingOption | undefined = HOSTING_OPTIONS.find(
+        (option: HostingOption) => option.value === selectedValue,
+      );
+      return selectedOption?.component || null;
+    }, [selectedValue]);
 
   const isMigrating = useMemo((): string | boolean | undefined => {
     return (

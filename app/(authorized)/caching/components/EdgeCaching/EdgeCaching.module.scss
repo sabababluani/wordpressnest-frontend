@@ -25,3 +25,27 @@
   flex-wrap: wrap;
   gap: 24px;
 }
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.enable {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.enable span{
+  color: #008000;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
