@@ -8,7 +8,7 @@ const HostGator = () => {
   return (
     <div className={styles.mainWrapper}>
       <span>
-        We will need to access your <u>HostGator Portal</u> or cPanel to export
+        We will need to access your <u>HostGator Portal</u> or cPanel to export
         your site data for moving it over to your Kinsta account. If you have a
         WordPress managed hosting plan at HostGator it is okay to provide SFTP
         connection details.

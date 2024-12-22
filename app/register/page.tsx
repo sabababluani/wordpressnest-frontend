@@ -11,6 +11,9 @@ import RegisterBilling from './components/RegisterBilling/RegisterBilling';
 import '../globals.css';
 import RegisterSuccess from './components/RegisterSuccess/RegisterSuccess';
 import { Select } from 'antd';
+import { passportData } from './utils/passport-data';
+import React from 'react';
+import { steps } from './utils/icons-data';
 
 const countryOptions = [
   {
@@ -31,11 +34,25 @@ const countryOptions = [
 ];
 
 const Register = () => {
-  const [steper, setSteper] = useState(1);
+  const [steper, setSteper] = useState(4);
 
   const onNextStep = () => {
     setSteper((prevStep) => prevStep + 1);
-    console.log(steper);
+  };
+
+  const renderContent = () => {
+    switch (steper) {
+      case 1:
+        return <RegisterForm onNextStep={onNextStep} />;
+      case 2:
+        return <RegiserPlans onNextStep={onNextStep} />;
+      case 3:
+        return <RegisterBilling onNextStep={onNextStep} />;
+      case 4:
+        return <RegisterSuccess />;
+      default:
+        return null;
+    }
   };
 
   return (
@@ -50,153 +67,73 @@ const Register = () => {
             </div>
             <div className={styles.topContainer}>
               <div className={styles.passportWrapper}>
-                <div className={styles.passport}>
-                  <Image
-                    src={'/icons/github.svg'}
-                    alt="github"
-                    width={24}
-                    height={24}
-                  />
-                  <span className={styles.buttonInner}>GitHub</span>
-                </div>
-                <div className={styles.passport}>
-                  <Image
-                    src={'/icons/google.svg'}
-                    alt="github"
-                    width={24}
-                    height={24}
-                  />
-                  <span className={styles.buttonInner}>Google</span>
-                </div>
+                {passportData.map((passport, index) => (
+                  <div key={index} className={styles.passport}>
+                    <Image
+                      src={passport.src}
+                      alt={passport.alt}
+                      width={24}
+                      height={24}
+                    />
+                    <span className={styles.buttonInner}>
+                      {passport.buttonInner}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
             <div className={styles.navigation}>
-              <div className={styles.navigate}>
-                <div
-                  className={`${steper > 1 ? styles.blackcircle : styles.graycircle}`}
-                >
-                  <Image
-                    src={
-                      steper > 1
-                        ? '/icons/loginlogutwhite.svg'
-                        : '/icons/loginlogut.svg'
-                    }
-                    alt="logilogut"
-                    width={24}
-                    height={24}
-                  />
-                </div>
-                <span
-                  className={
-                    steper > 1
-                      ? styles.boldNavigationSpan
-                      : styles.navigationSpan
-                  }
-                >
-                  Sign Up
-                </span>
-              </div>
-              <Image
-                src={'/icons/dashedline.svg'}
-                alt="dashed"
-                width={53}
-                height={2}
-              />
-              <div className={styles.navigate}>
-                <div
-                  className={`${steper === 1 && styles.lightcircle} ${steper === 2 && styles.graycircle}  ${steper === 3 && styles.blackcircle} ${steper === 4 && styles.blackcircle}`}
-                >
-                  <Image
-                    src={
-                      steper === 2
-                        ? '/icons/notebold.svg'
-                        : steper === 1
-                          ? '/icons/note.svg'
-                          : steper === 3
-                            ? '/icons/notewhite.svg'
-                            : '/icons/notewhite.svg'
-                    }
-                    alt="note"
-                    width={24}
-                    height={24}
-                  />
-                </div>
-                <span
-                  className={`${steper === 1 && styles.navigationSpan}
-                      ${steper === 2 && styles.navigationBoldSpan}  ${steper === 3 && styles.boldNavigationSpan}  ${steper === 4 && styles.boldNavigationSpan}`}
-                >
-                  Choose Plan
-                </span>
-              </div>
-              <Image
-                src={'/icons/dashedline.svg'}
-                alt="dashed"
-                width={53}
-                height={2}
-              />
-              <div className={`${styles.navigate}`}>
-                <div
-                  className={`${steper === 1 && styles.lightcircle} ${steper === 2 && styles.lightcircle} ${steper === 3 && styles.graycircle} ${steper === 4 && styles.blackcircle}`}
-                >
-                  <Image
-                    src={
-                      steper === 2
-                        ? '/icons/bill.svg'
-                        : steper === 1
-                          ? '/icons/bill.svg'
-                          : steper === 3
-                            ? '/icons/billingbold.svg'
-                            : '/icons/billingwhite.svg'
-                    }
-                    alt="bill"
-                    width={24}
-                    height={24}
-                  />
-                </div>
-                <span
-                  className={`${steper === 1 && styles.navigationSpan}
-                      ${steper === 2 && styles.navigationSpan}  ${steper === 3 && styles.navigationBoldSpan}  ${steper === 4 && styles.boldNavigationSpan}`}
-                >
-                  Billing information
-                </span>
-              </div>
-              <Image
-                src={'/icons/dashedline.svg'}
-                alt="dashed"
-                width={53}
-                height={2}
-              />
-              <div className={`${styles.navigate} ${styles.lightNavigate}`}>
-                <div
-                  className={`${steper === 1 && styles.lightcircle} ${steper === 2 && styles.lightcircle} ${steper === 3 && styles.lightcircle} ${steper === 4 && styles.blackcircle}`}
-                >
-                  <Image
-                    src={
-                      steper === 1
-                        ? '/icons/succescopy.svg'
-                        : steper === 2
-                          ? '/icons/succescopy.svg'
-                          : steper === 3
-                            ? '/icons/succescopy.svg'
-                            : '/icons/copysuccesswhite.svg'
-                    }
-                    alt="success"
-                    width={24}
-                    height={24}
-                  />
-                </div>
-                <span
-                  className={`${steper === 1 && styles.navigationSpan}
-                      ${steper === 2 && styles.navigationSpan}  ${steper === 3 && styles.navigationBoldSpan}  ${steper === 4 && styles.boldNavigationSpan}`}
-                >
-                  Success
-                </span>
-              </div>
+              {steps.map((step, index) => (
+                <React.Fragment key={index}>
+                  <div className={styles.navigate}>
+                    <div
+                      className={`${
+                        steper > index + 1
+                          ? styles.blackcircle
+                          : steper === index + 1 && steper !== 4
+                            ? styles.graycircle
+                            : steper === 4
+                              ? styles.blackcircle
+                              : styles.lightcircle
+                      }`}
+                    >
+                      <Image
+                        src={
+                          steper === index + 1
+                            ? step.icons.active
+                            : steper === index + 2 || steper === 4
+                              ? step.icons.thirdState
+                              : step.icons.inactive
+                        }
+                        alt={step.title.toLowerCase()}
+                        width={24}
+                        height={24}
+                      />
+                    </div>
+                    <span
+                      className={`${
+                        steper > index + 1 || steper === 4
+                          ? styles.boldNavigationSpan
+                          : steper === index + 1
+                            ? styles.navigationBoldSpan
+                            : styles.navigationSpan
+                      }`}
+                    >
+                      {step.title}
+                    </span>
+                  </div>
+                  {index < steps.length - 1 && (
+                    <Image
+                      src="/icons/dashedline.svg"
+                      alt="dashed line"
+                      width={53}
+                      height={2}
+                    />
+                  )}
+                </React.Fragment>
+              ))}
             </div>
-            {steper === 1 && <RegisterForm onNextStep={onNextStep} />}
-            {steper === 2 && <RegiserPlans onNextStep={onNextStep} />}
-            {steper === 3 && <RegisterBilling onNextStep={onNextStep} />}
-            {steper === 4 && <RegisterSuccess />}
+            {renderContent()}
             {steper < 4 && (
               <>
                 <div className={styles.loginContainer}>
