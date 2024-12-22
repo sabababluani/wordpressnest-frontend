@@ -1,0 +1,149 @@
+@import '../../../../styles/colors.scss';
+@import '../../../../styles/text-colors.scss';
+
+.header {
+  width: 100%;
+  display: flex;
+  background-color: #f0f3f5;
+  padding: 16px 24px;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 12px 12px 0 0;
+  border-bottom: 1px solid $borderColor;
+}
+
+.headline {
+  color: $primaryTextColor;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.header img {
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 24px;
+}
+
+.description {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $borderColor;
+  padding: 0 0 20px 0;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.list span {
+  color: #545a67;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: right;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.logo h1 {
+  font-size: 24px;
+}
+
+.logo span {
+  color: #545a67;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.prices {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $borderColor;
+  padding: 20px 0;
+}
+
+.details {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.titleDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.titleDetails p {
+  color: #545a67;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.titleDetails span {
+  color: #545a67;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.paymentDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.paymentDetails p {
+  color: $primaryTextColor;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+.paymentDetails span {
+  color: #545a67;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.total {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-bottom: 1px solid $borderColor;
+  padding: 20px 0;
+}
+
+.total span {
+  color: #545a67;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.totalContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  display: flex;
+  justify-content: end;
+  padding: 24px 0;
+}

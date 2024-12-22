@@ -27,14 +27,17 @@ const StepFlowFourth: () => JSX.Element = (): JSX.Element => {
   ): void => {
     setState(e.target.value);
   };
-  
-  const setSelectedValue: (value: string) => void = (value: string): void => setSelectValue(value);
-  const onToggleBedrockChange:() => void = (): void => setIsBedrock((prev: boolean): boolean => !prev);
+
+  const setSelectedValue: (value: string) => void = (value: string): void =>
+    setSelectValue(value);
+  const onToggleBedrockChange: () => void = (): void =>
+    setIsBedrock((prev: boolean): boolean => !prev);
   const onToggleEcommerceChange: () => void = (): void =>
     setIsEcommerce((prev: boolean): boolean => !prev);
   const onToggleMultisiteChange: () => void = (): void =>
     setIsMultisite((prev: boolean): boolean => !prev);
-  const onToggleHttpsChange: () => void = (): void => setIsHttps((prev: boolean): boolean => !prev);
+  const onToggleHttpsChange: () => void = (): void =>
+    setIsHttps((prev: boolean): boolean => !prev);
 
   // const handleSslOptionChange = (e: any) => {
   //   setSslOption(e.target.value);

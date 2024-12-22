@@ -1,3 +1,5 @@
+'use client';
+
 import InvoicesSection from './components/InvoicesSection/InvoicesSection';
 import styles from './page.module.scss';
 
