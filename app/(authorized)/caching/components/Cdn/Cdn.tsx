@@ -4,9 +4,12 @@ import CashingPagesContainer from '../CashingPagesContainer/CashingPagesContaine
 import { Modal } from 'antd';
 import ExcludeCdnModal from './components/ExcludeCdnModal/ExcludeCdnModal';
 import { useState } from 'react';
+import CdnImageOptimizationModal from './components/CdnImageOptimizationModal/CdnImageOptimizationModal';
 
 const Cdn = (): JSX.Element => {
-  const [isModalVisable, setIsModalVisable] = useState<boolean>(false);
+  const [isExcludeModalOpen, setIsExcludeModalOpen] = useState<boolean>(false);
+  const [isCdnImageModalOpen, setIsCdnImageModalOpen] =
+    useState<boolean>(false);
 
   return (
     <div className={styles.bottomContainer}>
@@ -30,28 +33,39 @@ const Cdn = (): JSX.Element => {
           description={
             'The CDN can automatically convert PNG, GIF, and JPEG images to the WebP format to improve website speed and performance.'
           }
-          buttonInnerContent={'Setting'}
+          buttonInnerContent={'Settings'}
           buttonBackgroundColor={buttonbackgroundColorEnum.grey}
-          onClick={() => {}}
+          onClick={() => setIsCdnImageModalOpen(true)}
         />
         <CashingPagesContainer
           caption={'Exclude Files From CDN'}
           description={
             'Exclude files that change often to ensure you deliver the most recent content. You can exclude file extensions, URLs, or file paths. Excluding files from being cached will increase your resource usage.'
           }
-          buttonInnerContent={'Setting'}
+          buttonInnerContent={'Settings'}
           buttonBackgroundColor={buttonbackgroundColorEnum.grey}
-          onClick={() => setIsModalVisable(true)}
+          onClick={() => setIsExcludeModalOpen(true)}
         />
       </div>
       <Modal
         width={840}
-        open={isModalVisable}
-        onCancel={() => setIsModalVisable(false)}
+        open={isExcludeModalOpen}
+        onCancel={() => setIsExcludeModalOpen(false)}
         footer={null}
         closable={false}
       >
-        <ExcludeCdnModal onClose={() => setIsModalVisable(false)} />
+        <ExcludeCdnModal onClose={() => setIsExcludeModalOpen(false)} />
+      </Modal>
+      <Modal
+        width={840}
+        open={isCdnImageModalOpen}
+        onCancel={() => setIsCdnImageModalOpen(false)}
+        footer={null}
+        closable={false}
+      >
+        <CdnImageOptimizationModal
+          onClose={() => setIsCdnImageModalOpen(false)}
+        />
       </Modal>
     </div>
   );
