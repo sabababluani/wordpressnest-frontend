@@ -4,7 +4,7 @@ import { Checkbox, Radio, Select, Switch } from 'antd';
 import styles from './StepFlowFourth.module.scss';
 import { useState, ChangeEvent } from 'react';
 
-const StepFlowFourth = () => {
+const StepFlowFourth: () => JSX.Element = (): JSX.Element => {
   const [isActiveCheckbox, setIsActiveCheckbox] = useState<boolean>(true);
   const [domainName, setDomainName] = useState<string>('');
   const [wpUsername, setWpUsername] = useState<string>('');
@@ -17,23 +17,27 @@ const StepFlowFourth = () => {
   const [isHttps, setIsHttps] = useState<boolean>(false);
   const [sslOption] = useState<string>('generate');
 
-  const onCheckboxValueChange = () => {
-    setIsActiveCheckbox((prev: boolean) => !prev);
+  const onCheckboxValueChange: () => void = (): void => {
+    setIsActiveCheckbox((prev: boolean): boolean => !prev);
   };
 
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement>,
     setState: (value: string) => void,
-  ) => {
+  ): void => {
     setState(e.target.value);
   };
-  const setSelectedValue = (value: string) => setSelectValue(value);
-  const onToggleBedrockChange = () => setIsBedrock((prev: boolean) => !prev);
-  const onToggleEcommerceChange = () =>
-    setIsEcommerce((prev: boolean) => !prev);
-  const onToggleMultisiteChange = () =>
-    setIsMultisite((prev: boolean) => !prev);
-  const onToggleHttpsChange = () => setIsHttps((prev: boolean) => !prev);
+
+  const setSelectedValue: (value: string) => void = (value: string): void =>
+    setSelectValue(value);
+  const onToggleBedrockChange: () => void = (): void =>
+    setIsBedrock((prev: boolean): boolean => !prev);
+  const onToggleEcommerceChange: () => void = (): void =>
+    setIsEcommerce((prev: boolean): boolean => !prev);
+  const onToggleMultisiteChange: () => void = (): void =>
+    setIsMultisite((prev: boolean): boolean => !prev);
+  const onToggleHttpsChange: () => void = (): void =>
+    setIsHttps((prev: boolean): boolean => !prev);
 
   // const handleSslOptionChange = (e: any) => {
   //   setSslOption(e.target.value);
