@@ -32,7 +32,7 @@ export const HOSTING_OPTIONS: HostingOption[] = [
   { value: 'flywheel', label: 'Flywheel', component: FlywheelFields },
   { value: 'liquidweb', label: 'Liquid Web', component: LiquidWeb },
   { value: 'vultr', label: 'Vultr', component: Vultr },
-  { value: 'tsp', label: 'Tso', component: Tso },
+  { value: 'tso', label: 'Tso', component: Tso },
   { value: 'pagali', label: 'Pagali', component: Pagali },
   { value: 'pantheon', label: 'Pantheon', component: Pantheon },
   { value: 'siteground', label: ' SiteGround', component: SiteGround },
