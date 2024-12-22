@@ -5,6 +5,8 @@ import { Modal } from 'antd';
 import ExcludeCdnModal from './components/ExcludeCdnModal/ExcludeCdnModal';
 import { useState } from 'react';
 import CdnImageOptimizationModal from './components/CdnImageOptimizationModal/CdnImageOptimizationModal';
+import Button from '@/app/components/Button/Button';
+import Image from 'next/image';
 
 const Cdn = (): JSX.Element => {
   const [isExcludeModalOpen, setIsExcludeModalOpen] = useState<boolean>(false);
@@ -13,11 +15,28 @@ const Cdn = (): JSX.Element => {
 
   return (
     <div className={styles.bottomContainer}>
-      <span className={styles.mainDescriptionStyle}>
-        When CDN is enabled, we serve all static content (such as images, CSS,
-        and JavaScript files) through our Content Delivery Network. The limit is
-        5 GB per file.
-      </span>
+      <div className={styles.container}>
+        <div className={styles.wrapper}>
+          <span className={styles.mainDescriptionStyle}>
+            When CDN is enabled, we serve all static content (such as images,
+            CSS, and JavaScript files) through our Content Delivery Network. The
+            limit is 5 GB per file.
+          </span>
+          <div className={styles.enable}>
+            <Image
+              src={'/icons/greensuccess.svg'}
+              alt="greensuccess"
+              width={16}
+              height={16}
+            />
+            <span>CDN is enabled</span>
+          </div>
+        </div>
+        <Button
+          backgroundColor={buttonbackgroundColorEnum.grey}
+          innerContent="Disable"
+        />
+      </div>
       <div className={styles.containersWrapper}>
         <CashingPagesContainer
           caption={'Clear CDN Cache'}

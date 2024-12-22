@@ -1,15 +1,34 @@
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import CashingPagesContainer from '../CashingPagesContainer/CashingPagesContainer';
 import styles from './EdgeCaching.module.scss';
+import Image from 'next/image';
+import Button from '@/app/components/Button/Button';
 
 const EdgeCaching = (): JSX.Element => {
   return (
     <div className={styles.bottomContainer}>
-      <span className={styles.mainDescriptionStyle}>
-        Edge Caching stores your page cache in any of Cloudflare&apos;s 260+
-        point-of-presence (PoP) locations worldwide, increasing performance and
-        website speed by up to 40%
-      </span>
+      <div className={styles.container}>
+        <div className={styles.wrapper}>
+          <span className={styles.mainDescriptionStyle}>
+            Edge Caching stores your page cache in any of Cloudflare&apos;s 260+
+            point-of-presence (PoP) locations worldwide, increasing performance
+            and website speed by up to 40%
+          </span>
+          <div className={styles.enable}>
+            <Image
+              src={'/icons/greensuccess.svg'}
+              alt="greensuccess"
+              width={16}
+              height={16}
+            />
+            <span>CDN is enabled</span>
+          </div>
+        </div>
+        <Button
+          backgroundColor={buttonbackgroundColorEnum.grey}
+          innerContent="Disable"
+        />
+      </div>
       <div className={styles.containersWrapper}>
         <CashingPagesContainer
           caption={'Mobile Caching'}
