@@ -2,8 +2,8 @@
 @import '../../../../styles/text-colors.scss';
 
 .mainWrapper {
-  max-width: 840px;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .topContainer {
@@ -33,6 +33,8 @@
   justify-content: flex-end;
   padding: 16px 24px 24px;
   background-color: white;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
 }
 
 .buttonsWrapper {

@@ -13,46 +13,80 @@ import UpdateModal from './components/UpdateModal/UpdateModal';
 import LabelModal from './components/LabelModal/LabelModal';
 import ChangeCdnModal from './components/ChangeCdnModal/ChangeCdnModal';
 import PhpModal from './components/PhpModal/PhpModal';
-import { ActionOptions } from './utils/action-options';
 import UpdateThemesModal from './components/UpdateThemesModal/UpdateThemesModal';
 import CacheModal from './components/CacheModal/CacheModal';
+import { ActionOptions } from './utils/action-options';
 
 const Wpsites = () => {
-  const [isAddSiteModalOpen, setIsAddSiteModalOpen] = useState<boolean>(false);
-  const [isClearCacheModalOpen, setClearIsCacheModalOpen] =
-    useState<boolean>(false);
-  const [isUpdatePluginOpen, setIsUpdatePluginOpen] = useState<boolean>(false);
-  const [isLabelOpen, setIsLabelOpen] = useState<boolean>(false);
-  const [isCdnOpen, setIsCdnOpen] = useState<boolean>(false);
-  const [isPhpOpen, setIsPhpOpen] = useState<boolean>(false);
-  const [isThemeOpen, setIsThemeOpen] = useState<boolean>(false);
-  const [isCacheModalOpen, setIsCacheModalOpen] = useState<boolean>(false);
+  type ModalType =
+    | 'Actions'
+    | 'addSite'
+    | 'clearCache'
+    | 'plugins'
+    | 'label'
+    | 'cdn'
+    | 'php'
+    | 'themes'
+    | 'cache'
+    | 'edge'
+    | null;
 
-  const [click, setClick] = useState<number>(1);
+  const [modalState, setModalState] = useState<{
+    modalType: ModalType;
+    click: number;
+  }>({
+    modalType: null,
+    click: 1,
+  });
+
+  const openModal = (type: ModalType) =>
+    setModalState({ modalType: type, click: 1 });
+  const closeModal = () => setModalState({ modalType: null, click: 1 });
 
   const handleContinue = () => {
-    setClick((prev) => (prev === 4 ? 1 : prev + 1));
+    setModalState((prev) => ({
+      ...prev,
+      click: prev.click === 4 ? 1 : prev.click + 1,
+    }));
   };
 
   const handleBack = () => {
-    setClick((prev) => (prev === 1 ? 1 : prev - 1));
+    setModalState((prev) => ({
+      ...prev,
+      click: prev.click === 1 ? 1 : prev.click - 1,
+    }));
   };
 
-  const handleSelectChange = (value: string) => {
-    if (value === 'cache') {
-      setIsCacheModalOpen(true);
-    } else if (value === 'plugins') {
-      setIsUpdatePluginOpen(true);
-    } else if (value === 'label') {
-      setIsLabelOpen(true);
-    } else if (value === 'cdn') {
-      setIsCdnOpen(true);
-    } else if (value === 'php') {
-      setIsPhpOpen(true);
-    } else if (value === 'themes') {
-      setIsThemeOpen(true);
-    } else if (value === 'edge') {
-      setIsCacheModalOpen(true);
+  const handleSelectChange = (value: ModalType) => openModal(value);
+
+  const renderModalContent = () => {
+    switch (modalState.modalType) {
+      case 'addSite':
+        return (
+          <AddSiteModal
+            click={modalState.click}
+            onContinue={handleContinue}
+            onBack={handleBack}
+            onClose={closeModal}
+          />
+        );
+      case 'clearCache':
+        return <ClearCacheModal />;
+      case 'plugins':
+        return <UpdateModal />;
+      case 'label':
+        return <LabelModal />;
+      case 'cdn':
+        return <ChangeCdnModal />;
+      case 'php':
+        return <PhpModal />;
+      case 'themes':
+        return <UpdateThemesModal />;
+      case 'cache':
+      case 'edge':
+        return <CacheModal />;
+      default:
+        return null;
     }
   };
 
@@ -78,7 +112,7 @@ const Wpsites = () => {
             <Button
               backgroundColor={buttonbackgroundColorEnum.black}
               innerContent="Create New Site"
-              onClick={() => setIsAddSiteModalOpen(true)}
+              onClick={() => openModal('addSite')}
             />
           </div>
         </div>
@@ -88,99 +122,19 @@ const Wpsites = () => {
       </div>
 
       <Modal
-        open={isAddSiteModalOpen}
-        onCancel={() => setIsAddSiteModalOpen(false)}
+        open={!!modalState.modalType}
+        onCancel={closeModal}
         footer={null}
         closable={false}
-        width={click > 1 ? 840 : 1213}
-        centered
+        width={
+          modalState.modalType === 'addSite'
+            ? modalState.click > 1
+              ? 840
+              : 1213
+            : 840
+        }
       >
-        <AddSiteModal
-          click={click}
-          onContinue={handleContinue}
-          onBack={handleBack}
-          onClose={() => setIsAddSiteModalOpen(false)}
-        />
-      </Modal>
-
-      <Modal
-        open={isClearCacheModalOpen}
-        onCancel={() => setClearIsCacheModalOpen(false)}
-        footer={null}
-        closable={false}
-        width={840}
-      >
-        <ClearCacheModal />
-      </Modal>
-
-      <Modal
-        open={isUpdatePluginOpen}
-        onCancel={() => setIsUpdatePluginOpen(false)}
-        footer={null}
-        closable={false}
-        width={840}
-      >
-        <UpdateModal />
-      </Modal>
-
-      <Modal
-        open={isLabelOpen}
-        onCancel={() => setIsLabelOpen(false)}
-        footer={null}
-        closable={false}
-        width={840}
-      >
-        <LabelModal />
-      </Modal>
-
-      <Modal
-        open={isLabelOpen}
-        onCancel={() => setIsLabelOpen(false)}
-        footer={null}
-        closable={false}
-        width={840}
-      >
-        <LabelModal />
-      </Modal>
-
-      <Modal
-        open={isCdnOpen}
-        onCancel={() => setIsCdnOpen(false)}
-        footer={null}
-        closable={false}
-        width={840}
-      >
-        <ChangeCdnModal />
-      </Modal>
-
-      <Modal
-        open={isPhpOpen}
-        onCancel={() => setIsPhpOpen(false)}
-        footer={null}
-        closable={false}
-        width={840}
-      >
-        <PhpModal />
-      </Modal>
-
-      <Modal
-        open={isThemeOpen}
-        onCancel={() => setIsThemeOpen(false)}
-        footer={null}
-        closable={false}
-        width={840}
-      >
-        <UpdateThemesModal />
-      </Modal>
-
-      <Modal
-        open={isCacheModalOpen}
-        onCancel={() => setIsCacheModalOpen(false)}
-        footer={null}
-        closable={false}
-        width={840}
-      >
-        <CacheModal />
+        {renderModalContent()}
       </Modal>
     </div>
   );
