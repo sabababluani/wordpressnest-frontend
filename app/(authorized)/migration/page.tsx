@@ -50,7 +50,10 @@ const RequestMigration: () => JSX.Element | null = (): JSX.Element | null => {
     setStepFlow((prev: number): number => Math.max(prev - 1, 1));
   };
 
-  const renderStepFlowContent: () => false | JSX.Element | null = (): false | JSX.Element | null => {
+  const renderStepFlowContent: () => false | JSX.Element | null = ():
+    | false
+    | JSX.Element
+    | null => {
     switch (stepFlow) {
       case 1:
         return (

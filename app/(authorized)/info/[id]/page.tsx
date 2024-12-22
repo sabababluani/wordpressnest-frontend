@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import BasicDetails from '../components/BasicDetails/BasicDetails';
 import DataBaseAccess from '../components/DatabaseAccess/DatabaseAccess';
 import EnvironementDetails from '../components/EnvironmentDetails/EnvironmentDetails';
@@ -12,26 +11,22 @@ import {
   buttonbackgroundColorEnum,
   innerContentIconEnum,
 } from '@/app/components/Button/enum/button.enum';
-import {
-  wordPressLastUpdateVersionPropsInterface,
-} from '../interfaces/info-props.interface';
-import { useGetData } from '@/app/hooks/useGetData';
+// import { wordPressLastUpdateVersionPropsInterface } from '../interfaces/info-props.interface';
+// import { useGetData } from '@/app/hooks/useGetData';
 
-const Info = ({ params }: { params: { id: number } }): JSX.Element => {
-  const [updateWpVersionData, setUpdateVersionData] = useState<
-    wordPressLastUpdateVersionPropsInterface | undefined
-  >({
-    id: 0,
-    version: '',
-    locale: '',
-    update: '',
-    url: '',
-    message: '',
-  });
+const Info = (): JSX.Element => {
+  // const [updateWpVersionData, setUpdateVersionData] = useState<
+  //   wordPressLastUpdateVersionPropsInterface | undefined
+  // >({
+  //   id: 0,
+  //   version: '',
+  //   locale: '',
+  //   update: '',
+  //   url: '',
+  //   message: '',
+  // });
 
-  const {data} = useGetData({endpoint: 'user/me'});
-
-
+  // const { data } = useGetData({ endpoint: 'user/me' });
 
   return (
     <div className={styles.mainContainer}>
@@ -101,7 +96,7 @@ const Info = ({ params }: { params: { id: number } }): JSX.Element => {
             'Resetting a site removes all files, databases, and staging environments associated with the site, then installs WordPress again. Be careful when resetting Live sites'
           }
           buttonInnerContent={'Reset Site'}
-          onDeleteClick={() => { }}
+          onDeleteClick={() => {}}
         />
 
         <Site
@@ -110,7 +105,7 @@ const Info = ({ params }: { params: { id: number } }): JSX.Element => {
           description={
             'Deleting a site removes all files, databases, and staging environments associated with the site. Be careful when deleting Live sites.'
           }
-          onDeleteClick={() => { }}
+          onDeleteClick={() => {}}
         />
       </div>
     </div>

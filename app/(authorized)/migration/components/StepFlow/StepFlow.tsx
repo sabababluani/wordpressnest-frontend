@@ -5,7 +5,6 @@ import styles from './StepFlow.module.scss';
 const StepFlow = (props: StepFlowPropsInterface) => {
   const [currentStep, setCurrentStep] = useState<number>(props.stepNum);
 
-  // Update state when stepNum changes
   useEffect(() => {
     setCurrentStep(props.stepNum);
   }, [props.stepNum]);
@@ -13,20 +12,20 @@ const StepFlow = (props: StepFlowPropsInterface) => {
   return (
     <div className={styles.mainContainer}>
       {[
-        "Introduction",
-        "Set migration source",
-        "Source details",
-        "Site details",
-        "Our settings",
-        "Review & submit",
+        'Introduction',
+        'Set migration source',
+        'Source details',
+        'Site details',
+        'Our settings',
+        'Review & submit',
       ].map((caption: string, index: number) => {
         const isActive = currentStep === index + 1;
         const isPastStep = currentStep > index + 1;
         const stepClass = isActive
           ? styles.activeStep
           : isPastStep
-          ? styles.completedStep
-          : styles.inactiveStep;
+            ? styles.completedStep
+            : styles.inactiveStep;
 
         return (
           <div key={index} className={`${styles.stepWrapper} ${stepClass}`}>

@@ -6,7 +6,7 @@ import WordpressStat from '@/app/components/WordpressStat/WordpressStat';
 import { SiteInterface } from '../components/Navigation/interfaces/navigation.props.interface';
 import BaseApi from '../api/BaseApi';
 import useSWR from 'swr';
-import { AxiosResponse } from "axios";
+import { AxiosResponse } from 'axios';
 
 const Home: () => JSX.Element = (): JSX.Element => {
   const fetcher: (url: string) => Promise<any> = (url: string) =>

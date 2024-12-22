@@ -3,7 +3,9 @@ import Link from 'next/link';
 import styles from './WordpressStat.module.scss';
 import { WordpressStatPropsInterface } from './interfaces/wordpress-stat-props.interface';
 
-const WordpressStat:(props: WordpressStatPropsInterface) => JSX.Element = (props: WordpressStatPropsInterface): JSX.Element => {
+const WordpressStat: (props: WordpressStatPropsInterface) => JSX.Element = (
+  props: WordpressStatPropsInterface,
+): JSX.Element => {
   return (
     <div className={styles.containerWrapper}>
       <div className={styles.topContainer}>
