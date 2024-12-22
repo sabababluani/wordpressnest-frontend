@@ -17,6 +17,7 @@ const ServerCaching = (): JSX.Element => {
           }
           buttonInnerContent={'Clear Cache'}
           buttonBackgroundColor={buttonbackgroundColorEnum.black}
+          onClick={() => {}}
         />
       </div>
     </div>

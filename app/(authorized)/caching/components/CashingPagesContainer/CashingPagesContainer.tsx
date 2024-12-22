@@ -4,7 +4,6 @@ import styles from './CashingPagesContainer.module.scss';
 import Button from '@/app/components/Button/Button';
 import DropDown from '@/app/components/DropDown/DropDown';
 import { CashingPagesPropsInterface } from './interfaces/cashing-pages-props.interfaces';
-
 const CashingPagesContainer = (
   props: CashingPagesPropsInterface,
 ): JSX.Element => {
@@ -25,6 +24,7 @@ const CashingPagesContainer = (
           <Button
             backgroundColor={props.buttonBackgroundColor}
             innerContent={props.buttonInnerContent}
+            onClick={props.onClick}
           />
         </div>
       </div>

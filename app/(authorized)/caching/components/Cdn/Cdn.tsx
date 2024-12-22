@@ -1,8 +1,13 @@
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import styles from '../EdgeCaching/EdgeCaching.module.scss';
 import CashingPagesContainer from '../CashingPagesContainer/CashingPagesContainer';
+import { Modal } from 'antd';
+import ExcludeCdnModal from './components/ExcludeCdnModal/ExcludeCdnModal';
+import { useState } from 'react';
 
 const Cdn = (): JSX.Element => {
+  const [isModalVisable, setIsModalVisable] = useState<boolean>(false);
+
   return (
     <div className={styles.bottomContainer}>
       <span className={styles.mainDescriptionStyle}>
@@ -18,6 +23,7 @@ const Cdn = (): JSX.Element => {
           }
           buttonInnerContent={'Clear CDN Cache'}
           buttonBackgroundColor={buttonbackgroundColorEnum.black}
+          onClick={() => {}}
         />
         <CashingPagesContainer
           caption={'Image Optimization'}
@@ -26,6 +32,7 @@ const Cdn = (): JSX.Element => {
           }
           buttonInnerContent={'Setting'}
           buttonBackgroundColor={buttonbackgroundColorEnum.grey}
+          onClick={() => {}}
         />
         <CashingPagesContainer
           caption={'Exclude Files From CDN'}
@@ -34,8 +41,18 @@ const Cdn = (): JSX.Element => {
           }
           buttonInnerContent={'Setting'}
           buttonBackgroundColor={buttonbackgroundColorEnum.grey}
+          onClick={() => setIsModalVisable(true)}
         />
       </div>
+      <Modal
+        width={840}
+        open={isModalVisable}
+        onCancel={() => setIsModalVisable(false)}
+        footer={null}
+        closable={false}
+      >
+        <ExcludeCdnModal onClose={() => setIsModalVisable(false)} />
+      </Modal>
     </div>
   );
 };

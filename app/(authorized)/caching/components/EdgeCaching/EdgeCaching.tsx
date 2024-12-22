@@ -18,6 +18,7 @@ const EdgeCaching = (): JSX.Element => {
           }
           buttonInnerContent={'Enable'}
           buttonBackgroundColor={buttonbackgroundColorEnum.grey}
+          onClick={() => {}}
         />
         <CashingPagesContainer
           caption={'Clear Caching'}
@@ -26,6 +27,7 @@ const EdgeCaching = (): JSX.Element => {
           }
           buttonInnerContent={'Clear Caching'}
           buttonBackgroundColor={buttonbackgroundColorEnum.black}
+          onClick={() => {}}
         />
         <CashingPagesContainer
           caption={'Clear URL Cache'}
@@ -36,6 +38,7 @@ const EdgeCaching = (): JSX.Element => {
           buttonBackgroundColor={buttonbackgroundColorEnum.greyBold}
           dropDownActive={true}
           dropDownInnerContent={'Clear URL Caching'}
+          onClick={() => {}}
         />
       </div>
     </div>

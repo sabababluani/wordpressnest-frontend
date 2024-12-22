@@ -12,4 +12,5 @@ export interface CashingPagesPropsInterface {
     | buttonbackgroundColorEnum.black
     | buttonbackgroundColorEnum.greyBold
     | buttonbackgroundColorEnum.grey;
+  onClick: () => void;
 }
