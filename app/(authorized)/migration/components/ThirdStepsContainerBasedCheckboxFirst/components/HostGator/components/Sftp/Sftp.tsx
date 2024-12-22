@@ -4,7 +4,7 @@ import styles from './Sftp.module.scss';
 const Sftp = () => {
   return (
     <div className={styles.mainWrapper}>
-      <span>You will need to enable SSH access</span>
+      <span>You will need to enable SSH access</span>
       <InputAndLabel
         firstColumnActive
         firstColumnLabel={'Server address'}
