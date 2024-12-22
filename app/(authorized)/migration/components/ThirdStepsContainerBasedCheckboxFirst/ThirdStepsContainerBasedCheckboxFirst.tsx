@@ -18,8 +18,8 @@ const ThirdStepsContainerBasedCheckboxFirst = (): JSX.Element => {
     }
   }, [selectedValue]);
 
-  const SelectedComponent = useMemo((): React.ComponentType | null => {
-    const selectedOption = HOSTING_OPTIONS.find(
+  const SelectedComponent: React.ComponentType | null = useMemo((): React.ComponentType | null => {
+    const selectedOption: HostingOption | undefined = HOSTING_OPTIONS.find(
       (option: HostingOption) => option.value === selectedValue,
     );
     return selectedOption?.component || null;
