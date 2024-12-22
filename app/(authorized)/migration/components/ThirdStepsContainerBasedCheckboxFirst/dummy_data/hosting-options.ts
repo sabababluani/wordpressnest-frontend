@@ -9,7 +9,9 @@ import FlywheelFields from '../components/FlywheelFields/FlywheelFields';
 import GoogleCloudFields from '../components/GoogleCloudFields/GoogleCloudFields';
 import HostGator from '../components/HostGator/HostGator';
 import Ionos from '../components/Ionos/Ionos';
+import Linode from '../components/Linode/Linode';
 import LiquidWeb from '../components/LiquidWeb/LiquidWeb';
+import MediaTemplate from '../components/MediaTemplate/MediaTemplate';
 import Pagali from '../components/Pagali/Pagali';
 import Pantheon from '../components/Pantheon/Pantheon';
 import Savvii from '../components/Savvii/Savvii';
@@ -39,4 +41,6 @@ export const HOSTING_OPTIONS: HostingOption[] = [
   { value: 'digitalocean', label: 'DigitalOcean', component: DigitalOcean },
   { value: 'hostgator', label: 'HostGator', component: HostGator },
   { value: 'wpengine', label: 'WpEngine', component: WpEngine },
+  { value: 'linode', label: 'Linode', component: Linode },
+  { value: 'mediatemplate', label: 'Media Template', component: MediaTemplate },
 ];
