@@ -14,10 +14,6 @@ const FactorAuthentication = () => {
     setIsModalVisible(true);
   };
 
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
-
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
@@ -39,13 +35,12 @@ const FactorAuthentication = () => {
 
       <Modal
         open={isModalVisible}
-        onCancel={handleCancel}
+        onCancel={() => setIsModalVisible(false)}
         footer={null}
-        centered
         closable={false}
         width={840}
       >
-        <TwoFAModal />
+        <TwoFAModal onClose={() => setIsModalVisible(false)} />
       </Modal>
     </div>
   );

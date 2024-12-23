@@ -1,10 +1,27 @@
+import { useState } from 'react';
 import Button from '@/app/components/Button/Button';
 import styles from './AddCardModal.module.scss';
 import Image from 'next/image';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { Checkbox } from 'antd';
+import { AddCardModalPropsInterface } from './interfaces/add-card-modal-props.interface';
 
-const AddCardModal = () => {
+const AddCardModal = (props: AddCardModalPropsInterface) => {
+  const [formState, setFormState] = useState({
+    cardHolderName: '',
+    cardNumber: '',
+    date: '',
+    cvc: '',
+  });
+
+  const isFormValid = Object.values(formState).every(
+    (value) => value.trim() !== '',
+  );
+
+  const handleInputChange = (field: keyof typeof formState, value: string) => {
+    setFormState((prevState) => ({ ...prevState, [field]: value }));
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
@@ -15,6 +32,7 @@ const AddCardModal = () => {
           height={24}
           alt="close"
           className={styles.close}
+          onClick={props.onClose}
         />
       </div>
       <div className={styles.mainContainer}>
@@ -22,7 +40,14 @@ const AddCardModal = () => {
           <div className={styles.inputWrapper}>
             <div className={styles.inputBase}>
               <span className={styles.inputHeadline}>Card holder name</span>
-              <input type="text" className={styles.input} />
+              <input
+                type="text"
+                className={styles.input}
+                value={formState.cardHolderName}
+                onChange={(e) =>
+                  handleInputChange('cardHolderName', e.target.value)
+                }
+              />
             </div>
             <div className={styles.inputBase}>
               <span className={styles.inputHeadline}>Card Details</span>
@@ -37,6 +62,10 @@ const AddCardModal = () => {
                   type="text"
                   className={styles.iconInput}
                   placeholder="Card number"
+                  value={formState.cardNumber}
+                  onChange={(e) =>
+                    handleInputChange('cardNumber', e.target.value)
+                  }
                 />
               </div>
             </div>
@@ -44,7 +73,12 @@ const AddCardModal = () => {
           <div className={styles.inputWrapper}>
             <div className={styles.inputBase}>
               <span className={styles.inputHeadline}>Date</span>
-              <input type="text" className={styles.input} />
+              <input
+                type="text"
+                className={styles.input}
+                value={formState.date}
+                onChange={(e) => handleInputChange('date', e.target.value)}
+              />
             </div>
             <div className={styles.inputBase}>
               <span className={styles.inputHeadline}>CVC</span>
@@ -59,6 +93,8 @@ const AddCardModal = () => {
                   type="text"
                   className={styles.iconInput}
                   placeholder="CVC number"
+                  value={formState.cvc}
+                  onChange={(e) => handleInputChange('cvc', e.target.value)}
                 />
               </div>
             </div>
@@ -85,10 +121,12 @@ const AddCardModal = () => {
           <Button
             innerContent="Cancel"
             backgroundColor={buttonbackgroundColorEnum.white}
+            onClick={props.onClose}
           />
           <Button
             innerContent="Add Card"
             backgroundColor={buttonbackgroundColorEnum.black}
+            disableButton={!isFormValid}
           />
         </div>
       </div>

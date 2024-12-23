@@ -5,8 +5,9 @@ import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { useState } from 'react';
 import ResetSiteConfirmation from './components/ResetSiteConfirmation/ResetSiteConfirmation';
+import { ResetSiteModalPropsInterface } from './interfaces/reset-site-modal-props.interface';
 
-const ResetSiteModal = () => {
+const ResetSiteModal = (props: ResetSiteModalPropsInterface) => {
   const [steper, setSteper] = useState(1);
 
   return (
@@ -19,7 +20,7 @@ const ResetSiteModal = () => {
           width={24}
           height={24}
           className={styles.close}
-          //   onClick={props.onClose}
+          onClick={props.onClose}
         />
       </div>
       <div className={styles.contentWrapper}>
@@ -117,7 +118,8 @@ const ResetSiteModal = () => {
             <div className={styles.buttons}>
               <Button
                 backgroundColor={buttonbackgroundColorEnum.grey}
-                innerContent="Back"
+                innerContent="Cancel"
+                onClick={props.onClose}
               />
               <Button
                 backgroundColor={buttonbackgroundColorEnum.black}
@@ -127,7 +129,7 @@ const ResetSiteModal = () => {
             </div>
           </div>
         ) : (
-          <ResetSiteConfirmation />
+          <ResetSiteConfirmation onBack={() => setSteper(1)} />
         )}
       </div>
     </div>

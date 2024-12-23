@@ -13,6 +13,8 @@
   gap: 16px;
   padding: 0 24px 24px 0;
   background-color: #fff;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 .wrapper {
@@ -20,9 +22,8 @@
   display: flex;
   flex-direction: column;
   border: 1px solid $borderColor;
-  border-radius: 12px;
+  border-radius: 8px;
   background-color: #fff;
-  max-width: 1213px;
 }
 
 .header {
@@ -32,7 +33,7 @@
   padding: 16px 24px;
   align-items: center;
   justify-content: space-between;
-  border-radius: 12px 12px 0 0;
+  border-radius: 6px 6px 0 0;
   border-bottom: 1px solid $borderColor;
 }
 
@@ -42,6 +43,10 @@
   font-style: normal;
   font-weight: 600;
   line-height: 24px;
+}
+
+.header img {
+  cursor: pointer;
 }
 
 .container {

@@ -3,10 +3,12 @@ import styles from './ManualBackupCreateModal.module.scss';
 import Image from 'next/image';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { ManualBackupCreateModalPropsInterface } from './interfaces/manual-backup-create-modal-props.interface';
+import { useState } from 'react';
 
 const ManualBackupCreateModal = (
   props: ManualBackupCreateModalPropsInterface,
 ) => {
+  const [backupNote, setBackupNote] = useState<string>('');
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
@@ -25,7 +27,7 @@ const ManualBackupCreateModal = (
           You can add a short note to make it easy to identify your backup later
           on.
         </span>
-        <input type="text" />
+        <input type="text" onChange={(e) => setBackupNote(e.target.value)} />
       </div>
       <div className={styles.buttons}>
         <Button
@@ -36,6 +38,7 @@ const ManualBackupCreateModal = (
         <Button
           backgroundColor={buttonbackgroundColorEnum.black}
           innerContent="Restore Backup"
+          disableButton={!backupNote.trim()}
         />
       </div>
     </div>
