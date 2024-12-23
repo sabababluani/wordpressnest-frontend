@@ -2,8 +2,12 @@ import Button from '@/app/components/Button/Button';
 import styles from './TwoFAModal.module.scss';
 import Image from 'next/image';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
+import { useState } from 'react';
+import { TwoFaModalPropsInterface } from './interfaces/two-fa-modal-props.interface';
 
-const TwoFAModal = () => {
+const TwoFAModal = (props: TwoFaModalPropsInterface) => {
+  const [inputValue, setInputValue] = useState<string>('');
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
@@ -16,6 +20,7 @@ const TwoFAModal = () => {
           height={24}
           alt="close"
           className={styles.close}
+          onClick={props.onClose}
         />
       </div>
       <div className={styles.mainContainer}>
@@ -32,17 +37,23 @@ const TwoFAModal = () => {
             <span className={styles.inputText}>
               Enter the 6-digit code you see in the app
             </span>
-            <input type="text" className={styles.input} />
+            <input
+              type="text"
+              className={styles.input}
+              onChange={(e) => setInputValue(e.target.value)}
+            />
           </div>
         </div>
         <div className={styles.footer}>
           <Button
             innerContent="Cancel"
             backgroundColor={buttonbackgroundColorEnum.white}
+            onClick={props.onClose}
           />
           <Button
             innerContent="Verify"
             backgroundColor={buttonbackgroundColorEnum.black}
+            disableButton={!inputValue.trim()}
           />
         </div>
       </div>

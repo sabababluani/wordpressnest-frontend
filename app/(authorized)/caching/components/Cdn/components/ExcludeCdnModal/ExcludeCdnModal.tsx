@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import Button from '@/app/components/Button/Button';
 import styles from './ExcludeCdnModal.module.scss';
 import Image from 'next/image';
@@ -5,6 +6,10 @@ import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.e
 import { ExcludeCdnModalPropsInterface } from './interfaces/exclude-cdn-modal-props.interface';
 
 const ExcludeCdnModal = (props: ExcludeCdnModalPropsInterface) => {
+  const [directoryInput, setDirectoryInput] = useState<string>('');
+  const [urlInput, setUrlInput] = useState<string>('');
+  const [extensionInput, setExtensionInput] = useState<string>('');
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
@@ -33,11 +38,16 @@ const ExcludeCdnModal = (props: ExcludeCdnModalPropsInterface) => {
               time
             </span>
             <div className={styles.inputWrapper}>
-              <input type="text" placeholder="/example-path" />
+              <input
+                type="text"
+                placeholder="/example-path"
+                value={directoryInput}
+                onChange={(e) => setDirectoryInput(e.target.value)}
+              />
               <Button
                 backgroundColor={buttonbackgroundColorEnum.black}
                 innerContent="Add directory"
-                disableButton
+                disableButton={!directoryInput.trim()}
               />
             </div>
           </div>
@@ -53,20 +63,25 @@ const ExcludeCdnModal = (props: ExcludeCdnModalPropsInterface) => {
             <p>URL</p>
             <span>Do not include the domain and enter one URL at a time</span>
             <div className={styles.inputWrapper}>
-              <input type="text" placeholder="/example-path" />
+              <input
+                type="text"
+                placeholder="/example-path"
+                value={urlInput}
+                onChange={(e) => setUrlInput(e.target.value)}
+              />
               <Button
                 backgroundColor={buttonbackgroundColorEnum.black}
                 innerContent="Add URL path"
-                disableButton
+                disableButton={!urlInput.trim()}
               />
             </div>
           </div>
         </div>
         <div className={styles.containerWrapper}>
           <div className={styles.containerHeader}>
-            <p>Exclude files based on URL</p>
+            <p>Exclude files based on file extensions</p>
             <span>
-              All URLs after the URL you provide will also be excluded.
+              All files with the specified extension will be excluded.
             </span>
           </div>
 
@@ -75,17 +90,22 @@ const ExcludeCdnModal = (props: ExcludeCdnModalPropsInterface) => {
             <div className={styles.inputWrapperSymbol}>
               <div className={styles.inputContainer}>
                 <Image
-                  src={'/icons/minisearch.svg'}
+                  src="/icons/minisearch.svg"
                   alt="minisearch"
                   width={16}
                   height={16}
                 />
-                <input type="text" placeholder="Start typing an extension" />
+                <input
+                  type="text"
+                  placeholder="Start typing an extension"
+                  value={extensionInput}
+                  onChange={(e) => setExtensionInput(e.target.value)}
+                />
               </div>
               <Button
                 backgroundColor={buttonbackgroundColorEnum.black}
                 innerContent="Add Extension"
-                disableButton
+                disableButton={!extensionInput.trim()}
               />
             </div>
           </div>

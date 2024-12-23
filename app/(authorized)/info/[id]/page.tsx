@@ -1,5 +1,6 @@
 'use client';
 
+import { Modal } from 'antd';
 import BasicDetails from '../components/BasicDetails/BasicDetails';
 import DataBaseAccess from '../components/DatabaseAccess/DatabaseAccess';
 import EnvironementDetails from '../components/EnvironmentDetails/EnvironmentDetails';
@@ -11,6 +12,9 @@ import {
   buttonbackgroundColorEnum,
   innerContentIconEnum,
 } from '@/app/components/Button/enum/button.enum';
+import { useState } from 'react';
+import DeleteSiteModal from '../components/DeleteSiteModal/DeleteSiteModal';
+import ResetSiteModal from '../components/ResetSiteModal/ResetSiteModal';
 // import { wordPressLastUpdateVersionPropsInterface } from '../interfaces/info-props.interface';
 // import { useGetData } from '@/app/hooks/useGetData';
 
@@ -27,6 +31,9 @@ const Info = (): JSX.Element => {
   // });
 
   // const { data } = useGetData({ endpoint: 'user/me' });
+
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState<boolean>(false);
+  const [isResetModalOpen, setIsResetModalOpen] = useState<boolean>(false);
 
   return (
     <div className={styles.mainContainer}>
@@ -96,7 +103,7 @@ const Info = (): JSX.Element => {
             'Resetting a site removes all files, databases, and staging environments associated with the site, then installs WordPress again. Be careful when resetting Live sites'
           }
           buttonInnerContent={'Reset Site'}
-          onDeleteClick={() => {}}
+          onDeleteClick={() => setIsResetModalOpen(true)}
         />
 
         <Site
@@ -105,9 +112,28 @@ const Info = (): JSX.Element => {
           description={
             'Deleting a site removes all files, databases, and staging environments associated with the site. Be careful when deleting Live sites.'
           }
-          onDeleteClick={() => {}}
+          onDeleteClick={() => setIsDeleteModalOpen(true)}
         />
       </div>
+      <Modal
+        width={800}
+        open={isDeleteModalOpen}
+        onCancel={() => setIsDeleteModalOpen(false)}
+        footer={null}
+        closable={false}
+      >
+        <DeleteSiteModal onClose={() => setIsDeleteModalOpen(false)} />
+      </Modal>
+      <Modal
+        width={800}
+        open={isResetModalOpen}
+        onCancel={() => setIsResetModalOpen(false)}
+        footer={null}
+        closable={false}
+        centered
+      >
+        <ResetSiteModal onClose={() => setIsResetModalOpen(false)} />
+      </Modal>
     </div>
   );
 };

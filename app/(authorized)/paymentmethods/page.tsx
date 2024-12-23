@@ -39,10 +39,9 @@ const PaymentMethods = () => {
         onCancel={handleCancel}
         footer={null}
         width={840}
-        centered
         closable={false}
       >
-        <AddCardModal />
+        <AddCardModal onClose={() => setIsModalVisible(false)} />
       </Modal>
     </div>
   );

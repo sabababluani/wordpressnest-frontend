@@ -46,7 +46,6 @@ const WpSiteLabels = () => {
         footer={null}
         closable={false}
         width={840}
-        centered
       >
         <AddNewLabelModal onClose={handleCancel} />
       </Modal>

@@ -3,8 +3,11 @@ import styles from './RenameLabelModal.module.scss';
 import Image from 'next/image';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { SharedSiteLabelsPropsInterface } from '../../interfaces/shared-site-labels-props.interfaces';
+import { useState } from 'react';
 
 const RenameLabelModal = (props: SharedSiteLabelsPropsInterface) => {
+  const [inputValue, setInputValue] = useState<string>('');
+
   return (
     <div>
       <div className={styles.header}>
@@ -24,7 +27,7 @@ const RenameLabelModal = (props: SharedSiteLabelsPropsInterface) => {
             The label will be updated on all sites using this label
           </span>
         </div>
-        <input type="text" />
+        <input type="text" onChange={(e) => setInputValue(e.target.value)} />
         <div className={styles.buttons}>
           <Button
             backgroundColor={buttonbackgroundColorEnum.grey}
@@ -34,6 +37,7 @@ const RenameLabelModal = (props: SharedSiteLabelsPropsInterface) => {
           <Button
             backgroundColor={buttonbackgroundColorEnum.black}
             innerContent="Rename Label"
+            disableButton={!inputValue.trim()}
           />
         </div>
       </div>
