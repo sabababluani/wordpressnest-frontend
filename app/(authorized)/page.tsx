@@ -4,17 +4,12 @@ import styles from './page.module.scss';
 import DashboardStat from '@/app/components/DashboardStat/DashboardStat';
 import WordpressStat from '@/app/components/WordpressStat/WordpressStat';
 import { SiteInterface } from '../components/Navigation/interfaces/navigation.props.interface';
-import BaseApi from '../api/BaseApi';
-import useSWR from 'swr';
+import { useGetData } from '../hooks/useGetData';
 
 const Home = () => {
-  const fetcher = (url: string) =>
-    BaseApi.get(url).then((response) => response.data);
-
-  const { data: sitesData } = useSWR<SiteInterface[]>(
-    '/setup/wordpress',
-    fetcher,
-  );
+  const { data: sitesData } = useGetData<SiteInterface[]>({
+    endpoint: 'user/me',
+  });
 
   return (
     <div className={styles.dashboardWrappe}>
@@ -23,9 +18,9 @@ const Home = () => {
           <span className={styles.dashboardCaptionStyle}>Dashboard</span>
         </div>
         <div className={styles.dashboardStatsWrapper}>
-          {sitesData?.map((site, index) => (
+          {sitesData?.map((site) => (
             <DashboardStat
-              key={index}
+              key={site.id}
               point={'icons/pointGreen.svg'}
               active={'Active'}
               visits={'36,213 visits'}
