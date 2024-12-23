@@ -106,6 +106,26 @@
   }
 }
 
+.input {
+  padding: 11px 14px;
+  border-radius: 8px;
+  outline: none;
+  border: 1px solid #dcdfe1;
+  box-shadow: none !important;
+
+  &:hover,
+  &:focus,
+  &:active,
+  & {
+    border: 1px solid #dcdfe1;
+  }
+}
+
+.input :global(.ant-input-affix-wrapper-focused) {
+  border: 1px solid #dcdfe1 !important;
+  box-shadow: none !important;
+}
+
 .antInput :global(.ant-input-affix-wrapper-focused) {
   border: 1px solid #dcdfe1 !important;
   box-shadow: none !important;

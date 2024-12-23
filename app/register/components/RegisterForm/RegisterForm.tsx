@@ -37,7 +37,7 @@ const RegisterForm = (props: RegisterFormActionPropsInterface) => {
                   type="text"
                   placeholder="Enter your First name"
                   {...field}
-                  className={styles.passwordInput}
+                  className={styles.input}
                 />
               </div>
             )}
@@ -58,7 +58,7 @@ const RegisterForm = (props: RegisterFormActionPropsInterface) => {
                   type="text"
                   placeholder="Enter your Last name"
                   {...field}
-                  className={styles.passwordInput}
+                  className={styles.input}
                 />
               </div>
             )}
@@ -84,7 +84,7 @@ const RegisterForm = (props: RegisterFormActionPropsInterface) => {
                 type="email"
                 placeholder="Enter your email"
                 {...field}
-                className={styles.passwordInput}
+                className={styles.input}
               />
             </div>
           )}
