@@ -21,20 +21,16 @@
 
 .activeStep {
   opacity: 1;
-  transform: translateY(0);
   z-index: 2;
 }
 
 .completedStep {
   opacity: 1;
-  color: black; 
-  transform: translateY(-5px);
   z-index: 1;
 }
 
 .inactiveStep {
   opacity: 0.4;
-  transform: translateY(-10px);
   z-index: 0;
 }
 
@@ -53,7 +49,7 @@
 }
 
 .activeStyle {
-  background-color: black;
+  background-color: black; 
 }
 
 .inActiveStyle {
@@ -64,6 +60,14 @@
   max-width: 299px;
   width: 100%;
   height: 2px;
+}
+
+.completedLine {
+  background-color: black; 
+}
+
+.inActiveLine {
+  background-color: $borderColor;
 }
 
 .captionStyle {
@@ -77,26 +81,4 @@
 
 .inActiveFontColor {
   color: $borderColor;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
 }
