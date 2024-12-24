@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Table, TableColumnsType } from 'antd';
+import { Modal, Table, TableColumnsType } from 'antd';
 import { useParams } from 'next/navigation';
 import { updateData, patchData } from '@/app/api/crudService';
 import styles from '@/app/(authorized)/domains/components/DomainsTable/DomainsTable.module.scss';
@@ -10,12 +10,17 @@ import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.e
 import { PluginDataPropsInterface } from './interfaces/plugin-table.interfaces';
 import Search from '@/app/components/Search/Search';
 import { useGetData } from '@/app/hooks/useGetData';
+import ActivateModal from '../ActivateModal/ActivateModal';
 
 const PluginTable = () => {
   const { id } = useParams();
   const numberId = +id;
   const [selectionType] = useState<'checkbox'>('checkbox');
   const [searchValue, setSearchValue] = useState('');
+  const [selectedPlugins, setSelectedPlugins] = useState<
+    PluginDataPropsInterface[]
+  >([]);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const {
     data: plugins,
@@ -61,6 +66,13 @@ const PluginTable = () => {
 
   const handleReload = () => {
     mutate();
+  };
+
+  const handleRowSelectionChange = (
+    selectedRowKeys: React.Key[],
+    selectedRows: PluginDataPropsInterface[],
+  ) => {
+    setSelectedPlugins(selectedRows);
   };
 
   const columns: TableColumnsType<PluginDataPropsInterface> = [
@@ -152,25 +164,125 @@ const PluginTable = () => {
     <div className={styles.tableWrapper}>
       <div className={styles.searchPadding}>
         <div className={styles.searchContainer}>
-          <Search
-            placeholder="Search By Plugin Name"
-            isPadded
-            onChange={(value) => setSearchValue(value)}
-          />
-          <div className={styles.reloadWrap}>
-            <span>Updated 2 Days Ago</span>
-            <Button
-              backgroundColor={buttonbackgroundColorEnum.grey}
-              innerContent="Reload"
-              innerContentIconActive
-              innerContentIcon="/icons/reload.svg"
-              onClick={handleReload}
-            />
+          <div className={styles.searchWrap}>
+            <div className={styles.searchHeader}>
+              <h2>Installed Plugins</h2>
+              {selectedPlugins.length > 0 && (
+                <div className={styles.reloadWrap}>
+                  <span>Updated 2 Days Ago</span>
+                  <Button
+                    backgroundColor={buttonbackgroundColorEnum.grey}
+                    innerContent="Reload"
+                    innerContentIconActive
+                    innerContentIcon="/icons/reload.svg"
+                    onClick={handleReload}
+                  />
+                </div>
+              )}
+            </div>
+            <div className={styles.searchInput}>
+              <Search
+                placeholder="Search By Plugin Name"
+                isPadded
+                onChange={(value) => setSearchValue(value)}
+              />
+              <div className={styles.reloadContainer}>
+                {selectedPlugins.length > 0 ? (
+                  <div className={styles.checkedWrapper}>
+                    <span>
+                      {selectedPlugins.length}{' '}
+                      {selectedPlugins.length > 1
+                        ? 'plugins selected'
+                        : 'plugin selected'}
+                    </span>
+                    <Button
+                      backgroundColor={buttonbackgroundColorEnum.grey}
+                      innerContent="Update"
+                      disableButton={
+                        !selectedPlugins.some(
+                          (plugin) => plugin.update !== 'none',
+                        )
+                      }
+                    />
+                    <Button
+                      backgroundColor={buttonbackgroundColorEnum.grey}
+                      innerContent="Activate"
+                      disableButton={
+                        !selectedPlugins.some(
+                          (plugin) => plugin.status !== 'active',
+                        )
+                      }
+                      onClick={() => setModalOpen(true)}
+                    />
+                    <Button
+                      backgroundColor={buttonbackgroundColorEnum.grey}
+                      innerContent="Deactivate"
+                      disableButton={
+                        !selectedPlugins.some(
+                          (plugin) => plugin.status === 'active',
+                        )
+                      }
+                    />
+                  </div>
+                ) : (
+                  <div className={styles.reloadWrap}>
+                    <span>Updated 2 Days Ago</span>
+                    <Button
+                      backgroundColor={buttonbackgroundColorEnum.grey}
+                      innerContent="Reload"
+                      innerContentIconActive
+                      innerContentIcon="/icons/reload.svg"
+                      onClick={handleReload}
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
+          {/* <div className={styles.reloadContainer}>
+            {selectedPlugins.length > 0 && (
+              <div className={styles.checkedWrapper}>
+                <span>
+                  {selectedPlugins.length}{' '}
+                  {selectedPlugins.length > 1
+                    ? 'plugins selected'
+                    : 'plugin selected'}
+                </span>
+                <Button
+                  backgroundColor={buttonbackgroundColorEnum.grey}
+                  innerContent="Update"
+                  disableButton={
+                    !selectedPlugins.some((plugin) => plugin.update !== 'none')
+                  }
+                />
+                <Button
+                  backgroundColor={buttonbackgroundColorEnum.grey}
+                  innerContent="Activate"
+                  disableButton={
+                    !selectedPlugins.some(
+                      (plugin) => plugin.status !== 'active',
+                    )
+                  }
+                />
+                <Button
+                  backgroundColor={buttonbackgroundColorEnum.grey}
+                  innerContent="Deactivate"
+                  disableButton={
+                    !selectedPlugins.some(
+                      (plugin) => plugin.status === 'active',
+                    )
+                  }
+                />
+              </div>
+            )}
+          </div> */}
         </div>
       </div>
       <Table<PluginDataPropsInterface>
-        rowSelection={{ type: selectionType }}
+        rowSelection={{
+          type: selectionType,
+          onChange: handleRowSelectionChange,
+        }}
         columns={columns}
         dataSource={plugins}
         pagination={false}
@@ -178,6 +290,15 @@ const PluginTable = () => {
         rowKey={(record) => record.name}
         loading={isLoading}
       />
+      <Modal
+        open={modalOpen}
+        onCancel={() => setModalOpen(false)}
+        footer={null}
+        closable={false}
+        width={840}
+      >
+        <ActivateModal />
+      </Modal>
     </div>
   );
 };

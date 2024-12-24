@@ -1,5 +1,85 @@
-@import '../../../../styles/text-colors.scss';
 @import '../../../../styles/colors.scss';
+@import '../../../../styles/text-colors.scss';
+
+.header {
+  width: 100%;
+  display: flex;
+  background-color: #f0f3f5;
+  padding: 16px 24px;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 12px 12px 0 0;
+  border-bottom: 1px solid $borderColor;
+}
+
+.header img {
+  cursor: pointer;
+}
+
+.headline {
+  color: $primaryTextColor;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.mainCaptionStyle {
+  color: #11141a;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  display: block;
+}
+
+.exitButtonWrapper {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 7.5px;
+  border: 1px solid $borderColor;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.bottomContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px 24px 24px;
+  background-color: white;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.buttonsWrapper {
+  display: flex;
+  gap: 16px;
+}
+
+.middleContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  background-color: white;
+}
+
+.mainCaptionStyle {
+  color: #000;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.mainWrapper {
+  max-width: 840px;
+  width: 100%;
+}
 
 .tableWrapper :global .ant-table th {
   background: #fff !important;
@@ -29,9 +109,9 @@
 }
 
 .tableWrapper :global .ant-table-container {
-  border: 1px solid $borderColor;
   border-radius: 12px;
   overflow: hidden;
+  border: none;
 }
 
 .tableWrapper :global .ant-checkbox-inner {
@@ -128,181 +208,13 @@
   width: 100%;
 }
 
-.actionbuttons {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.middleHeader {
+  padding: 24px 24px 0 24px;
 }
 
-.actionbuttons img {
-  cursor: pointer;
-}
-
-.userInfoWrapper {
-  display: flex;
-  flex-direction: column;
-}
-
-.userName {
-  color: $primaryTextColor;
-  font-weight: 500;
-  line-height: 24px;
-}
-
-.userEmail {
-  color: #707276;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 24px;
-}
-
-.userContainer {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.activeStatus {
-  color: #2be437;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.inactiveStatus {
-  color: #ff0003;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.greenDot,
-.redDot {
-  display: inline-block;
-  align-self: center;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  margin-right: 5px;
-}
-
-.greenDot {
-  background-color: #2be437;
-}
-
-.redDot {
-  background-color: #ff0003;
-}
-
-.status {
-  position: relative;
-  bottom: 1px;
-}
-
-.dotsWrapper {
-  border-radius: 4px;
-  border: 1px solid $borderColor;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-.primaryTag {
-  border: 1px solid $borderColor;
-  border-radius: 4px;
-  color: $primaryTextColor;
-  padding: 4px 12px;
-  background-color: #f0f3f5;
-}
-
-.primaryLabel {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 12px;
-}
-
-.buttonsUpdate {
-  max-width: 88px;
-  width: 100%;
-}
-
-.buttonsDeactive {
-  max-width: 124px;
-  width: 100%;
-}
-
-.buttonsActive {
-  max-width: 80px;
-  width: 100%;
-}
-
-.searchContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.reloadWrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-}
-
-.reloadWrap span {
-  color: $primaryColor;
+.middleContainersMainCaption {
+  color: #000;
   font-size: 14px;
   font-weight: 400;
-}
-
-.searchPadding {
-  padding-bottom: 16px;
-}
-
-.reloadContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 24px;
-}
-
-.checkedWrapper {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.searchWrap {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  flex: 1;
-}
-
-.searchWrap h2 {
-  color: $primaryTextColor;
-  font-size: 24px;
-  font-weight: 600;
-  line-height: 32px;
-}
-
-.searchHeader {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  height: 50px;
-}
-
-.searchInput {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  line-height: 24px;
 }
