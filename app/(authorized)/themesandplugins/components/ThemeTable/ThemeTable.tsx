@@ -14,6 +14,9 @@ import { patchData, updateData } from '@/app/api/crudService';
 const ThemeTable: React.FC = () => {
   const { id } = useParams();
   const [searchValue, setSearchValue] = useState('');
+  const [selectedThemes, setSelectedThemes] = useState<
+    ThemesTablePropsInterface[]
+  >([]);
 
   const {
     data: themes,
@@ -44,6 +47,13 @@ const ThemeTable: React.FC = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleRowSelectionChange = (
+    selectedRowKeys: React.Key[],
+    selectedRows: ThemesTablePropsInterface[],
+  ) => {
+    setSelectedThemes(selectedRows);
   };
 
   const columns: TableColumnsType<ThemesTablePropsInterface> = [
@@ -92,7 +102,9 @@ const ThemeTable: React.FC = () => {
       dataIndex: 'update_version',
       width: '15%',
       render: (_: unknown, record: ThemesTablePropsInterface) =>
-        record.update === 'none' ? 'Up-To-Date' : record.update_version,
+        record.update === 'none'
+          ? 'Up-To-Date'
+          : `${record.update_version} Available`,
     },
     {
       title: '',
@@ -113,13 +125,14 @@ const ThemeTable: React.FC = () => {
               <Button
                 backgroundColor={buttonbackgroundColorEnum.grey}
                 innerContent="Deactivate"
+                onClick={() => onHandleActive(record.name)}
               />
             </div>
           ) : (
             <div className={styles.buttonsActive}>
               <Button
                 backgroundColor={buttonbackgroundColorEnum.grey}
-                innerContent="Active"
+                innerContent="Activate"
                 onClick={() => onHandleActive(record.name)}
               />
             </div>
@@ -133,29 +146,90 @@ const ThemeTable: React.FC = () => {
     <div className={styles.tableWrapper}>
       <div className={styles.searchPadding}>
         <div className={styles.searchContainer}>
-          <Search
-            placeholder={'Search By Theme name'}
-            isPadded
-            onChange={(value) => setSearchValue(value)}
-          />
-          <div className={styles.reloadWrap}>
-            <span>Updated 2 Days Ago</span>
-            <Button
-              backgroundColor={buttonbackgroundColorEnum.grey}
-              innerContent={'Reload'}
-              innerContentIconActive
-              innerContentIcon={'/icons/reload.svg'}
-              onClick={handleReload}
-            />
+          <div className={styles.searchWrap}>
+            <div className={styles.searchHeader}>
+              <h2>Installed Themes</h2>
+              {selectedThemes.length > 0 && (
+                <div className={styles.reloadWrap}>
+                  <span>Updated 2 Days Ago</span>
+                  <Button
+                    backgroundColor={buttonbackgroundColorEnum.grey}
+                    innerContent="Reload"
+                    innerContentIconActive
+                    innerContentIcon="/icons/reload.svg"
+                    onClick={handleReload}
+                  />
+                </div>
+              )}
+            </div>
+            <div className={styles.searchInput}>
+              <Search
+                placeholder="Search By Theme Name"
+                isPadded
+                onChange={(value) => setSearchValue(value)}
+              />
+              <div className={styles.reloadContainer}>
+                {selectedThemes.length > 0 ? (
+                  <div className={styles.checkedWrapper}>
+                    <span>
+                      {selectedThemes.length}{' '}
+                      {selectedThemes.length > 1
+                        ? 'themes selected'
+                        : 'theme selected'}
+                    </span>
+                    <Button
+                      backgroundColor={buttonbackgroundColorEnum.grey}
+                      innerContent="Update"
+                      disableButton={
+                        !selectedThemes.some((theme) => theme.update !== 'none')
+                      }
+                    />
+                    <Button
+                      backgroundColor={buttonbackgroundColorEnum.grey}
+                      innerContent="Activate"
+                      disableButton={
+                        !selectedThemes.some(
+                          (theme) => theme.status !== 'active',
+                        )
+                      }
+                    />
+                    <Button
+                      backgroundColor={buttonbackgroundColorEnum.grey}
+                      innerContent="Deactivate"
+                      disableButton={
+                        !selectedThemes.some(
+                          (theme) => theme.status === 'active',
+                        )
+                      }
+                    />
+                  </div>
+                ) : (
+                  <div className={styles.reloadWrap}>
+                    <span>Updated 2 Days Ago</span>
+                    <Button
+                      backgroundColor={buttonbackgroundColorEnum.grey}
+                      innerContent="Reload"
+                      innerContentIconActive
+                      innerContentIcon="/icons/reload.svg"
+                      onClick={handleReload}
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>
       <Table<ThemesTablePropsInterface>
+        rowSelection={{
+          type: 'checkbox',
+          onChange: handleRowSelectionChange,
+        }}
         columns={columns}
         dataSource={themes}
-        rowSelection={{ type: 'checkbox' }}
         pagination={false}
         scroll={{ x: 'max-content' }}
+        rowKey={(record) => record.name}
         loading={isLoading}
       />
     </div>

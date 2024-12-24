@@ -3,11 +3,11 @@
 import styles from './page.module.scss';
 import DashboardStat from '@/app/components/DashboardStat/DashboardStat';
 import WordpressStat from '@/app/components/WordpressStat/WordpressStat';
-import { SiteInterface } from '../components/Navigation/interfaces/navigation.props.interface';
+import { UserInterface } from '../components/Navigation/interfaces/navigation.props.interface';
 import { useGetData } from '../hooks/useGetData';
 
 const Home = () => {
-  const { data: sitesData } = useGetData<SiteInterface[]>({
+  const { data: sitesData } = useGetData<UserInterface>({
     endpoint: 'user/me',
   });
 
@@ -18,7 +18,7 @@ const Home = () => {
           <span className={styles.dashboardCaptionStyle}>Dashboard</span>
         </div>
         <div className={styles.dashboardStatsWrapper}>
-          {sitesData?.map((site) => (
+          {sitesData?.setup.map((site) => (
             <DashboardStat
               key={site.id}
               point={'icons/pointGreen.svg'}
