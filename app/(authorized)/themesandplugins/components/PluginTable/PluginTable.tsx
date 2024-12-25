@@ -28,6 +28,7 @@ const PluginTable = () => {
     'activate',
   );
   const [isTableOpen, setIsTableOpen] = useState(false);
+  const [rowChecked, setRowChecked] = useState(false);
 
   const {
     data: plugins,
@@ -38,10 +39,17 @@ const PluginTable = () => {
     queryParams: { search: searchValue },
   });
 
-  const onModalActivateCheck = () => {
-    if (selectedPlugins.some((plugin) => plugin.status !== 'active')) {
-      setModalOpen(true);
-    }
+  // const onModalActivateCheck = () => {
+  //   if (selectedPlugins.some((plugin) => plugin.status !== 'active')) {
+  //     setModalOpen(true);
+  //   }
+  // };
+
+  const onButtonAction = (
+    plugin: PluginDataPropsInterface,
+    action: 'activate' | 'deactivate',
+  ) => {
+    setModalAction(action);
   };
 
   const handleModalClose = () => {
@@ -59,6 +67,23 @@ const PluginTable = () => {
     setSelectedPlugins(selectedRows);
   };
 
+  const onCheckedes = async (
+    action: 'activate' | 'deactivate',
+    pluginName: string[],
+  ) => {
+    setModalAction(action);
+    setModalOpen(true);
+    setRowChecked(false);
+    try {
+      await patchData(`wp-cli/plugins/${action}`, numberId, {
+        plugins: [pluginName],
+      });
+      mutate();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const onModalAction = (
     plugin: PluginDataPropsInterface,
     action: 'activate' | 'deactivate',
@@ -66,6 +91,7 @@ const PluginTable = () => {
     setSelectedPlugin(plugin);
     setModalAction(action);
     setModalOpen(true);
+    setRowChecked(true);
   };
 
   const onHandleAction = async (
@@ -172,6 +198,17 @@ const PluginTable = () => {
     },
   ];
 
+  const filteredSelectedPlugins = selectedPlugins.filter((plugin) =>
+    modalAction === 'activate'
+      ? plugin.status !== 'active'
+      : plugin.status === 'active',
+  );
+
+  const pluginName =
+    rowChecked && filteredSelectedPlugins.length > 1
+      ? selectedPlugin?.name || 'Unknown Plugin'
+      : ` ${filteredSelectedPlugins.length}`;
+
   return (
     <div className={styles.tableWrapper}>
       <div className={styles.searchPadding}>
@@ -225,7 +262,13 @@ const PluginTable = () => {
                           (plugin) => plugin.status !== 'active',
                         )
                       }
-                      onClick={onModalActivateCheck}
+                      onClick={() => {
+                        const pluginNames = selectedPlugins
+                          .filter((plugin) => plugin.status === 'active')
+                          .map((plugin) => plugin.name);
+
+                        onCheckedes('activate', pluginNames);
+                      }}
                     />
                     <Button
                       backgroundColor={buttonbackgroundColorEnum.grey}
@@ -235,6 +278,13 @@ const PluginTable = () => {
                           (plugin) => plugin.status === 'active',
                         )
                       }
+                      onClick={() => {
+                        const pluginNames = selectedPlugins
+                          .filter((plugin) => plugin.status === 'active')
+                          .map((plugin) => plugin.name);
+
+                        onCheckedes('deactivate', pluginNames);
+                      }}
                     />
                   </div>
                 ) : (
@@ -265,6 +315,11 @@ const PluginTable = () => {
         scroll={{ x: 'max-content' }}
         rowKey={(record) => record.name}
         loading={isLoading}
+        onRow={(record) => ({
+          onClick: () => {
+            setSelectedPlugin(record);
+          },
+        })}
       />
       <Modal
         open={modalOpen}
@@ -274,7 +329,7 @@ const PluginTable = () => {
         width={840}
       >
         <ActivateModal
-          pluginName={selectedPlugin?.name || 'Unknown Plugin'}
+          pluginName={pluginName}
           onClose={handleModalClose}
           onActivate={() =>
             selectedPlugin &&

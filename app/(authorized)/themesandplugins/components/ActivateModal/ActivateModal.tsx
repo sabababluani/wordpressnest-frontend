@@ -26,7 +26,7 @@ const ActivateModal = (props: ActivateModalPropsInterface) => {
       <div className={styles.textContainer}>
         <span className={styles.text}>
           Are you sure you want to {isActivate ? 'activate' : 'deactivate'} the
-          plugin {props.pluginName}? This process may take a few minutes, if it
+          {props.pluginName} plugin? This process may take a few minutes, if it
           last longer than usual, WordPress will automatically enable
           maintenance mode
         </span>
