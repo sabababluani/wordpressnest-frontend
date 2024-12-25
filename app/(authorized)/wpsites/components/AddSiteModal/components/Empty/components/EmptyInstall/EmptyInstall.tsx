@@ -1,11 +1,11 @@
 import Steps from '@/app/components/Steps/Steps';
-import styles from './SiteOptions.module.scss';
+import styles from './EmptyInsall.module.scss';
 import { Select, Checkbox } from 'antd';
 import { useState } from 'react';
-import { dummySites } from './dummy-sites/dummy-sites';
+import { dummyEmpty } from '../../dummy-empty/dummy-empty';
 
-const SiteOptions = () => {
-  const [selectState, setSelectState] = useState<string>(dummySites[0].value);
+const EmptyInstall = () => {
+  const [selectState, setSelectState] = useState<string>(dummyEmpty[0].value);
   const [checkedItems, setCheckedItems] = useState<{ [key: string]: boolean }>({
     cdn: false,
     edgeCaching: false,
@@ -31,7 +31,7 @@ const SiteOptions = () => {
       />
       <div className={styles.infoWrapper}>
         <div className={styles.info}>
-          <span className={styles.headline}>Site name</span>
+          <span className={styles.headline}>Create empty environment</span>
           <span className={styles.text}>
             This name is only visible in hosting
           </span>
@@ -52,7 +52,7 @@ const SiteOptions = () => {
           onChange={onSelectChange}
           className={styles.selectStyle}
           value={selectState}
-          options={dummySites}
+          options={dummyEmpty}
         />
       </div>
       <div className={styles.chooseWrapper}>
@@ -98,4 +98,4 @@ const SiteOptions = () => {
   );
 };
 
-export default SiteOptions;
+export default EmptyInstall;

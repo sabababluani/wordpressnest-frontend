@@ -43,12 +43,12 @@ const Wpsites = () => {
     setModalState({ modalType: type, click: 1 });
   const closeModal = () => setModalState({ modalType: null, click: 1 });
 
-  const handleContinue = () => {
-    setModalState((prev) => ({
-      ...prev,
-      click: prev.click === 4 ? 1 : prev.click + 1,
-    }));
-  };
+  // const handleContinue = () => {
+  //   setModalState((prev) => ({
+  //     ...prev,
+  //     click: prev.click === 4 ? 1 : prev.click + 1,
+  //   }));
+  // };
 
   const handleBack = () => {
     setModalState((prev) => ({
@@ -62,14 +62,7 @@ const Wpsites = () => {
   const renderModalContent = () => {
     switch (modalState.modalType) {
       case 'addSite':
-        return (
-          <AddSiteModal
-            click={modalState.click}
-            onContinue={handleContinue}
-            onBack={handleBack}
-            onClose={closeModal}
-          />
-        );
+        return <AddSiteModal onStepChange={handleBack} onClose={closeModal} />;
       case 'clearCache':
         return <ClearCacheModal />;
       case 'plugins':
