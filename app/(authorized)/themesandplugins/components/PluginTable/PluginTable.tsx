@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Modal, Table, TableColumnsType } from 'antd';
 import { useParams } from 'next/navigation';
-import { patchData } from '@/app/api/crudService';
+import { patchData, updateData } from '@/app/api/crudService';
 import styles from '@/app/(authorized)/domains/components/DomainsTable/DomainsTable.module.scss';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
@@ -11,6 +11,7 @@ import { PluginDataPropsInterface } from './interfaces/plugin-table.interfaces';
 import Search from '@/app/components/Search/Search';
 import { useGetData } from '@/app/hooks/useGetData';
 import ActivateModal from '../ActivateModal/ActivateModal';
+import UpdateThemesAndPlugins from '../UpdateThemesAndPlugins/UpdateThemesAndPlugins';
 
 const PluginTable = () => {
   const { id } = useParams();
@@ -26,6 +27,7 @@ const PluginTable = () => {
   const [modalAction, setModalAction] = useState<'activate' | 'deactivate'>(
     'activate',
   );
+  const [isTableOpen, setIsTableOpen] = useState(false);
 
   const {
     data: plugins,
@@ -72,7 +74,7 @@ const PluginTable = () => {
   ) => {
     try {
       await patchData(`wp-cli/plugin/${action}`, numberId, {
-        plugin: pluginName,
+        plugins: [pluginName],
       });
       mutate();
     } catch (error) {
@@ -80,6 +82,26 @@ const PluginTable = () => {
     }
     setModalOpen(false);
   };
+
+  const onHandleUpdate = async (pluginName: string) => {
+    try {
+      await updateData(`wp-cli/plugins`, numberId, {
+        plugins: [pluginName],
+      });
+      mutate();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (plugins?.length) {
+      const updatedSelectedPlugins = plugins.filter((plugin) =>
+        selectedPlugins.some((selected) => selected.name === plugin.name),
+      );
+      setSelectedPlugins(updatedSelectedPlugins);
+    }
+  }, [plugins]);
 
   const columns: TableColumnsType<PluginDataPropsInterface> = [
     {
@@ -94,21 +116,11 @@ const PluginTable = () => {
       render: (status: string) => (
         <div
           className={
-            status === 'active'
-              ? styles.activeStatus
-              : status === 'inactive'
-                ? styles.inactiveStatus
-                : ''
+            status === 'active' ? styles.activeStatus : styles.inactiveStatus
           }
         >
           <span
-            className={
-              status === 'active'
-                ? styles.greenDot
-                : status === 'inactive'
-                  ? styles.redDot
-                  : ''
-            }
+            className={status === 'active' ? styles.greenDot : styles.redDot}
           ></span>
           <span className={styles.status}>
             {status[0].toUpperCase() + status.slice(1)}
@@ -136,30 +148,24 @@ const PluginTable = () => {
       render: (_: unknown, record: PluginDataPropsInterface) => (
         <div className={styles.buttons}>
           {record.update !== 'none' && (
-            <div className={styles.buttonsUpdate}>
-              <Button
-                backgroundColor={buttonbackgroundColorEnum.black}
-                innerContent="Update"
-                onClick={() => onHandleAction('enable', record.name)}
-              />
-            </div>
+            <Button
+              backgroundColor={buttonbackgroundColorEnum.black}
+              innerContent="Update"
+              onClick={() => onHandleUpdate(record.name)}
+            />
           )}
           {record.status === 'active' ? (
-            <div className={styles.buttonsDeactive}>
-              <Button
-                backgroundColor={buttonbackgroundColorEnum.grey}
-                innerContent="Deactivate"
-                onClick={() => onModalAction(record, 'deactivate')}
-              />
-            </div>
+            <Button
+              backgroundColor={buttonbackgroundColorEnum.grey}
+              innerContent="Deactivate"
+              onClick={() => onModalAction(record, 'deactivate')}
+            />
           ) : (
-            <div className={styles.buttonsActive}>
-              <Button
-                backgroundColor={buttonbackgroundColorEnum.grey}
-                innerContent="Activate"
-                onClick={() => onModalAction(record, 'activate')}
-              />
-            </div>
+            <Button
+              backgroundColor={buttonbackgroundColorEnum.grey}
+              innerContent="Activate"
+              onClick={() => onModalAction(record, 'activate')}
+            />
           )}
         </div>
       ),
@@ -209,6 +215,7 @@ const PluginTable = () => {
                           (plugin) => plugin.update !== 'none',
                         )
                       }
+                      onClick={() => setIsTableOpen(true)}
                     />
                     <Button
                       backgroundColor={buttonbackgroundColorEnum.grey}
@@ -277,6 +284,18 @@ const PluginTable = () => {
             )
           }
           modalAction={modalAction}
+        />
+      </Modal>
+      <Modal
+        open={isTableOpen}
+        onCancel={() => setIsTableOpen(false)}
+        footer={null}
+        closable={false}
+        width={840}
+      >
+        <UpdateThemesAndPlugins
+          selectedPlugins={selectedPlugins}
+          onClose={() => setIsTableOpen(false)}
         />
       </Modal>
     </div>

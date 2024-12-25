@@ -38,7 +38,7 @@ const ThemeTable = () => {
 
   const onHandleUpdate = async (themeName: string) => {
     try {
-      await updateData(`wp-cli/theme/${id}`, themeName, { theme: themeName });
+      await updateData(`wp-cli/themes`, +id, { themes: [themeName] });
       mutate();
     } catch (error) {
       alert(error);
@@ -47,7 +47,7 @@ const ThemeTable = () => {
 
   const onHandleActive = async (themeName: string) => {
     try {
-      await patchData(`wp-cli/theme`, +id, { theme: themeName });
+      await patchData(`wp-cli/theme`, +id, { themes: themeName });
       mutate();
     } catch (error) {
       console.log(error);

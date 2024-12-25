@@ -12,7 +12,7 @@ const ActivateModal = (props: ActivateModalPropsInterface) => {
       <div className={styles.header}>
         <div className={styles.headerContainer}>
           <span className={styles.headline}>
-            {isActivate ? 'Activate' : 'Deactivate'} plugin {props.pluginName}
+            {isActivate ? 'Activate' : 'Deactivate'} {props.pluginName} plugin
           </span>
         </div>
         <Image
