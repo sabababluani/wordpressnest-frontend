@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Modal, Table, TableColumnsType } from 'antd';
 import { useParams } from 'next/navigation';
-import { updateData, patchData } from '@/app/api/crudService';
+import { patchData } from '@/app/api/crudService';
 import styles from '@/app/(authorized)/domains/components/DomainsTable/DomainsTable.module.scss';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Table, TableColumnsType } from 'antd';
+import { Modal, Table, TableColumnsType } from 'antd';
 import { useParams } from 'next/navigation';
 import styles from '@/app/(authorized)/domains/components/DomainsTable/DomainsTable.module.scss';
 import Button from '@/app/components/Button/Button';
@@ -10,13 +10,18 @@ import Search from '@/app/components/Search/Search';
 import { ThemesTablePropsInterface } from './interfaces/theme-table.interface';
 import { useGetData } from '@/app/hooks/useGetData';
 import { patchData, updateData } from '@/app/api/crudService';
+import ThemeActivateModal from './components/ThemeActivateModal/ThemeActivateModal';
+import { ThemeActivateModalPropsInterface } from './components/ThemeActivateModal/interfaces/theme-activate-modal-props.interface';
 
-const ThemeTable: React.FC = () => {
+const ThemeTable = () => {
   const { id } = useParams();
   const [searchValue, setSearchValue] = useState('');
   const [selectedThemes, setSelectedThemes] = useState<
     ThemesTablePropsInterface[]
   >([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedTheme, setSelectedTheme] =
+    useState<ThemeActivateModalPropsInterface | null>(null);
 
   const {
     data: themes,
@@ -47,6 +52,15 @@ const ThemeTable: React.FC = () => {
     } catch (error) {
       console.log(error);
     }
+    setModalOpen(false);
+  };
+
+  const onModalAction = (theme: ThemesTablePropsInterface) => {
+    const themeModalProps: ThemeActivateModalPropsInterface = {
+      themeName: theme.name,
+    };
+    setSelectedTheme(themeModalProps);
+    setModalOpen(true);
   };
 
   const handleRowSelectionChange = (
@@ -133,7 +147,7 @@ const ThemeTable: React.FC = () => {
               <Button
                 backgroundColor={buttonbackgroundColorEnum.grey}
                 innerContent="Activate"
-                onClick={() => onHandleActive(record.name)}
+                onClick={() => onModalAction(record)}
               />
             </div>
           )}
@@ -232,6 +246,21 @@ const ThemeTable: React.FC = () => {
         rowKey={(record) => record.name}
         loading={isLoading}
       />
+      <Modal
+        open={modalOpen}
+        onCancel={() => setModalOpen(false)}
+        footer={null}
+        closable={false}
+        width={840}
+      >
+        <ThemeActivateModal
+          themeName={selectedTheme?.themeName || 'Unknown Plugin'}
+          onClose={() => setModalOpen(false)}
+          onActivate={() =>
+            selectedTheme && onHandleActive(selectedTheme.themeName!)
+          }
+        />
+      </Modal>
     </div>
   );
 };
