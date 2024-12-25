@@ -42,6 +42,12 @@ const PluginTable = () => {
     }
   };
 
+  const onModalActivate = () => {
+    if (selectedPlugins.some((plugin) => plugin.status !== 'active')) {
+      setModalOpen(true);
+    }
+  };
+
   const onHandleActive = async (pluginName: string) => {
     try {
       await patchData(`wp-cli/plugin/enable`, numberId, {
@@ -212,7 +218,7 @@ const PluginTable = () => {
                           (plugin) => plugin.status !== 'active',
                         )
                       }
-                      onClick={() => setModalOpen(true)}
+                      onClick={onModalActivate}
                     />
                     <Button
                       backgroundColor={buttonbackgroundColorEnum.grey}
