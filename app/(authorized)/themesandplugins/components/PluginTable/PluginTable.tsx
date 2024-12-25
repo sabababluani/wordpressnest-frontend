@@ -20,7 +20,12 @@ const PluginTable = () => {
   const [selectedPlugins, setSelectedPlugins] = useState<
     PluginDataPropsInterface[]
   >([]);
+  const [selectedPlugin, setSelectedPlugin] =
+    useState<PluginDataPropsInterface | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalAction, setModalAction] = useState<'activate' | 'deactivate'>(
+    'activate',
+  );
 
   const {
     data: plugins,
@@ -31,43 +36,14 @@ const PluginTable = () => {
     queryParams: { search: searchValue },
   });
 
-  const onHandleUpdate = async (pluginName: string) => {
-    try {
-      await updateData(`wp-cli/plugin/enable`, numberId, {
-        plugin: pluginName,
-      });
-      mutate();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const onModalActivate = () => {
+  const onModalActivateCheck = () => {
     if (selectedPlugins.some((plugin) => plugin.status !== 'active')) {
       setModalOpen(true);
     }
   };
 
-  const onHandleActive = async (pluginName: string) => {
-    try {
-      await patchData(`wp-cli/plugin/enable`, numberId, {
-        plugin: pluginName,
-      });
-      mutate();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const onHandleDeactivate = async (pluginName: string) => {
-    try {
-      await patchData(`wp-cli/plugin/disable`, numberId, {
-        plugin: pluginName,
-      });
-      mutate();
-    } catch (error) {
-      console.log(error);
-    }
+  const handleModalClose = () => {
+    setModalOpen(false);
   };
 
   const handleReload = () => {
@@ -79,6 +55,30 @@ const PluginTable = () => {
     selectedRows: PluginDataPropsInterface[],
   ) => {
     setSelectedPlugins(selectedRows);
+  };
+
+  const onModalAction = (
+    plugin: PluginDataPropsInterface,
+    action: 'activate' | 'deactivate',
+  ) => {
+    setSelectedPlugin(plugin);
+    setModalAction(action);
+    setModalOpen(true);
+  };
+
+  const onHandleAction = async (
+    action: 'enable' | 'disable',
+    pluginName: string,
+  ) => {
+    try {
+      await patchData(`wp-cli/plugin/${action}`, numberId, {
+        plugin: pluginName,
+      });
+      mutate();
+    } catch (error) {
+      console.log(error);
+    }
+    setModalOpen(false);
   };
 
   const columns: TableColumnsType<PluginDataPropsInterface> = [
@@ -135,21 +135,21 @@ const PluginTable = () => {
       dataIndex: '',
       render: (_: unknown, record: PluginDataPropsInterface) => (
         <div className={styles.buttons}>
-          {record.update !== 'none' ? (
+          {record.update !== 'none' && (
             <div className={styles.buttonsUpdate}>
               <Button
                 backgroundColor={buttonbackgroundColorEnum.black}
                 innerContent="Update"
-                onClick={() => onHandleUpdate(record.name)}
+                onClick={() => onHandleAction('enable', record.name)}
               />
             </div>
-          ) : null}
+          )}
           {record.status === 'active' ? (
             <div className={styles.buttonsDeactive}>
               <Button
                 backgroundColor={buttonbackgroundColorEnum.grey}
                 innerContent="Deactivate"
-                onClick={() => onHandleDeactivate(record.name)}
+                onClick={() => onModalAction(record, 'deactivate')}
               />
             </div>
           ) : (
@@ -157,7 +157,7 @@ const PluginTable = () => {
               <Button
                 backgroundColor={buttonbackgroundColorEnum.grey}
                 innerContent="Activate"
-                onClick={() => onHandleActive(record.name)}
+                onClick={() => onModalAction(record, 'activate')}
               />
             </div>
           )}
@@ -218,7 +218,7 @@ const PluginTable = () => {
                           (plugin) => plugin.status !== 'active',
                         )
                       }
-                      onClick={onModalActivate}
+                      onClick={onModalActivateCheck}
                     />
                     <Button
                       backgroundColor={buttonbackgroundColorEnum.grey}
@@ -245,43 +245,6 @@ const PluginTable = () => {
               </div>
             </div>
           </div>
-          {/* <div className={styles.reloadContainer}>
-            {selectedPlugins.length > 0 && (
-              <div className={styles.checkedWrapper}>
-                <span>
-                  {selectedPlugins.length}{' '}
-                  {selectedPlugins.length > 1
-                    ? 'plugins selected'
-                    : 'plugin selected'}
-                </span>
-                <Button
-                  backgroundColor={buttonbackgroundColorEnum.grey}
-                  innerContent="Update"
-                  disableButton={
-                    !selectedPlugins.some((plugin) => plugin.update !== 'none')
-                  }
-                />
-                <Button
-                  backgroundColor={buttonbackgroundColorEnum.grey}
-                  innerContent="Activate"
-                  disableButton={
-                    !selectedPlugins.some(
-                      (plugin) => plugin.status !== 'active',
-                    )
-                  }
-                />
-                <Button
-                  backgroundColor={buttonbackgroundColorEnum.grey}
-                  innerContent="Deactivate"
-                  disableButton={
-                    !selectedPlugins.some(
-                      (plugin) => plugin.status === 'active',
-                    )
-                  }
-                />
-              </div>
-            )}
-          </div> */}
         </div>
       </div>
       <Table<PluginDataPropsInterface>
@@ -303,7 +266,18 @@ const PluginTable = () => {
         closable={false}
         width={840}
       >
-        <ActivateModal />
+        <ActivateModal
+          pluginName={selectedPlugin?.name || 'Unknown Plugin'}
+          onClose={handleModalClose}
+          onActivate={() =>
+            selectedPlugin &&
+            onHandleAction(
+              modalAction === 'activate' ? 'enable' : 'disable',
+              selectedPlugin.name,
+            )
+          }
+          modalAction={modalAction}
+        />
       </Modal>
     </div>
   );

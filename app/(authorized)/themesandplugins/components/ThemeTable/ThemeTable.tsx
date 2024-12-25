@@ -7,7 +7,7 @@ import styles from '@/app/(authorized)/domains/components/DomainsTable/DomainsTa
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import Search from '@/app/components/Search/Search';
-import { ThemesTablePropsInterface } from './interfaces/theme-table.interfaces';
+import { ThemesTablePropsInterface } from './interfaces/theme-table.interface';
 import { useGetData } from '@/app/hooks/useGetData';
 import { patchData, updateData } from '@/app/api/crudService';
 
