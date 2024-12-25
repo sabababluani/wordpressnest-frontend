@@ -3,12 +3,44 @@ import styles from './ResetSiteModal.module.scss';
 import Image from 'next/image';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import ResetSiteConfirmation from './components/ResetSiteConfirmation/ResetSiteConfirmation';
 import { ResetSiteModalPropsInterface } from './interfaces/reset-site-modal-props.interface';
+import { useParams } from 'next/navigation';
+import { createData } from '@/app/api/crudService';
+import { useGetData } from '@/app/hooks/useGetData';
+import {
+  SiteInterface,
+  UserInterface,
+} from '@/app/components/Navigation/interfaces/navigation.props.interface';
 
 const ResetSiteModal = (props: ResetSiteModalPropsInterface) => {
-  const [steper, setSteper] = useState(1);
+  const [steper, setSteper] = useState<number>(1);
+  const [password, setPassword] = useState<string>('');
+  const [siteTitle, setSiteTitle] = useState<string>('');
+
+  const { id } = useParams();
+  const { data: specificUser } = useGetData<UserInterface>({
+    endpoint: `user/me`,
+  });
+  const isValidated: boolean =
+    specificUser?.setup.find((_, index: number) => index + 1 === +id)
+      ?.siteTitle === siteTitle;
+
+  const onResetButton = async () => {
+    if (password)
+      try {
+        await createData<Record<string, string>>(`wordpress/resetSetup/${id}`, {
+          wpAdminPassword: password,
+        } as Record<string, string>);
+      } catch (error) {
+        console.log(error);
+      }
+  };
+
+  const onChangePasswordField = (e: ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -59,15 +91,27 @@ const ResetSiteModal = (props: ResetSiteModalPropsInterface) => {
                 Appears across the top of every page of the site. You can always
                 change it later.
               </span>
-              <input type="text" defaultValue={'Kaizen'} disabled />
+              <input
+                type="text"
+                defaultValue={
+                  specificUser?.setup.find(
+                    (item: SiteInterface, index: number) => index + 1 === +id,
+                  )?.siteTitle
+                }
+                disabled
+              />
             </div>
             <div className={styles.siteTitleContainer}>
               <span>WordPress admin username</span>
-              <input type="text" defaultValue={'Kaizen'} disabled />
+              <input
+                type="text"
+                defaultValue={specificUser?.firstName}
+                disabled
+              />
             </div>
             <div className={styles.siteTitleContainer}>
-              <span>WordPress admin username</span>
-              <input type="password" />
+              <span>WordPress admin password</span>
+              <input type="password" onChange={onChangePasswordField} />
             </div>
             <div className={styles.siteTitleContainer}>
               <span>WordPress admin Email</span>
@@ -129,7 +173,20 @@ const ResetSiteModal = (props: ResetSiteModalPropsInterface) => {
             </div>
           </div>
         ) : (
-          <ResetSiteConfirmation onBack={() => setSteper(1)} />
+          <ResetSiteConfirmation
+            siteTitle={
+              specificUser?.setup.find(
+                (item: SiteInterface, index: number) => index + 1 === +id,
+              )?.siteTitle
+            }
+            onClick={onResetButton}
+            onBack={() => setSteper(1)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setSiteTitle(e.target.value)
+            }
+            validation={isValidated}
+            siteTitleInputField={siteTitle}
+          />
         )}
       </div>
     </div>
