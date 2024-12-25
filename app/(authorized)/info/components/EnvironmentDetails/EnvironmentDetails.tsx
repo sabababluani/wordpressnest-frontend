@@ -26,10 +26,6 @@ const EnvironementDetails = (
           </div>
         </div>
         <div className={styles.siteIpAndWordpressWrapper}>
-          <div className={styles.siteIpWrapper}>
-            <span className={styles.siteIpStyle}>Site Ip address</span>
-            <span className={styles.pathValueStyle}>{props.siteIpAddress}</span>
-          </div>
           <div className={styles.wordpressNameWrapper}>
             <span className={styles.wordpressCaptionStyle}>
               WordPress version
@@ -48,14 +44,6 @@ const EnvironementDetails = (
                 />
               </button>
             </div>
-          </div>
-        </div>
-        <div className={styles.ipAddressSectionWrapper}>
-          <div className={styles.ipAddressWrapper}>
-            <span className={styles.ipAddressCaptionStyle}>
-              IP address for external connections
-            </span>
-            <span className={styles.ipAddressStyle}>{props.ipAddress}</span>
           </div>
         </div>
         <div className={styles.phpWrapper}>

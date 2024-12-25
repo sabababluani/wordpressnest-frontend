@@ -15,22 +15,18 @@ import {
 import { useState } from 'react';
 import DeleteSiteModal from '../components/DeleteSiteModal/DeleteSiteModal';
 import ResetSiteModal from '../components/ResetSiteModal/ResetSiteModal';
-// import { wordPressLastUpdateVersionPropsInterface } from '../interfaces/info-props.interface';
-// import { useGetData } from '@/app/hooks/useGetData';
+import { useGetData } from '@/app/hooks/useGetData';
+import {
+  SiteInterface,
+  UserInterface,
+} from '@/app/components/Navigation/interfaces/navigation.props.interface';
+import { useParams } from 'next/navigation';
 
 const Info = (): JSX.Element => {
-  // const [updateWpVersionData, setUpdateVersionData] = useState<
-  //   wordPressLastUpdateVersionPropsInterface | undefined
-  // >({
-  //   id: 0,
-  //   version: '',
-  //   locale: '',
-  //   update: '',
-  //   url: '',
-  //   message: '',
-  // });
-
-  // const { data } = useGetData({ endpoint: 'user/me' });
+  const { id } = useParams();
+  const { data: sideInformationData } = useGetData<UserInterface>({
+    endpoint: 'user/me',
+  });
 
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState<boolean>(false);
   const [isResetModalOpen, setIsResetModalOpen] = useState<boolean>(false);
@@ -58,18 +54,30 @@ const Info = (): JSX.Element => {
       <div className={styles.bottomContainer}>
         <BasicDetails
           locationDataCenter={'Hamburg (DE)'}
-          // siteName={siteName[params.id - 1]?.siteTitle}
+          siteName={
+            sideInformationData?.setup.find(
+              (item: SiteInterface) => item.id === +id,
+            )?.siteName
+          }
           Labels={''}
         />
 
         <EnvironementDetails
           path={'/www/novatori_787/public'}
           environmentName={'Live'}
-          siteIpAddress={'189.659.543.55'}
+          siteIpAddress={
+            sideInformationData?.setup.find(
+              (item: SiteInterface) => item.id === +id,
+            )?.wpfullIp
+          }
           // wordpressVersion={
           // updateWpVersionData?.version || wordpressVersion.version
           // }
-          ipAddress={'66.98.456.70'}
+          ipAddress={
+            sideInformationData?.setup.find(
+              (item: SiteInterface) => item.id === +id,
+            )?.nodeIp
+          }
           phpWorkers={'2'}
           onClick={() => console.log('zz')}
         />
@@ -78,14 +86,16 @@ const Info = (): JSX.Element => {
           host={'66.854.861.865'}
           passwordExpiration={'None'}
           ssh={'SSH Novatori@66.854.861.865...'}
-          port={0}
-          userName={''}
-          // port={port[params.id - 1]?.instancePort}
+          port={
+            sideInformationData?.setup.find(
+              (item: SiteInterface) => item.id === +id,
+            )?.port
+          }
           authenticationMethods={'SSH key , password'}
-          // userName={username[params.id - 1]?.wpAdminUser}
           IpAllowed={'ALL IPs allowed'}
           password={'********'}
           ftp={'Novatori - sftp - config.zip'}
+          userName={'root'}
         />
 
         <DataBaseAccess
@@ -93,8 +103,12 @@ const Info = (): JSX.Element => {
           // databaseUsername={username[params.id - 1].wpAdminUser}
           databasePassword={'**********'}
           ip={'ALL IPs allowed'}
-          database={''}
-          databaseUsername={''}
+          database={
+            sideInformationData?.setup.find(
+              (item: SiteInterface) => item.id === +id,
+            )?.dbName
+          }
+          databaseUsername={'root'}
         />
 
         <Site

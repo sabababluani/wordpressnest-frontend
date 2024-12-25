@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Checkbox } from 'antd';
+import { CheckboxChangeEvent } from 'antd/lib/checkbox';
 import styles from './ResetSiteConfirmation.module.scss';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
@@ -7,15 +8,12 @@ import { ResetSiteConfirmatioPropsInterface } from './interfaces/reset-site-conf
 
 const ResetSiteConfirmation = (props: ResetSiteConfirmatioPropsInterface) => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
-  const [inputValue, setInputValue] = useState<string>('');
-
-  const isButtonEnabled = isChecked && inputValue === 'jigaro-live';
 
   return (
     <div className={styles.wrapper}>
       <span className={styles.deleted}>
-        By resetting <span className={styles.title}>jigaro</span>, all of its
-        files and database will be destroyed.
+        By resetting <span className={styles.title}>{props.siteTitle}</span>,
+        all of its files and database will be destroyed.
       </span>
       <div>
         <div className={styles.list}>
@@ -41,7 +39,9 @@ const ResetSiteConfirmation = (props: ResetSiteConfirmatioPropsInterface) => {
         <div className={styles.checkbox}>
           <Checkbox
             checked={isChecked}
-            onChange={(e) => setIsChecked(e.target.checked)}
+            onChange={(e: CheckboxChangeEvent) =>
+              setIsChecked(e.target.checked)
+            }
           />
         </div>
         <div>
@@ -52,13 +52,13 @@ const ResetSiteConfirmation = (props: ResetSiteConfirmatioPropsInterface) => {
       </div>
       <div className={styles.siteTitleContainer}>
         <span>
-          Enter the text <span className={styles.title}>jigaro-live</span> here
-          to reset your site:
+          Enter the text <span className={styles.title}>{props.siteTitle}</span>{' '}
+          here to reset your site:
         </span>
         <input
           type="text"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+          value={props.siteTitleInputField}
+          onChange={props.onChange}
         />
       </div>
       <div className={styles.buttons}>
@@ -70,7 +70,8 @@ const ResetSiteConfirmation = (props: ResetSiteConfirmatioPropsInterface) => {
         <Button
           backgroundColor={buttonbackgroundColorEnum.black}
           innerContent="Reset WordPress site"
-          disableButton={!isButtonEnabled}
+          disableButton={!(isChecked && props.validation)}
+          onClick={props.onClick}
         />
       </div>
     </div>

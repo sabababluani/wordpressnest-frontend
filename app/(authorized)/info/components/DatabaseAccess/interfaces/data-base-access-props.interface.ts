@@ -1,5 +1,5 @@
 export interface DataBasePropsInterface {
-  database: string;
+  database: string | undefined;
   databaseUsername: string;
   databasePassword: string;
   ip: string;

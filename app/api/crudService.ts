@@ -7,7 +7,7 @@ import BaseApi from './BaseApi';
  */
 export const createData = async <T>(
   endpoint: string,
-  payload: T,
+  payload: T extends Record<string, string> ? T : never,
 ): Promise<T> => {
   try {
     const response = await BaseApi.post<T>(endpoint, payload);
