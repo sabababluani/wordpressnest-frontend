@@ -136,7 +136,10 @@ const Info = (): JSX.Element => {
         footer={null}
         closable={false}
       >
-        <DeleteSiteModal onClose={() => setIsDeleteModalOpen(false)} />
+        <DeleteSiteModal
+          onCancel={() => setIsDeleteModalOpen(false)}
+          onClose={() => setIsDeleteModalOpen(false)}
+        />
       </Modal>
       <Modal
         width={800}
