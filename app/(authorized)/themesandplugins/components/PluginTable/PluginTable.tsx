@@ -39,19 +39,6 @@ const PluginTable = () => {
     queryParams: { search: searchValue },
   });
 
-  // const onModalActivateCheck = () => {
-  //   if (selectedPlugins.some((plugin) => plugin.status !== 'active')) {
-  //     setModalOpen(true);
-  //   }
-  // };
-
-  const onButtonAction = (
-    plugin: PluginDataPropsInterface,
-    action: 'activate' | 'deactivate',
-  ) => {
-    setModalAction(action);
-  };
-
   const handleModalClose = () => {
     setModalOpen(false);
   };
@@ -68,20 +55,21 @@ const PluginTable = () => {
   };
 
   const onCheckedes = async (
-    action: 'activate' | 'deactivate',
+    action: 'enable' | 'disable',
     pluginName: string[],
   ) => {
-    setModalAction(action);
     setModalOpen(true);
     setRowChecked(false);
+
     try {
-      await patchData(`wp-cli/plugins/${action}`, numberId, {
-        plugins: [pluginName],
+      await patchData(`wp-cli/plugin/${action}`, numberId, {
+        plugins: pluginName,
       });
       mutate();
     } catch (error) {
       console.log(error);
     }
+    setModalOpen(false);
   };
 
   const onModalAction = (
@@ -92,21 +80,6 @@ const PluginTable = () => {
     setModalAction(action);
     setModalOpen(true);
     setRowChecked(true);
-  };
-
-  const onHandleAction = async (
-    action: 'enable' | 'disable',
-    pluginName: string,
-  ) => {
-    try {
-      await patchData(`wp-cli/plugin/${action}`, numberId, {
-        plugins: [pluginName],
-      });
-      mutate();
-    } catch (error) {
-      console.log(error);
-    }
-    setModalOpen(false);
   };
 
   const onHandleUpdate = async (pluginName: string) => {
@@ -209,6 +182,19 @@ const PluginTable = () => {
       ? selectedPlugin?.name || 'Unknown Plugin'
       : ` ${filteredSelectedPlugins.length}`;
 
+  const handleAction = () => {
+    const action = modalAction === 'activate' ? 'enable' : 'disable';
+    const pluginNames = selectedPlugins
+      .filter((plugin) =>
+        modalAction === 'activate'
+          ? plugin.status !== 'active'
+          : plugin.status === 'active',
+      )
+      .map((plugin) => plugin.name);
+
+    onCheckedes(action, pluginNames);
+  };
+
   return (
     <div className={styles.tableWrapper}>
       <div className={styles.searchPadding}>
@@ -263,11 +249,8 @@ const PluginTable = () => {
                         )
                       }
                       onClick={() => {
-                        const pluginNames = selectedPlugins
-                          .filter((plugin) => plugin.status === 'active')
-                          .map((plugin) => plugin.name);
-
-                        onCheckedes('activate', pluginNames);
+                        setModalAction('activate');
+                        setModalOpen(true);
                       }}
                     />
                     <Button
@@ -279,11 +262,8 @@ const PluginTable = () => {
                         )
                       }
                       onClick={() => {
-                        const pluginNames = selectedPlugins
-                          .filter((plugin) => plugin.status === 'active')
-                          .map((plugin) => plugin.name);
-
-                        onCheckedes('deactivate', pluginNames);
+                        setModalAction('deactivate');
+                        setModalOpen(true);
                       }}
                     />
                   </div>
@@ -331,13 +311,7 @@ const PluginTable = () => {
         <ActivateModal
           pluginName={pluginName}
           onClose={handleModalClose}
-          onActivate={() =>
-            selectedPlugin &&
-            onHandleAction(
-              modalAction === 'activate' ? 'enable' : 'disable',
-              selectedPlugin.name,
-            )
-          }
+          onActivate={handleAction}
           modalAction={modalAction}
         />
       </Modal>
@@ -351,6 +325,7 @@ const PluginTable = () => {
         <UpdateThemesAndPlugins
           selectedPlugins={selectedPlugins}
           onClose={() => setIsTableOpen(false)}
+          type={'plugin'}
         />
       </Modal>
     </div>

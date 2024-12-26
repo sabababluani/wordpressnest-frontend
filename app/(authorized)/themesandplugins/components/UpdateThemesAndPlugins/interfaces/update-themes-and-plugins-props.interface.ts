@@ -1,5 +1,7 @@
-export interface UpdateThemesAndPluginsPropsInterface {
-  key: string;
-  pluginName: string;
-  updateAvailable: string;
+import { PluginDataPropsInterface } from '../../PluginTable/interfaces/plugin-table.interfaces';
+
+export interface UpdateThemesAndPluginsProps {
+  type: 'plugin' | 'theme';
+  selectedPlugins: PluginDataPropsInterface[];
+  onClose: () => void;
 }

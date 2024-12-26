@@ -3,16 +3,16 @@ import styles from './UpdateThemesAndPlugins.module.scss';
 import Image from 'next/image';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { Table } from 'antd';
-import { useState, useEffect } from 'react';
-import { PluginDataPropsInterface } from '../PluginTable/interfaces/plugin-table.interfaces';
+import { useState } from 'react';
 import { updateData } from '@/app/api/crudService';
 import { useParams } from 'next/navigation';
 import { mutate } from 'swr';
+import { UpdateThemesAndPluginsProps } from './interfaces/update-themes-and-plugins-props.interface';
 
 const columns = [
   {
-    title: 'Plugin',
-    dataIndex: 'pluginName',
+    title: 'Name',
+    dataIndex: 'itemName',
   },
   {
     title: 'Update available',
@@ -20,20 +20,16 @@ const columns = [
   },
 ];
 
-interface UpdateThemesAndPluginsProps {
-  selectedPlugins: PluginDataPropsInterface[];
-  onClose: () => void;
-}
-
 const UpdateThemesAndPlugins = (props: UpdateThemesAndPluginsProps) => {
   const { id } = useParams();
   const numberId = +id;
-  const [selectedRows, setSelectedRows] = useState<React.Key[]>(
-    props.selectedPlugins.map((plugin) => plugin.name),
+
+  const itemsWithUpdates = props.selectedPlugins.filter(
+    (plugin) => plugin.update !== 'none',
   );
 
-  const pluginsWithUpdates = props.selectedPlugins.filter(
-    (plugin) => plugin.update !== 'none',
+  const [selectedRows, setSelectedRows] = useState<React.Key[]>(
+    itemsWithUpdates.map((plugin) => plugin.name),
   );
 
   const rowSelection = {
@@ -45,22 +41,22 @@ const UpdateThemesAndPlugins = (props: UpdateThemesAndPluginsProps) => {
 
   const handleUpdate = async () => {
     try {
-      await updateData('wp-cli/plugins', numberId, {
-        plugins: selectedRows,
+      await updateData(`wp-cli/${props.type}s`, numberId, {
+        [props.type === 'plugin' ? 'plugins' : 'themes']: selectedRows,
       });
-      mutate(`wp-cli/plugin/${id}`);
+      mutate(`wp-cli/${props.type}/${id}`);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
-    props.onClose();
+    props.onClose;
   };
 
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.header}>
         <span className={styles.headline}>
-          Update {pluginsWithUpdates.length} WordPress plugin
-          {pluginsWithUpdates.length > 1 ? 's' : ''}
+          Update {itemsWithUpdates.length} WordPress {props.type}
+          {itemsWithUpdates.length > 1 ? 's' : ''}
         </span>
         <Image
           src="/icons/close-mini.svg"
@@ -74,11 +70,12 @@ const UpdateThemesAndPlugins = (props: UpdateThemesAndPluginsProps) => {
       <div className={styles.middleContainer}>
         <div className={styles.middleHeader}>
           <span className={styles.middleContainersMainCaption}>
-            Are you sure you want to update the {pluginsWithUpdates.length}{' '}
-            selected WordPress plugin{pluginsWithUpdates.length > 1 ? 's' : ''}?
-            If it lasts longer than usual, WordPress will automatically enable
-            maintenance mode. MyHosting will create a system-generated backup so
-            you can revert the process if necessary.
+            Are you sure you want to update the {itemsWithUpdates.length}{' '}
+            selected WordPress {props.type}
+            {itemsWithUpdates.length > 1 ? 's' : ''}? If it lasts longer than
+            usual, WordPress will automatically enable maintenance mode.
+            MyHosting will create a system-generated backup so you can revert
+            the process if necessary.
           </span>
         </div>
         <div className={styles.tableWrapper}>
@@ -88,10 +85,10 @@ const UpdateThemesAndPlugins = (props: UpdateThemesAndPluginsProps) => {
               ...rowSelection,
             }}
             columns={columns}
-            dataSource={pluginsWithUpdates.map((plugin) => ({
-              key: plugin.name,
-              pluginName: plugin.name,
-              updateAvailable: plugin.update_version,
+            dataSource={itemsWithUpdates.map((item) => ({
+              key: item.name,
+              itemName: item.name,
+              updateAvailable: item.update_version,
             }))}
             pagination={false}
             scroll={{ x: 'max-content' }}

@@ -12,6 +12,7 @@ import { useGetData } from '@/app/hooks/useGetData';
 import { patchData, updateData } from '@/app/api/crudService';
 import ThemeActivateModal from './components/ThemeActivateModal/ThemeActivateModal';
 import { ThemeActivateModalPropsInterface } from './components/ThemeActivateModal/interfaces/theme-activate-modal-props.interface';
+import UpdateThemesAndPlugins from '../UpdateThemesAndPlugins/UpdateThemesAndPlugins';
 
 const ThemeTable = () => {
   const { id } = useParams();
@@ -155,6 +156,7 @@ const ThemeTable = () => {
       ),
     },
   ];
+  const [isTableOpen, setIsTableOpen] = useState(false);
 
   return (
     <div className={styles.tableWrapper}>
@@ -197,24 +199,7 @@ const ThemeTable = () => {
                       disableButton={
                         !selectedThemes.some((theme) => theme.update !== 'none')
                       }
-                    />
-                    <Button
-                      backgroundColor={buttonbackgroundColorEnum.grey}
-                      innerContent="Activate"
-                      disableButton={
-                        !selectedThemes.some(
-                          (theme) => theme.status !== 'active',
-                        )
-                      }
-                    />
-                    <Button
-                      backgroundColor={buttonbackgroundColorEnum.grey}
-                      innerContent="Deactivate"
-                      disableButton={
-                        !selectedThemes.some(
-                          (theme) => theme.status === 'active',
-                        )
-                      }
+                      onClick={() => setIsTableOpen(true)}
                     />
                   </div>
                 ) : (
@@ -259,6 +244,19 @@ const ThemeTable = () => {
           onActivate={() =>
             selectedTheme && onHandleActive(selectedTheme.themeName!)
           }
+        />
+      </Modal>{' '}
+      <Modal
+        open={isTableOpen}
+        onCancel={() => setIsTableOpen(false)}
+        footer={null}
+        closable={false}
+        width={840}
+      >
+        <UpdateThemesAndPlugins
+          selectedPlugins={selectedThemes}
+          onClose={() => setIsTableOpen(false)}
+          type={'theme'}
         />
       </Modal>
     </div>
