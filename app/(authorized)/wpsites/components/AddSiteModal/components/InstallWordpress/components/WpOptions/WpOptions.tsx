@@ -6,14 +6,20 @@ import Steps from '@/app/components/Steps/Steps';
 import { dummyOptions } from './dummy-options/dummy-options';
 import Steper from '../../../Steper/Steper';
 import { WpOptionsPropsInterface } from './interfaces/wp-options-props.interface';
-import { createData } from '@/app/api/crudService';
+import { SetInfoPropsInterface } from '../../interfaces/set-info-props.interface';
 
 const WpOptions = ({
   currentStep,
   setStep,
+  onSend,
+  setInfo,
 }: {
   currentStep: number;
   setStep: (step: number) => void;
+  onSend: () => void;
+  setInfo:
+    | ((data: SetInfoPropsInterface) => void)
+    | ((data: (prev: SetInfoPropsInterface) => SetInfoPropsInterface) => void);
 }) => {
   const {
     handleSubmit,
@@ -42,17 +48,10 @@ const WpOptions = ({
   };
 
   const onSubmit = async (data: WpOptionsPropsInterface) => {
-    try {
-      await createData('/wordpress/setup', {
-        siteTitle: data.siteTitle,
-        wpAdminUser: data.wpAdminUser,
-        wpAdminPassword: data.wpAdminPassword,
-        wpAdminEmail: data.wpAdminEmail,
-        siteName: data.siteTitle,
-      });
-    } catch (e) {
-      console.log(e);
+    if (typeof setInfo === 'function') {
+      await setInfo((prev: SetInfoPropsInterface) => ({ ...prev, ...data }));
     }
+    onSend();
   };
 
   const handleBack = () => {

@@ -1,78 +1,84 @@
 'use client';
 
+import React, { useState } from 'react';
 import styles from './page.module.scss';
-import DashboardStat from '@/app/components/DashboardStat/DashboardStat';
-import WordpressStat from '@/app/components/WordpressStat/WordpressStat';
-import { SiteInterface } from '../components/Navigation/interfaces/navigation.props.interface';
-import { useGetData } from '../hooks/useGetData';
+import Search from '@/app/components/Search/Search';
+import Button from '@/app/components/Button/Button';
+import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
+import { Modal, Select } from 'antd';
+import AddSiteModal from './wpsites/components/AddSiteModal/AddSiteModal';
+import { ActionOptions } from './wpsites/utils/action-options';
 
-const Home = () => {
-  const { data: sitesData } = useGetData<SiteInterface[]>({
-    endpoint: 'user/me',
+const Wpsites = () => {
+  type ModalType = 'Actions' | 'addSite' | null;
+
+  const [modalState, setModalState] = useState<{
+    modalType: ModalType;
+    currentStep: number;
+  }>({
+    modalType: null,
+    currentStep: 1,
   });
 
+  const openModal = (type: ModalType) =>
+    setModalState({ ...modalState, modalType: type });
+  const closeModal = () => setModalState({ modalType: null, currentStep: 1 });
+
+  const handleStepChange = (step: number) => {
+    setModalState((prev) => ({ ...prev, currentStep: step }));
+  };
+
+  const renderModalContent = () => {
+    if (modalState.modalType === 'addSite') {
+      return (
+        <AddSiteModal
+          onClose={closeModal}
+          onStepChange={handleStepChange}
+          currentStep={modalState.currentStep}
+        />
+      );
+    }
+    return null;
+  };
+
   return (
-    <div className={styles.dashboardWrappe}>
-      <div className={styles.topContainer}>
-        <div className={styles.captionAndButtonWrapper}>
-          <span className={styles.dashboardCaptionStyle}>Dashboard</span>
+    <div className={styles.wrapper}>
+      <h1>WordPress Sites</h1>
+      <div className={styles.container}>
+        <div className={styles.contentWrapper}>
+          <Search
+            placeholder="Search Sites"
+            isPadded={true}
+            onChange={() => {}}
+          />
         </div>
-        <div className={styles.dashboardStatsWrapper}>
-          {sitesData?.map((site) => (
-            <DashboardStat
-              key={site.id}
-              point={'icons/pointGreen.svg'}
-              active={'Active'}
-              visits={'36,213 visits'}
-              description={
-                'We use the primary domain to refer to this site, and it is usually the '
-              }
-              healthQuantity={87}
-              siteName={site.siteTitle}
+        <div className={styles.contentWrapperButtons}>
+          <Select
+            className={styles.select}
+            value="Actions"
+            options={ActionOptions}
+            onChange={(value) => openModal(value as ModalType)}
+          />
+          <div className={styles.buttons}>
+            <Button
+              backgroundColor={buttonbackgroundColorEnum.black}
+              innerContent="Create New Site"
+              onClick={() => openModal('addSite')}
             />
-          ))}
+          </div>
         </div>
       </div>
-      <div className={styles.bottomContner}>
-        <span className={styles.wordpressCaptionStyle}>
-          WordPress Analytics
-        </span>
-        <div className={styles.wordpressStatsWrapper}>
-          <WordpressStat
-            mainCaption={'Resource Analytics'}
-            dateCaption={'OCT 23 - 30'}
-            thisMonthActive={true}
-            thisMonth="This Month"
-            dayQuantity={`Day ${26} out of ${31}`}
-            diskUsageCaption={'Disk Usage'}
-            mbQuantity={`${568} MB out of ${10} GB`}
-          />
-          <WordpressStat
-            mainCaption={'Unique Visit'}
-            dateCaption={'OCT 23 - 30'}
-            dayQuantity={`Day ${26} out of ${31}`}
-            diskUsageCaption={'Unique Visit'}
-            mbQuantity={`${568} MB out of ${10} GB`}
-            uniqueVisit={235}
-          />
-          <WordpressStat
-            mainCaption={'Bandwidth'}
-            dateCaption={'OCT 23 - 30'}
-            mainMbActive={true}
-            mainMbQuantityCaption={`${526} MB`}
-            dayQuantity={`Day ${26} out of ${31}`}
-          />
-          <WordpressStat
-            mainCaption={'CDN Usage'}
-            dateCaption={'OCT 23 - 30'}
-            mainMbActive={true}
-            mainMbQuantityCaption={`${526} MB`}
-            dayQuantity={`Day ${26} out of ${31}`}
-          />
-        </div>
-      </div>
+      <Modal
+        open={!!modalState.modalType}
+        onCancel={closeModal}
+        footer={null}
+        closable={false}
+        width={modalState.currentStep > 1 ? 840 : 1213}
+      >
+        {renderModalContent()}
+      </Modal>
     </div>
   );
 };
 
-export default Home;
+export default Wpsites;

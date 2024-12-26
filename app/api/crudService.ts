@@ -12,10 +12,12 @@ export const createData = async <T>(
   try {
     const response = await BaseApi.post<T>(endpoint, payload);
     return response.data;
-  } catch (error: unknown) {
-    const errorMessage =
-      error instanceof Error ? error.message : 'Failed to create data';
-    throw new Error(errorMessage);
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    } else {
+      throw new Error('An unknown error occurred during createData');
+    }
   }
 };
 
@@ -33,10 +35,12 @@ export const updateData = async <T>(
   try {
     const response = await BaseApi.put<T>(`${endpoint}/${id}`, payload);
     return response.data;
-  } catch (error: unknown) {
-    const errorMessage =
-      error instanceof Error ? error.message : 'Failed to update data';
-    throw new Error(errorMessage);
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    } else {
+      throw new Error('An unknown error occurred during updateData');
+    }
   }
 };
 
@@ -54,10 +58,12 @@ export const patchData = async <T>(
   try {
     const response = await BaseApi.patch<T>(`${endpoint}/${id}`, payload);
     return response.data;
-  } catch (error: unknown) {
-    const errorMessage =
-      error instanceof Error ? error.message : 'Failed to patch data';
-    throw new Error(errorMessage);
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    } else {
+      throw new Error('An unknown error occurred during patchData');
+    }
   }
 };
 
@@ -73,10 +79,13 @@ export const deleteData = async <T>(
   payload?: T,
 ): Promise<void> => {
   try {
-    await BaseApi.delete(`${endpoint}/${id}`, { data: payload });
-  } catch (error: unknown) {
-    const errorMessage =
-      error instanceof Error ? error.message : 'Failed to delete data';
-    throw new Error(errorMessage);
+    const url = id ? `${endpoint}/${id}` : endpoint;
+    await BaseApi.delete(url, { data: payload });
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    } else {
+      throw new Error('An unknown error occurred during deleteData');
+    }
   }
 };

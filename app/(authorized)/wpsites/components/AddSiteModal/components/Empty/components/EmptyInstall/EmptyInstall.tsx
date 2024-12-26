@@ -1,10 +1,16 @@
-import Steps from '@/app/components/Steps/Steps';
 import styles from './EmptyInsall.module.scss';
 import { Select, Checkbox } from 'antd';
 import { useState } from 'react';
 import { dummyEmpty } from '../../dummy-empty/dummy-empty';
+import Steper from '../../../Steper/Steper';
 
-const EmptyInstall = () => {
+const EmptyInstall = ({
+  currentStep,
+  setStep,
+}: {
+  currentStep: number;
+  setStep: (step: number) => void;
+}) => {
   const [selectState, setSelectState] = useState<string>(dummyEmpty[0].value);
   const [checkedItems, setCheckedItems] = useState<{ [key: string]: boolean }>({
     cdn: false,
@@ -22,13 +28,18 @@ const EmptyInstall = () => {
     }));
   };
 
+  const handleBack = () => {
+    if (currentStep > 1) {
+      setStep(currentStep - 1);
+    }
+  };
+
+  const handleContinue = () => {
+    setStep(currentStep + 1);
+  };
+
   return (
     <div className={styles.container}>
-      <Steps
-        confirmation={false}
-        firstHeadline={'Site options'}
-        secondHeadline={'WordPress options'}
-      />
       <div className={styles.infoWrapper}>
         <div className={styles.info}>
           <span className={styles.headline}>Create empty environment</span>
@@ -93,6 +104,13 @@ const EmptyInstall = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className={styles.steper}>
+        <Steper
+          onBack={handleBack}
+          onContinue={handleContinue}
+          click={currentStep}
+        />
       </div>
     </div>
   );

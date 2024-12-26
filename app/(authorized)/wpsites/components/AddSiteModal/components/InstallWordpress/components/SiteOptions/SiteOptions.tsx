@@ -4,25 +4,37 @@ import Steps from '@/app/components/Steps/Steps';
 import Steper from '../../../Steper/Steper';
 import { dummySites } from './dummy-sites/dummy-sites';
 import styles from './SiteOptions.module.scss';
+import { SetInfoPropsInterface } from '../../interfaces/set-info-props.interface';
 
 const SiteOptions = ({
   currentStep,
   setStep,
+  setInfo,
 }: {
   currentStep: number;
   setStep: (step: number) => void;
+  setInfo: (data: SetInfoPropsInterface) => void;
 }) => {
-  const [selectState, setSelectState] = useState<string>(dummySites[0].value);
+  const [data, setData] = useState({
+    siteName: '',
+    selectedDataCenter: dummySites[0].value,
+  });
+
   const [checkedItems, setCheckedItems] = useState<{ [key: string]: boolean }>({
     cdn: false,
     edgeCaching: false,
   });
 
-  const onSelectChange = (value: string) => {
-    setSelectState(value);
+  const handleSiteNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const siteName = e.target.value;
+    setData((prev) => ({ ...prev, siteName }));
   };
 
-  const onCheckboxChange = (key: string, checked: boolean) => {
+  // const handleSelectChange = (selectedDataCenter: string) => {
+  //   setData((prev) => ({ ...prev, selectedDataCenter }));
+  // };
+
+  const handleCheckboxChange = (key: string, checked: boolean) => {
     setCheckedItems((prev) => ({
       ...prev,
       [key]: checked,
@@ -36,6 +48,7 @@ const SiteOptions = ({
   };
 
   const handleContinue = () => {
+    setInfo({ ...data });
     setStep(currentStep + 1);
   };
 
@@ -53,7 +66,13 @@ const SiteOptions = ({
             This name is only visible in hosting
           </span>
         </div>
-        <input type="text" className={styles.input} placeholder="New Site" />
+        <input
+          type="text"
+          className={styles.input}
+          placeholder="New Site"
+          value={data.siteName}
+          onChange={handleSiteNameChange}
+        />
       </div>
       <div className={styles.infoWrapper}>
         <div className={styles.info}>
@@ -66,9 +85,9 @@ const SiteOptions = ({
           </span>
         </div>
         <Select
-          onChange={onSelectChange}
+          // onChange={handleSelectChange}
           className={styles.selectStyle}
-          value={selectState}
+          value={data.selectedDataCenter}
           options={dummySites}
         />
       </div>
@@ -81,7 +100,7 @@ const SiteOptions = ({
             <div className={styles.checkbox}>
               <Checkbox
                 checked={checkedItems.cdn}
-                onChange={(e) => onCheckboxChange('cdn', e.target.checked)}
+                onChange={(e) => handleCheckboxChange('cdn', e.target.checked)}
               />
             </div>
             <div className={styles.checkboxContent}>
@@ -97,7 +116,7 @@ const SiteOptions = ({
               <Checkbox
                 checked={checkedItems.edgeCaching}
                 onChange={(e) =>
-                  onCheckboxChange('edgeCaching', e.target.checked)
+                  handleCheckboxChange('edgeCaching', e.target.checked)
                 }
               />
             </div>

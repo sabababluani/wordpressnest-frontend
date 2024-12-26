@@ -1,46 +1,65 @@
 import { useState } from 'react';
-import ChooseWay from '../ChooseWay/ChooseWay';
 import LoadingModal from './components/LoadingModal/LoadingModal';
 import SiteOptions from './components/SiteOptions/SiteOptions';
 import WpOptions from './components/WpOptions/WpOptions';
 import styles from './InstallWordpress.module.scss';
+import { createData } from '@/app/api/crudService';
+import { SetInfoPropsInterface } from './interfaces/set-info-props.interface';
 
 interface InstallWordpressProps {
   onStepChange: (step: number) => void;
+  currentStep: number;
+  way?: string;
 }
 
 const InstallWordpress: React.FC<InstallWordpressProps> = ({
   onStepChange,
+  currentStep,
 }) => {
-  const [currentStep, setStep] = useState<number>(1);
+  // Properly type the state to match SetInfoPropsInterface
+  const [data, setData] = useState<SetInfoPropsInterface | undefined>(
+    undefined,
+  );
 
-  const handleStepChange = (step: number) => {
-    setStep(step);
-    onStepChange(step);
-  };
-
-  const renderContent = () => {
-    switch (currentStep) {
-      case 1:
-        return (
-          <ChooseWay setStep={handleStepChange} currentStep={currentStep} />
+  const onSubmit = async () => {
+    try {
+      if (data)
+        await createData<{ data: SetInfoPropsInterface }>(
+          '/wordpress/setasjdkj',
+          {
+            data: data,
+          },
         );
-      case 2:
-        return (
-          <SiteOptions setStep={handleStepChange} currentStep={currentStep} />
-        );
-      case 3:
-        return (
-          <WpOptions setStep={handleStepChange} currentStep={currentStep} />
-        );
-      case 4:
-        return <LoadingModal />;
-      default:
-        return null;
+    } catch (e) {
+      console.log(e);
     }
   };
 
-  return <div className={styles.container}>{renderContent()}</div>;
+  console.log(data);
+
+  const stepComponents = [
+    <SiteOptions
+      setStep={onStepChange}
+      currentStep={currentStep}
+      setInfo={setData}
+      key="siteOptions"
+    />,
+    <WpOptions
+      setStep={onStepChange}
+      currentStep={currentStep}
+      onSend={onSubmit}
+      setInfo={setData}
+      key="wpOptions"
+    />,
+    <LoadingModal key="loadingModal" />,
+  ];
+  if (currentStep < 2) {
+    return null;
+  }
+
+  return (
+    <div className={styles.container}>{stepComponents[currentStep - 2]}</div>
+  );
 };
 
 export default InstallWordpress;

@@ -2,9 +2,9 @@ export interface SftpShhPropsInterface {
   host: string;
   passwordExpiration: string;
   ssh: string;
-  port: number;
+  port: number | undefined;
   authenticationMethods: string;
-  userName: string;
+  userName: string | undefined;
   IpAllowed: string;
   password: string;
   ftp: string;

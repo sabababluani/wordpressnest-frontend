@@ -1,13 +1,16 @@
-// import { AddSiteModalPropsInterface } from '../../interfaces/add-site-modal.props.interface';
-// import ChooseWay from '../ChooseWay/ChooseWay';
-// import CloneInstall from './components/CloneInstall/CloneInstall';
+import { AddSiteModalPropsInterface } from '../../interfaces/add-site-modal.props.interface';
+import CloneInstall from './components/CloneInstall/CloneInstall';
 
-// // const Clone: React.FC<AddSiteModalPropsInterface> = ({ click }) => {
-// //   return (
-// //     <div>
-// //       {/* {click === 1 ? <ChooseWay setStep=(null) currentStep={0} /> : click === 2 ? <CloneInstall /> : null} */}
-// //     </div>
-// //   );
-// // };
+const Clone: React.FC<AddSiteModalPropsInterface> = ({
+  click,
+  onStepChange,
+  currentStep,
+}) => {
+  return (
+    click === 2 && (
+      <CloneInstall currentStep={currentStep} onStepChange={onStepChange} />
+    )
+  );
+};
 
-// export default Clone;
+export default Clone;

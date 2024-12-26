@@ -1,10 +1,18 @@
-import Steps from '@/app/components/Steps/Steps';
+import React, { useState } from 'react';
 import styles from './CloneInstall.module.scss';
 import { Select, Checkbox } from 'antd';
-import { useState } from 'react';
 import { dummyClone } from '../../dummy-clone/dummy-clone';
+import Steper from '../../../Steper/Steper';
 
-const CloneInstall = () => {
+interface CloneInstallProps {
+  currentStep: number; // Expect currentStep as a prop
+  onStepChange: (step: number) => void; // Expect onStepChange as a prop
+}
+
+const CloneInstall: React.FC<CloneInstallProps> = ({
+  currentStep,
+  onStepChange,
+}) => {
   const [selectState, setSelectState] = useState<string>(dummyClone[0].value);
   const [checkedItems, setCheckedItems] = useState<{ [key: string]: boolean }>({
     cdn: false,
@@ -22,13 +30,18 @@ const CloneInstall = () => {
     }));
   };
 
+  // Handle "Back" button click
+  const handleBack = () => {
+    onStepChange(Math.max(currentStep - 1, 1)); // Update step in parent
+  };
+
+  // Handle "Continue" button click
+  const handleContinue = () => {
+    onStepChange(currentStep + 1); // Update step in parent
+  };
+
   return (
     <div className={styles.container}>
-      <Steps
-        confirmation={false}
-        firstHeadline={'Site options'}
-        secondHeadline={'WordPress options'}
-      />
       <div className={styles.cloneWrapper}>
         <span className={styles.headline}>Environment to clone</span>
         <div className={styles.selectWrapper}>
@@ -101,6 +114,13 @@ const CloneInstall = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className={styles.steper}>
+        <Steper
+          click={currentStep}
+          onBack={handleBack}
+          onContinue={handleContinue}
+        />
       </div>
     </div>
   );
