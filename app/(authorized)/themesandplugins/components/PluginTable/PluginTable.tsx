@@ -177,10 +177,13 @@ const PluginTable = () => {
       : plugin.status === 'active',
   );
 
-  const pluginName =
-    rowChecked && filteredSelectedPlugins.length > 1
-      ? selectedPlugin?.name || 'Unknown Plugin'
-      : ` ${filteredSelectedPlugins.length}`;
+  const pluginName = rowChecked
+    ? filteredSelectedPlugins.length > 1
+      ? selectedPlugin?.name || 'Unknow'
+      : filteredSelectedPlugins.length === 0
+        ? selectedPlugin?.name || 'unknow'
+        : `${filteredSelectedPlugins.length}`
+    : `${filteredSelectedPlugins.length}`;
 
   const handleAction = () => {
     const action = modalAction === 'activate' ? 'enable' : 'disable';
