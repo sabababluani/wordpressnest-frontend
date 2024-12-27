@@ -1,18 +1,39 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { Checkbox } from 'antd';
 import styles from './DeleteSiteModal.module.scss';
 import Image from 'next/image';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { DeleteSiteModalPropsInterface } from './interfaces/delete-site-modal-props.interface';
+import { CheckboxChangeEvent } from 'antd/es/checkbox';
+import {
+  SiteInterface,
+  UserInterface,
+} from '@/app/components/Navigation/interfaces/navigation.props.interface';
+import { useGetData } from '@/app/hooks/useGetData';
+import { useParams } from 'next/navigation';
+import { deleteData } from '@/app/api/crudService';
 
 const DeleteSiteModal = (props: DeleteSiteModalPropsInterface) => {
+  const { id } = useParams();
+
   const [checkbox1, setCheckbox1] = useState<boolean>(false);
   const [checkbox2, setCheckbox2] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState<string>('');
 
-  const isButtonEnabled =
-    checkbox1 && checkbox2 && inputValue === 'jigaro-live';
+  const specificData: UserInterface | undefined = useGetData<UserInterface>({
+    endpoint: 'user/me',
+  }).data;
+  const siteName: string | undefined = specificData?.setup.find(
+    (item: SiteInterface) => item.id === +id,
+  )?.siteName;
+
+  const isButtonEnabled = checkbox1 && checkbox2 && inputValue === siteName;
+
+  const onDeleteFunction = () => {
+    deleteData('wordpress/setup', id.toString());
+    props.onCancel();
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -41,7 +62,9 @@ const DeleteSiteModal = (props: DeleteSiteModalPropsInterface) => {
           <div className={styles.checkbox}>
             <Checkbox
               checked={checkbox1}
-              onChange={(e) => setCheckbox1(e.target.checked)}
+              onChange={(e: CheckboxChangeEvent) =>
+                setCheckbox1(e.target.checked)
+              }
             />
           </div>
           <div>
@@ -55,7 +78,9 @@ const DeleteSiteModal = (props: DeleteSiteModalPropsInterface) => {
           <div className={styles.checkbox}>
             <Checkbox
               checked={checkbox2}
-              onChange={(e) => setCheckbox2(e.target.checked)}
+              onChange={(e: CheckboxChangeEvent) =>
+                setCheckbox2(e.target.checked)
+              }
             />
           </div>
           <div>
@@ -72,7 +97,9 @@ const DeleteSiteModal = (props: DeleteSiteModalPropsInterface) => {
           <input
             type="text"
             value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setInputValue(e.target.value)
+            }
           />
         </div>
         <div className={styles.buttons}>
@@ -84,6 +111,7 @@ const DeleteSiteModal = (props: DeleteSiteModalPropsInterface) => {
           <Button
             backgroundColor={buttonbackgroundColorEnum.black}
             innerContent="Delete WordPress site"
+            onClick={onDeleteFunction}
             disableButton={!isButtonEnabled}
           />
         </div>
