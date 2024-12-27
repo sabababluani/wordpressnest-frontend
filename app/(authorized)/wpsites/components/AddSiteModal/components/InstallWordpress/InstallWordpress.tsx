@@ -16,26 +16,23 @@ const InstallWordpress: React.FC<InstallWordpressProps> = ({
   onStepChange,
   currentStep,
 }) => {
-  // Properly type the state to match SetInfoPropsInterface
-  const [data, setData] = useState<SetInfoPropsInterface | undefined>(
-    undefined,
-  );
-
-  const onSubmit = async () => {
+  const [data, setData] = useState<SetInfoPropsInterface | undefined>({
+    siteName: '',
+    siteTitle: '',
+    wpAdminUser: '',
+    wpAdminPassword: '',
+    wpAdminEmail: '',
+  });
+  const onSubmit = async (data: SetInfoPropsInterface) => {
     try {
       if (data)
-        await createData<{ data: SetInfoPropsInterface }>(
-          '/wordpress/setasjdkj',
-          {
-            data: data,
-          },
-        );
+        await createData('/wordpress/setup', {
+          ...data,
+        });
     } catch (e) {
       console.log(e);
     }
   };
-
-  console.log(data);
 
   const stepComponents = [
     <SiteOptions
@@ -49,6 +46,7 @@ const InstallWordpress: React.FC<InstallWordpressProps> = ({
       currentStep={currentStep}
       onSend={onSubmit}
       setInfo={setData}
+      info={data!}
       key="wpOptions"
     />,
     <LoadingModal key="loadingModal" />,

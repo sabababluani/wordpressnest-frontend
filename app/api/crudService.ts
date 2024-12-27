@@ -79,8 +79,7 @@ export const deleteData = async <T>(
   payload?: T,
 ): Promise<void> => {
   try {
-    const url = id ? `${endpoint}/${id}` : endpoint;
-    await BaseApi.delete(url, { data: payload });
+    await BaseApi.delete(`${endpoint}/${id}`, { data: payload });
   } catch (error) {
     if (error instanceof Error) {
       throw new Error(error.message);

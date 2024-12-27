@@ -17,7 +17,7 @@ const SiteOptions = ({
 }) => {
   const [data, setData] = useState({
     siteName: '',
-    selectedDataCenter: dummySites[0].value,
+    // selectedDataCenter: dummySites[0].value,
   });
 
   const [checkedItems, setCheckedItems] = useState<{ [key: string]: boolean }>({
@@ -27,7 +27,7 @@ const SiteOptions = ({
 
   const handleSiteNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const siteName = e.target.value;
-    setData((prev) => ({ ...prev, siteName }));
+    setData({ siteName });
   };
 
   // const handleSelectChange = (selectedDataCenter: string) => {
@@ -87,7 +87,7 @@ const SiteOptions = ({
         <Select
           // onChange={handleSelectChange}
           className={styles.selectStyle}
-          value={data.selectedDataCenter}
+          // value={data.selectedDataCenter}
           options={dummySites}
         />
       </div>

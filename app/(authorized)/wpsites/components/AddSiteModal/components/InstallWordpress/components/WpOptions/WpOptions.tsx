@@ -7,16 +7,18 @@ import { dummyOptions } from './dummy-options/dummy-options';
 import Steper from '../../../Steper/Steper';
 import { WpOptionsPropsInterface } from './interfaces/wp-options-props.interface';
 import { SetInfoPropsInterface } from '../../interfaces/set-info-props.interface';
+import { UpdatedInfoPropsInterface } from './interfaces/updated-info-props.interface';
 
 const WpOptions = ({
   currentStep,
   setStep,
   onSend,
-  setInfo,
+  info,
 }: {
+  info: SetInfoPropsInterface;
   currentStep: number;
   setStep: (step: number) => void;
-  onSend: () => void;
+  onSend: (updatedInfo: UpdatedInfoPropsInterface) => void;
   setInfo:
     | ((data: SetInfoPropsInterface) => void)
     | ((data: (prev: SetInfoPropsInterface) => SetInfoPropsInterface) => void);
@@ -46,12 +48,11 @@ const WpOptions = ({
       [key]: checked,
     }));
   };
-
   const onSubmit = async (data: WpOptionsPropsInterface) => {
-    if (typeof setInfo === 'function') {
-      await setInfo((prev: SetInfoPropsInterface) => ({ ...prev, ...data }));
-    }
-    onSend();
+    const updatedInfo = { ...info, ...data };
+    onSend(updatedInfo);
+
+    setStep(currentStep + 1);
   };
 
   const handleBack = () => {
