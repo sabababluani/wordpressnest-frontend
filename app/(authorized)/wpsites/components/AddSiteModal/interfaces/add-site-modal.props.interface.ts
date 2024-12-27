@@ -1,6 +1,7 @@
 export interface AddSiteModalPropsInterface {
-  click: number;
-  onContinue: () => void;
-  onBack: () => void;
   onClose: () => void;
+  onStepChange: (step: number) => void;
+  currentStep: number;
+  click?: number;
+  way?: string;
 }

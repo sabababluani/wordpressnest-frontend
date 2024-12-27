@@ -79,7 +79,7 @@ const Info = (): JSX.Element => {
             )?.nodeIp
           }
           phpWorkers={'2'}
-          onClick={() => console.log('zz')}
+          onClick={() => console.log('clicked')}
         />
 
         <SftpShh

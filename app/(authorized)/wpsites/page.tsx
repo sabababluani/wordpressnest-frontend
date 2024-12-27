@@ -43,19 +43,16 @@ const Wpsites = () => {
     setModalState({ modalType: type, click: 1 });
   const closeModal = () => setModalState({ modalType: null, click: 1 });
 
-  const handleContinue = () => {
-    setModalState((prev) => ({
-      ...prev,
-      click: prev.click === 4 ? 1 : prev.click + 1,
-    }));
+  const handleStepChange = (step: number) => {
+    setModalState((prev) => ({ ...prev, click: step }));
   };
 
-  const handleBack = () => {
-    setModalState((prev) => ({
-      ...prev,
-      click: prev.click === 1 ? 1 : prev.click - 1,
-    }));
-  };
+  // const handleBack = () => {
+  //   setModalState((prev) => ({
+  //     ...prev,
+  //     click: prev.click === 1 ? 1 : prev.click - 1,
+  //   }));
+  // };
 
   const handleSelectChange = (value: ModalType) => openModal(value);
 
@@ -64,10 +61,9 @@ const Wpsites = () => {
       case 'addSite':
         return (
           <AddSiteModal
-            click={modalState.click}
-            onContinue={handleContinue}
-            onBack={handleBack}
+            onStepChange={handleStepChange}
             onClose={closeModal}
+            currentStep={modalState.click}
           />
         );
       case 'clearCache':

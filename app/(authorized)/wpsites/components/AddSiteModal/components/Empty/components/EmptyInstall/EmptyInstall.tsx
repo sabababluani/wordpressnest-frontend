@@ -1,11 +1,17 @@
-import Steps from '@/app/components/Steps/Steps';
-import styles from './SiteOptions.module.scss';
+import styles from './EmptyInsall.module.scss';
 import { Select, Checkbox } from 'antd';
 import { useState } from 'react';
-import { dummySites } from './dummy-sites/dummy-sites';
+import { dummyEmpty } from '../../dummy-empty/dummy-empty';
+import Steper from '../../../Steper/Steper';
 
-const SiteOptions = () => {
-  const [selectState, setSelectState] = useState<string>(dummySites[0].value);
+const EmptyInstall = ({
+  currentStep,
+  setStep,
+}: {
+  currentStep: number;
+  setStep: (step: number) => void;
+}) => {
+  const [selectState, setSelectState] = useState<string>(dummyEmpty[0].value);
   const [checkedItems, setCheckedItems] = useState<{ [key: string]: boolean }>({
     cdn: false,
     edgeCaching: false,
@@ -22,16 +28,21 @@ const SiteOptions = () => {
     }));
   };
 
+  const handleBack = () => {
+    if (currentStep > 1) {
+      setStep(currentStep - 1);
+    }
+  };
+
+  const handleContinue = () => {
+    setStep(currentStep + 1);
+  };
+
   return (
     <div className={styles.container}>
-      <Steps
-        confirmation={false}
-        firstHeadline={'Site options'}
-        secondHeadline={'WordPress options'}
-      />
       <div className={styles.infoWrapper}>
         <div className={styles.info}>
-          <span className={styles.headline}>Site name</span>
+          <span className={styles.headline}>Create empty environment</span>
           <span className={styles.text}>
             This name is only visible in hosting
           </span>
@@ -52,7 +63,7 @@ const SiteOptions = () => {
           onChange={onSelectChange}
           className={styles.selectStyle}
           value={selectState}
-          options={dummySites}
+          options={dummyEmpty}
         />
       </div>
       <div className={styles.chooseWrapper}>
@@ -94,8 +105,15 @@ const SiteOptions = () => {
           </div>
         </div>
       </div>
+      <div className={styles.steper}>
+        <Steper
+          onBack={handleBack}
+          onContinue={handleContinue}
+          click={currentStep}
+        />
+      </div>
     </div>
   );
 };
 
-export default SiteOptions;
+export default EmptyInstall;

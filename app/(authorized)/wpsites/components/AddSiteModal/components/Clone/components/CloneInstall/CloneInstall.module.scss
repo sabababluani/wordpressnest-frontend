@@ -1,13 +1,28 @@
-@import '../../../../../../styles/text-colors.scss';
-@import '../../../../../../styles/colors.scss';
+@import '../../../../../../../../styles/text-colors.scss';
+@import '../../../../../../../../styles/colors.scss';
 
 .container {
   display: flex;
   flex-direction: column;
   gap: 32px;
+  padding: 16px 24px 24px 24px;
   width: 100%;
   background-color: #fff;
-  padding: 12px 24px;
+}
+
+.headline {
+  color: $primaryTextColor;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+}
+
+.text {
+  color: #6c6e72;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
 }
 
 .infoWrapper {
@@ -38,46 +53,57 @@
   line-height: 24px;
 }
 
-.headline {
-  color: $primaryTextColor;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 18px;
-}
-
-.text {
-  color: #6c6e72;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 18px;
-}
-
 .selectStyle {
   max-width: 760px;
   width: 100%;
   height: 48px;
 }
 
-.plugin {
-  color: $primaryTextColor;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 24px;
+.selectStyle :global(.ant-select-selector) {
+  border: 1px solid #dcdfe1 !important;
+  box-shadow: none !important;
+  border-radius: 12px !important;
 }
 
-.checkboxWrapper {
+.selectStyle :global(.ant-select-focused .ant-select-selector) {
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+.chooseWrapper {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 32px;
+  width: 100%;
 }
 
-.checkbox {
+.optionsWrapper {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  flex-direction: column;
+  gap: 8px;
+  width: fit-content;
+}
+
+.checkboxContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: fit-content;
+}
+
+.title {
+  color: $primaryTextColor;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+}
+
+.description {
+  color: #6c6e72;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
 }
 
 .checkbox :global .ant-checkbox-inner {
@@ -129,7 +155,7 @@
 }
 
 .checkbox :global .ant-checkbox .ant-checkbox-inner {
-  border-radius: 8px;
+  border-radius: 50%;
 }
 
 .checkbox
@@ -188,4 +214,64 @@
   .ant-checkbox-inner:hover {
   background-color: black !important;
   border: none !important;
+}
+
+.checkboxWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.headline {
+  color: $primaryTextColor;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+}
+
+.cloneWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.selectWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.miniCloneStyle {
+  max-width: 284px;
+  width: 100%;
+  height: 48px;
+}
+
+.miniCloneStyle :global(.ant-select-selector) {
+  border: 1px solid #dcdfe1 !important;
+  box-shadow: none !important;
+  border-radius: 12px !important;
+}
+
+.miniCloneStyle :global(.ant-select-focused .ant-select-selector) {
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+.cloneStyle {
+  max-width: 496px;
+  width: 100%;
+  height: 48px;
+}
+
+.cloneStyle :global(.ant-select-selector) {
+  border: 1px solid #dcdfe1 !important;
+  box-shadow: none !important;
+  border-radius: 12px !important;
+}
+
+.cloneStyle :global(.ant-select-focused .ant-select-selector) {
+  box-shadow: none !important;
+  border-color: transparent !important;
 }
