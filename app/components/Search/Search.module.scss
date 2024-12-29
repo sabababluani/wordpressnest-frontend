@@ -5,13 +5,12 @@
   display: flex;
   width: 100%;
   max-width: 311px;
-  padding: 8px 12px 8px 8px;
+  padding: 8px 12px 8px 16px;
   justify-content: space-between;
   border-radius: 8px;
   border: 1px solid $borderColor;
   background-color: #fff;
   align-items: center;
-  cursor: pointer;
 }
 
 .container img {
@@ -30,7 +29,6 @@
   outline: none;
   width: 100%;
   padding-left: 8px;
-  cursor: pointer;
 }
 
 .input::-webkit-search-cancel-button {
@@ -48,7 +46,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px;
+  padding: 6px 8px;
   cursor: pointer;
 }
 

@@ -70,114 +70,120 @@ const WpOptions = ({
         firstHeadline={'Site options'}
         secondHeadline={'WordPress options'}
       />
-      <div className={styles.infoWrapper}>
-        <div className={styles.info}>
-          <span className={styles.headline}>WordPress site title</span>
-          <span className={styles.text}>
-            Appears across the top of every page of the site. You can always
-            change it later
-          </span>
-        </div>
-        <input
-          {...register('siteTitle', { required: 'Site title is required' })}
-          type="text"
-          className={styles.input}
-          placeholder="New Site"
-        />
-        {errors.siteTitle && (
-          <p className={styles.error}>{errors.siteTitle.message}</p>
-        )}
-      </div>
-      <div className={styles.infoWrapper}>
-        <div className={styles.info}>
-          <span className={styles.headline}>WordPress admin username</span>
-        </div>
-        <input
-          {...register('wpAdminUser', { required: 'Username is required' })}
-          type="text"
-          className={styles.input}
-          placeholder="Admin Username"
-        />
-        {errors.wpAdminUser && (
-          <p className={styles.error}>{errors.wpAdminUser.message}</p>
-        )}
-      </div>
-      <div className={styles.infoWrapper}>
-        <div className={styles.info}>
-          <span className={styles.headline}>WordPress admin password</span>
-        </div>
-        <input
-          {...register('wpAdminPassword', {
-            required: 'Password is required',
-          })}
-          type="password"
-          className={styles.input}
-          placeholder="Admin Password"
-        />
-        {errors.wpAdminPassword && (
-          <p className={styles.error}>{errors.wpAdminPassword.message}</p>
-        )}
-      </div>
-      <div className={styles.infoWrapper}>
-        <div className={styles.info}>
-          <span className={styles.headline}>WordPress admin email</span>
-        </div>
-        <input
-          {...register('wpAdminEmail', {
-            required: 'Email is required',
-            pattern: {
-              value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-              message: 'Invalid email format',
-            },
-          })}
-          type="email"
-          className={styles.input}
-          placeholder="Admin Email"
-        />
-        {errors.wpAdminEmail && (
-          <p className={styles.error}>{errors.wpAdminEmail.message}</p>
-        )}
-      </div>
-      <div className={styles.infoWrapper}>
-        <div className={styles.info}>
-          <span className={styles.headline}>Select a language</span>
-        </div>
-        <Select
-          onChange={(value) => console.log(value)}
-          className={styles.selectStyle}
-          value={dummyOptions[0].value}
-          options={dummyOptions}
-        />
-      </div>
-      <div className={styles.checkboxWrapper}>
-        <div className={styles.checkbox}>
-          <Checkbox
-            checked={checkedItems.WooCommerce}
-            onChange={(e) => onCheckboxChange('WooCommerce', e.target.checked)}
+      <div className={styles.contaienrWrapper}>
+        <div className={styles.infoWrapper}>
+          <div className={styles.info}>
+            <span className={styles.headline}>WordPress site title</span>
+            <span className={styles.text}>
+              Appears across the top of every page of the site. You can always
+              change it later
+            </span>
+          </div>
+          <input
+            {...register('siteTitle', { required: 'Site title is required' })}
+            type="text"
+            className={styles.input}
+            placeholder="New Site"
           />
-          <span className={styles.plugin}>Install WooCommerce</span>
+          {errors.siteTitle && (
+            <p className={styles.error}>{errors.siteTitle.message}</p>
+          )}
         </div>
-        <div className={styles.checkbox}>
-          <Checkbox
-            checked={checkedItems.EDD}
-            onChange={(e) => onCheckboxChange('EDD', e.target.checked)}
+        <div className={styles.infoWrapper}>
+          <div className={styles.info}>
+            <span className={styles.headline}>WordPress admin username</span>
+          </div>
+          <input
+            {...register('wpAdminUser', { required: 'Username is required' })}
+            type="text"
+            className={styles.input}
+            placeholder="Admin Username"
           />
-          <span className={styles.plugin}>Install Easy Digital Downloads</span>
+          {errors.wpAdminUser && (
+            <p className={styles.error}>{errors.wpAdminUser.message}</p>
+          )}
         </div>
-        <div className={styles.checkbox}>
-          <Checkbox
-            checked={checkedItems.Yoast}
-            onChange={(e) => onCheckboxChange('Yoast', e.target.checked)}
+        <div className={styles.infoWrapper}>
+          <div className={styles.info}>
+            <span className={styles.headline}>WordPress admin password</span>
+          </div>
+          <input
+            {...register('wpAdminPassword', {
+              required: 'Password is required',
+            })}
+            type="password"
+            className={styles.input}
+            placeholder="Admin Password"
           />
-          <span className={styles.plugin}>Install Yoast SEO</span>
+          {errors.wpAdminPassword && (
+            <p className={styles.error}>{errors.wpAdminPassword.message}</p>
+          )}
         </div>
-      </div>
-      <div className={styles.steper}>
-        <Steper
-          onBack={handleBack}
-          onContinue={handleContinue}
-          click={currentStep}
-        />
+        <div className={styles.infoWrapper}>
+          <div className={styles.info}>
+            <span className={styles.headline}>WordPress admin email</span>
+          </div>
+          <input
+            {...register('wpAdminEmail', {
+              required: 'Email is required',
+              pattern: {
+                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                message: 'Invalid email format',
+              },
+            })}
+            type="email"
+            className={styles.input}
+            placeholder="Admin Email"
+          />
+          {errors.wpAdminEmail && (
+            <p className={styles.error}>{errors.wpAdminEmail.message}</p>
+          )}
+        </div>
+        <div className={styles.infoWrapper}>
+          <div className={styles.info}>
+            <span className={styles.headline}>Select a language</span>
+          </div>
+          <Select
+            onChange={(value) => console.log(value)}
+            className={styles.selectStyle}
+            value={dummyOptions[0].value}
+            options={dummyOptions}
+          />
+        </div>
+        <div className={styles.checkboxWrapper}>
+          <div className={styles.checkbox}>
+            <Checkbox
+              checked={checkedItems.WooCommerce}
+              onChange={(e) =>
+                onCheckboxChange('WooCommerce', e.target.checked)
+              }
+            />
+            <span className={styles.plugin}>Install WooCommerce</span>
+          </div>
+          <div className={styles.checkbox}>
+            <Checkbox
+              checked={checkedItems.EDD}
+              onChange={(e) => onCheckboxChange('EDD', e.target.checked)}
+            />
+            <span className={styles.plugin}>
+              Install Easy Digital Downloads
+            </span>
+          </div>
+          <div className={styles.checkbox}>
+            <Checkbox
+              checked={checkedItems.Yoast}
+              onChange={(e) => onCheckboxChange('Yoast', e.target.checked)}
+            />
+            <span className={styles.plugin}>Install Yoast SEO</span>
+          </div>
+        </div>
+        <div className={styles.steper}>
+          <Steper
+            onBack={handleBack}
+            onContinue={handleContinue}
+            click={currentStep}
+          />
+        </div>
       </div>
     </form>
   );

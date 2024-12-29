@@ -73,6 +73,10 @@
   font-weight: 500;
 }
 
+.sitesContainer {
+  width: 100%;
+}
+
 .sites {
   display: flex;
   justify-content: flex-start;
@@ -103,4 +107,10 @@
 
 .invisible {
   display: none;
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  padding: 12px;
 }

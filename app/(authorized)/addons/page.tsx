@@ -42,12 +42,12 @@ const Addons = () => {
               'Create environments that match the resources of your live site. This add-on is ideal for testing and development of resource-intensive sites such as ecommerce shops'
             }
             price={'20 USD / month'}
-            add={'Add to plan'}
+            add={'Create new invironment'}
           />
           <AddonsCard
             title={'PHP memory'}
             text={
-              'Create environments that match the resources of your live site. This add-on is ideal for testing and development of resource-intensive sites such as ecommerce shops'
+              'The default PHP memory limit on Starter. pro and busness plans is 256 MB, which is enough for most Wordpress sites. for resource-intensive, use this add-on to increase the limit to 512 MB.'
             }
             price={'50 USD / month'}
             add={'Add to plan'}
@@ -55,7 +55,7 @@ const Addons = () => {
           <AddonsCard
             title={'Redis chaching'}
             text={
-              'Create environments that match the resources of your live site. This add-on is ideal for testing and development of resource-intensive sites such as ecommerce shops'
+              'Reverse proxy allows serving multiple sites or applications from a single domain. At hosting, this is available as an add-on that our Supports Team will help set up'
             }
             price={'50 USD / month'}
             add={'Add to plan'}
@@ -63,7 +63,7 @@ const Addons = () => {
           <AddonsCard
             title={'Redis chaching'}
             text={
-              'Create environments that match the resources of your live site. This add-on is ideal for testing and development of resource-intensive sites such as ecommerce shops'
+              'Redis can reduce the load on a website’s MySQL database, decreasing response time and increasing the site’s ability to handle additional traffic'
             }
             price={'50 USD / month'}
             add={'Add to plan'}
@@ -71,7 +71,7 @@ const Addons = () => {
           <AddonsCard
             title={'Hourly backups'}
             text={
-              'Create environments that match the resources of your live site. This add-on is ideal for testing and development of resource-intensive sites such as ecommerce shops'
+              'Back up your site every 6 hours on hourly for more granular restore points than the default daily backup. Each backup is available for 24 hours. This add-on is ideal for sites that change often.'
             }
             price={'50 USD / month'}
             add={'Add to plan'}
@@ -79,7 +79,7 @@ const Addons = () => {
           <AddonsCard
             title={'Hourly backups'}
             text={
-              'Create environments that match the resources of your live site. This add-on is ideal for testing and development of resource-intensive sites such as ecommerce shops'
+              'Back up your site to AWS or google cloud storage. backups can be weekly or monthly. You can back up your files, Wordpress database, or both.'
             }
             price={'2 USD / month'}
             add={'Add to plan'}

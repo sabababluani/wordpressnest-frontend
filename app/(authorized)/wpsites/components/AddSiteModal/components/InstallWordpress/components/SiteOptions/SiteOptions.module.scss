@@ -4,10 +4,11 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 16px;
   padding: 16px 24px 24px 24px;
   width: 100%;
   background-color: #fff;
+  border-radius: 8px;
 }
 
 .headline {
@@ -228,4 +229,10 @@
   font-style: normal;
   font-weight: 500;
   line-height: 18px;
+}
+
+.containerWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
