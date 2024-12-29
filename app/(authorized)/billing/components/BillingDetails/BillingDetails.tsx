@@ -208,7 +208,7 @@ const BillingDetails = () => {
           <div className={styles.submittion}>
             <Button
               innerContent="Cancel"
-              backgroundColor={buttonbackgroundColorEnum.white}
+              backgroundColor={buttonbackgroundColorEnum.whitelight}
               onClick={handleCancel}
             />
             <Button

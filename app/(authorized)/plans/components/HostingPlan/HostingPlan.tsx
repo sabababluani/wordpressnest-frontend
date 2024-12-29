@@ -11,7 +11,7 @@ const HostingPlan = () => {
         </span>
         <Button
           innerContent="Update plan"
-          backgroundColor={buttonbackgroundColorEnum.white}
+          backgroundColor={buttonbackgroundColorEnum.whitelight}
         />
       </div>
       <div className={styles.container}>

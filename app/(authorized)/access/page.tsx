@@ -10,7 +10,7 @@ const Access = () => {
         <p>Access</p>
         <div>
           <Button
-            backgroundColor={buttonbackgroundColorEnum.white}
+            backgroundColor={buttonbackgroundColorEnum.whitelight}
             innerContent="Create new company"
           />
         </div>

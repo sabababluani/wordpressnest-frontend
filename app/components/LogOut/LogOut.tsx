@@ -5,8 +5,8 @@ import { LogOutPropsInterface } from './interfaces/log-out-props.interfaces';
 
 const LogOut = (props: LogOutPropsInterface) => {
   const handleLinkClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.stopPropagation(); // Prevent the event from propagating to the document
-    props.onLinkClick(); // Call the parent component's handler
+    event.stopPropagation();
+    props.onLinkClick();
   };
 
   return (

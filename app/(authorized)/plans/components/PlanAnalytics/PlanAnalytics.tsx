@@ -16,7 +16,7 @@ const PlanAnalytics = () => {
         </p>
         <Button
           innerContent="Add to plan"
-          backgroundColor={buttonbackgroundColorEnum.white}
+          backgroundColor={buttonbackgroundColorEnum.whitelight}
         />
       </div>
       <div className={styles.analyticsWrapper}>

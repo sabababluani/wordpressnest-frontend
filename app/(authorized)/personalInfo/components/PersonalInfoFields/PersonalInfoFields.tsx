@@ -16,7 +16,7 @@ const countryOptions = [
           height={14}
           className={styles.flag}
         />
-        <span>Australia</span>
+        <span className={styles.country}>Australia</span>
       </div>
     ),
   },
@@ -27,20 +27,22 @@ const PersonalInfoFields = () => {
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.inputContainer}>
-          <span>
-            First Name <span>*</span>
+          <span className={styles.inputField}>
+            First Name <span className={styles.stars}>*</span>
           </span>
           <input type="text" placeholder="Novatori" />
         </div>
         <div className={styles.inputContainer}>
-          <span>Last Name *</span>
+          <span className={styles.inputField}>
+            Last Name <span className={styles.stars}>*</span>
+          </span>
           <input type="text" placeholder="Magaria" />
         </div>
       </div>
       <div className={styles.container}>
         <div className={styles.emailContainer}>
-          <span>
-            Email address <span>*</span>
+          <span className={styles.inputField}>
+            Email address <span className={styles.stars}>*</span>
           </span>
           <div className={styles.emailField}>
             <Image src={'/icons/mail.svg'} alt="mail" width={20} height={20} />
@@ -48,8 +50,8 @@ const PersonalInfoFields = () => {
           </div>
         </div>
         <div className={styles.inputContainer}>
-          <span>
-            Country <span>*</span>
+          <span className={styles.inputField}>
+            Country <span className={styles.stars}>*</span>
           </span>
           <Select
             className={styles.select}
@@ -87,7 +89,7 @@ const PersonalInfoFields = () => {
       <div className={styles.buttons}>
         <div className={styles.grayButton}>
           <Button
-            backgroundColor={buttonbackgroundColorEnum.white}
+            backgroundColor={buttonbackgroundColorEnum.whitelight}
             innerContent="Cancel"
           />
         </div>

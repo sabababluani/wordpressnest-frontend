@@ -5,6 +5,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
+  width: 100%;
 }
 
 .backButton {
@@ -46,11 +47,13 @@
 .breadcrumb :global .ant-breadcrumb ol li .ant-breadcrumb-link a {
   display: flex !important;
   align-items: center !important;
+  padding: 16px 12px;
 }
 
 .breadcrumb :global .ant-breadcrumb ol li:last-child .ant-breadcrumb-link a {
   color: $primaryTextColor !important;
-  border: 1px solid $borderColor;  background-color: #f0f3f5;
+  border: 1px solid $borderColor;
+  padding: 16px 12px;
 }
 
 .breadcrumb

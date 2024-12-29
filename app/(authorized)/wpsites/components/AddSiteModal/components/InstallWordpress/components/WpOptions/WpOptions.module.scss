@@ -207,3 +207,15 @@
   flex-direction: column;
   gap: 32px;
 }
+
+
+.selectStyle :global(.ant-select-selector) {
+  border: 1px solid #dcdfe1 !important;
+  box-shadow: none !important;
+  border-radius: 12px !important;
+}
+
+.selectStyle :global(.ant-select-focused .ant-select-selector) {
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
