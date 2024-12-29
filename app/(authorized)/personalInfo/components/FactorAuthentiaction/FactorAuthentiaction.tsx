@@ -26,7 +26,7 @@ const FactorAuthentication = () => {
         </p>
         <div className={styles.button}>
           <Button
-            backgroundColor={buttonbackgroundColorEnum.white}
+            backgroundColor={buttonbackgroundColorEnum.whitelight}
             innerContent="Connect"
             onClick={showModal}
           />

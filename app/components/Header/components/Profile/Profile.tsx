@@ -6,7 +6,6 @@ import { ProfilePropsInterface } from './interfaces/profile-props.inteface';
 
 const Profile = (props: ProfilePropsInterface): JSX.Element => {
   const [logOut, setLogOut] = useState(false);
-  const logOutRef = useRef<HTMLDivElement | null>(null);
   const wrapperRef = useRef<HTMLDivElement | null>(null);
 
   const handleClickOutside = (event: MouseEvent) => {
@@ -36,8 +35,8 @@ const Profile = (props: ProfilePropsInterface): JSX.Element => {
   };
 
   return (
-    <div className={styles.wrapper} ref={wrapperRef} onClick={handleToggle}>
-      <div className={styles.container}>
+    <div className={styles.wrapper} ref={wrapperRef}>
+      <div className={styles.container} onClick={handleToggle}>
         <Image
           src="/profilepicture.png"
           width={40}
@@ -54,7 +53,7 @@ const Profile = (props: ProfilePropsInterface): JSX.Element => {
         />
       </div>
       {logOut && (
-        <div ref={logOutRef} className={styles.logout}>
+        <div className={styles.logout}>
           <LogOut onLinkClick={handleLinkClick} />
         </div>
       )}

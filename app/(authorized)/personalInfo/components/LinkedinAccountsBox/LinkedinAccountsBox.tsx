@@ -19,7 +19,7 @@ const LinkedinAccountsBox = () => {
             <span>GitHub</span>
           </div>
           <Button
-            backgroundColor={buttonbackgroundColorEnum.white}
+            backgroundColor={buttonbackgroundColorEnum.whitelight}
             innerContent="Connect"
           />
         </div>
@@ -34,7 +34,7 @@ const LinkedinAccountsBox = () => {
             <span>Google</span>
           </div>
           <Button
-            backgroundColor={buttonbackgroundColorEnum.white}
+            backgroundColor={buttonbackgroundColorEnum.whitelight}
             innerContent="Revoke"
           />
         </div>

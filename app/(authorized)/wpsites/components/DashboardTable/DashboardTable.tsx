@@ -83,6 +83,7 @@ const DashboardTable = () => {
   const [mergedData, setMergedData] = useState<DashboardTablePropsInterface[]>(
     [],
   );
+  const [loading, setLoading] = useState<boolean>(true);
 
   const { data: tableData } = useGetData<DashboardTablePropsInterface>({
     endpoint: 'user/me',
@@ -91,6 +92,8 @@ const DashboardTable = () => {
   useEffect(() => {
     const fetchData = async () => {
       if (!tableData?.setup) return;
+
+      setLoading(true);
 
       const requests = tableData.setup.map(async (item) => {
         const id = Number(item.id);
@@ -109,6 +112,7 @@ const DashboardTable = () => {
       const results = await Promise.all(requests);
 
       setMergedData(results);
+      setLoading(false);
     };
 
     fetchData();
@@ -122,6 +126,7 @@ const DashboardTable = () => {
         dataSource={mergedData}
         pagination={false}
         scroll={{ x: 'max-content' }}
+        loading={loading}
       />
     </div>
   );

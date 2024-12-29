@@ -27,6 +27,7 @@
   padding: 12px 16px;
   border-radius: 8px;
   border: 1px solid $borderColor;
+  font-weight: 600;
 }
 
 .backgroundGreyColor {
@@ -35,6 +36,7 @@
   border-radius: 8px;
   border: 1px solid $borderColor;
   color: $primaryTextColor;
+  font-weight: 500;
 }
 
 .backgroundBlackColor {
@@ -44,6 +46,7 @@
   border-radius: 8px;
   color: #fff;
   border: 1px solid $borderColor;
+  font-weight: 500;
 }
 
 .backgroundRedColor {
@@ -51,14 +54,8 @@
   padding: 12px 16px;
   border: none;
   color: #fff;
-  border-radius: var(--borderRadiusLG, 8px);
-}
-
-.fontSize {
-  font-size: 16px;
-  font-style: normal;
+  border-radius: 8px;
   font-weight: 500;
-  line-height: 24px;
 }
 
 .backgroundDomainsRed {
@@ -66,15 +63,27 @@
   padding: 12px 16px;
   border: none;
   color: #fff;
-  border-radius: var(--borderRadiusLG, 8px);
+  border-radius: 8px;
 }
 
 .backgroundWhiteColor {
   background-color: #fff;
   padding: 12px 16px;
   border-radius: 8px;
-  color: #707276;
+  color: $primaryTextColor;
   border: 1px solid $borderColor;
+  font-weight: 500;
+}
+
+.backgroundWhiteLightColor {
+  color: #707276;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #fff;
+  border: 1px solid $borderColor;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-weight: 500;
 }
 
 .disabledButton {
@@ -82,12 +91,7 @@
   background: #f4f5f6;
   color: #707276;
   border: 1px solid $borderColor;
-}
-
-@media screen and (min-width: 100px) and (max-width: 600px) {
-  .buttonStyle {
-    width: 100px;
-  }
+  font-weight: 500;
 }
 
 .disabled {
@@ -96,13 +100,5 @@
 
 .active {
   border: 1px solid black;
-  color: $primaryColor;
-}
-
-.innerContentBlackColor {
-  text-align: center;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 24px;
   color: $primaryColor;
 }

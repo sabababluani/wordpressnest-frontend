@@ -39,10 +39,6 @@
   line-height: 18px;
 }
 
-.selectWrapper :global .ant-select-selector {
-  padding: 12px 12px 12px 16px !important;
-}
-
 .selectWrapper :global .ant-select-selection-item {
   color: $primaryTextColor !important;
   font-size: 16px !important;
@@ -105,4 +101,20 @@
   align-items: center;
   height: 100%;
   width: fit-content;
+}
+
+.selectStyle {
+  height: 48px;
+  outline: none;
+}
+
+.selectStyle :global(.ant-select-selector) {
+  border: 1px solid #dcdfe1 !important;
+  box-shadow: none !important;
+  border-radius: 12px !important;
+}
+
+.selectStyle :global(.ant-select-focused .ant-select-selector) {
+  box-shadow: none !important;
+  border-color: transparent !important;
 }

@@ -57,5 +57,9 @@ a {
 }
 
 .ant-select-selection-wrap {
-  padding: 12px;
+  padding: 12px 16px;
+}
+
+.ant-spin-dot {
+  color: black !important;
 }

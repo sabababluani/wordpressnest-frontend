@@ -11,6 +11,7 @@ export enum buttonbackgroundColorEnum {
   red = 'red',
   domainsRed = 'domainsRed',
   white = 'white',
+  whitelight = 'whitelight',
 }
 
 export enum innerContentIconEnum {

@@ -23,13 +23,13 @@
   flex: 1;
 }
 
-.inputContainer span {
+.inputField {
   color: $primaryTextColor;
   font-weight: 700;
   font-size: 14px;
 }
 
-.inputContainer span span {
+.stars {
   color: #7f56d9;
 }
 
@@ -37,11 +37,10 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 12px;
 }
 
-.optionContainer span {
-  color: $primaryTextColor !important;
+.country {
+  color: $primaryTextColor;
   font-size: 14px;
   font-weight: 400;
   line-height: 24px;
@@ -97,10 +96,6 @@
   color: $primaryTextColor;
   font-weight: 700;
   font-size: 14px;
-}
-
-.emailContainer span span {
-  color: #7f56d9;
 }
 
 .emailField input:focus {

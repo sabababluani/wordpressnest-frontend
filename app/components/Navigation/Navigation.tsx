@@ -11,6 +11,7 @@ import UsersSettingsLine from './components/UsersSettingsLine/UsersSettingsLine'
 import CompanySettingsLine from './components/CompanySettingsLine/CompanySettingsLine';
 import { allowedPaths } from './utils/pathnames';
 import { useGetData } from '@/app/hooks/useGetData';
+import { Spin } from 'antd';
 
 const Navigation = (): JSX.Element => {
   const pathname = usePathname();
@@ -19,7 +20,11 @@ const Navigation = (): JSX.Element => {
     number | null
   >(null);
 
-  const { data: sitesData } = useGetData<UserInterface>({
+  const {
+    data: sitesData,
+    isLoading,
+    error,
+  } = useGetData<UserInterface>({
     endpoint: 'user/me',
   });
 
@@ -151,19 +156,25 @@ const Navigation = (): JSX.Element => {
       <div className={styles.sitesContainer}>
         <span>Sites</span>
         <div className={styles.sitesWrapper}>
-          {sitesData?.setup.map((site) => (
-            <div key={site.id}>
-              <div
-                className={`${styles.sites} ${activeSite === site.id ? styles.sitesActive : ''}`}
-                onClick={() => onSiteClick(site.id)}
-              >
-                <span>{site.siteTitle}.com</span>
-              </div>
-              {activeSite === site.id && (
-                <NavigationLine basePath={`/${site.id}`} />
-              )}
+          {isLoading || error ? (
+            <div className={styles.spinner}>
+              <Spin />
             </div>
-          ))}
+          ) : (
+            sitesData?.setup.map((site) => (
+              <div key={site.id}>
+                <div
+                  className={`${styles.sites} ${activeSite === site.id ? styles.sitesActive : ''}`}
+                  onClick={() => onSiteClick(site.id)}
+                >
+                  <span>{site.siteTitle}.com</span>
+                </div>
+                {activeSite === site.id && (
+                  <NavigationLine basePath={`/${site.id}`} />
+                )}
+              </div>
+            ))
+          )}
         </div>
       </div>
     </div>

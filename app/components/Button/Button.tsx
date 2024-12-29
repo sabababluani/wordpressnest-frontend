@@ -8,8 +8,8 @@ const Button = (props: ButtonDataInterface): JSX.Element => {
     <div>
       <button
         onClick={props.onClick}
-        className={`
-          ${styles.buttonStyle} 
+        className={`           
+          ${styles.buttonStyle}            
           ${
             props.backgroundColor === buttonbackgroundColorEnum.white
               ? styles.backgroundWhiteColor
@@ -22,8 +22,13 @@ const Button = (props: ButtonDataInterface): JSX.Element => {
                     : props.backgroundColor ===
                         buttonbackgroundColorEnum.greyBold
                       ? styles.backgroundGreyBoldColor
-                      : styles.backgroundDomainsRed
-          } ${props.disableButton && styles.disabledButton} ${props.buttonActive && styles.active}`}
+                      : props.backgroundColor ===
+                          buttonbackgroundColorEnum.whitelight
+                        ? styles.backgroundWhiteLightColor
+                        : styles.backgroundDomainsRed
+          } 
+          ${props.disableButton && styles.disabledButton} 
+          ${props.buttonActive && styles.active}`}
       >
         {props.innerContentIconActive && (
           <Image
