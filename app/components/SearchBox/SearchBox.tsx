@@ -51,8 +51,8 @@ const SearchBox = (props: SearchBoxPropsInterface) => {
               <div key={index} className={styles.result}>
                 <div className={styles.reloadContainer}>
                   <Image
-                    src="/icons/backup.svg"
-                    alt="reload"
+                    src="/icons/handbag.svg"
+                    alt="handbag"
                     width={20}
                     height={20}
                   />

@@ -3,6 +3,7 @@ import styles from './ApiKeysAddModal.module.scss';
 import Image from 'next/image';
 import { DatePicker, Select } from 'antd';
 import Button from '@/app/components/Button/Button';
+import SuccessNotification from '@/app/components/SuccessNotification/SuccessNotification';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { apiKeyOptions } from './utils/api-keys-select-options';
 import { ApiKeyPropsInterface } from '../../interfaces/api-keys-props.interface';
@@ -10,6 +11,7 @@ import { ApiKeyPropsInterface } from '../../interfaces/api-keys-props.interface'
 const ApiKeysAddModal = (props: ApiKeyPropsInterface) => {
   const [steper, setSteper] = useState(1);
   const [isOptionSelected, setIsOptionSelected] = useState(false);
+  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
 
   const handleSelectChange = (value: string) => {
     setIsOptionSelected(!!value);
@@ -20,10 +22,17 @@ const ApiKeysAddModal = (props: ApiKeyPropsInterface) => {
     else setSteper(1);
   };
 
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setIsNotificationOpen(true);
+      setTimeout(() => setIsNotificationOpen(false), 3000);
+    });
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
-        <span className={styles.headline}>Create credential</span>
+        <span className={styles.headline}>Create API Key</span>
         <Image
           src="/icons/close-mini.svg"
           alt="close"
@@ -73,11 +82,13 @@ const ApiKeysAddModal = (props: ApiKeyPropsInterface) => {
               <div className={styles.addContainer}>
                 <div className={styles.spansContainer}>
                   <span>Expiry date</span>
-                  <DatePicker className={styles.datePicker} />
+                  <div className={styles.datePicker}>
+                    <DatePicker />
+                  </div>
                 </div>
                 <div className={styles.spansContainer}>
                   <span>Expiry time</span>
-                  <Select className={styles.dateSelect} />
+                  <Select className={styles.select} />
                 </div>
               </div>
             )}
@@ -104,7 +115,7 @@ const ApiKeysAddModal = (props: ApiKeyPropsInterface) => {
               </span>
             </div>
             <div className={styles.copyContainer}>
-              <span>
+              <span id="apiKeyText">
                 c93a55c40fa7fdb6dc474a2f993216168226bf16e4d5596a6fdd9ceffa4a128b
               </span>
               <Image
@@ -112,6 +123,12 @@ const ApiKeysAddModal = (props: ApiKeyPropsInterface) => {
                 alt="copy"
                 width={16}
                 height={16}
+                className={styles.copyImage}
+                onClick={() =>
+                  copyToClipboard(
+                    'c93a55c40fa7fdb6dc474a2f993216168226bf16e4d5596a6fdd9ceffa4a128b',
+                  )
+                }
               />
             </div>
           </div>
@@ -130,6 +147,9 @@ const ApiKeysAddModal = (props: ApiKeyPropsInterface) => {
           />
         </div>
       </div>
+      {isNotificationOpen && (
+        <SuccessNotification message={'Copied to clipboard!'} />
+      )}
     </div>
   );
 };

@@ -12,6 +12,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: 24px;
+  white-space: nowrap;
 }
 
 .innerContentBlack {
@@ -89,7 +90,7 @@
 .disabledButton {
   cursor: not-allowed;
   background: #f4f5f6;
-  color: #707276;
+  color: #545a67;
   border: 1px solid $borderColor;
   font-weight: 500;
 }

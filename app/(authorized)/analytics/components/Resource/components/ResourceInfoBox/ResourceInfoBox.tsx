@@ -26,7 +26,7 @@ const ResourceInfoBox = (props: ResourceInfoBoxPropsInterface) => {
           </div>
           <div className={styles.textContainer}>
             <div className={styles.grayCircle}></div>
-            <span>Available</span>
+            <span>Free</span>
           </div>
         </div>
       </div>
