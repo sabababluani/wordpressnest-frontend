@@ -16,21 +16,9 @@ import PhpModal from './components/PhpModal/PhpModal';
 import UpdateThemesModal from './components/UpdateThemesModal/UpdateThemesModal';
 import CacheModal from './components/CacheModal/CacheModal';
 import { ActionOptions } from './utils/action-options';
+import { ModalType } from './types/wp-sites-modal.type';
 
 const Wpsites = () => {
-  type ModalType =
-    | 'Actions'
-    | 'addSite'
-    | 'clearCache'
-    | 'plugins'
-    | 'label'
-    | 'cdn'
-    | 'php'
-    | 'themes'
-    | 'cache'
-    | 'edge'
-    | null;
-
   const [modalState, setModalState] = useState<{
     modalType: ModalType;
     click: number;
@@ -78,7 +66,6 @@ const Wpsites = () => {
         return <PhpModal />;
       case 'themes':
         return <UpdateThemesModal />;
-      case 'cache':
       case 'edge':
         return <CacheModal />;
       default:
@@ -113,10 +100,7 @@ const Wpsites = () => {
           </div>
         </div>
       </div>
-      <div className={styles.tableContainer}>
-        <DashboardTable />
-      </div>
-
+      <DashboardTable />
       <Modal
         open={!!modalState.modalType}
         onCancel={closeModal}
