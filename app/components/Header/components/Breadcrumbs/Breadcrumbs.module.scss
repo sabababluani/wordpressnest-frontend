@@ -21,7 +21,6 @@
 
 .breadcrumb :global .ant-breadcrumb ol .ant-breadcrumb-separator {
   color: #707276 !important;
-  font-family: Inter !important;
   font-size: 16px !important;
   font-style: normal !important;
   font-weight: 600 !important;
@@ -63,5 +62,5 @@
   li:last-child
   .ant-breadcrumb-link
   a:hover {
-  cursor: default;
+  cursor: pointer;
 }
