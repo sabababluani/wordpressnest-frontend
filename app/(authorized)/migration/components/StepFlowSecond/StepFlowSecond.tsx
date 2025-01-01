@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import SecondStepFlowsCheckbox from '../SecondStepFlowFirstContainer/SecondStepFlowFirstContainer';
 import styles from './StepFlowSecond.module.scss';
 import Cookies from 'js-cookie';
-import { ActivedCheckboxNum } from '../../interface/ActivedCheckboxNum-interface';
+import { ActivedCheckboxNum } from '../../interface/actived-checkbox-num-props.interface';
 
 const StepFlowSecond = (props: ActivedCheckboxNum) => {
   const [activeCheckbox, setActiveCheckbox] = useState<number | undefined>(

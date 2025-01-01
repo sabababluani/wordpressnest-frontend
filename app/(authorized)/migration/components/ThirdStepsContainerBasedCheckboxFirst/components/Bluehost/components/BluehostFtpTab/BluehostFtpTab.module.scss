@@ -2,57 +2,57 @@
 @import '../../../../../../../../styles/text-colors.scss';
 
 .mainWrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .serverWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: flex-start;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  width: 100%;
 }
 
 .portWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: flex-start;
-    max-width: 750px;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  max-width: 750px;
+  width: 100%;
 }
 
 .serverInputStyle {
-    max-width: 750px;
-    width: 100%;
-    height: 44px;
-    border-radius: 12px;
-    border: 1px solid $borderColor;
-    padding-left: 10px;
+  max-width: 750px;
+  width: 100%;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid $borderColor;
+  padding-left: 10px;
 }
 
 .portInputStyle {
-    max-width: 750px;
-    width: 100%;
-    height: 44px;
-    border-radius: 12px;
-    border: 1px solid $borderColor;
-    padding-left: 10px;
+  max-width: 750px;
+  width: 100%;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid $borderColor;
+  padding-left: 10px;
 }
 
 .hostingAndpasswordWrapper {
-    display: flex;
-    gap: 24px;
-    align-items: center;
+  display: flex;
+  gap: 24px;
+  align-items: center;
 }
 
 .lastWordPressInputStyle {
-    width: 100%;
-    height: 44px;
-    border: 1px solid $borderColor;
-    border-radius: 12px;
-    padding-left: 10px;
+  width: 100%;
+  height: 44px;
+  border: 1px solid $borderColor;
+  border-radius: 12px;
+  padding-left: 10px;
 }

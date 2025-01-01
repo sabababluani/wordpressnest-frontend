@@ -1,7 +1,7 @@
 import { DatePicker, Select } from 'antd';
 import styles from './SecondChecksContainer.module.scss';
 import { ChangeEvent } from 'react';
-import { SecondCheckPropsInterface } from '../../interface/second-check-interface';
+import { SecondCheckPropsInterface } from '../../interface/second-check-props.interface';
 
 const SecondChecksContainer = (props: SecondCheckPropsInterface) => {
   return (

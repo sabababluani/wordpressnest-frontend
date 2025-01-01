@@ -1,4 +1,4 @@
-export interface stepFlowsFifthContainersInterface {
+export interface stepFlowsFifthContainerPropsInterface {
   mainCaption: string;
   inputsLabel: string;
   enhancedInput?: boolean;

@@ -87,6 +87,7 @@ const Wpsites = () => {
           />
         </div>
         <div className={styles.contentWrapperButtons}>
+          {/* <span>1 environment selected</span> */}
           {/* <Select
             className={styles.select}
             value="Actions"

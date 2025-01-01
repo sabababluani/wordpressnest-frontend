@@ -1,6 +1,6 @@
 'use client';
 
-import { Modal } from 'antd';
+import { Modal, Skeleton } from 'antd';
 import BasicDetails from '../components/BasicDetails/BasicDetails';
 import DataBaseAccess from '../components/DatabaseAccess/DatabaseAccess';
 import EnvironementDetails from '../components/EnvironmentDetails/EnvironmentDetails';
@@ -24,12 +24,24 @@ import { useParams } from 'next/navigation';
 
 const Info = (): JSX.Element => {
   const { id } = useParams();
-  const { data: sideInformationData } = useGetData<UserInterface>({
+  const {
+    data: sideInformationData,
+    error,
+    isLoading,
+  } = useGetData<UserInterface>({
     endpoint: 'user/me',
   });
 
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState<boolean>(false);
   const [isResetModalOpen, setIsResetModalOpen] = useState<boolean>(false);
+
+  if (isLoading || error) {
+    return (
+      <div className={styles.skeletonContainer}>
+        <Skeleton active paragraph={{ rows: 16 }} />
+      </div>
+    );
+  }
 
   return (
     <div className={styles.mainContainer}>
@@ -70,9 +82,6 @@ const Info = (): JSX.Element => {
               (item: SiteInterface) => item.id === +id,
             )?.wpfullIp
           }
-          // wordpressVersion={
-          // updateWpVersionData?.version || wordpressVersion.version
-          // }
           ipAddress={
             sideInformationData?.setup.find(
               (item: SiteInterface) => item.id === +id,
@@ -99,8 +108,6 @@ const Info = (): JSX.Element => {
         />
 
         <DataBaseAccess
-          // database={database[params.id - 1]?.Name}
-          // databaseUsername={username[params.id - 1].wpAdminUser}
           databasePassword={'**********'}
           ip={'ALL IPs allowed'}
           database={

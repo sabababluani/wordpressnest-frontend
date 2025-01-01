@@ -1,7 +1,7 @@
-import { stepFlowsFifthContainersInterface } from '../../interfaces/stepFlowsFifthContainer-data-interface';
+import { stepFlowsFifthContainerPropsInterface } from '../../interfaces/step-flows-fifth-container-props.interface';
 import styles from './inputSection.module.scss';
 
-const InputSection = (props: stepFlowsFifthContainersInterface) => {
+const InputSection = (props: stepFlowsFifthContainerPropsInterface) => {
   return (
     <div
       className={`${styles.mainWrapper} ${

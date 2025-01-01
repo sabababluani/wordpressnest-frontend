@@ -1,10 +1,10 @@
 'use client';
 
 import { Checkbox } from 'antd';
-import styles from './SecondStepFlowsFirstCheckbox.module.scss';
+import styles from './SecondStepFlowFirstContainer.module.scss';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
-import { SecondStepFlowCheckboxPropsInterface } from '../../interface/SecondStepFlowCheckbox-interface';
+import { SecondStepFlowCheckboxPropsInterface } from '../../interface/second-step-flow-checkbox-props.interface';
 
 const SecondStepFlowsCheckbox = (
   props: SecondStepFlowCheckboxPropsInterface,

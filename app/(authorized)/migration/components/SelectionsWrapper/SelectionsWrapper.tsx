@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { Checkbox } from 'antd';
 import styles from './SelectionsWrapper.module.scss';
-import { SelectionsWrapperProps } from '../../interface/selection-wrapper-interface';
+import { SelectionsWrapperProps } from '../../interface/selection-wrapper-props.interface';
 
 const SelectionsWrapper = (props: SelectionsWrapperProps): JSX.Element => {
   const [activeCheckbox, setActiveCheckbox] = useState<number | null>(
