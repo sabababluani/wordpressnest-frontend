@@ -1,4 +1,4 @@
-import { InputSequenceLabelPropsInterface } from '../../interfaces/input-sequence-label-interface';
+import { InputSequenceLabelPropsInterface } from '../../interfaces/input-sequence-label-props.interface';
 import styles from './InputSequenceLabel.module.scss';
 
 const InputSequenceLabel = (props: InputSequenceLabelPropsInterface) => {

@@ -1,4 +1,4 @@
-import { StepFlowPropsInterface } from '../../interface/step-flow-interface.ts';
+import { StepFlowPropsInterface } from '../../interface/step-flow-props.interface.js';
 import { useEffect, useState } from 'react';
 import styles from './StepFlow.module.scss';
 

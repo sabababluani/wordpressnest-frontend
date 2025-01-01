@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { Checkbox } from 'antd';
 import styles from './SelectionsWrapper.module.scss';
-import { SelectionsWrapperProps } from '../../interface/selection-wrapper-interface';
+import { SelectionsWrapperProps } from '../../interface/selection-wrapper-props.interface';
 
 const SelectionsWrapper = (props: SelectionsWrapperProps): JSX.Element => {
   const [activeCheckbox, setActiveCheckbox] = useState<number | null>(
@@ -73,7 +73,8 @@ const SelectionsWrapper = (props: SelectionsWrapperProps): JSX.Element => {
               On a specific date
             </span>
             <span className={styles.checkboxDescription}>
-              Select an ideal timeframe and our team will confirm availability.
+              Select an ideal timeframe and our team will verify and confirm
+              whether your selected timeframe is available.
             </span>
           </div>
         </div>
@@ -95,14 +96,17 @@ const SelectionsWrapper = (props: SelectionsWrapperProps): JSX.Element => {
             src="/icons/lighting.svg"
             alt="lighting icon"
           />
+          <span className={styles.checkboxMainCaption}>
+            Expedited Migration in 8 hours
+          </span>
           <button className={styles.buttonStyle}>49 USD</button>
-          <div className={styles.captionsWrapper}>
-            <span className={styles.checkboxMainCaption}>
-              Expedited Migration in 8 hours
+          <div className={styles.textWrapper}>
+            <span className={styles.checkboxDescription}>
+              Monday-Friday, 9am-11pm UTC
             </span>
             <span className={styles.checkboxDescription}>
-              If we don&apos;t deliver within this time frame, we&apos;ll refund
-              your payment.
+              If we don&apos;t deliver the migration within this time frame,
+              we&apos;ll refund your payment.
             </span>
           </div>
         </div>

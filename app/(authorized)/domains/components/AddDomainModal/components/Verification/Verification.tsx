@@ -38,12 +38,12 @@ const Verification = (props: AddDomainModalPropsInterface) => {
       <div className={styles.verificationButtons}>
         <Button
           backgroundColor={buttonbackgroundColorEnum.grey}
-          innerContent="l`ll do it later"
+          innerContent="l'll do it later"
           onClick={props.onClose}
         />
         <Button
           backgroundColor={buttonbackgroundColorEnum.black}
-          innerContent="OK. i`ve done it"
+          innerContent="OK. i've done it"
           onClick={props.onClose}
         />
       </div>

@@ -15,7 +15,7 @@ import StepFlowFourth from './components/StepFlowFourth/StepFlowFourth';
 import StepFlowFifth from './components/StepFlowFifth/StepFlowFifth';
 import StepFlowSix from './components/StepFlowSix/StepFlowSix';
 
-const RequestMigration: () => JSX.Element | null = (): JSX.Element | null => {
+const RequestMigration = (): JSX.Element | null => {
   const [stepFlow, setStepFlow] = useState<number>((): number => {
     const savedStepFlow: string | undefined = Cookies.get('stepFlow');
     return savedStepFlow ? Number(savedStepFlow) : 1;
@@ -42,18 +42,15 @@ const RequestMigration: () => JSX.Element | null = (): JSX.Element | null => {
     }
   }, [stepFlow, activeCheckbox, isClient]);
 
-  const onNextButtonClick: () => void = (): void => {
+  const onNextButtonClick = (): void => {
     setStepFlow((prev: number): number => Math.min(prev + 1, 7));
   };
 
-  const onBackButtonClick: () => void = (): void => {
+  const onBackButtonClick = (): void => {
     setStepFlow((prev: number): number => Math.max(prev - 1, 1));
   };
 
-  const renderStepFlowContent: () => false | JSX.Element | null = ():
-    | false
-    | JSX.Element
-    | null => {
+  const renderStepFlowContent = (): false | JSX.Element | null => {
     switch (stepFlow) {
       case 1:
         return (
@@ -107,9 +104,7 @@ const RequestMigration: () => JSX.Element | null = (): JSX.Element | null => {
     }
   };
 
-  if (!isClient) {
-    return null;
-  }
+  if (!isClient) return null;
 
   return (
     <div className={styles.mainWrapper}>

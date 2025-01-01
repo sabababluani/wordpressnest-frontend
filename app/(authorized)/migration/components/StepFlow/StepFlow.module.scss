@@ -5,7 +5,7 @@
   max-width: 1572px;
   width: 100%;
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   gap: 4px;
 }
 
@@ -49,7 +49,7 @@
 }
 
 .activeStyle {
-  background-color: black; 
+  background-color: black;
 }
 
 .inActiveStyle {
@@ -63,7 +63,7 @@
 }
 
 .completedLine {
-  background-color: black; 
+  background-color: black;
 }
 
 .inActiveLine {

@@ -4,10 +4,11 @@ import Image from 'next/image';
 import styles from './UsersModal.module.scss';
 import Search from '@/app/components/Search/Search';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
-import SitesSelect from '@/app/components/SitesSelect/SitesSelect';
 import Button from '@/app/components/Button/Button';
 import { UsersModalPropsInterface } from '../interfaces/modal.props.interface';
+import { Select } from 'antd';
 
+//TODO SELECT AND SEARCH
 const UsersModal = (props: UsersModalPropsInterface): JSX.Element => {
   return (
     <div className={styles.mainWrapper}>
@@ -32,7 +33,7 @@ const UsersModal = (props: UsersModalPropsInterface): JSX.Element => {
               placeholder="example:https://www.novatori.ge"
               onChange={() => {}}
             />
-            <SitesSelect />
+            <Select />
           </div>
         </div>
       </div>

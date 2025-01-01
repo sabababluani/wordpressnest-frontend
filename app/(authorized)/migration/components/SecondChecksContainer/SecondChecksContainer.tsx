@@ -1,7 +1,7 @@
 import { DatePicker, Select } from 'antd';
 import styles from './SecondChecksContainer.module.scss';
 import { ChangeEvent } from 'react';
-import { SecondCheckPropsInterface } from '../../interface/second-check-interface';
+import { SecondCheckPropsInterface } from '../../interface/second-check-props.interface';
 
 const SecondChecksContainer = (props: SecondCheckPropsInterface) => {
   return (
@@ -13,7 +13,6 @@ const SecondChecksContainer = (props: SecondCheckPropsInterface) => {
               <span className={styles.DateMainCaptionStyle}>Date</span>
               <div className={styles.dateTimeStyle}>
                 <DatePicker
-                  style={{ width: '508px' }}
                   onChange={(e: ChangeEvent<HTMLInputElement>) =>
                     props.date(e.target.value)
                   }
@@ -24,11 +23,7 @@ const SecondChecksContainer = (props: SecondCheckPropsInterface) => {
             <div className={styles.timeWrapper}>
               <span className={styles.timeMainCaptionStyle}>Time</span>
               <div className={styles.selectWrapper}>
-                <Select
-                  style={{ width: '508px' }}
-                  onChange={props.time}
-                  value={'10:00 AM - 11:00 AM'}
-                >
+                <Select onChange={props.time} value={'10:00 AM - 11:00 AM'}>
                   <Select.Option value="10:11">
                     10:00 AM - 11:00 AM
                   </Select.Option>
@@ -53,7 +48,6 @@ const SecondChecksContainer = (props: SecondCheckPropsInterface) => {
               </span>
               <div className={styles.timeZoneSelectWrapper}>
                 <Select
-                  style={{ width: '508px' }}
                   onChange={props.timezone}
                   value={'Pick a city in same time zone'}
                 >

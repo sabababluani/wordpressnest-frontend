@@ -1,14 +1,14 @@
 'use client';
 
-import { Radio } from 'antd';
+import { Radio, Select } from 'antd';
 import Image from 'next/image';
 import styles from './RedirectsModal.module.scss';
-import SitesSelect from '@/app/components/SitesSelect/SitesSelect';
 import Search from '@/app/components/Search/Search';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { RedirectsModalPropsInterface } from '../interfaces/redirects-modal-props.interface';
 
+//TODO SELECT
 const RedirectsModal = (props: RedirectsModalPropsInterface): JSX.Element => {
   return (
     <div className={styles.mainWrapper}>
@@ -36,7 +36,7 @@ const RedirectsModal = (props: RedirectsModalPropsInterface): JSX.Element => {
         </div>
         <div className={styles.contentWrapper}>
           <span className={styles.title}>Domain</span>
-          <SitesSelect />
+          <Select />
         </div>
         <div className={styles.redirectWrapper}>
           <div className={styles.contentWrapper}>
