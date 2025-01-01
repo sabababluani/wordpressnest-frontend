@@ -6,7 +6,7 @@ import styles from './page.module.scss';
 import Search from '@/app/components/Search/Search';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
-import { Modal, Select } from 'antd';
+import { Modal } from 'antd';
 import AddSiteModal from './components/AddSiteModal/AddSiteModal';
 import ClearCacheModal from './components/ClearCacheModal/ClearCacheModal';
 import UpdateModal from './components/UpdateModal/UpdateModal';
@@ -15,8 +15,9 @@ import ChangeCdnModal from './components/ChangeCdnModal/ChangeCdnModal';
 import PhpModal from './components/PhpModal/PhpModal';
 import UpdateThemesModal from './components/UpdateThemesModal/UpdateThemesModal';
 import CacheModal from './components/CacheModal/CacheModal';
-import { ActionOptions } from './utils/action-options';
+// import { ActionOptions } from './utils/action-options';
 import { ModalType } from './types/wp-sites-modal.type';
+import Link from 'next/link';
 
 const Wpsites = () => {
   const [modalState, setModalState] = useState<{
@@ -42,7 +43,7 @@ const Wpsites = () => {
   //   }));
   // };
 
-  const handleSelectChange = (value: ModalType) => openModal(value);
+  // const handleSelectChange = (value: ModalType) => openModal(value);
 
   const renderModalContent = () => {
     switch (modalState.modalType) {
@@ -73,6 +74,7 @@ const Wpsites = () => {
     }
   };
 
+  //TODO SELECT ON TABLE CHECKBOX CLICKS REMINDERRRR!!!!!!
   return (
     <div className={styles.wrapper}>
       <h1>WordPress Sites</h1>
@@ -85,12 +87,18 @@ const Wpsites = () => {
           />
         </div>
         <div className={styles.contentWrapperButtons}>
-          <Select
+          {/* <Select
             className={styles.select}
             value="Actions"
             options={ActionOptions}
             onChange={handleSelectChange}
-          />
+          /> */}
+          <Link href="/migration">
+            <Button
+              backgroundColor={buttonbackgroundColorEnum.white}
+              innerContent="Requset Migration"
+            />
+          </Link>
           <div className={styles.buttons}>
             <Button
               backgroundColor={buttonbackgroundColorEnum.black}
