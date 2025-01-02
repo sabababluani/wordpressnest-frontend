@@ -28,6 +28,8 @@
 
 .header span {
   color: #707276;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 .content {
@@ -62,6 +64,7 @@
   color: #414651;
   font-weight: 500;
   font-size: 14px;
+  line-height: 20px;
 }
 
 .contentContainer {
@@ -72,15 +75,21 @@
 .expiry {
   font-size: 14px;
   color: #707276;
+  line-height: 20px;
 }
 
 .email {
   font-size: 14px;
   color: #707276;
+  line-height: 20px;
 }
 
 .emailContainer {
   display: flex;
   align-items: center;
   gap: 6px;
+}
+
+.emailContainer img {
+  align-self: center;
 }

@@ -25,7 +25,7 @@ const UsersServiceContianer = (): JSX.Element => {
       <div className={styles.bottomContainer}>
         <Select
           onChange={onSelectChange}
-          className={styles.selectStyle}
+          className={styles.select}
           placeholder="All service"
           options={[
             { value: '1', label: '1' },
