@@ -1,3 +1,6 @@
+@import '../../../../styles/colors.scss';
+@import '../../../../styles/text-colors.scss';
+
 .mainContainer {
   display: flex;
   flex-direction: column;
@@ -5,12 +8,12 @@
   padding: 16px 24px 64px 24px;
   width: 100%;
   border-radius: 12px;
-  border: 2px solid #dcdfe1;
+  border: 2px solid $borderColor;
   margin-top: 24px;
 }
 
 .mainCaptionStyle {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
@@ -21,7 +24,6 @@
   color: #707276;
   text-align: center;
   font-size: 12px;
-  font-style: normal;
   font-weight: 400;
   line-height: 16px;
 }
@@ -40,7 +42,7 @@
 }
 
 .select :global(.ant-select-selector) {
-  border: 1px solid #dcdfe1 !important;
+  border: 1px solid $borderColor !important;
   box-shadow: none !important;
   border-radius: 12px !important;
 }

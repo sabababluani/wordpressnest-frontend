@@ -6,5 +6,6 @@ export interface InvoicesTablePropsInterface {
   status: string;
   timing: string;
   period: string;
+  created: string;
   pdf: string;
 }

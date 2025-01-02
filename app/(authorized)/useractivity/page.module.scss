@@ -17,7 +17,8 @@
   align-items: center;
   justify-content: space-between;
   border-radius: 12px 12px 0 0;
-  border-bottom: 1px solid $borderColor;}
+  border-bottom: 1px solid $borderColor;
+}
 
 .headline {
   color: $primaryTextColor;
@@ -60,6 +61,8 @@
   height: 44px;
 }
 
-.select :global .ant-select-single .ant-select-selector {
+.select :global(.ant-select-selector) {
+  border: 1px solid $borderColor !important;
+  box-shadow: none !important;
   border-radius: 8px;
 }

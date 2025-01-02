@@ -8,7 +8,18 @@ const Plans = () => {
     <div className={styles.container}>
       <span className={styles.headline}>Plans & subscriptions</span>
       <HostingPlan />
-      <DiskSpace />
+      <DiskSpace
+        text={
+          'Increase the storage space in your account, shared across all sites, your hosting plan includes 10GB of disk space'
+        }
+        heading={'Additional disk space'}
+      />
+      <DiskSpace
+        text={
+          'Increase the storage space in your account, shared across all sites, your hosting plan includes 10GB of disk space'
+        }
+        heading={'Additional Wordpress sites'}
+      />
       <PlanAnalytics />
     </div>
   );

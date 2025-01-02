@@ -14,7 +14,7 @@ const Cancelplan = () => {
       </div>
       <div className={styles.container}>
         <p className={styles.text}>
-          Yu can intiates cancellation of the plan here. The subscription will
+          You can intiates cancellation of the plan here. The subscription will
           still be avaliable until the end of the current billing period
           (November 26, 2024), but on that date it will not renew.
         </p>

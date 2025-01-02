@@ -1,13 +1,15 @@
 'use client';
 
-import { Radio, RadioChangeEvent } from 'antd';
+import { Radio, RadioChangeEvent, Select } from 'antd';
 import styles from './BillingDetails.module.scss';
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { BillingDetailsPropsInterface } from '../../interfaces/billingDetails.props.interface';
+import { Controller, useForm } from 'react-hook-form';
+import { BillingDetailsPropsInterface } from './interfaces/billingDetails.props.interface';
 import BaseApi from '@/app/api/BaseApi';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
+import { cityOptions } from './billing-dummy/city-options-dummy';
+import { countryOptions } from './billing-dummy/country-options-dummy';
 
 const BillingDetails = () => {
   const {
@@ -15,6 +17,7 @@ const BillingDetails = () => {
     handleSubmit,
     formState: { errors },
     reset,
+    control,
   } = useForm<BillingDetailsPropsInterface>();
   const [selectedOption, setSelectedOption] = useState<string>('Company');
 
@@ -28,22 +31,6 @@ const BillingDetails = () => {
   const handleCancel = () => {
     reset();
   };
-
-  const countryOptions = [
-    { code: 'US', name: 'United States' },
-    { code: 'CA', name: 'Canada' },
-    { code: 'GB', name: 'United Kingdom' },
-    { code: 'GE', name: 'Georgia' },
-    { code: 'FR', name: 'France' },
-  ];
-
-  const cityOptions = [
-    { code: 'NYC', name: 'New York City', country: 'US' },
-    { code: 'TOR', name: 'Toronto', country: 'CA' },
-    { code: 'LON', name: 'London', country: 'GB' },
-    { code: 'TBS', name: 'Tbilisi', country: 'GE' },
-    { code: 'PAR', name: 'Paris', country: 'FR' },
-  ];
 
   return (
     <div className={styles.wrapper}>
@@ -91,38 +78,41 @@ const BillingDetails = () => {
             <div className={styles.section}>
               <div className={styles.info}>
                 <span className={styles.title}>Country *</span>
-                <select
-                  className={styles.input}
-                  {...register('country', {
-                    required: 'Country is required',
-                  })}
-                >
-                  <option value="">Select a country</option>
-                  {countryOptions.map((country) => (
-                    <option key={country.code} value={country.code}>
-                      {country.name}
-                    </option>
-                  ))}
-                </select>
+                <Controller
+                  name="country"
+                  control={control}
+                  defaultValue={countryOptions[0].value}
+                  rules={{ required: 'Country is required' }}
+                  render={({ field }) => (
+                    <Select
+                      className={styles.select}
+                      {...field}
+                      options={countryOptions}
+                    />
+                  )}
+                />
                 {errors.country && (
                   <p className={styles.error}>{errors.country.message}</p>
                 )}
               </div>
               <div className={styles.info}>
                 <span className={styles.title}>City *</span>
-                <select
-                  className={styles.input}
-                  {...register('city', {
-                    required: 'City is required',
-                  })}
-                >
-                  <option value="">Select a city</option>
-                  {cityOptions.map((city) => (
-                    <option key={city.code} value={city.code}>
-                      {city.name}
-                    </option>
-                  ))}
-                </select>
+                <Controller
+                  name="city"
+                  control={control}
+                  defaultValue={cityOptions[0].code}
+                  rules={{ required: 'City is required' }}
+                  render={({ field }) => (
+                    <Select
+                      className={styles.select}
+                      {...field}
+                      options={cityOptions.map((city) => ({
+                        value: city.code,
+                        label: city.name,
+                      }))}
+                    />
+                  )}
+                />
                 {errors.city && (
                   <p className={styles.error}>{errors.city.message}</p>
                 )}

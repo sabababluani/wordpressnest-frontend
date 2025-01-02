@@ -248,21 +248,21 @@
   height: 48px;
   border-radius: 8px;
   outline: none;
-  border: 1px solid #dcdfe1;
+  border: 1px solid $borderColor;
   width: 100%;
   max-width: 587px;
 
   &:hover {
-    border: 1px solid #dcdfe1 !important;
+    border: 1px solid $borderColor !important;
   }
 
   :global(.ant-select-selector) {
-    border: 1px solid #dcdfe1 !important;
+    border: 1px solid $borderColor !important;
     box-shadow: none !important;
   }
 
   :global(.ant-select-focused .ant-select-selector) {
-    border: 1px solid #dcdfe1 !important;
+    border: 1px solid $borderColor !important;
     box-shadow: none !important;
     border-color: transparent !important;
   }

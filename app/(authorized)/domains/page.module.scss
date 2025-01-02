@@ -48,7 +48,7 @@
   height: 50px;
   border-radius: 12px;
   outline: none;
-  justify-self: start;
+  justify-self: flex-start;
 }
 
 .select :global .ant-select {
@@ -63,7 +63,7 @@
 
 .select :global(.ant-select-selector) {
   width: 100%;
-  border: 1px solid #dcdfe1 !important;
+  border: 1px solid $borderColor !important;
   box-shadow: none !important;
   border-radius: 12px !important;
 }

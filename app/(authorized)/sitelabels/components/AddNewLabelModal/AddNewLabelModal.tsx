@@ -8,18 +8,18 @@ const AddNewLabelModal = (props: SharedSiteLabelsPropsInterface) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
-        <span className={styles.headline}>Add Domains</span>
+        <span className={styles.headline}>Add new label</span>
         <Image
           src="/icons/close-mini.svg"
           alt="close"
           width={24}
           height={24}
-          className={styles.close}
+          onClick={props.onClose}
         />
       </div>
       <div className={styles.container}>
         <div className={styles.spansContainer}>
-          <span className={styles.labels}>Label`s content</span>
+          <span className={styles.labels}>Label&apos;s content</span>
           <span className={styles.validate}>Enter up to 20 characters</span>
         </div>
         <input type="text" />
