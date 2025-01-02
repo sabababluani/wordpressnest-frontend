@@ -1,19 +1,26 @@
 @import '../../../styles/colors.scss';
 @import '../../../styles/text-colors.scss';
 
+.container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1480px;
+  width: 100%;
+  padding: 20px;
+}
+
 .header {
   width: 100%;
   background-color: #f0f3f5;
   display: flex;
   justify-content: space-around;
-  padding: 20px 0;
 }
 
 .menuContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 720px;
+  max-width: 610px;
   width: 100%;
 }
 

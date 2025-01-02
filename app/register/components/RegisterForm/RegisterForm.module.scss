@@ -23,7 +23,6 @@
   padding: 12px 14px;
   border-radius: 8px;
   outline: none;
-  border: 1px solid $borderColor;
 }
 
 .inputContainer span {
@@ -124,14 +123,20 @@
   }
 }
 
-.input :global(.ant-input-affix-wrapper-focused) {
+.antInput :global(.ant-input-affix-wrapper-focused) {
   border: 1px solid $borderColor !important;
   box-shadow: none !important;
 }
 
-.antInput :global(.ant-input-affix-wrapper-focused) {
-  border: 1px solid $borderColor !important;
+.errorAntInput :global(.ant-input-affix-wrapper-focused) {
+  border: 1px solid red !important;
   box-shadow: none !important;
+}
+
+.errorAntInput {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .submit {
@@ -143,4 +148,23 @@
   line-height: 24px;
   font-size: 16px;
   cursor: pointer;
+}
+
+.errors {
+  color: red !important;
+  font-size: 14px;
+}
+
+.errorDiv {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.errorInput {
+  padding: 11px 14px;
+  border-radius: 8px;
+  outline: none;
+  border: 1px solid red !important;
+  box-shadow: none !important;
 }
