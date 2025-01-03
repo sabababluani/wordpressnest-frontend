@@ -1,0 +1,42 @@
+@import '../../../../../../../styles/text-colors.scss';
+@import '../../../../../../../styles/colors.scss';
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f0f3f5;
+  border-radius: 12px 12px 0 0;
+  padding: 16px 24px;
+}
+
+.headline {
+  color: $primaryTextColor;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.header img {
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  padding: 16px 0 0 0;
+}
+
+.text {
+  color: $primaryTextColor;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.textContainer {
+  padding: 12px 24px;
+}
