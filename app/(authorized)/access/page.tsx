@@ -28,8 +28,8 @@ const Access = () => {
             <span>Manage companies</span>
             <div className={styles.belowTextWrapper}>
               <p>
-                You can leave any companies that you&apos;re not the owner of, or
-                reach each company&apos;s settings.
+                You can leave any companies that you&apos;re not the owner of,
+                or reach each company&apos;s settings.
               </p>
             </div>
             <div className={styles.tableWrapper}>

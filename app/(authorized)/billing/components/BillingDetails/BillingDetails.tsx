@@ -51,7 +51,9 @@ const BillingDetails = () => {
           <div className={styles.information}>
             <div className={styles.section}>
               <div className={styles.info}>
-                <span className={styles.title}>Company Name</span>
+                <span className={styles.title}>
+                  Company Name <span className={styles.stars}>*</span>
+                </span>
                 <input
                   className={styles.input}
                   type="text"
@@ -77,7 +79,9 @@ const BillingDetails = () => {
             </div>
             <div className={styles.section}>
               <div className={styles.info}>
-                <span className={styles.title}>Country *</span>
+                <span className={styles.title}>
+                  Country <span className={styles.stars}>*</span>
+                </span>
                 <Controller
                   name="country"
                   control={control}
@@ -96,7 +100,9 @@ const BillingDetails = () => {
                 )}
               </div>
               <div className={styles.info}>
-                <span className={styles.title}>City *</span>
+                <span className={styles.title}>
+                  City <span className={styles.stars}>*</span>
+                </span>
                 <Controller
                   name="city"
                   control={control}
@@ -138,7 +144,9 @@ const BillingDetails = () => {
                 )}
               </div>
               <div className={styles.info}>
-                <span className={styles.title}>ZIP Code</span>
+                <span className={styles.title}>
+                  ZIP Code <span className={styles.stars}>*</span>
+                </span>
                 <input
                   className={styles.input}
                   type="text"

@@ -21,7 +21,7 @@ const Useractivity = () => {
       <div className={styles.container}>
         <div className={styles.searchWrapper}>
           <div className={styles.select}>
-            <Search placeholder="Search Sites" />
+            <Search placeholder="Search Sites" isPadded />
           </div>
           <div className={styles.select}>
             <Select
