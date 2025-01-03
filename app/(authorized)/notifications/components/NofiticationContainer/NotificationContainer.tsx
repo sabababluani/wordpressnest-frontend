@@ -4,8 +4,6 @@ import { Switch } from 'antd';
 import { NotificationPropsInterface } from '../../interfaces/notifications-props-interface';
 import styles from './Notification.module.scss';
 import { useState } from 'react';
-import Button from '@/app/components/Button/Button';
-import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 
 const NotificationContainer = (props: NotificationPropsInterface) => {
   const [, setToggleState] = useState<boolean>(false);
@@ -17,20 +15,12 @@ const NotificationContainer = (props: NotificationPropsInterface) => {
       </div>
       <div className={styles.bottomContainer}>
         <span className={styles.descriptionStyle}>{props.description}</span>
-        {props.toggleActive && (
-          <Button
-            backgroundColor={buttonbackgroundColorEnum.grey}
-            innerContent="Connect"
+        <div className={styles.toggleWrapper}>
+          <Switch
+            className={styles.toggleStyle}
+            onChange={() => setToggleState((prev) => !prev)}
           />
-        )}
-        {props.buttonActive && (
-          <div className={styles.toggleWrapper}>
-            <Switch
-              className={styles.toggleStyle}
-              onChange={() => setToggleState((prev) => !prev)}
-            />
-          </div>
-        )}
+        </div>
       </div>
     </div>
   );

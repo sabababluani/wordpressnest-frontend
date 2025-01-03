@@ -1,14 +1,14 @@
 import Button from '@/app/components/Button/Button';
-import { ApiKeyPropsInterface } from '../../interfaces/api-keys-props.interface';
-import styles from './ApiKeysRevokeModal.module.scss';
+import styles from './RevokeModal.module.scss';
 import Image from 'next/image';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
+import { RevokeModalPropsInterface } from './interfaces/revoke-modal-props.interface';
 
-const ApiKeysRevokeModal = (props: ApiKeyPropsInterface) => {
+const RevokeModal = (props: RevokeModalPropsInterface) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
-        <span className={styles.headline}>Revoke API key</span>
+        <span className={styles.headline}>{props.headline}</span>
         <Image
           src="/icons/close-mini.svg"
           alt="close"
@@ -19,10 +19,7 @@ const ApiKeysRevokeModal = (props: ApiKeyPropsInterface) => {
         />
       </div>
       <div className={styles.container}>
-        <p>
-          If you revoke the API key 123, all operations using it will fail
-          immediately. Are you sure that you want to proceed?
-        </p>
+        <p>{props.content}</p>
         <div className={styles.buttons}>
           <Button
             backgroundColor={buttonbackgroundColorEnum.grey}
@@ -31,7 +28,7 @@ const ApiKeysRevokeModal = (props: ApiKeyPropsInterface) => {
           />
           <Button
             backgroundColor={buttonbackgroundColorEnum.red}
-            innerContent="Revoke"
+            innerContent={props.buttonText}
           />
         </div>
       </div>
@@ -39,4 +36,4 @@ const ApiKeysRevokeModal = (props: ApiKeyPropsInterface) => {
   );
 };
 
-export default ApiKeysRevokeModal;
+export default RevokeModal;

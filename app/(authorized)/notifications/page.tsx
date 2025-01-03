@@ -9,7 +9,6 @@ const notification = () => {
       <Notifications />
       <Newsletter />
       <NotificationContainer
-        toggleActive={true}
         caption={'Invoice in email'}
         description={
           'You can receive your invoices in email (Novatorimagaria123@gmail.com) attached as PDF. this is delivered for all companies where you have permission to visit the company section'
@@ -17,7 +16,6 @@ const notification = () => {
       />
       <div className={styles.wrapper}>
         <NotificationContainer
-          buttonActive={true}
           caption={'Research invitations '}
           description={
             'You can receive your invoices in email (Novatorimagaria123@gmail.com) attached as PDF. this is delivered for all companies where you have permission to visit the company section'

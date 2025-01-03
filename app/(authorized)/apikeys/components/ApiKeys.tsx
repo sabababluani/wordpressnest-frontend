@@ -5,7 +5,7 @@ import styles from './ApiKeys.module.scss';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import ApiKeysAddModal from './ApiKeysAddModal/ApiKeysAddModal';
 import { apiDummyData } from '../apiDummy/api-keys-dummy';
-import ApiKeysRevokeModal from './ApiKeysRevokeModal/ApiKeysRevokeModal';
+import RevokeModal from '@/app/components/RevokeModal/RevokeModal';
 
 const ApiKeys = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -85,7 +85,14 @@ const ApiKeys = () => {
         closable={false}
         footer={null}
       >
-        <ApiKeysRevokeModal onClose={() => setIsRevokeModalOpen(false)} />
+        <RevokeModal
+          onClose={() => setIsRevokeModalOpen(false)}
+          headline={'Revoke API key'}
+          content={
+            'If you revoke the API key 123, all operations using it will fail immediately. Are you sure that you want to proceed?'
+          }
+          buttonText={'Revoke'}
+        />
       </Modal>
     </div>
   );
