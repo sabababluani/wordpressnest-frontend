@@ -25,6 +25,7 @@ const columns: TableColumnsType<UserRecordPropsInterface> = [
         {record.name}
       </div>
     ),
+    width: '35%',
   },
   {
     title: 'Email',

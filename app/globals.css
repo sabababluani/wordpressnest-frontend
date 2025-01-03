@@ -29,6 +29,7 @@ a {
   overflow-y: scroll;
   background-color: #ffffff;
 }
+
 .container {
   &::-webkit-scrollbar {
     display: none;

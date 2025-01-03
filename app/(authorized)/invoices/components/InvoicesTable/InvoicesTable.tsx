@@ -9,41 +9,9 @@ import styles from './InvoicesTable.module.scss';
 import { InvoicesTablePropsInterface } from './interfaces/invoicesTable.props.interface';
 import Image from 'next/image';
 import InvoicesModal from '../InvoicesModal/InvoicesModal';
+import { invoiceData } from './invoices-dummy/invoices-dummy';
 
-const invoiceData: InvoicesTablePropsInterface[] = [
-  {
-    key: 1,
-    invoiceNumber: 'Invoice #007',
-    serviceType: 'Wordpress',
-    total: '35 USD',
-    status: 'Paid',
-    timing: 'Nov 25, 2024',
-    period: 'Monthly',
-    pdf: 'Download',
-  },
-  {
-    key: 2,
-    invoiceNumber: 'Invoice #008',
-    serviceType: 'Wordpress',
-    total: '35 USD',
-    status: 'Unpaid',
-    timing: 'Nov 26, 2024',
-    period: 'Monthly',
-    pdf: 'Download',
-  },
-  {
-    key: 3,
-    invoiceNumber: 'Invoice #009',
-    serviceType: 'Wordpress',
-    total: '35 USD',
-    status: 'Paid',
-    timing: 'Nov 27, 2024',
-    period: 'Monthly',
-    pdf: 'Download',
-  },
-];
-
-const InvoicesTable: React.FC = () => {
+const InvoicesTable = () => {
   const [selectionType] = useState<'checkbox'>('checkbox');
   const [isActive, setIsActive] = useState(false);
   // const fetcher = (url: string) =>
@@ -55,6 +23,7 @@ const InvoicesTable: React.FC = () => {
   //   '/setup/wordpress',
   //   fetcher
   // );
+
   const columns: TableColumnsType<InvoicesTablePropsInterface> = [
     {
       title: 'Invoice Number',
@@ -64,10 +33,12 @@ const InvoicesTable: React.FC = () => {
     {
       title: 'Service Type',
       dataIndex: 'serviceType',
+      width: '10%',
     },
     {
       title: 'Total',
       dataIndex: 'total',
+      width: '10%',
     },
     {
       title: 'Status',
@@ -105,10 +76,17 @@ const InvoicesTable: React.FC = () => {
           </span>
         </div>
       ),
+      width: '10%',
     },
     {
       title: 'Period',
       dataIndex: 'period',
+      width: '10%',
+    },
+    {
+      title: 'Created',
+      dataIndex: 'created',
+      width: '10%',
     },
     {
       title: 'PDF',
@@ -133,6 +111,7 @@ const InvoicesTable: React.FC = () => {
           />
         </div>
       ),
+      width: '10%',
     },
   ];
 

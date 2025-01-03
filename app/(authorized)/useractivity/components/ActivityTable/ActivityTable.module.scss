@@ -8,7 +8,6 @@
 .container {
   width: 100%;
   max-width: 1575px;
-  margin: 0 auto;
 }
 
 .userCell {
@@ -25,7 +24,6 @@
 .container :global .ant-table-cell {
   color: $primaryTextColor !important;
   font-size: 16px !important;
-  font-style: normal !important;
   font-weight: 500 !important;
   line-height: 24px !important;
 }
@@ -33,7 +31,6 @@
 .container :global .ant-table-thead tr .ant-table-cell {
   color: #707276 !important;
   font-size: 16px !important;
-  font-style: normal !important;
   font-weight: 400 !important;
   line-height: 24px !important;
   background-color: #fff !important;
@@ -57,7 +54,8 @@
 
 .container {
   border-radius: 12px;
-  border: 1px solid $borderColor;  padding: 8px;
+  border: 1px solid $borderColor;  
+  padding: 8px 0;
 }
 
 .container

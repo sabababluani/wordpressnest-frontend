@@ -10,7 +10,7 @@ const RegistryCredentialsDeleteModal = (
   return (
     <div>
       <div className={styles.header}>
-        <span className={styles.headline}>Create credential</span>
+        <span className={styles.headline}>Delete credential</span>
         <Image
           src="/icons/close-mini.svg"
           alt="close"

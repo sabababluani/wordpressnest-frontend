@@ -7,7 +7,7 @@
 }
 
 .banner {
- flex: 1;
+  flex: 1;
   overflow: hidden;
 }
 
@@ -27,13 +27,13 @@
 }
 
 .buttonInner {
-  color: #11141a;
+  color: $primaryTextColor;
   font-weight: 600;
   line-height: 24px;
 }
 
 .passport {
-  border: 1px solid #dcdfe1;
+  border: 1px solid $borderColor;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,10 +73,13 @@
 
 .heading {
   align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .heading p {
-  color: #11141a;
+  color: $primaryTextColor;
   font-weight: 600;
   font-size: 32px;
   line-height: 36px;
@@ -84,13 +87,16 @@
 
 .heading h2 {
   text-align: center;
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 32px;
 }
 
 .graycircle {
   width: 48px;
   height: 48px;
   border-radius: 52px;
-  background: #dcdfe1;
+  background: $borderColor;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -126,7 +132,7 @@
 .boldNavigationSpan {
   text-overflow: ellipsis;
   text-wrap: nowrap;
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -154,7 +160,7 @@
 }
 
 .login {
-  color: #11141a;
+  color: $primaryTextColor;
   font-size: 14px;
   font-weight: 600;
   line-height: 20px;
@@ -179,19 +185,19 @@
   height: 48px;
   border-radius: 8px;
   outline: none;
-  border: 1px solid #dcdfe1;
+  border: 1px solid $borderColor;
 
   &:hover {
-    border: 1px solid #dcdfe1 !important;
+    border: 1px solid $borderColor !important;
   }
 
   :global(.ant-select-selector) {
-    border: 1px solid #dcdfe1 !important;
+    border: 1px solid $borderColor !important;
     box-shadow: none !important;
   }
 
   :global(.ant-select-focused .ant-select-selector) {
-    border: 1px solid #dcdfe1 !important;
+    border: 1px solid $borderColor !important;
     box-shadow: none !important;
     border-color: transparent !important;
   }

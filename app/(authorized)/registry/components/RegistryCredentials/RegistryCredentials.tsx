@@ -26,16 +26,19 @@ const RegistryCredentials = () => {
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
+      width: '35%',
     },
     {
       title: 'Registry',
       dataIndex: 'registry',
       key: 'registry',
+      width: '30%',
     },
     {
       title: 'Created',
       dataIndex: 'created',
       key: 'created',
+      width: '25%',
     },
     {
       title: 'Actions',
@@ -49,6 +52,7 @@ const RegistryCredentials = () => {
           />
         </div>
       ),
+      width: '10%',
     },
   ];
 

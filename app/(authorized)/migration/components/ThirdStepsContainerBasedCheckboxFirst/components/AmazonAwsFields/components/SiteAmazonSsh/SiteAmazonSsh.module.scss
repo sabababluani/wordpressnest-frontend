@@ -48,7 +48,7 @@
 }
 
 .inputLabel {
-  color: #11141a;
+  color: $primaryTextColor;
   text-align: center;
   font-size: 16px;
   font-weight: 500;
@@ -143,7 +143,7 @@
   padding: 12px;
   font-family: normal;
   border-radius: 12px;
-  border: 1px solid #dcdfe1;
+  border: 1px solid $borderColor;
   font-size: 16px;
 }
 

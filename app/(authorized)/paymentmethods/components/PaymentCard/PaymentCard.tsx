@@ -1,7 +1,5 @@
 import Image from 'next/image';
 import styles from './PaymentCard.module.scss';
-import Button from '@/app/components/Button/Button';
-import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 
 const PaymentCard = () => {
   return (
@@ -37,10 +35,6 @@ const PaymentCard = () => {
             </div>
           </div>
         </div>
-        <Button
-          backgroundColor={buttonbackgroundColorEnum.white}
-          innerContent="Edit"
-        />
       </div>
     </div>
   );

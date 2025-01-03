@@ -22,7 +22,8 @@
   align-items: center;
   gap: 10px;
   border-radius: 8px;
-  border: 1px solid $borderColor;  background-color: white;
+  border: 1px solid $borderColor;
+  background-color: white;
   color: #545a67;
   font-size: 12px;
   cursor: pointer;
@@ -32,7 +33,8 @@
   margin: 0px 24px;
   overflow: hidden;
   border-radius: 8px;
-  border: 1px solid $borderColor;}
+  border: 1px solid $borderColor;
+}
 
 .checkboxStyle {
   width: 20px;
@@ -64,6 +66,13 @@
 
 .tableWrapper :global .ant-table-thead .ant-table-cell {
   background-color: white !important;
+  color: #414651 !important;
+  font-size: 16px !important;
+}
+
+.tableWrapper :global .ant-table-tbody .ant-table-row .ant-table-cell {
+  color: #414651 !important;
+  font-size: 14px !important;
 }
 
 .tableWrapper :global .ant-checkbox-indeterminate::after {

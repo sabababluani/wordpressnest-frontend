@@ -6,8 +6,12 @@ import { RegisterFormPropsInterface } from './interfaces/register-form-props.int
 import { RegisterFormActionPropsInterface } from './interfaces/register-form-action-props.interface';
 
 const RegisterForm = (props: RegisterFormActionPropsInterface) => {
-  const { control, handleSubmit, watch } =
-    useForm<RegisterFormPropsInterface>();
+  const {
+    control,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<RegisterFormPropsInterface>();
 
   const password = watch('password', '');
 
@@ -32,13 +36,28 @@ const RegisterForm = (props: RegisterFormActionPropsInterface) => {
               required: { value: true, message: 'First name is required' },
             }}
             render={({ field }) => (
-              <div className={styles.antInput}>
+              <div
+                className={`${errors.email ? styles.errorAntInput : styles.antInput}`}
+              >
                 <Input
                   type="text"
                   placeholder="Enter your First name"
                   {...field}
-                  className={styles.input}
+                  className={`${errors.email ? styles.errorInput : styles.input}`}
                 />
+                {errors.firstName && (
+                  <div className={styles.errorDiv}>
+                    <Image
+                      src="/icons/error.webp"
+                      alt="error"
+                      width={16}
+                      height={16}
+                    />
+                    <span className={styles.errors}>
+                      {errors.firstName.message}
+                    </span>
+                  </div>
+                )}
               </div>
             )}
           />
@@ -53,13 +72,28 @@ const RegisterForm = (props: RegisterFormActionPropsInterface) => {
               required: { value: true, message: 'Last name is required' },
             }}
             render={({ field }) => (
-              <div className={styles.antInput}>
+              <div
+                className={`${errors.email ? styles.errorAntInput : styles.antInput}`}
+              >
                 <Input
                   type="text"
                   placeholder="Enter your Last name"
                   {...field}
-                  className={styles.input}
+                  className={`${errors.email ? styles.errorInput : styles.input}`}
                 />
+                {errors.lastName && (
+                  <div className={styles.errorDiv}>
+                    <Image
+                      src="/icons/error.webp"
+                      alt="error"
+                      width={16}
+                      height={16}
+                    />
+                    <span className={styles.errors}>
+                      {errors.lastName.message}
+                    </span>
+                  </div>
+                )}
               </div>
             )}
           />
@@ -79,13 +113,26 @@ const RegisterForm = (props: RegisterFormActionPropsInterface) => {
             },
           }}
           render={({ field }) => (
-            <div className={styles.antInput}>
+            <div
+              className={`${errors.email ? styles.errorAntInput : styles.antInput}`}
+            >
               <Input
                 type="email"
                 placeholder="Enter your email"
                 {...field}
-                className={styles.input}
+                className={`${errors.email ? styles.errorInput : styles.input}`}
               />
+              {errors.email && (
+                <div className={styles.errorDiv}>
+                  <Image
+                    src="/icons/error.webp"
+                    alt="error"
+                    width={16}
+                    height={16}
+                  />
+                  <span className={styles.errors}>{errors.email.message}</span>
+                </div>
+              )}
             </div>
           )}
         />
@@ -104,13 +151,28 @@ const RegisterForm = (props: RegisterFormActionPropsInterface) => {
             },
           }}
           render={({ field }) => (
-            <div className={styles.antInput}>
+            <div
+              className={`${errors.email ? styles.errorAntInput : styles.antInput}`}
+            >
               <Input.Password
                 type="password"
                 placeholder="Enter your password"
-                className={styles.passwordInput}
+                className={`${errors.password ? styles.errorInput : styles.passwordInput}`}
                 {...field}
               />
+              {errors.password && (
+                <div className={styles.errorDiv}>
+                  <Image
+                    src="/icons/error.webp"
+                    alt="error"
+                    width={16}
+                    height={16}
+                  />
+                  <span className={styles.errors}>
+                    {errors.password.message}
+                  </span>
+                </div>
+              )}
             </div>
           )}
         />

@@ -20,10 +20,10 @@ const PlanAnalytics = () => {
         />
       </div>
       <div className={styles.analyticsWrapper}>
-        <ResourceInfoBox title={'Visits'} used={3557} full={35000} />
-        <ResourceInfoBox title={'CDN usage'} used={3557} full={35000} />
-        <ResourceInfoBox title={'Disk usage'} used={3557} full={35000} />
-        <ResourceInfoBox title={'Wordpress sites'} used={3557} full={35000} />
+        <ResourceInfoBox title={'Visits'} used={30557} full={35000} />
+        <ResourceInfoBox title={'CDN usage'} used={23557} full={35000} />
+        <ResourceInfoBox title={'Disk usage'} used={7557} full={25000} />
+        <ResourceInfoBox title={'Wordpress sites'} used={5557} full={10000} />
       </div>
       <div className={styles.planWrapper}>
         <Cancelplan />

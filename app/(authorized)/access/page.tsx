@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Button from '../../components/Button/Button';
 import { buttonbackgroundColorEnum } from '../../components/Button/enum/button.enum';
 import styles from './page.module.scss';
+import { companiesData } from './access-dummy/access-dummy';
 
 const Access = () => {
   return (
@@ -19,47 +20,30 @@ const Access = () => {
         <div className={styles.textWrapper}>
           <p>
             This is an overview of the companies and sites you have access to,
-            and the 3rd party aplications that have access to your account.
+            and the 3rd party applications that have access to your account.
           </p>
         </div>
-        <div className={styles.content}>
-          <span>Manage companies</span>
-          <div className={styles.belowTextWrapper}>
-            <p>
-              you can leave any companies that you’re not the owner of, or reach
-              each company’s settings
-            </p>
+        {companiesData.map((company) => (
+          <div className={styles.content} key={company.id}>
+            <span>Manage companies</span>
+            <div className={styles.belowTextWrapper}>
+              <p>
+                You can leave any companies that you&apos;re not the owner of,
+                or reach each company&apos;s settings.
+              </p>
+            </div>
+            <div className={styles.tableWrapper}>
+              <span className={styles.title}>{company.name}</span>
+              <p>{company.role}</p>
+              <Image
+                src={'/icons/delete.svg'}
+                alt={`delete ${company.name}`}
+                width={24}
+                height={24}
+              />
+            </div>
           </div>
-          <div className={styles.tableWrapper}>
-            <span className={styles.title}>Novatori</span>
-            <p>Company owner</p>
-            <Image
-              src={'/icons/delete.svg'}
-              alt="delete"
-              width={24}
-              height={24}
-            />
-          </div>
-        </div>
-        <div className={styles.content}>
-          <span>Manage companies</span>
-          <div className={styles.belowTextWrapper}>
-            <p>
-              you can leave any companies that you’re not the owner of, or reach
-              each company’s settings
-            </p>
-          </div>
-          <div className={styles.tableWrapper}>
-            <span className={styles.title}>Novatori</span>
-            <p>Company owner</p>
-            <Image
-              src={'/icons/delete.svg'}
-              alt="delete"
-              width={24}
-              height={24}
-            />
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

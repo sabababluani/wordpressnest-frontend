@@ -66,13 +66,13 @@
 .checkboxWrapper {
   width: fit-content;
   display: flex;
-  gap: 24px;
+  gap: 16px;
   align-items: flex-start;
 }
 
 .checkboxWrapper
   :global(.ant-checkbox-wrapper .ant-checkbox .ant-checkbox-inner) {
-  border: 1px solid $primaryColor;
+  border: 1px solid $borderColor;
   width: 18px;
   height: 18px;
 }
@@ -189,7 +189,7 @@
 }
 
 .toggleStyle :global {
-  background-color: #dcdfe1 !important;
+  background-color: $borderColor !important;
 }
 
 .toggleWrapper :global .ant-switch-checked {
@@ -305,12 +305,6 @@
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
-}
-
-.checkboxWrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
 }
 
 .radioWrapper {

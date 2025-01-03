@@ -164,10 +164,10 @@ const Login = () => {
                     {errors.email && (
                       <div className={styles.errorDiv}>
                         <Image
-                          src="/error.webp"
+                          src="/icons/error.webp"
                           alt="error"
-                          width={14}
-                          height={14}
+                          width={16}
+                          height={16}
                         />
                         <span className={styles.errors}>
                           {errors.email.message}
@@ -176,7 +176,7 @@ const Login = () => {
                     )}
                   </div>
                   <div className={styles.inputContainer}>
-                    <span className={styles.inputLabel}>Password </span>
+                    <span className={styles.inputLabel}>Password</span>
                     <input
                       type="password"
                       placeholder="Password"
@@ -197,10 +197,10 @@ const Login = () => {
                     {errors.password && (
                       <div className={styles.errorDiv}>
                         <Image
-                          src="/error.webp"
+                          src="/icons/error.webp"
                           alt="error"
-                          width={14}
-                          height={14}
+                          width={16}
+                          height={16}
                         />
                         <span className={styles.errors}>
                           {errors.password.message}
@@ -218,7 +218,9 @@ const Login = () => {
                       Remember for 30 days
                     </span>
                   </div>
-                  <span className={styles.forgot}>Forgot Password</span>
+                  <Link href="#" className={styles.forgot}>
+                    Forgot Password
+                  </Link>
                 </div>
                 <button type="submit" className={styles.submit}>
                   Sign in

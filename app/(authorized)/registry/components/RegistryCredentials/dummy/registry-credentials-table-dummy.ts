@@ -3,12 +3,12 @@ export const RegistryTableDummy = [
     key: '1',
     name: 'Registry 1',
     registry: 'Docker Hub',
-    created: '2024-08-28',
+    created: 'Dec 18, 2021, 5:51 PM',
   },
   {
     key: '2',
     name: 'Registry 2',
     registry: 'GitHub Packages',
-    created: '2024-08-27',
+    created: 'Dec 13, 2024, 1:38 AM',
   },
 ];
