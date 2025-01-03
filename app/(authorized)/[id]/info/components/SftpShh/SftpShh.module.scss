@@ -1,0 +1,345 @@
+@import '../../../../../styles/text-colors.scss';
+@import '../../../../../styles/colors.scss';
+
+.mainWrapper {
+  max-height: 1572px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.topContainer {
+  background-color: #f0f3f5;
+  padding: 16px 24px;
+  border-top-left-radius: var(--controlPaddingHorizontal, 12px);
+  border-top-right-radius: var(--controlPaddingHorizontal, 12px);
+  border-top: 1px solid #e6e6e6;
+  border-left: 1px solid #e6e6e6;
+  border-right: 1px solid #e6e6e6;
+}
+
+.bottomContainer {
+  padding: 16px 24px 24px 24px;
+  display: flex;
+  gap: 24px;
+  background-color: white;
+  border-bottom-left-radius: var(--controlPaddingHorizontal, 12px);
+  border-bottom-right-radius: var(--controlPaddingHorizontal, 12px);
+  border-bottom: 1px solid #e6e6e6;
+  border-left: 1px solid #e6e6e6;
+  border-right: 1px solid #e6e6e6;
+}
+
+.mainCaptionStyle {
+  color: $primaryTextColor;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.hostAndPasswordExpirationAndShhWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 357px;
+  width: 100%;
+  border-right: 1px solid $borderColor;}
+
+.hostWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hostStyle {
+  color: $primaryTextColor;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.hostValueStyle {
+  color: #707276;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px;
+}
+
+.passwordExpirationWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.passwordExpirationAndButtonWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.passwordExpirationStyle {
+  color: $primaryTextColor;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.buttonWrapper {
+  background-color: white;
+  display: flex;
+  padding: 8px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 4px;
+  border: 1px solid #e6e6e6;
+  margin-right: 24px;
+  cursor: pointer;
+}
+
+.expirationStyle {
+  color: #707276;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px;
+}
+
+.sshWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sshStyle {
+  color: $primaryTextColor;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.sshValueStyle {
+  color: #707276;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px;
+}
+
+.portAndAuthenticationWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 333px;
+  width: 100%;
+  border-right: 1px solid $borderColor;}
+
+.portWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.portValueStyle {
+  color: #707276;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px;
+}
+
+.portStyle {
+  color: $primaryTextColor;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.authenticationMethodsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.authenticationMethodsCaptionStyle {
+  color: $primaryTextColor;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px;
+}
+
+.authenticationMethodsAndButtonWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.authenticationMethodsStyle {
+  color: #707276;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px;
+}
+
+.authenticationButtonWrapper {
+  display: flex;
+  padding: 8px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 4px;
+  border: 1px solid #e6e6e6;
+  margin-right: 24px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.userNameAndIpWrapper {
+  max-width: 381px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: $primaryTextColor;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  border-right: 1px solid $borderColor;}
+
+.userNameWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.usernameStyle {
+  color: $primaryTextColor;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.usernameValueStyle {
+  color: #707276;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.IpAlllowWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ipAllowCaptionStyle {
+  color: $primaryTextColor;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.ipAllowedAndButtonWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ipAllowStyle {
+  color: #707276;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px;
+}
+
+.ipAllowedButtonWrapper {
+  display: flex;
+  padding: 8px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 4px;
+  border: 1px solid #e6e6e6;
+  background-color: white;
+  cursor: pointer;
+  margin-right: 24px;
+}
+
+.passwordAndFtpWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 333px;
+  width: 100%;
+}
+
+.passwordWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ftpWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.passwordCaptionStyle {
+  color: $primaryTextColor;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.ftpCaptionStyle {
+  color: $primaryTextColor;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.ftpStyle {
+  color: #707276;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px;
+}
+
+.passwordStyle {
+  color: #707276;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px;
+}
+
+.passwordAndButtonWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.downloadButtonWrapper {
+  display: flex;
+  padding: 8px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 4px;
+  border: 1px solid #e6e6e6;
+  background-color: white;
+  cursor: pointer;
+}

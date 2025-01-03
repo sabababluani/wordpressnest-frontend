@@ -1,0 +1,142 @@
+@import '../../../../../styles/text-colors.scss';
+@import '../../../../../styles/colors.scss';
+
+.mainWrapper {
+  max-height: 1572px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.topContainer {
+  background-color: #f0f3f5;
+  padding: 16px 24px;
+  border-top-left-radius: var(--controlPaddingHorizontal, 12px);
+  border-top-right-radius: var(--controlPaddingHorizontal, 12px);
+  border-top: 1px solid #e6e6e6;
+  border-left: 1px solid #e6e6e6;
+  border-right: 1px solid #e6e6e6;
+}
+
+.bottomContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+.captionStyle {
+  color: $primaryTextColor;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.sequenceWrapper {
+  display: flex;
+  gap: 24px;
+  padding: 16px 24px 24px 24px;
+  border: 1px solid #e6e6e6;
+  border-bottom-left-radius: var(--controlPaddingHorizontal, 12px);
+  border-bottom-right-radius: var(--controlPaddingHorizontal, 12px);
+}
+
+.locationDataWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  border-right: 1px solid $borderColor;  max-width: 508;
+  width: 100%;
+}
+
+.locationDataCaptionsStyle {
+  color: $primaryTextColor;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.locationDataStyle {
+  color: #707276;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.siteNameWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  max-width: 508px;
+  width: 100%;
+  border-right: 1px solid $borderColor;}
+
+.siteNameCaptionStyle {
+  color: $primaryTextColor;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.siteNameStyle {
+  color: #707276;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.pencilButtonStyle {
+  display: flex;
+  padding: 8px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 4px;
+  border: 1px solid #e6e6e6;
+  background-color: white;
+  margin-right: 24px;
+  cursor: pointer;
+}
+
+.secondPencilButtonStyle {
+  display: flex;
+  padding: 8px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 4px;
+  border: 1px solid #e6e6e6;
+  background-color: white;
+  cursor: pointer;
+}
+
+.buttonAndSiteNameValueWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttonAndLabelsValueWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.labelsCaptionStyle {
+  color: $primaryTextColor;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.labelsWrapper {
+  max-width: 508px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
