@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Modal, Table, TableColumnsType } from 'antd';
 import { useParams } from 'next/navigation';
 import { patchData, updateData } from '@/app/api/crudService';
@@ -15,8 +15,8 @@ import UpdateThemesAndPlugins from '../UpdateThemesAndPlugins/UpdateThemesAndPlu
 
 const PluginTable = () => {
   const { id } = useParams();
-  const numberId = +id;
-  const [selectionType] = useState<'checkbox'>('checkbox');
+  const numberId = Number(id);
+
   const [searchValue, setSearchValue] = useState('');
   const [selectedPlugins, setSelectedPlugins] = useState<
     PluginDataPropsInterface[]
@@ -39,59 +39,57 @@ const PluginTable = () => {
     queryParams: { search: searchValue },
   });
 
-  const handleModalClose = () => {
-    setModalOpen(false);
-  };
+  const handleModalClose = useCallback(() => setModalOpen(false), []);
+  const handleReload = useCallback(() => mutate(), [mutate]);
 
-  const handleReload = () => {
-    mutate();
-  };
+  const handleRowSelectionChange = useCallback(
+    (_: React.Key[], selectedRows: PluginDataPropsInterface[]) => {
+      setSelectedPlugins(selectedRows);
+    },
+    [],
+  );
 
-  const handleRowSelectionChange = (
-    selectedRowKeys: React.Key[],
-    selectedRows: PluginDataPropsInterface[],
-  ) => {
-    setSelectedPlugins(selectedRows);
-  };
+  const onCheckedes = useCallback(
+    async (action: 'enable' | 'disable', pluginName: string[]) => {
+      setModalOpen(true);
+      setRowChecked(false);
 
-  const onCheckedes = async (
-    action: 'enable' | 'disable',
-    pluginName: string[],
-  ) => {
-    setModalOpen(true);
-    setRowChecked(false);
+      try {
+        await patchData(`wp-cli/plugin/${action}`, numberId, {
+          plugins: pluginName,
+        });
+        mutate();
+      } catch (error) {
+        console.log(error);
+      }
+      setModalOpen(false);
+    },
+    [numberId, mutate],
+  );
 
-    try {
-      await patchData(`wp-cli/plugin/${action}`, numberId, {
-        plugins: pluginName,
-      });
-      mutate();
-    } catch (error) {
-      console.log(error);
-    }
-    setModalOpen(false);
-  };
+  const onModalAction = useCallback(
+    (plugin: PluginDataPropsInterface, action: 'activate' | 'deactivate') => {
+      setSelectedPlugin(plugin);
+      setModalAction(action);
+      setModalOpen(true);
+      setRowChecked(true);
+    },
+    [],
+  );
 
-  const onModalAction = (
-    plugin: PluginDataPropsInterface,
-    action: 'activate' | 'deactivate',
-  ) => {
-    setSelectedPlugin(plugin);
-    setModalAction(action);
-    setModalOpen(true);
-    setRowChecked(true);
-  };
-
-  const onHandleUpdate = async (pluginName: string) => {
-    try {
-      await updateData(`wp-cli/plugins`, numberId, {
-        plugins: [pluginName],
-      });
-      mutate();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const onHandleUpdate = useCallback(
+    async (pluginName: string) => {
+      try {
+        await updateData(`wp-cli/plugins`, numberId, {
+          plugins: [pluginName],
+        });
+        mutate();
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [numberId, mutate],
+  );
 
   useEffect(() => {
     if (plugins?.length) {
@@ -101,6 +99,33 @@ const PluginTable = () => {
       setSelectedPlugins(updatedSelectedPlugins);
     }
   }, [plugins]);
+
+  const filteredSelectedPlugins = selectedPlugins.filter((plugin) =>
+    modalAction === 'activate'
+      ? plugin.status !== 'active'
+      : plugin.status === 'active',
+  );
+
+  const pluginName = rowChecked
+    ? filteredSelectedPlugins.length > 1
+      ? selectedPlugin?.name || 'Unknow'
+      : filteredSelectedPlugins.length === 0
+        ? selectedPlugin?.name || 'unknow'
+        : `${filteredSelectedPlugins.length}`
+    : `${filteredSelectedPlugins.length}`;
+
+  const handleAction = useCallback(() => {
+    const action = modalAction === 'activate' ? 'enable' : 'disable';
+    const pluginNames = selectedPlugins
+      .filter((plugin) =>
+        modalAction === 'activate'
+          ? plugin.status !== 'active'
+          : plugin.status === 'active',
+      )
+      .map((plugin) => plugin.name);
+
+    onCheckedes(action, pluginNames);
+  }, [modalAction, selectedPlugins, onCheckedes]);
 
   const columns: TableColumnsType<PluginDataPropsInterface> = [
     {
@@ -170,33 +195,6 @@ const PluginTable = () => {
       ),
     },
   ];
-
-  const filteredSelectedPlugins = selectedPlugins.filter((plugin) =>
-    modalAction === 'activate'
-      ? plugin.status !== 'active'
-      : plugin.status === 'active',
-  );
-
-  const pluginName = rowChecked
-    ? filteredSelectedPlugins.length > 1
-      ? selectedPlugin?.name || 'Unknow'
-      : filteredSelectedPlugins.length === 0
-        ? selectedPlugin?.name || 'unknow'
-        : `${filteredSelectedPlugins.length}`
-    : `${filteredSelectedPlugins.length}`;
-
-  const handleAction = () => {
-    const action = modalAction === 'activate' ? 'enable' : 'disable';
-    const pluginNames = selectedPlugins
-      .filter((plugin) =>
-        modalAction === 'activate'
-          ? plugin.status !== 'active'
-          : plugin.status === 'active',
-      )
-      .map((plugin) => plugin.name);
-
-    onCheckedes(action, pluginNames);
-  };
 
   return (
     <div className={styles.tableWrapper}>
@@ -289,7 +287,7 @@ const PluginTable = () => {
       </div>
       <Table<PluginDataPropsInterface>
         rowSelection={{
-          type: selectionType,
+          type: 'checkbox',
           onChange: handleRowSelectionChange,
         }}
         columns={columns}

@@ -3,7 +3,7 @@
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './DomainsTable.module.scss';
 import { DomainsTablePropsInterface } from '../interfaces/domains-table-props.interface';
 import { domainsDummy } from './domainsdummy/domains-dummy-data';
@@ -44,13 +44,11 @@ const columns: TableColumnsType<DomainsTablePropsInterface> = [
   },
 ];
 
-const DomainsTable: React.FC = () => {
-  const [selectionType] = useState<'checkbox'>('checkbox');
-
+const DomainsTable = () => {
   return (
     <div className={styles.tableWrapper}>
       <Table<DomainsTablePropsInterface>
-        rowSelection={{ type: selectionType }}
+        rowSelection={{ type: 'checkbox' }}
         columns={columns}
         dataSource={domainsDummy}
         pagination={false}

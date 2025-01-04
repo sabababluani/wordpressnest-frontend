@@ -3,7 +3,7 @@
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React from 'react';
 import styles from '../../../domains/components/DomainsTable/DomainsTable.module.scss';
 import { ipDenyData } from '../../dummy-data/ipdeny-data';
 
@@ -38,13 +38,11 @@ const columns: TableColumnsType<IpTablePropsInterface> = [
   },
 ];
 
-const IpTable: React.FC = () => {
-  const [selectionType] = useState<'checkbox'>('checkbox');
-
+const IpTable = () => {
   return (
     <div className={styles.tableWrapper}>
       <Table<IpTablePropsInterface>
-        rowSelection={{ type: selectionType }}
+        rowSelection={{ type: 'checkbox' }}
         columns={columns}
         dataSource={ipDenyData}
         pagination={false}

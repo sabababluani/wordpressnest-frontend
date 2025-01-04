@@ -79,7 +79,6 @@ const fetchDiskUsage = async (namespace: string, podName: string) => {
 };
 
 const DashboardTable = () => {
-  const [selectionType] = useState<'checkbox'>('checkbox');
   const [mergedData, setMergedData] = useState<DashboardTablePropsInterface[]>(
     [],
   );
@@ -121,7 +120,7 @@ const DashboardTable = () => {
   return (
     <div className={styles.tableWrapper}>
       <Table<DashboardTablePropsInterface>
-        rowSelection={{ type: selectionType }}
+        rowSelection={{ type: 'checkbox' }}
         columns={columns}
         dataSource={mergedData}
         pagination={false}

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Modal, Table, TableColumnsType } from 'antd';
 import { useParams } from 'next/navigation';
 import styles from '@/app/(authorized)/domains/components/DomainsTable/DomainsTable.module.scss';
@@ -16,6 +16,8 @@ import UpdateThemesAndPlugins from '../UpdateThemesAndPlugins/UpdateThemesAndPlu
 
 const ThemeTable = () => {
   const { id } = useParams();
+  const NumberId = Number(id);
+
   const [searchValue, setSearchValue] = useState('');
   const [selectedThemes, setSelectedThemes] = useState<
     ThemesTablePropsInterface[]
@@ -23,6 +25,7 @@ const ThemeTable = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedTheme, setSelectedTheme] =
     useState<ThemeActivateModalPropsInterface | null>(null);
+  const [isTableOpen, setIsTableOpen] = useState(false);
 
   const {
     data: themes,
@@ -33,43 +36,47 @@ const ThemeTable = () => {
     queryParams: { search: searchValue },
   });
 
-  const handleReload = () => {
-    mutate();
-  };
+  const handleReload = useCallback(() => mutate(), [mutate]);
 
-  const onHandleUpdate = async (themeName: string) => {
-    try {
-      await updateData(`wp-cli/themes`, +id, { themes: [themeName] });
-      mutate();
-    } catch (error) {
-      alert(error);
-    }
-  };
+  const onHandleUpdate = useCallback(
+    async (themeName: string) => {
+      try {
+        await updateData(`wp-cli/themes`, NumberId, { themes: [themeName] });
+        mutate();
+      } catch (error) {
+        alert(error);
+      }
+    },
+    [NumberId, mutate],
+  );
 
-  const onHandleActive = async (themeName: string) => {
-    try {
-      await patchData(`wp-cli/theme`, +id, { themes: themeName });
-      mutate();
-    } catch (error) {
-      console.log(error);
-    }
-    setModalOpen(false);
-  };
+  const onHandleActive = useCallback(
+    async (themeName: string) => {
+      try {
+        await patchData(`wp-cli/theme`, NumberId, { themes: themeName });
+        mutate();
+      } catch (error) {
+        console.log(error);
+      }
+      setModalOpen(false);
+    },
+    [NumberId, mutate],
+  );
 
-  const onModalAction = (theme: ThemesTablePropsInterface) => {
+  const onModalAction = useCallback((theme: ThemesTablePropsInterface) => {
     const themeModalProps: ThemeActivateModalPropsInterface = {
       themeName: theme.name,
     };
     setSelectedTheme(themeModalProps);
     setModalOpen(true);
-  };
+  }, []);
 
-  const handleRowSelectionChange = (
-    selectedRowKeys: React.Key[],
-    selectedRows: ThemesTablePropsInterface[],
-  ) => {
-    setSelectedThemes(selectedRows);
-  };
+  const handleRowSelectionChange = useCallback(
+    (_: React.Key[], selectedRows: ThemesTablePropsInterface[]) => {
+      setSelectedThemes(selectedRows);
+    },
+    [],
+  );
 
   const columns: TableColumnsType<ThemesTablePropsInterface> = [
     {
@@ -156,7 +163,6 @@ const ThemeTable = () => {
       ),
     },
   ];
-  const [isTableOpen, setIsTableOpen] = useState(false);
 
   return (
     <div className={styles.tableWrapper}>
@@ -231,6 +237,7 @@ const ThemeTable = () => {
         rowKey={(record) => record.name}
         loading={isLoading}
       />
+
       <Modal
         open={modalOpen}
         onCancel={() => setModalOpen(false)}
@@ -245,7 +252,8 @@ const ThemeTable = () => {
             selectedTheme && onHandleActive(selectedTheme.themeName!)
           }
         />
-      </Modal>{' '}
+      </Modal>
+
       <Modal
         open={isTableOpen}
         onCancel={() => setIsTableOpen(false)}

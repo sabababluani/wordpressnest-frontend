@@ -12,7 +12,6 @@ import InvoicesModal from '../InvoicesModal/InvoicesModal';
 import { invoiceData } from './invoices-dummy/invoices-dummy';
 
 const InvoicesTable = () => {
-  const [selectionType] = useState<'checkbox'>('checkbox');
   const [isActive, setIsActive] = useState(false);
   // const fetcher = (url: string) =>
   //   BaseApi.get(url).then((response) => {
@@ -119,7 +118,7 @@ const InvoicesTable = () => {
     <>
       <div className={styles.tableWrapper}>
         <Table<InvoicesTablePropsInterface>
-          rowSelection={{ type: selectionType }}
+          rowSelection={{ type: 'checkbox' }}
           columns={columns}
           dataSource={invoiceData}
           pagination={false}
