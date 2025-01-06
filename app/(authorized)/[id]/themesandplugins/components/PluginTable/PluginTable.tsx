@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Modal, Table, TableColumnsType } from 'antd';
 import { useParams } from 'next/navigation';
 import { patchData, updateData } from '@/app/api/crudService';
-import styles from '@/app/(authorized)/domains/components/DomainsTable/DomainsTable.module.scss';
+import styles from '@/app/styles/shared-table.module.scss';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { PluginDataPropsInterface } from './interfaces/plugin-table.interfaces';

@@ -1,5 +1,5 @@
-@import '../../../../styles/text-colors.scss';
-@import '../../../../styles/colors.scss';
+@import './text-colors.scss';
+@import './colors.scss';
 
 .tableWrapper :global .ant-table th {
   background: #fff !important;
@@ -16,7 +16,7 @@
 }
 
 .tableWrapper :global .ant-table-thead .ant-table-cell {
-  color: $primaryTextColor !important;
+  color: #707276 !important;
   font-weight: 400 !important;
 }
 

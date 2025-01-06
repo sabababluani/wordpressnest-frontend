@@ -62,8 +62,7 @@ const Ipdeny = (): JSX.Element => {
         onCancel={handleCancel}
         footer={null}
         closable={false}
-        width="auto"
-        centered
+        width={840}
       >
         <IpDenyModal onClose={handleCancel} />
       </Modal>
