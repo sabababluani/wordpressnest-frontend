@@ -36,26 +36,16 @@ const RedirectsModal = (props: RedirectsModalPropsInterface): JSX.Element => {
         </div>
         <div className={styles.contentWrapper}>
           <span className={styles.title}>Domain</span>
-          <Select />
+          <Select className={styles.select} />
         </div>
         <div className={styles.redirectWrapper}>
           <div className={styles.contentWrapper}>
             <span className={styles.title}>Redirect From</span>
-            <Search
-              isPadded
-              noIcon
-              placeholder="example:https://www.novatori.ge"
-              onChange={() => {}}
-            />
+            <input type="text" placeholder="example:https://www.novatori.com" />
           </div>
           <div className={styles.contentWrapper}>
             <span className={styles.title}>Redirect To</span>
-            <Search
-              isPadded
-              noIcon
-              placeholder="example:https://www.novatori.com"
-              onChange={() => {}}
-            />
+            <input type="text" placeholder="example:https://www.novatori.com" />
           </div>
         </div>
         <div className={styles.contentWrapper}>

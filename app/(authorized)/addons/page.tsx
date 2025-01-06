@@ -11,17 +11,6 @@ const Addons = () => {
 
   return (
     <>
-      {isActive && (
-        <Modal
-          width={800}
-          open={isActive}
-          onCancel={() => setIsActive(false)}
-          footer={null}
-          closable={false}
-        >
-          <DiskSpaceModal moduleDisable={() => setIsActive(false)} />
-        </Modal>
-      )}
       <div className={styles.wrapper}>
         <div className={styles.header}>
           <span className={styles.headline}>Add-ons</span>
@@ -86,6 +75,17 @@ const Addons = () => {
           />
         </div>
       </div>
+      {isActive && (
+        <Modal
+          width={800}
+          open={isActive}
+          onCancel={() => setIsActive(false)}
+          footer={null}
+          closable={false}
+        >
+          <DiskSpaceModal moduleDisable={() => setIsActive(false)} />
+        </Modal>
+      )}
     </>
   );
 };

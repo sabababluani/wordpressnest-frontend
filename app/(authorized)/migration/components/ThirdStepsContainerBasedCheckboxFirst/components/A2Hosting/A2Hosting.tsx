@@ -47,7 +47,7 @@ const A2Hosting = () => {
       <div className={styles.tabs}>
         <TabsAnt
           withoutPadding
-          uniqueKey={'anotherFtp'}
+          uniqueKey={'A2Hosting'}
           withoutBorder
           tabNames={['FTP']}
           tabContent={[<AnotherFTP key={'anotherFtp'} />]}

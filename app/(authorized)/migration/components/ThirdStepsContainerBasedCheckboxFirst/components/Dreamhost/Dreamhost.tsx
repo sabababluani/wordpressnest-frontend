@@ -3,7 +3,7 @@ import TabsAnt from '@/app/components/Tabs/Tabs';
 import styles from './Dreamhost.module.scss';
 import DreamhostFtpTab from './components/DreamhostFtpTab/DreamhostFtpTab';
 
-const Bluehost = () => {
+const DreamHost = () => {
   const [a2Username, setA2Username] = useState<string>('');
   const [a2Password, setA2Password] = useState<string>('');
 
@@ -46,7 +46,7 @@ const Bluehost = () => {
       <div className={styles.tabs}>
         <TabsAnt
           withoutPadding
-          uniqueKey={'anotherFtp'}
+          uniqueKey={'dreamhost'}
           withoutBorder
           tabNames={['FTP']}
           tabContent={[<DreamhostFtpTab key={'dreamhostftptab'} />]}
@@ -56,4 +56,4 @@ const Bluehost = () => {
   );
 };
 
-export default Bluehost;
+export default DreamHost;

@@ -46,7 +46,7 @@ const Bluehost = () => {
       <div className={styles.tabs}>
         <TabsAnt
           withoutPadding
-          uniqueKey={'anotherFtp'}
+          uniqueKey={'bluehost'}
           withoutBorder
           tabNames={['FTP']}
           tabContent={[<BluehostFtpTab key={'bluehostanotherftp'} />]}

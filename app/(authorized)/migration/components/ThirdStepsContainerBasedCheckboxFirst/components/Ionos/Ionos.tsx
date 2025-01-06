@@ -24,7 +24,7 @@ const Ionos = () => {
       </div>
       <TabsAnt
         withoutPadding
-        uniqueKey={'anotherFtp'}
+        uniqueKey={'ionos'}
         withoutBorder
         tabNames={['FTP', 'SFTP']}
         tabContent={[

@@ -20,7 +20,7 @@ const MediaTemplate = () => {
       />
       <TabsAnt
         withoutPadding
-        uniqueKey={'tabs-ant'}
+        uniqueKey={'mediaTemplate'}
         withoutBorder
         tabNames={['SFTP', 'SSH']}
         tabContent={[<Sftp key={'sftp'} />, <Ssh key={'ssh'} />]}

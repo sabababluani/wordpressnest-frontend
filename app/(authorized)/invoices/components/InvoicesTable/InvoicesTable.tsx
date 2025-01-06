@@ -127,7 +127,6 @@ const InvoicesTable = () => {
       </div>
       <Modal
         width={800}
-        centered
         open={isActive}
         onCancel={() => setIsActive(false)}
         footer={null}

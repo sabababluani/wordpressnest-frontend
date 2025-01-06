@@ -8,7 +8,7 @@ const WpEngine = () => {
     <div className={styles.mainWrapper}>
       <TabsAnt
         withoutPadding
-        uniqueKey={'tabs-ant'}
+        uniqueKey={'wpengine'}
         withoutBorder
         tabNames={['Add Hosting to your account', 'WP Engine User Portal']}
         tabContent={[

@@ -11,7 +11,7 @@ const DigitalOcean = () => {
       </span>
       <TabsAnt
         withoutPadding
-        uniqueKey={'anotherFtp'}
+        uniqueKey={'digitalocean'}
         withoutBorder
         tabNames={['SSH']}
         tabContent={[<DigitalOceanSsh key="ssh" />]}

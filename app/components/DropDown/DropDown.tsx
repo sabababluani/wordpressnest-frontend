@@ -3,11 +3,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import styles from './DropDown.module.scss';
-
-interface DropDownPropsInterface {
-  innerContentCaption: string;
-  specificWidth?: boolean;
-}
+import { DropDownPropsInterface } from './interfaces/drop-down-props.interface';
 
 const DropDown = (props: DropDownPropsInterface): JSX.Element => {
   const [isActive, setIsActive] = useState<boolean>(false);

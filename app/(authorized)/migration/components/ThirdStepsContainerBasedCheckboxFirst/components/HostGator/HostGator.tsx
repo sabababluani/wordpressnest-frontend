@@ -15,7 +15,7 @@ const HostGator = () => {
       </span>
       <TabsAnt
         withoutBorder
-        uniqueKey={'tabsAnt'}
+        uniqueKey={'hostgator'}
         tabNames={['HostGator Portal', 'cPanel', 'SFTP']}
         tabContent={[
           <HostGatorPortal key={'hostgatorportal'} />,

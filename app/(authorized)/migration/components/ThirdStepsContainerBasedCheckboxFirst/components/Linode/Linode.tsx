@@ -3,7 +3,7 @@ import styles from './Linode.module.scss';
 import TabsAnt from '@/app/components/Tabs/Tabs';
 import Ssh from './components/Ssh/SSH';
 
-const Linode: () => JSX.Element = (): JSX.Element => {
+const Linode = (): JSX.Element => {
   return (
     <div className={styles.mainContainer}>
       <span className={styles.mainCaptionStyle}>
@@ -12,7 +12,7 @@ const Linode: () => JSX.Element = (): JSX.Element => {
       </span>
       <TabsAnt
         withoutPadding
-        uniqueKey={'tabs-ant'}
+        uniqueKey={'lionde'}
         withoutBorder
         tabNames={['SSH']}
         tabContent={[<Ssh key={'ssh'} />]}
