@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './page.module.scss';
-import Tablestyles from '@/app/(authorized)/domains/components/DomainsTable/DomainsTable.module.scss';
+import Tablestyles from '@/app/styles/shared-table.module.scss';
 import { Modal, Table, TableColumnsType } from 'antd';
 import { useState } from 'react';
 import Button from '../../../components/Button/Button';

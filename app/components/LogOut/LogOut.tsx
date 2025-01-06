@@ -2,11 +2,16 @@ import Image from 'next/image';
 import styles from './LogOut.module.scss';
 import Link from 'next/link';
 import { LogOutPropsInterface } from './interfaces/log-out-props.interfaces';
+import Cookies from 'js-cookie';
 
 const LogOut = (props: LogOutPropsInterface) => {
   const handleLinkClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.stopPropagation();
     props.onLinkClick();
+  };
+
+  const handleLogOut = () => {
+    Cookies.remove('token');
   };
 
   return (
@@ -32,7 +37,7 @@ const LogOut = (props: LogOutPropsInterface) => {
         <Image src="/icons/bag.svg" alt="bag" width={24} height={24} />
         <p>Company settings</p>
       </Link>
-      <Link href="/" className={styles.logOut} onClick={handleLinkClick}>
+      <Link href="/login" className={styles.logOut} onClick={handleLogOut}>
         <Image src="/icons/logout.svg" alt="logout" width={24} height={24} />
         <p>Log out</p>
       </Link>

@@ -4,26 +4,22 @@ import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
 import Image from 'next/image';
 import React from 'react';
-import styles from '../../../domains/components/DomainsTable/DomainsTable.module.scss';
+import styles from '@/app/styles/shared-table.module.scss';
 import { ipDenyData } from '../../dummy-data/ipdeny-data';
-
-interface IpTablePropsInterface {
-  Ipaddresses: string;
-  Date: string;
-}
+import { IpTablePropsInterface } from './interfaces/ip-table-props.interface';
 
 const columns: TableColumnsType<IpTablePropsInterface> = [
   {
     title: 'IP Addresses',
     dataIndex: 'Ipaddresses',
     render: (text: string) => <div>{text}</div>,
-    width: 533,
+    width: '40%',
   },
   {
     title: 'Date',
     dataIndex: 'Date',
     render: (text) => <div>{text}</div>,
-    width: 573,
+    width: '40%',
   },
   {
     title: 'Action',
@@ -34,7 +30,7 @@ const columns: TableColumnsType<IpTablePropsInterface> = [
         <Image src={'/icons/trash.svg'} alt={'delete'} width={24} height={24} />
       </div>
     ),
-    width: 377,
+    width: '20%',
   },
 ];
 

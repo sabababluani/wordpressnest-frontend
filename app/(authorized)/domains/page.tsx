@@ -1,19 +1,22 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Modal, Select, Table } from 'antd';
+import { Modal, Select, Table, TableColumnsType } from 'antd';
 import styles from './page.module.scss';
 import Search from '../../components/Search/Search';
 import Button from '../../components/Button/Button';
 import { buttonbackgroundColorEnum } from '../../components/Button/enum/button.enum';
-import { domainsDummy } from './components/DomainsTable/domainsdummy/domains-dummy-data';
+import { domainsDummy } from './components/domainsdummy/domains-dummy-data';
 import { DomainsTablePropsInterface } from './components/interfaces/domains-table-props.interface';
 import AddDomainModal from './components/AddDomainModal/AddDomainModal';
-import { DomainsTableColumns } from './utils/domains-table-columns';
+import Image from 'next/image';
+
+// left last item dropdown z-index, dynamic page and connect to backend
 
 const Domains = (): JSX.Element => {
   const [selectedRows, setSelectedRows] = useState<React.Key[]>([]);
   const [isAddDomainModal, setIsAddDomainModal] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<React.Key | null>(null);
 
   const showModal = () => {
     setIsAddDomainModal(true);
@@ -23,11 +26,73 @@ const Domains = (): JSX.Element => {
     setIsAddDomainModal(false);
   };
 
-  const rowSelection = {
+  const handleRowSelectionChange = {
     onChange: (selectedRowKeys: React.Key[]) => {
       setSelectedRows(selectedRowKeys);
     },
   };
+
+  const toggleDropdown = (key: React.Key) => {
+    setActiveDropdown((prev) => (prev === key ? null : key));
+  };
+
+  const DomainsTableColumns: TableColumnsType<DomainsTablePropsInterface> = [
+    {
+      title: 'Name',
+      dataIndex: 'plugin',
+      render: (text: string, record) => (
+        <div className={record.isPrimary ? styles.primaryLabel : ''}>
+          {text}
+          {record.isPrimary && <div className={styles.primaryTag}>Primary</div>}
+        </div>
+      ),
+      width: '40%',
+    },
+    {
+      title: 'Status',
+      dataIndex: 'status',
+      render: (status: number) => (
+        <div
+          className={status === 1 ? styles.activeStatus : styles.inactiveStatus}
+        >
+          <span
+            className={status === 1 ? styles.greenDot : styles.redDot}
+          ></span>
+          <span className={styles.status}>
+            {status === 1 ? 'Active' : 'Disconnected'}
+          </span>
+        </div>
+      ),
+    },
+    {
+      title: 'Action',
+      dataIndex: 'address',
+      render: (_, record) => (
+        <div className={styles.actionWrapper}>
+          <div
+            className={styles.dotsWrapper}
+            onClick={() => toggleDropdown(record.key)}
+          >
+            <Image
+              src={'/icons/3dots.svg'}
+              alt={'3dots'}
+              width={18}
+              height={18}
+            />
+          </div>
+          {activeDropdown === record.key && (
+            <div
+              className={
+                !record.isPrimary ? styles.dropdown : styles.dropdownDisabled
+              }
+            >
+              <span>Make primary domain</span>
+            </div>
+          )}
+        </div>
+      ),
+    },
+  ];
 
   return (
     <div className={styles.wrapper}>
@@ -76,7 +141,7 @@ const Domains = (): JSX.Element => {
         <Table<DomainsTablePropsInterface>
           rowSelection={{
             type: 'checkbox',
-            ...rowSelection,
+            ...handleRowSelectionChange,
           }}
           columns={DomainsTableColumns}
           dataSource={domainsDummy}
@@ -90,7 +155,7 @@ const Domains = (): JSX.Element => {
         footer={null}
         closable={false}
         className={styles.modal}
-        width="auto"
+        width={840}
         centered
       >
         <AddDomainModal onClose={handleCancel} />
