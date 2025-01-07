@@ -14,6 +14,7 @@ import ThirdStepsContainerBasedCheckboxFirst from './components/ThirdStepsContai
 import StepFlowFourth from './components/StepFlowFourth/StepFlowFourth';
 import StepFlowFifth from './components/StepFlowFifth/StepFlowFifth';
 import StepFlowSix from './components/StepFlowSix/StepFlowSix';
+import ThirdStepsContainerBasedCheckboxSecond from './components/ThirdStepsContainerBasedCheckboxSecond/ThirdStepsContainerBasedCheckboxSecond';
 
 const RequestMigration = (): JSX.Element | null => {
   const [stepFlow, setStepFlow] = useState<number>((): number => {
@@ -89,9 +90,12 @@ const RequestMigration = (): JSX.Element | null => {
         );
       case 3:
         return (
-          Number(Cookies.get('SecondStepsSpecificCheckbox')) === 1 && (
+          (Number(Cookies.get('SecondStepsSpecificCheckbox')) === 1 && (
             <ThirdStepsContainerBasedCheckboxFirst />
-          )
+          )) ||
+          (Number(Cookies.get('SecondStepsSpecificCheckbox')) === 2 && (
+            <ThirdStepsContainerBasedCheckboxSecond />
+          ))
         );
       case 4:
         return <StepFlowFourth />;
