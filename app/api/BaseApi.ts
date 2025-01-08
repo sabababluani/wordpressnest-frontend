@@ -1,8 +1,11 @@
 import axios from 'axios';
 import getToken from './getToken';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 const BaseApi = axios.create({
-  baseURL: 'http://10.10.50.227:3000',
+  baseURL: `${process.env.NEXT_PUBLIC_BACKEND_API_ENDPOINT}`,
 });
 
 BaseApi.interceptors.request.use(
