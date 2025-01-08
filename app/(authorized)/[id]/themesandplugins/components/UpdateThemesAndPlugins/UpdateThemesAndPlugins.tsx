@@ -22,7 +22,7 @@ const columns = [
 
 const UpdateThemesAndPlugins = (props: UpdateThemesAndPluginsProps) => {
   const { id } = useParams();
-  const numberId = +id;
+  const numberId = Number(id);
 
   const itemsWithUpdates = props.selectedPlugins.filter(
     (plugin) => plugin.update !== 'none',
@@ -48,7 +48,7 @@ const UpdateThemesAndPlugins = (props: UpdateThemesAndPluginsProps) => {
     } catch (error) {
       console.error(error);
     }
-    props.onClose;
+    props.onClose();
   };
 
   return (

@@ -36,12 +36,12 @@ const ThemeTable = () => {
     queryParams: { search: searchValue },
   });
 
-  const handleReload = useCallback(() => mutate(), [mutate]);
+  const handleReload = () => mutate();
 
   const onHandleUpdate = useCallback(
     async (themeName: string) => {
       try {
-        await updateData(`wp-cli/themes`, NumberId, { themes: [themeName] });
+        await updateData(`wp-cli/themes`, NumberId, { themes: themeName });
         mutate();
       } catch (error) {
         alert(error);
@@ -50,33 +50,30 @@ const ThemeTable = () => {
     [NumberId, mutate],
   );
 
-  const onHandleActive = useCallback(
-    async (themeName: string) => {
-      try {
-        await patchData(`wp-cli/theme`, NumberId, { themes: themeName });
-        mutate();
-      } catch (error) {
-        console.log(error);
-      }
-      setModalOpen(false);
-    },
-    [NumberId, mutate],
-  );
+  const onHandleActive = async (themeName: string) => {
+    try {
+      await patchData(`wp-cli/theme`, NumberId, { theme: themeName });
+      mutate();
+    } catch (error) {
+      console.log(error);
+    }
+    setModalOpen(false);
+  };
 
-  const onModalAction = useCallback((theme: ThemesTablePropsInterface) => {
+  const onModalAction = (theme: ThemesTablePropsInterface) => {
     const themeModalProps: ThemeActivateModalPropsInterface = {
       themeName: theme.name,
     };
     setSelectedTheme(themeModalProps);
     setModalOpen(true);
-  }, []);
+  };
 
-  const handleRowSelectionChange = useCallback(
-    (_: React.Key[], selectedRows: ThemesTablePropsInterface[]) => {
-      setSelectedThemes(selectedRows);
-    },
-    [],
-  );
+  const handleRowSelectionChange = (
+    _: React.Key[],
+    selectedRows: ThemesTablePropsInterface[],
+  ) => {
+    setSelectedThemes(selectedRows);
+  };
 
   const columns: TableColumnsType<ThemesTablePropsInterface> = [
     {
