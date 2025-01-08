@@ -20,16 +20,16 @@ const NavigationLine = (props: NavigationLineProps): JSX.Element => {
       </div>
       <div className={styles.infoWrapper}>
         <Link
-          href={`/info${props.basePath}`}
+          href={`${props.basePath}/info`}
           className={`${styles.infoButton} ${
-            pathname.includes(`/info${props.basePath}`)
+            pathname.includes(`${props.basePath}/info`)
               ? styles.infoButtonClicked
               : ''
           }`}
         >
           <Image
             src={
-              pathname.includes(`/info${props.basePath}`)
+              pathname.includes(`${props.basePath}/info`)
                 ? '/icons/info.svg'
                 : '/icons/infolight.svg'
             }
@@ -113,16 +113,16 @@ const NavigationLine = (props: NavigationLineProps): JSX.Element => {
           <span>Redirects</span>
         </Link>
         <Link
-          href={`/themesandplugins${props.basePath}`}
+          href={`${props.basePath}/themesandplugins`}
           className={`${styles.infoButton} ${
-            pathname.includes(`/themesandplugins${props.basePath}`)
+            pathname.includes(`${props.basePath}/themesandplugins`)
               ? styles.infoButtonClicked
               : ''
           }`}
         >
           <Image
             src={
-              pathname.includes(`/themesandplugins${props.basePath}`)
+              pathname.includes(`${props.basePath}/themesandplugins`)
                 ? '/icons/pluginsbold.svg'
                 : '/icons/plugins.svg'
             }
@@ -205,16 +205,16 @@ const NavigationLine = (props: NavigationLineProps): JSX.Element => {
           <span>Caching</span>
         </Link>
         <Link
-          href={`/users${props.basePath}`}
+          href={`${props.basePath}/users`}
           className={`${styles.infoButton} ${
-            pathname.includes(`/users${props.basePath}`)
+            pathname.includes(`${props.basePath}/users`)
               ? styles.infoButtonClicked
               : ''
           }`}
         >
           <Image
             src={
-              pathname.includes(`/users${props.basePath}`)
+              pathname.includes(`${props.basePath}/users`)
                 ? '/icons/usersmanagmentbold.svg'
                 : '/icons/usersmanagment.svg'
             }
