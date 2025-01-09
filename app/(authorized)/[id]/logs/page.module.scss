@@ -1,5 +1,5 @@
-@import '../../styles/text-colors.scss';
-@import '../../styles/colors.scss';
+@import '../../../styles/text-colors.scss';
+@import '../../../styles/colors.scss';
 
 .wrapper {
   width: 100%;
@@ -53,27 +53,12 @@
   gap: 16px;
 }
 
-.info {
-  width: 100%;
-  color: $primaryTextColor;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 24px;
-  padding: 20px;
-  cursor: pointer;
-}
-
 .headline {
   color: $primaryTextColor;
   font-size: 24px;
   font-style: normal;
   font-weight: 600;
   line-height: 32px;
-}
-
-.info:hover {
-  background-color: #f0f3f5;
 }
 
 .container {
@@ -117,4 +102,22 @@
 .selectStyle :global(.ant-select-focused .ant-select-selector) {
   box-shadow: none !important;
   border-color: transparent !important;
+}
+
+.searchWrapper {
+  width: 100%;
+  max-width: 311px;
+  padding: 12px 12px 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 12px;
+  border: 1px solid #dcdfe1;
+}
+
+.search {
+  width: 100%;
+  border: none;
+  outline: none;
+  height: 100%;
 }

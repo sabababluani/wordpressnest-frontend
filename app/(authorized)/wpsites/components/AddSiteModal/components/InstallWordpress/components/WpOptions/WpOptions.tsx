@@ -110,6 +110,7 @@ const WpOptions = ({
           <input
             {...register('wpAdminPassword', {
               required: 'Password is required',
+              minLength: 8,
             })}
             type="password"
             className={styles.input}
