@@ -5,11 +5,15 @@ import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.e
 import { PluginUpdateModalPropsInterface } from './interfaces/plugin-update-modal-props.interface';
 
 const PluginUpdateModal = (props: PluginUpdateModalPropsInterface) => {
+  const Plugin = props.type === 'plugin';
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
         <div className={styles.headerContainer}>
-          <span className={styles.headline}>Update plugin</span>
+          <span className={styles.headline}>
+            Update {props.pluginName} {Plugin ? 'plugin' : 'theme'}
+          </span>
         </div>
         <Image
           src="/icons/close-mini.svg"
