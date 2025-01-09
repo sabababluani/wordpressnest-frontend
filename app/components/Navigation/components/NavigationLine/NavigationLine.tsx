@@ -59,14 +59,16 @@ const NavigationLine = (props: NavigationLineProps): JSX.Element => {
           <span>Domains</span>
         </Link>
         <Link
-          href={'/backup'}
+          href={`${props.basePath}/backup`}
           className={`${styles.infoButton} ${
-            pathname.includes('/backup') ? styles.infoButtonClicked : ''
+            pathname.includes(`${props.basePath}/backup`)
+              ? styles.infoButtonClicked
+              : ''
           }`}
         >
           <Image
             src={
-              pathname.includes('/backup')
+              pathname.includes(`${props.basePath}/backup`)
                 ? '/icons/backupbold.svg'
                 : '/icons/backup.svg'
             }

@@ -1,0 +1,10 @@
+@import '../../../../../styles/text-colors.scss';
+@import '../../../../../styles/colors.scss';
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 12px 24px;
+  gap: 12px;
+}
