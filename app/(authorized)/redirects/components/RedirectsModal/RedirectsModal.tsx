@@ -3,7 +3,6 @@
 import { Radio, Select } from 'antd';
 import Image from 'next/image';
 import styles from './RedirectsModal.module.scss';
-import Search from '@/app/components/Search/Search';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { RedirectsModalPropsInterface } from '../interfaces/redirects-modal-props.interface';

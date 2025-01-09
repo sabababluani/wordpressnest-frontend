@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useCallback, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Modal, Table, TableColumnsType } from 'antd';
 import { useParams } from 'next/navigation';
 import styles from '@/app/styles/shared-table.module.scss';
@@ -13,6 +13,8 @@ import { patchData, updateData } from '@/app/api/crudService';
 import ThemeActivateModal from './components/ThemeActivateModal/ThemeActivateModal';
 import { ThemeActivateModalPropsInterface } from './components/ThemeActivateModal/interfaces/theme-activate-modal-props.interface';
 import UpdateThemesAndPlugins from '../UpdateThemesAndPlugins/UpdateThemesAndPlugins';
+import { ThemesAndPluginsStatusEnum } from '../enum/themes-and-plugins.enum';
+import PluginUpdateModal from '../PluginTable/components/PluginUpdateModal/PluginUpdateModal';
 
 const ThemeTable = () => {
   const { id } = useParams();
@@ -26,6 +28,10 @@ const ThemeTable = () => {
   const [selectedTheme, setSelectedTheme] =
     useState<ThemeActivateModalPropsInterface | null>(null);
   const [isTableOpen, setIsTableOpen] = useState(false);
+  const [filteredThemes, setFilteredThemes] = useState<
+    ThemesTablePropsInterface[]
+  >([]);
+  const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
 
   const {
     data: themes,
@@ -33,50 +39,53 @@ const ThemeTable = () => {
     isLoading,
   } = useGetData<ThemesTablePropsInterface[]>({
     endpoint: `wp-cli/theme/${id}`,
-    queryParams: { search: searchValue },
   });
 
-  const handleReload = useCallback(() => mutate(), [mutate]);
+  const handleReload = () => mutate();
 
-  const onHandleUpdate = useCallback(
-    async (themeName: string) => {
-      try {
-        await updateData(`wp-cli/themes`, NumberId, { themes: [themeName] });
-        mutate();
-      } catch (error) {
-        alert(error);
-      }
-    },
-    [NumberId, mutate],
-  );
+  const onHandleUpdate = async (themeName: string) => {
+    try {
+      await updateData(`wp-cli/themes`, NumberId, { themes: [themeName] });
+      mutate();
+    } catch (error) {
+      alert(error);
+    }
+    setIsUpdateModalOpen(false);
+  };
 
-  const onHandleActive = useCallback(
-    async (themeName: string) => {
-      try {
-        await patchData(`wp-cli/theme`, NumberId, { themes: themeName });
-        mutate();
-      } catch (error) {
-        console.log(error);
-      }
-      setModalOpen(false);
-    },
-    [NumberId, mutate],
-  );
+  useEffect(() => {
+    if (themes) {
+      const filtered = themes.filter((theme) =>
+        theme.name.toLowerCase().includes(searchValue.toLowerCase()),
+      );
+      setFilteredThemes(filtered);
+    }
+  }, [themes, searchValue]);
 
-  const onModalAction = useCallback((theme: ThemesTablePropsInterface) => {
+  const onHandleActive = async (themeName: string) => {
+    try {
+      await patchData(`wp-cli/theme`, NumberId, { theme: themeName });
+      mutate();
+    } catch (error) {
+      console.log(error);
+    }
+    setModalOpen(false);
+  };
+
+  const onModalAction = (theme: ThemesTablePropsInterface) => {
     const themeModalProps: ThemeActivateModalPropsInterface = {
       themeName: theme.name,
     };
     setSelectedTheme(themeModalProps);
     setModalOpen(true);
-  }, []);
+  };
 
-  const handleRowSelectionChange = useCallback(
-    (_: React.Key[], selectedRows: ThemesTablePropsInterface[]) => {
-      setSelectedThemes(selectedRows);
-    },
-    [],
-  );
+  const handleRowSelectionChange = (
+    _: React.Key[],
+    selectedRows: ThemesTablePropsInterface[],
+  ) => {
+    setSelectedThemes(selectedRows);
+  };
 
   const columns: TableColumnsType<ThemesTablePropsInterface> = [
     {
@@ -92,18 +101,18 @@ const ThemeTable = () => {
       render: (status: string) => (
         <div
           className={
-            status === 'active'
+            status === ThemesAndPluginsStatusEnum.ACTIVE
               ? styles.activeStatus
-              : status === 'inactive'
+              : status === ThemesAndPluginsStatusEnum.INACTIVE
                 ? styles.inactiveStatus
                 : ''
           }
         >
           <span
             className={
-              status === 'active'
+              status === ThemesAndPluginsStatusEnum.ACTIVE
                 ? styles.greenDot
-                : status === 'inactive'
+                : status === ThemesAndPluginsStatusEnum.INACTIVE
                   ? styles.redDot
                   : ''
             }
@@ -138,16 +147,19 @@ const ThemeTable = () => {
               <Button
                 backgroundColor={buttonbackgroundColorEnum.black}
                 innerContent="Update"
-                onClick={() => onHandleUpdate(record.name)}
+                onClick={() => {
+                  setIsUpdateModalOpen(true);
+                  setSelectedTheme({ themeName: record.name });
+                }}
               />
             </div>
           ) : null}
-          {record.status === 'active' ? (
+          {record.status === ThemesAndPluginsStatusEnum.ACTIVE ? (
             <div className={styles.buttonsDeactive}>
               <Button
                 backgroundColor={buttonbackgroundColorEnum.grey}
                 innerContent="Deactivate"
-                onClick={() => onHandleActive(record.name)}
+                disableButton
               />
             </div>
           ) : (
@@ -205,7 +217,15 @@ const ThemeTable = () => {
                       disableButton={
                         !selectedThemes.some((theme) => theme.update !== 'none')
                       }
-                      onClick={() => setIsTableOpen(true)}
+                      onClick={() => {
+                        if (
+                          selectedThemes.some(
+                            (theme) => theme.update !== 'none',
+                          )
+                        ) {
+                          setIsTableOpen(true);
+                        }
+                      }}
                     />
                   </div>
                 ) : (
@@ -231,7 +251,7 @@ const ThemeTable = () => {
           onChange: handleRowSelectionChange,
         }}
         columns={columns}
-        dataSource={themes}
+        dataSource={filteredThemes}
         pagination={false}
         scroll={{ x: 'max-content' }}
         rowKey={(record) => record.name}
@@ -246,7 +266,7 @@ const ThemeTable = () => {
         width={840}
       >
         <ThemeActivateModal
-          themeName={selectedTheme?.themeName || 'Unknown Plugin'}
+          themeName={selectedTheme?.themeName}
           onClose={() => setModalOpen(false)}
           onActivate={() =>
             selectedTheme && onHandleActive(selectedTheme.themeName!)
@@ -264,6 +284,21 @@ const ThemeTable = () => {
         <UpdateThemesAndPlugins
           selectedPlugins={selectedThemes}
           onClose={() => setIsTableOpen(false)}
+          type={'theme'}
+        />
+      </Modal>
+
+      <Modal
+        open={isUpdateModalOpen}
+        onCancel={() => setIsUpdateModalOpen(false)}
+        footer={null}
+        closable={false}
+        width={840}
+      >
+        <PluginUpdateModal
+          pluginName={selectedTheme?.themeName}
+          onClose={() => setIsUpdateModalOpen(false)}
+          onActivate={() => onHandleUpdate(selectedTheme?.themeName || '')}
           type={'theme'}
         />
       </Modal>
