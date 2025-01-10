@@ -13,15 +13,18 @@ import { useGetData } from '@/app/hooks/useGetData';
 import { UsersTablePropsInterface } from './components/interfaces/users-table-props.interface';
 import UsersModal from './components/UsersModal/UsersModal';
 import EditModal from './components/EditModal/EditModal';
+import RevokeModal from '@/app/components/RevokeModal/RevokeModal';
 
 const Users = (): JSX.Element => {
   const { id } = useParams();
 
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedRows, setSelectedRows] = useState<React.Key[]>([]);
-
   const [selectedUser, setSelectedUser] =
+    useState<UsersTablePropsInterface | null>(null);
+  const [selectedUserForDelete, setSelectedUserForDelete] =
     useState<UsersTablePropsInterface | null>(null);
 
   const { data: wpUsers, mutate } = useGetData<UsersTablePropsInterface[]>({
@@ -38,12 +41,28 @@ const Users = (): JSX.Element => {
     setIsEditModalOpen(false);
   };
 
-  const onUserDelete = async (userId: number) => {
+  const onUserDelete = async (userIds: number[]) => {
     try {
-      await deleteData(`wp-cli/wpuser`, userId, { userId: userId });
+      await deleteData(`wp-cli/wpuser`, +id, { userIds: userIds.map(String) });
+      setSelectedRows([]);
+      setIsDeleteModalOpen(false);
       mutate();
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const handleDeleteUsers = () => {
+    if (selectedRows.length > 0) {
+      selectedRows
+        .map((rowKey) => {
+          const user = wpUsers?.find((user) => user.ID === rowKey);
+          return user?.ID;
+        })
+        .filter((id) => id !== undefined) as number[];
+
+      setSelectedUserForDelete(null);
+      setIsDeleteModalOpen(true);
     }
   };
 
@@ -89,7 +108,10 @@ const Users = (): JSX.Element => {
             alt={'delete'}
             width={24}
             height={24}
-            onClick={() => onUserDelete(record.ID)}
+            onClick={() => {
+              setSelectedUserForDelete(record);
+              setIsDeleteModalOpen(true);
+            }}
           />
         </div>
       ),
@@ -125,6 +147,7 @@ const Users = (): JSX.Element => {
               <Button
                 backgroundColor={buttonbackgroundColorEnum.domainsRed}
                 innerContent={'Delete Users'}
+                onClick={handleDeleteUsers}
               />
             </div>
           </div>
@@ -163,17 +186,39 @@ const Users = (): JSX.Element => {
           </Modal>
         </div>
       </div>
-      <div className={styles.modal}>
-        <Modal
-          open={isModalOpen}
-          onCancel={() => setIsModalOpen(false)}
-          footer={null}
-          closable={false}
-          width={666}
-        >
-          <UsersModal onClose={handleCancel} />
-        </Modal>
-      </div>
+      <Modal
+        open={isModalOpen}
+        onCancel={() => setIsModalOpen(false)}
+        footer={null}
+        closable={false}
+        width={666}
+      >
+        <UsersModal onClose={handleCancel} />
+      </Modal>
+      <Modal
+        open={isDeleteModalOpen}
+        onCancel={() => setIsDeleteModalOpen(false)}
+        footer={null}
+        closable={false}
+        width={800}
+      >
+        <RevokeModal
+          onClose={() => setIsDeleteModalOpen(false)}
+          onSuccess={() => {
+            const selectedUsersIds = selectedRows
+              .map((rowKey) => {
+                const user = wpUsers?.find((user) => user.ID === rowKey);
+                return user?.ID;
+              })
+              .filter((id) => id !== undefined) as number[];
+
+            onUserDelete(selectedUsersIds);
+          }}
+          headline={`Are you sure to delete ${selectedRows.length} user(s)?`}
+          content={'This action cannot be undone'}
+          buttonText={'Delete'}
+        />
+      </Modal>
     </div>
   );
 };

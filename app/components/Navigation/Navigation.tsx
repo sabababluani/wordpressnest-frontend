@@ -167,12 +167,12 @@ const Navigation = (): JSX.Element => {
                   className={`${styles.sites} ${activeSite === site.id ? styles.sitesActive : ''}`}
                   onClick={() => onSiteClick(site.id)}
                 >
-                  <Image
+                  {/* <Image
                     src={site.siteIcon || ''}
                     alt="site favicon"
                     width={24}
                     height={24}
-                  />
+                  /> */}
                   <span>{site.siteTitle}.com</span>
                 </div>
                 {activeSite === site.id && (
