@@ -42,6 +42,7 @@ const Home = () => {
                   }
                   healthQuantity={87}
                   siteName={site.siteTitle}
+                  siteIcon={site.siteIcon || ''}
                 />
               ))}
         </div>

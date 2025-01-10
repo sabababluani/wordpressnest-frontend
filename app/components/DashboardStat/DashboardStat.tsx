@@ -19,8 +19,8 @@ const DashboardStat = (props: DashboardPropsInterfaces): JSX.Element => {
               className={styles.imageFlagStyle}
               width={56}
               height={56}
-              src="icons/flag.svg"
-              alt="cover"
+              src={props.siteIcon}
+              alt="favicon"
             />
           </div>
           <div className={styles.siteNameAndStatisticWrapper}>

@@ -129,45 +129,45 @@ const ManualBackupTable = () => {
           columns={columns}
           dataSource={manualBackUp}
           pagination={false}
-          rowKey="id"
+          locale={{ emptyText: 'Manual backups will appear here.' }}
         />
-        <Modal
-          width={840}
-          open={isModalVisible}
-          onCancel={handleModalClose}
-          footer={null}
-          closable={false}
-        >
-          <DailyBackupModal onClose={handleModalClose} />
-        </Modal>
-        <Modal
-          width={840}
-          onCancel={() => setIsDeleteModalVisible(false)}
-          open={isDeleteModalVisible}
-          footer={null}
-          closable={false}
-        >
-          <RevokeModal
-            onClose={() => setIsDeleteModalVisible(false)}
-            headline={'Are you sure to delete backup?'}
-            content={'This action cannot be undone.'}
-            buttonText={'Delete backup'}
-            onSuccess={onHandleManualBackupDelete}
-          />
-        </Modal>
-        <Modal
-          open={isCreateModalActive}
-          onCancel={() => setIsCreateModalActive(false)}
-          footer={false}
-          closable={false}
-          width={840}
-        >
-          <ManualBackupCreateModal
-            onClose={() => setIsCreateModalActive(false)}
-            mutate={mutate}
-          />
-        </Modal>
       </div>
+      <Modal
+        width={840}
+        open={isModalVisible}
+        onCancel={handleModalClose}
+        footer={null}
+        closable={false}
+      >
+        <DailyBackupModal onClose={handleModalClose} />
+      </Modal>
+      <Modal
+        width={840}
+        onCancel={() => setIsDeleteModalVisible(false)}
+        open={isDeleteModalVisible}
+        footer={null}
+        closable={false}
+      >
+        <RevokeModal
+          onClose={() => setIsDeleteModalVisible(false)}
+          headline={'Are you sure to delete backup?'}
+          content={'This action cannot be undone.'}
+          buttonText={'Delete backup'}
+          onSuccess={onHandleManualBackupDelete}
+        />
+      </Modal>
+      <Modal
+        open={isCreateModalActive}
+        onCancel={() => setIsCreateModalActive(false)}
+        footer={false}
+        closable={false}
+        width={840}
+      >
+        <ManualBackupCreateModal
+          onClose={() => setIsCreateModalActive(false)}
+          mutate={mutate}
+        />
+      </Modal>
     </>
   );
 };

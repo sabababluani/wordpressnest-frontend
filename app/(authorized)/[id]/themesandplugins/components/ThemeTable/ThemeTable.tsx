@@ -253,7 +253,6 @@ const ThemeTable = () => {
         columns={columns}
         dataSource={filteredThemes}
         pagination={false}
-        scroll={{ x: 'max-content' }}
         rowKey={(record) => record.name}
         loading={isLoading}
       />

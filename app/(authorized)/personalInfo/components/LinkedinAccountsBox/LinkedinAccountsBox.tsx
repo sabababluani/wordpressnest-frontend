@@ -66,6 +66,7 @@ const LinkedinAccountsBox = () => {
             headline={`Revoke ${modalData.platform} SSO authentication?`}
             content={`You need to reauthorize ${modalData.platform} to be able to log in.`}
             buttonText={'Revoke Access'}
+            onSuccess={() => {}}
           />
         </Modal>
       )}

@@ -124,7 +124,6 @@ const DashboardTable = () => {
         columns={columns}
         dataSource={mergedData}
         pagination={false}
-        scroll={{ x: 'max-content' }}
         loading={loading}
       />
     </div>

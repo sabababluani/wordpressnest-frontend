@@ -92,6 +92,7 @@ const ApiKeys = () => {
             'If you revoke the API key 123, all operations using it will fail immediately. Are you sure that you want to proceed?'
           }
           buttonText={'Revoke'}
+          onSuccess={() => {}}
         />
       </Modal>
     </div>

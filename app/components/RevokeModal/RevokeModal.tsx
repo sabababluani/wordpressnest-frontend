@@ -29,11 +29,7 @@ const RevokeModal = (props: RevokeModalPropsInterface) => {
           <Button
             backgroundColor={buttonbackgroundColorEnum.red}
             innerContent={props.buttonText}
-            onClick={() => {
-              if (props.onSuccess) {
-                props.onSuccess();
-              }
-            }}
+            onClick={() => props.onSuccess()}
           />
         </div>
       </div>
