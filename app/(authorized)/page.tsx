@@ -1,20 +1,48 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import styles from './page.module.scss';
 import DashboardStat from '@/app/components/DashboardStat/DashboardStat';
 import WordpressStat from '@/app/components/WordpressStat/WordpressStat';
 import { UserInterface } from '../components/Navigation/interfaces/navigation.props.interface';
 import { useGetData } from '../hooks/useGetData';
 import { Skeleton } from 'antd';
+import BaseApi from '@/app/api/BaseApi';
 
 const Home = () => {
+  const [siteIcons, setSiteIcons] = useState<{ [key: number]: string }>({});
+
   const {
     data: sitesData,
-    isLoading,
+    isLoading: sitesLoading,
     error,
   } = useGetData<UserInterface>({
     endpoint: 'user/me',
   });
+
+  const fetchSiteIcon = async (siteId: number) => {
+    try {
+      const response = await BaseApi.get(`/wp-cli/siteicon/${siteId}`);
+      setSiteIcons((prevIcons) => ({
+        ...prevIcons,
+        [siteId]: response.data.siteIconUrl,
+      }));
+    } catch (err) {
+      console.error(`Failed to fetch site icon for siteId: ${siteId}`, err);
+    }
+  };
+
+  useEffect(() => {
+    if (sitesData?.setup) {
+      sitesData.setup.forEach((site) => {
+        if (!siteIcons[site.id]) {
+          fetchSiteIcon(site.id);
+        }
+      });
+    }
+  }, [sitesData]);
+
+  const isLoading = sitesLoading || !Object.keys(siteIcons).length;
 
   return (
     <div className={styles.dashboardWrappe}>
@@ -42,7 +70,7 @@ const Home = () => {
                   }
                   healthQuantity={87}
                   siteName={site.siteTitle}
-                  siteIcon={site.siteIcon || ''}
+                  siteIcon={siteIcons[site.id] || site.siteIcon || '/wp.png'}
                 />
               ))}
         </div>

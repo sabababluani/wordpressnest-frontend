@@ -12,6 +12,7 @@ import CompanySettingsLine from './components/CompanySettingsLine/CompanySetting
 import { allowedPaths } from './utils/pathnames';
 import { useGetData } from '@/app/hooks/useGetData';
 import { Spin } from 'antd';
+import BaseApi from '@/app/api/BaseApi';
 
 const Navigation = (): JSX.Element => {
   const pathname = usePathname();
@@ -19,10 +20,11 @@ const Navigation = (): JSX.Element => {
   const [activeStaticComponent, setActiveStaticComponent] = useState<
     number | null
   >(null);
+  const [siteIcons, setSiteIcons] = useState<{ [key: number]: string }>({});
 
   const {
     data: sitesData,
-    isLoading,
+    isLoading: sitesLoading,
     error,
   } = useGetData<UserInterface>({
     endpoint: 'user/me',
@@ -67,6 +69,30 @@ const Navigation = (): JSX.Element => {
   };
 
   const isAllowedPath = allowedPaths.includes(pathname);
+
+  const fetchSiteIcon = async (siteId: number) => {
+    try {
+      const response = await BaseApi.get(`/wp-cli/siteicon/${siteId}`);
+      setSiteIcons((prevIcons) => ({
+        ...prevIcons,
+        [siteId]: response.data.siteIconUrl,
+      }));
+    } catch (err) {
+      console.error(`Failed to fetch site icon for siteId: ${siteId}`, err);
+    }
+  };
+
+  useEffect(() => {
+    if (sitesData?.setup) {
+      sitesData.setup.forEach((site) => {
+        if (!siteIcons[site.id]) {
+          fetchSiteIcon(site.id);
+        }
+      });
+    }
+  }, [sitesData]);
+
+  const isLoading = sitesLoading || !Object.keys(siteIcons).length;
 
   return (
     <div className={styles.wrapper}>
@@ -168,7 +194,7 @@ const Navigation = (): JSX.Element => {
                   onClick={() => onSiteClick(site.id)}
                 >
                   <Image
-                    src={site.siteIcon || ''}
+                    src={siteIcons[site.id] || '/wp.png'}
                     alt="site favicon"
                     width={24}
                     height={24}
