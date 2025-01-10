@@ -91,7 +91,6 @@ const UpdateThemesAndPlugins = (props: UpdateThemesAndPluginsProps) => {
               updateAvailable: item.update_version,
             }))}
             pagination={false}
-            scroll={{ x: 'max-content' }}
           />
         </div>
       </div>

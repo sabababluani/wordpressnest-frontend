@@ -47,13 +47,8 @@ const PluginTable = () => {
     endpoint: `wp-cli/plugin/${id}`,
   });
 
-  const handleModalClose = () => {
-    setModalOpen(false);
-  };
-
-  const handleReload = () => {
-    mutate();
-  };
+  const handleModalClose = () => setModalOpen(false);
+  const handleReload = () => mutate();
 
   const handleRowSelectionChange = (
     _: React.Key[],
@@ -138,28 +133,38 @@ const PluginTable = () => {
     : `${filteredSelectedPlugins.length}`;
 
   const handleAction = () => {
-    const action =
-      modalAction === ThemesAndPluginsActionEnum.ACTIVATE
-        ? ThemesAndPluginsActionEnum.ENABLE
-        : ThemesAndPluginsActionEnum.DISABLE;
+    const isActivating = modalAction === ThemesAndPluginsActionEnum.ACTIVATE;
+    const action = isActivating
+      ? ThemesAndPluginsActionEnum.ENABLE
+      : ThemesAndPluginsActionEnum.DISABLE;
 
     const pluginNames = selectedPlugins
       .filter((plugin) =>
-        modalAction === ThemesAndPluginsActionEnum.ACTIVATE
-          ? plugin.status !== ThemesAndPluginsActionEnum.ACTIVATE
-          : plugin.status === ThemesAndPluginsActionEnum.ACTIVATE,
+        isActivating
+          ? plugin.status !== modalAction
+          : plugin.status === modalAction,
       )
       .map((plugin) => plugin.name);
 
-    if (pluginNames.length === 0 && selectedPlugin?.name) {
+    if (!pluginNames.length && selectedPlugin?.name)
       pluginNames.push(selectedPlugin.name);
-    }
 
-    if (pluginNames.length > 0) {
-      onCheckedes(action, pluginNames);
-    }
+    if (pluginNames.length) onCheckedes(action, pluginNames);
+
     setRowChecked(false);
   };
+
+  const hasUpdatablePlugins = selectedPlugins.some(
+    (plugin) => plugin.update !== 'none',
+  );
+
+  const hasInactivePlugins = selectedPlugins.some(
+    (plugin) => plugin.status === ThemesAndPluginsStatusEnum.INACTIVE,
+  );
+
+  const hasActivePlugins = selectedPlugins.some(
+    (plugin) => plugin.status === ThemesAndPluginsStatusEnum.ACTIVE,
+  );
 
   const columns: TableColumnsType<PluginDataPropsInterface> = [
     {
@@ -222,23 +227,22 @@ const PluginTable = () => {
               }}
             />
           )}
-          {record.status === ThemesAndPluginsStatusEnum.ACTIVE ? (
-            <Button
-              backgroundColor={buttonbackgroundColorEnum.grey}
-              innerContent="Deactivate"
-              onClick={() =>
-                onModalAction(record, ThemesAndPluginsActionEnum.DEACTIVATE)
-              }
-            />
-          ) : (
-            <Button
-              backgroundColor={buttonbackgroundColorEnum.grey}
-              innerContent="Activate"
-              onClick={() =>
-                onModalAction(record, ThemesAndPluginsActionEnum.ACTIVATE)
-              }
-            />
-          )}
+          <Button
+            backgroundColor={buttonbackgroundColorEnum.grey}
+            innerContent={
+              record.status === ThemesAndPluginsStatusEnum.ACTIVE
+                ? 'Deactivate'
+                : 'Activate'
+            }
+            onClick={() =>
+              onModalAction(
+                record,
+                record.status === ThemesAndPluginsStatusEnum.ACTIVE
+                  ? ThemesAndPluginsActionEnum.DEACTIVATE
+                  : ThemesAndPluginsActionEnum.ACTIVATE,
+              )
+            }
+          />
         </div>
       ),
     },
@@ -282,37 +286,17 @@ const PluginTable = () => {
                     <Button
                       backgroundColor={buttonbackgroundColorEnum.grey}
                       innerContent="Update"
-                      disableButton={
-                        !selectedPlugins.some(
-                          (plugin) => plugin.update !== 'none',
-                        )
-                      }
+                      disableButton={!hasUpdatablePlugins}
                       onClick={() => {
-                        if (
-                          !selectedPlugins.some(
-                            (plugin) => plugin.update === 'none',
-                          )
-                        )
-                          setIsTableOpen(true);
+                        if (hasUpdatablePlugins) setIsTableOpen(true);
                       }}
                     />
                     <Button
                       backgroundColor={buttonbackgroundColorEnum.grey}
                       innerContent="Activate"
-                      disableButton={
-                        !selectedPlugins.some(
-                          (plugin) =>
-                            plugin.status !== ThemesAndPluginsStatusEnum.ACTIVE,
-                        )
-                      }
+                      disableButton={!hasInactivePlugins}
                       onClick={() => {
-                        if (
-                          selectedPlugins.some(
-                            (plugin) =>
-                              plugin.status !==
-                              ThemesAndPluginsStatusEnum.ACTIVE,
-                          )
-                        ) {
+                        if (hasInactivePlugins) {
                           setModalAction(ThemesAndPluginsActionEnum.ACTIVATE);
                           setModalOpen(true);
                         }
@@ -321,20 +305,9 @@ const PluginTable = () => {
                     <Button
                       backgroundColor={buttonbackgroundColorEnum.grey}
                       innerContent="Deactivate"
-                      disableButton={
-                        !selectedPlugins.some(
-                          (plugin) =>
-                            plugin.status === ThemesAndPluginsStatusEnum.ACTIVE,
-                        )
-                      }
+                      disableButton={!hasActivePlugins}
                       onClick={() => {
-                        if (
-                          selectedPlugins.some(
-                            (plugin) =>
-                              plugin.status ===
-                              ThemesAndPluginsStatusEnum.ACTIVE,
-                          )
-                        ) {
+                        if (hasActivePlugins) {
                           setModalAction(ThemesAndPluginsActionEnum.DEACTIVATE);
                           setModalOpen(true);
                         }
@@ -366,7 +339,6 @@ const PluginTable = () => {
         columns={columns}
         dataSource={filteredPlugins}
         pagination={false}
-        scroll={{ x: 'max-content' }}
         rowKey={(record) => record.name}
         loading={isLoading}
         onRow={(record) => ({

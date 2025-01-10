@@ -11,6 +11,7 @@ export interface SiteInterface {
   nodeIp: string;
   wpfullIp: string;
   phpAdminFullIp: string;
+  siteIcon: string;
 }
 
 export interface UserInterface {

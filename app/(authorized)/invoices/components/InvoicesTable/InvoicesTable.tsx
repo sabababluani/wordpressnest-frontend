@@ -122,7 +122,6 @@ const InvoicesTable = () => {
           columns={columns}
           dataSource={invoiceData}
           pagination={false}
-          scroll={{ x: 'max-content' }}
         />
       </div>
       <Modal
