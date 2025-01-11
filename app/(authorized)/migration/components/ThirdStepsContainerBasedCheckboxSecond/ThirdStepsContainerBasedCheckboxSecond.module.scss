@@ -42,3 +42,9 @@
   box-shadow: none !important;
   border-radius: 12px !important;
 }
+
+.selectionAndCaptionWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}

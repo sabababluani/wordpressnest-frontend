@@ -30,17 +30,28 @@
 }
 
 .inactiveStep {
-  opacity: 0.4;
+  opacity: 0.5;
   z-index: 0;
 }
 
-.stepIconWrapper {
+.inactiveStepIconWrapper {
+  opacity: 0.5;
   display: flex;
   gap: 4px;
   align-items: center;
   max-width: 311px;
   width: 100%;
 }
+
+.stepIconWrapper {
+  opacity: 1;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  max-width: 311px;
+  width: 100%;
+}
+
 
 .circleStyle {
   width: 8px;
@@ -50,10 +61,14 @@
 
 .activeStyle {
   background-color: black;
+  opacity: 1;
+  transition: 0.1s;
 }
 
 .inActiveStyle {
   background-color: $borderColor;
+  opacity: 0.5s;
+  transition: 0.1s;
 }
 
 .lineStyle {
@@ -64,10 +79,14 @@
 
 .completedLine {
   background-color: black;
+  opacity: 1;
+  transition: 0.2s;
 }
 
 .inActiveLine {
   background-color: $borderColor;
+  opacity: 0.5;
+  transition: 0.2s;
 }
 
 .captionStyle {
