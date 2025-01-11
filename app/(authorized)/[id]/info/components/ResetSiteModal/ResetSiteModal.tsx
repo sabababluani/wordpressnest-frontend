@@ -96,7 +96,7 @@ const ResetSiteModal = (props: ResetSiteModalPropsInterface) => {
                 type="text"
                 defaultValue={
                   specificUser?.setup.find(
-                    (item: SiteInterface, index: number) => index + 1 === +id,
+                    (item: SiteInterface) => item.id === +id,
                   )?.siteTitle
                 }
                 disabled
@@ -176,9 +176,8 @@ const ResetSiteModal = (props: ResetSiteModalPropsInterface) => {
         ) : (
           <ResetSiteConfirmation
             siteTitle={
-              specificUser?.setup.find(
-                (item: SiteInterface, index: number) => item.id === +id,
-              )?.siteTitle
+              specificUser?.setup.find((item: SiteInterface) => item.id === +id)
+                ?.siteTitle
             }
             onClick={onResetButton}
             onBack={() => setSteper(1)}

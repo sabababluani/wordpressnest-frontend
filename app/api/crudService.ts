@@ -30,7 +30,7 @@ export const createData = async <T>(
 export const updateData = async <T>(
   endpoint: string,
   id: string | number,
-  payload: Partial<T>,
+  payload?: Partial<T>,
 ): Promise<T> => {
   try {
     const response = await BaseApi.put<T>(`${endpoint}/${id}`, payload);
