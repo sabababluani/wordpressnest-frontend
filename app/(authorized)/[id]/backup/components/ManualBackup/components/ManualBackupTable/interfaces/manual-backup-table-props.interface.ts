@@ -1,5 +1,5 @@
 export interface ManualBackupTablePropsInterface {
   id: number;
-  createdAt: string;
+  formatedCreatedAt: string;
   expiry: string;
 }

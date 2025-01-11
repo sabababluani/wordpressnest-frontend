@@ -13,8 +13,11 @@ import RevokeModal from '@/app/components/RevokeModal/RevokeModal';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import Button from '@/app/components/Button/Button';
 import ManualBackupCreateModal from '../ManualBackupCreateModal/ManualBackupCreateModal';
+import { useParams } from 'next/navigation';
 
 const ManualBackupTable = () => {
+  const { id } = useParams();
+
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedRestoreOption, setSelectedRestoreOption] =
     useState('Restore To');
@@ -25,7 +28,7 @@ const ManualBackupTable = () => {
   const { data: manualBackUp, mutate } = useGetData<
     ManualBackupTablePropsInterface[]
   >({
-    endpoint: 'backup/manualLimited',
+    endpoint: `backup/manualLimited/${id}`,
   });
 
   const onHandleManualBackupDelete = async () => {
@@ -43,7 +46,7 @@ const ManualBackupTable = () => {
   const columns: TableProps<ManualBackupTablePropsInterface>['columns'] = [
     {
       title: 'Created',
-      dataIndex: 'createdAt',
+      dataIndex: 'formatedCreatedAt',
       key: 'createdAt',
       width: '20%',
     },
@@ -51,13 +54,13 @@ const ManualBackupTable = () => {
       title: 'Expiry',
       dataIndex: 'expiry',
       key: 'expiry',
-      width: '15%',
+      width: '20%',
     },
     {
       title: 'Note',
       dataIndex: 'note',
       key: 'note',
-      width: '15%',
+      width: '25%',
     },
     {
       title: 'Restore',
@@ -92,6 +95,7 @@ const ManualBackupTable = () => {
           }}
         />
       ),
+      width: '10%',
     },
   ];
 
@@ -99,6 +103,8 @@ const ManualBackupTable = () => {
     setIsModalVisible(false);
     setSelectedRestoreOption('Restore To');
   };
+
+  const progressPercent = (manualBackUp?.length || 0) * 20;
 
   return (
     <>
@@ -114,12 +120,12 @@ const ManualBackupTable = () => {
           <div className={styles.progressContainer}>
             <p>{manualBackUp?.length} to 5</p>
             <div className={styles.progress}>
-              <Progress percent={30} showInfo={false} />
+              <Progress percent={progressPercent} showInfo={false} />
             </div>
           </div>
           <Button
             backgroundColor={buttonbackgroundColorEnum.black}
-            innerContent={'Add Domains'}
+            innerContent={'Create backup'}
             onClick={() => setIsCreateModalActive(true)}
           />
         </div>

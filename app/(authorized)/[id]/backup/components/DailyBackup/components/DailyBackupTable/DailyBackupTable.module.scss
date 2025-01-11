@@ -2,7 +2,7 @@
 @import '../../../../../../../styles/colors.scss';
 
 .tableWrapper {
-  padding-top: 8px;
+  padding: 8px 0 16px 0;
 }
 
 .tableWrapper :global .ant-table th {
@@ -90,7 +90,6 @@
 
 .tableWrapper :global .ant-table-row .ant-table-cell {
   padding-left: 24px !important;
-  // padding-right: 64px;
 }
 
 .tableWrapper
@@ -177,4 +176,3 @@
   box-shadow: none !important;
   border-radius: 12px !important;
 }
-

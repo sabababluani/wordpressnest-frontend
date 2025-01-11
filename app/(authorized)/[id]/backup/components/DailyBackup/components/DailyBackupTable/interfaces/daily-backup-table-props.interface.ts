@@ -1,4 +1,4 @@
 export interface DailyBackupPropsInterface {
   id: number;
-  dateTime: string;
+  formatedCreatedAt: string;
 }
