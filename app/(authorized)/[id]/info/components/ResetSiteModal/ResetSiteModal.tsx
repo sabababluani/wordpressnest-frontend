@@ -23,9 +23,10 @@ const ResetSiteModal = (props: ResetSiteModalPropsInterface) => {
   const { data: specificUser } = useGetData<UserInterface>({
     endpoint: `user/me`,
   });
+
   const isValidated: boolean =
-    specificUser?.setup.find((_, index: number) => index + 1 === +id)
-      ?.siteTitle === siteTitle;
+    specificUser?.setup.find((item) => item.id === +id)?.siteTitle ===
+    siteTitle;
 
   const onResetButton = async () => {
     if (password)
@@ -176,7 +177,7 @@ const ResetSiteModal = (props: ResetSiteModalPropsInterface) => {
           <ResetSiteConfirmation
             siteTitle={
               specificUser?.setup.find(
-                (item: SiteInterface, index: number) => index + 1 === +id,
+                (item: SiteInterface, index: number) => item.id === +id,
               )?.siteTitle
             }
             onClick={onResetButton}
