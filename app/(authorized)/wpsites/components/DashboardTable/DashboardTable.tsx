@@ -8,9 +8,10 @@ import { DashboardTablePropsInterface } from './interfaces/dashboard-table-props
 import { useGetData } from '@/app/hooks/useGetData';
 import BaseApi from '@/app/api/BaseApi';
 
+// Table columns definition
 const columns: TableColumnsType<DashboardTablePropsInterface> = [
   {
-    title: 'Name ',
+    title: 'Name',
     dataIndex: 'siteTitle',
     className: 'no-left-border',
   },
@@ -55,7 +56,7 @@ const columns: TableColumnsType<DashboardTablePropsInterface> = [
   },
   {
     title: 'WP version',
-    dataIndex: 'wpVersion',
+    dataIndex: 'version',
   },
 ];
 
@@ -76,6 +77,16 @@ const fetchDiskUsage = async (namespace: string, podName: string) => {
     `wordpress/metrics/${namespace}/${podName}/`,
   );
   return response.data.totalDiskUsed;
+};
+
+const fetchPhpVersion = async (id: number) => {
+  const response = await BaseApi.get(`wp-cli/php/version/${id}`);
+  return response.data.phpVersion;
+};
+
+const fetchWpVersion = async (id: number) => {
+  const response = await BaseApi.get(`wp-cli/core/version/${id}`);
+  return response.data.version;
 };
 
 const DashboardTable = () => {
@@ -99,12 +110,16 @@ const DashboardTable = () => {
         const status = await fetchMaintenanceStatus(id);
         const bandwidth = await fetchBandwidth(item.nameSpace, item.podName);
         const diskUsage = await fetchDiskUsage(item.nameSpace, item.podName);
+        const phpVersion = await fetchPhpVersion(id);
+        const version = await fetchWpVersion(id);
 
         return {
           ...item,
           status,
           bandwidth,
           totalDiskUsed: diskUsage,
+          phpVersion,
+          version,
         };
       });
 
@@ -124,6 +139,7 @@ const DashboardTable = () => {
         columns={columns}
         dataSource={mergedData}
         pagination={false}
+        scroll={{ x: 'max-content' }}
         loading={loading}
       />
     </div>

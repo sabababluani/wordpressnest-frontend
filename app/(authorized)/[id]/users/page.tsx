@@ -24,7 +24,7 @@ const Users = (): JSX.Element => {
   const [selectedRows, setSelectedRows] = useState<React.Key[]>([]);
   const [selectedUser, setSelectedUser] =
     useState<UsersTablePropsInterface | null>(null);
-  const [selectedUserForDelete, setSelectedUserForDelete] =
+  const [, setSelectedUserForDelete] =
     useState<UsersTablePropsInterface | null>(null);
 
   const { data: wpUsers, mutate } = useGetData<UsersTablePropsInterface[]>({
