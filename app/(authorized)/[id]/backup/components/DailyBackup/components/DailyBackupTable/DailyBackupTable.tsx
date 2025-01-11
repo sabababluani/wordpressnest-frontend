@@ -6,12 +6,16 @@ import type { TableProps } from 'antd';
 import Image from 'next/image';
 import styles from './DailyBackupTable.module.scss';
 import { DailyBackupPropsInterface } from './interfaces/daily-backup-table-props.interface';
-import { Dailydata } from './dummy-data/daily-backup-table';
 import DailyBackupModal from '../DailyBackupModal/DailyBackupModal';
+import { useGetData } from '@/app/hooks/useGetData';
 
 const DailyBackupTable = () => {
   const [isModalVisable, setIsModalVisable] = useState(false);
   const [selectedRestoreOption] = useState('Restore To');
+
+  const { data: dailyBackups, isLoading } = useGetData<
+    DailyBackupPropsInterface[]
+  >({ endpoint: '/backup/daily' });
 
   const columns: TableProps<DailyBackupPropsInterface>['columns'] = [
     {
@@ -26,8 +30,8 @@ const DailyBackupTable = () => {
           <span>Date & Time</span>
         </div>
       ),
-      dataIndex: 'dateTime',
-      key: 'dateTime',
+      dataIndex: 'formatedCreatedAt',
+      key: 'formatedCreatedAt',
       width: '85%',
     },
     {
@@ -63,9 +67,10 @@ const DailyBackupTable = () => {
     <div className={styles.tableWrapper}>
       <Table<DailyBackupPropsInterface>
         columns={columns}
-        dataSource={Dailydata}
+        dataSource={dailyBackups}
         pagination={false}
         rowKey={(record) => record.id}
+        loading={isLoading}
       />
       <Modal
         width={840}

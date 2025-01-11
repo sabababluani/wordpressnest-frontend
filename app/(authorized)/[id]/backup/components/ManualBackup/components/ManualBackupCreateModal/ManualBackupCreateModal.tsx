@@ -19,6 +19,7 @@ const ManualBackupCreateModal = (
       await createData(`backup/ManualLimit/${numberId}`, { note: backupNote });
       props.mutate();
       props.onClose();
+      setBackupNote('');
     } catch (error) {
       console.log(error);
     }
@@ -59,7 +60,6 @@ const ManualBackupCreateModal = (
         <Button
           backgroundColor={buttonbackgroundColorEnum.black}
           innerContent="Create Backup"
-          disableButton={!backupNote.trim()}
           onClick={onNoteAdd}
         />
       </div>
