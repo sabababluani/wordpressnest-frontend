@@ -36,7 +36,13 @@ const StepFlow = (props: StepFlowPropsInterface): JSX.Element => {
             }`}
           >
             <span className={styles.captionStyle}>{caption}</span>
-            <div className={styles.stepIconWrapper}>
+            <div
+              className={
+                isActive || isPastStep
+                  ? styles.stepIconWrapper
+                  : styles.inactiveStepIconWrapper
+              }
+            >
               <div
                 className={`${styles.circleStyle} ${
                   isActive || isPastStep

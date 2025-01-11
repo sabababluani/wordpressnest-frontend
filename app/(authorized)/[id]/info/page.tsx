@@ -90,7 +90,7 @@ const Info = (): JSX.Element => {
           environmentName="Live"
           siteIpAddress={site.wpfullIp}
           ipAddress={site.nodeIp}
-          phpWorkers="2"
+          phpWorkers={site.phpVersion}
           onClick={() => console.log('clicked')}
         />
 
