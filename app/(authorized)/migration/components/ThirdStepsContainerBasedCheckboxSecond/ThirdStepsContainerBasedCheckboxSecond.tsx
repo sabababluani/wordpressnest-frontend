@@ -2,7 +2,7 @@
 
 import { Select } from 'antd';
 import styles from './ThirdStepsContainerBasedCheckboxSecond.module.scss';
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import { BackupOptions } from './interfaces/backupOptions-interface';
 import { BACKUP_OPTIONS, BACKUP_OPTIONS2 } from './dummy_data/backup-options';

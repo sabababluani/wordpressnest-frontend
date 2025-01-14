@@ -64,12 +64,12 @@ const PluginTable = () => {
     pluginName: string[],
   ) => {
     setModalOpen(true);
-    setRowChecked(false);
 
     try {
       await patchData(`wp-cli/plugin/${action}`, numberId, {
         plugins: pluginName,
       });
+      setRowChecked(false);
       mutate();
     } catch (error) {
       console.log(error);
@@ -138,20 +138,19 @@ const PluginTable = () => {
       ? ThemesAndPluginsActionEnum.ENABLE
       : ThemesAndPluginsActionEnum.DISABLE;
 
-    const pluginNames = selectedPlugins
-      .filter((plugin) =>
-        isActivating
-          ? plugin.status !== modalAction
-          : plugin.status === modalAction,
-      )
-      .map((plugin) => plugin.name);
-
-    if (!pluginNames.length && selectedPlugin?.name)
-      pluginNames.push(selectedPlugin.name);
+    const pluginNames = rowChecked
+      ? selectedPlugin
+        ? [selectedPlugin.name]
+        : []
+      : selectedPlugins
+          .filter((plugin) =>
+            isActivating
+              ? plugin.status !== 'active'
+              : plugin.status === 'active',
+          )
+          .map((plugin) => plugin.name);
 
     if (pluginNames.length) onCheckedes(action, pluginNames);
-
-    setRowChecked(false);
   };
 
   const hasUpdatablePlugins = selectedPlugins.some(
@@ -341,11 +340,6 @@ const PluginTable = () => {
         pagination={false}
         rowKey={(record) => record.name}
         loading={isLoading}
-        onRow={(record) => ({
-          onClick: () => {
-            setSelectedPlugin(record);
-          },
-        })}
       />
       <Modal
         open={modalOpen}

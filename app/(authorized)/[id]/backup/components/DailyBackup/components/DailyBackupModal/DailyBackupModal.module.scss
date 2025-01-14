@@ -48,7 +48,8 @@
 }
 
 .box {
-  border: 1px solid $borderColor;  border-radius: 12px;
+  border: 1px solid $borderColor;
+  border-radius: 12px;
   max-width: 354px;
   width: 100%;
   display: flex;
@@ -143,8 +144,10 @@
 
 .inputContainer input {
   border-radius: 12px;
-  border: 1px solid $borderColor;  padding: 0 12px;
+  border: 1px solid $borderColor;
+  padding: 0 12px;
   height: 41px;
+  outline: none;
 }
 
 .inputContainer p {

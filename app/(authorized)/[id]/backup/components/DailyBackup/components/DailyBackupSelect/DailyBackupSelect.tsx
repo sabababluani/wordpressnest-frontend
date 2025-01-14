@@ -52,7 +52,7 @@ const DailyBackupSelect = () => {
         footer={null}
         closable={false}
       >
-        <DailyBackupModal onClose={handleCloseModal} />
+        <DailyBackupModal onClose={handleCloseModal} onSuccess={() => {}} />
       </Modal>
     </div>
   );

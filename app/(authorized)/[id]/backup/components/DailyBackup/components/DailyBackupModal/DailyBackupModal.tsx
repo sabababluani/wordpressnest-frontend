@@ -3,8 +3,18 @@ import styles from './DailyBackupModal.module.scss';
 import Image from 'next/image';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { DailyBackupModalPropsInterface } from './interfaces/daily-backup-modal-props.interface';
+import { useGetData } from '@/app/hooks/useGetData';
+import { UserInterface } from '@/app/components/Navigation/interfaces/navigation.props.interface';
+import { useParams } from 'next/navigation';
 
 const DailyBackupModal = (props: DailyBackupModalPropsInterface) => {
+  const { id } = useParams();
+  const numberId = Number(id);
+
+  const { data: siteName } = useGetData<UserInterface>({ endpoint: 'user/me' });
+
+  const site = siteName?.setup.find((site) => site.id === numberId)?.siteTitle;
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
@@ -23,7 +33,7 @@ const DailyBackupModal = (props: DailyBackupModalPropsInterface) => {
           <div className={styles.box}>
             <div className={styles.boxInner}>
               <div className={styles.boxContent}>
-                <span className={styles.backupName}>Jigaro</span>
+                <span className={styles.backupName}>{site}</span>
                 <span className={styles.environment}>Environment</span>
               </div>
               <div className={styles.liveContainer}>
@@ -60,7 +70,7 @@ const DailyBackupModal = (props: DailyBackupModalPropsInterface) => {
             <span className={styles.bold}>replace</span> all your files,
             databases and environment settings (e.g. domains, redirects, SSL
             certificates) to your{' '}
-            <span className={styles.bold}>jigaro Live environment.</span>
+            <span className={styles.bold}>{site} Live environment.</span>
           </p>
         </div>
         <div>
@@ -94,7 +104,7 @@ const DailyBackupModal = (props: DailyBackupModalPropsInterface) => {
         <div>
           <div className={styles.inputContainer}>
             <p>
-              Enter the text <span className={styles.bold}>jigaro</span> here to
+              Enter the text <span className={styles.bold}>{site}</span> here to
               reset your site:
             </p>
             <input type="text" />
@@ -109,6 +119,7 @@ const DailyBackupModal = (props: DailyBackupModalPropsInterface) => {
           <Button
             backgroundColor={buttonbackgroundColorEnum.black}
             innerContent="Restore Backup"
+            onClick={props.onSuccess}
           />
         </div>
       </div>

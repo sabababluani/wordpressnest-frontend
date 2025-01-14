@@ -11,7 +11,6 @@ import { useGetData } from '@/app/hooks/useGetData';
 
 const DailyBackupTable = () => {
   const [isModalVisable, setIsModalVisable] = useState(false);
-  const [selectedRestoreOption] = useState('Restore To');
 
   const { data: dailyBackups, isLoading } = useGetData<
     DailyBackupPropsInterface[]
@@ -41,7 +40,7 @@ const DailyBackupTable = () => {
       render: () => (
         <Select
           className={styles.select}
-          value={selectedRestoreOption}
+          value={'Restore To'}
           options={[
             {
               value: 'live',
@@ -79,7 +78,10 @@ const DailyBackupTable = () => {
         footer={null}
         closable={false}
       >
-        <DailyBackupModal onClose={() => setIsModalVisable(false)} />
+        <DailyBackupModal
+          onClose={() => setIsModalVisable(false)}
+          onSuccess={() => {}}
+        />
       </Modal>
     </div>
   );
