@@ -147,6 +147,7 @@ const Info = (): JSX.Element => {
         onCancel={() => setIsResetModalOpen(false)}
         footer={null}
         closable={false}
+        centered
       >
         <ResetSiteModal onClose={() => setIsResetModalOpen(false)} />
       </Modal>

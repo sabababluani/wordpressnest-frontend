@@ -30,6 +30,8 @@ const RevokeModal = (props: RevokeModalPropsInterface) => {
             backgroundColor={buttonbackgroundColorEnum.red}
             innerContent={props.buttonText}
             onClick={() => props.onSuccess()}
+            loading={props.loading}
+            setLoading={props.setLoading}
           />
         </div>
       </div>

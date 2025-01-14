@@ -8,21 +8,13 @@ import { updateData } from '@/app/api/crudService';
 import { useParams } from 'next/navigation';
 import { mutate } from 'swr';
 import { UpdateThemesAndPluginsProps } from './interfaces/update-themes-and-plugins-props.interface';
-
-const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'itemName',
-  },
-  {
-    title: 'Update available',
-    dataIndex: 'updateAvailable',
-  },
-];
+import { UpdateThemesAndPluginsColumns } from './utils/update-themes-and-plugins-columns';
 
 const UpdateThemesAndPlugins = (props: UpdateThemesAndPluginsProps) => {
   const { id } = useParams();
   const numberId = Number(id);
+
+  const [loading, setLoading] = useState(false);
 
   const itemsWithUpdates = props.selectedPlugins.filter(
     (plugin) => plugin.update !== 'none',
@@ -40,6 +32,7 @@ const UpdateThemesAndPlugins = (props: UpdateThemesAndPluginsProps) => {
   };
 
   const handleUpdate = async () => {
+    setLoading(true);
     try {
       await updateData(`wp-cli/${props.type}s`, numberId, {
         [props.type === 'plugin' ? 'plugins' : 'themes']: selectedRows,
@@ -47,6 +40,8 @@ const UpdateThemesAndPlugins = (props: UpdateThemesAndPluginsProps) => {
       mutate(`wp-cli/${props.type}/${id}`);
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
     props.onClose();
   };
@@ -84,7 +79,7 @@ const UpdateThemesAndPlugins = (props: UpdateThemesAndPluginsProps) => {
               type: 'checkbox',
               ...rowSelection,
             }}
-            columns={columns}
+            columns={UpdateThemesAndPluginsColumns}
             dataSource={itemsWithUpdates.map((item) => ({
               key: item.name,
               itemName: item.name,
@@ -104,6 +99,8 @@ const UpdateThemesAndPlugins = (props: UpdateThemesAndPluginsProps) => {
           backgroundColor={buttonbackgroundColorEnum.black}
           innerContent="Update"
           onClick={handleUpdate}
+          loading={loading}
+          setLoading={setLoading}
         />
       </div>
     </div>

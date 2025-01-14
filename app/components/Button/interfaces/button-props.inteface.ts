@@ -8,4 +8,6 @@ export interface ButtonDataInterface {
   disableButton?: boolean;
   onClick?: (e: React.MouseEvent) => void;
   buttonActive?: boolean;
+  loading?: boolean;
+  setLoading?: React.Dispatch<React.SetStateAction<boolean>>;
 }

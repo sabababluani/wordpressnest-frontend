@@ -37,6 +37,8 @@ const ThemeActivateModal = (props: ThemeActivateModalPropsInterface) => {
             backgroundColor={buttonbackgroundColorEnum.black}
             innerContent={'Activate theme'}
             onClick={props.onActivate}
+            loading={props.loading}
+            setLoading={props.setLoading}
           />
         </div>
       </div>

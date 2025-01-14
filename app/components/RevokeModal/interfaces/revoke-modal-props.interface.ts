@@ -4,4 +4,6 @@ export interface RevokeModalPropsInterface {
   headline: string;
   content: string;
   buttonText: string;
+  loading?: boolean;
+  setLoading?: React.Dispatch<React.SetStateAction<boolean>>;
 }

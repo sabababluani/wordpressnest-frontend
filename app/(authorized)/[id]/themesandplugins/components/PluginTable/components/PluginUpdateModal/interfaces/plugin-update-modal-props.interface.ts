@@ -3,4 +3,6 @@ export interface PluginUpdateModalPropsInterface {
   onClose: () => void;
   onActivate: () => void;
   type: 'plugin' | 'theme';
+  loading?: boolean;
+  setLoading?: React.Dispatch<React.SetStateAction<boolean>>;
 }

@@ -24,6 +24,7 @@ const ManualBackupTable = () => {
   const [selectedBackupId, setSelectedBackupId] = useState<string | null>(null);
   const [isCreateModalActive, setIsCreateModalActive] = useState(false);
   const [numberId, setNumberId] = useState<number>(0);
+  const [loading, setLoading] = useState(false);
 
   const { data: manualBackUp, mutate: mutateManualBackup } = useGetData<
     ManualBackupTablePropsInterface[]
@@ -50,6 +51,7 @@ const ManualBackupTable = () => {
   };
 
   const onHandleRestore = async () => {
+    setLoading(true);
     try {
       await updateData('backup/restoreFromPod', numberId);
       mutateManualBackup();
@@ -57,6 +59,8 @@ const ManualBackupTable = () => {
       setIsModalVisible(false);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -157,10 +161,13 @@ const ManualBackupTable = () => {
         onCancel={() => setIsModalVisible(false)}
         footer={null}
         closable={false}
+        centered
       >
         <DailyBackupModal
           onClose={() => setIsModalVisible(false)}
           onSuccess={onHandleRestore}
+          loading={loading}
+          setLoading={setLoading}
         />
       </Modal>
       <Modal
@@ -176,6 +183,8 @@ const ManualBackupTable = () => {
           content={'This action cannot be undone.'}
           buttonText={'Delete backup'}
           onSuccess={onHandleManualBackupDelete}
+          loading={loading}
+          setLoading={setLoading}
         />
       </Modal>
       <Modal
@@ -189,6 +198,8 @@ const ManualBackupTable = () => {
           onClose={() => setIsCreateModalActive(false)}
           mutate={mutateManualBackup}
           mutateProgress={mutateProgress}
+          loading={loading}
+          setLoading={setLoading}
         />
       </Modal>
     </>

@@ -3,4 +3,6 @@ export interface ActivateModalPropsInterface {
   onClose: () => void;
   onActivate: () => void;
   modalAction: 'activate' | 'deactivate';
+  loading?: boolean;
+  setLoading?: React.Dispatch<React.SetStateAction<boolean>>;
 }
