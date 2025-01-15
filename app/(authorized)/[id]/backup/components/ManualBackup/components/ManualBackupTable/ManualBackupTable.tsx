@@ -29,7 +29,7 @@ const ManualBackupTable = () => {
   const { data: manualBackUp, mutate: mutateManualBackup } = useGetData<
     ManualBackupTablePropsInterface[]
   >({
-    endpoint: `backup/manualLimited/${id}`,
+    endpoint: `backup/manuallimit/${id}`,
   });
 
   const { data: lineProgress, mutate: mutateProgress } =
@@ -38,6 +38,7 @@ const ManualBackupTable = () => {
     });
 
   const onHandleManualBackupDelete = async () => {
+    setLoading(true);
     if (!selectedBackupId) return;
     try {
       await deleteData('backup/deleteBackupFromPod', selectedBackupId);
@@ -47,6 +48,8 @@ const ManualBackupTable = () => {
       setSelectedBackupId(null);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 

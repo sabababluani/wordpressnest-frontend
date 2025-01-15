@@ -111,6 +111,7 @@ const Info = (): JSX.Element => {
           ip="ALL IPs allowed"
           database={site.dbName}
           databaseUsername="root"
+          phpAdmin={site.phpAdminFullIp}
         />
 
         <Site

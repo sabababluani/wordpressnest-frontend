@@ -19,7 +19,7 @@ const ManualBackupCreateModal = (
   const onNoteAdd = async () => {
     setLoading(true);
     try {
-      await createData(`backup/ManualLimit/${numberId}`, { note: backupNote });
+      await createData(`backup/manualimit/${numberId}`, { note: backupNote });
       props.mutate();
       props.mutateProgress();
       props.onClose();
