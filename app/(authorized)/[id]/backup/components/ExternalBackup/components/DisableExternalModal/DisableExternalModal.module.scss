@@ -1,0 +1,73 @@
+@import '../../../../../../../styles/text-colors.scss';
+@import '../../../../../../../styles/colors.scss';
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f0f3f5;
+  border-radius: 12px 12px 0 0;
+  padding: 16px 24px;
+}
+
+.headline {
+  color: $primaryTextColor;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.header img {
+  cursor: pointer;
+}
+
+.container {
+  padding: 12px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.container p {
+  font-size: 16px;
+  color: $primaryTextColor;
+  line-height: 24px;
+}
+
+.check :global(.ant-checkbox-wrapper .ant-checkbox .ant-checkbox-inner) {
+  border: none !important;
+  width: 24px;
+  height: 24px;
+  background-color: #f0f3f5 !important;
+}
+
+.check
+  :global(.ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner) {
+  background-color: black !important;
+  border: none !important;
+}
+
+.check :global(.ant-checkbox-wrapper .ant-checkbox .ant-checkbox-inner::after) {
+  width: 7.1px !important;
+  height: 12px !important;
+}
+
+.checkboxWrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.checkboxWrapper span {
+  color: #707276;
+  line-height: 24px;
+  font-size: 16px;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  padding: 16px 0 0 0;
+}
