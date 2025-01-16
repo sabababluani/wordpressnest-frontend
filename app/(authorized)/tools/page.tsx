@@ -1,9 +1,16 @@
 'use client';
 
+import { Modal } from 'antd';
 import styles from './page.module.scss';
 import Tools from '@/app/(authorized)/tools/components/Tools/Tools';
+import PhpRestartModal from './components/PhpRestartModal/PhpRestartModal';
+import { useState } from 'react';
+import SearchReplaceModal from './components/SeachReplaceModal/SearchReplaceModal';
 
 const ToolsPage = (): JSX.Element => {
+  const [isRestartOpen, setIsRestartOpen] = useState(false);
+  const [isSearchReplaceOpen, setIsSearchReplaceOpen] = useState(false);
+
   return (
     <>
       <div className={styles.mainContainer}>
@@ -21,6 +28,7 @@ const ToolsPage = (): JSX.Element => {
             buttonIconPath={'loadingButton.svg'}
             ActivatedButtonCaption={'Restart PHP'}
             buttonActive={true}
+            onClick={() => setIsRestartOpen(true)}
           />
           <Tools
             iconPath={'secure.svg'}
@@ -38,6 +46,7 @@ const ToolsPage = (): JSX.Element => {
             caption={'Search & Replace'}
             buttonActive={true}
             ActivatedButtonCaption={'Search & Replace'}
+            onClick={() => setIsSearchReplaceOpen(true)}
           />
           <Tools
             iconPath={'monitoring.svg'}
@@ -112,6 +121,30 @@ const ToolsPage = (): JSX.Element => {
           />
         </div>
       </div>
+      <Modal
+        width={840}
+        open={isRestartOpen}
+        onCancel={() => setIsRestartOpen(false)}
+        footer={null}
+        closable={false}
+      >
+        <PhpRestartModal
+          onClose={() => setIsRestartOpen(false)}
+          onSuccess={() => {}}
+        />
+      </Modal>
+      <Modal
+        width={840}
+        open={isSearchReplaceOpen}
+        onCancel={() => setIsSearchReplaceOpen(false)}
+        footer={null}
+        closable={false}
+      >
+        <SearchReplaceModal
+          onClose={() => setIsSearchReplaceOpen(false)}
+          onSuccess={() => {}}
+        />
+      </Modal>
     </>
   );
 };

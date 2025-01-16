@@ -8,9 +8,9 @@ import DropDown from '@/app/components/DropDown/DropDown';
 import { ToolsDataPropsInterface } from './interfaces/tools-data-props.interface';
 
 const Tools = (props: ToolsDataPropsInterface): JSX.Element => {
-  const [isActive, setIsDisable] = useState<boolean>(false);
+  const [isActive, setIsDisable] = useState(false);
 
-  const onChange = (): void => setIsDisable((prevState) => !prevState);
+  const onChange = () => setIsDisable((prevState) => !prevState);
 
   return (
     <div className={styles.mainWrapper}>
@@ -42,7 +42,7 @@ const Tools = (props: ToolsDataPropsInterface): JSX.Element => {
           </div>
         )}
         {props.buttonActive && (
-          <div className={styles.buttonContainer}>
+          <div className={styles.buttonContainer} onClick={props.onClick}>
             <div className={styles.innerContentWrapper}>
               {props.buttonIconActivate && (
                 <Image

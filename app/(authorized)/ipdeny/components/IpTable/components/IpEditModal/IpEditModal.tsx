@@ -1,14 +1,14 @@
 import Button from '@/app/components/Button/Button';
-import styles from './RevokeModal.module.scss';
+import styles from './IpEditModal.module.scss';
 import Image from 'next/image';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
-import { RevokeModalPropsInterface } from './interfaces/revoke-modal-props.interface';
+import { IpEditModalPropsInterface } from './interfaces/ip-edit-modal-props.interface';
 
-const RevokeModal = (props: RevokeModalPropsInterface) => {
+const IpEditModal = (props: IpEditModalPropsInterface) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
-        <span className={styles.headline}>{props.headline}</span>
+        <span className={styles.headline}>Change IP address</span>
         <Image
           src="/icons/close-mini.svg"
           alt="close"
@@ -19,7 +19,7 @@ const RevokeModal = (props: RevokeModalPropsInterface) => {
         />
       </div>
       <div className={styles.container}>
-        <p>{props.content}</p>
+        <input type="text" />
       </div>
       <div className={styles.buttons}>
         <Button
@@ -28,15 +28,15 @@ const RevokeModal = (props: RevokeModalPropsInterface) => {
           onClick={() => props.onClose()}
         />
         <Button
-          backgroundColor={buttonbackgroundColorEnum.red}
-          innerContent={props.buttonText}
+          backgroundColor={buttonbackgroundColorEnum.black}
+          innerContent="Change IP Addresses"
           onClick={() => props.onSuccess()}
-          loading={props.loading}
-          setLoading={props.setLoading}
+          // loading={props.loading}
+          // setLoading={props.setLoading}
         />
       </div>
     </div>
   );
 };
 
-export default RevokeModal;
+export default IpEditModal;

@@ -116,6 +116,12 @@
   font-weight: 500;
 }
 
+.backgroundWhiteLightColor:hover {
+  background-color: #f6f6f6 !important;
+  border: 1px solid $borderColor !important;
+  color: #707276 !important;
+}
+
 .disabledButton {
   cursor: not-allowed;
   background-color: #f4f5f6;

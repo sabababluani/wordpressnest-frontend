@@ -69,12 +69,14 @@ const Info = (): JSX.Element => {
               backgroundColor={buttonbackgroundColorEnum.grey}
             />
           </Link>
-          <Button
-            innerContent="Visit Site"
-            innerContentIcon={innerContentIconEnum.siteIcon}
-            innerContentIconActive
-            backgroundColor={buttonbackgroundColorEnum.black}
-          />
+          <Link href={`http://${site.wpfullIp}`} target="_blank">
+            <Button
+              innerContent="Visit Site"
+              innerContentIcon={innerContentIconEnum.siteIcon}
+              innerContentIconActive
+              backgroundColor={buttonbackgroundColorEnum.black}
+            />
+          </Link>
         </div>
       </div>
 

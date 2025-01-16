@@ -1,12 +1,5 @@
-@import '../../styles/text-colors.scss';
-@import '../../styles/colors.scss';
-
-.wrapper {
-  color: $primaryTextColor;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 20px;
-}
+@import '../../../../styles/colors.scss';
+@import '../../../../styles/text-colors.scss';
 
 .header {
   width: 100%;
@@ -19,6 +12,23 @@
   border-bottom: 1px solid $borderColor;
 }
 
+.container {
+  padding: 16px 24px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.container p {
+  color: $primaryTextColor;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.bold {
+  font-weight: 700;
+}
+
 .header img {
   cursor: pointer;
 }
@@ -27,19 +37,11 @@
   color: $primaryTextColor;
   font-weight: 600;
   line-height: 24px;
+  font-size: 16px;
 }
 
 .buttons {
   display: flex;
   gap: 16px;
   justify-content: flex-end;
-  border-top: 1px solid $borderColor;
-  padding: 12px 24px 24px 24px;
-}
-
-.container {
-  padding: 20px 24px 24px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 36px;
 }

@@ -1,14 +1,14 @@
 import Button from '@/app/components/Button/Button';
-import styles from './RevokeModal.module.scss';
+import styles from './PhpRestartModal.module.scss';
 import Image from 'next/image';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
-import { RevokeModalPropsInterface } from './interfaces/revoke-modal-props.interface';
+import { PhpRestartModalPropsInterface } from './interfaces/php-restart-modal-props.interface';
 
-const RevokeModal = (props: RevokeModalPropsInterface) => {
+const PhpRestartModal = (props: PhpRestartModalPropsInterface) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
-        <span className={styles.headline}>{props.headline}</span>
+        <span className={styles.headline}>Restart PHP</span>
         <Image
           src="/icons/close-mini.svg"
           alt="close"
@@ -19,7 +19,7 @@ const RevokeModal = (props: RevokeModalPropsInterface) => {
         />
       </div>
       <div className={styles.container}>
-        <p>{props.content}</p>
+        <p>Are you sure you want to restart your site&apos;s PHP engine?</p>
       </div>
       <div className={styles.buttons}>
         <Button
@@ -28,15 +28,15 @@ const RevokeModal = (props: RevokeModalPropsInterface) => {
           onClick={() => props.onClose()}
         />
         <Button
-          backgroundColor={buttonbackgroundColorEnum.red}
-          innerContent={props.buttonText}
+          backgroundColor={buttonbackgroundColorEnum.black}
+          innerContent="Restart PHP"
           onClick={() => props.onSuccess()}
-          loading={props.loading}
-          setLoading={props.setLoading}
+          //   loading={props.loading}
+          //   setLoading={props.setLoading}
         />
       </div>
     </div>
   );
 };
 
-export default RevokeModal;
+export default PhpRestartModal;

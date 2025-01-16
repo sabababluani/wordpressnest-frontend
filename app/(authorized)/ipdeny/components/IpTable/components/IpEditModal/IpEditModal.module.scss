@@ -1,5 +1,5 @@
-@import '../../styles/text-colors.scss';
-@import '../../styles/colors.scss';
+@import '../../../../../../styles/text-colors.scss';
+@import '../../../../../../styles/colors.scss';
 
 .wrapper {
   color: $primaryTextColor;
@@ -34,12 +34,22 @@
   gap: 16px;
   justify-content: flex-end;
   border-top: 1px solid $borderColor;
-  padding: 12px 24px 24px 24px;
+  padding: 16px 24px 24px 24px;
 }
 
 .container {
-  padding: 20px 24px 24px 20px;
+  padding: 12px 24px 12px 24px;
   display: flex;
   flex-direction: column;
   gap: 36px;
+}
+
+.container input {
+  flex: 1;
+  padding: 12px;
+  font-size: 14px;
+  color: $primaryTextColor;
+  border-radius: 8px;
+  outline: none;
+  border: 1px solid $borderColor;
 }

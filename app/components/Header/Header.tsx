@@ -50,7 +50,7 @@ const Header = (): JSX.Element => {
           control
         />
         <NotificationBell />
-        <Profile name={`${data?.firstName} ${data?.lastName}`} />
+        <Profile name={`${data?.firstName || ''} ${data?.lastName || ''}`} />
       </div>
       {isModalVisible && (
         <Modal

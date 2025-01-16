@@ -3,11 +3,12 @@ import { LogFetcherPropsInterface } from './interfaces/log-fetcher-props.interfa
 import styles from './LogFetcher.module.scss';
 import { useState } from 'react';
 import { useParams } from 'next/navigation';
+import { Spin } from 'antd';
 
 const LogFetcher = (props: LogFetcherPropsInterface) => {
   const { id } = useParams();
 
-  const [currentPage] = useState<number>(1);
+  const [currentPage] = useState(1);
 
   const logsPerPage = 500;
 
@@ -15,7 +16,7 @@ const LogFetcher = (props: LogFetcherPropsInterface) => {
     (setup) => setup.id === Number(id),
   );
 
-  const { data: fetchedLogs } = useGetData<string[]>({
+  const { data: fetchedLogs, isLoading } = useGetData<string[]>({
     endpoint: `/wordpress/${selectedSetup?.nameSpace}/logs/${selectedSetup?.podName}`,
     queryParams: {
       logFile: props.logFile,
@@ -29,14 +30,16 @@ const LogFetcher = (props: LogFetcherPropsInterface) => {
 
   return (
     <div className={styles.container}>
-      {filteredLogs && filteredLogs.length > 0 ? (
+      {filteredLogs && !isLoading ? (
         filteredLogs.map((log, index) => (
           <span key={index} className={styles.info}>
             {`${(currentPage - 1) * logsPerPage + index + 1}. ${log}`}
           </span>
         ))
       ) : (
-        <p>No logs found</p>
+        <div className={styles.spinner}>
+          <Spin />
+        </div>
       )}
     </div>
   );

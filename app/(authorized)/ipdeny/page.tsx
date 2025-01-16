@@ -18,10 +18,6 @@ const Ipdeny = (): JSX.Element => {
     setIsModalOpen(true);
   };
 
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
   const handleCancel = () => {
     setIsModalOpen(false);
   };
@@ -56,9 +52,7 @@ const Ipdeny = (): JSX.Element => {
         </div>
       )}
       <Modal
-        title=""
         open={isModalOpen}
-        onOk={handleOk}
         onCancel={handleCancel}
         footer={null}
         closable={false}
