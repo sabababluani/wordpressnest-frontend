@@ -10,6 +10,7 @@ import { domainsDummy } from './components/domainsdummy/domains-dummy-data';
 import { DomainsTablePropsInterface } from './components/interfaces/domains-table-props.interface';
 import AddDomainModal from './components/AddDomainModal/AddDomainModal';
 import Image from 'next/image';
+import CustomSsl from './components/CustomSsl/CustomSsl';
 
 // left last item dropdown z-index, dynamic page and connect to backend
 
@@ -17,6 +18,7 @@ const Domains = (): JSX.Element => {
   const [selectedRows, setSelectedRows] = useState<React.Key[]>([]);
   const [isAddDomainModal, setIsAddDomainModal] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<React.Key | null>(null);
+  const [isSslOpen, seIsSslOpen] = useState(false);
 
   const showModal = () => {
     setIsAddDomainModal(true);
@@ -119,9 +121,10 @@ const Domains = (): JSX.Element => {
                 <Button
                   backgroundColor={buttonbackgroundColorEnum.grey}
                   innerContent={'Custom SSL'}
+                  onClick={() => seIsSslOpen(true)}
                 />
                 <Button
-                  backgroundColor={buttonbackgroundColorEnum.domainsRed}
+                  backgroundColor={buttonbackgroundColorEnum.red}
                   innerContent={'Delete Domains'}
                 />
               </div>
@@ -154,11 +157,20 @@ const Domains = (): JSX.Element => {
         onCancel={handleCancel}
         footer={null}
         closable={false}
-        className={styles.modal}
         width={840}
         centered
       >
         <AddDomainModal onClose={handleCancel} />
+      </Modal>
+      <Modal
+        open={isSslOpen}
+        onCancel={() => seIsSslOpen(false)}
+        footer={null}
+        closable={false}
+        width={840}
+        centered
+      >
+        <CustomSsl onClose={() => seIsSslOpen(false)} />
       </Modal>
     </div>
   );

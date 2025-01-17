@@ -8,4 +8,5 @@ export interface ToolsDataPropsInterface {
   dropDownActive?: boolean;
   description: string;
   caption: string;
+  onClick?: () => void;
 }

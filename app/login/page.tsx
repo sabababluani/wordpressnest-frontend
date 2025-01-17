@@ -10,6 +10,7 @@ import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
 import { Checkbox, Select } from 'antd';
+import '../globals.css';
 
 const countryOptions = [
   {

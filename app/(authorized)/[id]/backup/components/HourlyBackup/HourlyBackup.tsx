@@ -49,7 +49,11 @@ const HourlyBackup = () => {
         footer={null}
         closable={false}
       >
-        <SixHoursModal onCancle={handleCloseModal} />
+        <SixHoursModal
+          onCancle={handleCloseModal}
+          onSuccess={() => {}}
+          external={false}
+        />
       </Modal>
     </div>
   );

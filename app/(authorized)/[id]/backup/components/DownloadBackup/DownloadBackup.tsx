@@ -6,42 +6,92 @@ import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.e
 import Image from 'next/image';
 import { Table, TableColumnsType } from 'antd';
 import { DownloadBackupPropsInterface } from './interfaces/download-backup-props.interface';
-
-const domainsDummy: DownloadBackupPropsInterface[] = [];
+import { useGetData } from '@/app/hooks/useGetData';
+import { useParams } from 'next/navigation';
+import { createData } from '@/app/api/crudService';
 
 const DownloadBackup = () => {
-  const [showBelowContainer, setShowBelowContainer] = useState(false);
-  const [showTable, setShowTable] = useState(false);
+  const { id } = useParams();
 
-  const handleButtonClick = () => {
+  const [showBelowContainer, setShowBelowContainer] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const onDownloadBackupAdd = async () => {
+    setLoading(true);
     setShowBelowContainer(true);
-    setShowTable(false);
-    setTimeout(() => {
+    try {
+      await createData(`backup/downloadablebackup/${id}`, {});
+      mutate();
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
       setShowBelowContainer(false);
-      setShowTable(true);
-    }, 5000);
+    }
+  };
+
+  const { data, isLoading, mutate } = useGetData<
+    DownloadBackupPropsInterface[]
+  >({
+    endpoint: `/backup/downloadable/${id}`,
+  });
+
+  const handleCopyLink = (url: string) => {
+    navigator.clipboard.writeText(url).then(
+      () => alert('Link copied to clipboard!'),
+      () => alert('Failed to copy link.'),
+    );
+  };
+
+  const handleDownload = (url: string) => {
+    window.open(url, '_blank');
   };
 
   const columns: TableColumnsType<DownloadBackupPropsInterface> = [
     {
       title: 'Created',
-      dataIndex: 'created',
-      key: 'created',
+      dataIndex: 'formatedCreatedAt',
+      key: 'formatedCreatedAt',
+      width: '40%',
     },
     {
       title: 'Expiry',
       dataIndex: 'expiry',
       key: 'expiry',
+      width: '40%',
     },
     {
       title: 'Link',
-      dataIndex: 'link',
-      key: 'link',
+      dataIndex: 's3ZippedUrl',
+      key: 's3ZippedUrl',
+      render: (url: string) => (
+        <div className={styles.imgWrapper}>
+          <Image
+            src={'/icons/copylink.svg'}
+            width={24}
+            height={24}
+            alt="copylink"
+            onClick={() => handleCopyLink(url)}
+            style={{ cursor: 'pointer' }}
+          />
+        </div>
+      ),
+      width: '20%',
     },
     {
       title: 'Download',
-      dataIndex: 'download',
+      dataIndex: 's3ZippedUrl',
       key: 'download',
+      render: (url: string) => (
+        <div className={styles.button}>
+          <Button
+            backgroundColor={buttonbackgroundColorEnum.grey}
+            innerContent="Download"
+            onClick={() => handleDownload(url)}
+          />
+        </div>
+      ),
+      width: '20%',
     },
   ];
 
@@ -60,35 +110,36 @@ const DownloadBackup = () => {
           <Button
             backgroundColor={buttonbackgroundColorEnum.black}
             innerContent="Create Backup now"
-            onClick={handleButtonClick}
+            onClick={onDownloadBackupAdd}
+            loading={loading}
+            setLoading={setLoading}
           />
         </div>
-
-        {showBelowContainer && (
-          <div className={styles.belowContainer}>
-            <Image
-              src="/icons/loading.svg"
-              alt="Loading..."
-              width={48}
-              height={48}
-              className={styles.spinningIcon}
-            />
-            <p>We are creating the backup</p>
-            <span>
-              This may take several minutes depending on the size of your site.
-              We will send you an email as soon as the backup is ready for you
-              to download.
-            </span>
-          </div>
-        )}
       </div>
 
-      {showTable && (
+      {showBelowContainer ? (
+        <div className={styles.belowContainer}>
+          <Image
+            src="/icons/loading.svg"
+            alt="Loading..."
+            width={48}
+            height={48}
+            className={styles.spinningIcon}
+          />
+          <p>We are creating the backup</p>
+          <span>
+            This may take several minutes depending on the size of your site. We
+            will send you an email as soon as the backup is ready for you to
+            download.
+          </span>
+        </div>
+      ) : (
         <div className={styles.tableWrapper}>
           <Table<DownloadBackupPropsInterface>
             columns={columns}
-            dataSource={domainsDummy}
+            dataSource={data}
             pagination={false}
+            loading={isLoading}
             locale={{ emptyText: 'Downloadable backups will appear here.' }}
           />
         </div>

@@ -70,6 +70,7 @@ const DailyBackupTable = () => {
         pagination={false}
         rowKey={(record) => record.id}
         loading={isLoading}
+        locale={{ emptyText: 'Daily backups will appear here.' }}
       />
       <Modal
         width={840}

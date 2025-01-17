@@ -120,6 +120,8 @@ const DailyBackupModal = (props: DailyBackupModalPropsInterface) => {
             backgroundColor={buttonbackgroundColorEnum.black}
             innerContent="Restore Backup"
             onClick={props.onSuccess}
+            loading={props.loading}
+            setLoading={props.setLoading}
           />
         </div>
       </div>

@@ -1,5 +1,5 @@
-@import '../../../../styles/text-colors.scss';
-@import '../../../../styles/colors.scss';
+@import '../../../../../styles/text-colors.scss';
+@import '../../../../../styles/colors.scss';
 
 .mainWrapper {
   flex: 1;
@@ -123,4 +123,8 @@
   max-width: 140px;
   width: 100%;
   cursor: pointer;
+}
+
+.buttonContainer:hover {
+  background-color: #f6f6f6;
 }

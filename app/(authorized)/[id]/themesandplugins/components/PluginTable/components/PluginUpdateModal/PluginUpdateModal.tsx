@@ -39,6 +39,8 @@ const PluginUpdateModal = (props: PluginUpdateModalPropsInterface) => {
             backgroundColor={buttonbackgroundColorEnum.black}
             innerContent={'Update plugin'}
             onClick={props.onActivate}
+            loading={props.loading}
+            setLoading={props.setLoading}
           />
         </div>
       </div>

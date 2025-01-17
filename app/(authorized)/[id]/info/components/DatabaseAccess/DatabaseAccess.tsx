@@ -3,16 +3,19 @@ import styles from './DatabaseAccess.module.scss';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { DataBasePropsInterface } from './interfaces/data-base-access-props.interface';
+import Link from 'next/link';
 
 const DataBaseAccess = (props: DataBasePropsInterface): JSX.Element => {
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.topContainer}>
         <span className={styles.mainCaptionStyle}>Database access </span>
-        <Button
-          backgroundColor={buttonbackgroundColorEnum.greyBold}
-          innerContent="Open PHP admin"
-        />
+        <Link href={`http://${props.phpAdmin}`} target="_blank">
+          <Button
+            backgroundColor={buttonbackgroundColorEnum.greyBold}
+            innerContent="Open PHP admin"
+          />
+        </Link>
       </div>
       <div className={styles.bottomContainer}>
         <div className={styles.dataBaseWrapper}>

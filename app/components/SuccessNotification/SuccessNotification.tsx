@@ -1,12 +1,17 @@
-import { Checkbox } from 'antd';
 import styles from './SuccessNotification.module.scss';
 import { SuccessNotificationPropsInterface } from './interfaces/success-notification-props.interface';
+import Image from 'next/image';
 
 const SuccessNotification = (props: SuccessNotificationPropsInterface) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.checkbox}>
-        <Checkbox checked />
+        <Image
+          src={'/icons/successCheck.svg'}
+          alt="toggleMessage"
+          width={20}
+          height={20}
+        />
       </div>
       <div className={styles.container}>
         <span className={styles.done}>Done</span>

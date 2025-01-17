@@ -11,18 +11,23 @@ const ManualBackupCreateModal = (
   props: ManualBackupCreateModalPropsInterface,
 ) => {
   const [backupNote, setBackupNote] = useState<string>('');
+  const [loading, setLoading] = useState(false);
+
   const { id } = useParams();
   const numberId = Number(id);
 
   const onNoteAdd = async () => {
+    setLoading(true);
     try {
-      await createData(`backup/ManualLimit/${numberId}`, { note: backupNote });
+      await createData(`backup/manualimit/${numberId}`, { note: backupNote });
       props.mutate();
       props.mutateProgress();
       props.onClose();
       setBackupNote('');
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -62,6 +67,8 @@ const ManualBackupCreateModal = (
           backgroundColor={buttonbackgroundColorEnum.black}
           innerContent="Create Backup"
           onClick={onNoteAdd}
+          loading={loading}
+          setLoading={setLoading}
         />
       </div>
     </div>

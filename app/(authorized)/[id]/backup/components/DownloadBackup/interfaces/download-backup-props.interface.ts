@@ -1,7 +1,7 @@
 export interface DownloadBackupPropsInterface {
   key: React.Key;
-  created: string;
+  formatedCreatedAt: string;
   expiry: string;
-  link: string;
+  s3ZippedUrl: string;
   download: string;
 }

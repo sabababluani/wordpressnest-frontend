@@ -3,10 +3,12 @@
 import { useState } from 'react';
 import styles from './ExternalBackup.module.scss';
 import ExternalBackupBox from './components/ExternalBackupBox/ExternalBackupBox';
+import EnableExternalModal from './components/EnableExternalModal/EnableExternalModal';
+import { Modal } from 'antd';
 
 const ExternalBackup = () => {
-  const [, setIsActive] = useState(false);
-  const [activeCheckbox, setActiveCheckbox] = useState<number>(0);
+  const [isActive, setIsActive] = useState(false);
+  const [activeCheckbox, setActiveCheckbox] = useState(0);
 
   const handleCheckboxClick = (index: number) => {
     setActiveCheckbox(index);
@@ -47,6 +49,16 @@ const ExternalBackup = () => {
           title={'Google cloud storage'}
         />
       </div>
+      <Modal
+        width={840}
+        open={isActive}
+        onCancel={() => setIsActive(false)}
+        footer={null}
+        closable={false}
+        centered
+      >
+        <EnableExternalModal onClose={() => setIsActive(false)} />
+      </Modal>
     </div>
   );
 };

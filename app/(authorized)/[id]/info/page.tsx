@@ -69,12 +69,14 @@ const Info = (): JSX.Element => {
               backgroundColor={buttonbackgroundColorEnum.grey}
             />
           </Link>
-          <Button
-            innerContent="Visit Site"
-            innerContentIcon={innerContentIconEnum.siteIcon}
-            innerContentIconActive
-            backgroundColor={buttonbackgroundColorEnum.black}
-          />
+          <Link href={`http://${site.wpfullIp}`} target="_blank">
+            <Button
+              innerContent="Visit Site"
+              innerContentIcon={innerContentIconEnum.siteIcon}
+              innerContentIconActive
+              backgroundColor={buttonbackgroundColorEnum.black}
+            />
+          </Link>
         </div>
       </div>
 
@@ -111,6 +113,7 @@ const Info = (): JSX.Element => {
           ip="ALL IPs allowed"
           database={site.dbName}
           databaseUsername="root"
+          phpAdmin={site.phpAdminFullIp}
         />
 
         <Site
@@ -147,6 +150,7 @@ const Info = (): JSX.Element => {
         onCancel={() => setIsResetModalOpen(false)}
         footer={null}
         closable={false}
+        centered
       >
         <ResetSiteModal onClose={() => setIsResetModalOpen(false)} />
       </Modal>

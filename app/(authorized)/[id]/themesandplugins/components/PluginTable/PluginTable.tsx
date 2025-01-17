@@ -38,6 +38,7 @@ const PluginTable = () => {
   const [filteredPlugins, setFilteredPlugins] = useState<
     PluginDataPropsInterface[]
   >([]);
+  const [loading, setLoading] = useState(false);
 
   const {
     data: plugins,
@@ -64,7 +65,6 @@ const PluginTable = () => {
     pluginName: string[],
   ) => {
     setModalOpen(true);
-
     try {
       await patchData(`wp-cli/plugin/${action}`, numberId, {
         plugins: pluginName,
@@ -73,6 +73,8 @@ const PluginTable = () => {
       mutate();
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
     setModalOpen(false);
   };
@@ -108,6 +110,8 @@ const PluginTable = () => {
       mutate();
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -133,6 +137,7 @@ const PluginTable = () => {
     : `${filteredSelectedPlugins.length}`;
 
   const handleAction = () => {
+    setLoading(true);
     const isActivating = modalAction === ThemesAndPluginsActionEnum.ACTIVATE;
     const action = isActivating
       ? ThemesAndPluginsActionEnum.ENABLE
@@ -255,16 +260,13 @@ const PluginTable = () => {
             <div className={styles.searchHeader}>
               <h2>Installed Plugins</h2>
               {selectedPlugins.length > 0 && (
-                <div className={styles.reloadWrap}>
-                  <span>Updated 2 Days Ago</span>
-                  <Button
-                    backgroundColor={buttonbackgroundColorEnum.grey}
-                    innerContent="Reload"
-                    innerContentIconActive
-                    innerContentIcon="/icons/reload.svg"
-                    onClick={handleReload}
-                  />
-                </div>
+                <Button
+                  backgroundColor={buttonbackgroundColorEnum.grey}
+                  innerContent="Reload"
+                  innerContentIconActive
+                  innerContentIcon="/icons/reload.svg"
+                  onClick={handleReload}
+                />
               )}
             </div>
             <div className={styles.searchInput}>
@@ -314,16 +316,13 @@ const PluginTable = () => {
                     />
                   </div>
                 ) : (
-                  <div className={styles.reloadWrap}>
-                    <span>Updated 2 Days Ago</span>
-                    <Button
-                      backgroundColor={buttonbackgroundColorEnum.grey}
-                      innerContent="Reload"
-                      innerContentIconActive
-                      innerContentIcon="/icons/reload.svg"
-                      onClick={handleReload}
-                    />
-                  </div>
+                  <Button
+                    backgroundColor={buttonbackgroundColorEnum.grey}
+                    innerContent="Reload"
+                    innerContentIconActive
+                    innerContentIcon="/icons/reload.svg"
+                    onClick={handleReload}
+                  />
                 )}
               </div>
             </div>
@@ -356,6 +355,8 @@ const PluginTable = () => {
           onClose={handleModalClose}
           onActivate={handleAction}
           modalAction={modalAction}
+          loading={loading}
+          setLoading={setLoading}
         />
       </Modal>
       <Modal
@@ -382,8 +383,13 @@ const PluginTable = () => {
           <PluginUpdateModal
             pluginName={pluginName}
             onClose={() => setIsUpdateAction(false)}
-            onActivate={() => onHandleUpdate(selectedPlugin.name)}
+            onActivate={() => {
+              setLoading(true);
+              onHandleUpdate(selectedPlugin.name);
+            }}
             type={'plugin'}
+            loading={loading}
+            setLoading={setLoading}
           />
         )}
       </Modal>

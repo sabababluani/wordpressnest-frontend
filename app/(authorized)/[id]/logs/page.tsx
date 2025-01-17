@@ -9,10 +9,10 @@ import LogFetcher from './components/LogFetcher/LogFetcher';
 
 const Logs = () => {
   const [infoLogs] = useState<string[]>([]);
-  const [selectState, setSelectState] = useState<string>('error.log');
-  const [quantity, setQuantity] = useState<string>('1000');
-  const [, setCurrentPage] = useState<number>(1);
-  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [selectState, setSelectState] = useState('error.log');
+  const [quantity, setQuantity] = useState('1000');
+  const [, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const { data: userInfo } = useGetData<UserInterface>({
     endpoint: 'user/me/',
@@ -83,15 +83,13 @@ const Logs = () => {
           </div>
         </div>
       </div>
-      {userInfo && (
-        <LogFetcher
-          userInfo={userInfo}
-          logFile={selectState}
-          limit={quantity}
-          infoLogs={infoLogs}
-          searchQuery={searchQuery}
-        />
-      )}
+      <LogFetcher
+        userInfo={userInfo}
+        logFile={selectState}
+        limit={quantity}
+        infoLogs={infoLogs}
+        searchQuery={searchQuery}
+      />
     </div>
   );
 };

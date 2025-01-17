@@ -32,6 +32,7 @@ const ThemeTable = () => {
     ThemesTablePropsInterface[]
   >([]);
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const {
     data: themes,
@@ -63,11 +64,14 @@ const ThemeTable = () => {
   }, [themes, searchValue]);
 
   const onHandleActive = async (themeName: string) => {
+    setLoading(true);
     try {
       await patchData(`wp-cli/theme`, NumberId, { theme: themeName });
       mutate();
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
     setModalOpen(false);
   };
@@ -185,7 +189,6 @@ const ThemeTable = () => {
               <h2>Installed Themes</h2>
               {selectedThemes.length > 0 && (
                 <div className={styles.reloadWrap}>
-                  <span>Updated 2 Days Ago</span>
                   <Button
                     backgroundColor={buttonbackgroundColorEnum.grey}
                     innerContent="Reload"
@@ -230,7 +233,6 @@ const ThemeTable = () => {
                   </div>
                 ) : (
                   <div className={styles.reloadWrap}>
-                    <span>Updated 2 Days Ago</span>
                     <Button
                       backgroundColor={buttonbackgroundColorEnum.grey}
                       innerContent="Reload"
@@ -270,6 +272,8 @@ const ThemeTable = () => {
           onActivate={() =>
             selectedTheme && onHandleActive(selectedTheme.themeName!)
           }
+          loading={loading}
+          setLoading={setLoading}
         />
       </Modal>
 

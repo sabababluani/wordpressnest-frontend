@@ -40,6 +40,8 @@ const ActivateModal = (props: ActivateModalPropsInterface) => {
             backgroundColor={buttonbackgroundColorEnum.black}
             innerContent={isActivate ? 'Activate plugin' : 'Deactivate plugin'}
             onClick={props.onActivate}
+            loading={props.loading}
+            setLoading={props.setLoading}
           />
         </div>
       </div>

@@ -1,10 +1,17 @@
+'use client';
+
 import Image from 'next/image';
 import Button from '../../components/Button/Button';
 import { buttonbackgroundColorEnum } from '../../components/Button/enum/button.enum';
 import styles from './page.module.scss';
 import { companiesData } from './access-dummy/access-dummy';
+import AccessLeaveCompanyModal from './components/AccessLeaveCompanyModal/AccessLeaveCompanyModal';
+import { Modal } from 'antd';
+import { useState } from 'react';
 
 const Access = () => {
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
@@ -40,11 +47,24 @@ const Access = () => {
                 alt={`delete ${company.name}`}
                 width={24}
                 height={24}
+                onClick={() => setIsDeleteModalOpen(true)}
               />
             </div>
           </div>
         ))}
       </div>
+      <Modal
+        width={840}
+        open={isDeleteModalOpen}
+        onCancel={() => setIsDeleteModalOpen(true)}
+        footer={null}
+        closable={false}
+      >
+        <AccessLeaveCompanyModal
+          onClose={() => setIsDeleteModalOpen(false)}
+          onSuccess={() => {}}
+        />
+      </Modal>
     </div>
   );
 };

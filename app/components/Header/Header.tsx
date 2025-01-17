@@ -8,6 +8,8 @@ import BreadCrumbs from './components/Breadcrumbs/Breadcrumbs';
 import NotificationBell from './components/NotificationBell/NotificationBell';
 import Profile from './components/Profile/Profile';
 import SearchBox from '../SearchBox/SearchBox';
+import { useGetData } from '@/app/hooks/useGetData';
+import { UserInterface } from '../Navigation/interfaces/navigation.props.interface';
 
 const Header = (): JSX.Element => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -34,6 +36,8 @@ const Header = (): JSX.Element => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  const { data } = useGetData<UserInterface>({ endpoint: 'user/me' });
+
   return (
     <div className={styles.container}>
       <BreadCrumbs />
@@ -46,7 +50,7 @@ const Header = (): JSX.Element => {
           control
         />
         <NotificationBell />
-        <Profile name="Jigaro Jigaroshvili" />
+        <Profile name={`${data?.firstName || ''} ${data?.lastName || ''}`} />
       </div>
       {isModalVisible && (
         <Modal

@@ -3,4 +3,5 @@ export interface DataBasePropsInterface {
   databaseUsername: string;
   databasePassword: string;
   ip: string;
+  phpAdmin: string;
 }

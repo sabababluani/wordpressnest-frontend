@@ -20,18 +20,20 @@ const RevokeModal = (props: RevokeModalPropsInterface) => {
       </div>
       <div className={styles.container}>
         <p>{props.content}</p>
-        <div className={styles.buttons}>
-          <Button
-            backgroundColor={buttonbackgroundColorEnum.grey}
-            innerContent="Cancel"
-            onClick={() => props.onClose()}
-          />
-          <Button
-            backgroundColor={buttonbackgroundColorEnum.red}
-            innerContent={props.buttonText}
-            onClick={() => props.onSuccess()}
-          />
-        </div>
+      </div>
+      <div className={styles.buttons}>
+        <Button
+          backgroundColor={buttonbackgroundColorEnum.grey}
+          innerContent="Cancel"
+          onClick={() => props.onClose()}
+        />
+        <Button
+          backgroundColor={buttonbackgroundColorEnum.red}
+          innerContent={props.buttonText}
+          onClick={() => props.onSuccess()}
+          loading={props.loading}
+          setLoading={props.setLoading}
+        />
       </div>
     </div>
   );
