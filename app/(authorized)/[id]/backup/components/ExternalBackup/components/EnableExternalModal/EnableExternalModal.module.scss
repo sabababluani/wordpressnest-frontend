@@ -1,0 +1,346 @@
+@import '../../../../../../../styles/colors.scss';
+@import '../../../../../../../styles/text-colors.scss';
+
+.header {
+  width: 100%;
+  display: flex;
+  background-color: #f0f3f5;
+  padding: 16px 24px;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 12px 12px 0 0;
+  border-bottom: 1px solid $borderColor;
+}
+
+.header img {
+  cursor: pointer;
+}
+
+.headline {
+  color: $primaryTextColor;
+  font-weight: 600;
+  line-height: 24px;
+  font-size: 16px;
+}
+
+.containerWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  padding: 12px 24px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.steper span {
+  color: $primaryTextColor;
+}
+
+.steper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.steper {
+  cursor: pointer;
+
+  &.activeStep {
+    color: black;
+  }
+
+  &.inactiveStep {
+    color: gray;
+  }
+
+  .circle {
+    &.activeCircle {
+      background-color: black;
+    }
+
+    &.inactiveCircle {
+      background-color: gray;
+    }
+  }
+
+  .line {
+    &.activeLine {
+      background-color: black;
+    }
+
+    &.inactiveLine {
+      background-color: gray;
+    }
+  }
+}
+
+.line {
+  width: 100%;
+  border-radius: 12px;
+  height: 5px;
+  background-color: $primaryTextColor;
+}
+
+.circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: $primaryTextColor;
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+}
+
+.grayCircle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: $borderColor;
+}
+
+.lineCircle {
+  width: 100%;
+  border-radius: 12px;
+  height: 5px;
+  background-color: $borderColor;
+}
+
+.firstStep {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputContainer span {
+  color: $primaryTextColor;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.inputContainer input {
+  font-size: 14px;
+  border: 1px solid $borderColor;
+  border-radius: 8px;
+  padding: 12px;
+  outline: none;
+  color: $primaryTextColor;
+}
+
+.check :global(.ant-checkbox-wrapper .ant-checkbox .ant-checkbox-inner) {
+  border: none !important;
+  width: 24px;
+  height: 24px;
+  border: 2px solid $borderColor !important;
+}
+
+.check
+  :global(.ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner) {
+  background-color: black !important;
+  border: none !important;
+}
+
+.check :global(.ant-checkbox-wrapper .ant-checkbox .ant-checkbox-inner::after) {
+  width: 7.1px !important;
+  height: 12px !important;
+}
+
+.checkWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.checkWrapper span {
+  color: $primaryTextColor;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+}
+
+.checkContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.secondStep {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.secondStepContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.secondStepContainer > span {
+  color: $primaryTextColor;
+  font-weight: 500;
+  line-height: 24px;
+  font-size: 16px;
+}
+
+.nextBackup {
+  color: #707276;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.subscription p {
+  color: #545a67;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.subscription {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.PaymentWrapperContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 24px;
+}
+
+.priceBox {
+  border: 1px solid $borderColor;
+  padding: 16px 24px;
+  border-radius: 12px;
+}
+
+.headerBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 0 24px 0;
+  border-bottom: 1px solid $borderColor;
+}
+
+.backups {
+  color: #545a67;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.price {
+  color: $primaryTextColor;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.bodyBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bodyContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 20px;
+}
+
+.paymentContainer {
+  width: 100%;
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $borderColor;
+}
+
+.paymentCardName {
+  color: $primaryTextColor;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.paymentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+}
+
+.description span {
+  color: #545a67;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.boldHeading {
+  color: $primaryTextColor;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.radios {
+  display: flex;
+  flex-direction: column;
+}
+
+.types :global .ant-radio-inner::after {
+  background-color: $primaryTextColor !important;
+  width: 22px;
+  height: 22px;
+  margin-block-start: -11px;
+  margin-inline-start: -11px;
+}
+
+.types :global .ant-radio-checked .ant-radio-inner {
+  background-color: #fff !important;
+  border-color: #707276 !important;
+}
+
+.types :global .ant-radio-wrapper {
+  font-size: 16px;
+  color: $primaryColor !important;
+}
+
+.types :global .ant-radio-wrapper:hover .ant-radio-inner {
+  border-color: #707276 !important;
+}

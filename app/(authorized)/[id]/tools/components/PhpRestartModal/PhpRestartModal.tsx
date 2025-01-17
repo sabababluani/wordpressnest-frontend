@@ -31,8 +31,8 @@ const PhpRestartModal = (props: PhpRestartModalPropsInterface) => {
           backgroundColor={buttonbackgroundColorEnum.black}
           innerContent="Restart PHP"
           onClick={() => props.onSuccess()}
-          //   loading={props.loading}
-          //   setLoading={props.setLoading}
+          loading={props.loading}
+          setLoading={props.setLoading}
         />
       </div>
     </div>

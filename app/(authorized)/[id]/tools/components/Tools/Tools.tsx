@@ -20,7 +20,7 @@ const Tools = (props: ToolsDataPropsInterface): JSX.Element => {
             <Image
               width={24}
               height={24}
-              src={`icons/${props.iconPath}`}
+              src={`/icons/${props.iconPath}`}
               alt={'icon'}
             />
           </div>
@@ -48,7 +48,7 @@ const Tools = (props: ToolsDataPropsInterface): JSX.Element => {
                 <Image
                   width={20}
                   height={20}
-                  src={`icons/${props.buttonIconPath}`}
+                  src={`/icons/${props.buttonIconPath}`}
                   alt={'icon'}
                 />
               )}

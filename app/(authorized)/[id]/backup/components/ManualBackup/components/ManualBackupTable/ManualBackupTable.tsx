@@ -41,7 +41,7 @@ const ManualBackupTable = () => {
     setLoading(true);
     if (!selectedBackupId) return;
     try {
-      await deleteData('backup/deleteBackupFromPod', selectedBackupId);
+      await deleteData('backup/deletefrompod', selectedBackupId);
       mutateManualBackup();
       mutateProgress();
       setIsDeleteModalVisible(false);

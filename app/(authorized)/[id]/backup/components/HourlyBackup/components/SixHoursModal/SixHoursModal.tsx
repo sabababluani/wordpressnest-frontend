@@ -56,13 +56,15 @@ const SixHoursModal = (props: SixHoursModalPropsInterface) => {
             <span className={styles.paymentCardName}>**** 5980</span>
           </div>
         </div>
-        <div className={styles.description}>
-          <span>Your card will be charged on Dec 30, 2024.</span>
-          <span>
-            This bill will include the add-on&apos;s cost for the following
-            billing cycle.
-          </span>
-        </div>
+        {props.external && (
+          <div className={styles.description}>
+            <span>Your card will be charged on Dec 30, 2024.</span>
+            <span>
+              This bill will include the add-on&apos;s cost for the following
+              billing cycle.
+            </span>
+          </div>
+        )}
         <div className={styles.buttons}>
           <Button
             backgroundColor={buttonbackgroundColorEnum.grey}
@@ -72,6 +74,7 @@ const SixHoursModal = (props: SixHoursModalPropsInterface) => {
           <Button
             backgroundColor={buttonbackgroundColorEnum.black}
             innerContent="Enable 6-hours backups"
+            onClick={props.onSuccess}
           />
         </div>
       </div>
