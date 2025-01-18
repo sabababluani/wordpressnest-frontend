@@ -1,13 +1,13 @@
 import { Modal } from 'antd';
 import { useState } from 'react';
 import Tools from '../Tools/Tools';
-import SearchReplaceModal from '../SeachReplaceModal/SearchReplaceModal';
+import SearchReplaceModal from './components/SeachReplaceModal/SearchReplaceModal';
 
 const SearchAndReplace = () => {
   const [isSearchReplaceOpen, setIsSearchReplaceOpen] = useState(false);
 
   return (
-    <div>
+    <>
       <Tools
         iconPath={'searchTools.svg'}
         description={
@@ -30,7 +30,7 @@ const SearchAndReplace = () => {
           onSuccess={() => {}}
         />
       </Modal>
-    </div>
+    </>
   );
 };
 

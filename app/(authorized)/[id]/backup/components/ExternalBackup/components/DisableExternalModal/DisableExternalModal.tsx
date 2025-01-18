@@ -59,6 +59,7 @@ const DisableExternalModal = (props: DisableExternalModalPropsInterface) => {
             backgroundColor={buttonbackgroundColorEnum.black}
             innerContent="Remove AWS Backups"
             disableButton={!isCheckboxChecked}
+            onClick={props.onSuccess}
           />
         </div>
       </div>

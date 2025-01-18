@@ -26,7 +26,7 @@
 .containerWrapper {
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: 32px;
   padding: 12px 24px;
 }
 
@@ -181,6 +181,23 @@
   justify-content: flex-end;
 }
 
+.button {
+  padding: 11px 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  border: none;
+  background-color: #000;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #313030;
+  color: #fff;
+}
+
 .checkContainer {
   display: flex;
   flex-direction: column;
@@ -230,7 +247,6 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 16px 24px;
 }
 
 .priceBox {

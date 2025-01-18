@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Tools from '../Tools/Tools';
-import PhpRestartModal from '../PhpRestartModal/PhpRestartModal';
 import { Modal } from 'antd';
 import { createData } from '@/app/api/crudService';
 import { useParams } from 'next/navigation';
+import PhpRestartModal from './components/PhpRestartModal/PhpRestartModal';
 
 const RestartPhp = () => {
   const { id } = useParams();

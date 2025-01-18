@@ -1,64 +1,117 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styles from './ExternalBackup.module.scss';
 import ExternalBackupBox from './components/ExternalBackupBox/ExternalBackupBox';
 import EnableExternalModal from './components/EnableExternalModal/EnableExternalModal';
+import DisableExternalModal from './components/DisableExternalModal/DisableExternalModal';
+import EnableExternalTable from './components/EnableExternalModal/components/EnableExternalTable/EnableExternalTable';
+import Button from '@/app/components/Button/Button';
+import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { Modal } from 'antd';
+import { MODAL_TYPE } from './enums/extenral-backup.enum';
+import ExternalChangePlanModal from './components/ExternalChangePlanModal/ExternalChangePlanModal';
 
 const ExternalBackup = () => {
-  const [isActive, setIsActive] = useState(false);
-  const [activeCheckbox, setActiveCheckbox] = useState(0);
+  const [activeService, setActiveService] = useState<number | null>(null);
+  const [activeModal, setActiveModal] = useState<MODAL_TYPE | null>(null);
 
-  const handleCheckboxClick = (index: number) => {
-    setActiveCheckbox(index);
-    if (index === 1) {
-      setIsActive(true);
-    }
+  const openModal = (type: MODAL_TYPE) => setActiveModal(type);
+  const closeModal = () => setActiveModal(null);
+
+  const handleServiceSelect = (serviceId: number) => {
+    setActiveService(serviceId);
+    if (serviceId === 1) openModal(MODAL_TYPE.ENABLE_BACKUP);
   };
 
   return (
     <div className={styles.wrapper}>
-      <div>
+      <div className={styles.header}>
         <h1>External Backup</h1>
         <p>You can set backups every 6-hours or every hour.</p>
       </div>
+
       <div className={styles.container}>
         <ExternalBackupBox
           id={1}
           image="/aws.svg"
-          hours={''}
-          price={'2 USD / site / month'}
-          description={
-            'Create and upload a backup (files, database, or both) to your own Amazon S3 account once a week or month.'
-          }
-          isActive={activeCheckbox === 1}
-          onClick={() => handleCheckboxClick(1)}
-          title={'Amazon S3'}
+          hours=""
+          price="2 USD / site / month"
+          description="Create and upload a backup (files, database, or both) to your own Amazon S3 account once a week or month."
+          isActive={activeService === 1}
+          onClick={() => handleServiceSelect(1)}
+          title="Amazon S3"
         />
         <ExternalBackupBox
           id={2}
-          hours={''}
-          price={'100  USD / site / month'}
-          description={
-            'Backups created every hour and available for 24 hours, providing 24 additional restore points over the last day. Ideal for ecommerce sites, membership sites, and sites that change continuously.'
-          }
-          isActive={activeCheckbox === 2}
-          onClick={() => handleCheckboxClick(2)}
-          image={'/googlecloud.svg'}
-          title={'Google cloud storage'}
+          image="/googlecloud.svg"
+          hours=""
+          price="100 USD / site / month"
+          description="Backups created every hour and available for 24 hours, providing 24 additional restore points over the last day. Ideal for ecommerce sites, membership sites, and sites that change continuously."
+          isActive={activeService === 2}
+          onClick={() => handleServiceSelect(2)}
+          title="Google Cloud Storage"
         />
       </div>
-      <Modal
-        width={840}
-        open={isActive}
-        onCancel={() => setIsActive(false)}
-        footer={null}
-        closable={false}
-        centered
-      >
-        <EnableExternalModal onClose={() => setIsActive(false)} />
-      </Modal>
+
+      <div className={styles.tableWrapper}>
+        <div className={styles.tableContainer}>
+          <div className={styles.header}>
+            <h1>External Backup</h1>
+            <p>You can set backups every 6-hours or every hour.</p>
+          </div>
+          <div className={styles.buttons}>
+            <span className={styles.headingSpan}>AWS - Weekly</span>
+            <Button
+              backgroundColor={buttonbackgroundColorEnum.grey}
+              innerContent="Change Plan"
+              onClick={() => openModal(MODAL_TYPE.CHANGE_PLAN)}
+            />
+            <Button
+              backgroundColor={buttonbackgroundColorEnum.grey}
+              innerContent="Disable"
+              onClick={() => openModal(MODAL_TYPE.DISABLE_BACKUP)}
+            />
+          </div>
+        </div>
+        <EnableExternalTable />
+      </div>
+
+      {activeModal === MODAL_TYPE.ENABLE_BACKUP && (
+        <Modal
+          width={840}
+          open
+          onCancel={closeModal}
+          footer={null}
+          closable={false}
+          centered
+        >
+          <EnableExternalModal onClose={closeModal} />
+        </Modal>
+      )}
+
+      {activeModal === MODAL_TYPE.DISABLE_BACKUP && (
+        <Modal
+          width={840}
+          open
+          onCancel={closeModal}
+          footer={null}
+          closable={false}
+        >
+          <DisableExternalModal onClose={closeModal} onSuccess={() => {}} />
+        </Modal>
+      )}
+      {activeModal === MODAL_TYPE.CHANGE_PLAN && (
+        <Modal
+          width={1000}
+          open
+          onCancel={closeModal}
+          footer={null}
+          closable={false}
+        >
+          <ExternalChangePlanModal onClose={closeModal} />
+        </Modal>
+      )}
     </div>
   );
 };

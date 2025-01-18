@@ -9,9 +9,8 @@ import Button from '@/app/components/Button/Button';
 import Image from 'next/image';
 
 const Cdn = (): JSX.Element => {
-  const [isExcludeModalOpen, setIsExcludeModalOpen] = useState<boolean>(false);
-  const [isCdnImageModalOpen, setIsCdnImageModalOpen] =
-    useState<boolean>(false);
+  const [isExcludeModalOpen, setIsExcludeModalOpen] = useState(false);
+  const [isCdnImageModalOpen, setIsCdnImageModalOpen] = useState(false);
 
   return (
     <div className={styles.bottomContainer}>
