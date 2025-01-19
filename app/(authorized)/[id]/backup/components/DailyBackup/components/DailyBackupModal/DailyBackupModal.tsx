@@ -6,6 +6,7 @@ import { DailyBackupModalPropsInterface } from './interfaces/daily-backup-modal-
 import { useGetData } from '@/app/hooks/useGetData';
 import { UserInterface } from '@/app/components/Navigation/interfaces/navigation.props.interface';
 import { useParams } from 'next/navigation';
+import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 
 const DailyBackupModal = (props: DailyBackupModalPropsInterface) => {
   const { id } = useParams();
@@ -17,17 +18,10 @@ const DailyBackupModal = (props: DailyBackupModalPropsInterface) => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.header}>
-        <span className={styles.headline}>Confirm backup restoration</span>
-        <Image
-          src="/icons/close-mini.svg"
-          alt="close"
-          width={24}
-          height={24}
-          className={styles.close}
-          onClick={props.onClose}
-        />
-      </div>
+      <ModalHeader
+        headline={'Confirm backup restoration'}
+        onClose={props.onClose}
+      />
       <div className={styles.container}>
         <div className={styles.boxesWrapper}>
           <div className={styles.box}>

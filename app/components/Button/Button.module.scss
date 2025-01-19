@@ -69,11 +69,13 @@
   border-radius: 8px;
   color: #fff;
   font-weight: 500;
+  border: 1px solid $primaryColor !important;
 }
 
 .backgroundBlackColor:hover {
   background-color: #313030 !important;
   color: #fff !important;
+  border: 1px solid #313030 !important;
 }
 
 .backgroundRedColor {
@@ -125,8 +127,8 @@
 .disabledButton {
   cursor: not-allowed;
   background-color: #f4f5f6;
-  color: #545a67;
-  border: 1px solid $borderColor;
+  color: #545a67 !important;
+  border: 1px solid $borderColor !important;
   font-weight: 500;
 }
 

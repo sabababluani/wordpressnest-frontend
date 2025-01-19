@@ -1,15 +1,11 @@
 'use client';
 
-import { Modal } from 'antd';
 import styles from './page.module.scss';
-import { useState } from 'react';
-import SearchReplaceModal from './components/SeachReplaceModal/SearchReplaceModal';
 import Tools from './components/Tools/Tools';
 import RestartPhp from './components/RestartPhp/RestartPhp';
+import SearchAndReplace from './components/SearchAndReplace/SearchAndReplace';
 
 const ToolsPage = (): JSX.Element => {
-  const [isSearchReplaceOpen, setIsSearchReplaceOpen] = useState(false);
-
   return (
     <>
       <div className={styles.mainContainer}>
@@ -26,16 +22,7 @@ const ToolsPage = (): JSX.Element => {
             caption={'WordPress Debugging'}
             toggleActive={true}
           />
-          <Tools
-            iconPath={'searchTools.svg'}
-            description={
-              'Find and replace any value in the database, for example, after changing domains.'
-            }
-            caption={'Search & Replace'}
-            buttonActive={true}
-            ActivatedButtonCaption={'Search & Replace'}
-            onClick={() => setIsSearchReplaceOpen(true)}
-          />
+          <SearchAndReplace />
           <Tools
             iconPath={'monitoring.svg'}
             description={
@@ -89,7 +76,7 @@ const ToolsPage = (): JSX.Element => {
               'Use this tool to enable or disable removing Set-Cookie headers from cached responses.'
             }
             caption={'Remove set-cookie headers'}
-            dropDownActive={true}
+            toggleActive={true}
           />
           <Tools
             iconPath={'sitePreview.svg'}
@@ -109,18 +96,6 @@ const ToolsPage = (): JSX.Element => {
           />
         </div>
       </div>
-      <Modal
-        width={840}
-        open={isSearchReplaceOpen}
-        onCancel={() => setIsSearchReplaceOpen(false)}
-        footer={null}
-        closable={false}
-      >
-        <SearchReplaceModal
-          onClose={() => setIsSearchReplaceOpen(false)}
-          onSuccess={() => {}}
-        />
-      </Modal>
     </>
   );
 };

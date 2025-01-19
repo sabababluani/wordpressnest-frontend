@@ -54,21 +54,21 @@
   line-height: 18px;
 }
 
-.containerHeader span {
+.containerHeader > span {
   color: #707276;
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
 }
 
-.directory p {
+.directory > p {
   color: $primaryTextColor;
   font-size: 14px;
   font-weight: 500;
   line-height: 18px;
 }
 
-.directory span {
+.directory > span {
   color: #707276;
   font-size: 14px;
   font-weight: 400;

@@ -8,6 +8,12 @@
   padding: 0 24px;
 }
 
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .wrapper h1 {
   color: $primaryTextColor;
   font-size: 24px;
@@ -19,9 +25,33 @@
   color: #707276;
   font-weight: 400;
   line-height: 24px;
+  font-size: 16px;
 }
 
 .container {
   display: flex;
   gap: 24px;
+}
+
+.tableWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tableContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.headingSpan {
+  color: #52c41a;
+  font-size: 16px;
+  line-height: 24px; 
 }

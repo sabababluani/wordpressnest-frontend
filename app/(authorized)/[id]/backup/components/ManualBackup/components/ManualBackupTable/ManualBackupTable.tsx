@@ -21,9 +21,9 @@ const ManualBackupTable = () => {
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
-  const [selectedBackupId, setSelectedBackupId] = useState<string | null>(null);
+  const [selectedBackupId, setSelectedBackupId] = useState<number | null>(null);
   const [isCreateModalActive, setIsCreateModalActive] = useState(false);
-  const [numberId, setNumberId] = useState<number>(0);
+  const [numberId, setNumberId] = useState(0);
   const [loading, setLoading] = useState(false);
 
   const { data: manualBackUp, mutate: mutateManualBackup } = useGetData<
@@ -41,7 +41,7 @@ const ManualBackupTable = () => {
     setLoading(true);
     if (!selectedBackupId) return;
     try {
-      await deleteData('backup/deletefrompod', selectedBackupId);
+      await deleteData('backup/deletefrompod', selectedBackupId.toString());
       mutateManualBackup();
       mutateProgress();
       setIsDeleteModalVisible(false);
@@ -65,6 +65,11 @@ const ManualBackupTable = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const openDeleteModal = (backupId: number) => {
+    setSelectedBackupId(backupId);
+    setIsDeleteModalVisible(true);
   };
 
   const columns: TableProps<ManualBackupTablePropsInterface>['columns'] = [
@@ -114,10 +119,7 @@ const ManualBackupTable = () => {
           width={24}
           height={24}
           className={styles.trash}
-          onClick={() => {
-            setSelectedBackupId(record.id.toString());
-            setIsDeleteModalVisible(true);
-          }}
+          onClick={() => openDeleteModal(record.id)}
         />
       ),
       width: '10%',

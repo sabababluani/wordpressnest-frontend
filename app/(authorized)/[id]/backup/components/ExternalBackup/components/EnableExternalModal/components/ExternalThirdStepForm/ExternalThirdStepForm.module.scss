@@ -1,0 +1,118 @@
+@import '../../../../../../../../../styles/colors.scss';
+@import '../../../../../../../../../styles/text-colors.scss';
+
+.PaymentWrapperContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.subscription p {
+  color: #545a67;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.subscription {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.boldHeading {
+  color: $primaryTextColor;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.priceBox {
+  border: 1px solid $borderColor;
+  padding: 16px 24px;
+  border-radius: 12px;
+}
+
+.headerBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 0 24px 0;
+  border-bottom: 1px solid $borderColor;
+}
+
+.backups {
+  color: #545a67;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.price {
+  color: $primaryTextColor;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.bodyBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bodyContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 20px;
+}
+
+.paymentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.paymentContainer {
+  width: 100%;
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $borderColor;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.paymentCardName {
+  color: $primaryTextColor;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+}
+
+.button {
+  padding: 11px 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  border: none;
+  background-color: #000;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #313030;
+  color: #fff;
+}

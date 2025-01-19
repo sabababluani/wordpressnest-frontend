@@ -1,8 +1,13 @@
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import styles from '../EdgeCaching/EdgeCaching.module.scss';
 import CashingPagesContainer from '../CashingPagesContainer/CashingPagesContainer';
+import { Modal } from 'antd';
+import ClearCacheModal from './components/ClearCacheModal/ClearCacheModal';
+import { useState } from 'react';
 
 const ServerCaching = (): JSX.Element => {
+  const [isExcludeModalOpen, setIsExcludeModalOpen] = useState(false);
+
   return (
     <div className={styles.bottomContainer}>
       <span className={styles.mainDescriptionStyle}>
@@ -17,9 +22,18 @@ const ServerCaching = (): JSX.Element => {
           }
           buttonInnerContent={'Clear Cache'}
           buttonBackgroundColor={buttonbackgroundColorEnum.black}
-          onClick={() => {}}
+          onClick={() => setIsExcludeModalOpen(true)}
         />
       </div>
+      <Modal
+        footer={null}
+        closable={false}
+        open={isExcludeModalOpen}
+        onCancel={() => setIsExcludeModalOpen(false)}
+        width={666}
+      >
+        <ClearCacheModal onClose={() => setIsExcludeModalOpen(false)} />
+      </Modal>
     </div>
   );
 };
