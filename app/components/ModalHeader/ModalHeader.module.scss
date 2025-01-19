@@ -1,0 +1,24 @@
+@import '../../styles/colors.scss';
+@import '../../styles/text-colors.scss';
+
+.header {
+  width: 100%;
+  display: flex;
+  background-color: #f0f3f5;
+  padding: 16px 24px;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 12px 12px 0 0;
+  border-bottom: 1px solid $borderColor;
+}
+
+.header img {
+  cursor: pointer;
+}
+
+.headline {
+  color: $primaryTextColor;
+  font-weight: 600;
+  line-height: 24px;
+  font-size: 16px;
+}

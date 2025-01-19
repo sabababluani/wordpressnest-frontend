@@ -1,10 +1,10 @@
-import Image from 'next/image';
 import styles from './ExternalChangePlanModal.module.scss';
 import ExternalBackupBox from '../ExternalBackupBox/ExternalBackupBox';
 import { useState } from 'react';
 import { ExternalChangePlanModalPropsInterface } from './interfaces/external-change-plan-modal-props.interface';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
+import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 
 const ExternalChangePlanModal = (
   props: ExternalChangePlanModalPropsInterface,
@@ -16,19 +16,8 @@ const ExternalChangePlanModal = (
   };
 
   return (
-    <div>
-      <div className={styles.header}>
-        <div className={styles.headerContainer}>
-          <span className={styles.headline}>Disable AWS backups</span>
-        </div>
-        <Image
-          src="/icons/close-mini.svg"
-          alt="close"
-          width={24}
-          height={24}
-          onClick={props.onClose}
-        />
-      </div>
+    <>
+      <ModalHeader headline={'Disable AWS backups'} onClose={props.onClose} />
       <div className={styles.content}>
         <div className={styles.container}>
           <ExternalBackupBox
@@ -64,7 +53,7 @@ const ExternalChangePlanModal = (
           innerContent="Next"
         />
       </div>
-    </div>
+    </>
   );
 };
 

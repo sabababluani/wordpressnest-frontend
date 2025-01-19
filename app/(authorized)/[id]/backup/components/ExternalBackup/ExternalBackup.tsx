@@ -12,6 +12,7 @@ import { Modal } from 'antd';
 import { MODAL_TYPE } from './enums/extenral-backup.enum';
 import ExternalChangePlanModal from './components/ExternalChangePlanModal/ExternalChangePlanModal';
 
+//TO DO LOGIC THAT MOUNTS TABLE OR EXTERNALBACKUPBOXES. CONNCET TO BACKEND
 const ExternalBackup = () => {
   const [activeService, setActiveService] = useState<number | null>(null);
   const [activeModal, setActiveModal] = useState<MODAL_TYPE | null>(null);
@@ -84,7 +85,6 @@ const ExternalBackup = () => {
           onCancel={closeModal}
           footer={null}
           closable={false}
-          centered
         >
           <EnableExternalModal onClose={closeModal} />
         </Modal>

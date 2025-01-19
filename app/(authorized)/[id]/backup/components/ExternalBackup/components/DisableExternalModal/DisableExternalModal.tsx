@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Checkbox } from 'antd';
 import styles from './DisableExternalModal.module.scss';
-import Image from 'next/image';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { DisableExternalModalPropsInterface } from './interfaces/disable-external-modal-props.interface';
 import { CheckboxChangeEvent } from 'antd/es/checkbox';
+import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 
 const DisableExternalModal = (props: DisableExternalModalPropsInterface) => {
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
@@ -19,19 +19,8 @@ const DisableExternalModal = (props: DisableExternalModalPropsInterface) => {
   };
 
   return (
-    <div>
-      <div className={styles.header}>
-        <div className={styles.headerContainer}>
-          <span className={styles.headline}>Disable AWS backups</span>
-        </div>
-        <Image
-          src="/icons/close-mini.svg"
-          alt="close"
-          width={24}
-          height={24}
-          onClick={props.onClose}
-        />
-      </div>
+    <>
+      <ModalHeader headline={'Disable AWS backups'} onClose={props.onClose} />
       <div className={styles.container}>
         <p>
           You&apos;ve chosen to disable AWS backups. Your next invoice will
@@ -63,7 +52,7 @@ const DisableExternalModal = (props: DisableExternalModalPropsInterface) => {
           />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
