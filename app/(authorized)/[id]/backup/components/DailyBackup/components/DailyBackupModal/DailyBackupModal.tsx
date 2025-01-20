@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Button from '@/app/components/Button/Button';
 import styles from './DailyBackupModal.module.scss';
 import Image from 'next/image';
@@ -11,6 +12,8 @@ import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 const DailyBackupModal = (props: DailyBackupModalPropsInterface) => {
   const { id } = useParams();
   const numberId = Number(id);
+
+  const [siteInputValue, setSiteInputValue] = useState('');
 
   const { data: siteName } = useGetData<UserInterface>({ endpoint: 'user/me' });
 
@@ -46,9 +49,9 @@ const DailyBackupModal = (props: DailyBackupModalPropsInterface) => {
           <div className={styles.box}>
             <div className={styles.boxInner}>
               <div className={styles.boxContentDaily}>
-                <span className={styles.backupName}>Daily backup</span>
+                <span className={styles.backupName}>{props.backupType}</span>
                 <span className={styles.environment}>
-                  {'Dec 7, 2024, 12:46 AM "Daily Auto Backup"'}
+                  {`${props.date} "${props.backupType}"`}
                 </span>
               </div>
               <div className={styles.liveContainer}>
@@ -101,7 +104,10 @@ const DailyBackupModal = (props: DailyBackupModalPropsInterface) => {
               Enter the text <span className={styles.bold}>{site}</span> here to
               reset your site:
             </p>
-            <input type="text" />
+            <input
+              type="text"
+              onChange={(e) => setSiteInputValue(e.target.value)}
+            />
           </div>
         </div>
         <div className={styles.buttons}>
@@ -116,6 +122,7 @@ const DailyBackupModal = (props: DailyBackupModalPropsInterface) => {
             onClick={props.onSuccess}
             loading={props.loading}
             setLoading={props.setLoading}
+            disableButton={siteInputValue !== site}
           />
         </div>
       </div>

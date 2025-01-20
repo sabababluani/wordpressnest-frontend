@@ -35,10 +35,10 @@ const ExternalFirstStepForm = (props: ExternalFirstStepFormPropsInterface) => {
       <div className={styles.checkWrapper}>
         <div className={styles.check}>
           <Checkbox
-            checked={props.watch('createSubfolder')}
-            onChange={(e) =>
-              props.setValue('createSubfolder', e.target.checked)
-            }
+          // checked={props.watch('createSubfolder')}
+          // onChange={(e) =>
+          //   props.setValue('createSubfolder', e.target.checked)
+          // }
           ></Checkbox>
         </div>
         <span>Create Zddzma Subfolder</span>

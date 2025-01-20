@@ -1,35 +1,17 @@
 import Image from 'next/image';
 import { Table, TableProps } from 'antd';
 import styles from './EnableExternalTable.module.scss';
-import { EnableExternalTablePropsInterface } from './interfaces/enable-external-table-props.interface';
+import {
+  EnableExternalTableProps,
+  EnableExternalTablePropsInterface,
+} from './interfaces/enable-external-table-props.interface';
 
-const EnableExternalTable = () => {
-  const dailyBackups: EnableExternalTablePropsInterface[] = [
-    {
-      created: '2025-01-15',
-      size: '500 MB',
-      storage: 'AWS',
-      status: 'Success',
-    },
-    {
-      created: '2025-01-14',
-      size: '480 MB',
-      storage: 'AWS',
-      status: 'Failed',
-    },
-    {
-      created: '2025-01-13',
-      size: '520 MB',
-      storage: 'AWS',
-      status: 'Success',
-    },
-  ];
-
+const EnableExternalTable = (props: EnableExternalTableProps) => {
   const columns: TableProps<EnableExternalTablePropsInterface>['columns'] = [
     {
-      title: 'Created',
-      dataIndex: 'created',
-      key: 'created',
+      title: 'Date',
+      dataIndex: 'formatedCreatedAt',
+      key: 'formatedCreatedAt',
     },
     {
       title: 'Size (Zipped)',
@@ -61,7 +43,7 @@ const EnableExternalTable = () => {
     <div className={styles.tableWrapper}>
       <Table<EnableExternalTablePropsInterface>
         columns={columns}
-        dataSource={dailyBackups}
+        dataSource={props.dataSource}
         pagination={false}
       />
     </div>

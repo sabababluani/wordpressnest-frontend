@@ -11,6 +11,7 @@ import { useGetData } from '@/app/hooks/useGetData';
 
 const DailyBackupTable = () => {
   const [isModalVisable, setIsModalVisable] = useState(false);
+  const [date, setDate] = useState('');
 
   const { data: dailyBackups, isLoading } = useGetData<
     DailyBackupPropsInterface[]
@@ -37,7 +38,7 @@ const DailyBackupTable = () => {
       title: 'Restore',
       key: 'restore',
       width: '15%',
-      render: () => (
+      render: (_, record) => (
         <Select
           className={styles.select}
           value={'Restore To'}
@@ -55,6 +56,7 @@ const DailyBackupTable = () => {
           onChange={(value) => {
             if (value === 'live') {
               setIsModalVisable(true);
+              setDate(record.formatedCreatedAt);
             }
           }}
         />
@@ -82,6 +84,8 @@ const DailyBackupTable = () => {
         <DailyBackupModal
           onClose={() => setIsModalVisable(false)}
           onSuccess={() => {}}
+          date={date}
+          backupType={'Daily backup'}
         />
       </Modal>
     </div>
