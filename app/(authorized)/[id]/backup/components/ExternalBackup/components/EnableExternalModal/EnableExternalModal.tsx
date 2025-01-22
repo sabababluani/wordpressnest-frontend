@@ -32,6 +32,7 @@ const EnableExternalModal = (props: EnableExternalModalPropsInterface) => {
     try {
       await createData(`backup/manualtos3/${id}`, data);
       props.mutate();
+      props.enableBackup();
       props.onClose();
     } catch (error) {
       console.log('Error submitting data:', error);

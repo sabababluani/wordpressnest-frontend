@@ -28,9 +28,13 @@ const EnableExternalTable = (props: EnableExternalTableProps) => {
       title: 'Status',
       dataIndex: 'status',
       key: 'status',
-      render: () => (
+      render: (_, record) => (
         <Image
-          src="/icons/information.svg"
+          src={
+            record.status === 'done'
+              ? '/icons/succesDone.svg'
+              : '/icons/information.svg'
+          }
           alt="information"
           width={24}
           height={24}
