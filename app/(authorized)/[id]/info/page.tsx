@@ -22,6 +22,7 @@ import Site from './components/Site/Site';
 import ResetSiteModal from './components/ResetSiteModal/ResetSiteModal';
 import DeleteSiteModal from './components/DeleteSiteModal/DeleteSiteModal';
 import Link from 'next/link';
+import ProxyComp from './components/reusableComponent/Proxy/Proxy';
 
 const Info = (): JSX.Element => {
   const { id } = useParams();
@@ -60,7 +61,7 @@ const Info = (): JSX.Element => {
           <Link
             replace
             target="_blank"
-            href={`http://${site.wpfullIp}/wp-login.php`}
+            href={`http://${'site.wpfullIp'}/wp-login.php`}
           >
             <Button
               innerContent="Open WP Admin"
@@ -69,7 +70,7 @@ const Info = (): JSX.Element => {
               backgroundColor={buttonbackgroundColorEnum.grey}
             />
           </Link>
-          <Link href={`http://${site.wpfullIp}`} target="_blank">
+          <Link href={`http://${'site.wpfullIp'}`} target="_blank">
             <Button
               innerContent="Visit Site"
               innerContentIcon={innerContentIconEnum.siteIcon}
@@ -83,16 +84,17 @@ const Info = (): JSX.Element => {
       <div className={styles.bottomContainer}>
         <BasicDetails
           locationDataCenter="Hamburg (DE)"
-          siteName={site.siteName}
+          siteName={'site.siteName'}
           Labels=""
         />
 
         <EnvironementDetails
           path="/www/novatori_787/public"
           environmentName="Live"
-          siteIpAddress={site.wpfullIp}
-          ipAddress={site.nodeIp}
-          phpWorkers={site.phpVersion}
+          siteIpAddress={'site.wpfullIp'}
+          ipAddress={'site.nodeIp'}
+          ipAddressForExternalConnections={'35.242.241.35'}
+          phpWorkers={'site.phpVersion'}
           onClick={() => console.log('clicked')}
         />
 
@@ -109,11 +111,17 @@ const Info = (): JSX.Element => {
         />
 
         <DataBaseAccess
-          databasePassword="**********"
+          databasePassword={'site.dbPassword'}
           ip="ALL IPs allowed"
-          database={site.dbName}
+          database={'site.dbName'}
           databaseUsername="root"
-          phpAdmin={site.phpAdminFullIp}
+          phpAdmin={'site.phpAdminFullIp'}
+        />
+
+        <ProxyComp
+          caption="Reverse Proxy"
+          bottomCaption="Reverse proxy allows serving multiple sites or applications from a single domain. At Kinsta, this is available as an add-on that our Support Team will help set up."
+          onClick={() => {}}
         />
 
         <Site
