@@ -1,4 +1,4 @@
 export interface DeleteSiteModalPropsInterface {
-  onClose: () => void;
-  onCancel: () => void;
+  onClose?: () => void;
+  onCancel?: () => void;
 }

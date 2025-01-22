@@ -32,7 +32,7 @@ const DeleteSiteModal = (props: DeleteSiteModalPropsInterface) => {
 
   const onDeleteFunction = () => {
     deleteData('wordpress/setup', id.toString());
-    props.onCancel();
+    // props.onCancel();
   };
 
   return (

@@ -1,9 +1,10 @@
-import Image from 'next/image';
 import styles from './DatabaseAccess.module.scss';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { DataBasePropsInterface } from './interfaces/data-base-access-props.interface';
 import Link from 'next/link';
+import Wrapper from '../reusableComponent/Wrapper/Wrapper';
+import PasswordFieldComp from './components/PasswordField/PasswordField';
 
 const DataBaseAccess = (props: DataBasePropsInterface): JSX.Element => {
   return (
@@ -18,49 +19,33 @@ const DataBaseAccess = (props: DataBasePropsInterface): JSX.Element => {
         </Link>
       </div>
       <div className={styles.bottomContainer}>
-        <div className={styles.dataBaseWrapper}>
-          <span className={styles.dataBaseCaptionStyle}>Database name</span>
-          <span className={styles.dataBaseValueStyle}>{props.database}</span>
+        <div className={styles.rowWrapper}>
+          <Wrapper
+            enhancedWidth
+            caption={'Database name'}
+            fieldsInnerContent={props.database}
+            additionalHref={'/icons/Copy.svg'}
+          />
+          <Wrapper
+            enhancedWidth
+            caption={'Database Username'}
+            fieldsInnerContent={props.databaseUsername}
+            additionalHref={'/icons/Copy.svg'}
+          />
         </div>
-        <div className={styles.dataBaseUsernameWrapper}>
-          <span className={styles.dataBaseUsernameCaptionStyle}>
-            Database Username
-          </span>
-          <div className={styles.dataBaseUsernameValueAndButtonWrapper}>
-            <span className={styles.dataBaseUsernameValueStyle}>
-              {props.databaseUsername}
-            </span>
-            <button className={styles.pencilButtonStyle}>
-              <Image
-                width={24}
-                height={24}
-                src={'/icons/pencil.svg'}
-                alt={'pencil icon'}
-              />
-            </button>
-          </div>
-        </div>
-        <div className={styles.dataBasePasswordWrapper}>
-          <span className={styles.dataBasePasswordCaptionStyle}>
-            Database password
-          </span>
-          <span className={styles.dataBasePasswordValueStyle}>
-            {props.databasePassword}
-          </span>
-        </div>
-        <div className={styles.ipWrapper}>
-          <span className={styles.ipCaptionStyle}>IP Allow list</span>
-          <div className={styles.ipAndButtonWrapper}>
-            <span className={styles.ipValueStyle}>{props.ip}</span>
-            <button className={styles.pencilButtonStyle}>
-              <Image
-                width={24}
-                height={24}
-                src={'/icons/pencil.svg'}
-                alt={'pencil icon'}
-              />
-            </button>
-          </div>
+        <div className={styles.rowWrapper}>
+          <Wrapper
+            enhancedWidth
+            caption={'All IPs allowed'}
+            fieldsInnerContent={props.database}
+            additionalHref={'/icons/Pencil.svg'}
+          />
+          <PasswordFieldComp
+            caption={props.databasePassword}
+            innerContent={props.databasePassword}
+            additionalHref={'/icons/eyeClosed.svg'}
+            additionalHref2={'/icons/Copy.svg'}
+          />
         </div>
       </div>
     </div>

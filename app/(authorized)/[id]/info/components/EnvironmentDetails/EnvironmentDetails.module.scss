@@ -21,7 +21,8 @@
 .bottomContainer {
   padding: 16px 24px 24px 24px;
   display: flex;
-  gap: 24px;
+  flex-direction: column;
+  gap: 16px;
   background-color: white;
   border-bottom-left-radius: var(--controlPaddingHorizontal, 12px);
   border-bottom-right-radius: var(--controlPaddingHorizontal, 12px);
@@ -201,4 +202,11 @@
   font-style: normal;
   font-weight: 500;
   line-height: 24px;
+}
+
+
+.columnWrapper {
+  width: 100%;
+  display: flex;
+  gap: 24px;
 }
