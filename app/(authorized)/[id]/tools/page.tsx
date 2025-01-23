@@ -4,8 +4,13 @@ import styles from './page.module.scss';
 import Tools from './components/Tools/Tools';
 import RestartPhp from './components/RestartPhp/RestartPhp';
 import SearchAndReplace from './components/SearchAndReplace/SearchAndReplace';
+import { useState } from 'react';
+import { Modal } from 'antd';
+import ChangePhpSettings from './components/ChangePhpSettings/ChangePhpSettings';
 
 const ToolsPage = (): JSX.Element => {
+  const [isPhpSettingsOpen, setIsPhpSettingsOpen] = useState(false);
+
   return (
     <>
       <div className={styles.mainContainer}>
@@ -67,8 +72,9 @@ const ToolsPage = (): JSX.Element => {
             description={
               'Use these controls to switch between different PHP versions. We recommend using PHP 8.1 for security and stability.'
             }
-            caption={'PHP Engine'}
-            toggleActive={true}
+            caption={'PHP settings'}
+            dropDownActive
+            onClick={() => setIsPhpSettingsOpen(true)}
           />
           <Tools
             iconPath={'cookieIcon.svg'}
@@ -96,6 +102,18 @@ const ToolsPage = (): JSX.Element => {
           />
         </div>
       </div>
+      <Modal
+        open={isPhpSettingsOpen}
+        onCancel={() => setIsPhpSettingsOpen(false)}
+        footer={null}
+        closable={false}
+        width={1004}
+      >
+        <ChangePhpSettings
+          onClose={() => setIsPhpSettingsOpen(false)}
+          onClick={() => console.log('Next')}
+        />
+      </Modal>
     </>
   );
 };
