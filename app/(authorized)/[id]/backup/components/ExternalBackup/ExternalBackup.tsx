@@ -22,11 +22,12 @@ const ExternalBackup = () => {
 
   const [activeService, setActiveService] = useState<number | null>(null);
   const [activeModal, setActiveModal] = useState<MODAL_TYPE | null>(null);
-  const [isExternalBackupDisabled, setIsExternalBackupDisabled] =
-    useState(false);
 
   const openModal = (type: MODAL_TYPE) => setActiveModal(type);
-  const closeModal = () => setActiveModal(null);
+  const closeModal = () => {
+    setActiveModal(null);
+    setActiveService(null);
+  };
 
   const handleServiceSelect = (serviceId: number) => {
     setActiveService(serviceId);
@@ -39,12 +40,16 @@ const ExternalBackup = () => {
     endpoint: `backup/external/${id}`,
   });
 
+  const { data: disabled, mutate: disableMutate } = useGetData<boolean>({
+    endpoint: `backup/isexternaldisabled/${id}`,
+  });
+
   const onExternalModalDisable = async () => {
     try {
       await patchData(`backup/disableexternals`, numberId, {});
       setActiveModal(null);
       mutate();
-      setIsExternalBackupDisabled(true);
+      disableMutate();
     } catch (error) {
       console.log(error);
     }
@@ -56,8 +61,8 @@ const ExternalBackup = () => {
         <Skeleton active paragraph={{ rows: 8 }} />
       ) : (
         <>
-          {(!data?.length || isExternalBackupDisabled) && (
-            <>
+          {(!data?.length || disabled) && (
+            <div>
               <div className={styles.header}>
                 <h1>External Backup</h1>
                 <p>You can set backups every 6-hours or every hour.</p>
@@ -84,12 +89,12 @@ const ExternalBackup = () => {
                   title="Google Cloud Storage"
                 />
               </div>
-            </>
+            </div>
           )}
 
           {data && data.length > 0 && (
             <div className={styles.tableWrapper}>
-              {!isExternalBackupDisabled && (
+              {!disabled && (
                 <div className={styles.tableContainer}>
                   <div className={styles.header}>
                     <h1>External Backup</h1>
@@ -128,7 +133,10 @@ const ExternalBackup = () => {
           <EnableExternalModal
             onClose={closeModal}
             mutate={mutate}
-            enableBackup={() => setIsExternalBackupDisabled(false)}
+            enableBackup={() => {
+              disableMutate();
+              setActiveService(null);
+            }}
           />
         </Modal>
       )}

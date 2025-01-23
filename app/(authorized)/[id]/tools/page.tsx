@@ -70,7 +70,7 @@ const ToolsPage = (): JSX.Element => {
           <Tools
             iconPath={'phpIcon.svg'}
             description={
-              'Use these controls to switch between different PHP versions. We recommend using PHP 8.1 for security and stability.'
+              'Easily switch between different PHP versions to keep your site up to date.'
             }
             caption={'PHP settings'}
             dropDownActive
