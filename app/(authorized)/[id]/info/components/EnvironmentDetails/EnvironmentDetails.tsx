@@ -10,6 +10,7 @@ const EnvironementDetails = (
       <div className={styles.topContainer}>
         <span className={styles.captionStyle}>Environment details</span>
       </div>
+
       <div className={styles.bottomContainer}>
         <div className={styles.columnWrapper}>
           <Wrapper

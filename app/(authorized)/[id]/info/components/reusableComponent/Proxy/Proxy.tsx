@@ -6,7 +6,9 @@ const ProxyComp = (props: ProxpropsInterface) => {
     <div className={styles.mainContainer}>
       <div className={styles.topContainer}>
         <span className={styles.mainCaptionStyle}>{props.caption}</span>
-        <button className={styles.buttonStyle}>Change</button>
+        <button className={styles.buttonStyle} onClick={props.onClick}>
+          Change
+        </button>
       </div>
       <div className={styles.bottomContainer}>
         <span className={styles.descriptionStyle}>{props.bottomCaption}</span>

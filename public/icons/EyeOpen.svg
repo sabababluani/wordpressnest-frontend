@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.86 13.12">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #707276;
+        stroke-linecap: round;
+        stroke-width: 1.5px;
+      }
+    </style>
+  </defs>
+  <g id="Eye_Closed" data-name="Eye Closed">
+    <path id="Icon" class="cls-1" d="m16.08,8.57h0c.25-.38.52-.82.75-1.35.08-.19.16-.38.23-.56,0,0-.47-1.47-1.71-2.96-.24-.28-2.7-2.96-6.42-2.96-2.07,0-3.7.82-4.03,1-.14.08-.28.15-.28.15-.09.05-.19.11-.26.15m9.15,9.08c-1.17.75-2.67,1.27-4.58,1.24C2.72,12.28.79,6.67.79,6.67c0,0,.9-2.86,3.56-4.6"/>
+  </g>
+  <circle class="cls-1" cx="8.93" cy="6.61" r="2.18"/>
+  <path class="cls-1" d="m16.08,8.57c-.23.31-.49.65-.81.99-.61.67-1.23,1.19-1.77,1.58"/>
+</svg>

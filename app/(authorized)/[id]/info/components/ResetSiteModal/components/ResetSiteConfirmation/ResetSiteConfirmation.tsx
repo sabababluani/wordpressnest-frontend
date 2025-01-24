@@ -10,56 +10,59 @@ const ResetSiteConfirmation = (props: ResetSiteConfirmatioPropsInterface) => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
 
   return (
-    <div className={styles.wrapper}>
-      <span className={styles.deleted}>
-        By resetting <span className={styles.title}>{props.siteTitle}</span>,
-        all of its files and database will be destroyed.
-      </span>
-      <div>
-        <div className={styles.list}>
-          <div className={styles.circle}></div>
-          <span className={styles.textContent}>
-            A new WordPress is being installed on Live environment
-          </span>
+    <div>
+      <div className={styles.wrapper}>
+        <span className={styles.deleted}>
+          By resetting <span className={styles.title}>{props.siteTitle}</span>,
+          all of its files and database will be destroyed.
+        </span>
+        <div>
+          <div className={styles.list}>
+            <div className={styles.circle}></div>
+            <span className={styles.textContent}>
+              A new WordPress is being installed on Live environment
+            </span>
+          </div>
+          <div className={styles.list}>
+            <div className={styles.circle}></div>
+            <span className={styles.textContent}>
+              Staging Environment will be deleted
+            </span>
+          </div>
+          <div className={styles.list}>
+            <div className={styles.circle}></div>
+            <span className={styles.textContent}>
+              Premium Staging Environment will be deleted
+            </span>
+          </div>
         </div>
-        <div className={styles.list}>
-          <div className={styles.circle}></div>
-          <span className={styles.textContent}>
-            Staging Environment will be deleted
-          </span>
+        <div className={styles.check}>
+          <div className={styles.checkbox}>
+            <Checkbox
+              checked={isChecked}
+              onChange={(e: CheckboxChangeEvent) =>
+                setIsChecked(e.target.checked)
+              }
+            />
+          </div>
+          <div>
+            <span className={styles.acknowledge}>
+              I acknowledge that this is not recoverable{' '}
+            </span>
+          </div>
         </div>
-        <div className={styles.list}>
-          <div className={styles.circle}></div>
-          <span className={styles.textContent}>
-            Premium Staging Environment will be deleted
+        <div className={styles.siteTitleContainer}>
+          <span>
+            Enter the text{' '}
+            <span className={styles.title}>{props.siteTitle}</span> here to
+            reset your site:
           </span>
-        </div>
-      </div>
-      <div className={styles.check}>
-        <div className={styles.checkbox}>
-          <Checkbox
-            checked={isChecked}
-            onChange={(e: CheckboxChangeEvent) =>
-              setIsChecked(e.target.checked)
-            }
+          <input
+            type="text"
+            value={props.siteTitleInputField}
+            onChange={props.onChange}
           />
         </div>
-        <div>
-          <span className={styles.acknowledge}>
-            I acknowledge that this is not recoverable{' '}
-          </span>
-        </div>
-      </div>
-      <div className={styles.siteTitleContainer}>
-        <span>
-          Enter the text <span className={styles.title}>{props.siteTitle}</span>{' '}
-          here to reset your site:
-        </span>
-        <input
-          type="text"
-          value={props.siteTitleInputField}
-          onChange={props.onChange}
-        />
       </div>
       <div className={styles.buttons}>
         <Button

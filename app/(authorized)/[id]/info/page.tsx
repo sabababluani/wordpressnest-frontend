@@ -23,6 +23,8 @@ import ResetSiteModal from './components/ResetSiteModal/ResetSiteModal';
 import DeleteSiteModal from './components/DeleteSiteModal/DeleteSiteModal';
 import Link from 'next/link';
 import ProxyComp from './components/reusableComponent/Proxy/Proxy';
+import ProxyModule from './components/ProxyModule/ProxyModule';
+import RenameSiteModal from './components/RenameSiteModal/RenameSiteModal';
 
 const Info = (): JSX.Element => {
   const { id } = useParams();
@@ -36,6 +38,8 @@ const Info = (): JSX.Element => {
 
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState<boolean>(false);
   const [isResetModalOpen, setIsResetModalOpen] = useState<boolean>(false);
+  const [isProxyModalOpen, setIsProxyModalOpen] = useState<boolean>(false);
+  const [isRenameModalOpen, setIsRenameModalOpen] = useState<boolean>(false);
 
   if (isLoading || error) {
     return (
@@ -61,7 +65,7 @@ const Info = (): JSX.Element => {
           <Link
             replace
             target="_blank"
-            href={`http://${'site.wpfullIp'}/wp-login.php`}
+            href={`http://${site.wpfullIp}/wp-login.php`}
           >
             <Button
               innerContent="Open WP Admin"
@@ -70,7 +74,7 @@ const Info = (): JSX.Element => {
               backgroundColor={buttonbackgroundColorEnum.grey}
             />
           </Link>
-          <Link href={`http://${'site.wpfullIp'}`} target="_blank">
+          <Link href={`http://${site.wpfullIp}`} target="_blank">
             <Button
               innerContent="Visit Site"
               innerContentIcon={innerContentIconEnum.siteIcon}
@@ -83,6 +87,7 @@ const Info = (): JSX.Element => {
 
       <div className={styles.bottomContainer}>
         <BasicDetails
+          onClick={() => setIsRenameModalOpen(true)}
           locationDataCenter="Hamburg (DE)"
           siteName={'site.siteName'}
           Labels=""
@@ -121,7 +126,7 @@ const Info = (): JSX.Element => {
         <ProxyComp
           caption="Reverse Proxy"
           bottomCaption="Reverse proxy allows serving multiple sites or applications from a single domain. At Kinsta, this is available as an add-on that our Support Team will help set up."
-          onClick={() => {}}
+          onClick={() => setIsProxyModalOpen(true)}
         />
 
         <Site
@@ -138,6 +143,16 @@ const Info = (): JSX.Element => {
           onDeleteClick={() => setIsDeleteModalOpen(true)}
         />
       </div>
+
+      <Modal
+        width={800}
+        open={isRenameModalOpen}
+        onCancel={() => setIsRenameModalOpen(false)}
+        footer={null}
+        closable={false}
+      >
+        <RenameSiteModal onClick={() => setIsRenameModalOpen(false)} />
+      </Modal>
 
       <Modal
         width={800}
@@ -161,6 +176,18 @@ const Info = (): JSX.Element => {
         centered
       >
         <ResetSiteModal onClose={() => setIsResetModalOpen(false)} />
+      </Modal>
+
+      <Modal
+        width={800}
+        height={616}
+        open={isProxyModalOpen}
+        onCancel={() => setIsProxyModalOpen(false)}
+        footer={null}
+        closable={false}
+        centered
+      >
+        <ProxyModule onClick={() => setIsProxyModalOpen(false)} />
       </Modal>
     </div>
   );
