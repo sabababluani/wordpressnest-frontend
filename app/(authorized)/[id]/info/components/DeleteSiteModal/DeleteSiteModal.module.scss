@@ -23,6 +23,7 @@
   background-color: #f0f3f5;
   border-radius: 12px 12px 0 0;
   padding: 16px 24px;
+  border-bottom: 1px solid $moduleBorderColor;
 }
 
 .header img {
@@ -41,6 +42,7 @@
   color: #545a67;
   font-size: 12px;
   font-weight: 500;
+  font-size: 16px;
 }
 
 .confirm {
@@ -62,8 +64,7 @@
   background-color: #f0f3f5 !important;
 }
 
-.check
-  :global(.ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner) {
+.check :global(.ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner) {
   background-color: black !important;
   border: none !important;
 }
@@ -97,7 +98,8 @@
 }
 
 .inputContainer input {
-  border: 1px solid $borderColor;  border-radius: 12px;
+  border: 1px solid $borderColor;
+  border-radius: 12px;
   height: 41px;
   outline: none;
   padding-left: 12px;
@@ -108,5 +110,6 @@
   display: flex;
   justify-content: flex-end;
   gap: 8px;
-  padding: 16px 0 0 0;
+  border-top: 1px solid $moduleBorderColor;
+  padding: 16px 24px 24px;
 }

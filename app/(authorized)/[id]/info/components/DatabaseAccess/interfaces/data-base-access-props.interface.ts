@@ -11,4 +11,5 @@ export interface PasswordField {
   innerContent: string;
   additionalHref: string;
   additionalHref2: string;
+  additionalHref3: string;
 }
