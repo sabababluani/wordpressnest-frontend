@@ -44,7 +44,8 @@ const DataBaseAccess = (props: DataBasePropsInterface): JSX.Element => {
             caption={props.databasePassword}
             innerContent={props.databasePassword}
             additionalHref={'/icons/eyeClosed.svg'}
-            additionalHref2={'/icons/Copy.svg'}
+            additionalHref2={'/icons/eyeOpen.svg'}
+            additionalHref3={'/icons/Copy.svg'}
           />
         </div>
       </div>

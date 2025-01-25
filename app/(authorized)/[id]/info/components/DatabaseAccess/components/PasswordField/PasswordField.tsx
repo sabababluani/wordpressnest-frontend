@@ -23,14 +23,14 @@ const PasswordFieldComp = (props: PasswordField) => {
             <Image
               height={24}
               width={24}
-              src={props.additionalHref}
+              src={isOccured ? props.additionalHref2 : props.additionalHref}
               alt={'eye closed icon'}
               onClick={onClickEyeIcon}
             />
             <Image
               height={24}
               width={24}
-              src={props.additionalHref2}
+              src={props.additionalHref3}
               alt={'copy icon'}
             />
           </div>
