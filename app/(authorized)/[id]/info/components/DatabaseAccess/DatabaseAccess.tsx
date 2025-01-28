@@ -38,7 +38,7 @@ const DataBaseAccess = (props: DataBasePropsInterface): JSX.Element => {
             enhancedWidth
             caption={'All IPs allowed'}
             fieldsInnerContent={props.database}
-            additionalHref={'/icons/Pencil.svg'}
+            additionalHref={'/icons/edit44.svg'}
           />
           <PasswordFieldComp
             caption={props.databasePassword}

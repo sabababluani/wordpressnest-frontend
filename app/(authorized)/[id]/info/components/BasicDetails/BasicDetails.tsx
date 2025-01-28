@@ -17,7 +17,7 @@ const BasicDetails = (props: StatisticPropsInterface): React.JSX.Element => {
           <Wrapper
             caption={'Site Name'}
             fieldsInnerContent={props.siteName!}
-            additionalHref={'/icons/pencil.svg'}
+            additionalHref={'/icons/edit44.svg'}
             onClick={props.onClick}
           />
           <Wrapper
@@ -25,8 +25,8 @@ const BasicDetails = (props: StatisticPropsInterface): React.JSX.Element => {
             fieldsInnerContent={
               props.Labels!.length > 0 ? props.Labels : 'None'
             }
-            additionalHref={'/icons/pencil.svg'}
-            onClick={() => {}}
+            additionalHref={'/icons/edit44.svg'}
+            onClick={props.onClick2}
           />
         </div>
       </div>

@@ -21,7 +21,7 @@ const SftpShh = (props: SftpShhPropsInterface): JSX.Element => {
             enhancedWidth
             caption={'Port'}
             fieldsInnerContent={props.port?.toString()}
-            additionalHref="/icons/pencil.svg"
+            additionalHref="/icons/edit44.svg"
             onClick={() => {}}
           />
         </div>
@@ -30,14 +30,14 @@ const SftpShh = (props: SftpShhPropsInterface): JSX.Element => {
             enhancedWidth
             caption={'Password expiration'}
             fieldsInnerContent={props.passwordExpiration}
-            additionalHref={'/icons/Copy.svg'}
-            onClick={() => {}}
+            additionalHref={'/icons/edit44.svg'}
+            onClick={props.onClick}
           />
           <Wrapper
             enhancedWidth
             caption={'Authentication Methods'}
             fieldsInnerContent={props.ssh}
-            additionalHref="/icons/pencil.svg"
+            additionalHref="/icons/edit44.svg"
             onClick={() => {}}
           />
         </div>
@@ -53,7 +53,7 @@ const SftpShh = (props: SftpShhPropsInterface): JSX.Element => {
             enhancedWidth
             caption={'Password'}
             fieldsInnerContent={props.password}
-            additionalHref="/icons/pencil.svg"
+            additionalHref="/icons/edit44.svg"
             onClick={() => {}}
           />
         </div>
@@ -62,7 +62,7 @@ const SftpShh = (props: SftpShhPropsInterface): JSX.Element => {
             enhancedWidth
             caption={'Ip allow list'}
             fieldsInnerContent={props.IpAllowed}
-            additionalHref={'/icons/pencil.svg'}
+            additionalHref={'/icons/edit44.svg'}
             onClick={() => {}}
           />
           <Wrapper
