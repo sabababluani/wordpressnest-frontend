@@ -4,22 +4,25 @@ import styles from './LabelModal.module.scss';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { Checkbox } from 'antd';
+import { CheckboxChangeEvent } from 'antd/lib/checkbox/Checkbox';
 import Image from 'next/image';
 import { useState } from 'react';
 
-const LabelModal = () => {
-  const [isCheckboxActiveFirst, setIsCheckboxActiveFirst] =
-    useState<boolean>(true);
-  const [isCheckboxActiveSecond, setIsCheckboxActiveSecond] =
-    useState<boolean>(true);
-  const [isCheckboxActiveThird, setIsCheckboxActiveThird] =
-    useState<boolean>(true);
+const LabelModal = ({
+  siteName,
+  onClick,
+}: {
+  siteName: string;
+  onClick: () => void;
+}) => {
+  const [isCheckboxActive, setIsCheckboxActive] = useState<boolean>(true);
 
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.header}>
-        <span className={styles.headline}>Label 2 sites</span>
+        <span className={styles.headline}>Label sites</span>
         <Image
+          onClick={onClick}
           src="/icons/close-mini.svg"
           width={24}
           height={24}
@@ -28,59 +31,38 @@ const LabelModal = () => {
         />
       </div>
       <div className={styles.middleContainer}>
-        <div className={styles.wrapper}>
-          <div className={styles.checkboxAndCaptionWrapper}>
-            <div className={styles.checkboxWrapper}>
-              <Checkbox
-                checked={isCheckboxActiveFirst}
-                onChange={() =>
-                  setIsCheckboxActiveFirst((prev: boolean) => !prev)
-                }
-              />
-            </div>
-            <span className={styles.checkboxLabel}>Clear server cache</span>
-          </div>
-          <div className={styles.checkboxAndCaptionWrapper}>
-            <div className={styles.checkboxWrapper}>
-              <Checkbox
-                checked={isCheckboxActiveSecond}
-                onChange={() =>
-                  setIsCheckboxActiveSecond((prev: boolean) => !prev)
-                }
-              />
-            </div>
-            <span className={styles.checkboxLabel}>Clear CDN cache</span>
-          </div>
-          <div className={styles.checkboxAndCaptionWrapper}>
-            <div className={styles.checkboxWrapper}>
-              <Checkbox
-                checked={isCheckboxActiveThird}
-                onChange={() =>
-                  setIsCheckboxActiveThird((prev: boolean) => !prev)
-                }
-              />
-            </div>
-            <span className={styles.checkboxLabel}>Clear edge cache</span>
-          </div>
-        </div>
-        <button className={styles.buttonWrapper}>
-          <Image
-            height={10}
-            width={10}
-            src={'icons/straightCross.svg'}
-            alt={'plus icon'}
+        <div className={styles.checkbox}>
+          <Checkbox
+            checked={isCheckboxActive}
+            onChange={(e: CheckboxChangeEvent) =>
+              setIsCheckboxActive(e.target.checked)
+            }
           />
-          <span className={styles.buttonsInnerContentStyle}>Add new label</span>
-        </button>
-        <span className={styles.manageStyle}>
-          Manage all libels in company setting
+          <span className={styles.siteNameStyle}>{siteName}</span>
+        </div>
+        <div>
+          <button className={styles.buttonStyle}>
+            <Image
+              width={10}
+              height={10}
+              src={'/icons/Group444.svg'}
+              alt={'icon'}
+            />
+            <span className={styles.buttonInnerContentStyle}>
+              Add new label
+            </span>
+          </button>
+        </div>
+        <span className={styles.manageCatpionStyle}>
+          Manage all label company settings
         </span>
       </div>
       <div className={styles.bottomContainer}>
         <div className={styles.buttonsWrapper}>
           <Button
+            onClick={onClick}
             backgroundColor={buttonbackgroundColorEnum.grey}
-            innerContent="Back"
+            innerContent="Cancel"
           />
           <Button
             backgroundColor={buttonbackgroundColorEnum.black}

@@ -25,6 +25,8 @@ import Link from 'next/link';
 import ProxyComp from './components/reusableComponent/Proxy/Proxy';
 import ProxyModule from './components/ProxyModule/ProxyModule';
 import RenameSiteModal from './components/RenameSiteModal/RenameSiteModal';
+import LabelModal from '../../wpsites/components/LabelModal/LabelModal';
+import PasswordExpirationModal from './components/PasswordExpirationModal/PasswordExpirationModal';
 
 const Info = (): JSX.Element => {
   const { id } = useParams();
@@ -40,6 +42,9 @@ const Info = (): JSX.Element => {
   const [isResetModalOpen, setIsResetModalOpen] = useState<boolean>(false);
   const [isProxyModalOpen, setIsProxyModalOpen] = useState<boolean>(false);
   const [isRenameModalOpen, setIsRenameModalOpen] = useState<boolean>(false);
+  const [isLabelModalOpen, setIsLabelModalOpen] = useState<boolean>(false);
+  const [isPasswordExpirationModalOpen, setIsPasswordExpirationModalOpen] =
+    useState<boolean>(false);
 
   if (isLoading || error) {
     return (
@@ -65,18 +70,18 @@ const Info = (): JSX.Element => {
           <Link
             replace
             target="_blank"
-            href={`http://${site.wpfullIp}/wp-login.php`}
+            href={`http://${'site.wpfullIp'}/wp-login.php`}
           >
             <Button
-              innerContent="Open WP Admin"
+              innerContent={'Open WP Admin'}
               innerContentIconActive
               innerContentIcon={innerContentIconEnum.wpIcon}
               backgroundColor={buttonbackgroundColorEnum.grey}
             />
           </Link>
-          <Link href={`http://${site.wpfullIp}`} target="_blank">
+          <Link href={`http://${'site.wpfullIp'}`} target="_blank">
             <Button
-              innerContent="Visit Site"
+              innerContent={'Visit Site'}
               innerContentIcon={innerContentIconEnum.siteIcon}
               innerContentIconActive
               backgroundColor={buttonbackgroundColorEnum.black}
@@ -88,14 +93,15 @@ const Info = (): JSX.Element => {
       <div className={styles.bottomContainer}>
         <BasicDetails
           onClick={() => setIsRenameModalOpen(true)}
-          locationDataCenter="Hamburg (DE)"
+          onClick2={() => setIsLabelModalOpen(true)}
+          locationDataCenter={'Hamburg (DE)'}
           siteName={'site.siteName'}
-          Labels=""
+          Labels={''}
         />
 
         <EnvironementDetails
-          path="/www/novatori_787/public"
-          environmentName="Live"
+          path={'/www/novatori_787/public'}
+          environmentName={'Live'}
           siteIpAddress={'site.wpfullIp'}
           ipAddress={'site.nodeIp'}
           ipAddressForExternalConnections={'35.242.241.35'}
@@ -104,48 +110,81 @@ const Info = (): JSX.Element => {
         />
 
         <SftpShh
-          host="66.854.861.865"
-          passwordExpiration="None"
-          ssh="SSH Novatori@66.854.861.865..."
-          port={site.port}
-          authenticationMethods="SSH key , password"
-          IpAllowed="ALL IPs allowed"
-          password="********"
-          ftp="Novatori - sftp - config.zip"
-          userName="root"
+          host={'66.854.861.865'}
+          passwordExpiration={'None'}
+          ssh={'SSH Novatori@66.854.861.865...'}
+          // port={site.port}
+          port={2}
+          authenticationMethods={'SSH key , password'}
+          IpAllowed={'ALL IPs allowed'}
+          password={'********'}
+          ftp={'Novatori - sftp - config.zip'}
+          userName={'root'}
+          onClick={() => setIsPasswordExpirationModalOpen(true)}
         />
 
         <DataBaseAccess
           databasePassword={'site.dbPassword'}
-          ip="ALL IPs allowed"
+          ip={'ALL IPs allowed'}
           database={'site.dbName'}
-          databaseUsername="root"
+          databaseUsername={'root'}
           phpAdmin={'site.phpAdminFullIp'}
         />
 
         <ProxyComp
-          caption="Reverse Proxy"
-          bottomCaption="Reverse proxy allows serving multiple sites or applications from a single domain. At Kinsta, this is available as an add-on that our Support Team will help set up."
+          caption={'Reverse Proxy'}
+          bottomCaption={
+            'Reverse proxy allows serving multiple sites or applications from a single domain. At Kinsta, this is available as an add-on that our Support Team will help set up.'
+          }
           onClick={() => setIsProxyModalOpen(true)}
         />
 
         <Site
-          mainCaption="Reset site"
-          description="Resetting a site removes all files, databases, and staging environments associated with the site, then installs WordPress again. Be careful when resetting Live sites"
-          buttonInnerContent="Reset Site"
+          mainCaption={'Reset site'}
+          description={
+            'Resetting a site removes all files, databases, and staging environments associated with the site, then installs WordPress again. Be careful when resetting Live sites'
+          }
+          buttonInnerContent={'Reset Site'}
           onDeleteClick={() => setIsResetModalOpen(true)}
         />
 
         <Site
-          mainCaption="Delete site"
-          buttonInnerContent="Delete site"
-          description="Deleting a site removes all files, databases, and staging environments associated with the site. Be careful when deleting Live sites."
+          mainCaption={'Delete site'}
+          buttonInnerContent={'Delete site'}
+          description={
+            'Deleting a site removes all files, databases, and staging environments associated with the site. Be careful when deleting Live sites.'
+          }
           onDeleteClick={() => setIsDeleteModalOpen(true)}
         />
       </div>
 
       <Modal
-        width={800}
+        width={840}
+        open={isPasswordExpirationModalOpen}
+        onCancel={() => setIsPasswordExpirationModalOpen(false)}
+        footer={null}
+        closable={false}
+      >
+        <PasswordExpirationModal
+          onClick={() => setIsPasswordExpirationModalOpen(false)}
+        />
+      </Modal>
+
+      <Modal
+        width={840}
+        open={isLabelModalOpen}
+        onCancel={() => setIsLabelModalOpen(false)}
+        footer={null}
+        closable={false}
+      >
+        <LabelModal
+          siteName={'site.siteName'}
+          onClick={() => setIsLabelModalOpen(false)}
+        />
+      </Modal>
+
+      <Modal
+        width={840}
         open={isRenameModalOpen}
         onCancel={() => setIsRenameModalOpen(false)}
         footer={null}
@@ -155,7 +194,7 @@ const Info = (): JSX.Element => {
       </Modal>
 
       <Modal
-        width={800}
+        width={840}
         open={isDeleteModalOpen}
         onCancel={() => setIsDeleteModalOpen(false)}
         footer={null}
@@ -168,7 +207,7 @@ const Info = (): JSX.Element => {
       </Modal>
 
       <Modal
-        width={800}
+        width={840}
         open={isResetModalOpen}
         onCancel={() => setIsResetModalOpen(false)}
         footer={null}
@@ -179,7 +218,7 @@ const Info = (): JSX.Element => {
       </Modal>
 
       <Modal
-        width={800}
+        width={840}
         height={616}
         open={isProxyModalOpen}
         onCancel={() => setIsProxyModalOpen(false)}
