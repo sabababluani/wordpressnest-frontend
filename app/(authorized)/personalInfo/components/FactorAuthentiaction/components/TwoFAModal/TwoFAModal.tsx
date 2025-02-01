@@ -4,25 +4,17 @@ import Image from 'next/image';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { useState } from 'react';
 import { TwoFaModalPropsInterface } from './interfaces/two-fa-modal-props.interface';
+import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 
 const TwoFAModal = (props: TwoFaModalPropsInterface) => {
   const [inputValue, setInputValue] = useState<string>('');
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.header}>
-        <span className={styles.headline}>
-          Enable two-factor authentication
-        </span>
-        <Image
-          src="/icons/close-mini.svg"
-          width={24}
-          height={24}
-          alt="close"
-          className={styles.close}
-          onClick={props.onClose}
-        />
-      </div>
+      <ModalHeader
+        headline="Enable two-factor authentication"
+        onClose={props.onClose}
+      />
       <div className={styles.mainContainer}>
         <div className={styles.container}>
           <span className={styles.topLine}>

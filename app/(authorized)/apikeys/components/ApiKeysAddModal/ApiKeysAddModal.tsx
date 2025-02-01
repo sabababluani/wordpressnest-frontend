@@ -7,6 +7,7 @@ import SuccessNotification from '@/app/components/SuccessNotification/SuccessNot
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { apiKeyOptions } from './utils/api-keys-select-options';
 import { ApiKeyPropsInterface } from '../../interfaces/api-keys-props.interface';
+import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 
 const ApiKeysAddModal = (props: ApiKeyPropsInterface) => {
   const [steper, setSteper] = useState(1);
@@ -31,17 +32,7 @@ const ApiKeysAddModal = (props: ApiKeyPropsInterface) => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.header}>
-        <span className={styles.headline}>Create API Key</span>
-        <Image
-          src="/icons/close-mini.svg"
-          alt="close"
-          width={24}
-          height={24}
-          className={styles.close}
-          onClick={() => props.onClose()}
-        />
-      </div>
+      <ModalHeader headline="Create API Key" onClose={props.onClose} />
       <div className={styles.wholeWrapper}>
         <div className={styles.container}>
           <div className={styles.steper}>

@@ -1,21 +1,15 @@
 import Button from '@/app/components/Button/Button';
 import styles from './RevokeAuthentication.module.scss';
-import Image from 'next/image';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
+import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 
 const RevokeAuthentication = () => {
   return (
     <div>
-      <div className={styles.header}>
-        <span className={styles.headline}>Create credential</span>
-        <Image
-          src="/icons/close-mini.svg"
-          alt="close"
-          width={24}
-          height={24}
-          className={styles.close}
-        />
-      </div>
+      <ModalHeader
+        headline="Create credential"
+        onClose={() => console.log('Modal closed')}
+      />
       <div className={styles.container}>
         <span>You need to reauthorize GitHub be able to login.</span>
         <div className={styles.buttons}>

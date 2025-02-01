@@ -1,22 +1,13 @@
-import Image from 'next/image';
 import styles from './IpDenyModal.module.scss';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import Button from '@/app/components/Button/Button';
 import { IpdenyPropsInterface } from './interfaces/ipdeny-props.interface';
+import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 
 const IpDenyModal = (props: IpdenyPropsInterface): JSX.Element => {
   return (
     <div className={styles.wrapper}>
-      <div className={styles.container}>
-        <p>Add Ip Deny</p>
-        <Image
-          src={'/icons/close-mini.svg'}
-          alt={'close'}
-          width={24}
-          height={24}
-          onClick={props.onClose}
-        />
-      </div>
+      <ModalHeader headline={'Add IP Deny'} onClose={props.onClose} />
       <div className={styles.innerContainer}>
         <p>
           Add IP Addresses To Block Them From Accessing The Site. EnterMultiple

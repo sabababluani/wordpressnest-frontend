@@ -1,6 +1,5 @@
 import { Checkbox } from 'antd';
 import styles from './ResetSiteModal.module.scss';
-import Image from 'next/image';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { ChangeEvent, useState } from 'react';
@@ -13,6 +12,7 @@ import {
   SiteInterface,
   UserInterface,
 } from '@/app/components/Navigation/interfaces/navigation.props.interface';
+import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 
 const ResetSiteModal = (props: ResetSiteModalPropsInterface) => {
   const [steper, setSteper] = useState<number>(1);
@@ -45,17 +45,7 @@ const ResetSiteModal = (props: ResetSiteModalPropsInterface) => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.header}>
-        <span className={styles.headline}>Reset Wordpress Website</span>
-        <Image
-          src="/icons/close-mini.svg"
-          alt="close"
-          width={24}
-          height={24}
-          className={styles.close}
-          onClick={props.onClose}
-        />
-      </div>
+      <ModalHeader headline="Reset Wordpress Website" onClose={props.onClose} />
       <div className={styles.contentWrapper}>
         <div className={styles.container}>
           <div className={styles.steper}>

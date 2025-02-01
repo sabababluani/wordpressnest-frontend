@@ -1,26 +1,16 @@
 import { Select } from 'antd';
 import styles from './RegistryCredentialsCreateModal.module.scss';
-import Image from 'next/image';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { RegistryCredentialsModalPropsInterface } from '../../interfaces/registry-credentials-modal-props.interface';
+import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 
 const RegistryCredentialsCreateModal = (
   props: RegistryCredentialsModalPropsInterface,
 ) => {
   return (
     <div className={styles.wrapper}>
-      <div className={styles.header}>
-        <span className={styles.headline}>Create credential</span>
-        <Image
-          src="/icons/close-mini.svg"
-          alt="close"
-          width={24}
-          height={24}
-          className={styles.close}
-          onClick={props.onClose}
-        />
-      </div>
+      <ModalHeader headline="Create credential" onClose={props.onClose} />
       <div className={styles.container}>
         <div className={styles.spansWrapper}>
           <div className={styles.spansContainer}>

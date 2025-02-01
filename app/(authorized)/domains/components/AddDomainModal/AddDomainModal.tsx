@@ -6,6 +6,7 @@ import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.e
 import { useState } from 'react';
 import { AddDomainModalPropsInterface } from './interfaces/add-domain-modal-props.interface';
 import Verification from './components/Verification/Verification';
+import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 
 const AddDomainModal = (props: AddDomainModalPropsInterface) => {
   const [isAdvancedOptionsOpen, setIsAdvancedOptionsOpen] = useState(false);
@@ -13,19 +14,7 @@ const AddDomainModal = (props: AddDomainModalPropsInterface) => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.header}>
-        <div className={styles.headerContainer}>
-          <span className={styles.headline}>Add Domains</span>
-        </div>
-        <Image
-          src="/icons/close-mini.svg"
-          alt="close"
-          width={24}
-          height={24}
-          className={styles.close}
-          onClick={props.onClose}
-        />
-      </div>
+      <ModalHeader headline="Add domain" onClose={props.onClose} />
       <div className={styles.contentWrapper}>
         <div className={styles.container}>
           <div className={styles.steper}>

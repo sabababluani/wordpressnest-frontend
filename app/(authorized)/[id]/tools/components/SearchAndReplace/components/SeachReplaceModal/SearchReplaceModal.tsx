@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import styles from './SearchReplaceModal.module.scss';
-import Image from 'next/image';
 import { SearchReplaceModalPropsInterface } from './interfaces/search-replace-modal-props.interfaces';
 import { Checkbox } from 'antd';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { createData } from '@/app/api/crudService';
 import { useParams } from 'next/navigation';
+import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 
 const SearchReplaceModal = (props: SearchReplaceModalPropsInterface) => {
   const { id } = useParams();
@@ -30,17 +30,7 @@ const SearchReplaceModal = (props: SearchReplaceModalPropsInterface) => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.header}>
-        <span className={styles.headline}>Search and replace</span>
-        <Image
-          src="/icons/close-mini.svg"
-          alt="close"
-          width={24}
-          height={24}
-          className={styles.close}
-          onClick={() => props.onClose()}
-        />
-      </div>
+      <ModalHeader headline="Search and Replace" onClose={props.onClose} />
       <div className={styles.container}>
         <p>
           You can search and optionally replace in your WordPress database. This

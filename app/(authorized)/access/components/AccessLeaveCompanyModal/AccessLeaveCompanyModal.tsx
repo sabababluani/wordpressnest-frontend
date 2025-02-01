@@ -1,25 +1,15 @@
 import Button from '@/app/components/Button/Button';
 import styles from './AccessLeaveCompanyModal.module.scss';
-import Image from 'next/image';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { AccessLeaveCompanyModalPropsInterface } from './interfaces/access-leave-company-modal-props.interface';
+import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 
 const AccessLeaveCompanyModal = (
   props: AccessLeaveCompanyModalPropsInterface,
 ) => {
   return (
     <div className={styles.wrapper}>
-      <div className={styles.header}>
-        <span className={styles.headline}>Leave company</span>
-        <Image
-          src="/icons/close-mini.svg"
-          alt="close"
-          width={24}
-          height={24}
-          className={styles.close}
-          onClick={() => props.onClose()}
-        />
-      </div>
+      <ModalHeader headline="Leave Company" onClose={props.onClose} />
       <div className={styles.container}>
         <p>
           Are you sure you want to leave{' '}

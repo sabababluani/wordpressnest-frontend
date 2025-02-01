@@ -1,7 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 import { Checkbox } from 'antd';
 import styles from './DeleteSiteModal.module.scss';
-import Image from 'next/image';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { DeleteSiteModalPropsInterface } from './interfaces/delete-site-modal-props.interface';
@@ -13,6 +12,7 @@ import {
 import { useGetData } from '@/app/hooks/useGetData';
 import { useParams } from 'next/navigation';
 import { deleteData } from '@/app/api/crudService';
+import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 
 const DeleteSiteModal = (props: DeleteSiteModalPropsInterface) => {
   const { id } = useParams();
@@ -37,17 +37,7 @@ const DeleteSiteModal = (props: DeleteSiteModalPropsInterface) => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.header}>
-        <span className={styles.headline}>Add Domains</span>
-        <Image
-          src="/icons/close-mini.svg"
-          alt="close"
-          width={24}
-          height={24}
-          className={styles.close}
-          onClick={props.onClose}
-        />
-      </div>
+      <ModalHeader headline="Add Domains" onClose={props.onClose} />
       <div className={styles.container}>
         <div className={styles.content}>
           <span className={styles.heading}>

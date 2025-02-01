@@ -1,28 +1,18 @@
 'use client';
 
-import Image from 'next/image';
 import styles from './UsersModal.module.scss';
 import Search from '@/app/components/Search/Search';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import Button from '@/app/components/Button/Button';
 import { UsersModalPropsInterface } from '../interfaces/modal.props.interface';
 import { Select } from 'antd';
+import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 
 //TODO SELECT AND SEARCH
 const UsersModal = (props: UsersModalPropsInterface): JSX.Element => {
   return (
     <div className={styles.mainWrapper}>
-      <div className={styles.header}>
-        <span className={styles.headline}>Invite Users</span>
-        <Image
-          src="/icons/close-mini.svg"
-          alt="close"
-          width={24}
-          height={24}
-          className={styles.close}
-          onClick={props.onClose}
-        />
-      </div>
+      <ModalHeader headline="Invite Users" onClose={props.onClose} />
       <div className={styles.container}>
         <div className={styles.contentWrapper}>
           <span className={styles.title}>Email Address(es)</span>

@@ -1,22 +1,13 @@
 import Button from '@/app/components/Button/Button';
 import styles from './DeleteLalbelModal.module.scss';
-import Image from 'next/image';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { SharedSiteLabelsPropsInterface } from '../../interfaces/shared-site-labels-props.interfaces';
+import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 
 const DeleteLalbelModal = (props: SharedSiteLabelsPropsInterface) => {
   return (
     <div className={styles.wrapper}>
-      <div className={styles.header}>
-        <span className={styles.headline}>Add Domains</span>
-        <Image
-          src="/icons/close-mini.svg"
-          alt="close"
-          width={24}
-          height={24}
-          className={styles.close}
-        />
-      </div>
+      <ModalHeader headline="Add Domain" onClose={props.onClose} />
       <div className={styles.container}>
         <div className={styles.spansContainer}>
           <span className={styles.labels}>
