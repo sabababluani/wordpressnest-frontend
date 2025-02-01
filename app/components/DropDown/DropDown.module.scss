@@ -27,7 +27,8 @@
   justify-content: space-between;
   align-items: center;
   border-radius: 12px;
-  border: 1px solid $borderColor;  cursor: pointer;
+  border: 1px solid $borderColor;
+  cursor: pointer;
 }
 
 .innerContentCaptionStyle {
@@ -36,36 +37,4 @@
   font-style: normal;
   font-weight: 500;
   line-height: 20px;
-}
-
-.icon {
-  transition: transform 0.3s ease;
-}
-
-.activeIcon {
-  transform: rotate(180deg);
-}
-
-.dropdownMenu {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 0;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-  padding: 8px 0;
-  min-width: 150px;
-  list-style: none;
-  z-index: 10;
-}
-
-.dropdownItem {
-  padding: 8px 16px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.2s ease;
-
-  &:hover {
-    background-color: #f0f0f0;
-  }
 }

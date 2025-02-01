@@ -1,0 +1,101 @@
+@import '../../../../../styles/colors.scss';
+@import '../../../../../styles/text-colors.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 24px;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  border-top: 1px solid $borderColor;
+  padding: 16px 24px;
+}
+
+.types {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.types :global .ant-radio-inner::after {
+  background-color: $primaryTextColor !important;
+  width: 24px;
+  height: 24px;
+  margin-block-start: -12px;
+  margin-inline-start: -12px;
+}
+
+.types :global .ant-radio-checked .ant-radio-inner {
+  background-color: #fff !important;
+  border-color: #707276 !important;
+}
+
+.types :global .ant-radio-wrapper:hover .ant-radio-inner {
+  border-color: #707276 !important;
+}
+
+.types :global .ant-radio-wrapper {
+  align-self: flex-start;
+  padding-top: 3px;
+}
+
+.radios {
+  display: flex;
+  flex-direction: column;
+}
+
+.select {
+  height: 44px;
+  max-width: 258px;
+  width: 100%;
+  border-radius: 12px;
+  outline: none;
+  justify-self: flex-start;
+}
+
+.select :global(.ant-select-selector) {
+  border: 1px solid $borderColor !important;
+  box-shadow: none !important;
+  border-radius: 12px !important;
+}
+
+.containerHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.containerHeader span {
+  color: $primaryTextColor;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.containerHeader p {
+  color: #707276;
+  font-size: 16px;
+}
+
+.versions {
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: $primaryTextColor !important;
+}
+
+.containerContent > span {
+  color: $primaryTextColor;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.containerContent p {
+  color: #707276;
+  font-size: 14px;
+  font-weight: 400;
+}

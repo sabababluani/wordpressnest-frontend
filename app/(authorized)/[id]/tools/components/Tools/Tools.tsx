@@ -58,7 +58,12 @@ const Tools = (props: ToolsDataPropsInterface): JSX.Element => {
             </div>
           </div>
         )}
-        {props.dropDownActive && <DropDown innerContentCaption={'Modify'} />}
+        {props.dropDownActive && (
+          <DropDown
+            innerContentCaption={'Modify'}
+            onDropDownClick={props.onClick}
+          />
+        )}
       </div>
     </div>
   );
