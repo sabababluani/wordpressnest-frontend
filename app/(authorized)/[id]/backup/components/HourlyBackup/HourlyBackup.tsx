@@ -26,7 +26,7 @@ const HourlyBackup = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.content}>
-        <h1>Daily Backup</h1>
+        <h1>Hourly Backup</h1>
         <span>You can set backups every 6-hours or every hour.</span>
       </div>
       <div className={styles.containers}>

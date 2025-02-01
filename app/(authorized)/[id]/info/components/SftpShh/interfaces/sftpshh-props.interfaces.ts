@@ -8,4 +8,5 @@ export interface SftpShhPropsInterface {
   IpAllowed: string;
   password: string;
   ftp: string;
+  onClick: () => void;
 }

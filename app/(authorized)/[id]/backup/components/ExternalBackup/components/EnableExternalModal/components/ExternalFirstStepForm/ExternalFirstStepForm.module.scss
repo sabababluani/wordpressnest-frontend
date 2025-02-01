@@ -29,6 +29,11 @@
   color: $primaryTextColor;
 }
 
+.inputContainer input::placeholder {
+  color: #b8b7b7;
+  font-weight: 400;
+}
+
 .checkWrapper {
   display: flex;
   align-items: center;

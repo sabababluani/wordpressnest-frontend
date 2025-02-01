@@ -1,0 +1,85 @@
+@import '../../../../../../../styles/colors.scss';
+@import '../../../../../../../styles/text-colors.scss';
+
+.mainContainer {
+    border: 1px solid $borderColor;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    overflow: hidden;
+    gap: 20px;
+}
+
+.topContainer {
+    width: 100%;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    background-color: $moduleTopContainerColor;
+}
+
+.captionStyle {
+    color: $primaryTextColor;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.firstWrapper {
+    padding: 0 24px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom:1px solid $borderColor; ;
+}
+
+.captionWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.innerCaptionTop {
+    color: $primaryTextColor;
+    font-size: var(--Font-size-text-sm, 14px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: var(--Line-height-text-sm, 20px);
+}
+
+.innerCaptionBottom {
+    color: $secondaryTextColor;
+    font-size: var(--Font-size-text-sm, 14px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: var(--Line-height-text-sm, 20px);
+}
+
+.secondWrapper {
+    padding: 0 24px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $borderColor;
+}
+
+.bottomContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.lastCaptionWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 24px 20px;
+}
+
+
+.buttonsWrapper {
+    display: flex;
+    gap: 16px;
+}

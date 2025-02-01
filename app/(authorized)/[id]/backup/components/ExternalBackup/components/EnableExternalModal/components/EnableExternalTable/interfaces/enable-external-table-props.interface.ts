@@ -1,6 +1,11 @@
 export interface EnableExternalTablePropsInterface {
-  created: string;
+  id: number;
+  formatedCreatedAt: string;
   size: string;
   storage: string;
   status: string;
+}
+
+export interface EnableExternalTableProps {
+  dataSource: EnableExternalTablePropsInterface[];
 }

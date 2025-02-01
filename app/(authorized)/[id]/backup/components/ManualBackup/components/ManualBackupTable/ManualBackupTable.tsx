@@ -1,19 +1,18 @@
 'use client';
 
-import { Modal, Progress, Table } from 'antd';
-import { Select, TableProps } from 'antd';
-import Image from 'next/image';
 import React, { useState } from 'react';
+import { Modal, Progress, Table, Select, TableProps } from 'antd';
+import Image from 'next/image';
 import styles from './ManualBackupTable.module.scss';
 import { ManualBackupTablePropsInterface } from './interfaces/manual-backup-table-props.interface';
 import DailyBackupModal from '../../../DailyBackup/components/DailyBackupModal/DailyBackupModal';
+import RevokeModal from '@/app/components/RevokeModal/RevokeModal';
+import ManualBackupCreateModal from '../ManualBackupCreateModal/ManualBackupCreateModal';
+import Button from '@/app/components/Button/Button';
 import { useGetData } from '@/app/hooks/useGetData';
 import { deleteData, updateData } from '@/app/api/crudService';
-import RevokeModal from '@/app/components/RevokeModal/RevokeModal';
-import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
-import Button from '@/app/components/Button/Button';
-import ManualBackupCreateModal from '../ManualBackupCreateModal/ManualBackupCreateModal';
 import { useParams } from 'next/navigation';
+import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { ProgressPropsInterface } from './interfaces/progress-props.interface';
 
 const ManualBackupTable = () => {
@@ -25,6 +24,7 @@ const ManualBackupTable = () => {
   const [isCreateModalActive, setIsCreateModalActive] = useState(false);
   const [numberId, setNumberId] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [date, setDate] = useState('');
 
   const { data: manualBackUp, mutate: mutateManualBackup } = useGetData<
     ManualBackupTablePropsInterface[]
@@ -37,31 +37,28 @@ const ManualBackupTable = () => {
       endpoint: `/backup/percent/${id}`,
     });
 
-  const onHandleManualBackupDelete = async () => {
-    setLoading(true);
+  const handleDeleteBackup = async () => {
     if (!selectedBackupId) return;
+    setLoading(true);
     try {
       await deleteData('backup/deletefrompod', selectedBackupId.toString());
-      mutateManualBackup();
-      mutateProgress();
-      setIsDeleteModalVisible(false);
-      setSelectedBackupId(null);
+      await Promise.all([mutateManualBackup(), mutateProgress()]);
+      closeDeleteModal();
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
       setLoading(false);
     }
   };
 
-  const onHandleRestore = async () => {
+  const handleRestoreBackup = async () => {
     setLoading(true);
     try {
       await updateData('backup/restoreFromPod', numberId);
-      mutateManualBackup();
-      mutateProgress();
-      setIsModalVisible(false);
+      await Promise.all([mutateManualBackup(), mutateProgress()]);
+      closeRestoreModal();
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
       setLoading(false);
     }
@@ -71,6 +68,19 @@ const ManualBackupTable = () => {
     setSelectedBackupId(backupId);
     setIsDeleteModalVisible(true);
   };
+
+  const closeDeleteModal = () => {
+    setIsDeleteModalVisible(false);
+    setSelectedBackupId(null);
+  };
+
+  const openRestoreModal = (id: number, createdAt: string) => {
+    setNumberId(id);
+    setDate(createdAt);
+    setIsModalVisible(true);
+  };
+
+  const closeRestoreModal = () => setIsModalVisible(false);
 
   const columns: TableProps<ManualBackupTablePropsInterface>['columns'] = [
     {
@@ -97,14 +107,22 @@ const ManualBackupTable = () => {
       render: (_, record) => (
         <Select
           className={styles.select}
-          value={'Restore To'}
-          options={[{ value: 'live', label: 'Live' }]}
-          onChange={(value) => {
-            if (value === 'live') {
-              setIsModalVisible(true);
-              setNumberId(record.id);
-            }
-          }}
+          value="Restore To"
+          options={[
+            {
+              value: 'live',
+              label: (
+                <div className={styles.option}>
+                  <div className={styles.dot}></div>
+                  <span>Live</span>
+                </div>
+              ),
+            },
+          ]}
+          onChange={(value) =>
+            value === 'live' &&
+            openRestoreModal(record.id, record.formatedCreatedAt)
+          }
         />
       ),
       width: '25%',
@@ -114,8 +132,8 @@ const ManualBackupTable = () => {
       key: 'delete',
       render: (_, record) => (
         <Image
-          src={'/icons/trash.svg'}
-          alt={'delete'}
+          src="/icons/trash.svg"
+          alt="delete"
           width={24}
           height={24}
           className={styles.trash}
@@ -138,16 +156,26 @@ const ManualBackupTable = () => {
         </div>
         <div className={styles.container}>
           <div className={styles.progressContainer}>
-            <p>
-              {lineProgress?.existingBackupsleangth} of {lineProgress?.maximum}
-            </p>
-            <div className={styles.progress}>
-              <Progress percent={lineProgress?.percent} showInfo={false} />
-            </div>
+            {lineProgress?.existingBackupsleangth &&
+              lineProgress?.maximum &&
+              lineProgress?.percent && (
+                <>
+                  <p>
+                    {lineProgress?.existingBackupsleangth} of{' '}
+                    {lineProgress?.maximum}
+                  </p>{' '}
+                  <div className={styles.progress}>
+                    <Progress
+                      percent={lineProgress?.percent}
+                      showInfo={false}
+                    />
+                  </div>
+                </>
+              )}
           </div>
           <Button
             backgroundColor={buttonbackgroundColorEnum.black}
-            innerContent={'Create backup'}
+            innerContent="Create backup"
             onClick={() => setIsCreateModalActive(true)}
           />
         </div>
@@ -160,44 +188,49 @@ const ManualBackupTable = () => {
           locale={{ emptyText: 'Manual backups will appear here.' }}
         />
       </div>
+
       <Modal
         width={840}
         open={isModalVisible}
-        onCancel={() => setIsModalVisible(false)}
+        onCancel={closeRestoreModal}
         footer={null}
         closable={false}
         centered
       >
         <DailyBackupModal
-          onClose={() => setIsModalVisible(false)}
-          onSuccess={onHandleRestore}
+          onClose={closeRestoreModal}
+          onSuccess={handleRestoreBackup}
           loading={loading}
           setLoading={setLoading}
+          date={date}
+          backupType="Manual backup"
         />
       </Modal>
+
       <Modal
         width={840}
-        onCancel={() => setIsDeleteModalVisible(false)}
         open={isDeleteModalVisible}
+        onCancel={closeDeleteModal}
         footer={null}
         closable={false}
       >
         <RevokeModal
-          onClose={() => setIsDeleteModalVisible(false)}
-          headline={'Are you sure to delete backup?'}
-          content={'This action cannot be undone.'}
-          buttonText={'Delete backup'}
-          onSuccess={onHandleManualBackupDelete}
+          onClose={closeDeleteModal}
+          headline="Are you sure to delete backup?"
+          content="This action cannot be undone."
+          buttonText="Delete backup"
+          onSuccess={handleDeleteBackup}
           loading={loading}
           setLoading={setLoading}
         />
       </Modal>
+
       <Modal
+        width={840}
         open={isCreateModalActive}
         onCancel={() => setIsCreateModalActive(false)}
-        footer={false}
+        footer={null}
         closable={false}
-        width={840}
       >
         <ManualBackupCreateModal
           onClose={() => setIsCreateModalActive(false)}

@@ -1,0 +1,15 @@
+@import '../../../../../../../styles/colors.scss';
+@import '../../../../../../../styles/text-colors.scss';
+
+
+.groupWrapper {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    border: 1px solid #DCDFE1;
+    background: #FFF;
+    cursor: pointer;
+}

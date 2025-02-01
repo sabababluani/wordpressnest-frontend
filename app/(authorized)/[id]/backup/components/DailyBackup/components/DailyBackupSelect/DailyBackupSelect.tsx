@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Modal } from 'antd';
 import DailyBackupModal from '../DailyBackupModal/DailyBackupModal';
 
+//TODO DAYILY BACKUP MODAL
 const DailyBackupSelect = () => {
   const [isSelectOpen, setIsSelectOpen] = useState<boolean>(false);
   const [isModalVisable, setIsModalVisable] = useState<boolean>(false);
@@ -52,7 +53,12 @@ const DailyBackupSelect = () => {
         footer={null}
         closable={false}
       >
-        <DailyBackupModal onClose={handleCloseModal} onSuccess={() => {}} />
+        <DailyBackupModal
+          onClose={handleCloseModal}
+          onSuccess={() => {}}
+          date={''}
+          backupType={''}
+        />
       </Modal>
     </div>
   );

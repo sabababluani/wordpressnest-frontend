@@ -10,7 +10,7 @@ import { Modal } from 'antd';
 import AddSiteModal from './components/AddSiteModal/AddSiteModal';
 import ClearCacheModal from './components/ClearCacheModal/ClearCacheModal';
 import UpdateModal from './components/UpdateModal/UpdateModal';
-import LabelModal from './components/LabelModal/LabelModal';
+// import LabelModal from './components/LabelModal/LabelModal';
 import ChangeCdnModal from './components/ChangeCdnModal/ChangeCdnModal';
 import PhpModal from './components/PhpModal/PhpModal';
 import UpdateThemesModal from './components/UpdateThemesModal/UpdateThemesModal';
@@ -59,8 +59,8 @@ const Wpsites = () => {
         return <ClearCacheModal />;
       case 'plugins':
         return <UpdateModal />;
-      case 'label':
-        return <LabelModal />;
+      // case 'label': (commented temporarily)
+      // return <LabelModal /> (commented temporarily);
       case 'cdn':
         return <ChangeCdnModal />;
       case 'php':

@@ -14,7 +14,9 @@ import { useParams } from 'next/navigation';
 import { deleteData } from '@/app/api/crudService';
 import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 
-const DeleteSiteModal = (props: DeleteSiteModalPropsInterface) => {
+const DeleteSiteModal = (
+  props: DeleteSiteModalPropsInterface,
+): React.JSX.Element => {
   const { id } = useParams();
 
   const [checkbox1, setCheckbox1] = useState<boolean>(false);
@@ -32,10 +34,10 @@ const DeleteSiteModal = (props: DeleteSiteModalPropsInterface) => {
 
   const onDeleteFunction = () => {
     deleteData('wordpress/setup', id.toString());
-    props.onCancel();
+    // props.onCancel();
   };
 
-  return (
+  return 
     <div className={styles.wrapper}>
       <ModalHeader headline="Add Domains" onClose={props.onClose} />
       <div className={styles.container}>
@@ -48,65 +50,76 @@ const DeleteSiteModal = (props: DeleteSiteModalPropsInterface) => {
             Confirm that you understand the following:
           </span>
         </div>
-        <div className={styles.check}>
-          <div className={styles.checkbox}>
-            <Checkbox
-              checked={checkbox1}
-              onChange={(e: CheckboxChangeEvent) =>
-                setCheckbox1(e.target.checked)
+        <div className={styles.container}>
+          <div className={styles.content}>
+            <span className={styles.heading}>
+              By deleting jigaro, all of its data will be destroyed. This is not
+              recoverable.
+            </span>
+            <span className={styles.confirm}>
+              Confirm that you understand the following:
+            </span>
+          </div>
+          <div className={styles.check}>
+            <div className={styles.checkbox}>
+              <Checkbox
+                checked={checkbox1}
+                onChange={(e: CheckboxChangeEvent) =>
+                  setCheckbox1(e.target.checked)
+                }
+              />
+            </div>
+            <div>
+              <span className={styles.deleted}>
+                Files and database for{' '}
+                <span className={styles.title}>jigaro</span> will be deleted
+              </span>
+            </div>
+          </div>
+          <div className={styles.check}>
+            <div className={styles.checkbox}>
+              <Checkbox
+                checked={checkbox2}
+                onChange={(e: CheckboxChangeEvent) =>
+                  setCheckbox2(e.target.checked)
+                }
+              />
+            </div>
+            <div>
+              <span className={styles.deleted}>
+                Removing this site does not cancel the WordPress hosting plan
+              </span>
+            </div>
+          </div>
+          <div className={styles.inputContainer}>
+            <span className={styles.deleted}>
+              Enter the text <span className={styles.title}>jigaro-live</span>{' '}
+              here to reset your site:
+            </span>
+            <input
+              type="text"
+              value={inputValue}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setInputValue(e.target.value)
               }
             />
           </div>
-          <div>
-            <span className={styles.deleted}>
-              Files and database for{' '}
-              <span className={styles.title}>jigaro</span> will be deleted
-            </span>
-          </div>
-        </div>
-        <div className={styles.check}>
-          <div className={styles.checkbox}>
-            <Checkbox
-              checked={checkbox2}
-              onChange={(e: CheckboxChangeEvent) =>
-                setCheckbox2(e.target.checked)
-              }
-            />
-          </div>
-          <div>
-            <span className={styles.deleted}>
-              Removing this site does not cancel the WordPress hosting plan
-            </span>
-          </div>
-        </div>
-        <div className={styles.inputContainer}>
-          <span className={styles.deleted}>
-            Enter the text <span className={styles.title}>jigaro-live</span>{' '}
-            here to reset your site:
-          </span>
-          <input
-            type="text"
-            value={inputValue}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setInputValue(e.target.value)
-            }
-          />
-        </div>
-        <div className={styles.buttons}>
-          <Button
-            backgroundColor={buttonbackgroundColorEnum.grey}
-            innerContent="Back"
-            onClick={props.onClose}
-          />
-          <Button
-            backgroundColor={buttonbackgroundColorEnum.black}
-            innerContent="Delete WordPress site"
-            onClick={onDeleteFunction}
-            disableButton={!isButtonEnabled}
-          />
         </div>
       </div>
-    </div>
+      <div className={styles.buttons}>
+        <Button
+          backgroundColor={buttonbackgroundColorEnum.grey}
+          innerContent="Back"
+          onClick={props.onClose}
+        />
+        <Button
+          backgroundColor={buttonbackgroundColorEnum.black}
+          innerContent="Delete WordPress site"
+          onClick={onDeleteFunction}
+          disableButton={!isButtonEnabled}
+        />
+      </div>
+    </>
   );
 };
 

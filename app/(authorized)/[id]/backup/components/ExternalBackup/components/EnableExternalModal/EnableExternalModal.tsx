@@ -9,8 +9,11 @@ import ExternalSecondStepForm from './components/ExternalSecondStepForm/External
 import ExternalThirdStepForm from './components/ExternalThirdStepForm/ExternalThirdStepForm';
 import { useExternalSteper } from './hooks/useExternalSteper';
 import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
+import { useParams } from 'next/navigation';
 
 const EnableExternalModal = (props: EnableExternalModalPropsInterface) => {
+  const { id } = useParams();
+
   const { steper, steps, setSteper } = useExternalSteper();
   const { register, handleSubmit, watch, setValue } =
     useForm<EnableExternalBackendPropsInterface>({
@@ -18,7 +21,7 @@ const EnableExternalModal = (props: EnableExternalModalPropsInterface) => {
         bucket: '',
         accessKey: '',
         accessSecretKey: '',
-        createSubfolder: false,
+        // createSubfolder: false,
         files: false,
         database: false,
         uploadFrequency: 'monthly',
@@ -27,7 +30,9 @@ const EnableExternalModal = (props: EnableExternalModalPropsInterface) => {
 
   const onSubmit = async (data: EnableExternalBackendPropsInterface) => {
     try {
-      await createData('backup/manualtos3', data);
+      await createData(`backup/manualtos3/${id}`, data);
+      props.mutate();
+      props.enableBackup();
       props.onClose();
     } catch (error) {
       console.log('Error submitting data:', error);

@@ -14,7 +14,7 @@ import {
 } from '@/app/components/Navigation/interfaces/navigation.props.interface';
 import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 
-const ResetSiteModal = (props: ResetSiteModalPropsInterface) => {
+const ResetSiteModal = (props: ResetSiteModalPropsInterface): JSX.Element => {
   const [steper, setSteper] = useState<number>(1);
   const [password, setPassword] = useState<string>('');
   const [siteTitle, setSiteTitle] = useState<string>('');
@@ -68,85 +68,87 @@ const ResetSiteModal = (props: ResetSiteModalPropsInterface) => {
           </div>
         </div>
         {steper === 1 ? (
-          <div className={styles.contentContainer}>
-            <div className={styles.content}>
-              <span>
-                By resetting your site, a new WordPress is being installed to
-                this site. While you can keep all existing settings, a new
-                password is mandatory.
-              </span>
-            </div>
-            <div className={styles.siteTitleContainer}>
-              <span>WordPress site title</span>
-              <span>
-                Appears across the top of every page of the site. You can always
-                change it later.
-              </span>
-              <input
-                type="text"
-                defaultValue={
-                  specificUser?.setup.find(
-                    (item: SiteInterface) => item.id === +id,
-                  )?.siteTitle
-                }
-                disabled
-              />
-            </div>
-            <div className={styles.siteTitleContainer}>
-              <span>WordPress admin username</span>
-              <input
-                type="text"
-                defaultValue={specificUser?.firstName}
-                disabled
-              />
-            </div>
-            <div className={styles.siteTitleContainer}>
-              <span>WordPress admin password</span>
-              <input type="password" onChange={onChangePasswordField} />
-            </div>
-            <div className={styles.siteTitleContainer}>
-              <span>WordPress admin Email</span>
-              <input
-                type="text"
-                defaultValue={'novatorimagaria@gmail.com'}
-                disabled
-              />
-            </div>
-            <div className={styles.checkBoxContainer}>
-              <div className={styles.check}>
-                <div className={styles.checkbox}>
-                  <Checkbox></Checkbox>
-                </div>
-                <div>
-                  <span className={styles.plugins}>
-                    Install Wordpress multsite
-                  </span>
-                </div>
+          <div>
+            <div className={styles.contentContainer}>
+              <div className={styles.content}>
+                <span>
+                  By resetting your site, a new WordPress is being installed to
+                  this site. While you can keep all existing settings, a new
+                  password is mandatory.
+                </span>
               </div>
-              <div className={styles.check}>
-                <div className={styles.checkbox}>
-                  <Checkbox></Checkbox>
-                </div>
-                <div>
-                  <span className={styles.plugins}>Install WooCommerce</span>
-                </div>
+              <div className={styles.siteTitleContainer}>
+                <span>WordPress site title</span>
+                <span>
+                  Appears across the top of every page of the site. You can
+                  always change it later.
+                </span>
+                <input
+                  type="text"
+                  defaultValue={
+                    specificUser?.setup.find(
+                      (item: SiteInterface) => item.id === +id,
+                    )?.siteTitle
+                  }
+                  disabled
+                />
               </div>
-              <div className={styles.check}>
-                <div className={styles.checkbox}>
-                  <Checkbox></Checkbox>
-                </div>
-                <div>
-                  <span className={styles.plugins}>Install YoastSEO</span>
-                </div>
+              <div className={styles.siteTitleContainer}>
+                <span>WordPress admin username</span>
+                <input
+                  type="text"
+                  defaultValue={specificUser?.firstName}
+                  disabled
+                />
               </div>
-              <div className={styles.check}>
-                <div className={styles.checkbox}>
-                  <Checkbox></Checkbox>
+              <div className={styles.siteTitleContainer}>
+                <span>WordPress admin password</span>
+                <input type="password" onChange={onChangePasswordField} />
+              </div>
+              <div className={styles.siteTitleContainer}>
+                <span>WordPress admin Email</span>
+                <input
+                  type="text"
+                  defaultValue={'novatorimagaria@gmail.com'}
+                  disabled
+                />
+              </div>
+              <div className={styles.checkBoxContainer}>
+                <div className={styles.check}>
+                  <div className={styles.checkbox}>
+                    <Checkbox></Checkbox>
+                  </div>
+                  <div>
+                    <span className={styles.plugins}>
+                      Install Wordpress multsite
+                    </span>
+                  </div>
                 </div>
-                <div>
-                  <span className={styles.plugins}>
-                    Install Easy Digital Downloads
-                  </span>
+                <div className={styles.check}>
+                  <div className={styles.checkbox}>
+                    <Checkbox></Checkbox>
+                  </div>
+                  <div>
+                    <span className={styles.plugins}>Install WooCommerce</span>
+                  </div>
+                </div>
+                <div className={styles.check}>
+                  <div className={styles.checkbox}>
+                    <Checkbox></Checkbox>
+                  </div>
+                  <div>
+                    <span className={styles.plugins}>Install YoastSEO</span>
+                  </div>
+                </div>
+                <div className={styles.check}>
+                  <div className={styles.checkbox}>
+                    <Checkbox></Checkbox>
+                  </div>
+                  <div>
+                    <span className={styles.plugins}>
+                      Install Easy Digital Downloads
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>

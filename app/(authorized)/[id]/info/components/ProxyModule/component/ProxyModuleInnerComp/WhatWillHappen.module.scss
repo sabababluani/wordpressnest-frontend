@@ -1,0 +1,40 @@
+@import "../../../../../../../styles/colors.scss";
+@import "../../../../../../../styles/text-colors.scss";
+
+.mainContainer {
+    border: 1px solid $borderColor;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    overflow: hidden;
+    gap: 20px;
+}
+
+.captionStyle {
+    color: $primaryTextColor;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.descriptionStyle {
+    color: $secondaryTextColor;
+    font-size: var(--Font-size-text-sm, 14px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: var(--Line-height-text-sm, 20px);
+    
+}
+
+.topContainer {
+    padding: 16px 24px;
+    background-color: $moduleTopContainerColor;
+}
+
+.bottomContainer {
+    padding: 0px 24px;
+    margin-bottom: 24px;
+}
+
