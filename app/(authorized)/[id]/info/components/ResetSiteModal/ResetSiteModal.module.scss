@@ -8,21 +8,6 @@
   border-radius: 12px;
 }
 
-.header {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #f0f3f5;
-  border-radius: 12px 12px 0 0;
-  padding: 16px 24px;
-  border-bottom: 1px solid $moduleBorderColor;
-}
-
-.header img {
-  cursor: pointer;
-}
-
 .headline {
   color: $primaryTextColor;
   font-size: 16px;
@@ -106,7 +91,8 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: $borderColor;}
+  background-color: $borderColor;
+}
 
 .line {
   max-width: 378px;
@@ -121,7 +107,8 @@
   width: 100%;
   border-radius: 12px;
   height: 5px;
-  background-color: $borderColor;}
+  background-color: $borderColor;
+}
 
 .progress {
   display: flex;
@@ -162,7 +149,8 @@
   border-radius: 12px;
   padding-left: 16px;
   padding-right: 16px;
-  border: 1px solid $borderColor;  outline: none;
+  border: 1px solid $borderColor;
+  outline: none;
 }
 
 .siteTitleContainer span {
@@ -214,4 +202,3 @@
   gap: 24px;
   padding: 0 24px;
 }
-

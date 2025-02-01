@@ -3,21 +3,15 @@ import styles from './SixHoursModal.module.scss';
 import Image from 'next/image';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { SixHoursModalPropsInterface } from './interfaces/six-hours-modal-props.interface';
+import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 
 const SixHoursModal = (props: SixHoursModalPropsInterface) => {
   return (
     <div className={styles.wrapper}>
-      <div className={styles.header}>
-        <span className={styles.headline}>Enable 6-hours backups</span>
-        <Image
-          src="/icons/close-mini.svg"
-          alt="close"
-          width={24}
-          height={24}
-          className={styles.close}
-          onClick={props.onCancle}
-        />
-      </div>
+      <ModalHeader
+        headline="Enable 6-hours backups"
+        onClose={() => console.log('close')}
+      />
       <div className={styles.container}>
         <div className={styles.subscription}>
           <span className={styles.heading}>Monthly subscription</span>

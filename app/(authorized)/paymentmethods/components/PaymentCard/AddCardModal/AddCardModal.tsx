@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { Checkbox } from 'antd';
 import { AddCardModalPropsInterface } from './interfaces/add-card-modal-props.interface';
+import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 
 const AddCardModal = (props: AddCardModalPropsInterface) => {
   const [formState, setFormState] = useState({
@@ -24,17 +25,7 @@ const AddCardModal = (props: AddCardModalPropsInterface) => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.header}>
-        <span className={styles.headline}>Add Credit Card</span>
-        <Image
-          src="/icons/close-mini.svg"
-          width={24}
-          height={24}
-          alt="close"
-          className={styles.close}
-          onClick={props.onClose}
-        />
-      </div>
+      <ModalHeader headline="Add Credit Card" onClose={props.onClose} />
       <div className={styles.mainContainer}>
         <div className={styles.container}>
           <div className={styles.inputWrapper}>

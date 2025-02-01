@@ -1,22 +1,16 @@
 import { Radio } from 'antd';
 import styles from './CacheModal.module.scss';
-import Image from 'next/image';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
+import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 
 const CacheModal = () => {
   return (
     <div className={styles.mainWrapper}>
-      <div className={styles.header}>
-        <span className={styles.headline}>Clear cache</span>
-        <Image
-          src="/icons/close-mini.svg"
-          width={24}
-          height={24}
-          alt="close"
-          className={styles.close}
-        />
-      </div>
+      <ModalHeader
+        headline={'Clear cache'}
+        onClose={() => console.log('Modal closed')}
+      />
       <div className={styles.middleContainer}>
         <span className={styles.middleContainersCaption}>
           How do you want to set edge caching for jigaro Live?

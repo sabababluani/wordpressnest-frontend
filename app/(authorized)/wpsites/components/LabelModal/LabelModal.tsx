@@ -3,6 +3,7 @@
 import styles from './LabelModal.module.scss';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
+import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 import { Checkbox } from 'antd';
 import { CheckboxChangeEvent } from 'antd/lib/checkbox/Checkbox';
 import Image from 'next/image';
@@ -19,17 +20,10 @@ const LabelModal = ({
 
   return (
     <div className={styles.mainWrapper}>
-      <div className={styles.header}>
-        <span className={styles.headline}>Label sites</span>
-        <Image
-          onClick={onClick}
-          src="/icons/close-mini.svg"
-          width={24}
-          height={24}
-          alt="close"
-          className={styles.close}
-        />
-      </div>
+      <ModalHeader
+        headline={'Label 2 sites'}
+        onClose={() => console.log('Modal closed')}
+      />
       <div className={styles.middleContainer}>
         <div className={styles.checkbox}>
           <Checkbox

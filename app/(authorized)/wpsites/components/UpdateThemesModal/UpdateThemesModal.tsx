@@ -2,12 +2,12 @@
 
 import Button from '@/app/components/Button/Button';
 import styles from './UpdateThemesModal.module.scss';
-import Image from 'next/image';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { Table } from 'antd';
 import { useState } from 'react';
 import { UpdatePluginModalPropsInterface } from '../UpdateModal/interfaces/update-plugin-modal-props.interface';
 import { UpdateThemeDummy } from './dummy/update-themes-dummy';
+import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 
 const columns = [
   {
@@ -35,16 +35,10 @@ const UpdateThemesModal = () => {
 
   return (
     <div className={styles.mainWrapper}>
-      <div className={styles.header}>
-        <span className={styles.headline}>Update themes</span>
-        <Image
-          src="/icons/close-mini.svg"
-          width={24}
-          height={24}
-          alt="close"
-          className={styles.close}
-        />
-      </div>
+      <ModalHeader
+        headline="Update Plugins"
+        onClose={() => console.log('Modal closed')}
+      />
       <div className={styles.middleContainer}>
         <div className={styles.middleHeader}>
           <span className={styles.middleContainersMainCaption}>

@@ -2,23 +2,17 @@
 
 import Button from '@/app/components/Button/Button';
 import styles from './ChangeCdnModal.module.scss';
-import Image from 'next/image';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { Radio } from 'antd';
+import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 
 const ChangeCdnModal = () => {
   return (
     <div className={styles.mainWrapper}>
-      <div className={styles.topContainer}>
-        <span className={styles.mainCaptionStyle}>Change CDN</span>
-        <Image
-          src="/icons/close-mini.svg"
-          alt="close"
-          width={24}
-          height={24}
-          className={styles.close}
-        />
-      </div>
+      <ModalHeader
+        headline={'Change CDN'}
+        onClose={() => console.log('Modal closed')}
+      />
       <div className={styles.middleContainer}>
         <span className={styles.middleContainersCaption}>
           How do you want to set edge caching for jigaro Live?

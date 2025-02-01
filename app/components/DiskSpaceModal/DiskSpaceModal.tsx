@@ -9,6 +9,7 @@ import { buttonbackgroundColorEnum } from '../Button/enum/button.enum';
 import WhatWillHappenContainer from './components/WhatWillHappenContainer/WhatWillHappenContainer';
 import PriceDetailsContainer from './components/PriceDetailsContainer/PriceDetailsContainer';
 import { diskModulePropsInterface } from './interface/diskspace-module-interface';
+import ModalHeader from '../ModalHeader/ModalHeader';
 
 const DiskSpaceModal = (props: diskModulePropsInterface): JSX.Element => {
   const [, setIsModuleVisible] = useState<boolean>(true);
@@ -41,20 +42,10 @@ const DiskSpaceModal = (props: diskModulePropsInterface): JSX.Element => {
       className={styles.modalContainer}
       onClick={(e: React.MouseEvent) => e.stopPropagation()}
     >
-      <div className={styles.topContainer}>
-        <div className={styles.captionWrapper}>
-          <span className={styles.mainCaption}>Add additional disk space</span>
-          <div className={styles.exitIconWrapper} onClick={handleCloseModule}>
-            <Image
-              className={styles.exitIconStyle}
-              width={9}
-              height={9}
-              src={'icons/exitIcon.svg'}
-              alt={'exit icon'}
-            />
-          </div>
-        </div>
-      </div>
+      <ModalHeader
+        headline={'Add Additional Disk Space'}
+        onClose={handleCloseModule}
+      />
       {beforeContinueActive ? (
         <div className={styles.middleContainerBeforeContinue}>
           <Steps

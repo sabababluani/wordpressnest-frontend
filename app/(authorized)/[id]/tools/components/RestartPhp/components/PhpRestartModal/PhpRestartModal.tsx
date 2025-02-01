@@ -1,23 +1,13 @@
 import Button from '@/app/components/Button/Button';
 import styles from './PhpRestartModal.module.scss';
-import Image from 'next/image';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { PhpRestartModalPropsInterface } from './interfaces/php-restart-modal-props.interface';
+import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 
 const PhpRestartModal = (props: PhpRestartModalPropsInterface) => {
   return (
     <div className={styles.wrapper}>
-      <div className={styles.header}>
-        <span className={styles.headline}>Restart PHP</span>
-        <Image
-          src="/icons/close-mini.svg"
-          alt="close"
-          width={24}
-          height={24}
-          className={styles.close}
-          onClick={() => props.onClose()}
-        />
-      </div>
+      <ModalHeader headline="Restart PHP" onClose={props.onClose} />
       <div className={styles.container}>
         <p>Are you sure you want to restart your site&apos;s PHP engine?</p>
       </div>

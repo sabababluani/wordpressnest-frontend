@@ -1,25 +1,16 @@
 import { Radio } from 'antd';
 import styles from './CdnImageOptimizationModal.module.scss';
-import Image from 'next/image';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { CdnImageOptimizationModalPropsInterface } from './interfaces/cdn-image-optimization-modal-props.interface.';
+import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 
 const CdnImageOptimizationModal = (
   props: CdnImageOptimizationModalPropsInterface,
 ) => {
   return (
     <div className={styles.wrapper}>
-      <div className={styles.header}>
-        <span className={styles.headline}>Image optimization</span>
-        <Image
-          src="/icons/close-mini.svg"
-          alt="close"
-          width={24}
-          height={24}
-          onClick={props.onClose}
-        />
-      </div>
+      <ModalHeader headline="Image Optimization" onClose={props.onClose} />
       <div className={styles.container}>
         <span>
           Select an image optimization option to improve your website speed and

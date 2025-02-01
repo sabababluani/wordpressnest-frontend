@@ -2,10 +2,10 @@
 
 import Button from '@/app/components/Button/Button';
 import styles from './PhpModal.module.scss';
-import Image from 'next/image';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { Radio, Select } from 'antd';
 import { useState } from 'react';
+import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 
 const PhpModal = () => {
   const [selectValue, setValue] = useState<string>('PHP 8.2');
@@ -26,16 +26,7 @@ const PhpModal = () => {
 
   return (
     <div className={styles.mainWrapper}>
-      <div className={styles.header}>
-        <span className={styles.headline}>Change PHP setting</span>
-        <Image
-          src="/icons/close-mini.svg"
-          width={24}
-          height={24}
-          alt="close"
-          className={styles.close}
-        />
-      </div>
+      <ModalHeader headline={'Change PHP setting'} onClose={closeModal} />
       <div className={styles.middleContainer}>
         <div className={styles.firstContainerWrapper}>
           <span className={styles.middleContainersCaption}>

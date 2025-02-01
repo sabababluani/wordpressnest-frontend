@@ -10,6 +10,7 @@ import { UsersTablePropsInterface } from '../interfaces/users-table-props.interf
 import { patchData } from '@/app/api/crudService';
 import { useGetData } from '@/app/hooks/useGetData';
 import { mutate } from 'swr';
+import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 
 const EditModal = (
   props: UsersModalPropsInterface & {
@@ -55,17 +56,7 @@ const EditModal = (
 
   return (
     <div className={styles.mainWrapper}>
-      <div className={styles.header}>
-        <span className={styles.headline}>Edit User</span>
-        <Image
-          src="/icons/close-mini.svg"
-          alt="close"
-          width={24}
-          height={24}
-          className={styles.close}
-          onClick={props.onClose}
-        />
-      </div>
+      <ModalHeader headline="Edit User" onClose={props.onClose} />
       <div className={styles.container}>
         <div className={styles.userWrapper}>
           <span>Novatori.ge</span>

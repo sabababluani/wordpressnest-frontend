@@ -1,23 +1,13 @@
 import Button from '@/app/components/Button/Button';
 import styles from './InvoicesModal.module.scss';
-import Image from 'next/image';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { InvoicesModalPropsInterface } from './interfaces/invoices-modal-props.interface';
+import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 
 const InvoicesModal = (props: InvoicesModalPropsInterface) => {
   return (
     <div>
-      <div className={styles.header}>
-        <span className={styles.headline}>Invoice preview (Paid)</span>
-        <Image
-          src="/icons/close-mini.svg"
-          width={24}
-          height={24}
-          alt="close"
-          className={styles.close}
-          onClick={props.onClose}
-        />
-      </div>
+      <ModalHeader headline="Invoice preview (Paid)" onClose={props.onClose} />
       <div className={styles.container}>
         <div className={styles.description}>
           <div className={styles.logo}>
