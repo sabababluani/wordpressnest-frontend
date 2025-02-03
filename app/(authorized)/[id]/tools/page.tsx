@@ -7,10 +7,9 @@ import SearchAndReplace from './components/SearchAndReplace/SearchAndReplace';
 import { useState } from 'react';
 import { Modal } from 'antd';
 import ChangePhpSettings from './components/ChangePhpSettings/ChangePhpSettings';
+import PhpSettings from './components/PhpSettings/PhpSettings';
 
 const ToolsPage = (): JSX.Element => {
-  const [isPhpSettingsOpen, setIsPhpSettingsOpen] = useState(false);
-
   return (
     <>
       <div className={styles.mainContainer}>
@@ -67,15 +66,7 @@ const ToolsPage = (): JSX.Element => {
             caption={'IonCube Loader'}
             toggleActive={true}
           />
-          <Tools
-            iconPath={'phpIcon.svg'}
-            description={
-              'Easily switch between different PHP versions to keep your site up to date.'
-            }
-            caption={'PHP settings'}
-            dropDownActive
-            onClick={() => setIsPhpSettingsOpen(true)}
-          />
+          <PhpSettings />
           <Tools
             iconPath={'cookieIcon.svg'}
             description={
@@ -102,18 +93,6 @@ const ToolsPage = (): JSX.Element => {
           />
         </div>
       </div>
-      <Modal
-        open={isPhpSettingsOpen}
-        onCancel={() => setIsPhpSettingsOpen(false)}
-        footer={null}
-        closable={false}
-        width={1004}
-      >
-        <ChangePhpSettings
-          onClose={() => setIsPhpSettingsOpen(false)}
-          onClick={() => console.log('Next')}
-        />
-      </Modal>
     </>
   );
 };

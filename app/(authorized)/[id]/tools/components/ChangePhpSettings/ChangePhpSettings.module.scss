@@ -99,3 +99,31 @@
   font-size: 14px;
   font-weight: 400;
 }
+
+.ltsContainer {
+  border: 1px solid $borderColor;
+  border-radius: 12px;
+  color: #707276;
+  font-size: 14px;
+  line-height: 24px;
+  padding: 0 12px;
+}
+
+.optionContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.selectDropdown :global(.ant-select-item) {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.selectDropdown :global(.ant-select-item:not(:last-child)) {
+  margin-bottom: 12px;
+}
+
+.selectDropdown {
+  padding: 8px 0;
+}
