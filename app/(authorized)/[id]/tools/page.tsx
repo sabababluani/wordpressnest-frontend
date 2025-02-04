@@ -4,9 +4,6 @@ import styles from './page.module.scss';
 import Tools from './components/Tools/Tools';
 import RestartPhp from './components/RestartPhp/RestartPhp';
 import SearchAndReplace from './components/SearchAndReplace/SearchAndReplace';
-import { useState } from 'react';
-import { Modal } from 'antd';
-import ChangePhpSettings from './components/ChangePhpSettings/ChangePhpSettings';
 import PhpSettings from './components/PhpSettings/PhpSettings';
 
 const ToolsPage = (): JSX.Element => {

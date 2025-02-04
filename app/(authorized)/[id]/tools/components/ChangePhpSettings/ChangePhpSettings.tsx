@@ -5,68 +5,11 @@ import styles from './ChangePhpSettings.module.scss';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { useState } from 'react';
-
-const PHP_VERSIONS = [
-  {
-    value: '8,4',
-    label: (
-      <div className={styles.optionContainer}>
-        <span className={styles.versions}>PHP 8.4</span>
-      </div>
-    ),
-  },
-  {
-    value: '8,3',
-    label: (
-      <div className={styles.optionContainer}>
-        <span className={styles.versions}>PHP 8.3</span>
-      </div>
-    ),
-  },
-  {
-    value: '8,2',
-    label: (
-      <div className={styles.optionContainer}>
-        <span className={styles.versions}>PHP 8.2</span>
-      </div>
-    ),
-  },
-  {
-    value: '8,1',
-    label: (
-      <div className={styles.optionContainer}>
-        <span className={styles.versions}>PHP 8.1</span>
-      </div>
-    ),
-  },
-  {
-    value: '8,0',
-    label: (
-      <div className={styles.optionContainer}>
-        <span className={styles.versions}>PHP 8.0</span>
-        <div className={styles.ltsContainer}>
-          <span>LTS</span>
-        </div>
-      </div>
-    ),
-  },
-  {
-    value: '7,4',
-    label: (
-      <div className={styles.optionContainer}>
-        <span className={styles.versions}>PHP 7.4</span>
-        <div className={styles.ltsContainer}>
-          <span>LTS</span>
-        </div>
-      </div>
-    ),
-  },
-];
+import { PHP_VERSIONS } from './utils/change-php-settings-options.utils';
 
 const ChangePhpSettings = (props: ChangePhpSettingsPropsInterface) => {
-  const initialPhpVersion = PHP_VERSIONS[0].value;
-  const [isLTSVersion, setIsLTSVersion] = useState(
-    initialPhpVersion === '7,4' || initialPhpVersion === '8,0',
+  const [isLTSVersionDepricated, setIsLTSVersionDepricated] = useState(
+    PHP_VERSIONS[0].value === '7.4' || PHP_VERSIONS[0].value === '8.0',
   );
 
   return (
@@ -83,24 +26,31 @@ const ChangePhpSettings = (props: ChangePhpSettingsPropsInterface) => {
             <Select
               className={styles.select}
               options={PHP_VERSIONS}
-              defaultValue={PHP_VERSIONS[0]}
+              defaultValue={PHP_VERSIONS[0].value}
               dropdownClassName={styles.selectDropdown}
-              onChange={(value) => {
-                setIsLTSVersion(value.value === '7,4' || value.value === '8,0');
-                console.log(isLTSVersion);
+              onChange={(selectedValue) => {
+                setIsLTSVersionDepricated(
+                  selectedValue === '7.4' || selectedValue === '8.0',
+                );
               }}
             />
           </div>
         </div>
         <div className={styles.containerContent}>
-          <span>Automatic PHP updates</span>
-          <p>
-            When enabled, if this environment uses a PHP version that reaches
-            its end of life, we will automatically upgrade to the last supported
-            PHP version.
-          </p>
-          <div className={styles.types}>
-            <Radio.Group>
+          <div className={styles.content}>
+            <span>Automatic PHP updates</span>
+            <p>
+              When enabled, if this environment uses a PHP version that reaches
+              its end of life, we will automatically upgrade to the last
+              supported PHP version.
+            </p>
+          </div>
+          <div
+            className={
+              isLTSVersionDepricated ? styles.disabledRadios : styles.types
+            }
+          >
+            <Radio.Group onChange={(e) => console.log(e.target.value)}>
               <div className={styles.radios}>
                 <Radio value="enabled">Enabled (Recomended)</Radio>
                 <Radio value="disabled">Disabled</Radio>
@@ -108,6 +58,19 @@ const ChangePhpSettings = (props: ChangePhpSettingsPropsInterface) => {
             </Radio.Group>
           </div>
         </div>
+        {isLTSVersionDepricated && (
+          <div className={styles.ltsMessageContainer}>
+            <p>
+              Automatic PHP updates are disabled when you choose a version of
+              PHP that has reached its end of life.
+              <br /> The last officially supported PHP version is PHP 8.2. Older
+              versions of PHP offered by Kinsta receive long-term support (LTS)
+              security patches but will produce suboptimal performance. Updating
+              the environment to an officially supported version of PHP can
+              significantly boost website performance.
+            </p>
+          </div>
+        )}
       </div>
       <div className={styles.buttons}>
         <Button
@@ -118,6 +81,7 @@ const ChangePhpSettings = (props: ChangePhpSettingsPropsInterface) => {
         <Button
           backgroundColor={buttonbackgroundColorEnum.black}
           innerContent="Replace"
+          disableButton={isLTSVersionDepricated}
           onClick={props.onClick}
         />
       </div>

@@ -25,10 +25,7 @@ const SearchAndReplace = () => {
         footer={null}
         closable={false}
       >
-        <SearchReplaceModal
-          onClose={() => setIsSearchReplaceOpen(false)}
-          onSuccess={() => {}}
-        />
+        <SearchReplaceModal onClose={() => setIsSearchReplaceOpen(false)} />
       </Modal>
     </>
   );

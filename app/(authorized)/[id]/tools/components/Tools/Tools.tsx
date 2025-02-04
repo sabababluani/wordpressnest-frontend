@@ -21,7 +21,7 @@ const Tools = (props: ToolsDataPropsInterface): JSX.Element => {
               width={24}
               height={24}
               src={`/icons/${props.iconPath}`}
-              alt={'icon'}
+              alt="icon"
             />
           </div>
           <span className={styles.captionStyle}>{props.caption}</span>
@@ -49,7 +49,7 @@ const Tools = (props: ToolsDataPropsInterface): JSX.Element => {
                   width={20}
                   height={20}
                   src={`/icons/${props.buttonIconPath}`}
-                  alt={'icon'}
+                  alt="icon"
                 />
               )}
               <span className={styles.buttonActiveCaptionStyle}>
@@ -60,7 +60,7 @@ const Tools = (props: ToolsDataPropsInterface): JSX.Element => {
         )}
         {props.dropDownActive && (
           <DropDown
-            innerContentCaption={'Modify'}
+            innerContentCaption="Modify"
             onDropDownClick={props.onClick}
           />
         )}

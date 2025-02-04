@@ -16,6 +16,31 @@
   padding: 16px 24px;
 }
 
+.disabledRadios {
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.6;
+  color: #adb4b8 !important;
+}
+
+.disabledRadios :global .ant-radio-wrapper {
+  cursor: not-allowed !important;
+  color: #adb4b8 !important;
+}
+
+.disabledRadios :global .ant-radio-checked .ant-radio-inner {
+  background-color: #adb4b8 !important;
+  border-color: #adb4b8 !important;
+}
+
+.disabledRadios :global .ant-radio-inner {
+  border-color: #adb4b8 !important;
+}
+
+.disabledRadios :global .ant-radio-wrapper:hover .ant-radio-inner {
+  border-color: #adb4b8 !important;
+}
+
 .types {
   display: flex;
   flex-direction: column;
@@ -47,6 +72,8 @@
 .radios {
   display: flex;
   flex-direction: column;
+  color: $primaryTextColor;
+  font-weight: 500;
 }
 
 .select {
@@ -88,13 +115,19 @@
   color: $primaryTextColor !important;
 }
 
-.containerContent > span {
+.containerContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.content > span {
   color: $primaryTextColor;
   font-weight: 600;
   font-size: 16px;
 }
 
-.containerContent p {
+.content p {
   color: #707276;
   font-size: 14px;
   font-weight: 400;
@@ -126,4 +159,18 @@
 
 .selectDropdown {
   padding: 8px 0;
+}
+
+.ltsMessageContainer {
+  width: 100%;
+  background-color: $borderColor;
+  padding: 16px 20px;
+  border-radius: 12px;
+}
+
+.ltsMessageContainer p {
+  color: $primaryTextColor;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
 }
