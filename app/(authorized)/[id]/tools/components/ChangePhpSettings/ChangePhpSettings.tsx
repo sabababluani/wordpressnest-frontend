@@ -4,59 +4,34 @@ import { Radio, Select } from 'antd';
 import styles from './ChangePhpSettings.module.scss';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
-
-const PHP_VERSIONS = [
-  {
-    value: '8,4',
-    label: (
-      <div className={styles.optionContainer}>
-        <span className={styles.versions}>PHP 8.4</span>
-      </div>
-    ),
-  },
-  {
-    value: '8,3',
-    label: (
-      <div className={styles.optionContainer}>
-        <span className={styles.versions}>PHP 8.3</span>
-      </div>
-    ),
-  },
-  {
-    value: '8,2',
-    label: (
-      <div className={styles.optionContainer}>
-        <span className={styles.versions}>PHP 8.2</span>
-      </div>
-    ),
-  },
-  {
-    value: '8,1',
-    label: (
-      <div className={styles.optionContainer}>
-        <span className={styles.versions}>PHP 8.1</span>
-      </div>
-    ),
-  },
-  {
-    value: '8,0',
-    label: (
-      <div className={styles.optionContainer}>
-        <span className={styles.versions}>PHP 8.0</span>
-      </div>
-    ),
-  },
-  {
-    value: '7,4',
-    label: (
-      <div className={styles.optionContainer}>
-        <span className={styles.versions}>PHP 7.4</span>
-      </div>
-    ),
-  },
-];
+import { useState } from 'react';
+import { PHP_VERSIONS } from './utils/change-php-settings-options.utils';
+import { patchData } from '@/app/api/crudService';
+import { useParams } from 'next/navigation';
 
 const ChangePhpSettings = (props: ChangePhpSettingsPropsInterface) => {
+  const { id } = useParams();
+
+  const [isLTSVersionDepricated, setIsLTSVersionDepricated] = useState(
+    PHP_VERSIONS[0].value === '7.4' || PHP_VERSIONS[0].value === '8.0',
+  );
+  const [selectedVersion, setSelectedVersion] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onSubmit = async () => {
+    setIsLoading(true);
+    try {
+      await patchData(`wordpress/php-version`, +id, {
+        phpVersion: selectedVersion,
+      });
+      props.onClose();
+    } catch (error) {
+      console.log();
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <>
       <ModalHeader headline={'Change PHP settings'} onClose={props.onClose} />
@@ -67,20 +42,35 @@ const ChangePhpSettings = (props: ChangePhpSettingsPropsInterface) => {
             Changing PHP versions may cause a few seconds of downtime for the
             WordPress backend.
           </p>
-          <Select
-            className={styles.select}
-            options={PHP_VERSIONS}
-            defaultValue={PHP_VERSIONS[0]}
-          />
+          <div className={styles.selectWrapper}>
+            <Select
+              className={styles.select}
+              options={PHP_VERSIONS}
+              defaultValue={PHP_VERSIONS[0].value}
+              dropdownClassName={styles.selectDropdown}
+              onChange={(selectedValue) => {
+                setIsLTSVersionDepricated(
+                  selectedValue === '7.4' || selectedValue === '8.0',
+                );
+                setSelectedVersion(selectedValue);
+              }}
+            />
+          </div>
         </div>
         <div className={styles.containerContent}>
-          <span>Automatic PHP updates</span>
-          <p>
-            When enabled, if this environment uses a PHP version that reaches
-            its end of life, we will automatically upgrade to the last supported
-            PHP version.
-          </p>
-          <div className={styles.types}>
+          <div className={styles.content}>
+            <span>Automatic PHP updates</span>
+            <p>
+              When enabled, if this environment uses a PHP version that reaches
+              its end of life, we will automatically upgrade to the last
+              supported PHP version.
+            </p>
+          </div>
+          <div
+            className={
+              isLTSVersionDepricated ? styles.disabledRadios : styles.types
+            }
+          >
             <Radio.Group>
               <div className={styles.radios}>
                 <Radio value="enabled">Enabled (Recomended)</Radio>
@@ -89,6 +79,19 @@ const ChangePhpSettings = (props: ChangePhpSettingsPropsInterface) => {
             </Radio.Group>
           </div>
         </div>
+        {isLTSVersionDepricated && (
+          <div className={styles.ltsMessageContainer}>
+            <p>
+              Automatic PHP updates are disabled when you choose a version of
+              PHP that has reached its end of life.
+              <br /> The last officially supported PHP version is PHP 8.2. Older
+              versions of PHP offered by Kinsta receive long-term support (LTS)
+              security patches but will produce suboptimal performance. Updating
+              the environment to an officially supported version of PHP can
+              significantly boost website performance.
+            </p>
+          </div>
+        )}
       </div>
       <div className={styles.buttons}>
         <Button
@@ -99,7 +102,10 @@ const ChangePhpSettings = (props: ChangePhpSettingsPropsInterface) => {
         <Button
           backgroundColor={buttonbackgroundColorEnum.black}
           innerContent="Replace"
-          onClick={props.onClick}
+          disableButton={isLTSVersionDepricated}
+          onClick={onSubmit}
+          loading={isLoading}
+          setLoading={setIsLoading}
         />
       </div>
     </>

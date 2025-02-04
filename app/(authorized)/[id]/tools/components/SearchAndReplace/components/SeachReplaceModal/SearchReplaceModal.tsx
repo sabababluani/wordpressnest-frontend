@@ -10,21 +10,22 @@ import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 
 const SearchReplaceModal = (props: SearchReplaceModalPropsInterface) => {
   const { id } = useParams();
+
   const [isReplaceChecked, setIsReplaceChecked] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const [replaceValue, setReplaceValue] = useState('');
 
   const onSubmit = async () => {
+    const payload = {
+      search: searchValue,
+      replace: isReplaceChecked ? replaceValue : undefined,
+    };
+    console.log(payload);
     try {
-      const payload = {
-        search: searchValue,
-        replace: isReplaceChecked ? replaceValue : undefined,
-      };
       await createData(`wp-cli/search-replace/${id}`, payload);
-      console.log(payload);
-      props.onSuccess();
+      props.onClose();
     } catch (error) {
-      console.error('Failed to submit data:', error);
+      console.log(error);
     }
   };
 
@@ -48,10 +49,13 @@ const SearchReplaceModal = (props: SearchReplaceModalPropsInterface) => {
         <div className={styles.checkContainer}>
           <div className={styles.checkbox}>
             <Checkbox
+              checked={isReplaceChecked}
               onChange={(e) => setIsReplaceChecked(e.target.checked)}
             ></Checkbox>
           </div>
-          <span>Replace</span>
+          <span onClick={() => setIsReplaceChecked((prev) => !prev)}>
+            Replace
+          </span>
         </div>
 
         {isReplaceChecked && (

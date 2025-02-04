@@ -32,14 +32,13 @@
   border-bottom: 1px solid #e6e6e6;
   border-left: 1px solid #e6e6e6;
   border-right: 1px solid #e6e6e6;
-  align-items: start;
+  align-items: flex-start;
   flex-direction: column;
 }
 
 .mainCaptionStyle {
   color: $primaryTextColor;
   font-size: 20px;
-  font-style: normal;
   font-weight: 600;
   line-height: 24px;
 }
@@ -51,7 +50,6 @@
   font-weight: 500;
   line-height: 24px;
 }
-
 
 .buttonStyle {
   display: flex;
@@ -69,7 +67,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: 24px;
-  background-color: #F0F3F5;
+  background-color: #f0f3f5;
   cursor: pointer;
 }
 

@@ -14,6 +14,7 @@ const RestartPhp = () => {
     setLoading(true);
     try {
       await createData(`wordpress/restart/engine/${id}`, {});
+      setIsRestartOpen(false);
     } catch (error) {
       console.log(error);
     } finally {

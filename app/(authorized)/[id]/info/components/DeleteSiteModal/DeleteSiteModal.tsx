@@ -34,10 +34,10 @@ const DeleteSiteModal = (
 
   const onDeleteFunction = () => {
     deleteData('wordpress/setup', id.toString());
-    // props.onCancel();
+    props.onCancel();
   };
 
-  return 
+  return (
     <div className={styles.wrapper}>
       <ModalHeader headline="Add Domains" onClose={props.onClose} />
       <div className={styles.container}>
@@ -119,7 +119,7 @@ const DeleteSiteModal = (
           disableButton={!isButtonEnabled}
         />
       </div>
-    </>
+    </div>
   );
 };
 

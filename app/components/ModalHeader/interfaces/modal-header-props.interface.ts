@@ -1,4 +1,4 @@
 export interface ModalHeaderPropsInterface {
   headline: string;
-  onClose: () => void;
+  onClose: VoidFunction;
 }
