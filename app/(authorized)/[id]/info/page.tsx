@@ -30,6 +30,7 @@ import PasswordExpirationModal from './components/PasswordExpirationModal/Passwo
 
 const Info = (): JSX.Element => {
   const { id } = useParams();
+
   const {
     data: sideInformationData,
     error,
@@ -70,7 +71,7 @@ const Info = (): JSX.Element => {
           <Link
             replace
             target="_blank"
-            href={`http://${'site.wpfullIp'}/wp-login.php`}
+            href={`http://${site.wpfullIp}/wp-login.php`}
           >
             <Button
               innerContent={'Open WP Admin'}
@@ -79,7 +80,7 @@ const Info = (): JSX.Element => {
               backgroundColor={buttonbackgroundColorEnum.grey}
             />
           </Link>
-          <Link href={`http://${'site.wpfullIp'}`} target="_blank">
+          <Link href={`http://${site.wpfullIp}`} target="_blank">
             <Button
               innerContent={'Visit Site'}
               innerContentIcon={innerContentIconEnum.siteIcon}
@@ -95,17 +96,17 @@ const Info = (): JSX.Element => {
           onClick={() => setIsRenameModalOpen(true)}
           onClick2={() => setIsLabelModalOpen(true)}
           locationDataCenter={'Hamburg (DE)'}
-          siteName={'site.siteName'}
+          siteName={site.siteName}
           Labels={''}
         />
 
         <EnvironementDetails
           path={'/www/novatori_787/public'}
           environmentName={'Live'}
-          siteIpAddress={'site.wpfullIp'}
-          ipAddress={'site.nodeIp'}
+          siteIpAddress={site.wpfullIp}
+          ipAddress={site.nodeIp}
           ipAddressForExternalConnections={'35.242.241.35'}
-          phpWorkers={'site.phpVersion'}
+          phpWorkers={site.phpVersion}
           onClick={() => console.log('clicked')}
         />
 
@@ -113,8 +114,7 @@ const Info = (): JSX.Element => {
           host={'66.854.861.865'}
           passwordExpiration={'None'}
           ssh={'SSH Novatori@66.854.861.865...'}
-          // port={site.port}
-          port={2}
+          port={site.port}
           authenticationMethods={'SSH key , password'}
           IpAllowed={'ALL IPs allowed'}
           password={'********'}
@@ -128,7 +128,7 @@ const Info = (): JSX.Element => {
           ip={'ALL IPs allowed'}
           database={'site.dbName'}
           databaseUsername={'root'}
-          phpAdmin={'site.phpAdminFullIp'}
+          phpAdmin={site.phpAdminFullIp}
         />
 
         <ProxyComp

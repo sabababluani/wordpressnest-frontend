@@ -6,11 +6,31 @@ import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { useState } from 'react';
 import { PHP_VERSIONS } from './utils/change-php-settings-options.utils';
+import { patchData } from '@/app/api/crudService';
+import { useParams } from 'next/navigation';
 
 const ChangePhpSettings = (props: ChangePhpSettingsPropsInterface) => {
+  const { id } = useParams();
+
   const [isLTSVersionDepricated, setIsLTSVersionDepricated] = useState(
     PHP_VERSIONS[0].value === '7.4' || PHP_VERSIONS[0].value === '8.0',
   );
+  const [selectedVersion, setSelectedVersion] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onSubmit = async () => {
+    setIsLoading(true);
+    try {
+      await patchData(`wordpress/php-version`, +id, {
+        phpVersion: selectedVersion,
+      });
+      props.onClose();
+    } catch (error) {
+      console.log();
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <>
@@ -32,6 +52,7 @@ const ChangePhpSettings = (props: ChangePhpSettingsPropsInterface) => {
                 setIsLTSVersionDepricated(
                   selectedValue === '7.4' || selectedValue === '8.0',
                 );
+                setSelectedVersion(selectedValue);
               }}
             />
           </div>
@@ -50,7 +71,7 @@ const ChangePhpSettings = (props: ChangePhpSettingsPropsInterface) => {
               isLTSVersionDepricated ? styles.disabledRadios : styles.types
             }
           >
-            <Radio.Group onChange={(e) => console.log(e.target.value)}>
+            <Radio.Group>
               <div className={styles.radios}>
                 <Radio value="enabled">Enabled (Recomended)</Radio>
                 <Radio value="disabled">Disabled</Radio>
@@ -82,7 +103,9 @@ const ChangePhpSettings = (props: ChangePhpSettingsPropsInterface) => {
           backgroundColor={buttonbackgroundColorEnum.black}
           innerContent="Replace"
           disableButton={isLTSVersionDepricated}
-          onClick={props.onClick}
+          onClick={onSubmit}
+          loading={isLoading}
+          setLoading={setIsLoading}
         />
       </div>
     </>

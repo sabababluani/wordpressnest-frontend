@@ -5,7 +5,6 @@ import ChangePhpSettings from '../ChangePhpSettings/ChangePhpSettings';
 
 const PhpSettings = () => {
   const [isPhpSettingsOpen, setIsPhpSettingsOpen] = useState(false);
-
   return (
     <>
       <Tools
@@ -25,10 +24,7 @@ const PhpSettings = () => {
         closable={false}
         width={1004}
       >
-        <ChangePhpSettings
-          onClose={() => setIsPhpSettingsOpen(false)}
-          onClick={() => console.log('Next')}
-        />
+        <ChangePhpSettings onClose={() => setIsPhpSettingsOpen(false)} />
       </Modal>
     </>
   );
