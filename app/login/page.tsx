@@ -1,6 +1,5 @@
 'use client';
 
-import router from 'next/router';
 import BaseApi from '../api/BaseApi';
 import { setCookie } from '../helpers/setCookie';
 import MainHeader from '../register/components/RegisterHeader/RegisterHeader';
@@ -11,6 +10,7 @@ import { useForm } from 'react-hook-form';
 import Link from 'next/link';
 import { Checkbox, Select } from 'antd';
 import '../globals.css';
+import { useRouter } from 'next/navigation';
 
 const countryOptions = [
   {
@@ -31,6 +31,7 @@ const countryOptions = [
 ];
 
 const Login = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -38,14 +39,10 @@ const Login = () => {
   } = useForm<LoginPropsInterface>();
 
   const onSubmit = (data: LoginPropsInterface) => {
-    BaseApi.post('/auth/login', data)
-      .then((response) => {
-        setCookie('token', response.data.accessToken, 60);
-        router.push('/');
-      })
-      .catch((error) => {
-        alert(error.response?.data?.message || 'Login failed');
-      });
+    BaseApi.post('/auth/login', data).then((response) => {
+      setCookie('token', response.data.accessToken, 60);
+      router.push('/');
+    });
   };
 
   return (

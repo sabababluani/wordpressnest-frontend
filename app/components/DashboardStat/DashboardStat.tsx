@@ -19,7 +19,7 @@ const DashboardStat = (props: DashboardPropsInterfaces): JSX.Element => {
               className={styles.imageFlagStyle}
               width={56}
               height={56}
-              src={props.siteIcon}
+              src={'/wordpress.png'}
               alt="favicon"
             />
           </div>

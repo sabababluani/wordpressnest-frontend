@@ -3,8 +3,11 @@ import styles from './LogOut.module.scss';
 import Link from 'next/link';
 import { LogOutPropsInterface } from './interfaces/log-out-props.interfaces';
 import Cookies from 'js-cookie';
+import { useRouter } from 'next/navigation';
 
 const LogOut = (props: LogOutPropsInterface) => {
+  const router = useRouter();
+
   const handleLinkClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.stopPropagation();
     props.onLinkClick();
@@ -12,6 +15,7 @@ const LogOut = (props: LogOutPropsInterface) => {
 
   const handleLogOut = () => {
     Cookies.remove('token');
+    router.push('/login');
   };
 
   return (

@@ -5,5 +5,4 @@ export interface DashboardPropsInterfaces {
   description: string;
   healthQuantity: number;
   siteName: string;
-  siteIcon: string;
 }
