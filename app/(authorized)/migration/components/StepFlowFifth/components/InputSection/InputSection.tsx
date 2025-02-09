@@ -1,5 +1,5 @@
 import { stepFlowsFifthContainerPropsInterface } from '../../interfaces/step-flows-fifth-container-props.interface';
-import styles from './inputSection.module.scss';
+import styles from './InputSection.module.scss';
 
 const InputSection = (props: stepFlowsFifthContainerPropsInterface) => {
   return (
