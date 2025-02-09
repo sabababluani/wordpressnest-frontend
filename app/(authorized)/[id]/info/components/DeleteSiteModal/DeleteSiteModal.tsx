@@ -23,14 +23,14 @@ const DeleteSiteModal = (
   const [checkbox2, setCheckbox2] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState<string>('');
 
-  const specificData: UserInterface | undefined = useGetData<UserInterface>({
+  const specificData = useGetData<UserInterface>({
     endpoint: 'user/me',
   }).data;
-  const siteName: string | undefined = specificData?.setup.find(
+  const siteTitle = specificData?.setup.find(
     (item: SiteInterface) => item.id === +id,
-  )?.siteName;
+  )?.siteTitle;
 
-  const isButtonEnabled = checkbox1 && checkbox2 && inputValue === siteName;
+  const isButtonEnabled = checkbox1 && checkbox2 && inputValue === siteTitle;
 
   const onDeleteFunction = () => {
     deleteData('wordpress/setup', id.toString());
@@ -39,7 +39,7 @@ const DeleteSiteModal = (
 
   return (
     <div className={styles.wrapper}>
-      <ModalHeader headline="Add Domains" onClose={props.onClose} />
+      <ModalHeader headline="Delete site" onClose={props.onClose} />
       <div className={styles.container}>
         <div className={styles.content}>
           <span className={styles.heading}>
@@ -50,71 +50,60 @@ const DeleteSiteModal = (
             Confirm that you understand the following:
           </span>
         </div>
-        <div className={styles.container}>
-          <div className={styles.content}>
-            <span className={styles.heading}>
-              By deleting jigaro, all of its data will be destroyed. This is not
-              recoverable.
-            </span>
-            <span className={styles.confirm}>
-              Confirm that you understand the following:
-            </span>
-          </div>
-          <div className={styles.check}>
-            <div className={styles.checkbox}>
-              <Checkbox
-                checked={checkbox1}
-                onChange={(e: CheckboxChangeEvent) =>
-                  setCheckbox1(e.target.checked)
-                }
-              />
-            </div>
-            <div>
-              <span className={styles.deleted}>
-                Files and database for{' '}
-                <span className={styles.title}>jigaro</span> will be deleted
-              </span>
-            </div>
-          </div>
-          <div className={styles.check}>
-            <div className={styles.checkbox}>
-              <Checkbox
-                checked={checkbox2}
-                onChange={(e: CheckboxChangeEvent) =>
-                  setCheckbox2(e.target.checked)
-                }
-              />
-            </div>
-            <div>
-              <span className={styles.deleted}>
-                Removing this site does not cancel the WordPress hosting plan
-              </span>
-            </div>
-          </div>
-          <div className={styles.inputContainer}>
-            <span className={styles.deleted}>
-              Enter the text <span className={styles.title}>jigaro-live</span>{' '}
-              here to reset your site:
-            </span>
-            <input
-              type="text"
-              value={inputValue}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                setInputValue(e.target.value)
+        <div className={styles.check}>
+          <div className={styles.checkbox}>
+            <Checkbox
+              checked={checkbox1}
+              onChange={(e: CheckboxChangeEvent) =>
+                setCheckbox1(e.target.checked)
               }
             />
           </div>
+          <div>
+            <span className={styles.checktext}>
+              Files and database for
+              <span className={styles.title}> {siteTitle}</span> will be deleted
+            </span>
+          </div>
+        </div>
+        <div className={styles.check}>
+          <div className={styles.checkbox}>
+            <Checkbox
+              checked={checkbox2}
+              onChange={(e: CheckboxChangeEvent) =>
+                setCheckbox2(e.target.checked)
+              }
+            />
+          </div>
+          <div>
+            <span className={styles.checktext}>
+              Removing this site does not cancel the WordPress hosting plan
+            </span>
+          </div>
+        </div>
+        <div className={styles.inputContainer}>
+          <span className={styles.deleted}>
+            Enter the text <span className={styles.titleBold}>{siteTitle}</span>{' '}
+            here to reset your site:
+          </span>
+          <input
+            type="text"
+            value={inputValue}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setInputValue(e.target.value)
+            }
+          />
         </div>
       </div>
       <div className={styles.buttons}>
         <Button
           backgroundColor={buttonbackgroundColorEnum.grey}
-          innerContent="Back"
+          innerContent="Cancel"
           onClick={props.onClose}
         />
         <Button
           backgroundColor={buttonbackgroundColorEnum.black}
-          innerContent="Delete WordPress site"
+          innerContent="Delete site"
           onClick={onDeleteFunction}
           disableButton={!isButtonEnabled}
         />

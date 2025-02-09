@@ -17,8 +17,6 @@
   flex-direction: column;
 }
 
-
-
 .title {
   color: $primaryTextColor;
   font-size: 14px;
@@ -46,7 +44,8 @@
   padding-top: 16px;
   display: flex;
   justify-content: flex-end;
-  border-top: 1px solid $borderColor;  padding: 16px 24px 24px 0;
+  border-top: 1px solid $borderColor;
+  padding: 16px 24px 24px 0;
 }
 
 .finishWrapper {
@@ -102,9 +101,15 @@
   max-width: 270px;
 }
 
+.selectWrapper :global(.ant-select-selector) {
+  border: 1px solid $borderColor !important;
+  box-shadow: none !important;
+}
+
 .select {
   width: 100%;
-  border: 1px solid $borderColor;  border-radius: 12px;
+  border: 1px solid $borderColor;
+  border-radius: 12px;
   padding: 12px;
   color: #b5b7bf;
 }

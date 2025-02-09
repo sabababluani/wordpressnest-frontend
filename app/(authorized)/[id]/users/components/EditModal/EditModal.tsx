@@ -18,7 +18,8 @@ const EditModal = (
   },
 ): JSX.Element => {
   const { id } = useParams();
-  const [selectedRole, setSelectedRole] = useState<string>(props.user.roles);
+  const [selectedRole, setSelectedRole] = useState(props.user.roles);
+  const [loading, setLoading] = useState(false);
 
   const { data: roles } = useGetData<{ name: string }[]>({
     endpoint: `wp-cli/wprole/${id}`,
@@ -40,6 +41,7 @@ const EditModal = (
       })) || [];
 
   const onHandleUpdate = async () => {
+    setLoading(true);
     try {
       await patchData('wp-cli/wprole', +id, {
         userId: props.user.ID,
@@ -51,6 +53,8 @@ const EditModal = (
       props.onClose();
     } catch (error) {
       console.error('Error updating role:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -96,6 +100,8 @@ const EditModal = (
             innerContent="Save Changes"
             backgroundColor={buttonbackgroundColorEnum.black}
             onClick={onHandleUpdate}
+            loading={loading}
+            setLoading={setLoading}
           />
         </div>
       </div>

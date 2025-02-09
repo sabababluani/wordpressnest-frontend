@@ -8,7 +8,6 @@ import { DashboardTablePropsInterface } from './interfaces/dashboard-table-props
 import { useGetData } from '@/app/hooks/useGetData';
 import BaseApi from '@/app/api/BaseApi';
 
-// Table columns definition
 const columns: TableColumnsType<DashboardTablePropsInterface> = [
   {
     title: 'Name',
@@ -94,6 +93,9 @@ const DashboardTable = () => {
     [],
   );
   const [loading, setLoading] = useState<boolean>(true);
+  const [selectedRows, setSelectedRows] = useState<
+    DashboardTablePropsInterface[]
+  >([]);
 
   const { data: tableData } = useGetData<DashboardTablePropsInterface>({
     endpoint: 'user/me',
@@ -132,10 +134,24 @@ const DashboardTable = () => {
     fetchData();
   }, [tableData]);
 
+  const handleRowSelectionChange = (
+    _: React.Key[],
+    selectedRows: DashboardTablePropsInterface[],
+  ) => {
+    setSelectedRows(selectedRows);
+  };
+
+  const rowSelection = {
+    onChange: handleRowSelectionChange,
+    type: 'checkbox' as const,
+  };
+
+  console.log(selectedRows);
   return (
     <div className={styles.tableWrapper}>
       <Table<DashboardTablePropsInterface>
-        rowSelection={{ type: 'checkbox' }}
+        rowSelection={rowSelection}
+        rowKey="id"
         columns={columns}
         dataSource={mergedData}
         pagination={false}

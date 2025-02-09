@@ -156,23 +156,14 @@ const ManualBackupTable = () => {
         </div>
         <div className={styles.container}>
           <div className={styles.progressContainer}>
-            {lineProgress?.existingBackupsleangth &&
-              lineProgress?.maximum &&
-              lineProgress?.percent && (
-                <>
-                  <p>
-                    {lineProgress?.existingBackupsleangth} of{' '}
-                    {lineProgress?.maximum}
-                  </p>{' '}
-                  <div className={styles.progress}>
-                    <Progress
-                      percent={lineProgress?.percent}
-                      showInfo={false}
-                    />
-                  </div>
-                </>
-              )}
+            <p>
+              {lineProgress?.existingBackupsleangth} of {lineProgress?.maximum}
+            </p>{' '}
+            <div className={styles.progress}>
+              <Progress percent={lineProgress?.percent} showInfo={false} />
+            </div>
           </div>
+
           <Button
             backgroundColor={buttonbackgroundColorEnum.black}
             innerContent="Create backup"
