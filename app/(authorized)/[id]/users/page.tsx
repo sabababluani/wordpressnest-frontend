@@ -43,7 +43,7 @@ const Users = (): JSX.Element => {
 
   const onUserDelete = async (userIds: number[]) => {
     try {
-      await deleteData(`wp-cli/wpuser`, +id, { userIds: userIds.map(String) });
+      await deleteData(`wp-cli/wpuser`, +id, { userIds: userIds });
       setSelectedRows([]);
       setIsDeleteModalOpen(false);
       mutate();
@@ -145,7 +145,7 @@ const Users = (): JSX.Element => {
             </p>
             <div className={styles.buttons}>
               <Button
-                backgroundColor={buttonbackgroundColorEnum.domainsRed}
+                backgroundColor={buttonbackgroundColorEnum.red}
                 innerContent={'Delete Users'}
                 onClick={handleDeleteUsers}
               />
@@ -214,7 +214,7 @@ const Users = (): JSX.Element => {
 
             onUserDelete(selectedUsersIds);
           }}
-          headline={`Are you sure to delete ${selectedRows.length} user(s)?`}
+          headline={`Are you sure to delete ${selectedRows.length ? selectedRows.length : ''} ${selectedRows.length > 1 ? 'users?' : 'user?'}`}
           content={'This action cannot be undone'}
           buttonText={'Delete'}
         />

@@ -13,12 +13,14 @@ const TabsAnt: React.FC<TabsPropsInterface> = ({
   withoutPadding,
 }) => {
   const [activeTabKey, setActiveTabKey] = useState('0');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const storedTabKey = sessionStorage.getItem(`${uniqueKey}_activeTabKey`);
     if (storedTabKey) {
       setActiveTabKey(storedTabKey);
     }
+    setLoading(false);
   }, [uniqueKey]);
 
   const onTabChange = (key: string): void => {
@@ -35,6 +37,7 @@ const TabsAnt: React.FC<TabsPropsInterface> = ({
   return (
     <div
       className={`${styles.wrapper} ${withoutBorder && styles.withoutBorder} ${withoutPadding && styles.withoutPadding}`}
+      style={{ display: loading ? 'none' : 'block' }}
     >
       <Tabs activeKey={activeTabKey} onChange={onTabChange} items={tabsItems} />
     </div>
