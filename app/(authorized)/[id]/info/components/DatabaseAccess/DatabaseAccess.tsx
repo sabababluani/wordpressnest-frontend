@@ -7,10 +7,21 @@ import Wrapper from '../reusableComponent/Wrapper/Wrapper';
 import PasswordFieldComp from './components/PasswordField/PasswordField';
 
 const DataBaseAccess = (props: DataBasePropsInterface): JSX.Element => {
+  const handleCopy = (text: string) => {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        alert('Copied to clipboard');
+      })
+      .catch(() => {
+        alert('Failed to copy');
+      });
+  };
+
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.topContainer}>
-        <span className={styles.mainCaptionStyle}>Database access </span>
+        <span className={styles.mainCaptionStyle}>Database access</span>
         <Link href={`http://${props.phpAdmin}`} target="_blank">
           <Button
             backgroundColor={buttonbackgroundColorEnum.greyBold}
@@ -24,13 +35,15 @@ const DataBaseAccess = (props: DataBasePropsInterface): JSX.Element => {
             enhancedWidth
             caption={'Database name'}
             fieldsInnerContent={props.database}
-            additionalHref={'/icons/Copy.svg'}
+            additionalHref={'/icons/copy.svg'}
+            onClick={() => handleCopy(props.database!)}
           />
           <Wrapper
             enhancedWidth
             caption={'Database Username'}
             fieldsInnerContent={props.databaseUsername}
-            additionalHref={'/icons/Copy.svg'}
+            additionalHref={'/icons/copy.svg'}
+            onClick={() => handleCopy(props.databaseUsername)}
           />
         </div>
         <div className={styles.rowWrapper}>
@@ -45,7 +58,7 @@ const DataBaseAccess = (props: DataBasePropsInterface): JSX.Element => {
             innerContent={props.databasePassword}
             additionalHref={'/icons/eyeClosed.svg'}
             additionalHref2={'/icons/eyeOpen.svg'}
-            additionalHref3={'/icons/Copy.svg'}
+            additionalHref3={'/icons/copy.svg'}
           />
         </div>
       </div>

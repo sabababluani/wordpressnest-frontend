@@ -39,6 +39,10 @@ const Info = (): JSX.Element => {
     endpoint: 'user/me',
   });
 
+  const { data: version } = useGetData<{ phpVersion: string }>({
+    endpoint: `wp-cli/php/version/${id}`,
+  });
+
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState<boolean>(false);
   const [isResetModalOpen, setIsResetModalOpen] = useState<boolean>(false);
   const [isProxyModalOpen, setIsProxyModalOpen] = useState<boolean>(false);
@@ -108,6 +112,7 @@ const Info = (): JSX.Element => {
           ipAddressForExternalConnections={'35.242.241.35'}
           phpWorkers={site.phpVersion}
           onClick={() => console.log('clicked')}
+          wordpressVersion={version?.phpVersion}
         />
 
         <SftpShh

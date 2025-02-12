@@ -7,25 +7,23 @@ import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { RedirectsModalPropsInterface } from '../interfaces/redirects-modal-props.interface';
 import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
-
-const domainOptions = [
-  { label: 'novatori.com', value: 'novatori.com' },
-  { label: 'example.com', value: 'example.com' },
-  { label: 'mywebsite.net', value: 'mywebsite.net' },
-];
+import { useGetData } from '@/app/hooks/useGetData';
+import { UserInterface } from '@/app/components/Navigation/interfaces/navigation.props.interface';
 
 const RedirectsModal = (props: RedirectsModalPropsInterface): JSX.Element => {
   const [redirectFrom, setRedirectFrom] = useState('');
   const [redirectTo, setRedirectTo] = useState('');
   const [httpStatusCode, setHttpStatusCode] = useState('302');
-  const [domain, setDomain] = useState(domainOptions[0].value); // Set default domain
+
+  const { data: domains } = useGetData<UserInterface>({
+    endpoint: 'user/me',
+  });
 
   useEffect(() => {
     if (props.rowData) {
       setRedirectFrom(props.rowData.oldUrl || '');
       setRedirectTo(props.rowData.newUrl || '');
       setHttpStatusCode(props.rowData.statusCode || '302');
-      setDomain(props.rowData.domain || domainOptions[0].value); // Use first domain if none is set
     }
   }, [props.rowData]);
 
@@ -35,15 +33,13 @@ const RedirectsModal = (props: RedirectsModalPropsInterface): JSX.Element => {
       oldUrl: redirectFrom,
       newUrl: redirectTo,
       statusCode: httpStatusCode,
-      domain: domain,
+      domain: domains?.setup?.[0]?.siteTitle || '',
     };
     props.onSave(updatedRow);
 
-    // Clear fields after saving
     setRedirectFrom('');
     setRedirectTo('');
     setHttpStatusCode('302');
-    setDomain(domainOptions[0].value);
   };
 
   return (
@@ -55,8 +51,8 @@ const RedirectsModal = (props: RedirectsModalPropsInterface): JSX.Element => {
       <div className={styles.container}>
         <div className={styles.infoWrapper}>
           <span className={styles.text}>
-            Redirect rules are added to your websites Nginx configuration and
-            are interpreted as regular expressions.
+            Redirect rules are added to your website&nbsp;s Nginx configuration
+            and are interpreted as regular expressions.
           </span>
           <span className={styles.text}>
             If you want to redirect traffic coming from a specific location,
@@ -68,9 +64,13 @@ const RedirectsModal = (props: RedirectsModalPropsInterface): JSX.Element => {
           <span className={styles.title}>Domain</span>
           <Select
             className={styles.select}
-            value={domain}
-            onChange={(value) => setDomain(value)}
-            options={domainOptions}
+            value={
+              domains?.setup?.find((domain) => domain.siteTitle)?.siteTitle
+            }
+            options={domains?.setup?.map((domain) => ({
+              label: domain.siteName,
+              value: domain.siteName,
+            }))}
           />
         </div>
 

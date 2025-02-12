@@ -109,7 +109,7 @@ const ResetSiteModal = (props: ResetSiteModalPropsInterface): JSX.Element => {
                 <span>WordPress admin Email</span>
                 <input
                   type="text"
-                  defaultValue={'novatorimagaria@gmail.com'}
+                  defaultValue={specificUser?.email}
                   disabled
                 />
               </div>

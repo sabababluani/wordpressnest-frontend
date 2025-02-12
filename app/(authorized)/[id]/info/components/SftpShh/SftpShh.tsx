@@ -3,6 +3,17 @@ import { SftpShhPropsInterface } from './interfaces/sftpshh-props.interfaces';
 import Wrapper from '../reusableComponent/Wrapper/Wrapper';
 
 const SftpShh = (props: SftpShhPropsInterface): JSX.Element => {
+  const handleCopy = (text: string) => {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        alert('Copied to clipboard:');
+      })
+      .catch(() => {
+        alert('Failed to copy:');
+      });
+  };
+
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.topContainer}>
@@ -14,8 +25,8 @@ const SftpShh = (props: SftpShhPropsInterface): JSX.Element => {
             enhancedWidth
             caption={'Host'}
             fieldsInnerContent={props.host}
-            additionalHref={'/icons/Copy.svg'}
-            onClick={() => {}}
+            additionalHref={'/icons/copy.svg'}
+            onClick={() => handleCopy(props.host)}
           />
           <Wrapper
             enhancedWidth
@@ -46,8 +57,8 @@ const SftpShh = (props: SftpShhPropsInterface): JSX.Element => {
             enhancedWidth
             caption={'Username'}
             fieldsInnerContent={props.userName}
-            additionalHref={'/icons/Copy.svg'}
-            onClick={() => {}}
+            additionalHref={'/icons/copy.svg'}
+            onClick={() => handleCopy(props.userName!)}
           />
           <Wrapper
             enhancedWidth

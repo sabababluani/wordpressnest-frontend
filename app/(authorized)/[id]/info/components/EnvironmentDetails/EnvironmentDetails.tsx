@@ -5,6 +5,17 @@ import Wrapper from '../reusableComponent/Wrapper/Wrapper';
 const EnvironementDetails = (
   props: EnvironementDetailsPropsInterface,
 ): JSX.Element => {
+  const handleCopy = (text: string) => {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        alert('Copied to clipboard');
+      })
+      .catch(() => {
+        alert('Failed to copy:');
+      });
+  };
+
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.topContainer}>
@@ -17,15 +28,15 @@ const EnvironementDetails = (
             enhancedWidth
             caption={'Path'}
             fieldsInnerContent={props.path}
-            additionalHref={'/icons/Copy.svg'}
-            onClick={() => {}}
+            additionalHref={'/icons/copy.svg'}
+            onClick={() => handleCopy(props.path!)}
           />
           <Wrapper
             enhancedWidth
             caption={'Site Ip Address'}
             fieldsInnerContent={props.siteIpAddress}
-            additionalHref={'/icons/Copy.svg'}
-            onClick={() => {}}
+            additionalHref={'/icons/copy.svg'}
+            onClick={() => handleCopy(props.siteIpAddress!)}
           />
         </div>
         <div className={styles.columnWrapper}>
@@ -33,8 +44,8 @@ const EnvironementDetails = (
             enhancedWidth
             caption={'IP address for external connections'}
             fieldsInnerContent={props.ipAddressForExternalConnections}
-            additionalHref={'/icons/Copy.svg'}
-            onClick={() => {}}
+            additionalHref={'/icons/copy.svg'}
+            onClick={() => handleCopy(props.ipAddressForExternalConnections!)}
           />
           <Wrapper
             enhancedWidth
