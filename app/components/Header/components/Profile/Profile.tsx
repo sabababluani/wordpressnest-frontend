@@ -30,9 +30,9 @@ const Profile = (props: ProfilePropsInterface): JSX.Element => {
     setLogOut((prevState) => !prevState);
   };
 
-  const handleLinkClick = () => {
-    setLogOut(false);
-  };
+  // const handleLinkClick = () => {
+  //   setLogOut(false);
+  // };
 
   return (
     <div className={styles.wrapper} ref={wrapperRef}>
@@ -54,7 +54,7 @@ const Profile = (props: ProfilePropsInterface): JSX.Element => {
       </div>
       {logOut && (
         <div className={styles.logout}>
-          <LogOut onLinkClick={handleLinkClick} />
+          <LogOut />
         </div>
       )}
     </div>

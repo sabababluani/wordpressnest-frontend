@@ -12,10 +12,10 @@ const NavigationLine = (props: NavigationLineProps): JSX.Element => {
     <div className={styles.sitesInfo}>
       <div className={styles.sitesInfoImage}>
         <Image
-          src={'/icons/line.svg'}
+          src={'/6line.svg'}
           alt={'Navigation line'}
           width={16}
-          height={462}
+          height={222}
         />
       </div>
       <div className={styles.infoWrapper}>
@@ -40,7 +40,7 @@ const NavigationLine = (props: NavigationLineProps): JSX.Element => {
           <span>Info</span>
         </Link>
 
-        <Link
+        {/* <Link
           href={'/domains'}
           className={`${styles.infoButton} ${
             pathname.includes('domains') ? styles.infoButtonClicked : ''
@@ -57,7 +57,7 @@ const NavigationLine = (props: NavigationLineProps): JSX.Element => {
             height={20}
           />
           <span>Domains</span>
-        </Link>
+        </Link> */}
         <Link
           href={`${props.basePath}/backup`}
           className={`${styles.infoButton} ${
@@ -98,7 +98,7 @@ const NavigationLine = (props: NavigationLineProps): JSX.Element => {
           />
           <span>Tools</span>
         </Link>
-        <Link
+        {/* <Link
           href={`${props.basePath}/redirects`}
           className={`${styles.infoButton} ${
             pathname.includes(`${props.basePath}/redirects`)
@@ -117,7 +117,7 @@ const NavigationLine = (props: NavigationLineProps): JSX.Element => {
             height={20}
           />
           <span>Redirects</span>
-        </Link>
+        </Link> */}
         <Link
           href={`${props.basePath}/themesandplugins`}
           className={`${styles.infoButton} ${
@@ -138,7 +138,7 @@ const NavigationLine = (props: NavigationLineProps): JSX.Element => {
           />
           <span>Themes and Plugins</span>
         </Link>
-        <Link
+        {/* <Link
           href={'/addons'}
           className={`${styles.infoButton} ${
             pathname.includes('/addons') ? styles.infoButtonClicked : ''
@@ -155,8 +155,8 @@ const NavigationLine = (props: NavigationLineProps): JSX.Element => {
             height={20}
           />
           <span>Add-ons</span>
-        </Link>
-        <Link
+        </Link> */}
+        {/* <Link
           href={'/ipdeny'}
           className={`${styles.infoButton} ${
             pathname.includes('/ipdeny') ? styles.infoButtonClicked : ''
@@ -173,8 +173,8 @@ const NavigationLine = (props: NavigationLineProps): JSX.Element => {
             height={20}
           />
           <span>IP Deny</span>
-        </Link>
-        <Link
+        </Link> */}
+        {/* <Link
           href={'/analytics'}
           className={`${styles.infoButton} ${
             pathname.includes('analytics') ? styles.infoButtonClicked : ''
@@ -191,8 +191,8 @@ const NavigationLine = (props: NavigationLineProps): JSX.Element => {
             height={20}
           />
           <span>Analytics</span>
-        </Link>
-        <Link
+        </Link> */}
+        {/* <Link
           href={'/caching'}
           className={`${styles.infoButton} ${
             pathname.includes('/caching') ? styles.infoButtonClicked : ''
@@ -209,7 +209,7 @@ const NavigationLine = (props: NavigationLineProps): JSX.Element => {
             height={20}
           />
           <span>Caching</span>
-        </Link>
+        </Link> */}
         <Link
           href={`${props.basePath}/users`}
           className={`${styles.infoButton} ${
