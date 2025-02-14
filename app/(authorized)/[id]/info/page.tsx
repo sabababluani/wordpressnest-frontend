@@ -183,7 +183,7 @@ const Info = (): JSX.Element => {
         closable={false}
       >
         <LabelModal
-          siteName={'site.siteName'}
+          siteName={site.siteTitle}
           onClick={() => setIsLabelModalOpen(false)}
         />
       </Modal>
