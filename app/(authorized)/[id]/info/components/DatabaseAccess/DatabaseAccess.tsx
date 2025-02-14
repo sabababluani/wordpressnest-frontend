@@ -49,12 +49,12 @@ const DataBaseAccess = (props: DataBasePropsInterface): JSX.Element => {
         <div className={styles.rowWrapper}>
           <Wrapper
             enhancedWidth
-            caption={'All IPs allowed'}
+            caption={'IP allowlist'}
             fieldsInnerContent={props.database}
             additionalHref={'/icons/edit44.svg'}
           />
           <PasswordFieldComp
-            caption={props.databasePassword}
+            caption={'Database Password'}
             innerContent={props.databasePassword}
             additionalHref={'/icons/eyeClosed.svg'}
             additionalHref2={'/icons/eyeOpen.svg'}

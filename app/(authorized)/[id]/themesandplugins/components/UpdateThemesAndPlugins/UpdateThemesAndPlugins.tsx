@@ -9,8 +9,10 @@ import { useParams } from 'next/navigation';
 import { mutate } from 'swr';
 import { UpdateThemesAndPluginsProps } from './interfaces/update-themes-and-plugins-props.interface';
 import { UpdateThemesAndPluginsColumns } from './utils/update-themes-and-plugins-columns';
+import { useNotification } from '@/app/contexts/NotificationContext';
 
 const UpdateThemesAndPlugins = (props: UpdateThemesAndPluginsProps) => {
+  const { showNotification } = useNotification();
   const { id } = useParams();
   const numberId = Number(id);
 
@@ -38,12 +40,13 @@ const UpdateThemesAndPlugins = (props: UpdateThemesAndPluginsProps) => {
         [props.type === 'plugin' ? 'plugins' : 'themes']: selectedRows,
       });
       mutate(`wp-cli/${props.type}/${id}`);
-    } catch (error) {
-      console.error(error);
+      showNotification('Update successful', 'success');
+    } catch {
+      showNotification('Update failed', 'error');
     } finally {
       setLoading(false);
+      props.onClose();
     }
-    props.onClose();
   };
 
   return (

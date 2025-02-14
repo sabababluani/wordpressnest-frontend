@@ -11,6 +11,7 @@ import { patchData } from '@/app/api/crudService';
 import { useGetData } from '@/app/hooks/useGetData';
 import { mutate } from 'swr';
 import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
+import { useNotification } from '@/app/contexts/NotificationContext';
 
 const EditModal = (
   props: UsersModalPropsInterface & {
@@ -18,6 +19,8 @@ const EditModal = (
   },
 ): JSX.Element => {
   const { id } = useParams();
+  const { showNotification } = useNotification();
+
   const [selectedRole, setSelectedRole] = useState(props.user.roles);
   const [loading, setLoading] = useState(false);
 
@@ -47,12 +50,11 @@ const EditModal = (
         userId: props.user.ID,
         role: selectedRole.toLowerCase(),
       });
-
       mutate(`wp-cli/wpuser/${id}`);
-
+      showNotification('User role updated successfully', 'success');
       props.onClose();
-    } catch (error) {
-      console.error('Error updating role:', error);
+    } catch {
+      showNotification('Failed to update user role', 'error');
     } finally {
       setLoading(false);
     }

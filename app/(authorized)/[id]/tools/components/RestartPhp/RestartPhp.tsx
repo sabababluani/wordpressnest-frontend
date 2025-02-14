@@ -4,9 +4,11 @@ import { Modal } from 'antd';
 import { createData } from '@/app/api/crudService';
 import { useParams } from 'next/navigation';
 import PhpRestartModal from './components/PhpRestartModal/PhpRestartModal';
+import { useNotification } from '@/app/contexts/NotificationContext';
 
 const RestartPhp = () => {
   const { id } = useParams();
+  const { showNotification } = useNotification();
   const [isRestartOpen, setIsRestartOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -14,11 +16,12 @@ const RestartPhp = () => {
     setLoading(true);
     try {
       await createData(`wordpress/restart/engine/${id}`, {});
-      setIsRestartOpen(false);
-    } catch (error) {
-      console.log(error);
+      showNotification('PHP engine restarted successfully', 'success');
+    } catch {
+      showNotification('Failed to restart PHP engine', 'error');
     } finally {
       setLoading(false);
+      setIsRestartOpen(false);
     }
   };
 

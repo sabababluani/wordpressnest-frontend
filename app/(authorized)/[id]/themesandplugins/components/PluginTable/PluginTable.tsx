@@ -17,8 +17,10 @@ import {
   ThemesAndPluginsActionEnum,
   ThemesAndPluginsStatusEnum,
 } from '../enum/themes-and-plugins.enum';
+import { useNotification } from '@/app/contexts/NotificationContext';
 
 const PluginTable = () => {
+  const { showNotification } = useNotification();
   const { id } = useParams();
   const numberId = Number(id);
 
@@ -69,10 +71,17 @@ const PluginTable = () => {
       await patchData(`wp-cli/plugin/${action}`, numberId, {
         plugins: pluginName,
       });
+      showNotification(
+        `Plugin ${action === ThemesAndPluginsActionEnum.ENABLE ? 'activated' : 'deactivated'} successfully`,
+        'success',
+      );
       setRowChecked(false);
       mutate();
-    } catch (error) {
-      console.log(error);
+    } catch {
+      showNotification(
+        `Failed to ${action === ThemesAndPluginsActionEnum.ENABLE ? 'activate' : 'deactivated'} plugin`,
+        'error',
+      );
     } finally {
       setLoading(false);
     }
@@ -107,9 +116,10 @@ const PluginTable = () => {
       });
       setIsTableOpen(false);
       setIsUpdateAction(false);
+      showNotification('Plugin updated successfully', 'success');
       mutate();
-    } catch (error) {
-      console.log(error);
+    } catch {
+      showNotification('Failed to update plugin', 'error');
     } finally {
       setLoading(false);
     }
