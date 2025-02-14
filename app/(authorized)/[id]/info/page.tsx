@@ -28,6 +28,7 @@ import RenameSiteModal from './components/RenameSiteModal/RenameSiteModal';
 import LabelModal from '../../wpsites/components/LabelModal/LabelModal';
 import PasswordExpirationModal from './components/PasswordExpirationModal/PasswordExpirationModal';
 
+//TODO database name
 const Info = (): JSX.Element => {
   const { id } = useParams();
 
@@ -41,6 +42,10 @@ const Info = (): JSX.Element => {
 
   const { data: version } = useGetData<{ phpVersion: string }>({
     endpoint: `wp-cli/php/version/${id}`,
+  });
+
+  const { data: database } = useGetData<{ Name: string }>({
+    endpoint: `wp-cli/db/name/${id}`,
   });
 
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState<boolean>(false);
@@ -131,7 +136,7 @@ const Info = (): JSX.Element => {
         <DataBaseAccess
           databasePassword={'site.dbPassword'}
           ip={'ALL IPs allowed'}
-          database={'site.dbName'}
+          database={database?.Name}
           databaseUsername={'root'}
           phpAdmin={site.phpAdminFullIp}
         />
@@ -195,7 +200,7 @@ const Info = (): JSX.Element => {
         footer={null}
         closable={false}
       >
-        <RenameSiteModal onClick={() => setIsRenameModalOpen(false)} />
+        <RenameSiteModal onCancel={() => setIsRenameModalOpen(false)} />
       </Modal>
 
       <Modal

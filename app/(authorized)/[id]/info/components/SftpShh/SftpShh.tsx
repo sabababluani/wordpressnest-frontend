@@ -1,16 +1,19 @@
 import styles from './SftpShh.module.scss';
 import { SftpShhPropsInterface } from './interfaces/sftpshh-props.interfaces';
 import Wrapper from '../reusableComponent/Wrapper/Wrapper';
+import { useNotification } from '@/app/contexts/NotificationContext';
 
 const SftpShh = (props: SftpShhPropsInterface): JSX.Element => {
+  const { showNotification } = useNotification();
+
   const handleCopy = (text: string) => {
     navigator.clipboard
       .writeText(text)
       .then(() => {
-        alert('Copied to clipboard:');
+        showNotification('Copied to clipboard', 'success');
       })
       .catch(() => {
-        alert('Failed to copy:');
+        showNotification('Failed to copy', 'error');
       });
   };
 
