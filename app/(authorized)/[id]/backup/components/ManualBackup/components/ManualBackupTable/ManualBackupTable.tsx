@@ -14,9 +14,11 @@ import { deleteData, updateData } from '@/app/api/crudService';
 import { useParams } from 'next/navigation';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { ProgressPropsInterface } from './interfaces/progress-props.interface';
+import { useNotification } from '@/app/contexts/NotificationContext';
 
 const ManualBackupTable = () => {
   const { id } = useParams();
+  const { showNotification } = useNotification();
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
@@ -43,9 +45,10 @@ const ManualBackupTable = () => {
     try {
       await deleteData('backup/deletefrompod', selectedBackupId.toString());
       await Promise.all([mutateManualBackup(), mutateProgress()]);
+      showNotification('Backup deleted successfully', 'success');
       closeDeleteModal();
     } catch (error) {
-      console.error(error);
+      showNotification(String(error), 'error');
     } finally {
       setLoading(false);
     }
@@ -56,9 +59,10 @@ const ManualBackupTable = () => {
     try {
       await updateData('backup/restoreFromPod', numberId);
       await Promise.all([mutateManualBackup(), mutateProgress()]);
+      showNotification('Backup restored successfully', 'success');
       closeRestoreModal();
     } catch (error) {
-      console.error(error);
+      showNotification(String(error), 'error');
     } finally {
       setLoading(false);
     }

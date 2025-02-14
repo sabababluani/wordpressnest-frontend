@@ -3,7 +3,6 @@ import styles from './ApiKeysAddModal.module.scss';
 import Image from 'next/image';
 import { DatePicker, Select } from 'antd';
 import Button from '@/app/components/Button/Button';
-import SuccessNotification from '@/app/components/SuccessNotification/SuccessNotification';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { apiKeyOptions } from './utils/api-keys-select-options';
 import { ApiKeyPropsInterface } from '../../interfaces/api-keys-props.interface';
@@ -12,7 +11,6 @@ import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 const ApiKeysAddModal = (props: ApiKeyPropsInterface) => {
   const [steper, setSteper] = useState(1);
   const [isOptionSelected, setIsOptionSelected] = useState(false);
-  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
 
   const handleSelectChange = (value: string) => {
     setIsOptionSelected(!!value);
@@ -24,10 +22,7 @@ const ApiKeysAddModal = (props: ApiKeyPropsInterface) => {
   };
 
   const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text).then(() => {
-      setIsNotificationOpen(true);
-      setTimeout(() => setIsNotificationOpen(false), 3000);
-    });
+    navigator.clipboard.writeText(text).then(() => {});
   };
 
   return (
@@ -138,9 +133,6 @@ const ApiKeysAddModal = (props: ApiKeyPropsInterface) => {
           />
         </div>
       </div>
-      {isNotificationOpen && (
-        <SuccessNotification message={'Copied to clipboard!'} />
-      )}
     </div>
   );
 };

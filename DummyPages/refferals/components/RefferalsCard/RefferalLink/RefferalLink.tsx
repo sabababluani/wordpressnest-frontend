@@ -1,20 +1,14 @@
 'use client';
 
-import SuccessNotification from '@/app/components/SuccessNotification/SuccessNotification';
 import styles from './RefferalLink.module.scss';
 import Image from 'next/image';
 import { useState } from 'react';
 
 const RefferalLink = () => {
   const [inputValue] = useState('https://hosting.ge/?Novatori=ganvitarebas');
-  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(inputValue).then(() => {
-      setIsNotificationOpen(true);
-
-      setTimeout(() => setIsNotificationOpen(false), 3000);
-    });
+    navigator.clipboard.writeText(inputValue).then(() => {});
   };
 
   return (
@@ -43,9 +37,6 @@ const RefferalLink = () => {
           credits, you agree to these terms
         </span>
       </div>
-      {isNotificationOpen && (
-        <SuccessNotification message={'Copied to clipboard!'} />
-      )}
     </div>
   );
 };

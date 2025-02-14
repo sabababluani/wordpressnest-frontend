@@ -9,21 +9,24 @@ import { DownloadBackupPropsInterface } from './interfaces/download-backup-props
 import { useGetData } from '@/app/hooks/useGetData';
 import { useParams } from 'next/navigation';
 import { createData } from '@/app/api/crudService';
+import { useNotification } from '@/app/contexts/NotificationContext';
 
 const DownloadBackup = () => {
   const { id } = useParams();
 
   const [showBelowContainer, setShowBelowContainer] = useState(false);
   const [loading, setLoading] = useState(false);
+  const { showNotification } = useNotification();
 
   const onDownloadBackupAdd = async () => {
     setLoading(true);
     setShowBelowContainer(true);
     try {
       await createData(`backup/downloadablebackup/${id}`, {});
+      showNotification('Backup download created successfully!', 'success');
       mutate();
     } catch (error) {
-      console.log(error);
+      showNotification('Failed to create backup.', 'error');
     } finally {
       setLoading(false);
       setShowBelowContainer(false);
@@ -37,10 +40,12 @@ const DownloadBackup = () => {
   });
 
   const handleCopyLink = (url: string) => {
-    navigator.clipboard.writeText(url).then(
-      () => alert('Link copied to clipboard!'),
-      () => alert('Failed to copy link.'),
-    );
+    navigator.clipboard
+      .writeText(url)
+      .then(() => showNotification('Link copied to clipboard!', 'success'))
+      .catch(() =>
+        showNotification('Failed to copy link to clipboard.', 'error'),
+      );
   };
 
   const handleDownload = (url: string) => {

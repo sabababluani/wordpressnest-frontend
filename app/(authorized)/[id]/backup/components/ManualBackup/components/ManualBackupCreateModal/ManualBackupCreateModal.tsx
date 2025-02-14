@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { createData } from '@/app/api/crudService';
 import { useParams } from 'next/navigation';
 import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
+import { useNotification } from '@/app/contexts/NotificationContext';
 
 const ManualBackupCreateModal = (
   props: ManualBackupCreateModalPropsInterface,
@@ -13,6 +14,7 @@ const ManualBackupCreateModal = (
   const [backupNote, setBackupNote] = useState<string>('');
   const [loading, setLoading] = useState(false);
 
+  const { showNotification } = useNotification();
   const { id } = useParams();
   const numberId = Number(id);
 
@@ -23,9 +25,10 @@ const ManualBackupCreateModal = (
       props.mutate();
       props.mutateProgress();
       props.onClose();
+      showNotification('Backup created successfully', 'success');
       setBackupNote('');
     } catch (error) {
-      console.log(error);
+      showNotification(String(error), 'error');
     } finally {
       setLoading(false);
     }

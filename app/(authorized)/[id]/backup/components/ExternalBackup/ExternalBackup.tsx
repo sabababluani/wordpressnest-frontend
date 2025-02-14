@@ -62,7 +62,7 @@ const ExternalBackup = () => {
       ) : (
         <>
           {(!data?.length || disabled) && (
-            <div>
+            <>
               <div className={styles.header}>
                 <h1>External Backup</h1>
                 <p>You can set backups every 6-hours or every hour.</p>
@@ -78,7 +78,7 @@ const ExternalBackup = () => {
                   onClick={() => handleServiceSelect(1)}
                   title="Amazon S3"
                 />
-                <ExternalBackupBox
+                {/* <ExternalBackupBox
                   id={2}
                   image="/googlecloud.svg"
                   hours=""
@@ -87,9 +87,9 @@ const ExternalBackup = () => {
                   isActive={activeService === 2}
                   onClick={() => handleServiceSelect(2)}
                   title="Google Cloud Storage"
-                />
+                /> */}
               </div>
-            </div>
+            </>
           )}
 
           {data && data.length > 0 && (

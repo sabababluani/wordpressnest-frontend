@@ -1,18 +1,21 @@
 import styles from './EnvironmentDetails.module.scss';
 import { EnvironementDetailsPropsInterface } from './interfaces/environment-details-props.interface';
 import Wrapper from '../reusableComponent/Wrapper/Wrapper';
+import { useNotification } from '@/app/contexts/NotificationContext';
 
 const EnvironementDetails = (
   props: EnvironementDetailsPropsInterface,
 ): JSX.Element => {
+  const { showNotification } = useNotification();
+
   const handleCopy = (text: string) => {
     navigator.clipboard
       .writeText(text)
       .then(() => {
-        alert('Copied to clipboard');
+        showNotification('Successfully copied on keyboard', 'success');
       })
       .catch(() => {
-        alert('Failed to copy:');
+        showNotification('Operation errored!', 'error');
       });
   };
 

@@ -15,7 +15,7 @@ const BasicDetails = (props: StatisticPropsInterface): React.JSX.Element => {
             fieldsInnerContent={props.locationDataCenter!}
           />
           <Wrapper
-            caption={'Site Name'}
+            caption={'SiteName'}
             fieldsInnerContent={props.siteName!}
             additionalHref={'/icons/edit44.svg'}
             onClick={props.onClick}
