@@ -78,16 +78,6 @@ const ExternalBackup = () => {
                   onClick={() => handleServiceSelect(1)}
                   title="Amazon S3"
                 />
-                {/* <ExternalBackupBox
-                  id={2}
-                  image="/googlecloud.svg"
-                  hours=""
-                  price="2 USD / site / month"
-                  description="Backups created every hour and available for 24 hours, providing 24 additional restore points over the last day. Ideal for ecommerce sites, membership sites, and sites that change continuously."
-                  isActive={activeService === 2}
-                  onClick={() => handleServiceSelect(2)}
-                  title="Google Cloud Storage"
-                /> */}
               </div>
             </>
           )}

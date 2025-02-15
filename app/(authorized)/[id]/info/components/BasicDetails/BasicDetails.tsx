@@ -22,7 +22,7 @@ const BasicDetails = (props: StatisticPropsInterface): React.JSX.Element => {
           />
           <Wrapper
             caption={'Labels'}
-            fieldsInnerContent={props.Labels!.length > 0 ? props.Labels : ''}
+            fieldsInnerContent={props.Labels.length > 0 ? props.Labels : ''}
             additionalHref={'/icons/edit44.svg'}
             onClick={props.onClick2}
           />

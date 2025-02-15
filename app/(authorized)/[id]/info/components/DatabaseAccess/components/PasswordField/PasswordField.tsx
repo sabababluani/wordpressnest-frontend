@@ -4,10 +4,10 @@ import styles from './PasswordField.module.scss';
 import Image from 'next/image';
 
 const PasswordFieldComp = (props: PasswordField) => {
-  const [isOccured, setIsOccured] = useState(false);
+  const [isVisiblePassword, setIsVisiblePassword] = useState(false);
 
   const onClickEyeIcon = () => {
-    setIsOccured(!isOccured);
+    setIsVisiblePassword((prev) => !prev);
   };
 
   return (
@@ -15,18 +15,14 @@ const PasswordFieldComp = (props: PasswordField) => {
       <span className={styles.captionStyle}>{props.caption}</span>
       <div className={styles.mainWrapper}>
         <div className={styles.innerWrapper}>
-          <input
-            className={`${styles.inputStyle} ${
-              isOccured ? styles.textType : styles.passwordType
-            }`}
-            type={isOccured ? 'text' : 'password'}
-            value={props.innerContent}
-          />
+          <span>{isVisiblePassword ? props.innerContent : '*****'}</span>
           <div className={styles.iconsWrapper}>
             <Image
               height={24}
               width={24}
-              src={isOccured ? props.additionalHref2 : props.additionalHref}
+              src={
+                isVisiblePassword ? props.additionalHref2 : props.additionalHref
+              }
               alt={'eye closed icon'}
               onClick={onClickEyeIcon}
             />
