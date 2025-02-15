@@ -4,7 +4,7 @@ import styles from './PasswordField.module.scss';
 import Image from 'next/image';
 
 const PasswordFieldComp = (props: PasswordField) => {
-  const [isOccured, setIsOccured] = useState<boolean>(false);
+  const [isOccured, setIsOccured] = useState(false);
 
   const onClickEyeIcon = () => {
     setIsOccured(!isOccured);
@@ -16,8 +16,11 @@ const PasswordFieldComp = (props: PasswordField) => {
       <div className={styles.mainWrapper}>
         <div className={styles.innerWrapper}>
           <input
-            className={styles.inputStyle}
+            className={`${styles.inputStyle} ${
+              isOccured ? styles.textType : styles.passwordType
+            }`}
             type={isOccured ? 'text' : 'password'}
+            value={props.innerContent}
           />
           <div className={styles.iconsWrapper}>
             <Image
@@ -32,6 +35,7 @@ const PasswordFieldComp = (props: PasswordField) => {
               width={24}
               src={props.additionalHref3}
               alt={'copy icon'}
+              onClick={props.onClick}
             />
           </div>
         </div>

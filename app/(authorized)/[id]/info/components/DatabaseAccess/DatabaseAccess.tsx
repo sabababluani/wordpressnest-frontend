@@ -5,16 +5,18 @@ import { DataBasePropsInterface } from './interfaces/data-base-access-props.inte
 import Link from 'next/link';
 import Wrapper from '../reusableComponent/Wrapper/Wrapper';
 import PasswordFieldComp from './components/PasswordField/PasswordField';
+import { useNotification } from '@/app/contexts/NotificationContext';
 
 const DataBaseAccess = (props: DataBasePropsInterface): JSX.Element => {
+  const { showNotification } = useNotification();
   const handleCopy = (text: string) => {
     navigator.clipboard
       .writeText(text)
       .then(() => {
-        alert('Copied to clipboard');
+        showNotification('Copied to clipboard', 'success');
       })
       .catch(() => {
-        alert('Failed to copy');
+        showNotification('Failed to copy', 'error');
       });
   };
 
@@ -59,6 +61,7 @@ const DataBaseAccess = (props: DataBasePropsInterface): JSX.Element => {
             additionalHref={'/icons/eyeClosed.svg'}
             additionalHref2={'/icons/eyeOpen.svg'}
             additionalHref3={'/icons/copy.svg'}
+            onClick={() => handleCopy(props.databasePassword!)}
           />
         </div>
       </div>

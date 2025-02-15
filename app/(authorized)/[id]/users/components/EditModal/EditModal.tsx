@@ -12,6 +12,7 @@ import { useGetData } from '@/app/hooks/useGetData';
 import { mutate } from 'swr';
 import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
 import { useNotification } from '@/app/contexts/NotificationContext';
+import { UserInterface } from '@/app/components/Navigation/interfaces/navigation.props.interface';
 
 const EditModal = (
   props: UsersModalPropsInterface & {
@@ -60,16 +61,23 @@ const EditModal = (
     }
   };
 
+  const { data: siteTitle } = useGetData<UserInterface>({
+    endpoint: `user/me`,
+  });
+
+  const CurrentSiteName =
+    siteTitle?.setup.find((item) => item.id === +id)?.siteName ?? '';
+
   return (
     <div className={styles.mainWrapper}>
       <ModalHeader headline="Edit User" onClose={props.onClose} />
       <div className={styles.container}>
         <div className={styles.userWrapper}>
-          <span>Novatori.ge</span>
+          <span>{CurrentSiteName}</span>
           <div className={styles.user}>
             <Image
-              src="/boy.png"
-              alt="man"
+              src="/profile.jpg"
+              alt="profile"
               width={36}
               height={36}
               className={styles.picture}

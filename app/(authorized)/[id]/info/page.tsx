@@ -48,6 +48,14 @@ const Info = (): JSX.Element => {
     endpoint: `wp-cli/db/name/${id}`,
   });
 
+  const { data: label } = useGetData<string | undefined>({
+    endpoint: `wordpress/label/${id}`,
+  });
+
+  const { data: dbPassword } = useGetData<string>({
+    endpoint: `wordpress/dbPassword/${id}`,
+  });
+
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState<boolean>(false);
   const [isResetModalOpen, setIsResetModalOpen] = useState<boolean>(false);
   const [isProxyModalOpen, setIsProxyModalOpen] = useState<boolean>(false);
@@ -134,7 +142,7 @@ const Info = (): JSX.Element => {
         />
 
         <DataBaseAccess
-          databasePassword={'site.dbPassword'}
+          databasePassword={dbPassword}
           ip={'ALL IPs allowed'}
           database={database?.Name}
           databaseUsername={'root'}
@@ -188,8 +196,8 @@ const Info = (): JSX.Element => {
         closable={false}
       >
         <LabelModal
-          siteName={'site.siteName'}
-          onClick={() => setIsLabelModalOpen(false)}
+          siteName={label}
+          onClose={() => setIsLabelModalOpen(false)}
         />
       </Modal>
 

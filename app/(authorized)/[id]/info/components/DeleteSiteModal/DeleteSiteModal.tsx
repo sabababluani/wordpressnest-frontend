@@ -43,8 +43,8 @@ const DeleteSiteModal = (
       <div className={styles.container}>
         <div className={styles.content}>
           <span className={styles.heading}>
-            By deleting jigaro, all of its data will be destroyed. This is not
-            recoverable.
+            By deleting {siteTitle}, all of its data will be destroyed. This is
+            not recoverable.
           </span>
           <span className={styles.confirm}>
             Confirm that you understand the following:

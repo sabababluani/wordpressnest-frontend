@@ -179,3 +179,25 @@
   font-weight: 500;
   line-height: 20px;
 }
+
+.addLabelWrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.addLabelWrapper input {
+  width: 100%;
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid $borderColor;
+  border-radius: 8px;
+  background-color: white;
+  outline: none;
+}
+
+.addLabelContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}

@@ -60,7 +60,8 @@
   align-items: center;
   gap: 10px;
   border-radius: 8px;
-  border: 1px solid $borderColor;  cursor: pointer;
+  border: 1px solid $borderColor;
+  cursor: pointer;
 }
 
 .dataBaseWrapper {
@@ -70,7 +71,8 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
-  border-right: 1px solid $borderColor;}
+  border-right: 1px solid $borderColor;
+}
 
 .dataBaseCaptionStyle {
   color: $primaryTextColor;
@@ -95,7 +97,8 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
-  border-right: 1px solid $borderColor;}
+  border-right: 1px solid $borderColor;
+}
 
 .dataBaseCaptionStyle {
   color: $primaryTextColor;
@@ -147,7 +150,8 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
-  border-right: 1px solid $borderColor;}
+  border-right: 1px solid $borderColor;
+}
 
 .dataBasePasswordCaptionStyle {
   color: $primaryTextColor;
