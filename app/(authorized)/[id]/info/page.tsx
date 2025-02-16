@@ -14,8 +14,9 @@ import InfoDetails from './components/InfoDetails/InfoDetails';
 import { SiteModals } from './components/InfoModals/InfoModals';
 
 //TODO database name
-const Info = (): JSX.Element => {
+const Info = () => {
   const { id } = useParams();
+  const numberId = Number(id);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState<boolean>(false);
   const [isResetModalOpen, setIsResetModalOpen] = useState<boolean>(false);
   const [isProxyModalOpen, setIsProxyModalOpen] = useState<boolean>(false);
@@ -57,7 +58,7 @@ const Info = (): JSX.Element => {
   }
 
   const site = sideInformationData?.setup.find(
-    (item: SiteInterface) => item.id === +id,
+    (item: SiteInterface) => item.id === numberId,
   );
 
   if (!site) return <div>Site not found</div>;

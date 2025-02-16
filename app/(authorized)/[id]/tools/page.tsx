@@ -6,7 +6,7 @@ import RestartPhp from './components/RestartPhp/RestartPhp';
 import SearchAndReplace from './components/SearchAndReplace/SearchAndReplace';
 import PhpSettings from './components/PhpSettings/PhpSettings';
 
-const ToolsPage = (): JSX.Element => {
+const ToolsPage = () => {
   return (
     <>
       <div className={styles.mainContainer}>

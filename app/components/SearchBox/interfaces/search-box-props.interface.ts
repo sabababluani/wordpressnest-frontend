@@ -1,3 +1,4 @@
 export interface SearchBoxPropsInterface {
-  isVisable?: boolean;
+  isVisable: boolean;
+  onModalClose: () => void;
 }

@@ -15,9 +15,10 @@ import EditModal from './components/EditModal/EditModal';
 import RevokeModal from '@/app/components/RevokeModal/RevokeModal';
 import { useNotification } from '@/app/contexts/NotificationContext';
 
-const Users = (): JSX.Element => {
+const Users = () => {
   const { showNotification } = useNotification();
   const { id } = useParams();
+  const numberId = Number(id);
 
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -45,7 +46,7 @@ const Users = (): JSX.Element => {
   const onUserDelete = async (userIds: number[]) => {
     setLoading(true);
     try {
-      await deleteData(`wp-cli/wpuser`, +id, { userId: userIds });
+      await deleteData(`wp-cli/wpuser`, numberId, { userId: userIds });
       showNotification('User deleted successfully', 'success');
       setSelectedRows([]);
       setSelectedUserForDelete(null);

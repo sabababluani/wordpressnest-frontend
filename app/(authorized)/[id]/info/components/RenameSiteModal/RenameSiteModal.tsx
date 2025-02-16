@@ -8,7 +8,7 @@ import { useParams } from 'next/navigation';
 
 const RenameSiteModal = (props: { onCancel: () => void }) => {
   const { id } = useParams();
-  const numberId = +id;
+  const numberId = Number(id);
   const [inputValue, setInputValue] = useState('');
 
   const handleRenameSite = async () => {

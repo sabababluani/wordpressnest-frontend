@@ -18,6 +18,7 @@ const DeleteSiteModal = (
   props: DeleteSiteModalPropsInterface,
 ): React.JSX.Element => {
   const { id } = useParams();
+  const numberId = Number(id);
 
   const [checkbox1, setCheckbox1] = useState<boolean>(false);
   const [checkbox2, setCheckbox2] = useState<boolean>(false);
@@ -27,7 +28,7 @@ const DeleteSiteModal = (
     endpoint: 'user/me',
   }).data;
   const siteTitle = specificData?.setup.find(
-    (item: SiteInterface) => item.id === +id,
+    (item: SiteInterface) => item.id === numberId,
   )?.siteTitle;
 
   const isButtonEnabled = checkbox1 && checkbox2 && inputValue === siteTitle;

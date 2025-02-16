@@ -20,12 +20,14 @@ const ResetSiteModal = (props: ResetSiteModalPropsInterface): JSX.Element => {
   const [siteTitle, setSiteTitle] = useState<string>('');
 
   const { id } = useParams();
+  const numberId = Number(id);
+
   const { data: specificUser } = useGetData<UserInterface>({
     endpoint: `user/me`,
   });
 
   const isValidated: boolean =
-    specificUser?.setup.find((item) => item.id === +id)?.siteTitle ===
+    specificUser?.setup.find((item) => item.id === numberId)?.siteTitle ===
     siteTitle;
 
   const onResetButton = async () => {
@@ -87,7 +89,7 @@ const ResetSiteModal = (props: ResetSiteModalPropsInterface): JSX.Element => {
                   type="text"
                   defaultValue={
                     specificUser?.setup.find(
-                      (item: SiteInterface) => item.id === +id,
+                      (item: SiteInterface) => item.id === numberId,
                     )?.siteTitle
                   }
                   disabled
@@ -168,8 +170,9 @@ const ResetSiteModal = (props: ResetSiteModalPropsInterface): JSX.Element => {
         ) : (
           <ResetSiteConfirmation
             siteTitle={
-              specificUser?.setup.find((item: SiteInterface) => item.id === +id)
-                ?.siteTitle
+              specificUser?.setup.find(
+                (item: SiteInterface) => item.id === numberId,
+              )?.siteTitle
             }
             onClick={onResetButton}
             onBack={() => setSteper(1)}

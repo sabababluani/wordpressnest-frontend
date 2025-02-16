@@ -18,8 +18,9 @@ const EditModal = (
   props: UsersModalPropsInterface & {
     user: UsersTablePropsInterface;
   },
-): JSX.Element => {
+) => {
   const { id } = useParams();
+  const numberId = Number(id);
   const { showNotification } = useNotification();
 
   const [selectedRole, setSelectedRole] = useState(props.user.roles);
@@ -47,7 +48,7 @@ const EditModal = (
   const onHandleUpdate = async () => {
     setLoading(true);
     try {
-      await patchData('wp-cli/wprole', +id, {
+      await patchData('wp-cli/wprole', numberId, {
         userId: props.user.ID,
         role: selectedRole.toLowerCase(),
       });
@@ -66,7 +67,7 @@ const EditModal = (
   });
 
   const CurrentSiteName =
-    siteTitle?.setup.find((item) => item.id === +id)?.siteName ?? '';
+    siteTitle?.setup.find((item) => item.id === numberId)?.siteName ?? '';
 
   return (
     <div className={styles.mainWrapper}>

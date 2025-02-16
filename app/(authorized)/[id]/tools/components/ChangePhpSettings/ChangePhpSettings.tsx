@@ -12,6 +12,7 @@ import { useNotification } from '@/app/contexts/NotificationContext';
 
 const ChangePhpSettings = (props: ChangePhpSettingsPropsInterface) => {
   const { id } = useParams();
+  const numberId = Number(id);
   const { showNotification } = useNotification();
 
   const [isLTSVersionDepricated, setIsLTSVersionDepricated] = useState(
@@ -23,7 +24,7 @@ const ChangePhpSettings = (props: ChangePhpSettingsPropsInterface) => {
   const onSubmit = async () => {
     setIsLoading(true);
     try {
-      await patchData(`wordpress/php-version`, +id, {
+      await patchData(`wordpress/php-version`, numberId, {
         phpVersion: selectedVersion,
       });
       props.onClose();

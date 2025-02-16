@@ -59,7 +59,10 @@ const Header = (): JSX.Element => {
           onCancel={handleModalClose}
           open={isModalVisible}
         >
-          <SearchBox isVisable={isModalVisible} />
+          <SearchBox
+            isVisable={isModalVisible}
+            onModalClose={handleModalClose}
+          />
         </Modal>
       )}
     </div>

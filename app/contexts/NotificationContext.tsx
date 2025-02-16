@@ -5,14 +5,15 @@ import React, { createContext, useContext, useCallback, useState } from 'react';
 type NotificationType = 'success' | 'error';
 
 interface Notification {
+  id: number;
   message: string;
   type: NotificationType;
 }
 
 interface NotificationContextType {
-  notification: Notification | null;
+  notifications: Notification[];
   showNotification: (message: string, type: NotificationType) => void;
-  hideNotification: () => void;
+  hideNotification: (id: number) => void;
 }
 
 const NotificationContext = createContext<NotificationContextType | null>(null);
@@ -22,23 +23,27 @@ export const NotificationProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [notification, setNotification] = useState<Notification | null>(null);
+  const [notifications, setNotifications] = useState<Notification[]>([]);
 
-  const hideNotification = useCallback(() => {
-    setNotification(null);
+  const hideNotification = useCallback((id: number) => {
+    setNotifications((prev) =>
+      prev.filter((notification) => notification.id !== id),
+    );
   }, []);
 
   const showNotification = useCallback(
     (message: string, type: NotificationType) => {
-      setNotification({ message, type });
-      setTimeout(hideNotification, 3000);
+      const id = Date.now();
+      setNotifications((prev) => [...prev, { id, message, type }]);
+
+      setTimeout(() => hideNotification(id), 6000);
     },
     [hideNotification],
   );
 
   return (
     <NotificationContext.Provider
-      value={{ notification, showNotification, hideNotification }}
+      value={{ notifications, showNotification, hideNotification }}
     >
       {children}
     </NotificationContext.Provider>
