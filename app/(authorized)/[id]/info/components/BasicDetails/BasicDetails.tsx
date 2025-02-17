@@ -15,16 +15,14 @@ const BasicDetails = (props: StatisticPropsInterface): React.JSX.Element => {
             fieldsInnerContent={props.locationDataCenter!}
           />
           <Wrapper
-            caption={'SiteName'}
+            caption={'Site Name'}
             fieldsInnerContent={props.siteName!}
             additionalHref={'/icons/edit44.svg'}
             onClick={props.onClick}
           />
           <Wrapper
             caption={'Labels'}
-            fieldsInnerContent={
-              props.Labels!.length > 0 ? props.Labels : 'None'
-            }
+            fieldsInnerContent={props.Labels.length > 0 ? props.Labels : ''}
             additionalHref={'/icons/edit44.svg'}
             onClick={props.onClick2}
           />

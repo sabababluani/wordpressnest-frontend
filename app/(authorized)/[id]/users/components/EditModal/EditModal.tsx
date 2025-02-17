@@ -11,13 +11,18 @@ import { patchData } from '@/app/api/crudService';
 import { useGetData } from '@/app/hooks/useGetData';
 import { mutate } from 'swr';
 import ModalHeader from '@/app/components/ModalHeader/ModalHeader';
+import { useNotification } from '@/app/contexts/NotificationContext';
+import { UserInterface } from '@/app/components/Navigation/interfaces/navigation.props.interface';
 
 const EditModal = (
   props: UsersModalPropsInterface & {
     user: UsersTablePropsInterface;
   },
-): JSX.Element => {
+) => {
   const { id } = useParams();
+  const numberId = Number(id);
+  const { showNotification } = useNotification();
+
   const [selectedRole, setSelectedRole] = useState(props.user.roles);
   const [loading, setLoading] = useState(false);
 
@@ -43,31 +48,37 @@ const EditModal = (
   const onHandleUpdate = async () => {
     setLoading(true);
     try {
-      await patchData('wp-cli/wprole', +id, {
+      await patchData('wp-cli/wprole', numberId, {
         userId: props.user.ID,
         role: selectedRole.toLowerCase(),
       });
-
       mutate(`wp-cli/wpuser/${id}`);
-
+      showNotification('User role updated successfully', 'success');
       props.onClose();
-    } catch (error) {
-      console.error('Error updating role:', error);
+    } catch {
+      showNotification('Failed to update user role', 'error');
     } finally {
       setLoading(false);
     }
   };
+
+  const { data: siteTitle } = useGetData<UserInterface>({
+    endpoint: `user/me`,
+  });
+
+  const CurrentSiteName =
+    siteTitle?.setup.find((item) => item.id === numberId)?.siteName ?? '';
 
   return (
     <div className={styles.mainWrapper}>
       <ModalHeader headline="Edit User" onClose={props.onClose} />
       <div className={styles.container}>
         <div className={styles.userWrapper}>
-          <span>Novatori.ge</span>
+          <span>{CurrentSiteName}</span>
           <div className={styles.user}>
             <Image
-              src="/boy.png"
-              alt="man"
+              src="/profile.jpg"
+              alt="profile"
               width={36}
               height={36}
               className={styles.picture}

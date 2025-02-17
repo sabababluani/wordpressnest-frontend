@@ -65,6 +65,13 @@
   gap: 12px;
 }
 
+.userWrapper > span {
+  color: $primaryTextColor;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+}
+
 .user {
   display: flex;
   align-items: center;
@@ -79,7 +86,6 @@
 .name {
   color: $primaryTextColor;
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
   line-height: 18px;
 }
@@ -87,7 +93,6 @@
 .email {
   color: #707276;
   font-size: 12px;
-  font-style: normal;
   font-weight: 400;
   line-height: 18px;
 }

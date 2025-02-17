@@ -15,8 +15,10 @@ import { ThemeActivateModalPropsInterface } from './components/ThemeActivateModa
 import UpdateThemesAndPlugins from '../UpdateThemesAndPlugins/UpdateThemesAndPlugins';
 import { ThemesAndPluginsStatusEnum } from '../enum/themes-and-plugins.enum';
 import PluginUpdateModal from '../PluginTable/components/PluginUpdateModal/PluginUpdateModal';
+import { useNotification } from '@/app/contexts/NotificationContext';
 
 const ThemeTable = () => {
+  const { showNotification } = useNotification();
   const { id } = useParams();
   const NumberId = Number(id);
 
@@ -47,9 +49,10 @@ const ThemeTable = () => {
   const onHandleUpdate = async (themeName: string) => {
     try {
       await updateData(`wp-cli/themes`, NumberId, { themes: [themeName] });
+      showNotification('Theme updated successfully', 'success');
       mutate();
-    } catch (error) {
-      alert(error);
+    } catch {
+      showNotification('Failed to update theme', 'error');
     }
     setIsUpdateModalOpen(false);
   };
@@ -67,9 +70,10 @@ const ThemeTable = () => {
     setLoading(true);
     try {
       await patchData(`wp-cli/theme`, NumberId, { theme: themeName });
+      showNotification('Theme activated successfully', 'success');
       mutate();
-    } catch (error) {
-      console.log(error);
+    } catch {
+      showNotification('Failed to activate theme', 'error');
     } finally {
       setLoading(false);
     }

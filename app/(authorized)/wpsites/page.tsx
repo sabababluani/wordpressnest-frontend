@@ -6,7 +6,7 @@ import styles from './page.module.scss';
 import Search from '@/app/components/Search/Search';
 import Button from '@/app/components/Button/Button';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
-import { Modal } from 'antd';
+import { Modal, Select } from 'antd';
 import AddSiteModal from './components/AddSiteModal/AddSiteModal';
 import ClearCacheModal from './components/ClearCacheModal/ClearCacheModal';
 import UpdateModal from './components/UpdateModal/UpdateModal';
@@ -16,7 +16,7 @@ import PhpModal from './components/PhpModal/PhpModal';
 import UpdateThemesModal from './components/UpdateThemesModal/UpdateThemesModal';
 import CacheModal from './components/CacheModal/CacheModal';
 import { ModalType } from './types/wp-sites-modal.type';
-import Link from 'next/link';
+import { ActionOptions } from './utils/action-options';
 import { ModalContext } from './components/AddSiteModal/components/ModalContext/ModalContext';
 
 interface ModalState {
@@ -40,6 +40,14 @@ const Wpsites = () => {
     setModalState((prev) => ({ ...prev, click: step }));
   };
 
+  // const handleBack = () => {
+  //   setModalState((prev) => ({
+  //     ...prev,
+  //     click: prev.click === 1 ? 1 : prev.click - 1,
+  //   }));
+  // };
+
+  const handleSelectChange = (value: ModalType) => openModal(value);
   useEffect(() => {
     if (shouldCloseAddSiteModal && modalState.modalType === 'addSite') {
       closeModal();
@@ -91,12 +99,15 @@ const Wpsites = () => {
             />
           </div>
           <div className={styles.contentWrapperButtons}>
-            <Link href="/migration">
-              <Button
-                backgroundColor={buttonbackgroundColorEnum.white}
-                innerContent="Request Migration"
+            <span>1 environment selected</span>
+            {
+              <Select
+                className={styles.select}
+                value="Actions"
+                options={ActionOptions}
+                onChange={handleSelectChange}
               />
-            </Link>
+            }
             <div className={styles.buttons}>
               <Button
                 backgroundColor={buttonbackgroundColorEnum.black}

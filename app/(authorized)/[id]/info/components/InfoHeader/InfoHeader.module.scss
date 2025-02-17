@@ -1,0 +1,28 @@
+@import '../../../../../styles/text-colors.scss';
+@import '../../../../../styles/colors.scss';
+
+.topContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.captionStyle {
+  color: $primaryTextColor;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px;
+}
+
+.buttonWrapper {
+  display: flex;
+  gap: 16px;
+}
+
+@media screen and (min-width: 300px) and (max-width: 600px) {
+  .buttonWrapper {
+    display: flex;
+    align-items: center;
+  }
+}

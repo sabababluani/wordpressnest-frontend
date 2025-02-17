@@ -8,9 +8,12 @@ import { useState } from 'react';
 import { PHP_VERSIONS } from './utils/change-php-settings-options.utils';
 import { patchData } from '@/app/api/crudService';
 import { useParams } from 'next/navigation';
+import { useNotification } from '@/app/contexts/NotificationContext';
 
 const ChangePhpSettings = (props: ChangePhpSettingsPropsInterface) => {
   const { id } = useParams();
+  const numberId = Number(id);
+  const { showNotification } = useNotification();
 
   const [isLTSVersionDepricated, setIsLTSVersionDepricated] = useState(
     PHP_VERSIONS[0].value === '7.4' || PHP_VERSIONS[0].value === '8.0',
@@ -21,12 +24,13 @@ const ChangePhpSettings = (props: ChangePhpSettingsPropsInterface) => {
   const onSubmit = async () => {
     setIsLoading(true);
     try {
-      await patchData(`wordpress/php-version`, +id, {
+      await patchData(`wordpress/php-version`, numberId, {
         phpVersion: selectedVersion,
       });
       props.onClose();
-    } catch (error) {
-      console.log();
+      showNotification('PHP version changed successfully', 'success');
+    } catch {
+      showNotification('Failed to change PHP version', 'error');
     } finally {
       setIsLoading(false);
     }

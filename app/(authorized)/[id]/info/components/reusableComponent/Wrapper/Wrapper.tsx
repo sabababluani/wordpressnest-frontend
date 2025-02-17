@@ -11,7 +11,7 @@ const Wrapper = (props: WrapperPropsInterface) => {
           props.enhancedWidth ? styles.enhancedWidth : styles.locationDataStyle
         }
       >
-        {props.fieldsInnerContent}
+        <span>{props.fieldsInnerContent}</span>
         <div className={styles.additionalIconWrapper} onClick={props.onClick}>
           {props.additionalHref && (
             <Image

@@ -7,7 +7,7 @@ import DownloadBackup from './components/DownloadBackup/DownloadBackup';
 import DailyBackup from './components/DailyBackup/DailyBackup';
 import ManualBackup from './components/ManualBackup/ManualBackup';
 
-const backup = (): JSX.Element => {
+const backup = () => {
   return (
     <div className={styles.container}>
       <Tabs

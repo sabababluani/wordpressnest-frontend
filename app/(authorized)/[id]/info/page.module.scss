@@ -8,36 +8,10 @@
   gap: 16px;
 }
 
-.topContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.buttonWrapper {
-  display: flex;
-  gap: 16px;
-}
-
-.captionStyle {
-  color: $primaryTextColor;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 32px;
-}
-
 .bottomContainer {
   display: flex;
   flex-direction: column;
   gap: 24px;
-}
-
-@media screen and (min-width: 300px) and (max-width: 600px) {
-  .buttonWrapper {
-    display: flex;
-    align-items: center;
-  }
 }
 
 .skeletonContainer {

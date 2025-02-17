@@ -13,25 +13,66 @@
 @keyframes slideOutToRight {
   0% {
     transform: translateX(0);
+    opacity: 1;
   }
   100% {
     transform: translateX(100%);
+    opacity: 0;
   }
 }
 
-.wrapper {
+.notificationsWrapper {
   position: fixed;
   right: 36px;
   top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 100;
+  max-width: 344px;
+  width: 100%;
+}
+
+.slideOut {
+  animation: slideOutToRight 0.3s ease-out forwards;
+}
+
+.wrapper {
   background-color: #e4e6e9;
   padding: 16px 36px;
   display: flex;
-  gap: 20px;
+  gap: 16px;
   border-radius: 12px;
-  z-index: 10;
   animation: slideInFromRight 0.3s ease-out forwards;
-  max-width: 344px;
   width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.wrapper > img {
+  cursor: pointer;
+  position: absolute;
+  top: 14px;
+  right: 20px;
+}
+
+.icon img {
+  position: relative;
+  top: 2px;
+}
+
+.title {
+  font-size: 20px;
+  color: $primaryTextColor;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.message {
+  font-size: 14px;
+  color: $primaryTextColor;
+  font-weight: 400;
+  line-height: 20px;
 }
 
 .container {

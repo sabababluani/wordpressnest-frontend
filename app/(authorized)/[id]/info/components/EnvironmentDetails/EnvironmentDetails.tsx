@@ -12,7 +12,7 @@ const EnvironementDetails = (
     navigator.clipboard
       .writeText(text)
       .then(() => {
-        showNotification('Successfully copied on keyboard', 'success');
+        showNotification('Copied to clipboard', 'success');
       })
       .catch(() => {
         showNotification('Operation errored!', 'error');
