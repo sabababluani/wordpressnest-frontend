@@ -5,6 +5,8 @@ import WpOptions from './components/WpOptions/WpOptions';
 import styles from './InstallWordpress.module.scss';
 import { createData } from '@/app/api/crudService';
 import { SetInfoPropsInterface } from './interfaces/set-info-props.interface';
+import { useNotification } from '@/app/contexts/NotificationContext';
+import { useModalContext } from '../ModalContext/ModalContext';
 
 interface InstallWordpressProps {
   onStepChange: (step: number) => void;
@@ -16,21 +18,28 @@ const InstallWordpress: React.FC<InstallWordpressProps> = ({
   onStepChange,
   currentStep,
 }) => {
-  const [data, setData] = useState<SetInfoPropsInterface | undefined>({
+  const [data, setData] = useState<SetInfoPropsInterface>({
     siteName: '',
     siteTitle: '',
     wpAdminUser: '',
     wpAdminPassword: '',
     wpAdminEmail: '',
   });
+  const { showNotification } = useNotification();
+
+  const { setShouldCloseAddSiteModal } = useModalContext();
+
   const onSubmit = async (data: SetInfoPropsInterface) => {
     try {
-      if (data)
-        await createData('/wordpress/setup', {
-          ...data,
-        });
+      await createData('/wordpress/setup', { ...data });
+      setShouldCloseAddSiteModal(true);
+      showNotification('Site created successfully', 'success');
     } catch (e) {
-      console.log(e);
+      setShouldCloseAddSiteModal(true);
+      showNotification(
+        'Site creation failed. Please try again later.',
+        'error',
+      );
     }
   };
 
@@ -46,7 +55,7 @@ const InstallWordpress: React.FC<InstallWordpressProps> = ({
       currentStep={currentStep}
       onSend={onSubmit}
       setInfo={setData}
-      info={data!}
+      info={data}
       key="wpOptions"
     />,
     <LoadingModal key="loadingModal" />,
