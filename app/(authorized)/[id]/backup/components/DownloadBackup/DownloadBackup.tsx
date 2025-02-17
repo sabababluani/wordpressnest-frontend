@@ -42,7 +42,7 @@ const DownloadBackup = () => {
   const handleCopyLink = (url: string) => {
     navigator.clipboard
       .writeText(url)
-      .then(() => showNotification('Link copied to clipboard!', 'success'))
+      .then(() => showNotification('Link copied to clipboard', 'success'))
       .catch(() =>
         showNotification('Failed to copy link to clipboard.', 'error'),
       );

@@ -5,14 +5,34 @@ import ExitButton from '../ProxyModule/component/ExitButton/ExitButton';
 import { buttonbackgroundColorEnum } from '@/app/components/Button/enum/button.enum';
 import { patchData } from '@/app/api/crudService';
 import { useParams } from 'next/navigation';
+import { useNotification } from '@/app/contexts/NotificationContext';
 
-const RenameSiteModal = (props: { onCancel: () => void }) => {
+const RenameSiteModal = (props: {
+  onCancel: () => void;
+  onMutate: () => void;
+}) => {
+  const { showNotification } = useNotification();
   const { id } = useParams();
   const numberId = Number(id);
   const [inputValue, setInputValue] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleRenameSite = async () => {
-    await patchData('wordpress/site-name', numberId, { siteName: inputValue });
+    if (inputValue.trim().length === 0) return;
+    setIsLoading(true);
+    try {
+      await patchData('wordpress/site-name', numberId, {
+        siteName: inputValue,
+      });
+      props.onMutate();
+      setInputValue('');
+      showNotification('Site renamed successfully', 'success');
+    } catch {
+      showNotification('Failed to rename site', 'error');
+    } finally {
+      setIsLoading(false);
+      props.onCancel();
+    }
   };
 
   return (
@@ -41,6 +61,9 @@ const RenameSiteModal = (props: { onCancel: () => void }) => {
           backgroundColor={buttonbackgroundColorEnum.black}
           innerContent={'Rename site'}
           onClick={handleRenameSite}
+          loading={isLoading}
+          setLoading={setIsLoading}
+          disableButton={inputValue.trim().length === 0}
         />
       </div>
     </div>

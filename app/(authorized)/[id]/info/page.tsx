@@ -11,9 +11,8 @@ import {
 import { useParams } from 'next/navigation';
 import InfoHeader from './components/InfoHeader/InfoHeader';
 import InfoDetails from './components/InfoDetails/InfoDetails';
-import { SiteModals } from './components/InfoModals/InfoModals';
+import SiteModals from './components/InfoModals/InfoModals';
 
-//TODO database name
 const Info = () => {
   const { id } = useParams();
   const numberId = Number(id);
@@ -29,6 +28,7 @@ const Info = () => {
     data: sideInformationData,
     error,
     isLoading,
+    mutate,
   } = useGetData<UserInterface>({
     endpoint: 'user/me',
   });
@@ -96,6 +96,7 @@ const Info = () => {
           setIsPasswordExpirationModalOpen(false)
         }
         label={label}
+        onMutate={mutate}
       />
     </div>
   );

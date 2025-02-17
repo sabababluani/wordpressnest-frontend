@@ -5,11 +5,12 @@ export interface InfoModalsPropsInterface {
   isRenameModalOpen: boolean;
   isLabelModalOpen: boolean;
   isPasswordExpirationModalOpen: boolean;
-  onCloseDeleteModal: () => void;
-  onCloseResetModal: () => void;
-  onCloseProxyModal: () => void;
-  onCloseRenameModal: () => void;
-  onCloseLabelModal: () => void;
-  onClosePasswordExpirationModal: () => void;
+  onCloseDeleteModal: VoidFunction;
+  onCloseResetModal: VoidFunction;
+  onCloseProxyModal: VoidFunction;
+  onCloseRenameModal: VoidFunction;
+  onCloseLabelModal: VoidFunction;
+  onClosePasswordExpirationModal: VoidFunction;
+  onMutate: VoidFunction;
   label?: string;
 }

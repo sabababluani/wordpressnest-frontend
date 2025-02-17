@@ -52,7 +52,7 @@ const DataBaseAccess = (props: DataBasePropsInterface): JSX.Element => {
           <Wrapper
             enhancedWidth
             caption={'IP allowlist'}
-            fieldsInnerContent={props.database}
+            fieldsInnerContent={'ALL IPs allowed'}
             additionalHref={'/icons/edit44.svg'}
           />
           <PasswordFieldComp

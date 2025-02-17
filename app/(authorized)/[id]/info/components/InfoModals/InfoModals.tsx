@@ -9,7 +9,7 @@ import ResetSiteModal from '../ResetSiteModal/ResetSiteModal';
 import ProxyModule from '../ProxyModule/ProxyModule';
 import { InfoModalsPropsInterface } from './interfaces/info-modals-props.interface';
 
-export const SiteModals = (props: InfoModalsPropsInterface) => (
+const SiteModals = (props: InfoModalsPropsInterface) => (
   <>
     <Modal
       width={840}
@@ -38,7 +38,10 @@ export const SiteModals = (props: InfoModalsPropsInterface) => (
       footer={null}
       closable={false}
     >
-      <RenameSiteModal onCancel={props.onCloseRenameModal} />
+      <RenameSiteModal
+        onCancel={props.onCloseRenameModal}
+        onMutate={props.onMutate}
+      />
     </Modal>
 
     <Modal
@@ -78,3 +81,5 @@ export const SiteModals = (props: InfoModalsPropsInterface) => (
     </Modal>
   </>
 );
+
+export default SiteModals;
