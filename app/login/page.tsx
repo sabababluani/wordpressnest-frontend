@@ -11,24 +11,7 @@ import Link from 'next/link';
 import { Checkbox, Select } from 'antd';
 import '../globals.css';
 import { useRouter } from 'next/navigation';
-
-const countryOptions = [
-  {
-    value: 'as',
-    label: (
-      <div className={styles.optionContainer}>
-        <Image
-          src="/icons/languageicon.svg"
-          alt="US Flag"
-          width={24}
-          height={24}
-          className={styles.flag}
-        />
-        <span>English</span>
-      </div>
-    ),
-  },
-];
+import { LanguageOptions } from './utils/LanguageOptions';
 
 const Login = () => {
   const router = useRouter();
@@ -216,7 +199,7 @@ const Login = () => {
                       Remember for 30 days
                     </span>
                   </div>
-                  <Link href="#" className={styles.forgot}>
+                  <Link href="/login/forgotpassword" className={styles.forgot}>
                     Forgot Password
                   </Link>
                 </div>
@@ -232,9 +215,9 @@ const Login = () => {
               </Link>
             </div>
             <Select
-              options={countryOptions}
+              options={LanguageOptions}
               className={styles.select}
-              defaultValue={countryOptions[0]}
+              defaultValue={LanguageOptions[0]}
               popupClassName={styles.customDropdown}
             />
           </div>

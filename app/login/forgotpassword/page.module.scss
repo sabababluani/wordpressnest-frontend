@@ -1,0 +1,143 @@
+@import '../../styles/text-colors.scss';
+@import '../../styles/colors.scss';
+
+.mainWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content {
+  flex: 1;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  border-radius: 12px;
+  max-width: 449px;
+  width: 100%;
+  border-radius: 8px;
+  padding: 24px;
+  background-color: #fff;
+  justify-self: center;
+  margin-top: 60px;
+}
+
+.headline {
+  color: $primaryTextColor;
+  text-align: center;
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 32px;
+}
+
+.registration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.reset {
+  color: $primaryTextColor;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.signup {
+  color: $primaryTextColor;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  text-decoration: none;
+}
+
+.banner {
+  flex: 1;
+  overflow: hidden;
+}
+
+.banner img {
+  height: 100%;
+  width: 100%;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.inputContainer input {
+  border: 1px solid $borderColor;
+  padding: 12px 14px;
+  border-radius: 8px;
+  outline: none;
+  line-height: 24px;
+  font-size: 14px;
+  color: $primaryTextColor;
+}
+
+.inputContainer input::placeholder {
+  color: #b5b7bf;
+}
+
+.inputContainer label {
+  color: #545a67;
+}
+
+.text {
+  color: #707276;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: center;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.backButton {
+  max-width: 114px;
+  width: 100%;
+}
+
+.resetButton {
+  max-width: 311px;
+  width: 100%;
+}
+
+.select {
+  height: 48px;
+  border-radius: 8px;
+  outline: none;
+  border: 1px solid $borderColor;
+  width: 100%;
+
+  &:hover {
+    border: 1px solid $borderColor !important;
+  }
+
+  :global(.ant-select-selector) {
+    border: 1px solid $borderColor !important;
+    box-shadow: none !important;
+  }
+
+  :global(.ant-select-focused .ant-select-selector) {
+    border: 1px solid $borderColor !important;
+    box-shadow: none !important;
+    border-color: transparent !important;
+  }
+}
