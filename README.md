@@ -40,7 +40,7 @@ React.js / Next.js / Chart.js / Ant design / SWR / Husky
 ## 📋 Getting Started
 
 ```bash
-git clone https://github.com/your-username/wordpress-hosting-platform.git
-cd wordpress-hosting-platform
+git clone [https://github.com/your-username/wordpress-hosting-platform.git](https://github.com/sabababluani/wordpressnest-frontend.git)
+cd wordpressnest-frontend
 npm install
 npm run dev
