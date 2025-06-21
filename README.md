@@ -1,4 +1,4 @@
-# MyAppName
+# Rero
 
 A modern music player built with Next.js and Recoil, featuring albums, playlists, and a responsive audio player.
 
@@ -10,7 +10,7 @@ A modern music player built with Next.js and Recoil, featuring albums, playlists
 
 ## Installation
 ```bash
-git clone https://github.com/your-username/your-repo.git
+git clone https://github.com/sabababluani/your-repo.git
 cd your-repo
 npm install
 npm run dev
