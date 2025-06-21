@@ -10,7 +10,7 @@ A modern music player built with Next.js and Recoil, featuring albums, playlists
 
 ## Installation
 ```bash
-git clone https://github.com/sabababluani/your-repo.git
-cd your-repo
+git clone https://github.com/sabababluani/wordpressnest-frontend.git
+cd wordpressnest-frontend
 npm install
 npm run dev
