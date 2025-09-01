@@ -34,11 +34,3 @@ The interface was built following **pixel-perfect** design standards, ensuring r
 ## Tech Stack
 
 React.js / Next.js / Chart.js / Ant design / SWR / Husky 
-
-## Getting Started
-
-```bash
-git clone (https://github.com/sabababluani/wordpressnest-frontend.git)
-cd wordpressnest-frontend
-npm install
-npm run dev
