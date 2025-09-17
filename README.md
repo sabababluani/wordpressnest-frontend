@@ -34,3 +34,5 @@ The interface was built following **pixel-perfect** design standards, ensuring r
 ## Tech Stack
 
 React.js / Next.js / Chart.js / Ant design / SWR / Husky 
+
+This project is not done and it is abonded
